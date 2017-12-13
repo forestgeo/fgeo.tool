@@ -1,0 +1,41 @@
+priority	decision
+1	key
+1	high
+1	functions for growth are important
+1	highest
+1	high, we need a topography function to characterize quadrats
+
+2	keep
+2	helpful
+2	high but...
+2	revisit all
+2	condense
+2	we need a topography function to characterize quadrats
+2	probably a lot of things depend on this
+2	these things in quadfun are important, other things depend on them
+2	keep, convenient
+
+3	look later
+3	check
+3	wait
+3	think more
+3	not a priority
+3	low
+3	re-think
+3	too specific?
+3	leave diversity stuff for other packages
+3	probably everything in statistics is too specific
+
+4	to remove
+4	deprecate
+4	deprecate all geometry
+4	deprecate all lmerBayes
+4	try to deprecate
+4	try to deprecate all the distribution functions
+
+
+
+
+
+
+
