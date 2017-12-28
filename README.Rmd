@@ -31,7 +31,105 @@ library(fgeo.utils)
 
 ## Example
 
-```{r example}
+Setup.
+
+```{r example, error=TRUE}
 library(fgeo.utils)
-add_status_tree(bciex::bci12vft_mini)
+
+df <- tibble::tribble(
+  ~PlotCensusNumber, ~Tag, ~Status,
+                  1,    1, "alive",
+                  1,    1,  "dead",
+  
+                  1,    2,  "dead",
+                  1,    2,  "dead",
+  
+                  1,    3,  "dead",
+                  1,    3,  "dead",
+
+                  2,    1, "alive",
+                  2,    1, "alive",
+  
+                  2,    2, "alive",
+                  2,    2,  "dead",
+
+                  2,    3,  "dead",
+                  2,    3,  "dead"
+)
+
 ```
+
+Manipulate data.
+
+```{r}
+# Mutate a data set
+
+# Determine the status of each tree based on the status of its stems
+add_status_tree(df)
+
+# Filter a data set
+
+# Filter from the head or tail of a variable
+top(df, Tag)
+top(df, Tag, -1)
+# Remove trees found dead in two or more censuses
+rm_dead_twice(df)
+```
+
+Check inputs.
+
+```{r, error=TRUE}
+# Silent means success
+check_crucial_names(df, "Status")
+
+# Errs if the data hasn't a given name
+check_crucial_names(df, "DBH")
+
+check_unique(df, "PlotCensusNumber", msg = "* Is this what you expect?")
+```
+
+Much you can do directly with dplyr.
+
+```{r}
+library(dplyr)
+filter(
+  .data = df,
+  PlotCensusNumber > 1,
+  Tag  %in% c(1, 2),
+  Status == "alive"
+)
+```
+
+You can combine __fgeo.utils__ with __dplyr__.
+
+```{r}
+# Using notation package::function to make the source package obvious
+edited <- fgeo.utils::add_status_tree(
+  fgeo.utils::top(df, PlotCensusNumber, -1)
+)
+dplyr::select(edited, -Status)
+```
+
+You don't have to, but if you want you can use the pipe (` %>% `).
+
+```{r}
+# With the pipe
+df %>% 
+  add_status_tree() %>%
+  filter(status_tree == "alive") %>%
+  rename(status_stem = Status) %>%
+  arrange(desc(PlotCensusNumber))
+
+# Same but without the pipe: It is hard to understand what is going on.
+arrange(
+  rename(
+    filter(
+      add_status_tree(df), status_tree == "alive"), 
+    status_stem = Status
+  ), 
+  desc(PlotCensusNumber)
+)
+```
+
+
+

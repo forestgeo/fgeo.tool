@@ -25,7 +25,7 @@ check_crucial_names <- function(x, nms) {
     return(invisible(x))
   } else {
     stop(
-      "Ensure your data set has these variables (regardles of the case):\n",
+      "Ensure your data set has these variables:\n",
       paste0(nms, collapse = ", "),
       call. = FALSE
     )
