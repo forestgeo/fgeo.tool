@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-fgeo.utils: Utils of ForestGEO's packages <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
-===============================================================================================================
+fgeo.utils: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
+================================================================================================================
 
 [![Travis build status](https://travis-ci.org/forestgeo/fgeo.utils.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.utils) [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.utils/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.utils?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/fgeo.utils)](https://cran.r-project.org/package=fgeo.utils)
 
