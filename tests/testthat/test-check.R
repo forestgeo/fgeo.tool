@@ -35,13 +35,3 @@ test_that("returns the expected messages and output x", {
   expect_silent(out <- check_unique(.df, "b", "stop", "do this"))
   expect_identical(.df, out)
 })
-
-
-
-context("exists_in_pkg")
-
-test_that("is silent or throws error with existing or missing object", {
-  expect_silent(exists_in_pkg("cars", "datasets"))
-  detach("package:datasets")
-  expect_error(exists_in_pkg("cars", "datasets"))
-})
