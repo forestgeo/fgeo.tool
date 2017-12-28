@@ -21,36 +21,37 @@ navbar:
 
   type: default
 
-left:
-  - text: Functions Index
-    href: reference/index.html
+  left:
+    - text: Functions Index
+      href: reference/index.html
 
-right:
-    - text: News
-      href: news/index.html
+  right:
+      - text: News
+        href: news/index.html
 
-    - icon: fa-gavel
-      href: https://github.com/maurolepore
+      - icon: fa-gavel
+        href: https://github.com/maurolepore
 
-    - icon: fa-github
-      href: https://github.com/forestgeo/fgeo.utils
+      - icon: fa-github
+        href: https://github.com/forestgeo/fgeo.utils
 
-    - text: fgeo
-      href: https://forestgeo.github.io/fgeo/
+      - text: fgeo
+        href: https://forestgeo.github.io/fgeo/
 
 
 
 reference:
 
-  - title: "Main functions"
+  - title: Manipulate data sets
+    desc: These functions mainly target users
     contents:
-    - XXX
+    - add_status_tree
+    - rm_dead_twice
+    - top
 
-  - title: "Helpers"
+  - title: Miscellaneous for developers
+    desc: These functions mainly target developers
     contents:
-    - XXX
+    - starts_with("check")
+    - exists_in_pkg
 
-
-  - title: "Data sets"
-    contents:
-    - XXX
