@@ -1,15 +1,24 @@
 Package: fgeo.utils
 Title: Utility Tools for ForestGEO Packages
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
-Description: This package contains utility tools for ForestGEO packages -- that
-    which multiple packages need and therefore belong to no particular package.
+Authors@R: c(
+    person("Mauro", "Lepore", , "leporem@si.edu", role = c("aut", "ctr", "cre")),
+    person("CTFS-ForestGEO", , , "ForestGEO@si.edu", role = c("cph", "fnd"))
+  )
+Description: Utility tools for forestgeo packages.
 Depends: 
     R (>= 3.1.2)
-License: What license is it under?
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    testthat
+    testthat,
+    covr,
+    tibble
 URL: https://github.com/forestgeo/fgeo.utils
 BugReports: https://github.com/forestgeo/fgeo.utils/issues
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 6.0.1
+Imports: 
+    rlang,
+    dplyr

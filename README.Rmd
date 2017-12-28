@@ -1,0 +1,37 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# fgeo.utils: Utils of ForestGEO's packages <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
+
+[![Travis build status](https://travis-ci.org/forestgeo/fgeo.utils.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.utils)
+[![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.utils/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.utils?branch=master)
+[![CRAN status](http://www.r-pkg.org/badges/version/fgeo.utils)](https://cran.r-project.org/package=fgeo.utils)
+
+## Installation
+
+You can install fgeo.utils from github with:
+
+```{r gh-installation, eval = FALSE}
+# install.packages("remotes")
+remotes::install_github("forestgeo/fgeo.utils")
+library(fgeo.utils)
+```
+
+## Example
+
+```{r example}
+library(fgeo.utils)
+add_status_tree(bciex::bci12vft_mini)
+```
