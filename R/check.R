@@ -1,3 +1,5 @@
+# Check -------------------------------------------------------------------
+
 #' Check if an object contains specific names.
 #'
 #' @param x A named object.
