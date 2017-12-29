@@ -4,23 +4,19 @@
 \alias{status_tree}
 \title{Define the status of a tree based on the status of its stems.}
 \usage{
-status_tree(x, cns_id = censusid)
+status_tree(x)
 }
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
-
-\item{cns_id}{Bare and lowercase name of the variable giving the census
-number -- most likely, either censusid or plotcensusnumber.}
 }
 \value{
-The input data set with lowercase names, and with the additional
-variable \code{status_tree}.
+The input data set with the additional variable \code{status_tree}.
 }
 \description{
 Define the status of a tree based on the status of its stems.
 }
 \examples{
-cns <- tibble::tribble(
+x <- tibble::tribble(
   ~CensusID, ~Tag, ~Status,
           1,    1, "alive",
           1,    1,  "dead",
@@ -31,8 +27,5 @@ cns <- tibble::tribble(
           2,    2, "alive",
           2,    2,  "dead"
 )
-status_tree(cns)
-# A ViewFullTable
-vft <- dplyr::rename(cns, PlotCensusNumber = CensusID)
-status_tree(vft, plotcensusnumber)
+status_tree(x)
 }

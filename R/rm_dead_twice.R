@@ -33,24 +33,24 @@
 #'
 #' # Notice the rows where `status_tree` in census 3 and 2 is "dead"
 #' # (`Status` refers to stems while `status_tree` refers to trees.)
-#' status_tree(vft, cns_id = plotcensusnumber)
+#' status_tree(vft)
 #'
 #' # * Remove all censuses except the last two.
 #' # * Remove trees found dead on both the last and previous last censuses.
 #' rm_dead_twice(vft)
 rm_dead_twice <- function(vft) {
   stopifnot(is.data.frame(vft))
-  check_crucial_names(vft, c("PlotCensusNumber", "Tag", "Status"))
+  check_crucial_names(vft, c("CensusID", "Tag", "Status"))
 
-  if (!length(unique(vft$PlotCensusNumber)) >= 2) {
+  if (!length(unique(vft$CensusID)) >= 2) {
     warning("`The data set has less than two censuses; Keeping all trees")
     return(vft)
   }
 
-  last <- max(vft$PlotCensusNumber, na.rm = TRUE)
-  last2 <- vft[vft$PlotCensusNumber %in% c(last, last - 1), ]
-  last2 <-  status_tree(last2, plotcensusnumber)
-  grouped <- dplyr::group_by(last2, .data$PlotCensusNumber, .data$Tag)
+  last <- max(vft$CensusID, na.rm = TRUE)
+  last2 <- vft[vft$CensusID %in% c(last, last - 1), ]
+  last2 <-  status_tree(last2)
+  grouped <- dplyr::group_by(last2, .data$CensusID, .data$Tag)
   to_filter <- dplyr::ungroup(
     dplyr::mutate(
       grouped, is_to_keep = !identical(.data$status_tree, c("dead", "dead"))

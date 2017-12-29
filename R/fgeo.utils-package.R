@@ -9,4 +9,4 @@
 #' @importFrom utils head tail
 NULL
 
-globalVariables(c("censusid", ".data"))
+globalVariables(c(".data"))

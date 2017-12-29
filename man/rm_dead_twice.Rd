@@ -40,7 +40,7 @@ vft <- tibble::tribble(
 
 # Notice the rows where `status_tree` in census 3 and 2 is "dead"
 # (`Status` refers to stems while `status_tree` refers to trees.)
-status_tree(vft, cns_id = plotcensusnumber)
+status_tree(vft)
 
 # * Remove all censuses except the last two.
 # * Remove trees found dead on both the last and previous last censuses.

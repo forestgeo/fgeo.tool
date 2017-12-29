@@ -12,7 +12,7 @@ test_that("the tree status is dead only if one stem is dead", {
       "dead", "dead",
       "broken below", "missing"
     ),
-    plotcensusnumber = 1,
+    censusid = 1,
     plotid = 1
   )
   expected <- c(rep("alive", 2), rep("dead", 2), rep("alive", 2))
@@ -22,16 +22,16 @@ test_that("the tree status is dead only if one stem is dead", {
 })
 
 .df <- tibble::tribble(
-  ~PlotCensusNumber, ~Tag,  ~Status,
-  1,    1,   "alive",
-  1,    1,    "dead",
-  1,    2,    "dead",
-  1,    2,    "dead",
+  ~CensusID, ~Tag,  ~Status,
+          1,    1,   "alive",
+          1,    1,    "dead",
+          1,    2,    "dead",
+          1,    2,    "dead",
 
-  2,    1,   "alive",
-  2,    1,   "alive",
-  2,    2,   "alive",
-  2,    2,    "dead"
+          2,    1,   "alive",
+          2,    1,   "alive",
+          2,    2,   "alive",
+          2,    2,    "dead"
 )
 
 test_that("works even if data already contains the variable `status_tree`", {
@@ -59,16 +59,6 @@ fgeo <- tibble::tribble(
           2,    2,  "dead"
 )
 
-test_that("works with census- and viewfull-table", {
-  expect_silent(status_tree(fgeo))
-  expect_silent(
-    status_tree(
-      dplyr::rename(fgeo, PlotCensusNumber = CensusID),
-      plotcensusnumber
-    )
-  )
-})
-
 test_that("the tree status is dead only if one stem is dead", {
   one_dead <- tibble::tibble(
     tag = c(
@@ -81,11 +71,11 @@ test_that("the tree status is dead only if one stem is dead", {
       "dead", "dead",
       "broken below", "missing"
     ),
-    plotcensusnumber = 1,
+    censusid = 1,
     plotid = 1
   )
   expected <- c(rep("alive", 2), rep("dead", 2), rep("alive", 2))
-  out <- status_tree(one_dead, plotcensusnumber)
+  out <- status_tree(one_dead)
   expect_equal(out$status_tree, expected)
   expect_is(out, "data.frame")
 })
