@@ -46,6 +46,7 @@ reference:
     desc: These functions mainly target users
     contents:
     - add_status_tree
+    - add_subquad
     - rm_dead_twice
     - top
 
