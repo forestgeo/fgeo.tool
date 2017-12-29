@@ -33,7 +33,7 @@
 #'
 #' # Notice the rows where `status_tree` in census 3 and 2 is "dead"
 #' # (`Status` refers to stems while `status_tree` refers to trees.)
-#' status_tree(vft)
+#' add_status_tree(vft)
 #'
 #' # * Remove all censuses except the last two.
 #' # * Remove trees found dead on both the last and previous last censuses.
@@ -49,7 +49,7 @@ rm_dead_twice <- function(vft) {
 
   last <- max(vft$CensusID, na.rm = TRUE)
   last2 <- vft[vft$CensusID %in% c(last, last - 1), ]
-  last2 <-  status_tree(last2)
+  last2 <-  add_status_tree(last2)
   grouped <- dplyr::group_by(last2, .data$CensusID, .data$Tag)
   to_filter <- dplyr::ungroup(
     dplyr::mutate(
