@@ -63,7 +63,7 @@ status_tree <- function(x, cns_id = censusid) {
   x <- rlang::set_names(x, tolower)
   check_status_tree(x)
 
-  cns_id <- rlang::enquo(cns_id)
+  cns_id <- enquo(cns_id)
   grouped <- dplyr::group_by(x, !!cns_id, .data$tag)
   mutated <- dplyr::ungroup(
     dplyr::mutate(

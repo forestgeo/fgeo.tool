@@ -16,30 +16,27 @@
 #'
 #' @examples
 #' vft <- tibble::tribble(
-#'    ~PlotCensusNumber, ~Tag,  ~Status,
-#'    1,    1,   "alive",
-#'    1,    1,    "dead",
-#'    1,    2,   "alive",
-#'    1,    2,   "alive",
-#'
-#'    2,    1,   "alive",
-#'    2,    1,    "dead",
-#'    2,    2,    "dead",
-#'    2,    2,    "dead",
-#'
-#'    3,    1,   "alive",
-#'    3,    1,    "dead",
-#'    3,    2,    "dead",
-#'    3,    2,    "dead"
-#'  )
+#'   ~CensusID, ~Tag,  ~Status,
+#'           1,    1,   "alive",
+#'           1,    1,    "dead",
+#'           1,    2,   "alive",
+#'           1,    2,   "alive",
+#'           2,    1,   "alive",
+#'           2,    1,    "dead",
+#'           2,    2,    "dead",
+#'           2,    2,    "dead",
+#'           3,    1,   "alive",
+#'           3,    1,    "dead",
+#'           3,    2,    "dead",
+#'           3,    2,    "dead"
+#' )
 #'
 #' # Notice the rows where `status_tree` in census 3 and 2 is "dead"
-#' # (The variable `status` refers to stems, while `status_tree` refers to
-#' #  trees.)
-#' add_status_tree(vft)
+#' # (`Status` refers to stems while `status_tree` refers to trees.)
+#' status_tree(vft, cns_id = plotcensusnumber)
 #'
-#' #' * Remove all censuses except the last two.
-#' #' * Remove trees found dead on both the last and previous last censuses.
+#' # * Remove all censuses except the last two.
+#' # * Remove trees found dead on both the last and previous last censuses.
 #' rm_dead_twice(vft)
 rm_dead_twice <- function(vft) {
   stopifnot(is.data.frame(vft))
@@ -52,7 +49,7 @@ rm_dead_twice <- function(vft) {
 
   last <- max(vft$PlotCensusNumber, na.rm = TRUE)
   last2 <- vft[vft$PlotCensusNumber %in% c(last, last - 1), ]
-  last2 <-  add_status_tree(last2)
+  last2 <-  status_tree(last2, plotcensusnumber)
   grouped <- dplyr::group_by(last2, .data$PlotCensusNumber, .data$Tag)
   to_filter <- dplyr::ungroup(
     dplyr::mutate(

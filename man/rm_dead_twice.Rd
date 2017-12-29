@@ -23,30 +23,27 @@ were found either alive or dead for the first time.
 }
 \examples{
 vft <- tibble::tribble(
-   ~PlotCensusNumber, ~Tag,  ~Status,
-   1,    1,   "alive",
-   1,    1,    "dead",
-   1,    2,   "alive",
-   1,    2,   "alive",
-
-   2,    1,   "alive",
-   2,    1,    "dead",
-   2,    2,    "dead",
-   2,    2,    "dead",
-
-   3,    1,   "alive",
-   3,    1,    "dead",
-   3,    2,    "dead",
-   3,    2,    "dead"
- )
+  ~CensusID, ~Tag,  ~Status,
+          1,    1,   "alive",
+          1,    1,    "dead",
+          1,    2,   "alive",
+          1,    2,   "alive",
+          2,    1,   "alive",
+          2,    1,    "dead",
+          2,    2,    "dead",
+          2,    2,    "dead",
+          3,    1,   "alive",
+          3,    1,    "dead",
+          3,    2,    "dead",
+          3,    2,    "dead"
+)
 
 # Notice the rows where `status_tree` in census 3 and 2 is "dead"
-# (The variable `status` refers to stems, while `status_tree` refers to
-#  trees.)
-add_status_tree(vft)
+# (`Status` refers to stems while `status_tree` refers to trees.)
+status_tree(vft, cns_id = plotcensusnumber)
 
-#' * Remove all censuses except the last two.
-#' * Remove trees found dead on both the last and previous last censuses.
+# * Remove all censuses except the last two.
+# * Remove trees found dead on both the last and previous last censuses.
 rm_dead_twice(vft)
 }
 \seealso{
