@@ -10,9 +10,10 @@ Installation
 
 You can install fgeo.utils from github with:
 
+    # install.packages("remotes")
+    remotes::install_github("forestgeo/fgeo.utils")
+
 ``` r
-# install.packages("remotes")
-remotes::install_github("forestgeo/fgeo.utils")
 library(fgeo.utils)
 ```
 
@@ -22,8 +23,6 @@ Example
 Setup.
 
 ``` r
-library(fgeo.utils)
-
 df <- tibble::tribble(
   ~CensusID, ~Tag, ~Status,
           1,    1, "alive",
@@ -52,7 +51,7 @@ Manipulate data.
 # Mutate a data set
 
 # Determine the status of each tree based on the status of its stems
-status_tree(df)
+add_status_tree(df)
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
 #>       <dbl> <dbl>  <chr>       <chr>
@@ -148,7 +147,7 @@ dplyr::filter(
 You can combine **fgeo.utils** with **dplyr**.
 
 ``` r
-edited <- status_tree(top(df, CensusID, -1))
+edited <- add_status_tree(top(df, CensusID, -1))
 dplyr::select(edited, -Status)
 #> # A tibble: 6 x 3
 #>   CensusID   Tag status_tree
@@ -166,7 +165,7 @@ You don't have to, but if you want you can use the pipe (`%>%`).
 ``` r
 # With the pipe
 df %>% 
-  status_tree() %>%
+  add_status_tree() %>%
   dplyr::filter(status_tree == "alive") %>%
   dplyr::rename(status_stem = Status) %>%
   dplyr::arrange(desc(CensusID))
@@ -184,7 +183,7 @@ df %>%
 dplyr::arrange(
   dplyr::rename(
     dplyr::filter(
-      status_tree(df), status_tree == "alive"), 
+      add_status_tree(df), status_tree == "alive"), 
     status_stem = Status
   ), 
   desc(CensusID)

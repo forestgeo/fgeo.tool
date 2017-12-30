@@ -77,35 +77,33 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install fgeo.utils from github with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># install.packages("remotes")</span>
-remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"forestgeo/fgeo.utils"</span>)
-<span class="kw">library</span>(fgeo.utils)</code></pre></div>
+<pre><code><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github"># install.packages("remotes")
+remotes::install_github("forestgeo/fgeo.utils")</a></code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fgeo.utils)</code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>Setup.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(fgeo.utils)
-
-df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(
-  <span class="op">~</span>PlotCensusNumber, <span class="op">~</span>Tag, <span class="op">~</span>Status,
-                  <span class="dv">1</span>,    <span class="dv">1</span>, <span class="st">"alive"</span>,
-                  <span class="dv">1</span>,    <span class="dv">1</span>,  <span class="st">"dead"</span>,
-  
-                  <span class="dv">1</span>,    <span class="dv">2</span>,  <span class="st">"dead"</span>,
-                  <span class="dv">1</span>,    <span class="dv">2</span>,  <span class="st">"dead"</span>,
-  
-                  <span class="dv">1</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>,
-                  <span class="dv">1</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>,
-
-                  <span class="dv">2</span>,    <span class="dv">1</span>, <span class="st">"alive"</span>,
-                  <span class="dv">2</span>,    <span class="dv">1</span>, <span class="st">"alive"</span>,
-  
-                  <span class="dv">2</span>,    <span class="dv">2</span>, <span class="st">"alive"</span>,
-                  <span class="dv">2</span>,    <span class="dv">2</span>,  <span class="st">"dead"</span>,
-
-                  <span class="dv">2</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>,
-                  <span class="dv">2</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(
+  <span class="op">~</span>CensusID, <span class="op">~</span>Tag, <span class="op">~</span>Status,
+          <span class="dv">1</span>,    <span class="dv">1</span>, <span class="st">"alive"</span>,
+          <span class="dv">1</span>,    <span class="dv">1</span>,  <span class="st">"dead"</span>,
+                           
+          <span class="dv">1</span>,    <span class="dv">2</span>,  <span class="st">"dead"</span>,
+          <span class="dv">1</span>,    <span class="dv">2</span>,  <span class="st">"dead"</span>,
+                           
+          <span class="dv">1</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>,
+          <span class="dv">1</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>,
+                           
+          <span class="dv">2</span>,    <span class="dv">1</span>, <span class="st">"alive"</span>,
+          <span class="dv">2</span>,    <span class="dv">1</span>, <span class="st">"alive"</span>,
+                           
+          <span class="dv">2</span>,    <span class="dv">2</span>, <span class="st">"alive"</span>,
+          <span class="dv">2</span>,    <span class="dv">2</span>,  <span class="st">"dead"</span>,
+                           
+          <span class="dv">2</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>,
+          <span class="dv">2</span>,    <span class="dv">3</span>,  <span class="st">"dead"</span>
 )</code></pre></div>
 <p>Manipulate data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Mutate a data set</span>
@@ -113,65 +111,66 @@ df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw
 <span class="co"># Determine the status of each tree based on the status of its stems</span>
 <span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df)
 <span class="co">#&gt; # A tibble: 12 x 4</span>
-<span class="co">#&gt;    PlotCensusNumber   Tag Status status_tree</span>
-<span class="co">#&gt;               &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;       &lt;chr&gt;</span>
-<span class="co">#&gt;  1                1     1  alive       alive</span>
-<span class="co">#&gt;  2                1     1   dead       alive</span>
-<span class="co">#&gt;  3                1     2   dead        dead</span>
-<span class="co">#&gt;  4                1     2   dead        dead</span>
-<span class="co">#&gt;  5                1     3   dead        dead</span>
-<span class="co">#&gt;  6                1     3   dead        dead</span>
-<span class="co">#&gt;  7                2     1  alive       alive</span>
-<span class="co">#&gt;  8                2     1  alive       alive</span>
-<span class="co">#&gt;  9                2     2  alive       alive</span>
-<span class="co">#&gt; 10                2     2   dead       alive</span>
-<span class="co">#&gt; 11                2     3   dead        dead</span>
-<span class="co">#&gt; 12                2     3   dead        dead</span>
+<span class="co">#&gt;    CensusID   Tag Status status_tree</span>
+<span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;       &lt;chr&gt;</span>
+<span class="co">#&gt;  1        1     1  alive       alive</span>
+<span class="co">#&gt;  2        1     1   dead       alive</span>
+<span class="co">#&gt;  3        1     2   dead        dead</span>
+<span class="co">#&gt;  4        1     2   dead        dead</span>
+<span class="co">#&gt;  5        1     3   dead        dead</span>
+<span class="co">#&gt;  6        1     3   dead        dead</span>
+<span class="co">#&gt;  7        2     1  alive       alive</span>
+<span class="co">#&gt;  8        2     1  alive       alive</span>
+<span class="co">#&gt;  9        2     2  alive       alive</span>
+<span class="co">#&gt; 10        2     2   dead       alive</span>
+<span class="co">#&gt; 11        2     3   dead        dead</span>
+<span class="co">#&gt; 12        2     3   dead        dead</span>
 
 <span class="co"># Filter a data set</span>
 
 <span class="co"># Filter from the head or tail of a variable</span>
 <span class="kw"><a href="reference/top.html">top</a></span>(df, Tag)
 <span class="co">#&gt; # A tibble: 4 x 3</span>
-<span class="co">#&gt;   PlotCensusNumber   Tag Status</span>
-<span class="co">#&gt;              &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;</span>
-<span class="co">#&gt; 1                1     1  alive</span>
-<span class="co">#&gt; 2                1     1   dead</span>
-<span class="co">#&gt; 3                2     1  alive</span>
-<span class="co">#&gt; 4                2     1  alive</span>
+<span class="co">#&gt;   CensusID   Tag Status</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;</span>
+<span class="co">#&gt; 1        1     1  alive</span>
+<span class="co">#&gt; 2        1     1   dead</span>
+<span class="co">#&gt; 3        2     1  alive</span>
+<span class="co">#&gt; 4        2     1  alive</span>
 <span class="kw"><a href="reference/top.html">top</a></span>(df, Tag, <span class="op">-</span><span class="dv">1</span>)
 <span class="co">#&gt; # A tibble: 4 x 3</span>
-<span class="co">#&gt;   PlotCensusNumber   Tag Status</span>
-<span class="co">#&gt;              &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;</span>
-<span class="co">#&gt; 1                1     3   dead</span>
-<span class="co">#&gt; 2                1     3   dead</span>
-<span class="co">#&gt; 3                2     3   dead</span>
-<span class="co">#&gt; 4                2     3   dead</span>
+<span class="co">#&gt;   CensusID   Tag Status</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;</span>
+<span class="co">#&gt; 1        1     3   dead</span>
+<span class="co">#&gt; 2        1     3   dead</span>
+<span class="co">#&gt; 3        2     3   dead</span>
+<span class="co">#&gt; 4        2     3   dead</span>
 <span class="co"># Remove trees found dead in two or more censuses</span>
 <span class="kw"><a href="reference/rm_dead_twice.html">rm_dead_twice</a></span>(df)
 <span class="co">#&gt; # A tibble: 6 x 4</span>
-<span class="co">#&gt;   PlotCensusNumber   Tag Status status_tree</span>
-<span class="co">#&gt;              &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;       &lt;chr&gt;</span>
-<span class="co">#&gt; 1                1     1  alive       alive</span>
-<span class="co">#&gt; 2                1     1   dead       alive</span>
-<span class="co">#&gt; 3                2     1  alive       alive</span>
-<span class="co">#&gt; 4                2     1  alive       alive</span>
-<span class="co">#&gt; 5                2     2  alive       alive</span>
-<span class="co">#&gt; 6                2     2   dead       alive</span></code></pre></div>
+<span class="co">#&gt;   CensusID   Tag Status status_tree</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;       &lt;chr&gt;</span>
+<span class="co">#&gt; 1        1     1  alive       alive</span>
+<span class="co">#&gt; 2        1     1   dead       alive</span>
+<span class="co">#&gt; 3        2     1  alive       alive</span>
+<span class="co">#&gt; 4        2     1  alive       alive</span>
+<span class="co">#&gt; 5        2     2  alive       alive</span>
+<span class="co">#&gt; 6        2     2   dead       alive</span></code></pre></div>
 <p>Check inputs.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Silent means success</span>
 <span class="kw"><a href="reference/check_crucial_names.html">check_crucial_names</a></span>(df, <span class="st">"Status"</span>)
 
 <span class="co"># Errs if the data hasn't a given name</span>
 <span class="kw"><a href="reference/check_crucial_names.html">check_crucial_names</a></span>(df, <span class="st">"DBH"</span>)
-<span class="co">#&gt; Error: Ensure your data set has these variables (regardles of the case):</span>
+<span class="co">#&gt; Error: Ensure your data set has these variables:</span>
 <span class="co">#&gt; DBH</span>
 
-<span class="kw"><a href="reference/check_unique.html">check_unique</a></span>(df, <span class="st">"PlotCensusNumber"</span>, <span class="dt">msg =</span> <span class="st">"* Is this what you expect?"</span>)
+<span class="kw"><a href="reference/check_unique.html">check_unique</a></span>(df, <span class="st">"CensusID"</span>, <span class="dt">msg =</span> <span class="st">"* Is this what you expect?"</span>)
 <span class="co">#&gt; Warning in do.call(cond, list(customized)): Duplicated values were detected</span>
 <span class="co">#&gt; * Is this what you expect?</span></code></pre></div>
 <p>Much you can do directly with dplyr.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using notation dplyr::fun to make it obvious where fun comes from</span>
+<span class="kw">library</span>(dplyr)
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'dplyr'</span>
 <span class="co">#&gt; The following objects are masked from 'package:stats':</span>
@@ -180,68 +179,66 @@ df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
-<span class="kw">filter</span>(
+
+dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(
   <span class="dt">.data =</span> df,
-  PlotCensusNumber <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>,
+  CensusID <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>,
   Tag  <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
   Status <span class="op">==</span><span class="st"> "alive"</span>
 )
 <span class="co">#&gt; # A tibble: 3 x 3</span>
-<span class="co">#&gt;   PlotCensusNumber   Tag Status</span>
-<span class="co">#&gt;              &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;</span>
-<span class="co">#&gt; 1                2     1  alive</span>
-<span class="co">#&gt; 2                2     1  alive</span>
-<span class="co">#&gt; 3                2     2  alive</span></code></pre></div>
+<span class="co">#&gt;   CensusID   Tag Status</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;  &lt;chr&gt;</span>
+<span class="co">#&gt; 1        2     1  alive</span>
+<span class="co">#&gt; 2        2     1  alive</span>
+<span class="co">#&gt; 3        2     2  alive</span></code></pre></div>
 <p>You can combine <strong>fgeo.utils</strong> with <strong>dplyr</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Using notation package::function to make the source package obvious</span>
-edited &lt;-<span class="st"> </span>fgeo.utils<span class="op">::</span><span class="kw">add_status_tree</span>(
-  fgeo.utils<span class="op">::</span><span class="kw">top</span>(df, PlotCensusNumber, <span class="op">-</span><span class="dv">1</span>)
-)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/top.html">top</a></span>(df, CensusID, <span class="op">-</span><span class="dv">1</span>))
 dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(edited, <span class="op">-</span>Status)
 <span class="co">#&gt; # A tibble: 6 x 3</span>
-<span class="co">#&gt;   PlotCensusNumber   Tag status_tree</span>
-<span class="co">#&gt;              &lt;dbl&gt; &lt;dbl&gt;       &lt;chr&gt;</span>
-<span class="co">#&gt; 1                2     1       alive</span>
-<span class="co">#&gt; 2                2     1       alive</span>
-<span class="co">#&gt; 3                2     2       alive</span>
-<span class="co">#&gt; 4                2     2       alive</span>
-<span class="co">#&gt; 5                2     3        dead</span>
-<span class="co">#&gt; 6                2     3        dead</span></code></pre></div>
+<span class="co">#&gt;   CensusID   Tag status_tree</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;       &lt;chr&gt;</span>
+<span class="co">#&gt; 1        2     1       alive</span>
+<span class="co">#&gt; 2        2     1       alive</span>
+<span class="co">#&gt; 3        2     2       alive</span>
+<span class="co">#&gt; 4        2     2       alive</span>
+<span class="co">#&gt; 5        2     3        dead</span>
+<span class="co">#&gt; 6        2     3        dead</span></code></pre></div>
 <p>You don’t have to, but if you want you can use the pipe (<code>%&gt;%</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># With the pipe</span>
 df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">filter</span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">rename</span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(PlotCensusNumber))
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">desc</span>(CensusID))
 <span class="co">#&gt; # A tibble: 6 x 4</span>
-<span class="co">#&gt;   PlotCensusNumber   Tag status_stem status_tree</span>
-<span class="co">#&gt;              &lt;dbl&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;</span>
-<span class="co">#&gt; 1                2     1       alive       alive</span>
-<span class="co">#&gt; 2                2     1       alive       alive</span>
-<span class="co">#&gt; 3                2     2       alive       alive</span>
-<span class="co">#&gt; 4                2     2        dead       alive</span>
-<span class="co">#&gt; 5                1     1       alive       alive</span>
-<span class="co">#&gt; 6                1     1        dead       alive</span>
+<span class="co">#&gt;   CensusID   Tag status_stem status_tree</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;</span>
+<span class="co">#&gt; 1        2     1       alive       alive</span>
+<span class="co">#&gt; 2        2     1       alive       alive</span>
+<span class="co">#&gt; 3        2     2       alive       alive</span>
+<span class="co">#&gt; 4        2     2        dead       alive</span>
+<span class="co">#&gt; 5        1     1       alive       alive</span>
+<span class="co">#&gt; 6        1     1        dead       alive</span>
 
 <span class="co"># Same but without the pipe: It is hard to understand what is going on.</span>
-<span class="kw">arrange</span>(
-  <span class="kw">rename</span>(
-    <span class="kw">filter</span>(
+dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(
+  dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(
+    dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(
       <span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df), status_tree <span class="op">==</span><span class="st"> "alive"</span>), 
     <span class="dt">status_stem =</span> Status
   ), 
-  <span class="kw">desc</span>(PlotCensusNumber)
+  <span class="kw">desc</span>(CensusID)
 )
 <span class="co">#&gt; # A tibble: 6 x 4</span>
-<span class="co">#&gt;   PlotCensusNumber   Tag status_stem status_tree</span>
-<span class="co">#&gt;              &lt;dbl&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;</span>
-<span class="co">#&gt; 1                2     1       alive       alive</span>
-<span class="co">#&gt; 2                2     1       alive       alive</span>
-<span class="co">#&gt; 3                2     2       alive       alive</span>
-<span class="co">#&gt; 4                2     2        dead       alive</span>
-<span class="co">#&gt; 5                1     1       alive       alive</span>
-<span class="co">#&gt; 6                1     1        dead       alive</span></code></pre></div>
+<span class="co">#&gt;   CensusID   Tag status_stem status_tree</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;       &lt;chr&gt;       &lt;chr&gt;</span>
+<span class="co">#&gt; 1        2     1       alive       alive</span>
+<span class="co">#&gt; 2        2     1       alive       alive</span>
+<span class="co">#&gt; 3        2     2       alive       alive</span>
+<span class="co">#&gt; 4        2     2        dead       alive</span>
+<span class="co">#&gt; 5        1     1       alive       alive</span>
+<span class="co">#&gt; 6        1     1        dead       alive</span></code></pre></div>
 </div>
 </div>
 </div>
