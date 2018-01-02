@@ -47,6 +47,8 @@ reference:
     contents:
     - add_status_tree
     - add_subquad
+    - recode_subquad
+    - restore_names
     - rm_dead_twice
     - top
 
