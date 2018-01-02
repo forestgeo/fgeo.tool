@@ -4,7 +4,7 @@
 \alias{add_subquad}
 \title{Add a quadrat variable to a dataframe based based on qx and qy coordinates.}
 \usage{
-add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq)
+add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq, start_with0 = FALSE)
 }
 \arguments{
 \item{df}{A dataframe with quadrat coordinates \code{QX} and \code{QY} (e.g. a
@@ -15,6 +15,15 @@ common value is 20.}
 
 \item{x_sq, y_sq}{Size in meters of a subquadrat's side. For ForestGEO-CTFS
 sites, a common value is 5.}
+
+\item{start_with0}{If \code{TRUE} the first column is not 1 but 0, so the first
+subquadrat becomes 01. The resulting quadrats look like this"\preformatted{start_with0 = TRUE    start_with0 = FALSE
+-------------------    -------------------
+04 14 24 34            14 24 34 44
+03 13 23 33            13 23 33 43
+02 12 22 32            12 22 32 42
+01 11 21 31            11 21 31 41
+}}
 }
 \value{
 Returns \code{df} with the additional variable \code{subquadrat}.
@@ -24,20 +33,20 @@ Add a quadrat variable to a dataframe based based on qx and qy coordinates.
 }
 \examples{
 vft <- tibble::tribble(
-  ~QX,  ~QY,
+   ~QX,  ~QY,
   17.9,    0,
-  4.1,   15,
-  6.1, 17.3,
-  3.8,  5.9,
-  4.5, 12.4,
-  4.9,  9.3,
-  9.8,  3.2,
+   4.1,   15,
+   6.1, 17.3,
+   3.8,  5.9,
+   4.5, 12.4,
+   4.9,  9.3,
+   9.8,  3.2,
   18.6,  1.1,
   17.3,  4.1,
-  1.5, 16.3
+   1.5, 16.3
 )
-with_subquadrat <- add_subquad(vft, 20, 20, 5, 5)
-with_subquadrat[1:10, c("QX", "QY", "subquadrat")]
+add_subquad(vft, 20, 20, 5, 5)
+add_subquad(vft, 20, 20, 5, 5, start_with0 = TRUE)
 }
 \author{
 Anudeep Singh and Mauro Lepore.

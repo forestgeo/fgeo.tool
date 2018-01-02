@@ -34,4 +34,5 @@ test_that("throws error with wrong inputs to add_subquad", {
   expect_error(add_subquad(vft, 20, 20, 5, c(5, 5)))
   expect_error(add_subquad(vft, -1, 20, 5, 5))
   expect_error(add_subquad(vft, 20, Inf, 5, 5))
+  expect_error(add_subquad(vft, 20, 20, 5, 5, start_with0 = "wrong input"))
 })

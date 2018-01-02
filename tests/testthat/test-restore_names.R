@@ -7,7 +7,7 @@ test_that("restore the expected names", {
   # Lower names
   dfm <- rlang::set_names(dfm, tolower)
   # Add a variable
-  mutated <- dplyr::mutate(dfm, newvar = x + 1)
+  mutated <- mutate(dfm, newvar = x + 1)
   # Restore
   out <- restore_names(mutated, "newvar", old)
   expect_equal(names(out), c(old, "newvar"))
@@ -18,7 +18,7 @@ test_that("restore the expected names", {
   # Lower names
   (dfm <- rlang::set_names(dfm, tolower))
   # Add a variable
-  mutated <- dplyr::mutate(dfm, newvar = x + 1)
+  mutated <- mutate(dfm, newvar = x + 1)
   # Restore
   out <- restore_names(mutated, "newvar", old)
   expect_equal(names(out), old)
@@ -31,7 +31,7 @@ test_that("fails if the number of variables is wrong", {
   # Lower names
   dfm <- rlang::set_names(dfm, tolower)
   # Add a variable
-  mutated <- dplyr::mutate(dfm, newvar = x + 1)
+  mutated <- mutate(dfm, newvar = x + 1)
   too_many <- mutated$too_many <- 1
 
   expect_error(restore_names(too_many, "newvar", old))

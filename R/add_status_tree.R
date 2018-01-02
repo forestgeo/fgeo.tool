@@ -23,9 +23,11 @@ add_status_tree <- function(x) {
   x <- rlang::set_names(x, tolower)
   check_add_status_tree(x)
 
-  grp <- dplyr::group_by(x, .data$censusid, .data$tag)
-  mut <- dplyr::mutate(grp, status_tree = ifelse(all(.data$status == "dead"), "dead", "alive"))
-  restore_names(dplyr::ungroup(mut), "status_tree", old)
+  grp <- group_by(x, .data$censusid, .data$tag)
+  mut <- mutate(
+    grp, status_tree = ifelse(all(.data$status == "dead"), "dead", "alive")
+  )
+  restore_names(ungroup(mut), "status_tree", old)
 }
 
 check_add_status_tree <- function(x) {
