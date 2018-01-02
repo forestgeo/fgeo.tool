@@ -50,9 +50,9 @@ rm_dead_twice <- function(vft) {
   last <- max(vft$CensusID, na.rm = TRUE)
   last2 <- vft[vft$CensusID %in% c(last, last - 1), ]
   last2 <-  add_status_tree(last2)
-  grouped <- dplyr::group_by(last2, .data$CensusID, .data$Tag)
-  to_filter <- dplyr::ungroup(
-    dplyr::mutate(
+  grouped <- group_by(last2, .data$CensusID, .data$Tag)
+  to_filter <- ungroup(
+    mutate(
       grouped, is_to_keep = !identical(.data$status_tree, c("dead", "dead"))
     )
   )
