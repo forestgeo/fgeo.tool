@@ -32,8 +32,6 @@ check_crucial_names <- function(x, nms) {
   }
 }
 
-
-
 #' Report if a vector or a variable of a dataframe is duplicated.
 #'
 #' @param x A dataframe.

@@ -34,5 +34,30 @@ test_that("throws error with wrong inputs to add_subquad", {
   expect_error(add_subquad(vft, 20, 20, 5, c(5, 5)))
   expect_error(add_subquad(vft, -1, 20, 5, 5))
   expect_error(add_subquad(vft, 20, Inf, 5, 5))
-  expect_error(add_subquad(vft, 20, 20, 5, 5, start_with0 = "wrong input"))
+  expect_error(add_subquad(vft, 20, 20, 5, 5, subquad_offset = "wrong input"))
+})
+
+context("recode_subquad")
+
+with_subquad <- tibble::tibble(subquadrat = c("01", "02", "12"))
+
+test_that("recodes as expected", {
+  at_origin_1 <- recode_subquad(with_subquad, 1)
+  expect_equal(at_origin_1$subquadrat, c("11", "12", "22"))
+  at_origin_0 <- recode_subquad(at_origin_1, offset = -1)
+})
+
+test_that("errs with wrong input", {
+  expect_error(
+    recode_subquad("not a dataframe")
+  )
+  expect_error(
+    recode_subquad(data.frame(x = "missing var subquadrat"))
+  )
+  expect_error(
+    recode_subquad(with_subquad, 9999)
+  )
+  expect_error(
+    recode_subquad(tibble::tibble(subquadrat = c("11", "wrong subquad")))
+  )
 })

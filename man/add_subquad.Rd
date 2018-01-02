@@ -4,7 +4,7 @@
 \alias{add_subquad}
 \title{Add a quadrat variable to a dataframe based based on qx and qy coordinates.}
 \usage{
-add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq, start_with0 = FALSE)
+add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq, subquad_offset = NULL)
 }
 \arguments{
 \item{df}{A dataframe with quadrat coordinates \code{QX} and \code{QY} (e.g. a
@@ -16,13 +16,13 @@ common value is 20.}
 \item{x_sq, y_sq}{Size in meters of a subquadrat's side. For ForestGEO-CTFS
 sites, a common value is 5.}
 
-\item{start_with0}{If \code{TRUE} the first column is not 1 but 0, so the first
-subquadrat becomes 01. The resulting quadrats look like this"\preformatted{start_with0 = TRUE    start_with0 = FALSE
--------------------    -------------------
-04 14 24 34            14 24 34 44
-03 13 23 33            13 23 33 43
-02 12 22 32            12 22 32 42
-01 11 21 31            11 21 31 41
+\item{subquad_offset}{A number; either \code{-1} or \code{1}, to rest or add one unit to the
+number of column of each subquadrat.\preformatted{First column is 0    First column is 1
+-----------------    -----------------
+   04 14 24 34          14 24 34 44
+   03 13 23 33          13 23 33 43
+   02 12 22 32          12 22 32 42
+   01 11 21 31          11 21 31 41
 }}
 }
 \value{
@@ -46,7 +46,7 @@ vft <- tibble::tribble(
    1.5, 16.3
 )
 add_subquad(vft, 20, 20, 5, 5)
-add_subquad(vft, 20, 20, 5, 5, start_with0 = TRUE)
+add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
 }
 \author{
 Anudeep Singh and Mauro Lepore.
