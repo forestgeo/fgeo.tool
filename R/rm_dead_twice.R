@@ -43,7 +43,7 @@ rm_dead_twice <- function(vft) {
   check_crucial_names(vft, c("CensusID", "Tag", "Status"))
 
   if (!length(unique(vft$CensusID)) >= 2) {
-    warning("`The data set has less than two censuses; Keeping all trees")
+    warning("The data set has less than two censuses; Keeping all trees")
     return(vft)
   }
 
