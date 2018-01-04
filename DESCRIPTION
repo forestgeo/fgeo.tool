@@ -14,7 +14,8 @@ Depends:
 Imports: 
     dplyr,
     rlang,
-    stringr
+    stringr,
+    tibble
 Suggests: 
     covr,
     testthat,
