@@ -1,6 +1,6 @@
 context("rm_dead_twice")
 
-dfm <- tibble::tribble(
+dfm <- tribble(
   ~CensusID, ~Tag,  ~Status,
           1,    1,   "alive",
           1,    1,    "dead",

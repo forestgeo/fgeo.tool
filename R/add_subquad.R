@@ -22,7 +22,8 @@
 #' @export
 #'
 #' @examples
-#' vft <- tibble::tribble(
+#' library(tibble)
+#' vft <- tribble(
 #'    ~QX,  ~QY,
 #'   17.9,    0,
 #'    4.1,   15,

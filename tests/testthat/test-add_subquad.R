@@ -1,6 +1,6 @@
 context("add_subquad")
 
-vft <- tibble::tribble(
+vft <- tribble(
    ~QX,  ~QY,
   17.9,    0,
    4.1,   15,
@@ -39,7 +39,7 @@ test_that("throws error with wrong inputs to add_subquad", {
 
 context("recode_subquad")
 
-with_subquad <- tibble::tibble(subquadrat = c("01", "02", "12"))
+with_subquad <- tibble(subquadrat = c("01", "02", "12"))
 
 test_that("recodes as expected", {
   at_origin_1 <- recode_subquad(with_subquad, 1)
@@ -58,6 +58,6 @@ test_that("errs with wrong input", {
     recode_subquad(with_subquad, 9999)
   )
   expect_error(
-    recode_subquad(tibble::tibble(subquadrat = c("11", "wrong subquad")))
+    recode_subquad(tibble(subquadrat = c("11", "wrong subquad")))
   )
 })

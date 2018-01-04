@@ -1,6 +1,6 @@
 context("add_status_tree")
 
-fgeo <- tibble::tribble(
+fgeo <- tribble(
   ~CensusID, ~Tag, ~Status,
           1,    1, "alive",
           1,    1,  "dead",
@@ -13,7 +13,7 @@ fgeo <- tibble::tribble(
 )
 
 test_that("the tree status is dead only if one stem is dead", {
-  one_dead <- tibble::tibble(
+  one_dead <- tibble(
     tag = c(
       1, 1,
       2, 2,
@@ -34,7 +34,7 @@ test_that("the tree status is dead only if one stem is dead", {
 })
 
 test_that("works even if data already contains the variable `status_tree`", {
-  .df <- tibble::tribble(
+  .df <- tribble(
     ~CensusID, ~Tag,  ~Status,
             1,    1,   "alive",
             1,    1,    "dead",
@@ -50,7 +50,7 @@ test_that("works even if data already contains the variable `status_tree`", {
 })
 
 test_that("outputs the correct variable `status_tree`", {
-  .df <- tibble::tribble(
+  .df <- tribble(
     ~CensusID, ~Tag,  ~Status,
             1,    1,   "alive",
             1,    1,    "dead",

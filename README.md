@@ -54,19 +54,19 @@ Manipulate data.
 add_status_tree(df)
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
-#>       <dbl> <dbl>  <chr>       <chr>
-#>  1        1     1  alive       alive
-#>  2        1     1   dead       alive
-#>  3        1     2   dead        dead
-#>  4        1     2   dead        dead
-#>  5        1     3   dead        dead
-#>  6        1     3   dead        dead
-#>  7        2     1  alive       alive
-#>  8        2     1  alive       alive
-#>  9        2     2  alive       alive
-#> 10        2     2   dead       alive
-#> 11        2     3   dead        dead
-#> 12        2     3   dead        dead
+#>       <dbl> <dbl> <chr>  <chr>      
+#>  1     1.00  1.00 alive  alive      
+#>  2     1.00  1.00 dead   alive      
+#>  3     1.00  2.00 dead   dead       
+#>  4     1.00  2.00 dead   dead       
+#>  5     1.00  3.00 dead   dead       
+#>  6     1.00  3.00 dead   dead       
+#>  7     2.00  1.00 alive  alive      
+#>  8     2.00  1.00 alive  alive      
+#>  9     2.00  2.00 alive  alive      
+#> 10     2.00  2.00 dead   alive      
+#> 11     2.00  3.00 dead   dead       
+#> 12     2.00  3.00 dead   dead
 
 # Filter a data set
 
@@ -74,30 +74,30 @@ add_status_tree(df)
 top(df, Tag)
 #> # A tibble: 4 x 3
 #>   CensusID   Tag Status
-#>      <dbl> <dbl>  <chr>
-#> 1        1     1  alive
-#> 2        1     1   dead
-#> 3        2     1  alive
-#> 4        2     1  alive
+#>      <dbl> <dbl> <chr> 
+#> 1     1.00  1.00 alive 
+#> 2     1.00  1.00 dead  
+#> 3     2.00  1.00 alive 
+#> 4     2.00  1.00 alive
 top(df, Tag, -1)
 #> # A tibble: 4 x 3
 #>   CensusID   Tag Status
-#>      <dbl> <dbl>  <chr>
-#> 1        1     3   dead
-#> 2        1     3   dead
-#> 3        2     3   dead
-#> 4        2     3   dead
+#>      <dbl> <dbl> <chr> 
+#> 1     1.00  3.00 dead  
+#> 2     1.00  3.00 dead  
+#> 3     2.00  3.00 dead  
+#> 4     2.00  3.00 dead
 # Remove trees found dead in two or more censuses
 rm_dead_twice(df)
 #> # A tibble: 6 x 4
 #>   CensusID   Tag Status status_tree
-#>      <dbl> <dbl>  <chr>       <chr>
-#> 1        1     1  alive       alive
-#> 2        1     1   dead       alive
-#> 3        2     1  alive       alive
-#> 4        2     1  alive       alive
-#> 5        2     2  alive       alive
-#> 6        2     2   dead       alive
+#>      <dbl> <dbl> <chr>  <chr>      
+#> 1     1.00  1.00 alive  alive      
+#> 2     1.00  1.00 dead   alive      
+#> 3     2.00  1.00 alive  alive      
+#> 4     2.00  1.00 alive  alive      
+#> 5     2.00  2.00 alive  alive      
+#> 6     2.00  2.00 dead   alive
 ```
 
 Check inputs.
@@ -138,10 +138,10 @@ dplyr::filter(
 )
 #> # A tibble: 3 x 3
 #>   CensusID   Tag Status
-#>      <dbl> <dbl>  <chr>
-#> 1        2     1  alive
-#> 2        2     1  alive
-#> 3        2     2  alive
+#>      <dbl> <dbl> <chr> 
+#> 1     2.00  1.00 alive 
+#> 2     2.00  1.00 alive 
+#> 3     2.00  2.00 alive
 ```
 
 You can combine **fgeo.utils** with **dplyr**.
@@ -151,13 +151,13 @@ edited <- add_status_tree(top(df, CensusID, -1))
 dplyr::select(edited, -Status)
 #> # A tibble: 6 x 3
 #>   CensusID   Tag status_tree
-#>      <dbl> <dbl>       <chr>
-#> 1        2     1       alive
-#> 2        2     1       alive
-#> 3        2     2       alive
-#> 4        2     2       alive
-#> 5        2     3        dead
-#> 6        2     3        dead
+#>      <dbl> <dbl> <chr>      
+#> 1     2.00  1.00 alive      
+#> 2     2.00  1.00 alive      
+#> 3     2.00  2.00 alive      
+#> 4     2.00  2.00 alive      
+#> 5     2.00  3.00 dead       
+#> 6     2.00  3.00 dead
 ```
 
 You don't have to, but if you want you can use the pipe (`%>%`).
@@ -171,13 +171,13 @@ df %>%
   dplyr::arrange(desc(CensusID))
 #> # A tibble: 6 x 4
 #>   CensusID   Tag status_stem status_tree
-#>      <dbl> <dbl>       <chr>       <chr>
-#> 1        2     1       alive       alive
-#> 2        2     1       alive       alive
-#> 3        2     2       alive       alive
-#> 4        2     2        dead       alive
-#> 5        1     1       alive       alive
-#> 6        1     1        dead       alive
+#>      <dbl> <dbl> <chr>       <chr>      
+#> 1     2.00  1.00 alive       alive      
+#> 2     2.00  1.00 alive       alive      
+#> 3     2.00  2.00 alive       alive      
+#> 4     2.00  2.00 dead        alive      
+#> 5     1.00  1.00 alive       alive      
+#> 6     1.00  1.00 dead        alive
 
 # Same but without the pipe: It is hard to understand what is going on.
 dplyr::arrange(
@@ -190,11 +190,11 @@ dplyr::arrange(
 )
 #> # A tibble: 6 x 4
 #>   CensusID   Tag status_stem status_tree
-#>      <dbl> <dbl>       <chr>       <chr>
-#> 1        2     1       alive       alive
-#> 2        2     1       alive       alive
-#> 3        2     2       alive       alive
-#> 4        2     2        dead       alive
-#> 5        1     1       alive       alive
-#> 6        1     1        dead       alive
+#>      <dbl> <dbl> <chr>       <chr>      
+#> 1     2.00  1.00 alive       alive      
+#> 2     2.00  1.00 alive       alive      
+#> 3     2.00  2.00 alive       alive      
+#> 4     2.00  2.00 dead        alive      
+#> 5     1.00  1.00 alive       alive      
+#> 6     1.00  1.00 dead        alive
 ```

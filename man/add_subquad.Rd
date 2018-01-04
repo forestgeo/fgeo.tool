@@ -32,7 +32,8 @@ Returns \code{df} with the additional variable \code{subquadrat}.
 Add a quadrat variable to a dataframe based based on qx and qy coordinates.
 }
 \examples{
-vft <- tibble::tribble(
+library(tibble)
+vft <- tribble(
    ~QX,  ~QY,
   17.9,    0,
    4.1,   15,
