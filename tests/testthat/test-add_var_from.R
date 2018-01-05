@@ -42,6 +42,8 @@ context("add_quad")
 test_that("outputs equal to ctfs::gxgy.to.quad()", {
   x <- tibble(gx = c(5, 25), gy = c(5, 5))
 
+  skip_on_travis()
+
   now <- add_quad(x, start = 1, width = 2)$quad
   ctfs <- ctfs::gxgy.to.quad(x$gx, x$gy, start = "one", digits = 2)
   expect_equal(now, ctfs)
