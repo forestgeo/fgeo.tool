@@ -1,7 +1,8 @@
 #' Filter a data set by the status of its stems.
 #'
 #' @param x_fgeo
-#' @param .status
+#' @param .status Character vector; Must be one of possible values of the
+#'   variable giving the status of the dataframe `x`.
 #'
 #' @return
 #' @export
