@@ -42,13 +42,6 @@ navbar:
 
 reference:
 
-  - title: Manipulate data sets
-    contents:
-    - recode_subquad
-    - restore_names
-    - rm_dead_twice
-    - top
-
   - title: Add columns to a dataframe
     contents:
     - add_status_tree
@@ -60,9 +53,20 @@ reference:
     - add_hectindex
     - add_quad
 
+  - title: Filter a dataframe
+    contents:
+    - rm_dead_twice
+    - status_stem
+    - top
+
+  - title: Manipulate data sets
+    contents:
+    - recode_subquad
+
   - title: Miscellaneous for developers
     desc: These functions mainly target developers
     contents:
     - starts_with("check")
-    - exists_in_pkg
     - collapse
+    - exists_in_pkg
+    - restore_names

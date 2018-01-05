@@ -15,3 +15,9 @@ variable giving the status of the dataframe \code{x}.}
 \description{
 Filter a data set by the status of its stems.
 }
+\examples{
+x <- bciex::bci12t7mini
+unique(status_stem(x, .status = "D")$status)
+unique(status_stem(x, .status = "A")$status)
+unique(status_stem(x, .status = c("A", "D"))$status)
+}

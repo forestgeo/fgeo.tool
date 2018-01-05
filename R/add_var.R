@@ -1,4 +1,4 @@
-#' Add spatial variables (of a ForestGEO plot) to a dataframe.
+#' Add columns to a dataframe.
 #'
 #' These functions wrap legacy code from the [CTFS R
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).

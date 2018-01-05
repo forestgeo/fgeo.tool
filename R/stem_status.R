@@ -8,6 +8,10 @@
 #' @export
 #'
 #' @examples
+#' x <- bciex::bci12t7mini
+#' unique(status_stem(x, .status = "D")$status)
+#' unique(status_stem(x, .status = "A")$status)
+#' unique(status_stem(x, .status = c("A", "D"))$status)
 status_stem <- function(x, .status) {
   # Work with viewfull- and census-tables regardless names case
   old_nms <- names(x)
@@ -18,9 +22,6 @@ status_stem <- function(x, .status) {
   rlang::set_names(filtered, old_nms)
 }
 
-# x <- bciex::bci12t7mini
-# status_stem(x, .status = "D")
-
 check_status_stem <- function(x, .status){
   stopifnot(is.data.frame(x))
   stopifnot(is.character(.status))
@@ -28,3 +29,4 @@ check_status_stem <- function(x, .status){
   is_possible_status <- unique(x$status)
   stopifnot(.status %in% is_possible_status)
 }
+
