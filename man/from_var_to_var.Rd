@@ -54,6 +54,7 @@ is the wrapper \code{\link[=add_var]{add_var()}}, which consistently inputs and 
 dataframe, and is formally tested.
 }
 \examples{
+\dontrun{
 gxgy_to_index(c(0, 400, 990), c(0, 200, 490), gridsize = 20)
 
 gridsize <- 20
@@ -95,6 +96,8 @@ typeof(x)
 is.data.frame(x)
 is.vector(x)
 }
+}
 \seealso{
 \code{\link[=add_var]{add_var()}}.
 }
+\keyword{internal}

@@ -60,16 +60,6 @@ reference:
     - add_hectindex
     - add_quad
 
-  - title: Legacy from the CTFS R Package
-    desc: These functions are better avoided (instead see `add_var()`).
-    contents:
-    - gxgy_to_lxly
-    - gxgy_to_index
-    - gxgy_to_hectindex
-    - gxgy_to_rowcol
-    - rowcol_to_index
-    - index_to_rowcol
-
   - title: Miscellaneous for developers
     desc: These functions mainly target developers
     contents:

@@ -12,6 +12,8 @@
 #' is the wrapper [add_var()], which consistently inputs and outputs a
 #' dataframe, and is formally tested.
 #'
+#' @keywords internal
+#'
 #' @template gxgy
 #' @template gridsize
 #' @template plotdim
@@ -20,7 +22,9 @@
 #'
 #' @seealso [add_var()].
 #' @return A vector or dataframe (see examples).
+#'
 #' @examples
+#' \dontrun{
 #' gxgy_to_index(c(0, 400, 990), c(0, 200, 490), gridsize = 20)
 #'
 #' gridsize <- 20
@@ -61,11 +65,12 @@
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
+#' }
 #' @name from_var_to_var
 NULL
 
 #' @rdname from_var_to_var
-#' @export
+#' @keywords internal
 rowcol_to_index <- function(rowno, colno, gridsize, plotdim) {
   badrc <- (rowno <= 0 | colno <= 0 | rowno > plotdim[2] / gridsize |
       colno > plotdim[1] / gridsize)
@@ -80,7 +85,7 @@ rowcol_to_index <- function(rowno, colno, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @export
+#' @keywords internal
 index_to_rowcol <- function(index, gridsize, plotdim) {
   index <- index - 1
   badindex <- (index < 0 | index >= plotdim[1] * plotdim[2] / (gridsize ^ 2))
@@ -96,7 +101,7 @@ index_to_rowcol <- function(index, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @export
+#' @keywords internal
 gxgy_to_index <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx = gx, gy = gy))
@@ -113,7 +118,7 @@ gxgy_to_index <- function(gx, gy, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @export
+#' @keywords internal
 gxgy_to_lxly <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx, gy))
@@ -126,7 +131,7 @@ gxgy_to_lxly <- function(gx, gy, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @export
+#' @keywords internal
 gxgy_to_rowcol <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx, gy))
@@ -137,7 +142,7 @@ gxgy_to_rowcol <- function(gx, gy, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @export
+#' @keywords internal
 gxgy_to_hectindex <- function(gx, gy, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx = gx, gy = gy))
