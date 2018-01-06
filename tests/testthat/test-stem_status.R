@@ -18,3 +18,13 @@ test_that("checks inputs as expected", {
     status_stem(x = tibble(status = "A"), .status = "wrong status")
   )
 })
+
+
+x <- tibble(status = letters[1:3])
+
+test_that("outpus as expected", {
+  expect_equal(status_stem(x, "a")$status, "a")
+  expect_equal(status_stem(x, c("a", "b"))$status, c("a", "b"))
+  expect_equal(status_stem(x, c("a", "b"), exclude = TRUE)$status, "c")
+
+})

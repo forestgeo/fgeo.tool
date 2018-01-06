@@ -1,47 +1,26 @@
-library(handy)
-library(ctfs)
-library(DependenciesGraphs)
-write_fun_dependencies("package:ctfs", "gxgy.to.hectindex", "./hectindex.R")
-explore_dependencies("ctfs", "gxgy.to.hectindex")
+# stem status
+viewfull_table <- bciex::bci12vft_mini
+unique(stem_not_dead(viewfull_table, .status = "dead")$Status)
+tree_table <- bciex::bci12t7mini
+unique(stem_not_dead(tree_table, .status = "D")$status)
+stem_table <- bciex::bci12s7mini
+unique(stem_not_dead(x, .status = "D")$status)
 
+# tree status
+viewfull_table <- bciex::bci12vft_mini
+unique(tree_not_dead(viewfull_table, .status = "dead")$Status)
 
-
-
-gxgy_to_hectindex(1, 1)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-library(base)
-pkg <- "package:base"
-fun <- "sum"
-file_nm <- "./dependencies_of_base-sum.R"
-write_fun_dependencies(pkg, fun, file_nm)
-
-
-
-
-# add_var(), examples:
-library(dplyr)
-x <- tibble(
-  gx = c(0, 500, 987),
-  gy = c(10, 233, 490)
+tree_table <- bciex::bci12t7mini
+tree_table <- dplyr::mutate(
+  tree_table,
+  status = ifelse(status == "D", "dead", ifelse(status == "A", "alive", status))
 )
-add_var(x, "lxly", "gxgy")
-add_var(x, "index", "gxgy")
+unique(tree_not_dead(tree_table, .status = "dead")$status)
 
-
-
-gxgy_to_index(1, 1, 20, c(1000, 500))
-gxgy_to_index(1, 1)
-gxgy_to_index(1, 1, 20)
+# Wrong!!!
+stem_table <- bciex::bci12s7mini
+stem_table <- dplyr::mutate(
+  stem_table,
+  status = ifelse(status == "D", "dead", ifelse(status == "A", "alive", status))
+)
+unique(tree_not_dead(stem_table, .status = "dead")$status)
