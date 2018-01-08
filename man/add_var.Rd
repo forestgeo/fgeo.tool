@@ -7,7 +7,7 @@
 \alias{add_rowcol}
 \alias{add_hectindex}
 \alias{add_quad}
-\title{Add spatial variables (of a ForestGEO plot) to a dataframe.}
+\title{Add columns to a dataframe.}
 \usage{
 add_var(x, var, gridsize = 20, plotdim = NULL)
 

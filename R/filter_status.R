@@ -1,29 +1,3 @@
-# xxx test
-# xxx document
-# xxx write a helper to convert from A and D to alive and dead
-# xxx use wood = tree with census tables
-# xxx use wood = stem with vft
-# xxx remove stem_status
-# xxx check why last example in tmp.R is wrong
-
-#' x <- tibble::tibble(status = LETTERS[1:4])
-#' filter_status(x, wood = "stem", .status = c("B", "C"))
-#' filter_status(x, wood = "stem", .status = "D")
-#' filter_status(x, wood = "stem", .status = "D", exclude = TRUE)
-#' # Shortcut
-#' stem_not_dead(x)
-#'
-#' x <- bciex::bci12vft_mini
-#' result <- filter_status(x, wood = "tree", .status = "dead")
-#' result[1:3, "status_tree"]
-#'
-#' result <- filter_status(x, wood = "tree", .status = "dead", exclude = TRUE)
-#' result[1:3, "status_tree"]
-#'
-#' # Shortcut
-#' result <- tree_not_dead(x)
-#' result[1:3, "status_tree"]
-
 filter_status <- function(x, wood, .status, exclude = FALSE) {
   # xxx here I need to add argumet to define the codes for "alive" and "dead"
   # or better, to guess it from "A" and "D" [inside add_status_tree()].
@@ -75,7 +49,9 @@ check_filter_status <- function(x, wood, .status) {
   if (wood == "tree") {
     # crucial names are checked by check_add_status_tree()
     is_valid_status_tree <- unique(x$status_tree)
-    stopifnot(.status %in% is_valid_status_tree)
+    if (!.status %in% is_valid_status_tree) {
+      warning("The data contains no .status = ", .status)
+    }
   }
 }
 
