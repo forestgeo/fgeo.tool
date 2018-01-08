@@ -4,10 +4,14 @@
 \alias{add_status_tree}
 \title{Define the status of a tree based on the status of its stems.}
 \usage{
-add_status_tree(x, status_d = "dead", status_a = "alive")
+add_status_tree(x, status_a = "A", status_d = "D")
 }
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
+
+\item{status_a, status_d}{Sting to match alive and dead stems; it corresponds
+to the values of the variable \code{status} (in census tables) or \code{Status} (with
+capital "S" in ViewFull tables).}
 }
 \value{
 The input data set with the additional variable \code{status_tree}.
@@ -28,4 +32,7 @@ x <- tibble::tribble(
           2,    2,  "dead"
 )
 add_status_tree(x)
+}
+\seealso{
+Other functions to add columns to dataframes.: \code{\link{add_var}}
 }

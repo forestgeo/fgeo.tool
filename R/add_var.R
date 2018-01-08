@@ -11,6 +11,7 @@
 #' @param width Number; width to padd the labels of plot-columns and -rows
 #'   (passed to [stringr::str_pad()]).
 #'
+#' @family functions to add columns to dataframes.
 #' @seealso [stringr::str_pad()].
 #'
 #' @return A modified version of the dataframe `x` with the additional

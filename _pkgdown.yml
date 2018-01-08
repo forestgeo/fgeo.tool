@@ -42,7 +42,7 @@ navbar:
 
 reference:
 
-  - title: Add columns to a dataframe
+  - title: Add columns to dataframes
     contents:
     - add_status_tree
     - add_subquad
@@ -53,10 +53,12 @@ reference:
     - add_hectindex
     - add_quad
 
-  - title: Filter a dataframe
+  - title: Filter dataframes
     contents:
+    - filter_status
     - rm_dead_twice
-    - status_stem
+    - tree_not_dead
+    - stem_not_dead
     - top
 
   - title: Manipulate data sets

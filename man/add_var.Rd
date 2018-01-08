@@ -67,4 +67,6 @@ add_quad(x, start = 0, width = 3)
 }
 \seealso{
 \code{\link[stringr:str_pad]{stringr::str_pad()}}.
+
+Other functions to add columns to dataframes.: \code{\link{add_status_tree}}
 }

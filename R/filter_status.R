@@ -1,19 +1,30 @@
-#' Filter a dataframe by the status of its each stem or each tree.
+#' Filter a (fgeo) dataframe by the status of each stem or tree.
+#'
+#' In stem- and ViewFull-tables `status` and `Status` refer to each stem. In
+#' tree-tables `status` refers to tree. To get the status of each tree based
+#' on the status of its stems see [add_status_tree()].
 #'
 #' @template x_fgeo
+#' @param wood Either "stem" or "tree", to indicate if the data should be
+#'   filtered based on the status of each individual stem or tree (notice that
+#'   one tree is dead only when not some but all its stems are dead).
 #' @param .status Character vector; Must be one of possible values of the
 #'   variable giving the status of the dataframe `x`.
-#' @param exclude Logical; `TRUE` excluded the values passed to `.status`.
+#' @param exclude Logical; `TRUE` filters the data to exclude the values passed
+#'   to `.status`.
+#'
+#' @seealso [add_status_tree()].
+#'
+#' @family functions to filter dataframes.
 #'
 #' @return A filtered version of the dataframe `x`.
 #' @export
 #'
 #' @examples
+#' library(dplyr)
 #' library(fgeo.utils)
 #'
 #' # Filter by the status of each stem (wood = "stem") -----------------------
-#'
-#' # Notice that the variable "status" (or Status) refers the each stem, not tree.
 #'
 #' # CENSUS TABLE: STEM TABLE
 #'
@@ -129,7 +140,7 @@
 filter_status <- function(x, wood, .status, exclude = FALSE) {
   old_nms <- names(x)
   x <- rlang::set_names(x, tolower)
-  check_filter_status(x = x, wood = wood, .status = .status)
+  check_filter_status(x = x, wood = wood, .status = .status, exclude = exclude)
 
   if (wood == "stem") {
     stts_var <- x$status
@@ -159,7 +170,7 @@ tree_not_dead <- function(x, .status = "D") {
   filter_status(x = x, wood = "tree", .status = .status, exclude = TRUE)
 }
 
-check_filter_status <- function(x, wood, .status) {
+check_filter_status <- function(x, wood, .status, exclude) {
   stopifnot(is.data.frame(x))
   stopifnot(is.character(.status))
   stopifnot(is.character(wood))
@@ -167,10 +178,15 @@ check_filter_status <- function(x, wood, .status) {
   stopifnot(wood  %in% c("stem", "tree"))
   if (wood == "stem") {
     check_valid_status(x, .status, "status")
+    na_n <- sum(is.na(x$status))
+    if (na_n > 0) {warning("Ignoring ", na_n, " NA(s)")}
   }
   if (wood == "tree") {
     check_valid_status(x, .status, "status_tree")
+    na_n <- sum(is.na(x$status_tree))
+    if (na_n > 0) {warning("Ignoring ", na_n, " NA(s)")}
   }
+  stopifnot(is.logical(exclude))
 }
 
 check_valid_status <- function(x, .status, status_var) {

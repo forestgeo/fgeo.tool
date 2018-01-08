@@ -4,7 +4,7 @@
 \alias{filter_status}
 \alias{stem_not_dead}
 \alias{tree_not_dead}
-\title{Filter a dataframe by the status of its each stem or each tree.}
+\title{Filter a (fgeo) dataframe by the status of each stem or tree.}
 \usage{
 filter_status(x, wood, .status, exclude = FALSE)
 
@@ -15,23 +15,29 @@ tree_not_dead(x, .status = "D")
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
 
+\item{wood}{Either "stem" or "tree", to indicate if the data should be
+filtered based on the status of each individual stem or tree (notice that
+one tree is dead only when not some but all its stems are dead).}
+
 \item{.status}{Character vector; Must be one of possible values of the
 variable giving the status of the dataframe \code{x}.}
 
-\item{exclude}{Logical; \code{TRUE} excluded the values passed to \code{.status}.}
+\item{exclude}{Logical; \code{TRUE} filters the data to exclude the values passed
+to \code{.status}.}
 }
 \value{
 A filtered version of the dataframe \code{x}.
 }
 \description{
-Filter a dataframe by the status of its each stem or each tree.
+In stem- and ViewFull-tables \code{status} and \code{Status} refer to each stem. In
+tree-tables \code{status} refers to tree. To get the status of each tree based
+on the status of its stems see \code{\link[=add_status_tree]{add_status_tree()}}.
 }
 \examples{
+library(dplyr)
 library(fgeo.utils)
 
 # Filter by the status of each stem (wood = "stem") -----------------------
-
-# Notice that the variable "status" (or Status) refers the each stem, not tree.
 
 # CENSUS TABLE: STEM TABLE
 
@@ -144,4 +150,10 @@ result \%>\%
   dplyr::arrange(Tag, StemID, Status) \%>\%
   dplyr::select(Tag, StemID, Status, status_tree)
 table(result$status_tree)
+}
+\seealso{
+\code{\link[=add_status_tree]{add_status_tree()}}.
+
+Other functions to filter dataframes.: \code{\link{rm_dead_twice}},
+  \code{\link{top}}
 }

@@ -1,6 +1,10 @@
 #' Define the status of a tree based on the status of its stems.
 #'
 #' @template x_fgeo
+#' @param status_a,status_d Sting to match alive and dead stems; it corresponds
+#'   to the values of the variable `status` (in census tables) or `Status` (with
+#'   capital "S" in ViewFull tables).
+#' @family functions to add columns to dataframes.
 #'
 #' @return The input data set with the additional variable `status_tree`.
 #' @export
@@ -18,11 +22,11 @@
 #'           2,    2,  "dead"
 #' )
 #' add_status_tree(x)
-add_status_tree <- function(x, status_d = "dead", status_a = "alive") {
+add_status_tree <- function(x, status_a = "A", status_d = "D") {
 
   old <- names(x)
   x <- rlang::set_names(x, tolower)
-  check_add_status_tree(x, status_d = status_d, status_a = status_a)
+  check_add_status_tree(x, status_a = status_a, status_d = status_d)
 
   grp <- group_by(x, .data$censusid, .data$tag)
   mut <- mutate(

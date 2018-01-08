@@ -93,7 +93,7 @@
     <p>Define the status of a tree based on the status of its stems.</p>
     
 
-    <pre class="usage"><span class='fu'>add_status_tree</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>add_status_tree</span>(<span class='no'>x</span>, <span class='kw'>status_a</span> <span class='kw'>=</span> <span class='st'>"A"</span>, <span class='kw'>status_d</span> <span class='kw'>=</span> <span class='st'>"D"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -102,11 +102,21 @@
       <th>x</th>
       <td><p>A ForestGEO table, either a ViewFullTable or a census table.</p></td>
     </tr>
+    <tr>
+      <th>status_a, status_d</th>
+      <td><p>Sting to match alive and dead stems; it corresponds
+to the values of the variable <code>status</code> (in census tables) or <code>Status</code> (with
+capital "S" in ViewFull tables).</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>The input data set with the additional variable <code>status_tree</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p>Other functions to add columns to dataframes.: <code><a href='add_var.html'>add_var</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -121,17 +131,18 @@
           <span class='fl'>2</span>,    <span class='fl'>2</span>, <span class='st'>"alive"</span>,
           <span class='fl'>2</span>,    <span class='fl'>2</span>,  <span class='st'>"dead"</span>
 )
-<span class='fu'>add_status_tree</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
+<span class='fu'>add_status_tree</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D, A</span>
+#&gt; <span class='warning'>  * Valid values: alive, dead</span></div><div class='output co'>#&gt; # A tibble: 8 x 4
 #&gt;   CensusID   Tag Status status_tree
 #&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt; 1     1.00  1.00 alive  alive      
-#&gt; 2     1.00  1.00 dead   alive      
-#&gt; 3     1.00  2.00 dead   dead       
-#&gt; 4     1.00  2.00 dead   dead       
-#&gt; 5     2.00  1.00 alive  alive      
-#&gt; 6     2.00  1.00 alive  alive      
-#&gt; 7     2.00  2.00 alive  alive      
-#&gt; 8     2.00  2.00 dead   alive      </div></pre>
+#&gt; 1     1.00  1.00 alive  A          
+#&gt; 2     1.00  1.00 dead   A          
+#&gt; 3     1.00  2.00 dead   A          
+#&gt; 4     1.00  2.00 dead   A          
+#&gt; 5     2.00  1.00 alive  A          
+#&gt; 6     2.00  1.00 alive  A          
+#&gt; 7     2.00  2.00 alive  A          
+#&gt; 8     2.00  2.00 dead   A          </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -139,6 +150,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

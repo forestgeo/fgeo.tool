@@ -23,5 +23,5 @@ exists_in_pkg("cars", "datasets")
 }
 \seealso{
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{check_unique}}
+  \code{\link{check_unique}}, \code{\link{restore_names}}
 }

@@ -12,8 +12,10 @@
 #' The length of `x` must equal the number of names in old_nms, or that + 1".
 #'
 #' @param x A dataframe.
-#' @param new_var The name of a single new variable added to `x`
-#' @param old_nms A vector containing the old names of `x`
+#' @param new_var The name of a single new variable added to `x`.
+#' @param old_nms A vector containing the old names of `x`.
+#'
+#' @family functions for developers.
 #'
 #' @return Returns the input with the names changed accordingly.
 #' @export

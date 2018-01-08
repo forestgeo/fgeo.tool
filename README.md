@@ -52,21 +52,23 @@ Manipulate data.
 
 # Determine the status of each tree based on the status of its stems
 add_status_tree(df)
+#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
+#>   * Valid values: alive, dead
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
 #>       <dbl> <dbl> <chr>  <chr>      
-#>  1     1.00  1.00 alive  alive      
-#>  2     1.00  1.00 dead   alive      
-#>  3     1.00  2.00 dead   dead       
-#>  4     1.00  2.00 dead   dead       
-#>  5     1.00  3.00 dead   dead       
-#>  6     1.00  3.00 dead   dead       
-#>  7     2.00  1.00 alive  alive      
-#>  8     2.00  1.00 alive  alive      
-#>  9     2.00  2.00 alive  alive      
-#> 10     2.00  2.00 dead   alive      
-#> 11     2.00  3.00 dead   dead       
-#> 12     2.00  3.00 dead   dead
+#>  1     1.00  1.00 alive  A          
+#>  2     1.00  1.00 dead   A          
+#>  3     1.00  2.00 dead   A          
+#>  4     1.00  2.00 dead   A          
+#>  5     1.00  3.00 dead   A          
+#>  6     1.00  3.00 dead   A          
+#>  7     2.00  1.00 alive  A          
+#>  8     2.00  1.00 alive  A          
+#>  9     2.00  2.00 alive  A          
+#> 10     2.00  2.00 dead   A          
+#> 11     2.00  3.00 dead   A          
+#> 12     2.00  3.00 dead   A
 
 # Filter a data set
 
@@ -148,16 +150,18 @@ You can combine **fgeo.utils** with **dplyr**.
 
 ``` r
 edited <- add_status_tree(top(df, CensusID, -1))
+#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
+#>   * Valid values: alive, dead
 dplyr::select(edited, -Status)
 #> # A tibble: 6 x 3
 #>   CensusID   Tag status_tree
 #>      <dbl> <dbl> <chr>      
-#> 1     2.00  1.00 alive      
-#> 2     2.00  1.00 alive      
-#> 3     2.00  2.00 alive      
-#> 4     2.00  2.00 alive      
-#> 5     2.00  3.00 dead       
-#> 6     2.00  3.00 dead
+#> 1     2.00  1.00 A          
+#> 2     2.00  1.00 A          
+#> 3     2.00  2.00 A          
+#> 4     2.00  2.00 A          
+#> 5     2.00  3.00 A          
+#> 6     2.00  3.00 A
 ```
 
 You don't have to, but if you want you can use the pipe (`%>%`).
@@ -169,15 +173,11 @@ df %>%
   dplyr::filter(status_tree == "alive") %>%
   dplyr::rename(status_stem = Status) %>%
   dplyr::arrange(desc(CensusID))
-#> # A tibble: 6 x 4
-#>   CensusID   Tag status_stem status_tree
-#>      <dbl> <dbl> <chr>       <chr>      
-#> 1     2.00  1.00 alive       alive      
-#> 2     2.00  1.00 alive       alive      
-#> 3     2.00  2.00 alive       alive      
-#> 4     2.00  2.00 dead        alive      
-#> 5     1.00  1.00 alive       alive      
-#> 6     1.00  1.00 dead        alive
+#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
+#>   * Valid values: alive, dead
+#> # A tibble: 0 x 4
+#> # ... with 4 variables: CensusID <dbl>, Tag <dbl>, status_stem <chr>,
+#> #   status_tree <chr>
 
 # Same but without the pipe: It is hard to understand what is going on.
 dplyr::arrange(
@@ -188,13 +188,9 @@ dplyr::arrange(
   ), 
   desc(CensusID)
 )
-#> # A tibble: 6 x 4
-#>   CensusID   Tag status_stem status_tree
-#>      <dbl> <dbl> <chr>       <chr>      
-#> 1     2.00  1.00 alive       alive      
-#> 2     2.00  1.00 alive       alive      
-#> 3     2.00  2.00 alive       alive      
-#> 4     2.00  2.00 dead        alive      
-#> 5     1.00  1.00 alive       alive      
-#> 6     1.00  1.00 dead        alive
+#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
+#>   * Valid values: alive, dead
+#> # A tibble: 0 x 4
+#> # ... with 4 variables: CensusID <dbl>, Tag <dbl>, status_stem <chr>,
+#> #   status_tree <chr>
 ```

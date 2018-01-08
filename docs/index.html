@@ -110,21 +110,23 @@ remotes::install_github("forestgeo/fgeo.utils")</a></code></pre>
 
 <span class="co"># Determine the status of each tree based on the status of its stems</span>
 <span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df)
+<span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
+<span class="co">#&gt;   * Valid values: alive, dead</span>
 <span class="co">#&gt; # A tibble: 12 x 4</span>
 <span class="co">#&gt;    CensusID   Tag Status status_tree</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
-<span class="co">#&gt;  1     1.00  1.00 alive  alive      </span>
-<span class="co">#&gt;  2     1.00  1.00 dead   alive      </span>
-<span class="co">#&gt;  3     1.00  2.00 dead   dead       </span>
-<span class="co">#&gt;  4     1.00  2.00 dead   dead       </span>
-<span class="co">#&gt;  5     1.00  3.00 dead   dead       </span>
-<span class="co">#&gt;  6     1.00  3.00 dead   dead       </span>
-<span class="co">#&gt;  7     2.00  1.00 alive  alive      </span>
-<span class="co">#&gt;  8     2.00  1.00 alive  alive      </span>
-<span class="co">#&gt;  9     2.00  2.00 alive  alive      </span>
-<span class="co">#&gt; 10     2.00  2.00 dead   alive      </span>
-<span class="co">#&gt; 11     2.00  3.00 dead   dead       </span>
-<span class="co">#&gt; 12     2.00  3.00 dead   dead</span>
+<span class="co">#&gt;  1     1.00  1.00 alive  A          </span>
+<span class="co">#&gt;  2     1.00  1.00 dead   A          </span>
+<span class="co">#&gt;  3     1.00  2.00 dead   A          </span>
+<span class="co">#&gt;  4     1.00  2.00 dead   A          </span>
+<span class="co">#&gt;  5     1.00  3.00 dead   A          </span>
+<span class="co">#&gt;  6     1.00  3.00 dead   A          </span>
+<span class="co">#&gt;  7     2.00  1.00 alive  A          </span>
+<span class="co">#&gt;  8     2.00  1.00 alive  A          </span>
+<span class="co">#&gt;  9     2.00  2.00 alive  A          </span>
+<span class="co">#&gt; 10     2.00  2.00 dead   A          </span>
+<span class="co">#&gt; 11     2.00  3.00 dead   A          </span>
+<span class="co">#&gt; 12     2.00  3.00 dead   A</span>
 
 <span class="co"># Filter a data set</span>
 
@@ -194,16 +196,18 @@ dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.
 <span class="co">#&gt; 3     2.00  2.00 alive</span></code></pre></div>
 <p>You can combine <strong>fgeo.utils</strong> with <strong>dplyr</strong>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/top.html">top</a></span>(df, CensusID, <span class="op">-</span><span class="dv">1</span>))
+<span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
+<span class="co">#&gt;   * Valid values: alive, dead</span>
 dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(edited, <span class="op">-</span>Status)
 <span class="co">#&gt; # A tibble: 6 x 3</span>
 <span class="co">#&gt;   CensusID   Tag status_tree</span>
 <span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      </span>
-<span class="co">#&gt; 1     2.00  1.00 alive      </span>
-<span class="co">#&gt; 2     2.00  1.00 alive      </span>
-<span class="co">#&gt; 3     2.00  2.00 alive      </span>
-<span class="co">#&gt; 4     2.00  2.00 alive      </span>
-<span class="co">#&gt; 5     2.00  3.00 dead       </span>
-<span class="co">#&gt; 6     2.00  3.00 dead</span></code></pre></div>
+<span class="co">#&gt; 1     2.00  1.00 A          </span>
+<span class="co">#&gt; 2     2.00  1.00 A          </span>
+<span class="co">#&gt; 3     2.00  2.00 A          </span>
+<span class="co">#&gt; 4     2.00  2.00 A          </span>
+<span class="co">#&gt; 5     2.00  3.00 A          </span>
+<span class="co">#&gt; 6     2.00  3.00 A</span></code></pre></div>
 <p>You don’t have to, but if you want you can use the pipe (<code>%&gt;%</code>).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># With the pipe</span>
 df <span class="op">%&gt;%</span><span class="st"> </span>
@@ -211,15 +215,11 @@ df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span>
 <span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">desc</span>(CensusID))
-<span class="co">#&gt; # A tibble: 6 x 4</span>
-<span class="co">#&gt;   CensusID   Tag status_stem status_tree</span>
-<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      </span>
-<span class="co">#&gt; 1     2.00  1.00 alive       alive      </span>
-<span class="co">#&gt; 2     2.00  1.00 alive       alive      </span>
-<span class="co">#&gt; 3     2.00  2.00 alive       alive      </span>
-<span class="co">#&gt; 4     2.00  2.00 dead        alive      </span>
-<span class="co">#&gt; 5     1.00  1.00 alive       alive      </span>
-<span class="co">#&gt; 6     1.00  1.00 dead        alive</span>
+<span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
+<span class="co">#&gt;   * Valid values: alive, dead</span>
+<span class="co">#&gt; # A tibble: 0 x 4</span>
+<span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span>
+<span class="co">#&gt; #   status_tree &lt;chr&gt;</span>
 
 <span class="co"># Same but without the pipe: It is hard to understand what is going on.</span>
 dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(
@@ -230,15 +230,11 @@ dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.
   ), 
   <span class="kw">desc</span>(CensusID)
 )
-<span class="co">#&gt; # A tibble: 6 x 4</span>
-<span class="co">#&gt;   CensusID   Tag status_stem status_tree</span>
-<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;       &lt;chr&gt;      </span>
-<span class="co">#&gt; 1     2.00  1.00 alive       alive      </span>
-<span class="co">#&gt; 2     2.00  1.00 alive       alive      </span>
-<span class="co">#&gt; 3     2.00  2.00 alive       alive      </span>
-<span class="co">#&gt; 4     2.00  2.00 dead        alive      </span>
-<span class="co">#&gt; 5     1.00  1.00 alive       alive      </span>
-<span class="co">#&gt; 6     1.00  1.00 dead        alive</span></code></pre></div>
+<span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
+<span class="co">#&gt;   * Valid values: alive, dead</span>
+<span class="co">#&gt; # A tibble: 0 x 4</span>
+<span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span>
+<span class="co">#&gt; #   status_tree &lt;chr&gt;</span></code></pre></div>
 </div>
 </div>
 </div>

@@ -9,9 +9,9 @@ restore_names(x, new_var, old_nms)
 \arguments{
 \item{x}{A dataframe.}
 
-\item{new_var}{The name of a single new variable added to \code{x}}
+\item{new_var}{The name of a single new variable added to \code{x}.}
 
-\item{old_nms}{A vector containing the old names of \code{x}}
+\item{old_nms}{A vector containing the old names of \code{x}.}
 }
 \value{
 Returns the input with the names changed accordingly.
@@ -49,4 +49,8 @@ dfm <- data.frame(X = 1, Y = "a", newvar = "2")
 mutated <- dplyr::mutate(dfm, newvar = x + 1)
 # Restore
 restore_names(mutated, "newvar", old)
+}
+\seealso{
+Other functions for developers.: \code{\link{check_crucial_names}},
+  \code{\link{check_unique}}, \code{\link{exists_in_pkg}}
 }
