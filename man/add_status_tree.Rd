@@ -4,7 +4,7 @@
 \alias{add_status_tree}
 \title{Define the status of a tree based on the status of its stems.}
 \usage{
-add_status_tree(x)
+add_status_tree(x, status_d = "dead", status_a = "alive")
 }
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
