@@ -1,8 +1,4 @@
 filter_status <- function(x, wood, .status, exclude = FALSE) {
-  # xxx here I need to add argumet to define the codes for "alive" and "dead"
-  # or better, to guess it from "A" and "D" [inside add_status_tree()].
-  if (wood == "tree") {x <- add_status_tree(x)}
-
   old_nms <- names(x)
   x <- rlang::set_names(x, tolower)
   check_filter_status(x = x, wood = wood, .status = .status)
@@ -42,16 +38,22 @@ check_filter_status <- function(x, wood, .status) {
   stopifnot(length(wood) == 1)
   stopifnot(wood  %in% c("stem", "tree"))
   if (wood == "stem") {
-    check_crucial_names(x, "status")
-    is_valid_status <- unique(x$status)
-    stopifnot(.status %in% is_valid_status)
+    check_valid_status(x, .status, "status")
   }
   if (wood == "tree") {
-    # crucial names are checked by check_add_status_tree()
-    is_valid_status_tree <- unique(x$status_tree)
-    if (!.status %in% is_valid_status_tree) {
-      warning("The data contains no .status = ", .status)
-    }
+    check_valid_status(x, .status, "status_tree")
   }
 }
 
+check_valid_status <- function(x, .status, status_var) {
+  .status_var <- x[[status_var]]
+  check_crucial_names(x, status_var)
+  valid_status <- unique(.status_var)
+  invalid_status <- setdiff(.status, valid_status)
+  if (length(invalid_status) != 0) {
+    warning(
+      "No observation has .status = ", collapse(invalid_status), "\n",
+      "  * Available options are: ", collapse(valid_status)
+    )
+  }
+}

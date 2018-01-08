@@ -65,3 +65,25 @@ test_that("outputs the correct variable `status_tree`", {
   exp <- c("alive", "alive", "dead", "dead", "alive", "alive", "alive", "alive")
   expect_identical(add_status_tree(.df)$status_tree, exp)
 })
+
+
+
+
+
+
+test_that("warns if the status is invalid", {
+  .df <- tribble(
+    ~CensusID, ~Tag,  ~Status,
+            1,    1,     "A",
+            1,    1,     "D",
+            1,    2,     "D",
+            1,    2,     "D",
+
+            2,    1,     "A",
+            2,    1,     "A",
+            2,    2,     "A",
+            2,    2,     "D"
+  )
+  expect_warning(add_status_tree(.df))
+  expect_silent(add_status_tree(.df, "D", "A"))
+})

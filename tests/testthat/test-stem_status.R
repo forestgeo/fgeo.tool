@@ -14,7 +14,7 @@ test_that("checks inputs as expected", {
   expect_error(
     status_stem(x = tibble(missing_name = 1), .status = "correct type")
   )
-  expect_error(
+  expect_warning(
     status_stem(x = tibble(status = "A"), .status = "wrong status")
   )
 })

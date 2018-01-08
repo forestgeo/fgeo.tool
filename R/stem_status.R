@@ -45,6 +45,6 @@ check_status_stem <- function(x, .status){
   stopifnot(is.character(.status))
   check_crucial_names(x, "status")
   is_possible_status <- unique(x$status)
-  stopifnot(.status %in% is_possible_status)
+  check_valid_status(x, .status, "status")
 }
 
