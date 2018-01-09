@@ -17,7 +17,8 @@ Imports:
     purrr,
     rlang,
     stringr,
-    tibble
+    tibble,
+    remotes
 Suggests: 
     bciex,
     covr,

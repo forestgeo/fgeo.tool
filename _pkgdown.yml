@@ -71,4 +71,5 @@ reference:
     - starts_with("check")
     - collapse
     - exists_in_pkg
+    - fgeo_package_deps
     - restore_names

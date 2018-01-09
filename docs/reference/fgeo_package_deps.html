@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Report if a vector or a variable of a dataframe is duplicated. — check_unique â€¢ fgeo.utils</title>
+<title>Find fgeo packages that depend on a given package. — fgeo_package_deps â€¢ fgeo.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -86,70 +86,51 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Report if a vector or a variable of a dataframe is duplicated.</h1>
+    <h1>Find fgeo packages that depend on a given package.</h1>
     </div>
 
     
-    <p>Report if a vector or a variable of a dataframe is duplicated.</p>
+    <p>Useful to find which packages may have broken after refactoring on package
+(the one you would want to pass to the argument <code>pkg</code>).</p>
     
 
-    <pre class="usage"><span class='fu'>check_unique</span>(<span class='no'>x</span>, <span class='no'>x_var</span>, <span class='kw'>cond</span> <span class='kw'>=</span> <span class='st'>"warning"</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>check_unique_vector</span>(<span class='no'>v</span>, <span class='no'>cond</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>fgeo_package_deps</span>(<span class='no'>pkg</span>, <span class='kw'>root</span> <span class='kw'>=</span> <span class='st'>"../"</span>, <span class='kw'>fgeo_pkgs</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"bciex"</span>,
+  <span class='st'>"fgeo.abundance"</span>, <span class='st'>"fgeo.utils"</span>, <span class='st'>"map"</span>, <span class='st'>"fgeo"</span>))</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A dataframe.</p></td>
+      <th>pkg</th>
+      <td><p>String giving the name of one package which dependencies you want
+to find.</p></td>
     </tr>
     <tr>
-      <th>x_var</th>
-      <td><p>String; the name of a variable of <code>x</code>.</p></td>
+      <th>root</th>
+      <td><p>Sting. Assumes all fgeo package have the same root directory.</p></td>
     </tr>
     <tr>
-      <th>cond</th>
-      <td><p>String; the name of a function that outputs a condition: one of
-"warning", "stop", "message".</p></td>
-    </tr>
-    <tr>
-      <th>msg</th>
-      <td><p>String; a custom message.</p></td>
-    </tr>
-    <tr>
-      <th>v</th>
-      <td><p>A vector.</p></td>
+      <th>fgeo_pkgs</th>
+      <td><p>Character string giving the names of fgeo packages.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible <code>v</code> or a condition and a message.</p>
+    <p>A character vector.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other functions to check inputs.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code></p>
-<p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
-  <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
-  <code><a href='fgeo_package_deps.html'>fgeo_package_deps</a></code>,
+    <p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
+  <code><a href='check_unique.html'>check_unique</a></code>, <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
   <code><a href='restore_names.html'>restore_names</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># On a vector</span>
-<span class='no'>unique_v</span> <span class='kw'>&lt;-</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fl'>3</span>)
-<span class='no'>num</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>3</span>)
-<span class='no'>chr</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>])
-<span class='fu'>check_unique_vector</span>(<span class='no'>unique_v</span>, <span class='st'>"warning"</span>)
-<span class='fu'>check_unique_vector</span>(<span class='no'>num</span>, <span class='st'>"warning"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Duplicated values were detected</span></div><div class='input'><span class='fu'>check_unique_vector</span>(<span class='no'>chr</span>, <span class='st'>"message"</span>, <span class='st'>"Do something"</span>)</div><div class='output co'>#&gt; <span class='message'>Duplicated values were detected</span>
-#&gt; <span class='message'>Do something</span></div><div class='input'>
-<span class='co'># On a dataframe</span>
-<span class='no'>.df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-
-<span class='fu'>check_unique</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Duplicated values were detected</span></div><div class='input'><span class='fu'>check_unique</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='st'>"message"</span>, <span class='st'>"do this"</span>)</div><div class='output co'>#&gt; <span class='message'>Duplicated values were detected</span>
-#&gt; <span class='message'>do this</span></div><div class='input'><span class='co'># Silent</span>
-<span class='fu'>check_unique</span>(<span class='no'>.df</span>, <span class='st'>"b"</span>, <span class='st'>"warning"</span>, <span class='st'>"do this"</span>)</div></pre>
+    <pre class="examples"><div class='input'># Won't because it depends on local directories.
+</div><span class='co'># NOT RUN {</span>
+<span class='fu'>fgeo_package_deps</span>(<span class='st'>"fgeo.utils"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

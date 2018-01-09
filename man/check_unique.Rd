@@ -48,5 +48,7 @@ check_unique(.df, "b", "warning", "do this")
 Other functions to check inputs.: \code{\link{check_crucial_names}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{exists_in_pkg}}, \code{\link{restore_names}}
+  \code{\link{exists_in_pkg}},
+  \code{\link{fgeo_package_deps}},
+  \code{\link{restore_names}}
 }
