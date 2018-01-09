@@ -11,7 +11,7 @@ fgeo_package_deps(pkg, root = "../", fgeo_pkgs = c("bciex",
 \item{pkg}{String giving the name of one package which dependencies you want
 to find.}
 
-\item{root}{Sting. Assumes all fgeo package have the same root directory.}
+\item{root}{Sting. Assumes all fgeo package have the same parent directory.}
 
 \item{fgeo_pkgs}{Character string giving the names of fgeo packages.}
 }

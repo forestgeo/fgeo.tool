@@ -5,7 +5,7 @@
 #'
 #' @param pkg String giving the name of one package which dependencies you want
 #'   to find.
-#' @param root Sting. Assumes all fgeo package have the same root directory.
+#' @param root Sting. Assumes all fgeo package have the same parent directory.
 #' @param fgeo_pkgs Character string giving the names of fgeo packages.
 #'
 #' @family functions for developers.
