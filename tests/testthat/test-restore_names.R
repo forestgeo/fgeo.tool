@@ -1,4 +1,4 @@
-context("restore_names")
+context("names_restore_new_var")
 
 test_that("restore the expected names", {
   # Data does not contain the variable that will be added
@@ -9,7 +9,7 @@ test_that("restore the expected names", {
   # Add a variable
   mutated <- mutate(dfm, newvar = x + 1)
   # Restore
-  out <- restore_names(mutated, "newvar", old)
+  out <- names_restore_new_var(mutated, "newvar", old)
   expect_equal(names(out), c(old, "newvar"))
 
   # Data contains the variable that will be added
@@ -20,7 +20,7 @@ test_that("restore the expected names", {
   # Add a variable
   mutated <- mutate(dfm, newvar = x + 1)
   # Restore
-  out <- restore_names(mutated, "newvar", old)
+  out <- names_restore_new_var(mutated, "newvar", old)
   expect_equal(names(out), old)
 })
 
@@ -34,9 +34,9 @@ test_that("fails if the number of variables is wrong", {
   mutated <- mutate(dfm, newvar = x + 1)
   too_many <- mutated$too_many <- 1
 
-  expect_error(restore_names(too_many, "newvar", old))
+  expect_error(names_restore_new_var(too_many, "newvar", old))
 
   too_few <- mutated$x <- NULL
-  expect_error(restore_names(too_few, "newvar", old))
+  expect_error(names_restore_new_var(too_few, "newvar", old))
 })
 

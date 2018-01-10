@@ -86,7 +86,7 @@ add_subquad <- function(df,
       )
     )
   )
-  w_subquad <- fgeo.utils::restore_names(w_subquad, "subquadrat", old)
+  w_subquad <- names_restore_new_var(w_subquad, "subquadrat", old)
   if (!is.null(subquad_offset)) {
     recode_subquad(w_subquad, offset = subquad_offset)
   } else {

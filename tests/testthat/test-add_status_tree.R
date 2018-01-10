@@ -1,17 +1,5 @@
 context("add_status_tree")
 
-fgeo <- tribble(
-  ~CensusID, ~Tag, ~Status,
-          1,    1, "A",
-          1,    1,  "D",
-          1,    2,  "D",
-          1,    2,  "D",
-          2,    1, "A",
-          2,    1, "A",
-          2,    2, "A",
-          2,    2,  "D"
-)
-
 test_that("the tree status is dead only if one stem is dead", {
   one_dead <- tibble(
     tag = c(
@@ -81,4 +69,40 @@ test_that("warns if the status is invalid", {
   )
   expect_warning(add_status_tree(.df))
   expect_silent(add_status_tree(.df, "dead", "alive"))
+})
+
+
+
+
+
+
+
+
+
+
+test_that("handles names as in viewfull (vf) and census (cns) tables", {
+  vf <- tibble::tribble(
+    ~CensusID, ~Tag, ~Status,
+                1,    2,  "A",
+                2,    2,  "D"
+  )
+  expect_silent(add_status_tree(vf))
+
+  cns <- tibble::tribble(
+    ~CensusID, ~tag, ~status,
+                1,    2,  "A",
+                2,    2,  "D"
+  )
+  expect_silent(add_status_tree(cns))
+})
+
+test_that("names of data are equal in input and output, except status_tree", {
+  cns <- tibble::tribble(
+    ~CensusID, ~tag, ~status,
+                1,    2,  "A",
+                2,    2,  "D"
+  )
+  nms_in <- names(cns)
+  nms_out <- names(add_status_tree(cns))
+  expect_identical(nms_in, nms_out[1:3])
 })

@@ -25,5 +25,6 @@ exists_in_pkg("cars", "datasets")
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}},
   \code{\link{fgeo_package_deps}},
-  \code{\link{restore_names}}
+  \code{\link{names_lowercase}},
+  \code{\link{names_restore_new_var}}
 }

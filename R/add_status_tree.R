@@ -36,7 +36,7 @@ add_status_tree <- function(x, status_a = "A", status_d = "D") {
       status_a
     )
   )
-  restore_names(ungroup(mut), "status_tree", old)
+  names_restore_new_var(ungroup(mut), "status_tree", old)
 }
 
 check_add_status_tree <- function(x, status_d, status_a) {

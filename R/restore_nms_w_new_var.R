@@ -11,6 +11,12 @@
 #'
 #' The length of `x` must equal the number of names in old_nms, or that + 1".
 #'
+#' [names_restore_new_var()] is similar to [names_restore()] but specifically
+#' targets dataframes that have been mutated with [dplyr::mutate()].
+#' [dplyr::mutate()] drops attributes
+#' (https://github.com/tidyverse/dplyr/issues/1984), which makes it
+#' [names_restore()] useless. attributes.
+#'
 #' @param x A dataframe.
 #' @param new_var The name of a single new variable added to `x`.
 #' @param old_nms A vector containing the old names of `x`.
@@ -29,7 +35,7 @@
 #' # Add a variable
 #' mutated <- dplyr::mutate(dfm, newvar = x + 1)
 #' # Restore
-#' restore_names(mutated, "newvar", old)
+#' names_restore_new_var(mutated, "newvar", old)
 #'
 #' # Data contains the variable that will be added
 #' dfm <- data.frame(X = 1, Y = "a", newvar = "2")
@@ -39,8 +45,8 @@
 #' # Add a variable
 #' mutated <- dplyr::mutate(dfm, newvar = x + 1)
 #' # Restore
-#' restore_names(mutated, "newvar", old)
-restore_names <- function(x, new_var, old_nms) {
+#' names_restore_new_var(mutated, "newvar", old)
+names_restore_new_var <- function(x, new_var, old_nms) {
   if (!any(length(x) == length(old_nms), length(x) == length(old_nms) + 1)) {
     stop(
       "The length of `x` must equal the number of names in old_nms, or that + 1"

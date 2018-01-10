@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if an object contains specific names. — check_crucial_names â€¢ fgeo.utils</title>
+<title>Comparing two dataframes, How many names differ only in case? — nms_minus_lower_nms â€¢ fgeo.utils</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -86,48 +86,42 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if an object contains specific names.</h1>
+    <h1>Comparing two dataframes, How many names differ only in case?</h1>
     </div>
 
     
-    <p>Check if an object contains specific names.</p>
+    <p>Comparing two dataframes, How many names differ only in case?</p>
     
 
-    <pre class="usage"><span class='fu'>check_crucial_names</span>(<span class='no'>x</span>, <span class='no'>nms</span>)</pre>
+    <pre class="usage"><span class='fu'>nms_minus_lower_nms</span>(<span class='no'>table1</span>, <span class='no'>table2</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A named object.</p></td>
+      <th>table1</th>
+      <td><p>A dataframe</p></td>
     </tr>
     <tr>
-      <th>nms</th>
-      <td><p>String; names expected to be found in <code>x</code>.</p></td>
+      <th>table2</th>
+      <td><p>A dataframe</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible <code>x</code>, or an error with informative message.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>Other functions to check inputs.: <code><a href='check_unique.html'>check_unique</a></code></p>
-<p>Other functions for developers.: <code><a href='check_unique.html'>check_unique</a></code>,
-  <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
-  <code><a href='fgeo_package_deps.html'>fgeo_package_deps</a></code>,
-  <code>names_lowercase</code>,
-  <code>names_restore_new_var</code></p>
+    <p>An number indicating how many names are different only in their case.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>check_crucial_names</span>(<span class='no'>v</span>, <span class='st'>"x"</span>)
-
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>check_crucial_names</span>(<span class='no'>dfm</span>, <span class='st'>"x"</span>)</div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>yosemite</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/yosemite/topics/ViewFullTable_yosemite'>ViewFullTable_yosemite</a></span>
+<span class='no'>stem</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>yosemite</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/yosemite/topics/yosemite_X-hash-_lao'>yosemite_s1_lao</a></span>
+<span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>yosemite</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/yosemite/topics/yosemite_X-hash-_lao'>yosemite_f1_lao</a></span>
+<span class='fu'>nms_minus_lower_nms</span>(<span class='no'>stem</span>, <span class='no'>vft</span>)
+<span class='fu'>nms_minus_lower_nms</span>(<span class='no'>vft</span>, <span class='no'>stem</span>)
+<span class='fu'>nms_minus_lower_nms</span>(<span class='no'>stem</span>, <span class='no'>tree</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -135,8 +129,6 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

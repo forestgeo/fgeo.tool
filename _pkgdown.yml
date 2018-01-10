@@ -72,4 +72,6 @@ reference:
     - collapse
     - exists_in_pkg
     - fgeo_package_deps
-    - restore_names
+    - names_restore_new_var
+    - names_lowercase
+    - names_restore
