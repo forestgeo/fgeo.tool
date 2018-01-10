@@ -23,7 +23,7 @@ fgeo_package_deps <- function(pkg,
                               fgeo_pkgs = c(
                                 "bciex",
                                 "fgeo.abundance",
-                                # "fgeo.tool",
+                                "fgeo.tool",
                                 "fgeo.map",
                                 "fgeo"
                               )) {
