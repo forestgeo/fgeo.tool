@@ -1,9 +1,4 @@
-# xxx test
-# xxx write an s3 generic that checks the class of each table (vft, cns, and expects variables accordingly)
-# xxx document
-
-
-library(fgeo.utils)
+library(fgeo.tool)
 
 # Filter by the status of each stem (wood = "stem") -----------------------
 

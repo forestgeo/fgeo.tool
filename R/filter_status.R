@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' library(dplyr)
-#' library(fgeo.utils)
+#' library(fgeo.tool)
 #'
 #' # Filter by the status of each stem (wood = "stem") -----------------------
 #'

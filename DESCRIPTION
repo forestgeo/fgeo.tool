@@ -1,14 +1,14 @@
-Package: fgeo.utils
+Package: fgeo.tool
 Title: Utility Tools for ForestGEO Packages
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("Mauro", "Lepore", , "leporem@si.edu", role = c("aut", "ctr", "cre")),
     person("CTFS-ForestGEO", , , "ForestGEO@si.edu", role = c("cph", "fnd"))
   )
 Description: Utility tools for forestgeo packages.
 License: GPL-3
-URL: https://github.com/forestgeo/fgeo.utils
-BugReports: https://github.com/forestgeo/fgeo.utils/issues
+URL: https://github.com/forestgeo/fgeo.tool
+BugReports: https://github.com/forestgeo/fgeo.tool/issues
 Depends: 
     R (>= 3.1.2)
 Imports: 

@@ -35,7 +35,7 @@ on the status of its stems see \code{\link[=add_status_tree]{add_status_tree()}}
 }
 \examples{
 library(dplyr)
-library(fgeo.utils)
+library(fgeo.tool)
 
 # Filter by the status of each stem (wood = "stem") -----------------------
 

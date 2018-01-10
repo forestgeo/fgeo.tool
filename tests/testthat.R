@@ -1,4 +1,4 @@
 library(testthat)
-library(fgeo.utils)
+library(fgeo.tool)
 
-test_check("fgeo.utils")
+test_check("fgeo.tool")

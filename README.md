@@ -1,20 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-fgeo.utils: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
-================================================================================================================
+fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
+===============================================================================================================
 
-[![Travis build status](https://travis-ci.org/forestgeo/fgeo.utils.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.utils) [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.utils/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.utils?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/fgeo.utils)](https://cran.r-project.org/package=fgeo.utils)
+[![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool) [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 
 Installation
 ------------
 
-You can install fgeo.utils from github with:
+You can install fgeo.tool from github with:
 
     # install.packages("remotes")
-    remotes::install_github("forestgeo/fgeo.utils")
+    remotes::install_github("forestgeo/fgeo.tool")
 
 ``` r
-library(fgeo.utils)
+library(fgeo.tool)
 ```
 
 Example
@@ -146,7 +146,7 @@ dplyr::filter(
 #> 3     2.00  2.00 alive
 ```
 
-You can combine **fgeo.utils** with **dplyr**.
+You can combine **fgeo.tool** with **dplyr**.
 
 ``` r
 edited <- add_status_tree(top(df, CensusID, -1))

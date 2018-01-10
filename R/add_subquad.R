@@ -48,7 +48,7 @@ add_subquad <- function(df,
   stopifnot(is.data.frame(df))
   old <- names(df)
   df <- rlang::set_names(df, tolower)
-  fgeo.utils::check_crucial_names(df, c("qx", "qy"))
+  check_crucial_names(df, c("qx", "qy"))
   check_subquad_dims(
     df = df,
     x_q = x_q, y_q = y_q, x_sq = x_sq, y_sq = y_sq,
