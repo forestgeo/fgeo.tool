@@ -1,6 +1,7 @@
 # fgeo.tool 0.0.0.9002
 
 * Add functions to deal with datasets with same variables but different names.
+* Add `str_suffix_match()`.
 
 # fgeo.tool 0.0.0.9001
 
