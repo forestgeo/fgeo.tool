@@ -61,7 +61,11 @@ reference:
     - stem_not_dead
     - top
 
-  - title: Manipulate data sets
+  - title: Manipulate vectors
+    contents:
+    - str_suffix_match
+
+  - title: Manipulate dataframes
     contents:
     - recode_subquad
 
