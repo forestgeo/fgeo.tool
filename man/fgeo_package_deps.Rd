@@ -5,7 +5,7 @@
 \title{Find fgeo packages that depend on a given package.}
 \usage{
 fgeo_package_deps(pkg, root = "../", fgeo_pkgs = c("bciex",
-  "fgeo.abundance", "fgeo.map", "fgeo"))
+  "fgeo.abundance", "fgeo.tool", "fgeo.map", "fgeo"))
 }
 \arguments{
 \item{pkg}{String giving the name of one package which dependencies you want

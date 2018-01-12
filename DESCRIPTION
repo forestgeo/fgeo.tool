@@ -1,6 +1,6 @@
 Package: fgeo.tool
 Title: Utility Tools for ForestGEO Packages
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: c(
     person("Mauro", "Lepore", , "leporem@si.edu", role = c("aut", "ctr", "cre")),
     person("CTFS-ForestGEO", , , "ForestGEO@si.edu", role = c("cph", "fnd"))

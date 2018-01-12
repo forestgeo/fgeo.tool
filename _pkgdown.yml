@@ -75,3 +75,4 @@ reference:
     - names_restore_new_var
     - names_lowercase
     - names_restore
+    - names_anycase

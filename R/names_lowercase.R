@@ -49,3 +49,23 @@ names_restore <- function(x) {
   names(x) <- attr(x, "names_old")
   x
 }
+
+#' Find a name exactly matching a string but regardless of case.
+#'
+#' @param x A named object.
+#' @param nm A string to match names exactly but regardless of case.
+#'
+#' @return A string of the name that was found in `names(x)`.
+#' @export
+#'
+#' @examples
+#' v <- c(a = 1, B = 1)
+#' names_anycase(v, "b")
+#' 
+#' dfm <- data.frame(a = 1, B = 1)
+#' names_anycase(dfm, "b")
+names_anycase <- function(x, nm) {
+  has_nms <- !is.null(attr(x, "names"))
+  stopifnot(has_nms, is.character(nm))
+  names(x)[which(nm  ==  tolower(names(x)))]
+}
