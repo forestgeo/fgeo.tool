@@ -10,6 +10,11 @@ test_that("converts as the equivalent funciton from the CFTSR Package", {
   expected <- as_tibble(gxgy_to_lxly(x$gx, x$gy, 20, c(1000, 500)))
   expect_equal(actual, expected)
 
+  w_qxqy <- suppressMessages(add_var(x, var = "qxqy"))
+  actual <- select(w_qxqy, QX, QY)
+  expected <- as_tibble(gxgy_to_qxqy(x$gx, x$gy, 20, c(1000, 500)))
+  expect_equal(actual, expected)
+  
   w_rowcol <- suppressMessages(add_var(x, var = "rowcol"))
   actual <- select(w_rowcol, row, col)
   expected <- as_tibble(gxgy_to_rowcol(x$gx, x$gy, 20, c(1000, 500)))

@@ -25,6 +25,8 @@
 #' add_var(x, var = "lxly")
 #' # same
 #' add_lxly(x)
+#' 
+#' add_qxqy(x)
 #'
 #' add_index(x)
 #'
@@ -53,6 +55,11 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
     return(tibble::add_column(x, lx = lxly$lx, ly = lxly$ly))
   }
 
+  if (var == "qxqy") {
+    lxly <- gxgy_to_lxly(x$gx, x$gy, gridsize = gridsize, plotdim = plotdim)
+    return(tibble::add_column(x, QX = lxly$lx, QY = lxly$ly))
+  }
+
   if (var == "index") {
     index <- gxgy_to_index(x$gx, x$gy, gridsize = gridsize, plotdim = plotdim)
     return(tibble::add_column(x, index = index))
@@ -73,6 +80,12 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
 #' @export
 add_lxly <- function(x, gridsize = 20, plotdim = NULL) {
   add_var(x, var = "lxly", gridsize = gridsize, plotdim = plotdim)
+}
+
+#' @rdname add_var
+#' @export
+add_qxqy <- function(x, gridsize = 20, plotdim = NULL) {
+  add_var(x, var = "qxqy", gridsize = gridsize, plotdim = plotdim)
 }
 
 #' @rdname add_var
@@ -125,7 +138,7 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
   stopifnot(all(x$gy >= 0))
 
   stopifnot(!missing(var))
-  stopifnot(var %in% c("lxly", "rowcol", "index", "hectindex"))
+  stopifnot(var %in% c("lxly", "qxqy", "rowcol", "index", "hectindex"))
 
   stopifnot(is.numeric(gridsize))
   if (!is.null(plotdim)) stopifnot(is.numeric(plotdim))

@@ -131,6 +131,15 @@ gxgy_to_lxly <- function(gx, gy, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
+#' This functions didn't exist in the original CTFS R Package. Added for
+#' consistency. 
+#' @keywords internal
+gxgy_to_qxqy <- function(gx, gy, gridsize, plotdim) {
+  lxly <- gxgy_to_lxly(gx = gx, gy = gy, gridsize = gridsize, plotdim = plotdim)
+  dplyr::rename(lxly, QX = .data$lx, QY = .data$ly)
+}
+
+#' @rdname from_var_to_var
 #' @keywords internal
 gxgy_to_rowcol <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
