@@ -3,6 +3,7 @@
 \name{add_var}
 \alias{add_var}
 \alias{add_lxly}
+\alias{add_qxqy}
 \alias{add_index}
 \alias{add_rowcol}
 \alias{add_hectindex}
@@ -12,6 +13,8 @@
 add_var(x, var, gridsize = 20, plotdim = NULL)
 
 add_lxly(x, gridsize = 20, plotdim = NULL)
+
+add_qxqy(x, gridsize = 20, plotdim = NULL)
 
 add_index(x, gridsize = 20, plotdim = NULL)
 
@@ -50,6 +53,8 @@ x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
 add_var(x, var = "lxly")
 # same
 add_lxly(x)
+
+add_qxqy(x)
 
 add_index(x)
 

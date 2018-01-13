@@ -97,6 +97,8 @@
 
 <span class='fu'>add_lxly</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
+<span class='fu'>add_qxqy</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
 <span class='fu'>add_index</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>add_rowcol</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
@@ -162,6 +164,14 @@ variable(s) <code>var</code>.</p>
 <span class='fu'>add_lxly</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span>
 #&gt; <span class='message'>  * If this guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
 #&gt;       gx    gy    lx    ly
+#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1    0     0     0    0   
+#&gt; 2   50.0  25.0  10.0  5.00
+#&gt; 3 1000   500    19.9 19.9 
+#&gt; 4 1000   500    NA   NA   </div><div class='input'>
+<span class='fu'>add_qxqy</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span>
+#&gt; <span class='message'>  * If this guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
+#&gt;       gx    gy    QX    QY
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 #&gt; 1    0     0     0    0   
 #&gt; 2   50.0  25.0  10.0  5.00
