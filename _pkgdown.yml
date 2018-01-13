@@ -80,3 +80,4 @@ reference:
     - names_lowercase
     - names_restore
     - names_anycase
+    - guess_plotdim
