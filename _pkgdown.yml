@@ -74,10 +74,9 @@ reference:
     desc: These functions mainly target developers
     contents:
     - starts_with("check")
-    - collapse
     - exists_in_pkg
     - fgeo_package_deps
-    - names_restore_new_var
-    - names_lowercase
-    - names_restore
+    - nms_restore_newvar
+    - nms_lowercase
+    - nms_restore
     - guess_plotdim

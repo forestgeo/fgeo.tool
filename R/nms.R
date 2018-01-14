@@ -1,3 +1,57 @@
+#' Lower and restore names.
+#'
+#' These functions are useful together, to lowercase names, then to do something
+#' (as long as attributes are preserved -- see section warning), and then
+#' restore the original names.
+#'
+#' @section Warning:
+#' [nms_restore()] is similar to [nms_restore_newvar()] but
+#' [nms_restore()] is necesary if the data is mutated with [dplyr::mutate()]:
+#' [dplyr::mutate()] drops attributes
+#' (https://github.com/tidyverse/dplyr/issues/1984), which makes it
+#' [nms_restore()] useless. attributes.
+#'
+#' @param x A named object.
+#'
+#' @family functions for developers.
+#'
+#' @return
+#' * `nms_lowercase()` Returns the object `x` with lowercase names
+#' * `nms_restore()` Returns the object `x` with original (restored) names.
+#' @export
+#'
+#' @examples
+#' cns <- tibble::tibble(CensusID = 1, status = "A")
+#' original <- cns
+#' original
+#'
+#' lowered <- nms_lowercase(cns)
+#' lowered
+#' attr(lowered, "names_old")
+#'
+#' back_to_original <- nms_restore(lowered)
+#' back_to_original
+nms_lowercase <- function(x) {
+  is_not_named <- is.null(attr(x, "names"))
+  if (is_not_named) {stop("`x` must be named")}
+
+  attr(x, "names_old") <- names(x)
+  x <- rlang::set_names(x, tolower)
+  x
+}
+
+#' @name nms_lowercase
+#' @export
+nms_restore <- function(x) {
+  x_has_attr_names_old <- !is.null(attr(x, "names_old"))
+  stopifnot(x_has_attr_names_old)
+
+  names(x) <- attr(x, "names_old")
+  x
+}
+
+
+
 #' Restore the names of a dataframe to which a new variable has been added.
 #'
 #' This function helps to develop functions that work with both ViewFullTables
@@ -52,7 +106,7 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
       "The length of `x` must equal the number of names in old_nms, or that + 1"
     )
   }
-
+  
   if (any(grepl(new_var, old_nms))) {
     rlang::set_names(x, old_nms)
   } else {
