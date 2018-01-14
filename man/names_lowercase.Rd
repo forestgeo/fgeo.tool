@@ -3,12 +3,12 @@
 \name{names_lowercase}
 \alias{names_lowercase}
 \alias{names_lowercase}
-\alias{names_restore}
+\alias{nms_restore}
 \title{Lower and restore names.}
 \usage{
 names_lowercase(x)
 
-names_restore(x)
+nms_restore(x)
 }
 \arguments{
 \item{x}{A named object.}
@@ -16,7 +16,7 @@ names_restore(x)
 \value{
 \itemize{
 \item \code{names_lowercase()} Returns the object \code{x} with lowercase names
-\item \code{names_restore()} Returns the object \code{x} with original (restored) names.
+\item \code{nms_restore()} Returns the object \code{x} with original (restored) names.
 }
 }
 \description{
@@ -26,11 +26,11 @@ restore the original names.
 }
 \section{Warning}{
 
-\code{\link[=names_restore]{names_restore()}} is similar to \code{\link[=names_restore_new_var]{names_restore_new_var()}} but
-\code{\link[=names_restore]{names_restore()}} is necesary if the data is mutated with \code{\link[dplyr:mutate]{dplyr::mutate()}}:
+\code{\link[=nms_restore]{nms_restore()}} is similar to \code{\link[=nms_restore_newvar]{nms_restore_newvar()}} but
+\code{\link[=nms_restore]{nms_restore()}} is necesary if the data is mutated with \code{\link[dplyr:mutate]{dplyr::mutate()}}:
 \code{\link[dplyr:mutate]{dplyr::mutate()}} drops attributes
 (https://github.com/tidyverse/dplyr/issues/1984), which makes it
-\code{\link[=names_restore]{names_restore()}} useless. attributes.
+\code{\link[=nms_restore]{nms_restore()}} useless. attributes.
 }
 
 \examples{
@@ -42,12 +42,12 @@ lowered <- names_lowercase(cns)
 lowered
 attr(lowered, "names_old")
 
-back_to_original <- names_restore(lowered)
+back_to_original <- nms_restore(lowered)
 back_to_original
 }
 \seealso{
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
   \code{\link{fgeo_package_deps}},
-  \code{\link{names_restore_new_var}}
+  \code{\link{nms_restore_newvar}}
 }

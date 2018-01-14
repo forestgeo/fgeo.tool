@@ -8,3 +8,4 @@
 ^docs$
 ^man-roxygen$
 ^tmp\.R$
+^inst/useless$

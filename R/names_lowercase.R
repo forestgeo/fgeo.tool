@@ -5,11 +5,11 @@
 #' restore the original names.
 #'
 #' @section Warning:
-#' [names_restore()] is similar to [names_restore_new_var()] but
-#' [names_restore()] is necesary if the data is mutated with [dplyr::mutate()]:
+#' [nms_restore()] is similar to [nms_restore_newvar()] but
+#' [nms_restore()] is necesary if the data is mutated with [dplyr::mutate()]:
 #' [dplyr::mutate()] drops attributes
 #' (https://github.com/tidyverse/dplyr/issues/1984), which makes it
-#' [names_restore()] useless. attributes.
+#' [nms_restore()] useless. attributes.
 #'
 #' @param x A named object.
 #'
@@ -17,7 +17,7 @@
 #'
 #' @return
 #' * `names_lowercase()` Returns the object `x` with lowercase names
-#' * `names_restore()` Returns the object `x` with original (restored) names.
+#' * `nms_restore()` Returns the object `x` with original (restored) names.
 #' @export
 #'
 #' @examples
@@ -29,7 +29,7 @@
 #' lowered
 #' attr(lowered, "names_old")
 #'
-#' back_to_original <- names_restore(lowered)
+#' back_to_original <- nms_restore(lowered)
 #' back_to_original
 names_lowercase <- function(x) {
   is_not_named <- is.null(attr(x, "names"))
@@ -42,30 +42,10 @@ names_lowercase <- function(x) {
 
 #' @name names_lowercase
 #' @export
-names_restore <- function(x) {
+nms_restore <- function(x) {
   x_has_attr_names_old <- !is.null(attr(x, "names_old"))
   stopifnot(x_has_attr_names_old)
 
   names(x) <- attr(x, "names_old")
   x
-}
-
-#' Find a name exactly matching a string but regardless of case.
-#'
-#' @param x A named object.
-#' @param nm A string to match names exactly but regardless of case.
-#'
-#' @return A string of the name that was found in `names(x)`.
-#' @export
-#'
-#' @examples
-#' v <- c(a = 1, B = 1)
-#' names_anycase(v, "b")
-#' 
-#' dfm <- data.frame(a = 1, B = 1)
-#' names_anycase(dfm, "b")
-names_anycase <- function(x, nm) {
-  has_nms <- !is.null(attr(x, "names"))
-  stopifnot(has_nms, is.character(nm))
-  names(x)[which(nm  ==  tolower(names(x)))]
 }

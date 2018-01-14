@@ -6,7 +6,7 @@ test_that("errs with wrong input", {
     names_lowercase(1)
   )
   expect_error(
-    names_restore(data.frame(a = 1))
+    nms_restore(data.frame(a = 1))
   )
 })
 
@@ -29,11 +29,11 @@ test_that("returns as expected", {
   )
 })
 
-context("names_restore")
+context("nms_restore")
 
 test_that("reverses the effect of names_lowercase()", {
   cns <- tibble::tibble(CensusID = 1, status = "A")
   original <- cns %>% names()
-  forth_and_back <- cns %>% names_lowercase() %>% names_restore()
+  forth_and_back <- cns %>% names_lowercase() %>% nms_restore()
   expect_identical(original, names(forth_and_back))
 })

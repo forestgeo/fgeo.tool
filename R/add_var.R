@@ -170,7 +170,7 @@ guess_plotdim <- function(x, accuracy = 50) {
   guess <- unname(guess)
 }
 guess_max <- function(x, ...) {
-  xmax <- max(x, na.rm = TRUE)
+  xmax <- max0(x)
   plyr::round_any(xmax, f = ceiling, ...)
 }
 

@@ -4,7 +4,7 @@
 \alias{collapse}
 \title{Collapse a string with commas.}
 \usage{
-collapse(..., collapse = ", ")
+collapse(...)
 }
 \description{
 Shortcut commonly used in messages, warnings and errors.

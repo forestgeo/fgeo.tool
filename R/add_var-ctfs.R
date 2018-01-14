@@ -4,15 +4,16 @@
 #' but these versions are stricter. The main differences are these:
 #' * names use "_" not ".".
 #' * argument gridsize defaults to missing to force the user to provide it.
-#' * If the argument `plotdim` is missing from functions `gxgy_*()`, its value
+#' * If the argument `plotdim` is missing from functions `gxgy_fun()`, its value
 #'   will be guessed and notified.
 #'
 #' Best is to avoid these functions because some of them output a vector and
 #' others output a dataframe. The recomended alternative to all these functions
 #' is the wrapper [add_var()], which consistently inputs and outputs a
 #' dataframe, and is formally tested.
-#'
-#' @keywords internal
+#' 
+#' `gxgy_to_qxqy()` didn't exist in the original CTFS R Package. Added for
+#' consistency.
 #'
 #' @template gxgy
 #' @template gridsize
@@ -67,10 +68,11 @@
 #' is.vector(x)
 #' }
 #' @name from_var_to_var
+#' @noRd
 NULL
 
 #' @rdname from_var_to_var
-#' @keywords internal
+#' @noRd
 rowcol_to_index <- function(rowno, colno, gridsize, plotdim) {
   badrc <- (rowno <= 0 | colno <= 0 | rowno > plotdim[2] / gridsize |
       colno > plotdim[1] / gridsize)
@@ -85,7 +87,7 @@ rowcol_to_index <- function(rowno, colno, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @keywords internal
+#' @noRd
 index_to_rowcol <- function(index, gridsize, plotdim) {
   index <- index - 1
   badindex <- (index < 0 | index >= plotdim[1] * plotdim[2] / (gridsize ^ 2))
@@ -101,7 +103,7 @@ index_to_rowcol <- function(index, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @keywords internal
+#' @noRd
 gxgy_to_index <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx = gx, gy = gy))
@@ -118,7 +120,7 @@ gxgy_to_index <- function(gx, gy, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @keywords internal
+#' @noRd
 gxgy_to_lxly <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx, gy))
@@ -131,16 +133,14 @@ gxgy_to_lxly <- function(gx, gy, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' This functions didn't exist in the original CTFS R Package. Added for
-#' consistency. 
-#' @keywords internal
+#' @noRd
 gxgy_to_qxqy <- function(gx, gy, gridsize, plotdim) {
   lxly <- gxgy_to_lxly(gx = gx, gy = gy, gridsize = gridsize, plotdim = plotdim)
   dplyr::rename(lxly, QX = .data$lx, QY = .data$ly)
 }
 
 #' @rdname from_var_to_var
-#' @keywords internal
+#' @noRd
 gxgy_to_rowcol <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx, gy))
@@ -151,7 +151,7 @@ gxgy_to_rowcol <- function(gx, gy, gridsize, plotdim) {
 }
 
 #' @rdname from_var_to_var
-#' @keywords internal
+#' @noRd
 gxgy_to_hectindex <- function(gx, gy, plotdim) {
   if (missing(plotdim)) {
     plotdim <- guess_plotdim(tibble(gx = gx, gy = gy))

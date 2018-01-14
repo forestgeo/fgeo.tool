@@ -86,7 +86,7 @@ add_subquad <- function(df,
       )
     )
   )
-  w_subquad <- names_restore_new_var(w_subquad, "subquadrat", old)
+  w_subquad <- nms_restore_newvar(w_subquad, "subquadrat", old)
   if (!is.null(subquad_offset)) {
     recode_subquad(w_subquad, offset = subquad_offset)
   } else {
@@ -155,11 +155,6 @@ stop_if_invalid_subquad <- function(x, offset) {
       collapse(unique(x$subquadrat))
     )
   }
-}
-
-#' @noRd
-collapse <- function(...) {
-  paste0(..., collapse = ", ")
 }
 
 check_subquad_dims <- function(df, x_q, y_q, x_sq, y_sq, subquad_offset) {

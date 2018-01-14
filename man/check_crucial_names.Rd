@@ -31,5 +31,5 @@ Other functions for developers.: \code{\link{check_unique}},
   \code{\link{exists_in_pkg}},
   \code{\link{fgeo_package_deps}},
   \code{\link{names_lowercase}},
-  \code{\link{names_restore_new_var}}
+  \code{\link{nms_restore_newvar}}
 }
