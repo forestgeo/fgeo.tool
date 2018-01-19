@@ -1,5 +1,6 @@
 context("str_suffix_match")
 
+
 test_that("tags a vector", {
   actual <- str_suffix_match(
     c("tag1", "tag2"),
@@ -10,6 +11,18 @@ test_that("tags a vector", {
   expected <- c("tag1.d", "tag2")
   expect_equal(actual, expected)
 })
+
+test_that("with numeric `tag` does not abort -- only warns (#13)", {
+  expect_warning(
+    str_suffix_match(
+      as.numeric(c("000", "001")),
+      c("dead", "whatever"),
+      "dead",
+      ".d"
+    )
+  )
+})
+
 
 test_that("warns if no stem is dead", {
   expect_warning(
@@ -34,8 +47,8 @@ test_that("fails if x, status, and suffix are not character vectors", {
     c("tag1_suffix", "tag2")
   )
   
-  # Fails
-  expect_error(
+  # Warn
+  expect_warning(
     str_suffix_match(
       1,
       c("dead", "whatever"),
