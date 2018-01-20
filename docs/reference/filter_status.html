@@ -226,8 +226,8 @@ to <code>.status</code>.</p></td>
 <span class='co'># Shortcut</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>tree_not_dead</span>(<span class='no'>x</span>)
 <span class='no'>result</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 1,809 x 4
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/arrange'>arrange</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/select'>select</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 1,809 x 4
 #&gt;    tag    stemID status status_tree
 #&gt;    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;      
 #&gt;  1 000851      1 A      A          
@@ -274,8 +274,8 @@ to <code>.status</code>.</p></td>
 <span class='co'># Shortcut</span>
 <span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "alive" "dead" </div><div class='input'><span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>tree_not_dead</span>(<span class='no'>x</span>, <span class='st'>"dead"</span>)
 <span class='no'>result</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 3,853 x 4
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/arrange'>arrange</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/select'>select</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 3,853 x 4
 #&gt;    Tag    StemID Status status_tree
 #&gt;    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;      
 #&gt;  1 000002      1 alive  alive      

@@ -90,7 +90,9 @@
     </div>
 
     
-    <p>These functions wrap legacy code from the <a href='http://ctfs.si.edu/Public/CTFSRPackage/'>CTFS RPackage</a>.</p>
+    <p>These functions mostly wrap legacy code from the <a href='http://ctfs.si.edu/Public/CTFSRPackage/'>CTFS RPackage</a>. The functions
+<code>add_col_row()</code> and <code>add_col_row2()</code> differ in that the former inputs
+plot coordinates and the later inputs <code>QuadratName</code>.</p>
     
 
     <pre class="usage"><span class='fu'>add_var</span>(<span class='no'>x</span>, <span class='no'>var</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
@@ -101,11 +103,13 @@
 
 <span class='fu'>add_index</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_rowcol</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_col_row</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>add_hectindex</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
+<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+
+<span class='fu'>add_col_row2</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -116,7 +120,7 @@
     </tr>
     <tr>
       <th>var</th>
-      <td><p>A character string; either "lxly", "rowcol", "index", hectindex.</p></td>
+      <td><p>A character string; either "lxly", "colrow", "index", hectindex.</p></td>
     </tr>
     <tr>
       <th>gridsize</th>
@@ -181,13 +185,6 @@ variable(s) <code>var</code>.</p>
 #&gt; 2   50.0  25.0   52.0 
 #&gt; 3 1000   500   1250   
 #&gt; 4 1000   500     NA   </div><div class='input'>
-<span class='fu'>add_rowcol</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
-#&gt;       gx    gy   row   col
-#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    0     0    1.00  1.00
-#&gt; 2   50.0  25.0  2.00  3.00
-#&gt; 3 1000   500   25.0  50.0 
-#&gt; 4 1000   500   NA    NA   </div><div class='input'>
 <span class='fu'>add_hectindex</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
 #&gt;       gx    gy hectindex
 #&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
@@ -217,7 +214,30 @@ variable(s) <code>var</code>.</p>
 #&gt; 1    0     0   000000
 #&gt; 2   50.0  25.0 002001
 #&gt; 3 1000   500   049024
-#&gt; 4 1000   500   NANA  </div></pre>
+#&gt; 4 1000   500   NANA  </div><div class='input'>
+
+<span class='fu'>add_col_row</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
+#&gt;       gx    gy col   row  
+#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
+#&gt; 1    0     0   01    01   
+#&gt; 2   50.0  25.0 03    02   
+#&gt; 3 1000   500   50    25   
+#&gt; 4 1000   500   &lt;NA&gt;  &lt;NA&gt; </div><div class='input'>
+<span class='co'># Column and row from QuadratName</span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>QuadratName</span>,
+  <span class='st'>"0001"</span>,
+  <span class='st'>"0011"</span>,
+  <span class='st'>"0101"</span>,
+  <span class='st'>"1001"</span>
+)
+<span class='fu'>add_col_row2</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   QuadratName col   row  
+#&gt;   &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;
+#&gt; 1 0001        00    01   
+#&gt; 2 0011        00    11   
+#&gt; 3 0101        01    01   
+#&gt; 4 1001        10    01   </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

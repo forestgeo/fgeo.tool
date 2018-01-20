@@ -1,10 +1,12 @@
 #' Add columns to a dataframe.
 #'
-#' These functions wrap legacy code from the [CTFS R
-#' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
+#' These functions mostly wrap legacy code from the [CTFS R
+#' Package](http://ctfs.si.edu/Public/CTFSRPackage/). The functions 
+#' `add_col_row()` and `add_col_row2()` differ in that the former inputs 
+#' plot coordinates and the later inputs `QuadratName`.
 #'
 #' @template x_fgeo
-#' @param var A character string; either "lxly", "rowcol", "index", hectindex.
+#' @param var A character string; either "lxly", "colrow", "index", hectindex.
 #' @template gridsize
 #' @template plotdim
 #' @param start `1` or `0`, indicating how to label the first plot-column.
@@ -30,8 +32,6 @@
 #'
 #' add_index(x)
 #'
-#' add_rowcol(x)
-#'
 #' add_hectindex(x)
 #'
 #' add_quad(x)
@@ -41,6 +41,19 @@
 #' # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with an
 #' # extra trhree zeros, resulting in a total of 6 zeros.
 #' add_quad(x, start = 0, width = 3)
+#'
+#' 
+#' add_col_row(x)
+#' 
+#' # Column and row from QuadratName
+#' x <- tibble::tribble(
+#'   ~QuadratName,
+#'   "0001",
+#'   "0011",
+#'   "0101",
+#'   "1001"
+#' )
+#' add_col_row2(x)
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   check_add_var(x = x, var = var, gridsize = gridsize, plotdim = plotdim)
 
@@ -65,9 +78,14 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
     return(tibble::add_column(x, index = index))
   }
 
-  if (var == "rowcol") {
+  if (var == "colrow") {
     rowcol <- gxgy_to_rowcol(x$gx, x$gy, gridsize = gridsize, plotdim = plotdim)
-    return(tibble::add_column(x, row = rowcol$row, col = rowcol$col))
+    x <- tibble::add_column(
+      x, 
+      col = stringr::str_pad(rowcol$col, width = 2, pad = 0), 
+      row = stringr::str_pad(rowcol$row, width = 2, pad = 0)
+    )
+    return(x)
   }
 
   if (var == "hectindex") {
@@ -96,8 +114,8 @@ add_index <- function(x, gridsize = 20, plotdim = NULL) {
 
 #' @rdname add_var
 #' @export
-add_rowcol <- function(x, gridsize = 20, plotdim = NULL) {
-  add_var(x, var = "rowcol", gridsize = gridsize, plotdim = plotdim)
+add_col_row <- function(x, gridsize = 20, plotdim = NULL) {
+  add_var(x, var = "colrow", gridsize = gridsize, plotdim = plotdim)
 }
 
 #' @rdname add_var
@@ -111,10 +129,10 @@ add_hectindex <- function(x, gridsize = 20, plotdim = NULL) {
 add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
   stopifnot(start %in% c(0, 1))
 
-  w_rowcol <- add_var(x, "rowcol", gridsize = gridsize, plotdim = plotdim)
+  w_rowcol <- add_var(x, "colrow", gridsize = gridsize, plotdim = plotdim)
   if (start == 0) {
-    w_rowcol$col <- w_rowcol$col - 1
-    w_rowcol$row <- w_rowcol$row - 1
+    w_rowcol$col <- as.numeric(w_rowcol$col) - 1
+    w_rowcol$row <- as.numeric(w_rowcol$row) - 1
   }
   w_rowcol <- dplyr::mutate(
     w_rowcol,
@@ -138,12 +156,41 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
   stopifnot(all(x$gy >= 0))
 
   stopifnot(!missing(var))
-  stopifnot(var %in% c("lxly", "qxqy", "rowcol", "index", "hectindex"))
+  stopifnot(var %in% c("lxly", "qxqy", "colrow", "index", "hectindex"))
 
   stopifnot(is.numeric(gridsize))
   if (!is.null(plotdim)) stopifnot(is.numeric(plotdim))
   if (!is.null(plotdim)) stopifnot(length(plotdim) == 2)
 }
+
+#' @rdname add_var
+#' @export
+add_col_row2 <- function(x) {
+  x <- add_var_from_quadratname(x, "^(..)..$", "col")
+  x <- add_var_from_quadratname(x, "^..(..)$", "row")
+  x
+}
+
+add_var_from_quadratname <- function(x, pattern, new_var) {
+  if (!is.data.frame(x)) {
+    rlang::abort("`x` must be a data.frame")
+  }
+  old_nms <- names(x)
+  x <- rlang::set_names(x, tolower)
+  fgeo.tool::check_crucial_names(x, "quadratname")
+  
+  x$added_var <- stringr::str_replace(x$quadratname, pattern, "\\1")
+  names(x)[grepl("added_var", names(x))] <- new_var
+  fgeo.tool::nms_restore_newvar(x, new_var = new_var, old_nms = old_nms)
+}
+
+
+
+
+
+
+
+
 
 #' Guess plot dimensions.
 #'

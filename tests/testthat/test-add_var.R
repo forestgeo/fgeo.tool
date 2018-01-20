@@ -15,8 +15,10 @@ test_that("converts as the equivalent funciton from the CFTSR Package", {
   expected <- as_tibble(gxgy_to_qxqy(x$gx, x$gy, 20, c(1000, 500)))
   expect_equal(actual, expected)
   
-  w_rowcol <- suppressMessages(add_var(x, var = "rowcol"))
-  actual <- select(w_rowcol, row, col)
+  w_colrow <- suppressMessages(
+    add_var(x, var = "colrow")
+  )
+  actual <- select(w_colrow, row, col) %>% purrr::map_df(as.numeric)
   expected <- as_tibble(gxgy_to_rowcol(x$gx, x$gy, 20, c(1000, 500)))
   expect_equal(actual, expected)
 
@@ -63,3 +65,32 @@ test_that("outputs equal to ctfs::gxgy.to.quad()", {
   expect_equal(now, ctfs)
 })
 
+
+
+context("add_col_row2")
+
+x <- tibble::tribble(
+  ~QuadratName,
+  "0001",
+  "0011",
+  "0101",
+  "1001"
+)
+x
+
+test_that("adds expected names", {
+  expect_true(
+    all(
+      c("col", "row")  %in%  names(add_col_row2(x))
+    )
+  )
+})
+
+test_that("with wrong inputs aborts", {
+  expect_error(
+    add_col_row2(1)
+  )
+  expect_error(
+    add_col_row2(dplyr::rename(x, odd_nm = QuadratName))
+  )
+})

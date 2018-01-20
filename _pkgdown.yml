@@ -50,7 +50,8 @@ reference:
     - add_lxly
     - add_qxqy
     - add_index
-    - add_rowcol
+    - add_col_row
+    - add_col_row2
     - add_hectindex
     - add_quad
 

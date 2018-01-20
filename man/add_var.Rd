@@ -5,9 +5,10 @@
 \alias{add_lxly}
 \alias{add_qxqy}
 \alias{add_index}
-\alias{add_rowcol}
+\alias{add_col_row}
 \alias{add_hectindex}
 \alias{add_quad}
+\alias{add_col_row2}
 \title{Add columns to a dataframe.}
 \usage{
 add_var(x, var, gridsize = 20, plotdim = NULL)
@@ -18,16 +19,18 @@ add_qxqy(x, gridsize = 20, plotdim = NULL)
 
 add_index(x, gridsize = 20, plotdim = NULL)
 
-add_rowcol(x, gridsize = 20, plotdim = NULL)
+add_col_row(x, gridsize = 20, plotdim = NULL)
 
 add_hectindex(x, gridsize = 20, plotdim = NULL)
 
 add_quad(x, gridsize = 20, plotdim = NULL, start = 1, width = 2)
+
+add_col_row2(x)
 }
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
 
-\item{var}{A character string; either "lxly", "rowcol", "index", hectindex.}
+\item{var}{A character string; either "lxly", "colrow", "index", hectindex.}
 
 \item{gridsize}{The gridsize of the census plot (commonly 20 m).}
 
@@ -44,7 +47,9 @@ A modified version of the dataframe \code{x} with the additional
 variable(s) \code{var}.
 }
 \description{
-These functions wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS RPackage}.
+These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS RPackage}. The functions
+\code{add_col_row()} and \code{add_col_row2()} differ in that the former inputs
+plot coordinates and the later inputs \code{QuadratName}.
 }
 \examples{
 x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
@@ -58,8 +63,6 @@ add_qxqy(x)
 
 add_index(x)
 
-add_rowcol(x)
-
 add_hectindex(x)
 
 add_quad(x)
@@ -69,6 +72,19 @@ add_quad(x, start = 0)
 # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with an
 # extra trhree zeros, resulting in a total of 6 zeros.
 add_quad(x, start = 0, width = 3)
+
+
+add_col_row(x)
+
+# Column and row from QuadratName
+x <- tibble::tribble(
+  ~QuadratName,
+  "0001",
+  "0011",
+  "0101",
+  "1001"
+)
+add_col_row2(x)
 }
 \seealso{
 \code{\link[stringr:str_pad]{stringr::str_pad()}}.
