@@ -38,14 +38,16 @@ str_suffix_match <- function(string, to_match, .match, suffix) {
 }
 
 check_str_suffix_match <- function(string, to_match, .match, suffix) {
+  if (!is.character(string)) {
+    rlang::warn("`string` is not of class character")
+  }
   not_all_inputs_are_characters <- !all(
-    is.character(string),
     is.character(to_match),
     is.character(.match),
     is.character(suffix)
   )
   if (not_all_inputs_are_characters) {
-    stop("Inputs must be characters", call. = FALSE)
+    rlang::abort("Inputs must becharacters")
   } else {
     invisible(string)
   }
