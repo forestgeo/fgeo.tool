@@ -69,6 +69,7 @@ reference:
 
   - title: Manipulate dataframes
     contents:
+    - collapse_censusid
     - recode_subquad
 
   - title: Miscellaneous for developers

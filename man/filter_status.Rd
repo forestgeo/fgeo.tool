@@ -154,6 +154,6 @@ table(result$status_tree)
 \seealso{
 \code{\link[=add_status_tree]{add_status_tree()}}.
 
-Other functions to filter dataframes.: \code{\link{rm_dead_twice}},
+Other functions to filter dataframes.: \code{\link{discard_dead_twice}},
   \code{\link{top}}
 }

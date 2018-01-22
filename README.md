@@ -51,9 +51,31 @@ Manipulate data.
 # Mutate a data set
 
 # Determine the status of each tree based on the status of its stems
-add_status_tree(df)
+df <- add_status_tree(df)
 #> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
 #>   * Valid values: alive, dead
+
+# Filter a data set
+
+# Filter from the head or tail of a variable
+top(df, Tag)
+#> # A tibble: 4 x 4
+#>   CensusID   Tag Status status_tree
+#>      <dbl> <dbl> <chr>  <chr>      
+#> 1     1.00  1.00 alive  A          
+#> 2     1.00  1.00 dead   A          
+#> 3     2.00  1.00 alive  A          
+#> 4     2.00  1.00 alive  A
+top(df, Tag, -1)
+#> # A tibble: 4 x 4
+#>   CensusID   Tag Status status_tree
+#>      <dbl> <dbl> <chr>  <chr>      
+#> 1     1.00  3.00 dead   A          
+#> 2     1.00  3.00 dead   A          
+#> 3     2.00  3.00 dead   A          
+#> 4     2.00  3.00 dead   A
+# Remove trees found dead in two or more censuses
+rm_dead_twice(df)
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
 #>       <dbl> <dbl> <chr>  <chr>      
@@ -69,37 +91,6 @@ add_status_tree(df)
 #> 10     2.00  2.00 dead   A          
 #> 11     2.00  3.00 dead   A          
 #> 12     2.00  3.00 dead   A
-
-# Filter a data set
-
-# Filter from the head or tail of a variable
-top(df, Tag)
-#> # A tibble: 4 x 3
-#>   CensusID   Tag Status
-#>      <dbl> <dbl> <chr> 
-#> 1     1.00  1.00 alive 
-#> 2     1.00  1.00 dead  
-#> 3     2.00  1.00 alive 
-#> 4     2.00  1.00 alive
-top(df, Tag, -1)
-#> # A tibble: 4 x 3
-#>   CensusID   Tag Status
-#>      <dbl> <dbl> <chr> 
-#> 1     1.00  3.00 dead  
-#> 2     1.00  3.00 dead  
-#> 3     2.00  3.00 dead  
-#> 4     2.00  3.00 dead
-# Remove trees found dead in two or more censuses
-rm_dead_twice(df)
-#> # A tibble: 6 x 4
-#>   CensusID   Tag Status status_tree
-#>      <dbl> <dbl> <chr>  <chr>      
-#> 1     1.00  1.00 alive  alive      
-#> 2     1.00  1.00 dead   alive      
-#> 3     2.00  1.00 alive  alive      
-#> 4     2.00  1.00 alive  alive      
-#> 5     2.00  2.00 alive  alive      
-#> 6     2.00  2.00 dead   alive
 ```
 
 Check inputs.
@@ -138,12 +129,12 @@ dplyr::filter(
   Tag  %in% c(1, 2),
   Status == "alive"
 )
-#> # A tibble: 3 x 3
-#>   CensusID   Tag Status
-#>      <dbl> <dbl> <chr> 
-#> 1     2.00  1.00 alive 
-#> 2     2.00  1.00 alive 
-#> 3     2.00  2.00 alive
+#> # A tibble: 3 x 4
+#>   CensusID   Tag Status status_tree
+#>      <dbl> <dbl> <chr>  <chr>      
+#> 1     2.00  1.00 alive  A          
+#> 2     2.00  1.00 alive  A          
+#> 3     2.00  2.00 alive  A
 ```
 
 You can combine **fgeo.tool** with **dplyr**.

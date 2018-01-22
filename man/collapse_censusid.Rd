@@ -7,7 +7,7 @@
 collapse_censusid(x)
 }
 \arguments{
-\item{x}{A dataframe with the variable CensusID}
+\item{x}{A dataframe -- specifically a ViewFullTable.}
 }
 \value{
 A modified version of \code{x}, most likely with less rows.
@@ -17,24 +17,22 @@ This function is useful to summarize the status history of a tree tag accross
 censuses. It is particularly useful to avoid duplicated tree tags on maps.
 }
 \examples{
-library(dplyr)
-
 x <- tibble::tribble(
   ~CensusID, ~Tag, ~Status,
-          1,    1, "alive",
-          1,    1,  "dead",
-          1,    2,  "dead",
-          1,    2,  "dead",
-          2,    1, "alive",
-          2,    1, "alive",
-          2,    2, "alive",
-          2,    2,  "dead"
+  "1",  "1", "alive",
+  "1",  "1",  "dead",
+  "1",  "2",  "dead",
+  "1",  "2",  "dead",
+  "2",  "1", "alive",
+  "2",  "1", "alive",
+  "2",  "2", "alive",
+  "2",  "2",  "dead"
 )
 
 collapse_censusid(x)
 
 with_status_tree <- fgeo.tool::add_status_tree(x, "alive", "dead")
-reduced <- unique(select(with_status_tree, -Status))
+reduced <- unique(dplyr::select(with_status_tree, -Status))
 reduced
 
 collapse_censusid(reduced)

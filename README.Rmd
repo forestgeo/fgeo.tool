@@ -67,7 +67,7 @@ Manipulate data.
 # Mutate a data set
 
 # Determine the status of each tree based on the status of its stems
-add_status_tree(df)
+df <- add_status_tree(df)
 
 # Filter a data set
 
