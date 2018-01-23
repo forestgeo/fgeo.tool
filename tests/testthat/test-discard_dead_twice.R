@@ -33,7 +33,7 @@ test_that("works with with lowercase names", {
   vft <- add_status_tree(vft, "alive", "dead")
   expect_silent(
     discard_dead_twice(
-      rlang::set_names(vft,tolower)
+      set_names(vft,tolower)
       )
   )
 })

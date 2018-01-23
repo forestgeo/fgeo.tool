@@ -36,7 +36,7 @@ nms_lowercase <- function(x) {
   if (is_not_named) {stop("`x` must be named")}
 
   attr(x, "names_old") <- names(x)
-  x <- rlang::set_names(x, tolower)
+  x <- set_names(x, tolower)
   x
 }
 
@@ -108,8 +108,8 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
   }
   
   if (any(grepl(new_var, old_nms))) {
-    rlang::set_names(x, old_nms)
+    set_names(x, old_nms)
   } else {
-    rlang::set_names(x, c(old_nms, new_var))
+    set_names(x, c(old_nms, new_var))
   }
 }

@@ -24,7 +24,7 @@ test_that("returns as expected", {
   expect_false(identical(original, lowered))
   
   expect_identical(
-    names(rlang::set_names(original, tolower)),
+    names(set_names(original, tolower)),
     names(lowered)
   )
 })
@@ -47,7 +47,7 @@ test_that("restore the expected names", {
   dfm <- data.frame(X = 1, Y = "a")
   old <- names(dfm)
   # Lower names
-  dfm <- rlang::set_names(dfm, tolower)
+  dfm <- set_names(dfm, tolower)
   # Add a variable
   mutated <- mutate(dfm, newvar = x + 1)
   # Restore
@@ -58,7 +58,7 @@ test_that("restore the expected names", {
   dfm <- data.frame(X = 1, Y = "a", newvar = "2")
   (old <- names(dfm))
   # Lower names
-  (dfm <- rlang::set_names(dfm, tolower))
+  (dfm <- set_names(dfm, tolower))
   # Add a variable
   mutated <- mutate(dfm, newvar = x + 1)
   # Restore
@@ -71,7 +71,7 @@ test_that("fails if the number of variables is wrong", {
   dfm <- data.frame(X = 1, Y = "a")
   old <- names(dfm)
   # Lower names
-  dfm <- rlang::set_names(dfm, tolower)
+  dfm <- set_names(dfm, tolower)
   # Add a variable
   mutated <- mutate(dfm, newvar = x + 1)
   too_many <- mutated$too_many <- 1

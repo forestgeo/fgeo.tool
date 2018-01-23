@@ -44,7 +44,7 @@ list_fgeo_deps <- function(root, fgeo_pkgs) {
 
 check_if_pkg_can_be_found <- function(paths, fgeo_pkgs) {
   read_attempt <- purrr::map(paths, file.exists)
-  read_attempt <- rlang::set_names(read_attempt, fgeo_pkgs)
+  read_attempt <- set_names(read_attempt, fgeo_pkgs)
   missing_pkg <- names(purrr::discard(read_attempt, isTRUE))
   if (any(read_attempt == FALSE)) {
     stop("Package(s) not found in fgeo: ", collapse(missing_pkg))

@@ -25,7 +25,7 @@
 add_status_tree <- function(x, status_a = "A", status_d = "D") {
 
   old <- names(x)
-  x <- rlang::set_names(x, tolower)
+  x <- set_names(x, tolower)
   check_add_status_tree(x, status_a = status_a, status_d = status_d)
 
   grp <- group_by(x, .data$censusid, .data$tag)

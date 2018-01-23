@@ -176,7 +176,7 @@ add_var_from_quadratname <- function(x, pattern, new_var) {
     rlang::abort("`x` must be a data.frame")
   }
   old_nms <- names(x)
-  x <- rlang::set_names(x, tolower)
+  x <- set_names(x, tolower)
   fgeo.tool::check_crucial_names(x, "quadratname")
   
   x$added_var <- stringr::str_replace(x$quadratname, pattern, "\\1")

@@ -139,7 +139,7 @@
 #' table(result$status_tree)
 filter_status <- function(x, wood, .status, exclude = FALSE) {
   old_nms <- names(x)
-  x <- rlang::set_names(x, tolower)
+  x <- set_names(x, tolower)
   check_filter_status(x = x, wood = wood, .status = .status, exclude = exclude)
 
   if (wood == "stem") {
@@ -155,7 +155,7 @@ filter_status <- function(x, wood, .status, exclude = FALSE) {
     filtered <- dplyr::filter(x, stts_var %in% .status)
   }
 
-  rlang::set_names(filtered, old_nms)
+  set_names(filtered, old_nms)
 }
 
 #' @rdname filter_status

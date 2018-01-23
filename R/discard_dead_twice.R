@@ -44,7 +44,7 @@
 #' discard_dead_twice(vft)
 discard_dead_twice <- function(vft) {
   old_nms <- names(vft)
-  vft <- rlang::set_names(vft, tolower)
+  vft <- set_names(vft, tolower)
   
   check_discard_dead_twice(vft)
 
@@ -56,7 +56,7 @@ discard_dead_twice <- function(vft) {
   )
   keep <- select(dplyr::filter(last2, .data$to_keep), -.data$to_keep)
 
-  rlang::set_names(keep, old_nms)
+  set_names(keep, old_nms)
 }
 
 check_discard_dead_twice <- function(vft) {

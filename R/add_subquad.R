@@ -45,7 +45,7 @@ add_subquad <- function(df,
                         subquad_offset = NULL) {
   stopifnot(is.data.frame(df))
   old <- names(df)
-  df <- rlang::set_names(df, tolower)
+  df <- set_names(df, tolower)
   check_crucial_names(df, c("qx", "qy"))
   check_subquad_dims(
     df = df,
