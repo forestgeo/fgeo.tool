@@ -32,6 +32,5 @@ Other functions for developers.: \code{\link{check_unique}},
   \code{\link{fgeo_package_deps}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
-  \code{\link{nms_minus_lower_nms}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms}}
 }

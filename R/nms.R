@@ -35,7 +35,7 @@
 nms_lowercase <- function(x) {
   is_not_named <- is.null(attr(x, "names"))
   if (is_not_named) {stop("`x` must be named")}
-
+  
   attr(x, "names_old") <- names(x)
   x <- set_names(x, tolower)
   x
@@ -46,7 +46,7 @@ nms_lowercase <- function(x) {
 nms_restore <- function(x) {
   x_has_attr_names_old <- !is.null(attr(x, "names_old"))
   stopifnot(x_has_attr_names_old)
-
+  
   names(x) <- attr(x, "names_old")
   x
 }
@@ -117,9 +117,6 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 }
 
 
-# Handy -------------------------------------------------------------------
-
-# Internal functions not used. Consider removing them.
 
 #' Functions to detect and extract names.
 #' 
@@ -160,16 +157,19 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 NULL
 
 #' @rdname nms
+#' @export
 nms_has_any <- function(x, ...) {
   any(nms_detect(x, ...))
 }
 
 #' @rdname nms
+#' @export
 nms_detect <- function(x, ...) {
   purrr::map_lgl(list(...), ~rlang::has_name(x, .))
 }
 
 #' @rdname nms
+#' @export
 nms_extract_all <- function(x, ...) {
   is_detected <- nms_detect(x, ...)
   nms <- unlist(list(...))
@@ -177,6 +177,7 @@ nms_extract_all <- function(x, ...) {
 }
 
 #' @rdname nms
+#' @export
 nms_extract1 <- function(x, ...) {
   extracted <- nms_extract_all(x, ...)
   if (length(extracted) == 0) {
@@ -210,6 +211,18 @@ nms_extract_anycase <- function(x, nm) {
   names(x)[which(nm  ==  tolower(names(x)))]
 }
 
+
+
+# Not exported ------------------------------------------------------------
+
+# # Examples
+# vft <- yosemite::ViewFullTable_yosemite
+# stem <- yosemite::yosemite_s1_lao
+# tree <- yosemite::yosemite_f1_lao
+# nms_minus_lower_nms(stem, vft)
+# nms_minus_lower_nms(vft, stem)
+# nms_minus_lower_nms(stem, tree)
+#
 #' Comparing two dataframes, How many names differ only in case?
 #'
 #' @param table1 A dataframe
@@ -217,17 +230,9 @@ nms_extract_anycase <- function(x, nm) {
 #'
 #' @return An number indicating how many names are different only in their case.
 #'
-#' @examples
-#' \dontrun{
-#' vft <- yosemite::ViewFullTable_yosemite
-#' stem <- yosemite::yosemite_s1_lao
-#' tree <- yosemite::yosemite_f1_lao
-#' nms_minus_lower_nms(stem, vft)
-#' nms_minus_lower_nms(vft, stem)
-#' nms_minus_lower_nms(stem, tree)
-#' }
 #' @family functions for developers.
 #' @family functions to manipulate names.
+#' @noRd
 nms_minus_lower_nms <- function(table1, table2) {
   stopifnot(is.data.frame(table1), is.data.frame(table2))
   
