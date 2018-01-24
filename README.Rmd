@@ -75,7 +75,7 @@ df <- add_status_tree(df)
 top(df, Tag)
 top(df, Tag, -1)
 # Remove trees found dead in two or more censuses
-rm_dead_twice(df)
+discard_dead_twice(df)
 ```
 
 Check inputs.

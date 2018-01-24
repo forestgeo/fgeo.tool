@@ -58,7 +58,7 @@ reference:
   - title: Filter dataframes
     contents:
     - filter_status
-    - rm_dead_twice
+    - discard_dead_twice
     - tree_not_dead
     - stem_not_dead
     - top
@@ -81,4 +81,5 @@ reference:
     - nms_restore_newvar
     - nms_lowercase
     - nms_restore
+    - nms
     - guess_plotdim

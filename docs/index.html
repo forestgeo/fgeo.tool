@@ -109,9 +109,31 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Mutate a data set</span>
 
 <span class="co"># Determine the status of each tree based on the status of its stems</span>
-<span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df)
+df &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df)
 <span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
 <span class="co">#&gt;   * Valid values: alive, dead</span>
+
+<span class="co"># Filter a data set</span>
+
+<span class="co"># Filter from the head or tail of a variable</span>
+<span class="kw"><a href="reference/top.html">top</a></span>(df, Tag)
+<span class="co">#&gt; # A tibble: 4 x 4</span>
+<span class="co">#&gt;   CensusID   Tag Status status_tree</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
+<span class="co">#&gt; 1     1.00  1.00 alive  A          </span>
+<span class="co">#&gt; 2     1.00  1.00 dead   A          </span>
+<span class="co">#&gt; 3     2.00  1.00 alive  A          </span>
+<span class="co">#&gt; 4     2.00  1.00 alive  A</span>
+<span class="kw"><a href="reference/top.html">top</a></span>(df, Tag, <span class="op">-</span><span class="dv">1</span>)
+<span class="co">#&gt; # A tibble: 4 x 4</span>
+<span class="co">#&gt;   CensusID   Tag Status status_tree</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
+<span class="co">#&gt; 1     1.00  3.00 dead   A          </span>
+<span class="co">#&gt; 2     1.00  3.00 dead   A          </span>
+<span class="co">#&gt; 3     2.00  3.00 dead   A          </span>
+<span class="co">#&gt; 4     2.00  3.00 dead   A</span>
+<span class="co"># Remove trees found dead in two or more censuses</span>
+<span class="kw"><a href="reference/discard_dead_twice.html">discard_dead_twice</a></span>(df)
 <span class="co">#&gt; # A tibble: 12 x 4</span>
 <span class="co">#&gt;    CensusID   Tag Status status_tree</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
@@ -126,38 +148,7 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <span class="co">#&gt;  9     2.00  2.00 alive  A          </span>
 <span class="co">#&gt; 10     2.00  2.00 dead   A          </span>
 <span class="co">#&gt; 11     2.00  3.00 dead   A          </span>
-<span class="co">#&gt; 12     2.00  3.00 dead   A</span>
-
-<span class="co"># Filter a data set</span>
-
-<span class="co"># Filter from the head or tail of a variable</span>
-<span class="kw"><a href="reference/top.html">top</a></span>(df, Tag)
-<span class="co">#&gt; # A tibble: 4 x 3</span>
-<span class="co">#&gt;   CensusID   Tag Status</span>
-<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1     1.00  1.00 alive </span>
-<span class="co">#&gt; 2     1.00  1.00 dead  </span>
-<span class="co">#&gt; 3     2.00  1.00 alive </span>
-<span class="co">#&gt; 4     2.00  1.00 alive</span>
-<span class="kw"><a href="reference/top.html">top</a></span>(df, Tag, <span class="op">-</span><span class="dv">1</span>)
-<span class="co">#&gt; # A tibble: 4 x 3</span>
-<span class="co">#&gt;   CensusID   Tag Status</span>
-<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1     1.00  3.00 dead  </span>
-<span class="co">#&gt; 2     1.00  3.00 dead  </span>
-<span class="co">#&gt; 3     2.00  3.00 dead  </span>
-<span class="co">#&gt; 4     2.00  3.00 dead</span>
-<span class="co"># Remove trees found dead in two or more censuses</span>
-<span class="kw"><a href="reference/rm_dead_twice.html">rm_dead_twice</a></span>(df)
-<span class="co">#&gt; # A tibble: 6 x 4</span>
-<span class="co">#&gt;   CensusID   Tag Status status_tree</span>
-<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
-<span class="co">#&gt; 1     1.00  1.00 alive  alive      </span>
-<span class="co">#&gt; 2     1.00  1.00 dead   alive      </span>
-<span class="co">#&gt; 3     2.00  1.00 alive  alive      </span>
-<span class="co">#&gt; 4     2.00  1.00 alive  alive      </span>
-<span class="co">#&gt; 5     2.00  2.00 alive  alive      </span>
-<span class="co">#&gt; 6     2.00  2.00 dead   alive</span></code></pre></div>
+<span class="co">#&gt; 12     2.00  3.00 dead   A</span></code></pre></div>
 <p>Check inputs.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Silent means success</span>
 <span class="kw"><a href="reference/check_crucial_names.html">check_crucial_names</a></span>(df, <span class="st">"Status"</span>)
@@ -182,23 +173,23 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 
-dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/filter">filter</a></span>(
+dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(
   <span class="dt">.data =</span> df,
   CensusID <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>,
   Tag  <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),
   Status <span class="op">==</span><span class="st"> "alive"</span>
 )
-<span class="co">#&gt; # A tibble: 3 x 3</span>
-<span class="co">#&gt;   CensusID   Tag Status</span>
-<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1     2.00  1.00 alive </span>
-<span class="co">#&gt; 2     2.00  1.00 alive </span>
-<span class="co">#&gt; 3     2.00  2.00 alive</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 3 x 4</span>
+<span class="co">#&gt;   CensusID   Tag Status status_tree</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
+<span class="co">#&gt; 1     2.00  1.00 alive  A          </span>
+<span class="co">#&gt; 2     2.00  1.00 alive  A          </span>
+<span class="co">#&gt; 3     2.00  2.00 alive  A</span></code></pre></div>
 <p>You can combine <strong>fgeo.tool</strong> with <strong>dplyr</strong>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/top.html">top</a></span>(df, CensusID, <span class="op">-</span><span class="dv">1</span>))
 <span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
 <span class="co">#&gt;   * Valid values: alive, dead</span>
-dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/select">select</a></span>(edited, <span class="op">-</span>Status)
+dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(edited, <span class="op">-</span>Status)
 <span class="co">#&gt; # A tibble: 6 x 3</span>
 <span class="co">#&gt;   CensusID   Tag status_tree</span>
 <span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      </span>
@@ -212,9 +203,9 @@ dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentati
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># With the pipe</span>
 df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="st">  </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>() <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/filter">filter</a></span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/select">rename</a></span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span>
-<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/arrange">arrange</a></span>(<span class="kw">desc</span>(CensusID))
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span>
+<span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">desc</span>(CensusID))
 <span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
 <span class="co">#&gt;   * Valid values: alive, dead</span>
 <span class="co">#&gt; # A tibble: 0 x 4</span>
@@ -222,9 +213,9 @@ df <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="co">#&gt; #   status_tree &lt;chr&gt;</span>
 
 <span class="co"># Same but without the pipe: It is hard to understand what is going on.</span>
-dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/arrange">arrange</a></span>(
-  dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/select">rename</a></span>(
-    dplyr<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/dplyr/topics/filter">filter</a></span>(
+dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(
+  dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(
+    dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(
       <span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df), status_tree <span class="op">==</span><span class="st"> "alive"</span>), 
     <span class="dt">status_stem =</span> Status
   ), 

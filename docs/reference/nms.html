@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lower and restore names. — nms_lowercase â€¢ fgeo.tool</title>
+<title>Functions to detect and extract names. — nms â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -86,18 +86,23 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Lower and restore names.</h1>
+    <h1>Functions to detect and extract names.</h1>
     </div>
 
     
-    <p>These functions are useful together, to lowercase names, then to do something
-(as long as attributes are preserved -- see section warning), and then
-restore the original names.</p>
+    <p>These functions are handy to work with fgeo's data structures because the
+same variablel may be named differently in different data sets. For example,
+the variable status is called <code>Status</code> or <code>status</code> in viewfull or census
+(tree and stem) tables.</p>
     
 
-    <pre class="usage"><span class='fu'>nms_lowercase</span>(<span class='no'>x</span>)
+    <pre class="usage"><span class='fu'>nms_has_any</span>(<span class='no'>x</span>, <span class='no'>...</span>)
 
-<span class='fu'>nms_restore</span>(<span class='no'>x</span>)</pre>
+<span class='fu'>nms_detect</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>nms_extract_all</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>nms_extract1</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -106,24 +111,23 @@ restore the original names.</p>
       <th>x</th>
       <td><p>A named object.</p></td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Strings; each of the names that need to be checked.</p></td>
+    </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    
-<ul>
-<li><p><code>nms_lowercase()</code> Returns the object <code>x</code> with lowercase names</p></li>
-<li><p><code>nms_restore()</code> Returns the object <code>x</code> with original (restored) names.</p></li>
+    <p>nms_has_any(): Checks if an object has any of the provided names.</p><ul>
+<li><p>Returns a logical value.
+nms_detect(): Checks if an object has the provided names.</p></li>
+<li><p>Returns a logical vector.
+nms_extract_all(): Finds the names that match the provided names.</p></li>
+<li><p>Returns a character vector.
+nms_extract1(): Finds the first name that matchs the provided names.</p></li>
+<li><p>Returns a character string.</p></li>
 </ul>
-
-    
-    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
-
-    <p><code>nms_restore()</code> is similar to <code><a href='nms_restore_newvar.html'>nms_restore_newvar()</a></code> but
-<code>nms_restore()</code> is necesary if the data is mutated with <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>:
-<code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code> drops attributes
-(https://github.com/tidyverse/dplyr/issues/1984), which makes it
-<code>nms_restore()</code> useless. attributes.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -131,39 +135,36 @@ restore the original names.</p>
   <code><a href='check_unique.html'>check_unique</a></code>, <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
   <code><a href='fgeo_package_deps.html'>fgeo_package_deps</a></code>,
   <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
+  <code>nms_lowercase</code>,
   <code><a href='nms_minus_lower_nms.html'>nms_minus_lower_nms</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms.html'>nms</a></code></p>
+  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code></p>
 <p>Other functions to manipulate names.: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
+  <code>nms_lowercase</code>,
   <code><a href='nms_minus_lower_nms.html'>nms_minus_lower_nms</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms.html'>nms</a></code></p>
+  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>status</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
-<span class='no'>original</span> <span class='kw'>&lt;-</span> <span class='no'>cns</span>
-<span class='no'>original</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   CensusID status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1     1.00 A     </div><div class='input'>
-<span class='no'>lowered</span> <span class='kw'>&lt;-</span> <span class='fu'>nms_lowercase</span>(<span class='no'>cns</span>)
-<span class='no'>lowered</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   censusid status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1     1.00 A     </div><div class='input'><span class='fu'>attr</span>(<span class='no'>lowered</span>, <span class='st'>"names_old"</span>)</div><div class='output co'>#&gt; [1] "CensusID" "status"  </div><div class='input'>
-<span class='no'>back_to_original</span> <span class='kw'>&lt;-</span> <span class='fu'>nms_restore</span>(<span class='no'>lowered</span>)
-<span class='no'>back_to_original</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   CensusID status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1     1.00 A     </div></pre>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'>nms_has_any</span>(<span class='no'>v</span>, <span class='st'>"a"</span>, <span class='st'>"B"</span>)
+<span class='fu'>nms_has_any</span>(<span class='no'>v</span>, <span class='st'>"A"</span>, <span class='st'>"B"</span>)
+<span class='fu'>nms_has_any</span>(<span class='no'>v</span>, <span class='st'>"A"</span>, <span class='st'>"b"</span>)
+
+<span class='fu'>nms_detect</span>(<span class='no'>v</span>, <span class='st'>"a"</span>, <span class='st'>"B"</span>, <span class='st'>"b"</span>)
+
+<span class='fu'>nms_extract_all</span>(<span class='no'>v</span>, <span class='st'>"a"</span>, <span class='st'>"B"</span>)
+<span class='fu'>nms_extract_all</span>(<span class='no'>v</span>, <span class='st'>"a"</span>, <span class='st'>"a"</span>, <span class='st'>"b"</span>)
+
+<span class='fu'>nms_extract1</span>(<span class='no'>v</span>, <span class='st'>"a"</span>, <span class='st'>"a"</span>, <span class='st'>"b"</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#warning">Warning</a></li>
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

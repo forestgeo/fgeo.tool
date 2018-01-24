@@ -129,12 +129,12 @@
   <span class='kw'>suffix</span> <span class='kw'>=</span> <span class='st'>".d"</span>
 )</div><div class='output co'>#&gt; [1] "tag1.d" "tag2"  </div><div class='input'>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/reexports'>tribble</a></span>(
+<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>tribble</a></span>(
   ~<span class='no'>Tag</span>, ~<span class='no'>Status</span>,
   <span class='st'>"01"</span>, <span class='st'>"dead"</span>,
   <span class='st'>"02"</span>, <span class='st'>"alive"</span>
 )
-<span class='fu'><a href='http://www.rdocumentation.org/packages/dplyr/topics/mutate'>mutate</a></span>(<span class='no'>vft</span>, <span class='kw'>tagged</span> <span class='kw'>=</span> <span class='fu'>str_suffix_match</span>(<span class='no'>Tag</span>, <span class='no'>Status</span>, <span class='st'>"dead"</span>, <span class='st'>".d"</span>))</div><div class='output co'>#&gt; # A tibble: 2 x 3
+<span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>vft</span>, <span class='kw'>tagged</span> <span class='kw'>=</span> <span class='fu'>str_suffix_match</span>(<span class='no'>Tag</span>, <span class='no'>Status</span>, <span class='st'>"dead"</span>, <span class='st'>".d"</span>))</div><div class='output co'>#&gt; # A tibble: 2 x 3
 #&gt;   Tag   Status tagged
 #&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; 
 #&gt; 1 01    dead   01.d  

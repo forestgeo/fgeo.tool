@@ -75,7 +75,7 @@ top(df, Tag, -1)
 #> 3     2.00  3.00 dead   A          
 #> 4     2.00  3.00 dead   A
 # Remove trees found dead in two or more censuses
-rm_dead_twice(df)
+discard_dead_twice(df)
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
 #>       <dbl> <dbl> <chr>  <chr>      

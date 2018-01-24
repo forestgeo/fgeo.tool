@@ -30,6 +30,8 @@ Other functions to check inputs.: \code{\link{check_unique}}
 Other functions for developers.: \code{\link{check_unique}},
   \code{\link{exists_in_pkg}},
   \code{\link{fgeo_package_deps}},
+  \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}
+  \code{\link{nms_minus_lower_nms}},
+  \code{\link{nms_restore_newvar}}, \code{\link{nms}}
 }
