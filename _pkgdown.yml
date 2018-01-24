@@ -66,11 +66,16 @@ reference:
   - title: Manipulate vectors
     contents:
     - str_suffix_match
-
+    
   - title: Manipulate dataframes
     contents:
+    - clean_structure_elev
     - collapse_censusid
     - recode_subquad
+
+  - title: Miscellaneous for users
+    contents:
+    - reexports
 
   - title: Miscellaneous for developers
     desc: These functions mainly target developers
