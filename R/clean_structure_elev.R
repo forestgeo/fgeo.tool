@@ -20,16 +20,16 @@
 #' elev_df <- bciex::bci_elevation
 #' str(elev_df)
 #' 
-#' elev_clean <- clean_structure_elev(elev_df)
+#' elev_clean <- restructure_elev(elev_df)
 #' str(elev_clean)
 #' 
 #' # List input
 #' elev_list <- list(col = elev_df, other = "stuff")
 #' str(elev_list)
 #' 
-#' elev_clean <- clean_structure_elev(elev_list)
+#' elev_clean <- restructure_elev(elev_list)
 #' str(elev_clean) 
-clean_structure_elev <- function(elevation) {
+restructure_elev <- function(elevation) {
   pull_elevation(x = elevation) %>% 
     nms_try_rename(want = "gx", try = "x") %>% 
     nms_try_rename(want = "gy", try = "y")

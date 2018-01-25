@@ -69,7 +69,7 @@ reference:
     
   - title: Manipulate dataframes
     contents:
-    - clean_structure_elev
+    - restructure_elev
     - collapse_censusid
     - recode_subquad
 
