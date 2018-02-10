@@ -17,7 +17,6 @@ knitr::opts_chunk$set(
 
 [![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
-[![CRAN status](http://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 
 ## Installation
 
@@ -72,10 +71,10 @@ df <- add_status_tree(df)
 # Filter a data set
 
 # Filter from the head or tail of a variable
-top(df, Tag)
-top(df, Tag, -1)
+row_top(df, Tag)
+row_top(df, Tag, -1)
 # Remove trees found dead in two or more censuses
-discard_dead_twice(df)
+row_discard_twice_dead(df)
 ```
 
 Check inputs.
@@ -107,7 +106,7 @@ dplyr::filter(
 You can combine __fgeo.tool__ with __dplyr__.
 
 ```{r}
-edited <- add_status_tree(top(df, CensusID, -1))
+edited <- add_status_tree(row_top(df, CensusID, -1))
 dplyr::select(edited, -Status)
 ```
 

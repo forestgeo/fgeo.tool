@@ -116,7 +116,7 @@ df &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_
 <span class="co"># Filter a data set</span>
 
 <span class="co"># Filter from the head or tail of a variable</span>
-<span class="kw"><a href="reference/top.html">top</a></span>(df, Tag)
+<span class="kw"><a href="reference/row_top.html">row_top</a></span>(df, Tag)
 <span class="co">#&gt; # A tibble: 4 x 4</span>
 <span class="co">#&gt;   CensusID   Tag Status status_tree</span>
 <span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
@@ -124,7 +124,7 @@ df &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_
 <span class="co">#&gt; 2     1.00  1.00 dead   A          </span>
 <span class="co">#&gt; 3     2.00  1.00 alive  A          </span>
 <span class="co">#&gt; 4     2.00  1.00 alive  A</span>
-<span class="kw"><a href="reference/top.html">top</a></span>(df, Tag, <span class="op">-</span><span class="dv">1</span>)
+<span class="kw"><a href="reference/row_top.html">row_top</a></span>(df, Tag, <span class="op">-</span><span class="dv">1</span>)
 <span class="co">#&gt; # A tibble: 4 x 4</span>
 <span class="co">#&gt;   CensusID   Tag Status status_tree</span>
 <span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
@@ -133,7 +133,7 @@ df &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_
 <span class="co">#&gt; 3     2.00  3.00 dead   A          </span>
 <span class="co">#&gt; 4     2.00  3.00 dead   A</span>
 <span class="co"># Remove trees found dead in two or more censuses</span>
-<span class="kw"><a href="reference/discard_dead_twice.html">discard_dead_twice</a></span>(df)
+<span class="kw"><a href="reference/row_discard_twice_dead.html">row_discard_twice_dead</a></span>(df)
 <span class="co">#&gt; # A tibble: 12 x 4</span>
 <span class="co">#&gt;    CensusID   Tag Status status_tree</span>
 <span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span>
@@ -186,7 +186,7 @@ dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.
 <span class="co">#&gt; 2     2.00  1.00 alive  A          </span>
 <span class="co">#&gt; 3     2.00  2.00 alive  A</span></code></pre></div>
 <p>You can combine <strong>fgeo.tool</strong> with <strong>dplyr</strong>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/top.html">top</a></span>(df, CensusID, <span class="op">-</span><span class="dv">1</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/row_top.html">row_top</a></span>(df, CensusID, <span class="op">-</span><span class="dv">1</span>))
 <span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span>
 <span class="co">#&gt;   * Valid values: alive, dead</span>
 dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(edited, <span class="op">-</span>Status)
@@ -255,7 +255,6 @@ dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/forestgeo/fgeo.tool"><img src="https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://coveralls.io/r/forestgeo/fgeo.tool?branch=master"><img src="https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg" alt="Coverage status"></a></li>
-<li><a href="https://cran.r-project.org/package=fgeo.tool"><embed src="http://www.r-pkg.org/badges/version/fgeo.tool"></embed></a></li>
 </ul>
 </div>
 

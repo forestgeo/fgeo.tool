@@ -15,7 +15,7 @@
 #'
 #' @seealso [add_status_tree()].
 #'
-#' @family functions to filter dataframes.
+#' @family functions to manipulate dataframe rows.
 #'
 #' @return A filtered version of the dataframe `x`.
 #' @export
@@ -31,17 +31,17 @@
 #' x <- bciex::bci12s7mini
 #' table(x$status)
 #'
-#' result <- filter_status(x, wood = "stem", .status = "D")
+#' result <- row_filter_status(x, wood = "stem", .status = "D")
 #' table(result$status)
 #'
-#' result <- filter_status(x, wood = "stem", .status = "D", exclude = TRUE)
+#' result <- row_filter_status(x, wood = "stem", .status = "D", exclude = TRUE)
 #' table(result$status)
 #' # Shortcut
-#' result <- stem_not_dead(x)
+#' result <- row_keep_alive_stem(x)
 #' table(result$status)
 #'
 #' # Warns
-#' result <- filter_status(x, wood = "stem", .status = c("A", "wrong-status"))
+#' result <- row_filter_status(x, wood = "stem", .status = c("A", "wrong-status"))
 #' table(result$status)
 #'
 #' # CENSUS TABLE: TREE TABLE
@@ -50,11 +50,11 @@
 #' x <- bciex::bci12t7mini
 #' table(x$status)
 #'
-#' result <- filter_status(x, wood = "stem", .status = "D")
+#' result <- row_filter_status(x, wood = "stem", .status = "D")
 #' table(result$status)
 #'
 #' # Shortcut
-#' result <- stem_not_dead(x)
+#' result <- row_keep_alive_stem(x)
 #' table(result$status)
 #'
 #' # VIEWFULL TABLE
@@ -65,13 +65,13 @@
 #' x <- bciex::bci12vft_mini
 #' table(x$Status)
 #'
-#' result <- filter_status(x, wood = "stem", .status = "alive")
+#' result <- row_filter_status(x, wood = "stem", .status = "alive")
 #' table(result$Status)
 #'
 #' # Warns because `.status` defaults to "D" -- not to "dead".
-#' result <- stem_not_dead(x)
+#' result <- row_keep_alive_stem(x)
 #' # Fix and repeat
-#' result <- stem_not_dead(x, .status = "dead")
+#' result <- row_keep_alive_stem(x, .status = "dead")
 #' table(result$Status)
 #'
 #'
@@ -87,14 +87,14 @@
 #' x <- add_status_tree(x, status_d = "D", status_a = "A")
 #' table(x$status_tree)
 #'
-#' result <- filter_status(x, wood = "tree", .status = "A")
+#' result <- row_filter_status(x, wood = "tree", .status = "A")
 #' table(result$status_tree)
 #'
-#' result <- filter_status(x, wood = "tree", .status = "D", exclude = TRUE)
+#' result <- row_filter_status(x, wood = "tree", .status = "D", exclude = TRUE)
 #' table(result$status_tree)
 #'
 #' # Shortcut
-#' result <- tree_not_dead(x)
+#' result <- row_keep_alive_tree(x)
 #' result %>%
 #'   dplyr::arrange(tag, stemID, status) %>%
 #'   dplyr::select(tag, stemID, status, status_tree)
@@ -109,11 +109,11 @@
 #' x <- add_status_tree(x, "D", "A")
 #' identical(x$status, x$status_tree)
 #' # So the result will be the same if we use `wood = tree` or `wood = stem`.
-#' result1 <- filter_status(x, wood = "tree", .status = "A")
-#' result2 <- filter_status(x, wood = "stem", .status = "A")
+#' result1 <- row_filter_status(x, wood = "tree", .status = "A")
+#' result2 <- row_filter_status(x, wood = "stem", .status = "A")
 #' identical(result1, result2)
 #' # Shortcut
-#' result <- tree_not_dead(x, .status = "D")
+#' result <- row_keep_alive_tree(x, .status = "D")
 #' identical(result, result1)
 #'
 #'
@@ -127,20 +127,20 @@
 #' x <- add_status_tree(x, status_d = "dead", status_a = "alive")
 #' table(x$status_tree)
 #'
-#' result <- filter_status(x, wood = "tree", .status = "alive")
+#' result <- row_filter_status(x, wood = "tree", .status = "alive")
 #' table(result$status_tree)
 #'
 #' # Shortcut
 #' unique(x$Status)
-#' result <- tree_not_dead(x, "dead")
+#' result <- row_keep_alive_tree(x, "dead")
 #' result %>%
 #'   dplyr::arrange(Tag, StemID, Status) %>%
 #'   dplyr::select(Tag, StemID, Status, status_tree)
 #' table(result$status_tree)
-filter_status <- function(x, wood, .status, exclude = FALSE) {
+row_filter_status <- function(x, wood, .status, exclude = FALSE) {
   old_nms <- names(x)
   x <- set_names(x, tolower)
-  check_filter_status(x = x, wood = wood, .status = .status, exclude = exclude)
+  check_row_filter_status(x = x, wood = wood, .status = .status, exclude = exclude)
 
   if (wood == "stem") {
     stts_var <- x$status
@@ -158,19 +158,19 @@ filter_status <- function(x, wood, .status, exclude = FALSE) {
   set_names(filtered, old_nms)
 }
 
-#' @rdname filter_status
+#' @rdname row_filter_status
 #' @export
-stem_not_dead <- function(x, .status = "D") {
-  filter_status(x = x, wood = "stem", .status = .status, exclude = TRUE)
+row_keep_alive_stem <- function(x, .status = "D") {
+  row_filter_status(x = x, wood = "stem", .status = .status, exclude = TRUE)
 }
 
-#' @rdname filter_status
+#' @rdname row_filter_status
 #' @export
-tree_not_dead <- function(x, .status = "D") {
-  filter_status(x = x, wood = "tree", .status = .status, exclude = TRUE)
+row_keep_alive_tree <- function(x, .status = "D") {
+  row_filter_status(x = x, wood = "tree", .status = .status, exclude = TRUE)
 }
 
-check_filter_status <- function(x, wood, .status, exclude) {
+check_row_filter_status <- function(x, wood, .status, exclude) {
   stopifnot(is.data.frame(x))
   stopifnot(is.character(.status))
   stopifnot(is.character(wood))

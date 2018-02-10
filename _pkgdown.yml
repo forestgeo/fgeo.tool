@@ -44,19 +44,15 @@ reference:
 
   - title: Add columns to dataframes
     contents:
-    - matches("add_")
+    - starts_with("add_")
 
-  - title: Manipulate rows of dataframes
+  - title: Manipulate dataframes rows
     contents:
-    - filter_status
-    - discard_dead_twice
-    - tree_not_dead
-    - stem_not_dead
-    - top
+    - starts_with("row_")
 
   - title: Manipulate strings
     contents:
-    - matches("str_")
+    - starts_with("str_")
     
   - title: Manipulate dataframes
     contents:
@@ -66,11 +62,11 @@ reference:
 
   - title: Manipulate lists of dataframes
     contents:
-    - matches("ls_")
+    - starts_with("ls_")
 
   - title: Manipulate names
     contents:
-    - matches("nms_")
+    - starts_with("nms_")
 
   - title: Checks (for developers)
     contents:

@@ -12,7 +12,7 @@
 #'     * With the rows removed of trees found dead on both the last and previous
 #'       last censuses.
 #' @export
-#' @family functions to filter dataframes.
+#' @family functions to manipulate dataframe rows.
 #'
 #' @examples
 #' vft <- tibble::tribble(
@@ -41,12 +41,12 @@
 #' 
 #' # * Remove all censuses except the last two.
 #' # * Remove trees found dead on both the last and previous last censuses.
-#' discard_dead_twice(vft)
-discard_dead_twice <- function(vft) {
+#' row_discard_twice_dead(vft)
+row_discard_twice_dead <- function(vft) {
   old_nms <- names(vft)
   vft <- set_names(vft, tolower)
   
-  check_discard_dead_twice(vft)
+  check_row_discard_twice_dead(vft)
 
   last <- max0(vft$censusid)
   last2 <- vft[vft$censusid %in% c(last, last - 1), ]
@@ -59,7 +59,7 @@ discard_dead_twice <- function(vft) {
   set_names(keep, old_nms)
 }
 
-check_discard_dead_twice <- function(vft) {
+check_row_discard_twice_dead <- function(vft) {
   stopifnot(is.data.frame(vft))
   check_crucial_names(vft, c("censusid", "tag", "status", "status_tree"))
   if (!length(unique(vft$censusid)) >= 2) {

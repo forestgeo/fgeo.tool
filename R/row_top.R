@@ -13,24 +13,24 @@
 #'
 #' @return A filtered version of the input dataset.
 #' @export
-#' @family functions to filter dataframes.
+#' @family functions to manipulate dataframe rows.
 #'
 #' @examples
 #' df <- data.frame(x = 1:9, y = letters[1:3], stringsAsFactors = FALSE)
 #'
 #' # `var` can be bare or quoted
-#' (result <- top(df, "y"))
-#' identical(top(df, y), result)
+#' (result <- row_top(df, "y"))
+#' identical(row_top(df, y), result)
 #'
 #' # matching `var` by position starting from the left
-#' identical(top(df, var = y), top(df, var = 2))
+#' identical(row_top(df, var = y), row_top(df, var = 2))
 #' # matching `var` by position starting from the right
-#' identical(top(df, var = y), top(df, var = -1))
+#' identical(row_top(df, var = y), row_top(df, var = -1))
 #'
-#' top(df, y, n = 2)
+#' row_top(df, y, n = 2)
 #' # Negative values select from the tail
-#' top(df, y, n = -2)
-top <- function(.data, var, n = 1) {
+#' row_top(df, y, n = -2)
+row_top <- function(.data, var, n = 1) {
   var <- rlang::enquo(var)
   pulled <- dplyr::pull(.data, !!var)
   sorted <- sort(unique(pulled))

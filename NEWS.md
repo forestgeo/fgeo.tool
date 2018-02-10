@@ -1,5 +1,12 @@
 # fgeo.tool 0.0.0.9002
 
+* Clarify the internal structure of fgeo.tool with function's prefixes.
+    * `add_*()`
+    * `str_*()`
+    * `nms_*()`
+    * `check_*()`
+    * `ls_*()`
+    
 * Add functions to deal with datasets with same variables but different names.
 * Add `str_suffix_match()`.
 

@@ -3,7 +3,7 @@
 fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
 ===============================================================================================================
 
-[![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool) [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master) [![CRAN status](http://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
+[![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool) [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
 
 Installation
 ------------
@@ -58,7 +58,7 @@ df <- add_status_tree(df)
 # Filter a data set
 
 # Filter from the head or tail of a variable
-top(df, Tag)
+row_top(df, Tag)
 #> # A tibble: 4 x 4
 #>   CensusID   Tag Status status_tree
 #>      <dbl> <dbl> <chr>  <chr>      
@@ -66,7 +66,7 @@ top(df, Tag)
 #> 2     1.00  1.00 dead   A          
 #> 3     2.00  1.00 alive  A          
 #> 4     2.00  1.00 alive  A
-top(df, Tag, -1)
+row_top(df, Tag, -1)
 #> # A tibble: 4 x 4
 #>   CensusID   Tag Status status_tree
 #>      <dbl> <dbl> <chr>  <chr>      
@@ -75,7 +75,7 @@ top(df, Tag, -1)
 #> 3     2.00  3.00 dead   A          
 #> 4     2.00  3.00 dead   A
 # Remove trees found dead in two or more censuses
-discard_dead_twice(df)
+row_discard_twice_dead(df)
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
 #>       <dbl> <dbl> <chr>  <chr>      
@@ -140,7 +140,7 @@ dplyr::filter(
 You can combine **fgeo.tool** with **dplyr**.
 
 ``` r
-edited <- add_status_tree(top(df, CensusID, -1))
+edited <- add_status_tree(row_top(df, CensusID, -1))
 #> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
 #>   * Valid values: alive, dead
 dplyr::select(edited, -Status)
