@@ -46,7 +46,7 @@ reference:
     contents:
     - matches("add_")
 
-  - title: Filter dataframes
+  - title: Manipulate rows of dataframes
     contents:
     - filter_status
     - discard_dead_twice
@@ -79,5 +79,4 @@ reference:
   - title: Miscellaneous (for developers)
     contents:
     - exists_in_pkg
-    - fgeo_package_deps
     - guess_plotdim
