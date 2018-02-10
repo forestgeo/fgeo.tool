@@ -75,10 +75,10 @@ reference:
 
   - title: Manipulate lists of dataframes
     contents:
-    - xl_list_sheets
-    - name_listed_df
-    - csv_listed_df
-    - join_listed_df
+    - ls_list_spreadsheets
+    - ls_name_df
+    - ls_csv_df
+    - ls_join_df
 
   - title: Miscellaneous for developers
     desc: These functions mainly target developers

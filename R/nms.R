@@ -225,23 +225,33 @@ nms_extract_anycase <- function(x, nm) {
 #' @return A modified version of `x` with tidy names or a string of tidy names.
 #'
 #' @examples
-#' messy <- "Hi mE"
-#'
+#' messy <- "Hi yOu"
+#' 
+#' # With unnamed strings, both functions do the same
+#' unnamed_string <- messy
+#' names(messy)
 #' nms_tidy(messy)
 #' # Same
 #' as_tidy_names(messy)
-#'
-#' messy_df <- setNames(data.frame(1), messy)
-#' messy_df
-#' nms_tidy(messy_df)
-#'
-#' messy_list <- setNames(list(1), messy)
-#' messy_list
+#' 
+#' # WHY TWO FUNCTIONS?
+#' 
+#' messy_named_string <- c(`Messy Name` = messy)
+#' # Targets names
+#' nms_tidy(messy_named_string)
+#' # Targets strings -- not its names
+#' as_tidy_names(messy_named_string)
+#' 
+#' # Same output, but here `as_tidy_names()` better communicates intention.
+#' dfm <- data.frame(1)
+#' setNames(dfm, nms_tidy(messy))
+#' setNames(dfm, as_tidy_names(messy))
+#' 
+#' # Makes more sense when operating on strings
+#' setNames(list(1), as_tidy_names(messy))
+#' # Makes more sense when operating on named objects
+#' messy_list <- list(`Hi yOu` = 1)
 #' nms_tidy(messy_list)
-#'
-#' messy_vector <- setNames(c(1), messy)
-#' messy_vector
-#' nms_tidy(messy_vector)
 #' @name nms_tidy
 NULL
 

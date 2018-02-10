@@ -1,13 +1,13 @@
 #' Read an excel workbook and store each spreadsheet as a dataframe in a list.
 #'
-#' A useful complement of this function is [csv_listed_df()].
+#' A useful complement of this function is [ls_csv_df()].
 #'
 #' @param path A path to an excel file.
 #'
 #' @source Adappted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 #' @return A list of dataframes.
 #'
-#' @seealso csv_listed_df
+#' @seealso ls_csv_df
 #' @family functions to handle multiple spreadsheets of an excel workbook.
 #'
 #' @export
@@ -15,8 +15,8 @@
 #' path_to_excel_workbook <- system.file(
 #'   "extdata", "example.xlsx", package = "fgeo.tool"
 #' )
-#' str(xl_list_sheets(path_to_excel_workbook))
-xl_list_sheets <- function(path) {
+#' str(ls_list_spreadsheets(path_to_excel_workbook))
+ls_list_spreadsheets <- function(path) {
   # Piping to avoid useless intermediate variables
   path %>%
     readxl::excel_sheets() %>%
@@ -38,9 +38,9 @@ xl_list_sheets <- function(path) {
 #' @examples
 #' df_list <- list(a = data.frame(a = 1), data.frame(a = 2, b = 2))
 #' df_list
-#' name_listed_df(df_list)
-#' name_listed_df(df_list, name = "sheet")
-name_listed_df <- function(df_list, name = "name") {
+#' ls_name_df(df_list)
+#' ls_name_df(df_list, name = "sheet")
+ls_name_df <- function(df_list, name = "name") {
   # Must capture argument `name` before it is evaluated
   .name <- rlang::quo_name(rlang::enquo(name))
   stopifnot(is.list(df_list), is.character(name))
@@ -69,7 +69,7 @@ fill_missing_names <- function(x) {
 
 #' Save each dataframe in a list to a different .csv file.
 #'
-#' A useful complement of this function is [xl_list_sheets()].
+#' A useful complement of this function is [ls_list_spreadsheets()].
 #'
 #' @source Adappted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 #'
@@ -78,7 +78,7 @@ fill_missing_names <- function(x) {
 #' @param dir Character; the directory where the files will be saved.
 #' @param prefix Character; a prefix to add to the file names.
 #'
-#' @seealso xl_list_sheets.
+#' @seealso ls_list_spreadsheets.
 #' @family functions to handle multiple spreadsheets of an excel workbook.
 #' @export
 #' @examples
@@ -86,15 +86,15 @@ fill_missing_names <- function(x) {
 #'   "extdata", "example.xlsx", package = "fgeo.tool"
 #' )
 #'
-#' df_list <- xl_list_sheets(path_to_excel_workbook)
+#' df_list <- ls_list_spreadsheets(path_to_excel_workbook)
 #' str(df_list)
 #'
 #' output <- tempdir()
-#' csv_listed_df(df_list, output, prefix = "myfile-")
+#' ls_csv_df(df_list, output, prefix = "myfile-")
 #'
 #' files <- dir(output)
 #' files[grepl(".csv$", files)]
-csv_listed_df <- function(df_list, dir, prefix = NULL) {
+ls_csv_df <- function(df_list, dir, prefix = NULL) {
   stopifnot(is.list(df_list), each_list_item_is_df(df_list), is.character(dir))
   if (!is.null(prefix)) {
     stopifnot(is.character(prefix))
@@ -103,7 +103,7 @@ csv_listed_df <- function(df_list, dir, prefix = NULL) {
 
   purrr::walk2(
     df_list, names(df_list),
-    csv_listed_df_, prefix = prefix, dir = dir
+    ls_csv_df_, prefix = prefix, dir = dir
   )
 }
 
@@ -121,9 +121,9 @@ validate_dir <- function(dir, dir_name) {
 }
 
 
-#' Do csv_listed_df() for each df.
+#' Do ls_csv_df() for each df.
 #' @noRd
-csv_listed_df_ <- function(df, df_name,  prefix = NULL, dir) {
+ls_csv_df_ <- function(df, df_name,  prefix = NULL, dir) {
   path <- file.path(paste0(dir, "/", prefix, df_name, ".csv"))
   readr::write_csv(df, path)
 }
@@ -156,17 +156,17 @@ csv_listed_df_ <- function(df, df_name,  prefix = NULL, dir) {
 #'   c = data.frame(x = 1, z = 3)
 #' )
 #'
-#' join_listed_df(df_list, df_names = c("a", "c"))
+#' ls_join_df(df_list, df_names = c("a", "c"))
 #'
-#' join_listed_df(df_list, df_names = c("b", "c"))
+#' ls_join_df(df_list, df_names = c("b", "c"))
 #'
-#' join_listed_df(list(data.frame(1)))
+#' ls_join_df(list(data.frame(1)))
 #' # Use argument `by` if dataframes have no matching variable,
-#' join_listed_df(
+#' ls_join_df(
 #'   list(data.frame(x = 1), data.frame(z = 2)),
 #'   by = c("x" = "z")
 #' )
-join_listed_df <- function(df_list, df_names = NULL, by = NULL) {
+ls_join_df <- function(df_list, df_names = NULL, by = NULL) {
   stopifnot(is.list(df_list), each_list_item_is_df(df_list))
 
   if (is.null(names(df_list))) {
