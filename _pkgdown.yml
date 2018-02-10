@@ -56,8 +56,7 @@ reference:
 
   - title: Manipulate strings
     contents:
-    - str_suffix_match
-    - str_as_tidy_names
+    - matches("str_")
     
   - title: Manipulate dataframes
     contents:
@@ -73,10 +72,12 @@ reference:
     contents:
     - matches("nms_")
 
-  - title: Miscellaneous for developers
-    desc: These functions mainly target developers
+  - title: Checks (for developers)
     contents:
     - starts_with("check")
+    
+  - title: Miscellaneous (for developers)
+    contents:
     - exists_in_pkg
     - fgeo_package_deps
     - guess_plotdim
