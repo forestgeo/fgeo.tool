@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #' path_to_excel_workbook <- system.file(
-#'   "extdata", "example.xlsx", package = "qcr"
+#'   "extdata", "example.xlsx", package = "fgeo.tool"
 #' )
 #' str(xl_list_sheets(path_to_excel_workbook))
 xl_list_sheets <- function(path) {
@@ -83,7 +83,7 @@ fill_missing_names <- function(x) {
 #' @export
 #' @examples
 #' path_to_excel_workbook <- system.file(
-#'   "extdata", "example.xlsx", package = "qcr"
+#'   "extdata", "example.xlsx", package = "fgeo.tool"
 #' )
 #'
 #' df_list <- xl_list_sheets(path_to_excel_workbook)
@@ -106,6 +106,20 @@ csv_listed_df <- function(df_list, dir, prefix = NULL) {
     csv_listed_df_, prefix = prefix, dir = dir
   )
 }
+
+validate_dir <- function(dir, dir_name) {
+  invalid_dir <- !fs::dir_exists(dir)
+  if (invalid_dir) {
+    msg <- paste0(
+      dir_name, " must match a valid directory.\n",
+      "bad ", dir_name, ": ", "'", dir, "'"
+    )
+    abort(msg)
+  } else {
+    invisible(dir)
+  }
+}
+
 
 #' Do csv_listed_df() for each df.
 #' @noRd

@@ -20,7 +20,7 @@ A useful complement of this function is \code{\link[=csv_listed_df]{csv_listed_d
 }
 \examples{
 path_to_excel_workbook <- system.file(
-  "extdata", "example.xlsx", package = "qcr"
+  "extdata", "example.xlsx", package = "fgeo.tool"
 )
 str(xl_list_sheets(path_to_excel_workbook))
 }

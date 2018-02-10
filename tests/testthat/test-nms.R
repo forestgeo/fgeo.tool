@@ -83,3 +83,37 @@ test_that("fails if the number of variables is wrong", {
 })
 
 
+
+context("nms_tidy")
+
+test_that("works for dataframes", {
+  dfm <- data.frame(`Hi mE` = 1)
+  out <- nms_tidy(dfm)
+  expect_equal(names(out), "hi.me")
+})
+
+test_that("works for character string", {
+  chr <- c("Hi  mE")
+  out <- nms_tidy(chr)
+  expect_equal(out, "hi__me")
+})
+
+test_that("works other named vectors", {
+  v <- c(`hi mE` = 1)
+  out <- nms_tidy(v)
+  expect_equal(names(out), "hi_me")
+
+  v <- c(`hi mE` = "one")
+  out <- nms_tidy(v)
+  expect_equal(names(out), "hi_me")
+})
+
+
+
+context("as_tidy_names")
+
+test_that("works as unnamed character string", {
+  string <- "Hi mE"
+  expect_equal(nms_tidy(string), as_tidy_names(string))
+  expect_equal(as_tidy_names(string), "hi_me")
+})

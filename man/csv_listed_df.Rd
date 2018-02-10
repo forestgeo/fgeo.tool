@@ -21,7 +21,7 @@ A useful complement of this function is \code{\link[=xl_list_sheets]{xl_list_she
 }
 \examples{
 path_to_excel_workbook <- system.file(
-  "extdata", "example.xlsx", package = "qcr"
+  "extdata", "example.xlsx", package = "fgeo.tool"
 )
 
 df_list <- xl_list_sheets(path_to_excel_workbook)

@@ -213,6 +213,58 @@ nms_extract_anycase <- function(x, nm) {
 
 
 
+#' Create tidy names that are lowercase and have no empty spaces.
+#'
+#' These functions create tidy names that are lowercase and have no empty
+#' spaces. `nms_tidy()` tidyes the names of named objects. Unnamed strings are
+#' also tidied via `as_tidy_names()`. `as_tidy_names()` tidies a string -- not
+#' its names.
+#'
+#' @param x A named object or a character string.
+#'
+#' @return A modified version of `x` with tidy names or a string of tidy names.
+#'
+#' @examples
+#' messy <- "Hi mE"
+#'
+#' nms_tidy(messy)
+#' # Same
+#' as_tidy_names(messy)
+#'
+#' messy_df <- setNames(data.frame(1), messy)
+#' messy_df
+#' nms_tidy(messy_df)
+#'
+#' messy_list <- setNames(list(1), messy)
+#' messy_list
+#' nms_tidy(messy_list)
+#'
+#' messy_vector <- setNames(c(1), messy)
+#' messy_vector
+#' nms_tidy(messy_vector)
+#' @name nms_tidy
+NULL
+
+#' @rdname nms_tidy
+#' @export
+nms_tidy <- function(x) {
+  if (rlang::is_named(x)) {
+    names(x) <- gsub(" ", "_", tolower(names(x)))
+    return(x)
+  } else {
+    as_tidy_names(x)
+  }
+}
+
+#' @export
+#' @rdname nms_tidy
+as_tidy_names <- function(x) {
+  stopifnot(is.character(x))
+  gsub(" ", "_", tolower(x))
+}
+
+
+
 # Not exported ------------------------------------------------------------
 
 # # Examples

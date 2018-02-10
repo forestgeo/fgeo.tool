@@ -18,7 +18,10 @@ Imports:
     rlang,
     stringr,
     tibble,
-    remotes
+    remotes,
+    fs,
+    readr,
+    readxl
 Suggests: 
     bciex,
     covr,
