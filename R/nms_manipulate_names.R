@@ -217,7 +217,7 @@ nms_extract_anycase <- function(x, nm) {
 #'
 #' These functions create tidy names that are lowercase and have no empty
 #' spaces. `nms_tidy()` tidyes the names of named objects. Unnamed strings are
-#' also tidied via `as_tidy_names()`. `as_tidy_names()` tidies a string -- not
+#' also tidied via `str_as_tidy_names()`. `str_as_tidy_names()` tidies a string -- not
 #' its names.
 #'
 #' @param x A named object or a character string.
@@ -232,7 +232,7 @@ nms_extract_anycase <- function(x, nm) {
 #' names(messy)
 #' nms_tidy(messy)
 #' # Same
-#' as_tidy_names(messy)
+#' str_as_tidy_names(messy)
 #' 
 #' # WHY TWO FUNCTIONS?
 #' 
@@ -240,15 +240,15 @@ nms_extract_anycase <- function(x, nm) {
 #' # Targets names
 #' nms_tidy(messy_named_string)
 #' # Targets strings -- not its names
-#' as_tidy_names(messy_named_string)
+#' str_as_tidy_names(messy_named_string)
 #' 
-#' # Same output, but here `as_tidy_names()` better communicates intention.
+#' # Same output, but here `str_as_tidy_names()` better communicates intention.
 #' dfm <- data.frame(1)
 #' setNames(dfm, nms_tidy(messy))
-#' setNames(dfm, as_tidy_names(messy))
+#' setNames(dfm, str_as_tidy_names(messy))
 #' 
 #' # Makes more sense when operating on strings
-#' setNames(list(1), as_tidy_names(messy))
+#' setNames(list(1), str_as_tidy_names(messy))
 #' # Makes more sense when operating on named objects
 #' messy_list <- list(`Hi yOu` = 1)
 #' nms_tidy(messy_list)
@@ -262,15 +262,8 @@ nms_tidy <- function(x) {
     names(x) <- gsub(" ", "_", tolower(names(x)))
     return(x)
   } else {
-    as_tidy_names(x)
+    str_as_tidy_names(x)
   }
-}
-
-#' @export
-#' @rdname nms_tidy
-as_tidy_names <- function(x) {
-  stopifnot(is.character(x))
-  gsub(" ", "_", tolower(x))
 }
 
 

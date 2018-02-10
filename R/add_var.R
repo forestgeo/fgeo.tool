@@ -220,12 +220,3 @@ guess_max <- function(x, ...) {
   xmax <- max0(x)
   plyr::round_any(xmax, f = ceiling, ...)
 }
-
-#' Collapse a string with commas.
-#'
-#' Shortcut commonly used in messages, warnings and errors.
-#' @keywords internal
-collapse <- function(..., collapse = ", ") {
-  paste0(..., collapse = ", ")
-}
-

@@ -155,7 +155,7 @@
       </tbody><tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-manipulate-vectors" class="hasAnchor"><a href="#section-manipulate-vectors" class="anchor"></a>Manipulate vectors</h2>
+            <h2 id="section-manipulate-strings" class="hasAnchor"><a href="#section-manipulate-strings" class="anchor"></a>Manipulate strings</h2>
             <p class="section-desc"></p>
           </th>
         </tr>
@@ -165,6 +165,12 @@
             <p><code><a href="str_suffix_match.html">str_suffix_match</a></code> </p>
           </td>
           <td><p>Suffix a strings where a vector exactly matches one specific string.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="str_as_tidy_names.html">str_as_tidy_names</a></code> </p>
+          </td>
+          <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -202,27 +208,65 @@
         <tr>
           <!--  -->
           <td>
-            <p><code><a href="xl_list_sheets.html">xl_list_sheets</a></code> </p>
-          </td>
-          <td><p>Read an excel workbook and store each spreadsheet as a dataframe in a list.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="name_listed_df.html">name_listed_df</a></code> </p>
-          </td>
-          <td><p>Mutate a list of dataframes to add column with the name of the list element.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="csv_listed_df.html">csv_listed_df</a></code> </p>
+            <p><code><a href="ls_csv_df.html">ls_csv_df</a></code> </p>
           </td>
           <td><p>Save each dataframe in a list to a different .csv file.</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="join_listed_df.html">join_listed_df</a></code> </p>
+            <p><code><a href="ls_join_df.html">ls_join_df</a></code> </p>
           </td>
           <td><p>Full-join all or some dataframes from a list of dataframes</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ls_list_spreadsheets.html">ls_list_spreadsheets</a></code> </p>
+          </td>
+          <td><p>Read an excel workbook and store each spreadsheet as a dataframe in a list.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="ls_name_df.html">ls_name_df</a></code> </p>
+          </td>
+          <td><p>Mutate a list of dataframes to add column with the name of the list element.</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-manipulate-names" class="hasAnchor"><a href="#section-manipulate-names" class="anchor"></a>Manipulate names</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="nms.html">nms_has_any</a></code> <code><a href="nms.html">nms_detect</a></code> <code><a href="nms.html">nms_extract_all</a></code> <code><a href="nms.html">nms_extract1</a></code> </p>
+          </td>
+          <td><p>Functions to detect and extract names.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="nms_extract_anycase.html">nms_extract_anycase</a></code> </p>
+          </td>
+          <td><p>Find a name exactly matching a string but regardless of case.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="nms_lowercase.html">nms_lowercase</a></code> <code><a href="nms_lowercase.html">nms_restore</a></code> </p>
+          </td>
+          <td><p>Lower and restore names.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="nms_restore_newvar.html">nms_restore_newvar</a></code> </p>
+          </td>
+          <td><p>Restore the names of a dataframe to which a new variable has been added.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="nms_tidy.html">nms_tidy</a></code> </p>
+          </td>
+          <td><p>Create tidy names that are lowercase and have no empty spaces.</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -258,30 +302,6 @@
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="nms_restore_newvar.html">nms_restore_newvar</a></code> </p>
-          </td>
-          <td><p>Restore the names of a dataframe to which a new variable has been added.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nms_lowercase.html">nms_lowercase</a></code> <code><a href="nms_lowercase.html">nms_restore</a></code> </p>
-          </td>
-          <td><p>Lower and restore names.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nms_tidy.html">nms_tidy</a></code> <code><a href="nms_tidy.html">as_tidy_names</a></code> </p>
-          </td>
-          <td><p>Create tidy names that are lowercase and have no empty spaces.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nms.html">nms_has_any</a></code> <code><a href="nms.html">nms_detect</a></code> <code><a href="nms.html">nms_extract_all</a></code> <code><a href="nms.html">nms_extract1</a></code> </p>
-          </td>
-          <td><p>Functions to detect and extract names.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="guess_plotdim.html">guess_plotdim</a></code> </p>
           </td>
           <td><p>Guess plot dimensions.</p></td>
@@ -296,9 +316,10 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-add-columns-to-dataframes">Add columns to dataframes</a></li>
       <li><a href="#section-filter-dataframes">Filter dataframes</a></li>
-      <li><a href="#section-manipulate-vectors">Manipulate vectors</a></li>
+      <li><a href="#section-manipulate-strings">Manipulate strings</a></li>
       <li><a href="#section-manipulate-dataframes">Manipulate dataframes</a></li>
       <li><a href="#section-manipulate-lists-of-dataframes">Manipulate lists of dataframes</a></li>
+      <li><a href="#section-manipulate-names">Manipulate names</a></li>
       <li><a href="#section-miscellaneous-for-developers">Miscellaneous for developers</a></li>
     </ul>
   </div>

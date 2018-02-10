@@ -107,13 +107,3 @@ test_that("works other named vectors", {
   out <- nms_tidy(v)
   expect_equal(names(out), "hi_me")
 })
-
-
-
-context("as_tidy_names")
-
-test_that("works as unnamed character string", {
-  string <- "Hi mE"
-  expect_equal(nms_tidy(string), as_tidy_names(string))
-  expect_equal(as_tidy_names(string), "hi_me")
-})

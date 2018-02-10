@@ -82,3 +82,14 @@ test_that("fails if x, status, and suffix are not character vectors", {
     )
   )
 })
+
+
+
+context("str_as_tidy_names")
+
+test_that("works as unnamed character string", {
+  string <- "Hi mE"
+  expect_equal(nms_tidy(string), str_as_tidy_names(string))
+  expect_equal(str_as_tidy_names(string), "hi_me")
+})
+

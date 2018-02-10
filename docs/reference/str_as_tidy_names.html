@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create tidy names that are lowercase and have no empty spaces. — nms_tidy â€¢ fgeo.tool</title>
+<title>Create a names-friendly version of a string (lowercase and with no spaces). — str_as_tidy_names â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -86,58 +86,48 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create tidy names that are lowercase and have no empty spaces.</h1>
+    <h1>Create a names-friendly version of a string (lowercase and with no spaces).</h1>
     </div>
 
     
-    <p>These functions create tidy names that are lowercase and have no empty
-spaces. <code>nms_tidy()</code> tidyes the names of named objects. Unnamed strings are
-also tidied via <code><a href='str_as_tidy_names.html'>str_as_tidy_names()</a></code>. <code><a href='str_as_tidy_names.html'>str_as_tidy_names()</a></code> tidies a string -- not
-its names.</p>
+    <p>Create a names-friendly version of a string (lowercase and with no spaces).</p>
     
 
-    <pre class="usage"><span class='fu'>nms_tidy</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>str_as_tidy_names</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named object or a character string.</p></td>
+      <td><p>A character string.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified version of <code>x</code> with tidy names or a string of tidy names.</p>
+    <p>A modified version of <code>x</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <p><code>nms_tidy()</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>messy</span> <span class='kw'>&lt;-</span> <span class='st'>"Hi yOu"</span>
 
-<span class='co'># With unnamed strings, both functions do the same</span>
-<span class='no'>unnamed_string</span> <span class='kw'>&lt;-</span> <span class='no'>messy</span>
-<span class='fu'>names</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>nms_tidy</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'><span class='co'># Same</span>
-<span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'>
-<span class='co'># WHY TWO FUNCTIONS?</span>
-
+<span class='fu'>str_as_tidy_names</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'>
 <span class='no'>messy_named_string</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>`Messy Name`</span> <span class='kw'>=</span> <span class='no'>messy</span>)
-<span class='co'># Targets names</span>
+<span class='co'># Targets strings -- not its names</span>
+<span class='fu'>str_as_tidy_names</span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; Messy Name 
+#&gt;   "hi_you" </div><div class='input'><span class='co'># (To target names use `nms_tidy()` instead.)</span>
 <span class='fu'>nms_tidy</span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; messy_name 
-#&gt;   "Hi yOu" </div><div class='input'><span class='co'># Targets strings -- not its names</span>
-<span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; Messy Name 
-#&gt;   "hi_you" </div><div class='input'>
-<span class='co'># Same output, but here `str_as_tidy_names()` better communicates intention.</span>
+#&gt;   "Hi yOu" </div><div class='input'>
 <span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='fl'>1</span>)
-<span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'>nms_tidy</span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
-#&gt; 1      1</div><div class='input'><span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
+<span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'>str_as_tidy_names</span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
 #&gt; 1      1</div><div class='input'>
 <span class='co'># Makes more sense when operating on strings</span>
-<span class='fu'>setNames</span>(<span class='fu'>list</span>(<span class='fl'>1</span>), <span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt; $hi_you
-#&gt; [1] 1
-#&gt; </div><div class='input'><span class='co'># Makes more sense when operating on named objects</span>
-<span class='no'>messy_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>`Hi yOu`</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>nms_tidy</span>(<span class='no'>messy_list</span>)</div><div class='output co'>#&gt; $hi_you
+<span class='fu'>setNames</span>(<span class='fu'>list</span>(<span class='fl'>1</span>), <span class='fu'>str_as_tidy_names</span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt; $hi_you
 #&gt; [1] 1
 #&gt; </div></pre>
   </div>
@@ -147,6 +137,8 @@ its names.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

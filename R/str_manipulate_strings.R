@@ -52,3 +52,34 @@ check_str_suffix_match <- function(string, to_match, .match, suffix) {
     invisible(string)
   }
 }
+
+
+
+#' Create a names-friendly version of a string (lowercase and with no spaces).
+#'
+#' @param x A character string.
+#'
+#' @seealso [nms_tidy()].
+#' @return A modified version of `x`.
+#' 
+#' @export
+#' @examples
+#' messy <- "Hi yOu"
+#' 
+#' str_as_tidy_names(messy)
+#' 
+#' messy_named_string <- c(`Messy Name` = messy)
+#' # Targets strings -- not its names
+#' str_as_tidy_names(messy_named_string)
+#' # (To target names use `nms_tidy()` instead.)
+#' nms_tidy(messy_named_string)
+#' 
+#' dfm <- data.frame(1)
+#' setNames(dfm, str_as_tidy_names(messy))
+#' 
+#' # Makes more sense when operating on strings
+#' setNames(list(1), str_as_tidy_names(messy))
+str_as_tidy_names <- function(x) {
+  stopifnot(is.character(x))
+  gsub(" ", "_", tolower(x))
+}

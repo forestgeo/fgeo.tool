@@ -44,16 +44,7 @@ reference:
 
   - title: Add columns to dataframes
     contents:
-    - add_status_tree
-    - add_subquad
-    - add_var
-    - add_lxly
-    - add_qxqy
-    - add_index
-    - add_col_row
-    - add_col_row2
-    - add_hectindex
-    - add_quad
+    - matches("add_")
 
   - title: Filter dataframes
     contents:
@@ -63,9 +54,10 @@ reference:
     - stem_not_dead
     - top
 
-  - title: Manipulate vectors
+  - title: Manipulate strings
     contents:
     - str_suffix_match
+    - str_as_tidy_names
     
   - title: Manipulate dataframes
     contents:
@@ -75,10 +67,11 @@ reference:
 
   - title: Manipulate lists of dataframes
     contents:
-    - ls_list_spreadsheets
-    - ls_name_df
-    - ls_csv_df
-    - ls_join_df
+    - matches("ls_")
+
+  - title: Manipulate names
+    contents:
+    - matches("nms_")
 
   - title: Miscellaneous for developers
     desc: These functions mainly target developers
@@ -86,9 +79,4 @@ reference:
     - starts_with("check")
     - exists_in_pkg
     - fgeo_package_deps
-    - nms_restore_newvar
-    - nms_lowercase
-    - nms_restore
-    - nms_tidy
-    - nms
     - guess_plotdim
