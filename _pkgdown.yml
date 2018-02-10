@@ -73,9 +73,12 @@ reference:
     - collapse_censusid
     - recode_subquad
 
-  - title: Miscellaneous for users
+  - title: Manipulate lists of dataframes
     contents:
-    - reexports
+    - xl_list_sheets
+    - name_listed_df
+    - csv_listed_df
+    - join_listed_df
 
   - title: Miscellaneous for developers
     desc: These functions mainly target developers
@@ -86,5 +89,6 @@ reference:
     - nms_restore_newvar
     - nms_lowercase
     - nms_restore
+    - nms_tidy
     - nms
     - guess_plotdim
