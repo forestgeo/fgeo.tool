@@ -1,0 +1,79 @@
+url: https://forestgeo.github.io/fgeo.tool/
+
+authors:
+  Mauro Lepore:
+    href: https://github.com/maurolepore
+  CTFS-ForestGEO:
+    href: http://www.forestgeo.si.edu/
+
+template:
+  params:
+    bootswatch: united
+
+home:
+  links:
+  - text: Learn more
+    href: http://www.forestgeo.si.edu/
+
+
+
+navbar:
+
+  type: default
+
+  left:
+    - text: Functions Index
+      href: reference/index.html
+
+  right:
+      - text: News
+        href: news/index.html
+
+      - icon: fa-gavel
+        href: https://github.com/maurolepore
+
+      - icon: fa-github
+        href: https://github.com/forestgeo/fgeo.tool
+
+      - text: fgeo
+        href: https://forestgeo.github.io/fgeo/
+
+
+
+reference:
+
+  - title: Add columns to dataframes
+    contents:
+    - starts_with("add_")
+
+  - title: Manipulate dataframes rows
+    contents:
+    - starts_with("row_")
+
+  - title: Manipulate strings
+    contents:
+    - starts_with("str_")
+    
+  - title: Manipulate dataframes
+    contents:
+    - collapse_censusid
+    - recode_subquad
+    - replace_all_na
+    - restructure_elev
+
+  - title: Manipulate lists of dataframes
+    contents:
+    - starts_with("ls_")
+
+  - title: Manipulate names
+    contents:
+    - starts_with("nms_")
+
+  - title: Checks (for developers)
+    contents:
+    - starts_with("check")
+    
+  - title: Miscellaneous (for developers)
+    contents:
+    - exists_in_pkg
+    - guess_plotdim
