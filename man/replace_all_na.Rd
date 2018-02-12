@@ -4,22 +4,22 @@
 \alias{replace_all_na}
 \title{Replace all NA's of a dataframe with a filler}
 \usage{
-replace_all_na(df, filler = 0)
+replace_all_na(x, filler = 0)
 }
 \arguments{
-\item{df}{A dataframe.}
+\item{x}{A dataframe.}
 
-\item{replace}{A filler; whatever you want to replace NA's with.}
+\item{filler}{A filler; whatever you want to replace NA's with.}
 }
 \value{
-A modified versio of \code{df}.
+A modified versio of \code{x}.
 }
 \description{
 Replace all NA's of a dataframe with a filler
 }
 \examples{
-df <- data.frame(x = c(NA, 1), y = c("a", NA), stringsAsFactors = FALSE)
-replace_all_na(df)
-replace_all_na(df, "")
-replace_all_na(df, "missing")
+x <- data.frame(x = c(NA, 1), y = c("a", NA), stringsAsFactors = FALSE)
+replace_all_na(x)
+replace_all_na(x, "")
+replace_all_na(x, "missing")
 }
