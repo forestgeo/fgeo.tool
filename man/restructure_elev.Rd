@@ -21,6 +21,11 @@ names \code{gx} and \code{gy} of census datasets. Whatever the structure of the 
 and \code{gy}), this function outputs a dataframe with names \code{gx} and \code{gy}, and
 checks that the variable \code{elev} is present.
 }
+\section{Acknowledgements}{
+
+This function was inspired by David Kenfack.
+}
+
 \examples{
 # Dataframe input
 elev_df <- bciex::bci_elevation
