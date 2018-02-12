@@ -13,6 +13,10 @@
 #' @param elevation A dataframe or list of ForestGEO's elevation data.
 #'
 #' @return A dataframe
+#' 
+#' @section Acknowledgements:
+#'   This function was inspired by David Kenfack.
+#' 
 #' @export
 #'
 #' @examples
