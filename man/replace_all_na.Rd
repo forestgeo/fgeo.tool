@@ -17,6 +17,11 @@ A modified versio of \code{x}.
 \description{
 Replace all NA's of a dataframe with a filler
 }
+\section{Acknowledgements}{
+
+This function was inspired by David Kenfack.
+}
+
 \examples{
 x <- data.frame(x = c(NA, 1), y = c("a", NA), stringsAsFactors = FALSE)
 replace_all_na(x)
