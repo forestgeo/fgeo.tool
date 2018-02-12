@@ -4,6 +4,9 @@
 #' @param filler A filler; whatever you want to replace NA's with.
 #'
 #' @return A modified versio of `x`.
+#' 
+#' @section Acknowledgements:
+#'   This function was inspired by David Kenfack.
 #' @export
 #'
 #' @examples
