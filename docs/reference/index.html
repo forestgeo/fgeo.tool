@@ -103,7 +103,7 @@
       <tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-add-columns-to-dataframes" class="hasAnchor"><a href="#section-add-columns-to-dataframes" class="anchor"></a>Add columns to dataframes</h2>
+            <h2 id="section-manipulate-dataframes-by-adding-columns" class="hasAnchor"><a href="#section-manipulate-dataframes-by-adding-columns" class="anchor"></a>Manipulate dataframes by adding columns</h2>
             <p class="section-desc"></p>
           </th>
         </tr>
@@ -129,11 +129,17 @@
       </tbody><tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-manipulate-dataframes-rows" class="hasAnchor"><a href="#section-manipulate-dataframes-rows" class="anchor"></a>Manipulate dataframes rows</h2>
+            <h2 id="section-manipulate-dataframes-by-operating-on-rows" class="hasAnchor"><a href="#section-manipulate-dataframes-by-operating-on-rows" class="anchor"></a>Manipulate dataframes by operating on rows</h2>
             <p class="section-desc"></p>
           </th>
         </tr>
         <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="row_collapse_censusid.html">row_collapse_censusid</a></code> </p>
+          </td>
+          <td><p>Collapse the values of CensusID.</p></td>
+        </tr><tr>
           <!--  -->
           <td>
             <p><code><a href="row_discard_twice_dead.html">row_discard_twice_dead</a></code> </p>
@@ -151,58 +157,6 @@
             <p><code><a href="row_top.html">row_top</a></code> </p>
           </td>
           <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-manipulate-strings" class="hasAnchor"><a href="#section-manipulate-strings" class="anchor"></a>Manipulate strings</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="str_as_tidy_names.html">str_as_tidy_names</a></code> </p>
-          </td>
-          <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="str_suffix_match.html">str_suffix_match</a></code> </p>
-          </td>
-          <td><p>Suffix a strings where a vector exactly matches one specific string.</p></td>
-        </tr>
-      </tbody><tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-manipulate-dataframes" class="hasAnchor"><a href="#section-manipulate-dataframes" class="anchor"></a>Manipulate dataframes</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="collapse_censusid.html">collapse_censusid</a></code> </p>
-          </td>
-          <td><p>Collapse the values of CensusID.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="recode_subquad.html">recode_subquad</a></code> </p>
-          </td>
-          <td><p>Recode subquadrat labels.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fill_na.html">fill_na</a></code> </p>
-          </td>
-          <td><p>Fill NA's with a single filler.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="restructure_elev.html">restructure_elev</a></code> </p>
-          </td>
-          <td><p>If necessary, pull elevation data and rename <code>x</code> and <code>y</code> to <code>gx</code> and <code>gy</code>.</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -235,6 +189,40 @@
             <p><code><a href="ls_name_df.html">ls_name_df</a></code> </p>
           </td>
           <td><p>Mutate a list of dataframes to add column with the name of the list element.</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-manipulate-dataframes" class="hasAnchor"><a href="#section-manipulate-dataframes" class="anchor"></a>Manipulate dataframes</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="recode_subquad.html">recode_subquad</a></code> </p>
+          </td>
+          <td><p>Recode subquadrat labels.</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-manipulate-strings" class="hasAnchor"><a href="#section-manipulate-strings" class="anchor"></a>Manipulate strings</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="str_as_tidy_names.html">str_as_tidy_names</a></code> </p>
+          </td>
+          <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="str_suffix_match.html">str_suffix_match</a></code> </p>
+          </td>
+          <td><p>Suffix a strings where a vector exactly matches one specific string.</p></td>
         </tr>
       </tbody><tbody>
         <tr>
@@ -277,7 +265,27 @@
       </tbody><tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-checks-for-developers-" class="hasAnchor"><a href="#section-checks-for-developers-" class="anchor"></a>Checks (for developers)</h2>
+            <h2 id="section-sanitize-multiple-data-structures" class="hasAnchor"><a href="#section-sanitize-multiple-data-structures" class="anchor"></a>Sanitize multiple data structures</h2>
+            <p class="section-desc"></p>
+          </th>
+        </tr>
+        <tr>
+          <!--  -->
+          <td>
+            <p><code><a href="fill_na.html">fill_na</a></code> </p>
+          </td>
+          <td><p>Fill NA's with a single filler.</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="restructure_elev.html">restructure_elev</a></code> </p>
+          </td>
+          <td><p>If necessary, pull elevation data and rename <code>x</code> and <code>y</code> to <code>gx</code> and <code>gy</code>.</p></td>
+        </tr>
+      </tbody><tbody>
+        <tr>
+          <th colspan="2">
+            <h2 id="section-functions-for-developers-checks" class="hasAnchor"><a href="#section-functions-for-developers-checks" class="anchor"></a>Functions for developers: Checks</h2>
             <p class="section-desc"></p>
           </th>
         </tr>
@@ -297,7 +305,7 @@
       </tbody><tbody>
         <tr>
           <th colspan="2">
-            <h2 id="section-miscellaneous-for-developers-" class="hasAnchor"><a href="#section-miscellaneous-for-developers-" class="anchor"></a>Miscellaneous (for developers)</h2>
+            <h2 id="section-functions-for-developers-miscellaneous" class="hasAnchor"><a href="#section-functions-for-developers-miscellaneous" class="anchor"></a>Functions for developers: Miscellaneous</h2>
             <p class="section-desc"></p>
           </th>
         </tr>
@@ -322,14 +330,15 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-add-columns-to-dataframes">Add columns to dataframes</a></li>
-      <li><a href="#section-manipulate-dataframes-rows">Manipulate dataframes rows</a></li>
-      <li><a href="#section-manipulate-strings">Manipulate strings</a></li>
-      <li><a href="#section-manipulate-dataframes">Manipulate dataframes</a></li>
+      <li><a href="#section-manipulate-dataframes-by-adding-columns">Manipulate dataframes by adding columns</a></li>
+      <li><a href="#section-manipulate-dataframes-by-operating-on-rows">Manipulate dataframes by operating on rows</a></li>
       <li><a href="#section-manipulate-lists-of-dataframes">Manipulate lists of dataframes</a></li>
+      <li><a href="#section-manipulate-dataframes">Manipulate dataframes</a></li>
+      <li><a href="#section-manipulate-strings">Manipulate strings</a></li>
       <li><a href="#section-manipulate-names">Manipulate names</a></li>
-      <li><a href="#section-checks-for-developers-">Checks (for developers)</a></li>
-      <li><a href="#section-miscellaneous-for-developers-">Miscellaneous (for developers)</a></li>
+      <li><a href="#section-sanitize-multiple-data-structures">Sanitize multiple data structures</a></li>
+      <li><a href="#section-functions-for-developers-checks">Functions for developers: Checks</a></li>
+      <li><a href="#section-functions-for-developers-miscellaneous">Functions for developers: Miscellaneous</a></li>
     </ul>
   </div>
 </div>
