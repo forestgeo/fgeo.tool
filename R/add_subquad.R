@@ -53,6 +53,9 @@ add_subquad <- function(df,
     subquad_offset = subquad_offset
   )
 
+  df <- ensure_type(df = df, ensure_nms = c("qx", "qy"), type = "numeric")
+  df <- dplyr::filter(df, !is.na(.data$qx), !is.na(.data$qy))
+
   # Simplify nested parentheses
   x_q_mns.1 <- x_q - 0.1
   y_q_mns.1 <- y_q - 0.1
@@ -91,6 +94,32 @@ add_subquad <- function(df,
     w_subquad
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #' Recode subquadrat labels.
 #'

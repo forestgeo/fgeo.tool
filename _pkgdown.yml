@@ -68,6 +68,7 @@ reference:
 
   - title: Sanitize multiple data structures
     contents:
+    - ensure_type
     - fill_na
     - restructure_elev
 
