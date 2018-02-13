@@ -182,8 +182,8 @@ ls_join_df <- function(df_list, df_names = NULL, by = NULL) {
     if (!all_valid_nms) {
       msg <- paste0(
         "Each value of `which` must be a valid name of `.df`\n",
-        "* Values of `which` :", collapse(df_names), "\n",
-        "* Valid names of `.df` :", collapse(names(df_list))
+        "* Values of `which` :", commas(df_names), "\n",
+        "* Valid names of `.df` :", commas(names(df_list))
       )
       rlang::abort(msg)
     }

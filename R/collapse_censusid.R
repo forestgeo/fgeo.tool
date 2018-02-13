@@ -21,22 +21,18 @@
 #'   "2",  "2",  "dead"
 #' )
 #' 
-#' collapse_censusid(x)
+#' row_collapse_censusid(x)
 #' 
 #' with_status_tree <- fgeo.tool::add_status_tree(x, "alive", "dead")
 #' reduced <- unique(dplyr::select(with_status_tree, -Status))
 #' reduced
 #' 
-#' collapse_censusid(reduced)
-collapse_censusid <- function(x) {
+#' row_collapse_censusid(reduced)
+row_collapse_censusid <- function(x) {
   stopifnot(is.data.frame(x))
   x <- fgeo.tool::nms_lowercase(x)
   fgeo.tool::check_crucial_names(x, "censusid")
-
-  x$censusid <- collapse(
-    sort(unique(x$censusid))
-  )
-
+  x$censusid <- commas(sort(unique(x$censusid)))
   unique(fgeo.tool::nms_restore(x))
 }
 

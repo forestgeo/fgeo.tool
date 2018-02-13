@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lower and restore names. — nms_lowercase â€¢ fgeo.tool</title>
+<title>Collapse the values of CensusID. — row_collapse_censusid â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -86,73 +86,65 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Lower and restore names.</h1>
+    <h1>Collapse the values of CensusID.</h1>
     </div>
 
     
-    <p>These functions are useful together, to lowercase names, then to do something
-(as long as attributes are preserved -- see section warning), and then
-restore the original names.</p>
+    <p>This function is useful to summarize the status history of a tree tag accross
+censuses. It is particularly useful to avoid duplicated tree tags on maps.</p>
     
 
-    <pre class="usage"><span class='fu'>nms_lowercase</span>(<span class='no'>x</span>)
-
-<span class='fu'>nms_restore</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>row_collapse_censusid</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named object.</p></td>
+      <td><p>A dataframe -- specifically a ViewFullTable.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    
-<ul>
-<li><p><code>nms_lowercase()</code> Returns the object <code>x</code> with lowercase names</p></li>
-<li><p><code>nms_restore()</code> Returns the object <code>x</code> with original (restored) names.</p></li>
-</ul>
-
-    
-    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
-
-    <p><code>nms_restore()</code> is similar to <code><a href='nms_restore_newvar.html'>nms_restore_newvar()</a></code> but
-<code>nms_restore()</code> is necesary if the data is mutated with <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>:
-<code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code> drops attributes
-(https://github.com/tidyverse/dplyr/issues/1984), which makes it
-<code>nms_restore()</code> useless. attributes.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
-  <code><a href='check_unique.html'>check_unique</a></code>, <code><a href='ensure_type.html'>ensure_type</a></code>,
-  <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms.html'>nms</a></code></p>
-<p>Other functions to manipulate names.: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms.html'>nms</a></code></p>
+    <p>A modified version of <code>x</code>, most likely with less rows.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>status</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
-<span class='no'>original</span> <span class='kw'>&lt;-</span> <span class='no'>cns</span>
-<span class='no'>original</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   CensusID status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1     1.00 A     </div><div class='input'>
-<span class='no'>lowered</span> <span class='kw'>&lt;-</span> <span class='fu'>nms_lowercase</span>(<span class='no'>cns</span>)
-<span class='no'>lowered</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   censusid status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1     1.00 A     </div><div class='input'><span class='fu'>attr</span>(<span class='no'>lowered</span>, <span class='st'>"names_old"</span>)</div><div class='output co'>#&gt; [1] "CensusID" "status"  </div><div class='input'>
-<span class='no'>back_to_original</span> <span class='kw'>&lt;-</span> <span class='fu'>nms_restore</span>(<span class='no'>lowered</span>)
-<span class='no'>back_to_original</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   CensusID status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1     1.00 A     </div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>CensusID</span>, ~<span class='no'>Tag</span>, ~<span class='no'>Status</span>,
+  <span class='st'>"1"</span>,  <span class='st'>"1"</span>, <span class='st'>"alive"</span>,
+  <span class='st'>"1"</span>,  <span class='st'>"1"</span>,  <span class='st'>"dead"</span>,
+  <span class='st'>"1"</span>,  <span class='st'>"2"</span>,  <span class='st'>"dead"</span>,
+  <span class='st'>"1"</span>,  <span class='st'>"2"</span>,  <span class='st'>"dead"</span>,
+  <span class='st'>"2"</span>,  <span class='st'>"1"</span>, <span class='st'>"alive"</span>,
+  <span class='st'>"2"</span>,  <span class='st'>"1"</span>, <span class='st'>"alive"</span>,
+  <span class='st'>"2"</span>,  <span class='st'>"2"</span>, <span class='st'>"alive"</span>,
+  <span class='st'>"2"</span>,  <span class='st'>"2"</span>,  <span class='st'>"dead"</span>
+)
+
+<span class='fu'>row_collapse_censusid</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   CensusID Tag   Status
+#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; 
+#&gt; 1 1, 2     1     alive 
+#&gt; 2 1, 2     1     dead  
+#&gt; 3 1, 2     2     dead  
+#&gt; 4 1, 2     2     alive </div><div class='input'>
+<span class='no'>with_status_tree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.tool</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.tool/topics/add_status_tree'>add_status_tree</a></span>(<span class='no'>x</span>, <span class='st'>"alive"</span>, <span class='st'>"dead"</span>)
+<span class='no'>reduced</span> <span class='kw'>&lt;-</span> <span class='fu'>unique</span>(<span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>with_status_tree</span>, -<span class='no'>Status</span>))
+<span class='no'>reduced</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   CensusID Tag   status_tree
+#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      
+#&gt; 1 1        1     alive      
+#&gt; 2 1        2     dead       
+#&gt; 3 2        1     alive      
+#&gt; 4 2        2     alive      </div><div class='input'>
+<span class='fu'>row_collapse_censusid</span>(<span class='no'>reduced</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 3
+#&gt;   CensusID Tag   status_tree
+#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      
+#&gt; 1 1, 2     1     alive      
+#&gt; 2 1, 2     2     dead       
+#&gt; 3 1, 2     2     alive      </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,10 +152,6 @@ restore the original names.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#warning">Warning</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

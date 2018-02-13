@@ -42,38 +42,41 @@ navbar:
 
 reference:
 
-  - title: Add columns to dataframes
+  - title: Manipulate dataframes by adding columns
     contents:
     - starts_with("add_")
 
-  - title: Manipulate dataframes rows
+  - title: Manipulate dataframes by operating on rows
     contents:
     - starts_with("row_")
-
-  - title: Manipulate strings
-    contents:
-    - starts_with("str_")
-    
-  - title: Manipulate dataframes
-    contents:
-    - collapse_censusid
-    - recode_subquad
-    - replace_all_na
-    - restructure_elev
 
   - title: Manipulate lists of dataframes
     contents:
     - starts_with("ls_")
+    
+  - title: Manipulate dataframes
+    contents:
+    - recode_subquad
+    
+  - title: Manipulate strings
+    contents:
+    - starts_with("str_")
 
   - title: Manipulate names
     contents:
     - starts_with("nms_")
 
-  - title: Checks (for developers)
+  - title: Sanitize multiple data structures
+    contents:
+    - ensure_type
+    - fill_na
+    - restructure_elev
+
+  - title: "Functions for developers: Checks"
     contents:
     - starts_with("check")
     
-  - title: Miscellaneous (for developers)
+  - title: "Functions for developers: Miscellaneous"
     contents:
     - exists_in_pkg
     - guess_plotdim

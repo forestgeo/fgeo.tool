@@ -196,8 +196,8 @@ check_valid_status <- function(x, .status, status_var) {
   invalid_status <- setdiff(.status, valid_status)
   if (length(invalid_status) != 0) {
     warning(
-      "No observation has .status = ", collapse(invalid_status), "\n",
-      "  * Valid values: ", collapse(valid_status)
+      "No observation has .status = ", commas(invalid_status), "\n",
+      "  * Valid values: ", commas(valid_status)
     )
   }
 }
