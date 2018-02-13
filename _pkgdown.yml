@@ -58,7 +58,7 @@ reference:
     contents:
     - collapse_censusid
     - recode_subquad
-    - replace_all_na
+    - fill_na
     - restructure_elev
 
   - title: Manipulate lists of dataframes
