@@ -33,9 +33,9 @@ warn_if_changing_type <- function(ensure, is_to_fix, type) {
   nm_to_fix <- names(ensure[is_to_fix])
   if (any(is_to_fix)) {
     msg <- paste0(
-      collapse(nm_to_fix), " should be ", type, ". Type found: ",
-      collapse(unique(purrr::map_chr(ensure[nm_to_fix], typeof))), "\n",
-      "* Changing type (of ", collapse(nm_to_fix), ") accordingly."
+      commas(nm_to_fix), " should be ", type, ". Type found: ",
+      commas(unique(purrr::map_chr(ensure[nm_to_fix], typeof))), "\n",
+      "* Changing type (of ", commas(nm_to_fix), ") accordingly."
     )
     warn(msg)
   }

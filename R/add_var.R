@@ -213,7 +213,7 @@ guess_plotdim <- function(x, accuracy = 50) {
   check_crucial_names(x, c("gx", "gy"))
   
   guess <- purrr::map_dbl(x[ , c("gx", "gy")], guess_max, accuracy = accuracy)
-  message("Gessing: plotdim = c(", collapse(guess), ")")
+  message("Gessing: plotdim = c(", commas(guess), ")")
   guess <- unname(guess)
 }
 guess_max <- function(x, ...) {

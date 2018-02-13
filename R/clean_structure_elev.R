@@ -63,7 +63,7 @@ pull_elevation.list <- function(x) {
     msg <- paste0(
       "Your list must contain the element `col` with elevation data.\n",
       "* Names of the elements of the list provided:\n",
-      collapse(names(x))
+      commas(names(x))
     )
     rlang::abort(msg)
   }

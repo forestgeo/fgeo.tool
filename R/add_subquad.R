@@ -95,32 +95,6 @@ add_subquad <- function(df,
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #' Recode subquadrat labels.
 #'
 #' @param x A dataframe with the variable `subquadrat`.
@@ -179,7 +153,7 @@ stop_if_invalid_subquad <- function(x, offset) {
       "Invalid subquadrats were detected.\n",
       "  * You chose `offset` = ", offset, "\n",
       "  * The subquadrats of your data are these:\n",
-      collapse(unique(x$subquadrat))
+      commas(unique(x$subquadrat))
     )
   }
 }
