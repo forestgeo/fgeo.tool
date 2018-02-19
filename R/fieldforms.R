@@ -23,7 +23,6 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' library(fgeo.tool)
 #' x <- top4quad
 #' prep <- fieldforms_prepare(x)
@@ -51,7 +50,6 @@
 #' 
 #' # Cleaning temporary directory
 #' unlink(tmp)
-#' }
 fieldforms_output <- function(forms, 
                        filename = "fieldforms.docx", 
                        output_format = "word_document",

@@ -37,7 +37,6 @@ see the function \code{install.pandoc()} of the \strong{installr} package
 }
 
 \examples{
-\dontrun{
 library(fgeo.tool)
 x <- top4quad
 prep <- fieldforms_prepare(x)
@@ -65,7 +64,6 @@ dir(tmp)[grepl("docx$", dir(tmp))]
 
 # Cleaning temporary directory
 unlink(tmp)
-}
 }
 \seealso{
 \code{\link[=fieldforms_header]{fieldforms_header()}}.

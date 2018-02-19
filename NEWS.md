@@ -7,7 +7,6 @@
     * `check_*()`
     * `ls_*()`
     * `fieldforms_*()`
-    
 * Add functions to deal with datasets with same variables but different names.
 * Add `str_suffix_match()`.
 
