@@ -1,0 +1,16 @@
+---
+output:
+  word_document: 
+    reference_docx: reference.docx
+---
+
+```{r, results='asis', echo=FALSE}
+for (i in seq_along(forms)) {
+  cat("# ", names(forms)[[i]])
+  print(knitr::kable(forms[[i]], caption = header))
+  cat("\n")
+  cat("##### brake")
+  cat("\n")
+}
+```
+

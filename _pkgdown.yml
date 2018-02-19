@@ -71,6 +71,10 @@ reference:
     - ensure_type
     - fill_na
     - restructure_elev
+    
+  - title: Create field forms
+    contents:
+    - starts_with("fieldforms")
 
   - title: "Functions for developers: Checks"
     contents:
@@ -80,3 +84,8 @@ reference:
     contents:
     - exists_in_pkg
     - guess_plotdim
+
+  - title: "Datasets"
+    contents:
+    - top1quad
+    - top4quad

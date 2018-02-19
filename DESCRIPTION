@@ -13,15 +13,16 @@ Depends:
     R (>= 3.1.2)
 Imports: 
     dplyr,
+    fs,
     plyr,
     purrr,
-    rlang,
-    stringr,
-    tibble,
-    remotes,
-    fs,
     readr,
-    readxl
+    readxl,
+    remotes,
+    rlang,
+    rmarkdown,
+    stringr,
+    tibble
 Suggests: 
     bciex,
     covr,
