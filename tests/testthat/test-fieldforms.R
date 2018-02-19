@@ -35,8 +35,8 @@ test_that("outputs a .docx file", {
   )
 })
 
-teardown(unlink(here::here("badish")))
-teardown(unlink(here::here("forms.docx")))
+unlink("badish")
+unlink("forms.docx")
 
 
 
