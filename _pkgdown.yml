@@ -26,6 +26,9 @@ navbar:
       href: reference/index.html
 
   right:
+      - text: News
+        href: news/index.html
+        
       - icon: fa-gavel
         href: https://github.com/maurolepore
 
