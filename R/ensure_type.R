@@ -17,9 +17,9 @@
 #'   z = letters[1:3]
 #' )
 #' dfm
-#' ensure_type(dfm, c("w", "x", "y"), "numeric")
-#' ensure_type(dfm, c("w", "x", "y", "z"), "character")
-ensure_type <- function(df, ensure_nms, type = "numeric") {
+#' type_ensure(dfm, c("w", "x", "y"), "numeric")
+#' type_ensure(dfm, c("w", "x", "y", "z"), "character")
+type_ensure <- function(df, ensure_nms, type = "numeric") {
   ensure <- df[ensure_nms]
   is_type <- paste0("is.", type)
   is_to_fix <- !purrr::map_lgl(ensure, rlang::as_function(is_type))

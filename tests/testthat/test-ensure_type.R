@@ -1,4 +1,4 @@
-context("ensure_type.R")
+context("type_ensure")
 
 test_that("works as expected", {
   dfm <- tibble::tibble(
@@ -8,13 +8,13 @@ test_that("works as expected", {
   )
 
   expect_warning(
-    x <- ensure_type(dfm, c("x", "y", "z"), "numeric"),
+    x <- type_ensure(dfm, c("x", "y", "z"), "numeric"),
     "y, z should be numeric"
   )
   expect_true(all(purrr::map_lgl(x, is.numeric)))
   
   expect_warning(
-    x <- ensure_type(dfm, c("x", "y", "z"), "character"),
+    x <- type_ensure(dfm, c("x", "y", "z"), "character"),
     "x should be character"
   )
   expect_true(all(purrr::map_lgl(x, is.character)))

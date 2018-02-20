@@ -53,7 +53,7 @@ add_subquad <- function(df,
     subquad_offset = subquad_offset
   )
 
-  df <- ensure_type(df = df, ensure_nms = c("qx", "qy"), type = "numeric")
+  df <- type_ensure(df = df, ensure_nms = c("qx", "qy"), type = "numeric")
   df <- dplyr::filter(df, !is.na(.data$qx), !is.na(.data$qy))
 
   # Simplify nested parentheses

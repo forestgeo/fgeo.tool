@@ -1,12 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
-===============================================================================================================
 
-[![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool) [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
+# fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
 
-Installation
-------------
+[![Travis build
+status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
+[![Coverage
+status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
+
+## Installation
 
 You can install fgeo.tool from github with:
 
@@ -17,8 +19,7 @@ You can install fgeo.tool from github with:
 library(fgeo.tool)
 ```
 
-Example
--------
+## Example
 
 Setup.
 
@@ -155,7 +156,7 @@ dplyr::select(edited, -Status)
 #> 6     2.00  3.00 A
 ```
 
-You don't have to, but if you want you can use the pipe (`%>%`).
+You don’t have to, but if you want you can use the pipe (`%>%`).
 
 ``` r
 # With the pipe

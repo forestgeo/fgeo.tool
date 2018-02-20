@@ -69,7 +69,6 @@ reference:
   - title: Sanitize multiple data structures
     contents:
     - starts_with("type_")
-    - ensure_type
     - fill_na
     - restructure_elev
     

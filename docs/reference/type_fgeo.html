@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Test if an object exists in the namespace of a package. — exists_in_pkg â€¢ fgeo.tool</title>
+<title>Help read ForestGEO data with consistent column type. — type_fgeo â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -86,50 +86,194 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Test if an object exists in the namespace of a package.</h1>
+    <h1>Help read ForestGEO data with consistent column type.</h1>
     </div>
 
     
-    <p>Test if an object exists in the namespace of a package. Useful inside an
-<code>if</code> statement.</p>
+    <p>This functions helps to read ForestGEO's data with consistent column types.
+They output the specification for the argument <code>col_types()</code> of the functions
+<code>read_*()</code> of the <strong>readr</strong> package:</p><ul>
+<li><p><code>type_vft():</code> Type specification for ViewFullTable.</p></li>
+<li><p><code>type_taxa():</code> Type specification for ViewFullTaxonomy.</p></li>
+</ul>
     
 
-    <pre class="usage"><span class='fu'>exists_in_pkg</span>(<span class='no'>object</span>, <span class='no'>package</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>object</th>
-      <td><p>String giving the object to find.</p></td>
-    </tr>
-    <tr>
-      <th>package</th>
-      <td><p>String giving the package which namespace to search.</p></td>
-    </tr>
-    </table>
-    
+    <pre class="usage"><span class='fu'>type_vft</span>()
+
+<span class='fu'>type_taxa</span>()</pre>
+        
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Logical.</p>
+    <p>A list.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
-  <code><a href='check_unique.html'>check_unique</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code>nms_lowercase</code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms.html'>nms</a></code>,
-  <code><a href='type_ensure.html'>type_ensure</a></code></p>
+    <p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>exists_in_pkg</span>(<span class='st'>"cars"</span>, <span class='st'>"datasets"</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>type_vft</span>()</div><div class='output co'>#&gt; $DBHID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $PlotName
+#&gt; [1] "c"
+#&gt; 
+#&gt; $PlotID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $Family
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Genus
+#&gt; [1] "c"
+#&gt; 
+#&gt; $SpeciesName
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Mnemonic
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Subspecies
+#&gt; [1] "c"
+#&gt; 
+#&gt; $SpeciesID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $SubspeciesID
+#&gt; [1] "c"
+#&gt; 
+#&gt; $QuadratName
+#&gt; [1] "c"
+#&gt; 
+#&gt; $QuadratID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $PX
+#&gt; [1] "d"
+#&gt; 
+#&gt; $PY
+#&gt; [1] "d"
+#&gt; 
+#&gt; $QX
+#&gt; [1] "d"
+#&gt; 
+#&gt; $QY
+#&gt; [1] "d"
+#&gt; 
+#&gt; $TreeID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $Tag
+#&gt; [1] "c"
+#&gt; 
+#&gt; $StemID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $StemNumber
+#&gt; [1] "i"
+#&gt; 
+#&gt; $StemTag
+#&gt; [1] "i"
+#&gt; 
+#&gt; $PrimaryStem
+#&gt; [1] "c"
+#&gt; 
+#&gt; $CensusID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $PlotCensusNumber
+#&gt; [1] "i"
+#&gt; 
+#&gt; $DBH
+#&gt; [1] "d"
+#&gt; 
+#&gt; $HOM
+#&gt; [1] "d"
+#&gt; 
+#&gt; $ExactDate
+#&gt; [1] "D"
+#&gt; 
+#&gt; $Date
+#&gt; [1] "i"
+#&gt; 
+#&gt; $ListOfTSM
+#&gt; [1] "c"
+#&gt; 
+#&gt; $HighHOM
+#&gt; [1] "i"
+#&gt; 
+#&gt; $LargeStem
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Status
+#&gt; [1] "c"
+#&gt; </div><div class='input'><span class='fu'>type_taxa</span>()</div><div class='output co'>#&gt; $ViewID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $SpeciesID
+#&gt; [1] "i"
+#&gt; 
+#&gt; $SubspeciesID
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Family
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Mnemonic
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Genus
+#&gt; [1] "c"
+#&gt; 
+#&gt; $SpeciesName
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Rank
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Subspecies
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Authority
+#&gt; [1] "c"
+#&gt; 
+#&gt; $IDLevel
+#&gt; [1] "c"
+#&gt; 
+#&gt; $subspMnemonic
+#&gt; [1] "c"
+#&gt; 
+#&gt; $subspAuthority
+#&gt; [1] "c"
+#&gt; 
+#&gt; $FieldFamily
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Lifeform
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Description
+#&gt; [1] "c"
+#&gt; 
+#&gt; $wsg
+#&gt; [1] "d"
+#&gt; 
+#&gt; $wsglevel
+#&gt; [1] "c"
+#&gt; 
+#&gt; $ListOfOldNames
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Specimens
+#&gt; [1] "c"
+#&gt; 
+#&gt; $Reference
+#&gt; [1] "c"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
 
