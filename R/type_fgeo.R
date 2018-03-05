@@ -1,26 +1,39 @@
 # types -------------------------------------------------------------------
 
-# Types lookup (see ?readr::read_delim)
-# c = character,
-# i = integer,
-# n = number,
-# d = double,
-# l = logical,
-# D = date,
-# T = date time,
-# t = time,
-# ? = guess,
-# or _/- to skip the column.
-
-#' Help read ForestGEO data with consistent column type.
+#' Help to read ForestGEO data safely, with consistent column type.
 #'
-#' This functions helps to read ForestGEO's data with consistent column types. 
-#' They output the specification for the argument `col_types()` of the functions
-#' `read_*()` of the __readr__ package:
+#' @description 
+#' A common cause of problems is feeding functions with data which columns are
+#' not all of the expected type. The problem often begins when reading data from
+#' a text file with functions such as [utils::read.csv()],
+#' [utils::read.delim()], and friends -- which commonly guess wrongly the column
+#' type that you more likely expect. These common offenders are strongly
+#' discouraged; instead consider using [readr::read_csv()], [readr::read_csv()],
+#' and friends, which guess column types correctly much more often than their
+#' analogs from the __utils__ package.
+#' 
+#' @description 
+#' The functions `type_vft()`, `type_taxa()`, and friends help you to read data
+#' more safely by explicitely specifying what type to expect from each column of
+#' known datasets. These functions output the specification for the argument
+#' `col_types()` of the functions `readr::read_*()`:
 #' * `type_vft():` Type specification for ViewFullTable.
 #' * `type_taxa():` Type specification for ViewFullTaxonomy.
+#' 
+#' @details
+#' Types reference (for more details see [read_delim()]):
+#' * c = character,
+#' * i = integer,
+#' * n = number,
+#' * d = double,
+#' * l = logical,
+#' * D = date,
+#' * T = date time,
+#' * t = time,
+#' * ? = guess,
+#' * or _/- to skip the column.'.
 #'
-#' @seealso [readr::read_delim()].
+#' @seealso [readr::read_delim()], [readr::read_csv()].
 #'
 #' @return A list.
 #' @export

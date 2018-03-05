@@ -4,7 +4,7 @@
 \alias{type_fgeo}
 \alias{type_vft}
 \alias{type_taxa}
-\title{Help read ForestGEO data with consistent column type.}
+\title{Help to read ForestGEO data safely, with consistent column type.}
 \usage{
 type_vft()
 
@@ -14,12 +14,37 @@ type_taxa()
 A list.
 }
 \description{
-This functions helps to read ForestGEO's data with consistent column types.
-They output the specification for the argument \code{col_types()} of the functions
-\code{read_*()} of the \strong{readr} package:
+A common cause of problems is feeding functions with data which columns are
+not all of the expected type. The problem often begins when reading data from
+a text file with functions such as \code{\link[utils:read.csv]{utils::read.csv()}},
+\code{\link[utils:read.delim]{utils::read.delim()}}, and friends -- which commonly guess wrongly the column
+type that you more likely expect. These common offenders are strongly
+discouraged; instead consider using \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[readr:read_csv]{readr::read_csv()}},
+and friends, which guess column types correctly much more often than their
+analogs from the \strong{utils} package.
+
+The functions \code{type_vft()}, \code{type_taxa()}, and friends help you to read data
+more safely by explicitely specifying what type to expect from each column of
+known datasets. These functions output the specification for the argument
+\code{col_types()} of the functions \code{readr::read_*()}:
 \itemize{
 \item \code{type_vft():} Type specification for ViewFullTable.
 \item \code{type_taxa():} Type specification for ViewFullTaxonomy.
+}
+}
+\details{
+Types reference (for more details see \code{\link[=read_delim]{read_delim()}}):
+\itemize{
+\item c = character,
+\item i = integer,
+\item n = number,
+\item d = double,
+\item l = logical,
+\item D = date,
+\item T = date time,
+\item t = time,
+\item ? = guess,
+\item or _/- to skip the column.'.
 }
 }
 \examples{
@@ -27,5 +52,5 @@ type_vft()
 type_taxa()
 }
 \seealso{
-\code{\link[readr:read_delim]{readr::read_delim()}}.
+\code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[readr:read_csv]{readr::read_csv()}}.
 }
