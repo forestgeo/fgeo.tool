@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>If necessary, pull elevation data and rename <code>x</code> and <code>y</code> to <code>gx</code> and <code>gy</code>. — restructure_elev â€¢ fgeo.tool</title>
+<title>If necessary, pull elevation data and rename <code>x</code> and <code>y</code> to <code>gx</code> and <code>gy</code>. â€” restructure_elev Ã¢â‚¬Â¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,16 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="If necessary, pull elevation data and rename <code>x</code> and <code>y</code> to <code>gx</code> and <code>gy</code>. â€” restructure_elev" />
+
+<meta property="og:description" content="This functions helps standarize elevation data. Elevation data may be stored
+as a dataframe in the element col of a list or may be directly the
+dataframe. Also, the names may be x and y wich is inconsistent with the
+names gx and gy of census datasets. Whatever the structure of the input
+(either a dataframe or a list) and whatever the names (x and y, or gx
+and gy), this function outputs a dataframe with names gx and gy, and
+checks that the variable elev is present." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -123,25 +135,25 @@ checks that the variable <code>elev</code> is present.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Dataframe input</span>
 <span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bciex</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/bciex/topics/bci_elevation'>bci_elevation</a></span>
-<span class='fu'>str</span>(<span class='no'>elev_df</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>elev_df</span>)</div><div class='output co'>#&gt; Classes â€˜tbl_dfâ€™, â€˜tblâ€™ and 'data.frame':	20301 obs. of  3 variables:
 #&gt;  $ x   : int  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ y   : int  0 5 10 15 20 25 30 35 40 45 ...
 #&gt;  $ elev: num  121 121 121 121 121 ...</div><div class='input'>
 <span class='no'>elev_clean</span> <span class='kw'>&lt;-</span> <span class='fu'>restructure_elev</span>(<span class='no'>elev_df</span>)
-<span class='fu'>str</span>(<span class='no'>elev_clean</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>elev_clean</span>)</div><div class='output co'>#&gt; Classes â€˜tbl_dfâ€™, â€˜tblâ€™ and 'data.frame':	20301 obs. of  3 variables:
 #&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
 #&gt;  $ elev: num  121 121 121 121 121 ...</div><div class='input'>
 <span class='co'># List input</span>
 <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>elev_df</span>, <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"stuff"</span>)
 <span class='fu'>str</span>(<span class='no'>elev_list</span>)</div><div class='output co'>#&gt; List of 2
-#&gt;  $ col  :Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+#&gt;  $ col  :Classes â€˜tbl_dfâ€™, â€˜tblâ€™ and 'data.frame':	20301 obs. of  3 variables:
 #&gt;   ..$ x   : int [1:20301] 0 0 0 0 0 0 0 0 0 0 ...
 #&gt;   ..$ y   : int [1:20301] 0 5 10 15 20 25 30 35 40 45 ...
 #&gt;   ..$ elev: num [1:20301] 121 121 121 121 121 ...
 #&gt;  $ other: chr "stuff"</div><div class='input'>
 <span class='no'>elev_clean</span> <span class='kw'>&lt;-</span> <span class='fu'>restructure_elev</span>(<span class='no'>elev_list</span>)
-<span class='fu'>str</span>(<span class='no'>elev_clean</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>elev_clean</span>)</div><div class='output co'>#&gt; Classes â€˜tbl_dfâ€™, â€˜tblâ€™ and 'data.frame':	20301 obs. of  3 variables:
 #&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
 #&gt;  $ elev: num  121 121 121 121 121 ...</div></pre>
@@ -167,7 +179,7 @@ checks that the variable <code>elev</code> is present.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

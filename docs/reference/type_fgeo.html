@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Help read ForestGEO data with consistent column type. � type_fgeo • fgeo.tool</title>
+<title>Help to read ForestGEO data safely, with consistent column type. — type_fgeo â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,24 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Help to read ForestGEO data safely, with consistent column type. — type_fgeo" />
+
+<meta property="og:description" content="A common cause of problems is feeding functions with data which columns are
+not all of the expected type. The problem often begins when reading data from
+a text file with functions such as utils::read.csv(),
+utils::read.delim(), and friends -- which commonly guess wrongly the column
+type that you more likely expect. These common offenders are strongly
+discouraged; instead consider using readr::read_csv(), readr::read_csv(),
+and friends, which guess column types correctly much more often than their
+analogs from the utils package.
+The functions type_vft(), type_taxa(), and friends help you to read data
+more safely by explicitely specifying what type to expect from each column of
+known datasets. These functions output the specification for the argument
+col_types() of the functions readr::read_*():
+type_vft(): Type specification for ViewFullTable.
+type_taxa(): Type specification for ViewFullTaxonomy.
+" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -86,13 +106,22 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Help read ForestGEO data with consistent column type.</h1>
+    <h1>Help to read ForestGEO data safely, with consistent column type.</h1>
     </div>
 
     
-    <p>This functions helps to read ForestGEO's data with consistent column types.
-They output the specification for the argument <code>col_types()</code> of the functions
-<code>read_*()</code> of the <strong>readr</strong> package:</p><ul>
+    <p>A common cause of problems is feeding functions with data which columns are
+not all of the expected type. The problem often begins when reading data from
+a text file with functions such as <code><a href='http://www.rdocumentation.org/packages/utils/topics/read.table'>utils::read.csv()</a></code>,
+<code><a href='http://www.rdocumentation.org/packages/utils/topics/read.table'>utils::read.delim()</a></code>, and friends -- which commonly guess wrongly the column
+type that you more likely expect. These common offenders are strongly
+discouraged; instead consider using <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_csv()</a></code>, <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_csv()</a></code>,
+and friends, which guess column types correctly much more often than their
+analogs from the <strong>utils</strong> package.</p>
+<p>The functions <code>type_vft()</code>, <code>type_taxa()</code>, and friends help you to read data
+more safely by explicitely specifying what type to expect from each column of
+known datasets. These functions output the specification for the argument
+<code>col_types()</code> of the functions <code>readr::read_*()</code>:</p><ul>
 <li><p><code>type_vft():</code> Type specification for ViewFullTable.</p></li>
 <li><p><code>type_taxa():</code> Type specification for ViewFullTaxonomy.</p></li>
 </ul>
@@ -106,9 +135,24 @@ They output the specification for the argument <code>col_types()</code> of the f
 
     <p>A list.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Types reference (for more details see <code>read_delim()</code>):</p><ul>
+<li><p>c = character,</p></li>
+<li><p>i = integer,</p></li>
+<li><p>n = number,</p></li>
+<li><p>d = double,</p></li>
+<li><p>l = logical,</p></li>
+<li><p>D = date,</p></li>
+<li><p>T = date time,</p></li>
+<li><p>t = time,</p></li>
+<li><p>? = guess,</p></li>
+<li><p>or _/- to skip the column.'.</p></li>
+</ul>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>.</p>
+    <p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>, <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_csv()</a></code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -277,6 +321,8 @@ They output the specification for the argument <code>col_types()</code> of the f
       
       <li><a href="#value">Value</a></li>
 
+      <li><a href="#details">Details</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
@@ -291,7 +337,7 @@ They output the specification for the argument <code>col_types()</code> of the f
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

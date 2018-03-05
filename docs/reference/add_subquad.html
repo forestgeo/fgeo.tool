@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add a quadrat variable to a dataframe based based on qx and qy coordinates. � add_subquad • fgeo.tool</title>
+<title>Add a quadrat variable to a dataframe based based on qx and qy coordinates. — add_subquad â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,10 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Add a quadrat variable to a dataframe based based on qx and qy coordinates. — add_subquad" />
+
+<meta property="og:description" content="Add a quadrat variable to a dataframe based based on qx and qy coordinates." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -143,7 +149,7 @@ to the number of column of each subquadrat.</p></td>
 <span class='fu'>add_subquad</span>(<span class='no'>vft</span>, <span class='fl'>20</span>, <span class='fl'>20</span>, <span class='fl'>5</span>, <span class='fl'>5</span>)</div><div class='output co'>#&gt; # A tibble: 10 x 3
 #&gt;       QX    QY subquadrat
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
-#&gt;  1 17.9   0    41        
+#&gt;  1 17.9   0.   41        
 #&gt;  2  4.10 15.0  14        
 #&gt;  3  6.10 17.3  24        
 #&gt;  4  3.80  5.90 12        
@@ -155,7 +161,7 @@ to the number of column of each subquadrat.</p></td>
 #&gt; 10  1.50 16.3  14        </div><div class='input'><span class='fu'>add_subquad</span>(<span class='no'>vft</span>, <span class='fl'>20</span>, <span class='fl'>20</span>, <span class='fl'>5</span>, <span class='fl'>5</span>, <span class='kw'>subquad_offset</span> <span class='kw'>=</span> -<span class='fl'>1</span>)</div><div class='output co'>#&gt; # A tibble: 10 x 3
 #&gt;       QX    QY subquadrat
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
-#&gt;  1 17.9   0    31        
+#&gt;  1 17.9   0.   31        
 #&gt;  2  4.10 15.0  04        
 #&gt;  3  6.10 17.3  14        
 #&gt;  4  3.80  5.90 02        
@@ -189,7 +195,7 @@ Anudeep Singh and Mauro Lepore.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

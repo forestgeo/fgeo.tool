@@ -63,35 +63,35 @@ row_top(df, Tag)
 #> # A tibble: 4 x 4
 #>   CensusID   Tag Status status_tree
 #>      <dbl> <dbl> <chr>  <chr>      
-#> 1     1.00  1.00 alive  A          
-#> 2     1.00  1.00 dead   A          
-#> 3     2.00  1.00 alive  A          
-#> 4     2.00  1.00 alive  A
+#> 1       1.    1. alive  A          
+#> 2       1.    1. dead   A          
+#> 3       2.    1. alive  A          
+#> 4       2.    1. alive  A
 row_top(df, Tag, -1)
 #> # A tibble: 4 x 4
 #>   CensusID   Tag Status status_tree
 #>      <dbl> <dbl> <chr>  <chr>      
-#> 1     1.00  3.00 dead   A          
-#> 2     1.00  3.00 dead   A          
-#> 3     2.00  3.00 dead   A          
-#> 4     2.00  3.00 dead   A
+#> 1       1.    3. dead   A          
+#> 2       1.    3. dead   A          
+#> 3       2.    3. dead   A          
+#> 4       2.    3. dead   A
 # Remove trees found dead in two or more censuses
 row_discard_twice_dead(df)
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
 #>       <dbl> <dbl> <chr>  <chr>      
-#>  1     1.00  1.00 alive  A          
-#>  2     1.00  1.00 dead   A          
-#>  3     1.00  2.00 dead   A          
-#>  4     1.00  2.00 dead   A          
-#>  5     1.00  3.00 dead   A          
-#>  6     1.00  3.00 dead   A          
-#>  7     2.00  1.00 alive  A          
-#>  8     2.00  1.00 alive  A          
-#>  9     2.00  2.00 alive  A          
-#> 10     2.00  2.00 dead   A          
-#> 11     2.00  3.00 dead   A          
-#> 12     2.00  3.00 dead   A
+#>  1       1.    1. alive  A          
+#>  2       1.    1. dead   A          
+#>  3       1.    2. dead   A          
+#>  4       1.    2. dead   A          
+#>  5       1.    3. dead   A          
+#>  6       1.    3. dead   A          
+#>  7       2.    1. alive  A          
+#>  8       2.    1. alive  A          
+#>  9       2.    2. alive  A          
+#> 10       2.    2. dead   A          
+#> 11       2.    3. dead   A          
+#> 12       2.    3. dead   A
 ```
 
 Check inputs.
@@ -133,9 +133,9 @@ dplyr::filter(
 #> # A tibble: 3 x 4
 #>   CensusID   Tag Status status_tree
 #>      <dbl> <dbl> <chr>  <chr>      
-#> 1     2.00  1.00 alive  A          
-#> 2     2.00  1.00 alive  A          
-#> 3     2.00  2.00 alive  A
+#> 1       2.    1. alive  A          
+#> 2       2.    1. alive  A          
+#> 3       2.    2. alive  A
 ```
 
 You can combine **fgeo.tool** with **dplyr**.
@@ -148,12 +148,12 @@ dplyr::select(edited, -Status)
 #> # A tibble: 6 x 3
 #>   CensusID   Tag status_tree
 #>      <dbl> <dbl> <chr>      
-#> 1     2.00  1.00 A          
-#> 2     2.00  1.00 A          
-#> 3     2.00  2.00 A          
-#> 4     2.00  2.00 A          
-#> 5     2.00  3.00 A          
-#> 6     2.00  3.00 A
+#> 1       2.    1. A          
+#> 2       2.    1. A          
+#> 3       2.    2. A          
+#> 4       2.    2. A          
+#> 5       2.    3. A          
+#> 6       2.    3. A
 ```
 
 You don’t have to, but if you want you can use the pipe (`%>%`).

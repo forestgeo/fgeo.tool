@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add columns to a dataframe. � add_var • fgeo.tool</title>
+<title>Add columns to a dataframe. — add_var â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,12 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Add columns to a dataframe. — add_var" />
+
+<meta property="og:description" content="These functions mostly wrap legacy code from the CTFS RPackage. The functions
+add_col_row() and add_col_row2() differ in that the former inputs
+plot coordinates and the later inputs QuadratName." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -160,69 +168,69 @@ variable(s) <code>var</code>.</p>
 <span class='fu'>add_var</span>(<span class='no'>x</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"lxly"</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
 #&gt;       gx    gy    lx    ly
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    0     0     0    0   
+#&gt; 1    0.    0.    0.   0.  
 #&gt; 2   50.0  25.0  10.0  5.00
-#&gt; 3 1000   500    19.9 19.9 
-#&gt; 4 1000   500    NA   NA   </div><div class='input'><span class='co'># same</span>
+#&gt; 3 1000.  500.   19.9 19.9 
+#&gt; 4 1000.  500.   NA   NA   </div><div class='input'><span class='co'># same</span>
 <span class='fu'>add_lxly</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
 #&gt;       gx    gy    lx    ly
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    0     0     0    0   
+#&gt; 1    0.    0.    0.   0.  
 #&gt; 2   50.0  25.0  10.0  5.00
-#&gt; 3 1000   500    19.9 19.9 
-#&gt; 4 1000   500    NA   NA   </div><div class='input'>
+#&gt; 3 1000.  500.   19.9 19.9 
+#&gt; 4 1000.  500.   NA   NA   </div><div class='input'>
 <span class='fu'>add_qxqy</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
 #&gt;       gx    gy    QX    QY
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    0     0     0    0   
+#&gt; 1    0.    0.    0.   0.  
 #&gt; 2   50.0  25.0  10.0  5.00
-#&gt; 3 1000   500    19.9 19.9 
-#&gt; 4 1000   500    NA   NA   </div><div class='input'>
+#&gt; 3 1000.  500.   19.9 19.9 
+#&gt; 4 1000.  500.   NA   NA   </div><div class='input'>
 <span class='fu'>add_index</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
-#&gt;       gx    gy   index
-#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#&gt; 1    0     0      1.00
-#&gt; 2   50.0  25.0   52.0 
-#&gt; 3 1000   500   1250   
-#&gt; 4 1000   500     NA   </div><div class='input'>
+#&gt;       gx    gy index
+#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1    0.    0.     1.
+#&gt; 2   50.0  25.0   52.
+#&gt; 3 1000.  500.  1250.
+#&gt; 4 1000.  500.    NA </div><div class='input'>
 <span class='fu'>add_hectindex</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
 #&gt;       gx    gy hectindex
 #&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1    0     0        1.00
-#&gt; 2   50.0  25.0      1.00
-#&gt; 3 1000   500       50.0 
-#&gt; 4 1000   500       56.0 </div><div class='input'>
+#&gt; 1    0.    0.         1.
+#&gt; 2   50.0  25.0        1.
+#&gt; 3 1000.  500.        50.
+#&gt; 4 1000.  500.        56.</div><div class='input'>
 <span class='fu'>add_quad</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
 #&gt;       gx    gy quad 
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
-#&gt; 1    0     0   0101 
+#&gt; 1    0.    0.  0101 
 #&gt; 2   50.0  25.0 0302 
-#&gt; 3 1000   500   5025 
-#&gt; 4 1000   500   NANA </div><div class='input'><span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt; 3 1000.  500.  5025 
+#&gt; 4 1000.  500.  NANA </div><div class='input'><span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
 #&gt;       gx    gy quad 
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
-#&gt; 1    0     0   0000 
+#&gt; 1    0.    0.  0000 
 #&gt; 2   50.0  25.0 0201 
-#&gt; 3 1000   500   4924 
-#&gt; 4 1000   500   NANA </div><div class='input'>
+#&gt; 3 1000.  500.  4924 
+#&gt; 4 1000.  500.  NANA </div><div class='input'>
 <span class='co'># `width` gives the nuber of digits to pad the label of plot-rows and</span>
 <span class='co'># plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with an</span>
 <span class='co'># extra trhree zeros, resulting in a total of 6 zeros.</span>
 <span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
 #&gt;       gx    gy quad  
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1    0     0   000000
+#&gt; 1    0.    0.  000000
 #&gt; 2   50.0  25.0 002001
-#&gt; 3 1000   500   049024
-#&gt; 4 1000   500   NANA  </div><div class='input'>
+#&gt; 3 1000.  500.  049024
+#&gt; 4 1000.  500.  NANA  </div><div class='input'>
 
 <span class='fu'>add_col_row</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>  * If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
 #&gt;       gx    gy col   row  
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt; 1    0     0   01    01   
+#&gt; 1    0.    0.  01    01   
 #&gt; 2   50.0  25.0 03    02   
-#&gt; 3 1000   500   50    25   
-#&gt; 4 1000   500   &lt;NA&gt;  &lt;NA&gt; </div><div class='input'>
+#&gt; 3 1000.  500.  50    25   
+#&gt; 4 1000.  500.  &lt;NA&gt;  &lt;NA&gt; </div><div class='input'>
 <span class='co'># Column and row from QuadratName</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
   ~<span class='no'>QuadratName</span>,
@@ -260,7 +268,7 @@ variable(s) <code>var</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

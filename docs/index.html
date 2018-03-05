@@ -5,11 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Utility Tools for ForestGEO Packages • fgeo.tool</title>
+<title>Utility Tools for ForestGEO Packages â€¢ fgeo.tool</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Utility Tools for ForestGEO Packages">
+<meta property="og:description" content="Utility tools for forestgeo packages.">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -68,15 +71,22 @@
     
 <div class="contents">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<section id="fgeo.tool-utility-functions-of-forestgeo" class="level1"><div class="page-header"><h1>fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height="44">
+<div id="fgeo-tool-utility-functions-of-forestgeo" class="section level1">
+<div class="page-header"><h1 class="hasAnchor">
+<a href="#fgeo-tool-utility-functions-of-forestgeo" class="anchor"></a>fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height="44">
 </h1></div>
 
-<section id="installation" class="level2"><h2>Installation</h2>
+<div id="installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can install fgeo.tool from github with:</p>
 <pre><code><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github"># install.packages("remotes")
 remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(fgeo.tool)</a></code></pre></div>
-</section><section id="example" class="level2"><h2>Example</h2>
+</div>
+<div id="example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#example" class="anchor"></a>Example</h2>
 <p>Setup.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">df &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="op">~</span>CensusID, <span class="op">~</span>Tag, <span class="op">~</span>Status,</a>
@@ -113,35 +123,35 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt; # A tibble: 4 x 4</span></a>
 <a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;   CensusID   Tag Status status_tree</span></a>
 <a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 1     1.00  1.00 alive  A          </span></a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 2     1.00  1.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; 3     2.00  1.00 alive  A          </span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; 4     2.00  1.00 alive  A</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; 1       1.    1. alive  A          </span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt; 2       1.    1. dead   A          </span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt; 3       2.    1. alive  A          </span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; 4       2.    1. alive  A</span></a>
 <a class="sourceLine" id="cb4-19" data-line-number="19"><span class="kw"><a href="reference/row_top.html">row_top</a></span>(df, Tag, <span class="dv">-1</span>)</a>
 <a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; # A tibble: 4 x 4</span></a>
 <a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt;   CensusID   Tag Status status_tree</span></a>
 <a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; 1     1.00  3.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; 2     1.00  3.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 3     2.00  3.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; 4     2.00  3.00 dead   A</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; 1       1.    3. dead   A          </span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; 2       1.    3. dead   A          </span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; 3       2.    3. dead   A          </span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; 4       2.    3. dead   A</span></a>
 <a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co"># Remove trees found dead in two or more censuses</span></a>
 <a class="sourceLine" id="cb4-28" data-line-number="28"><span class="kw"><a href="reference/row_discard_twice_dead.html">row_discard_twice_dead</a></span>(df)</a>
 <a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt; # A tibble: 12 x 4</span></a>
 <a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt;    CensusID   Tag Status status_tree</span></a>
 <a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt;  1     1.00  1.00 alive  A          </span></a>
-<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;  2     1.00  1.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt;  3     1.00  2.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt;  4     1.00  2.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt;  5     1.00  3.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt;  6     1.00  3.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt;  7     2.00  1.00 alive  A          </span></a>
-<a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt;  8     2.00  1.00 alive  A          </span></a>
-<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt;  9     2.00  2.00 alive  A          </span></a>
-<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; 10     2.00  2.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">#&gt; 11     2.00  3.00 dead   A          </span></a>
-<a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt; 12     2.00  3.00 dead   A</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt;  1       1.    1. alive  A          </span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;  2       1.    1. dead   A          </span></a>
+<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt;  3       1.    2. dead   A          </span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt;  4       1.    2. dead   A          </span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt;  5       1.    3. dead   A          </span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt;  6       1.    3. dead   A          </span></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt;  7       2.    1. alive  A          </span></a>
+<a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt;  8       2.    1. alive  A          </span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt;  9       2.    2. alive  A          </span></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; 10       2.    2. dead   A          </span></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42"><span class="co">#&gt; 11       2.    3. dead   A          </span></a>
+<a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt; 12       2.    3. dead   A</span></a></code></pre></div>
 <p>Check inputs.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Silent means success</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/check_crucial_names.html">check_crucial_names</a></span>(df, <span class="st">"Status"</span>)</a>
@@ -175,9 +185,9 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; # A tibble: 3 x 4</span></a>
 <a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt;   CensusID   Tag Status status_tree</span></a>
 <a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1     2.00  1.00 alive  A          </span></a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 2     2.00  1.00 alive  A          </span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; 3     2.00  2.00 alive  A</span></a></code></pre></div>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt; 1       2.    1. alive  A          </span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; 2       2.    1. alive  A          </span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; 3       2.    2. alive  A</span></a></code></pre></div>
 <p>You can combine <strong>fgeo.tool</strong> with <strong>dplyr</strong>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/row_top.html">row_top</a></span>(df, CensusID, <span class="dv">-1</span>))</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
@@ -186,12 +196,12 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt;   CensusID   Tag status_tree</span></a>
 <a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 1     2.00  1.00 A          </span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 2     2.00  1.00 A          </span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 3     2.00  2.00 A          </span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; 4     2.00  2.00 A          </span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; 5     2.00  3.00 A          </span></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; 6     2.00  3.00 A</span></a></code></pre></div>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 1       2.    1. A          </span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 2       2.    1. A          </span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 3       2.    2. A          </span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; 4       2.    2. A          </span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt; 5       2.    3. A          </span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt; 6       2.    3. A</span></a></code></pre></div>
 <p>You don’t have to, but if you want you can use the pipe (<code>%&gt;%</code>).</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># With the pipe</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -219,7 +229,8 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb8-24" data-line-number="24"><span class="co">#&gt; # A tibble: 0 x 4</span></a>
 <a class="sourceLine" id="cb8-25" data-line-number="25"><span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb8-26" data-line-number="26"><span class="co">#&gt; #   status_tree &lt;chr&gt;</span></a></code></pre></div>
-</section></section>
+</div>
+</div>
 </div>
   </div>
 
@@ -258,7 +269,7 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
