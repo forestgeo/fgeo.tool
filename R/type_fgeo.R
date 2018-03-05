@@ -39,8 +39,19 @@
 #' @export
 #'
 #' @examples
-#' type_vft()
-#' type_taxa()
+#' str(type_vft())
+#' 
+#' \dontrun{
+#' # Run this with your own ViewFullTable
+#' readr::read_csv("ViewFullTable.csv", col_types = type_vft())
+#' }
+#' 
+#' str(type_taxa())
+#' 
+#' \dontrun{
+#' # Run this with your own ViewTaxonomy
+#' readr::read_delim("ViewTaxonomy.csv", col_types = type_taxa())
+#' }
 #' @name type_fgeo
 
 #' @rdname type_fgeo

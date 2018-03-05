@@ -156,164 +156,69 @@ known datasets. These functions output the specification for the argument
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>type_vft</span>()</div><div class='output co'>#&gt; $DBHID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $PlotName
-#&gt; [1] "c"
-#&gt; 
-#&gt; $PlotID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $Family
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Genus
-#&gt; [1] "c"
-#&gt; 
-#&gt; $SpeciesName
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Mnemonic
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Subspecies
-#&gt; [1] "c"
-#&gt; 
-#&gt; $SpeciesID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $SubspeciesID
-#&gt; [1] "c"
-#&gt; 
-#&gt; $QuadratName
-#&gt; [1] "c"
-#&gt; 
-#&gt; $QuadratID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $PX
-#&gt; [1] "d"
-#&gt; 
-#&gt; $PY
-#&gt; [1] "d"
-#&gt; 
-#&gt; $QX
-#&gt; [1] "d"
-#&gt; 
-#&gt; $QY
-#&gt; [1] "d"
-#&gt; 
-#&gt; $TreeID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $Tag
-#&gt; [1] "c"
-#&gt; 
-#&gt; $StemID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $StemNumber
-#&gt; [1] "i"
-#&gt; 
-#&gt; $StemTag
-#&gt; [1] "i"
-#&gt; 
-#&gt; $PrimaryStem
-#&gt; [1] "c"
-#&gt; 
-#&gt; $CensusID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $PlotCensusNumber
-#&gt; [1] "i"
-#&gt; 
-#&gt; $DBH
-#&gt; [1] "d"
-#&gt; 
-#&gt; $HOM
-#&gt; [1] "d"
-#&gt; 
-#&gt; $ExactDate
-#&gt; [1] "D"
-#&gt; 
-#&gt; $Date
-#&gt; [1] "i"
-#&gt; 
-#&gt; $ListOfTSM
-#&gt; [1] "c"
-#&gt; 
-#&gt; $HighHOM
-#&gt; [1] "i"
-#&gt; 
-#&gt; $LargeStem
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Status
-#&gt; [1] "c"
-#&gt; </div><div class='input'><span class='fu'>type_taxa</span>()</div><div class='output co'>#&gt; $ViewID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $SpeciesID
-#&gt; [1] "i"
-#&gt; 
-#&gt; $SubspeciesID
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Family
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Mnemonic
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Genus
-#&gt; [1] "c"
-#&gt; 
-#&gt; $SpeciesName
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Rank
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Subspecies
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Authority
-#&gt; [1] "c"
-#&gt; 
-#&gt; $IDLevel
-#&gt; [1] "c"
-#&gt; 
-#&gt; $subspMnemonic
-#&gt; [1] "c"
-#&gt; 
-#&gt; $subspAuthority
-#&gt; [1] "c"
-#&gt; 
-#&gt; $FieldFamily
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Lifeform
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Description
-#&gt; [1] "c"
-#&gt; 
-#&gt; $wsg
-#&gt; [1] "d"
-#&gt; 
-#&gt; $wsglevel
-#&gt; [1] "c"
-#&gt; 
-#&gt; $ListOfOldNames
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Specimens
-#&gt; [1] "c"
-#&gt; 
-#&gt; $Reference
-#&gt; [1] "c"
-#&gt; </div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>str</span>(<span class='fu'>type_vft</span>())</div><div class='output co'>#&gt; List of 32
+#&gt;  $ DBHID           : chr "i"
+#&gt;  $ PlotName        : chr "c"
+#&gt;  $ PlotID          : chr "i"
+#&gt;  $ Family          : chr "c"
+#&gt;  $ Genus           : chr "c"
+#&gt;  $ SpeciesName     : chr "c"
+#&gt;  $ Mnemonic        : chr "c"
+#&gt;  $ Subspecies      : chr "c"
+#&gt;  $ SpeciesID       : chr "i"
+#&gt;  $ SubspeciesID    : chr "c"
+#&gt;  $ QuadratName     : chr "c"
+#&gt;  $ QuadratID       : chr "i"
+#&gt;  $ PX              : chr "d"
+#&gt;  $ PY              : chr "d"
+#&gt;  $ QX              : chr "d"
+#&gt;  $ QY              : chr "d"
+#&gt;  $ TreeID          : chr "i"
+#&gt;  $ Tag             : chr "c"
+#&gt;  $ StemID          : chr "i"
+#&gt;  $ StemNumber      : chr "i"
+#&gt;  $ StemTag         : chr "i"
+#&gt;  $ PrimaryStem     : chr "c"
+#&gt;  $ CensusID        : chr "i"
+#&gt;  $ PlotCensusNumber: chr "i"
+#&gt;  $ DBH             : chr "d"
+#&gt;  $ HOM             : chr "d"
+#&gt;  $ ExactDate       : chr "D"
+#&gt;  $ Date            : chr "i"
+#&gt;  $ ListOfTSM       : chr "c"
+#&gt;  $ HighHOM         : chr "i"
+#&gt;  $ LargeStem       : chr "c"
+#&gt;  $ Status          : chr "c"</div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='co'># Run this with your own ViewFullTable</span>
+<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>read_csv</a></span>(<span class='st'>"ViewFullTable.csv"</span>, <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'>type_vft</span>())
+<span class='co'># }</span><div class='input'>
+<span class='fu'>str</span>(<span class='fu'>type_taxa</span>())</div><div class='output co'>#&gt; List of 21
+#&gt;  $ ViewID        : chr "i"
+#&gt;  $ SpeciesID     : chr "i"
+#&gt;  $ SubspeciesID  : chr "c"
+#&gt;  $ Family        : chr "c"
+#&gt;  $ Mnemonic      : chr "c"
+#&gt;  $ Genus         : chr "c"
+#&gt;  $ SpeciesName   : chr "c"
+#&gt;  $ Rank          : chr "c"
+#&gt;  $ Subspecies    : chr "c"
+#&gt;  $ Authority     : chr "c"
+#&gt;  $ IDLevel       : chr "c"
+#&gt;  $ subspMnemonic : chr "c"
+#&gt;  $ subspAuthority: chr "c"
+#&gt;  $ FieldFamily   : chr "c"
+#&gt;  $ Lifeform      : chr "c"
+#&gt;  $ Description   : chr "c"
+#&gt;  $ wsg           : chr "d"
+#&gt;  $ wsglevel      : chr "c"
+#&gt;  $ ListOfOldNames: chr "c"
+#&gt;  $ Specimens     : chr "c"
+#&gt;  $ Reference     : chr "c"</div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
+<span class='co'># Run this with your own ViewTaxonomy</span>
+<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>read_delim</a></span>(<span class='st'>"ViewTaxonomy.csv"</span>, <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'>type_taxa</span>())
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
