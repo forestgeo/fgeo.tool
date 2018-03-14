@@ -70,6 +70,7 @@ reference:
     contents:
     - starts_with("type_")
     - fill_na
+    - replace_null_by_na
     - restructure_elev
     
   - title: Create field forms
