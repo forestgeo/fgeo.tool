@@ -65,6 +65,10 @@ reference:
   - title: Manipulate names
     contents:
     - starts_with("nms_")
+    
+  - title: Quality control
+    contents:
+    - count_duplicated
 
   - title: Sanitize multiple data structures
     contents:
