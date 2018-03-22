@@ -24,7 +24,7 @@
 #'
 #' @return Returns all rows from `x` where there are not matching values in
 #'   `y`, keeping just columns from `x`.
-
+#'
 #' @export
 #'
 #' @examples
