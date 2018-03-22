@@ -28,6 +28,7 @@
 #' @export
 #'
 #' @examples
+#' library(fgeo.tool)
 #' library(dplyr)
 #' 
 #' x <- dplyr::tribble(
@@ -49,18 +50,18 @@
 #' to_recensus(x, y)
 #' 
 #' # Same
-#' to_recensus(x, y, by = "unique_stem)
+#' to_recensus(x, y, by = "unique_stem")
 #' 
+#' y2 <- dplyr::tribble(
 #'   ~unq_stem,
 #'      "01_1",
 #'      "02_2",
 #'      "04_2"
 #' )
-#' to_recensus(x, y, by = c("unique_stem" = "unq_stem"))
+#' to_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
 #' 
 #' # For this and more general problems you can use `dplyr::*_join()` functions
-#' dplyr::anti_join(x, y)
+#' dplyr::anti_join(x, y2, by = c("unique_stem" = "unq_stem"))
 to_recensus <- function(x, y, by = NULL, ...) {
   dplyr::anti_join(x = x, y = y, by = by, ...)
 }
-

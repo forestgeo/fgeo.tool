@@ -47,3 +47,39 @@ If you want to use it inside your own functions you should learn about tidy
 eval (implemented via the \strong{rlang} package). A good place to start is at
 \strong{dplyr}'s website.
 }
+\examples{
+library(fgeo.tool)
+library(dplyr)
+
+x <- dplyr::tribble(
+  ~unique_stem, ~quadrat,
+        "01_1",    "001",
+        "02_1",    "001",
+        "02_2",    "001",
+        "04_1",    "002",
+        "04_2",    "002",
+        "05_1",    "002"
+)
+y <- dplyr::tribble(
+  ~unique_stem,
+        "01_1",
+        "02_2",
+        "04_2"
+)
+
+to_recensus(x, y)
+
+# Same
+to_recensus(x, y, by = "unique_stem")
+
+y2 <- dplyr::tribble(
+  ~unq_stem,
+     "01_1",
+     "02_2",
+     "04_2"
+)
+to_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
+
+# For this and more general problems you can use `dplyr::*_join()` functions
+dplyr::anti_join(x, y2, by = c("unique_stem" = "unq_stem"))
+}
