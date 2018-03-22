@@ -69,6 +69,7 @@ reference:
   - title: Quality control
     contents:
     - count_duplicated
+    - to_recensus
 
   - title: Sanitize multiple data structures
     contents:
