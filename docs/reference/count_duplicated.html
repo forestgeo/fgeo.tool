@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Count duplicated observations of a variable. — count_duplicated â€¢ fgeo.tool</title>
+<title>Count duplicated observations of a variable. — count_duplicated • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Count duplicated observations of a variable. — count_duplicated" />
 
 <meta property="og:description" content="This is a shortcut for filter(count(x, ...) &gt; 1) (from the dplyr
@@ -36,6 +34,8 @@ use dplyr's longer form because -- as dplyr well known -- your code
 will be more readable. So this function is mostly to help you discover the
 more general way of solving this problem with dplyr." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -43,6 +43,8 @@ more general way of solving this problem with dplyr." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -58,8 +60,12 @@ more general way of solving this problem with dplyr." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">fgeo.tool</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">fgeo.tool</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9002</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -87,6 +93,7 @@ more general way of solving this problem with dplyr." />
   <a href="https://forestgeo.github.io/fgeo/">fgeo</a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -98,6 +105,7 @@ more general way of solving this problem with dplyr." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Count duplicated observations of a variable.</h1>
+    <small>Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/count_duplicated.R'><code>R/count_duplicated.R</code></a></small>
     </div>
 
     
@@ -111,7 +119,7 @@ more general way of solving this problem with <strong>dplyr</strong>.</p>
 
     <pre class="usage"><span class='fu'>count_duplicated</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>wt</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -151,8 +159,14 @@ at <strong>dplyr</strong>'s website.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>3</span>))
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>3</span>, <span class='fl'>3</span>))
 <span class='fu'>count_duplicated</span>(<span class='no'>df</span>, <span class='no'>a</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 2
 #&gt;       a     n
 #&gt;   &lt;dbl&gt; &lt;int&gt;
@@ -196,5 +210,8 @@ at <strong>dplyr</strong>'s website.</p>
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

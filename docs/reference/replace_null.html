@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value). — replace_null â€¢ fgeo.tool</title>
+<title>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value). — replace_null • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value). — replace_null" />
 
 <meta property="og:description" content="Importing a dataset can be challenging. A common problem occurrs when reading
@@ -36,6 +34,8 @@ When you read that dataset, R will interpret those missing values incorrectly
 dataset by converting the literal string 'NULL' to the missing charecter
 value NA_character_." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -43,6 +43,8 @@ value NA_character_." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -58,8 +60,12 @@ value NA_character_." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">fgeo.tool</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">fgeo.tool</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9002</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -87,6 +93,7 @@ value NA_character_." />
   <a href="https://forestgeo.github.io/fgeo/">fgeo</a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -98,6 +105,7 @@ value NA_character_." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value).</h1>
+    <small>Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/replace_null.R'><code>R/replace_null.R</code></a></small>
     </div>
 
     
@@ -111,7 +119,7 @@ value <code>NA_character_</code>.</p>
 
     <pre class="usage"><span class='fu'>replace_null</span>(<span class='no'>x</span>, <span class='kw'>replacement</span> <span class='kw'>=</span> <span class='fl'>NA_character_</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -186,5 +194,8 @@ the first place. You can pass 'NULL' to the argument <code>na</code> of the func
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

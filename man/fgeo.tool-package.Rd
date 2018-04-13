@@ -4,9 +4,9 @@
 \name{fgeo.tool-package}
 \alias{fgeo.tool}
 \alias{fgeo.tool-package}
-\title{fgeo.tool: Utility Tools for ForestGEO Packages}
+\title{fgeo.tool: Functions for General Purposes}
 \description{
-Utility tools for forestgeo packages.
+Functions for general purposes.
 }
 \seealso{
 Useful links:

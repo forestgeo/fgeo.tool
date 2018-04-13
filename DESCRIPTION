@@ -1,11 +1,11 @@
 Package: fgeo.tool
-Title: Utility Tools for ForestGEO Packages
+Title: Functions for General Purposes
 Version: 0.0.0.9002
 Authors@R: c(
     person("Mauro", "Lepore", , "leporem@si.edu", role = c("aut", "ctr", "cre")),
     person("CTFS-ForestGEO", , , "ForestGEO@si.edu", role = c("cph", "fnd"))
   )
-Description: Utility tools for forestgeo packages.
+Description: Functions for general purposes.
 License: GPL-3
 URL: https://github.com/forestgeo/fgeo.tool
 BugReports: https://github.com/forestgeo/fgeo.tool/issues

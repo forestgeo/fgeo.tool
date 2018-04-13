@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
+# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=44 /> fgeo.tool: Functions for general purposes
 
 [![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
@@ -89,7 +89,7 @@ check_crucial_names(df, "DBH")
 check_unique(df, "CensusID", msg = "* Is this what you expect?")
 ```
 
-Much you can do directly with dplyr.
+Much you can do directly with __dplyr__.
 
 ```{r}
 # Using notation dplyr::fun to make it obvious where fun comes from

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# fgeo.tool: Utility functions of ForestGEO <img src="https://i.imgur.com/39pvr4n.png" align="right" height=44 />
+# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=44 /> fgeo.tool: Functions for general purposes
 
 [![Travis build
 status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
@@ -110,7 +110,7 @@ check_unique(df, "CensusID", msg = "* Is this what you expect?")
 #> * Is this what you expect?
 ```
 
-Much you can do directly with dplyr.
+Much you can do directly with **dplyr**.
 
 ``` r
 # Using notation dplyr::fun to make it obvious where fun comes from
