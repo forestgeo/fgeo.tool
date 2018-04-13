@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=44 /> fgeo.tool: Functions for general purposes
+# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=88 /> fgeo.tool: Functions for general purposes
 
 [![Travis build
 status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
