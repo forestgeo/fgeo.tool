@@ -17,7 +17,7 @@
 #' 
 #' @seealso [dplyr::count()], [dplyr::filter()]. 
 #'
-#' @return
+#' @return A dataframe.
 #' @export
 #'
 #' @examples

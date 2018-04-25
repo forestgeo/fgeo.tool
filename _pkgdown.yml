@@ -78,9 +78,10 @@ reference:
     - replace_null
     - restructure_elev
     
-  - title: Create field forms
+  - title: Create field forms and habiat data
     contents:
     - starts_with("fieldforms")
+    - create_habitat
 
   - title: "Functions for developers: Checks"
     contents:

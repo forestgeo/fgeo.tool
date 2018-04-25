@@ -21,6 +21,9 @@ frame. It supports \link[rlang:quasiquotation]{unquoting}. See
 
 \item{sort}{if \code{TRUE} will sort output in descending order of \code{n}}
 }
+\value{
+A dataframe.
+}
 \description{
 This is a shortcut for \code{filter(count(x, ...) > 1)} (from the \strong{dplyr}
 package) to count the number of observations of --specifically -- duplicated

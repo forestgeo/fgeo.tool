@@ -14,7 +14,6 @@ Depends:
 Imports: 
     dplyr,
     fs,
-    plyr,
     purrr,
     readr,
     readxl,
@@ -22,7 +21,8 @@ Imports:
     rlang,
     rmarkdown,
     stringr,
-    tibble
+    tibble,
+    fgeo.data
 Suggests: 
     bciex,
     covr,
@@ -30,6 +30,7 @@ Suggests:
     testthat
 Encoding: UTF-8
 LazyData: true
-Remotes: forestgeo/bciex
+Remotes: forestgeo/bciex,
+    forestgeo/fgeo.data
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
