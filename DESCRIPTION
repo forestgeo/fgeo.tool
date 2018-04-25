@@ -12,22 +12,22 @@ BugReports: https://github.com/forestgeo/fgeo.tool/issues
 Depends: 
     R (>= 3.1.2)
 Imports: 
-    dplyr,
-    fs,
-    purrr,
-    readr,
-    readxl,
-    remotes,
-    rlang,
-    rmarkdown,
-    stringr,
-    tibble,
-    fgeo.data
+    dplyr (>= 0.7.4),
+    fgeo.data (>= 0.0.0.9002),
+    fs (>= 1.2.2),
+    purrr (>= 0.2.4),
+    readr (>= 1.1.1),
+    readxl (>= 1.1.0),
+    remotes (>= 1.1.1),
+    rlang (>= 0.2.0),
+    rmarkdown (>= 1.9),
+    stringr (>= 1.3.0),
+    tibble (>= 1.4.2)
 Suggests: 
-    bciex,
-    covr,
-    magrittr,
-    testthat
+    bciex (>= 0.0.0.9000),
+    covr (>= 3.0.1),
+    magrittr (>= 1.5),
+    testthat (>= 2.0.0)
 Encoding: UTF-8
 LazyData: true
 Remotes: forestgeo/bciex,

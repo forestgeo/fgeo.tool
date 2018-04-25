@@ -11,14 +11,14 @@ test_that("outputs a dataframe with expected structure", {
 test_that("errs with informative messages", {
   expect_error(
     create_habitat(),
-    "is missing"
+    "is not TRUE"
   )
   expect_error(
     create_habitat(fgeo.data::luquillo_elevation),
-    "is missing"
+    "is not TRUE"
   )
   expect_error(
     create_habitat(fgeo.data::luquillo_elevation, 20),
-    "is missing"
+    "is not TRUE"
   )
 })
