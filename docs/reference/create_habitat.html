@@ -118,11 +118,12 @@
     </tr>
     <tr>
       <th>gridsize</th>
-      <td><p>Number to round <code>x</code> and <code>y</code> by.</p></td>
+      <td><p>Number to round <code>x</code> and <code>y</code> by. Commonly, <code>gridsize = 20</code>.</p></td>
     </tr>
     <tr>
       <th>n</th>
-      <td><p>Number of elevation groups (habitats) to cut elevation data by.</p></td>
+      <td><p>Number of elevation groups (habitats) to cut elevation data by.
+Commonly, <code>n = 4</code>.</p></td>
     </tr>
     </table>
     
@@ -133,19 +134,18 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>create_habitat</span>(<span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>)</div><div class='output co'>#&gt; # A tibble: 400 x 3
-#&gt; # Groups:   x [16]
 #&gt;        x     y habitats
 #&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;int&gt;
-#&gt;  1    0.    0.        4
-#&gt;  2    0.   20.        4
-#&gt;  3    0.   40.        4
-#&gt;  4    0.   60.        4
-#&gt;  5    0.   80.        4
-#&gt;  6    0.  100.        3
-#&gt;  7    0.  120.        3
-#&gt;  8    0.  140.        3
-#&gt;  9    0.  160.        3
-#&gt; 10    0.  180.        4
+#&gt;  1    0.    0.        2
+#&gt;  2    0.   20.        1
+#&gt;  3    0.   40.        2
+#&gt;  4    0.   60.        2
+#&gt;  5    0.   80.        2
+#&gt;  6    0.  100.        1
+#&gt;  7    0.  120.        1
+#&gt;  8    0.  140.        1
+#&gt;  9    0.  160.        1
+#&gt; 10    0.  180.        1
 #&gt; # ... with 390 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

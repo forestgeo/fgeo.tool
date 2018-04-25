@@ -9,9 +9,10 @@ create_habitat(elevation, gridsize = 20, n = 4)
 \arguments{
 \item{elevation}{List containing elevation data.}
 
-\item{gridsize}{Number to round \code{x} and \code{y} by.}
+\item{gridsize}{Number to round \code{x} and \code{y} by. Commonly, \code{gridsize = 20}.}
 
-\item{n}{Number of elevation groups (habitats) to cut elevation data by.}
+\item{n}{Number of elevation groups (habitats) to cut elevation data by.
+Commonly, \code{n = 4}.}
 }
 \value{
 A dataframe of habitat data.
