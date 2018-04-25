@@ -22,10 +22,10 @@ create_habitat <- function(elevation, gridsize, n) {
     ) %>% 
     unique() %>% 
     dplyr::group_by(.data$x, .data$y) %>%
-    dplyr::summarise(elev = mean(elev)) %>% 
+    dplyr::summarise(elev = mean(.data$elev)) %>% 
     dplyr::ungroup() %>% 
     dplyr::mutate(
       habitats = as.integer(cut_number(.data$elev, n)), elev = NULL
     ) %>% 
-    dplyr::filter(x < elevation$xdim, y < elevation$ydim)
+    dplyr::filter(.data$x < elevation$xdim, .data$y < elevation$ydim)
 }
