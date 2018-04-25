@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' create_habitat(fgeo.data::luquillo_elevation)
+#' create_habitat(fgeo.data::luquillo_elevation, gridsize = 20, n = 4)
 create_habitat <- function(elevation, gridsize, n) {
   stopifnot(!missing(elevation), !missing(gridsize), !missing(n))
   check_crucial_names(elevation, c("col", "xdim", "ydim"))
@@ -17,16 +17,15 @@ create_habitat <- function(elevation, gridsize, n) {
   elevation$col %>%
     dplyr::as_tibble() %>% 
     dplyr::mutate(
-      x = round_any(x, gridsize),
-      y = round_any(y, gridsize)
+      x = round_any(.data$x, gridsize),
+      y = round_any(.data$y, gridsize)
     ) %>% 
     unique() %>% 
-    dplyr::group_by(x, y) %>%
+    dplyr::group_by(.data$x, .data$y) %>%
     dplyr::summarise(elev = mean(elev)) %>% 
     dplyr::ungroup() %>% 
     dplyr::mutate(
-      habitats = as.integer(cut_number(elev, n)),
-      elev = NULL
+      habitats = as.integer(cut_number(.data$elev, n)), elev = NULL
     ) %>% 
     dplyr::filter(x < elevation$xdim, y < elevation$ydim)
 }

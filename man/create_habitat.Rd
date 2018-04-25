@@ -4,7 +4,7 @@
 \alias{create_habitat}
 \title{Create habitat data from elevation data.}
 \usage{
-create_habitat(elevation, gridsize = 20, n = 4)
+create_habitat(elevation, gridsize, n)
 }
 \arguments{
 \item{elevation}{List containing elevation data.}
@@ -21,5 +21,5 @@ A dataframe of habitat data.
 Create habitat data from elevation data.
 }
 \examples{
-create_habitat(fgeo.data::luquillo_elevation)
+create_habitat(fgeo.data::luquillo_elevation, gridsize = 20, n = 4)
 }
