@@ -24,3 +24,12 @@ test_that("errs with informative messages", {
     "is not TRUE"
   )
 })
+
+test_that("outputs correct habitat data from bciex", {
+  bci_elev <- list(col = bciex::bci_elevation, xdim = 1000, ydim = 500)
+  bci_hab <- fgeo.tool::create_habitat(bci_elev, 20, 4)
+  last_row <- unname(unlist(bci_hab[nrow(bci_hab), c("x", "y")]))
+  expect_equal(last_row, c(980, 480))
+})
+
+
