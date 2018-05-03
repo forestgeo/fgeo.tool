@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value). — replace_null" />
 
 <meta property="og:description" content="Importing a dataset can be challenging. A common problem occurrs when reading
@@ -43,8 +46,6 @@ value NA_character_." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -101,13 +102,15 @@ value NA_character_." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value).</h1>
-    <small>Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/replace_null.R'><code>R/replace_null.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/replace_null.R'><code>R/replace_null.R</code></a></small>
+    <div class="hidden name"><code>replace_null.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Importing a dataset can be challenging. A common problem occurrs when reading
 data a dataset with missing values encoded as 'NULL'. The problem is this:
@@ -116,6 +119,7 @@ When you read that dataset, R will interpret those missing values incorrectly
 dataset by converting the literal string 'NULL' to the missing charecter
 value <code>NA_character_</code>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>replace_null</span>(<span class='no'>x</span>, <span class='kw'>replacement</span> <span class='kw'>=</span> <span class='fl'>NA_character_</span>)</pre>
     

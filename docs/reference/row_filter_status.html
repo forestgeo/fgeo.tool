@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Filter a (fgeo) dataframe by the status of each stem or tree. — row_filter_status" />
 
 <meta property="og:description" content="In stem- and ViewFull-tables status and Status refer to each stem. In
@@ -40,8 +43,6 @@ on the status of its stems see add_status_tree()." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -98,18 +99,21 @@ on the status of its stems see add_status_tree()." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Filter a (fgeo) dataframe by the status of each stem or tree.</h1>
-    <small>Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/row_manipulate_df_rows.R'><code>R/row_manipulate_df_rows.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/row_manipulate_df_rows.R'><code>R/row_manipulate_df_rows.R</code></a></small>
+    <div class="hidden name"><code>row_filter_status.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>In stem- and ViewFull-tables <code>status</code> and <code>Status</code> refer to each stem. In
 tree-tables <code>status</code> refers to tree. To get the status of each tree based
 on the status of its stems see <code><a href='add_status_tree.html'>add_status_tree()</a></code>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>row_filter_status</span>(<span class='no'>x</span>, <span class='no'>wood</span>, <span class='no'>.status</span>, <span class='kw'>exclude</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
@@ -148,9 +152,9 @@ to <code>.status</code>.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='add_status_tree.html'>add_status_tree()</a></code>.</p>
+    <div class='dont-index'><p><code><a href='add_status_tree.html'>add_status_tree()</a></code>.</p>
 <p>Other functions to manipulate dataframe rows.: <code><a href='row_discard_twice_dead.html'>row_discard_twice_dead</a></code>,
-  <code><a href='row_top.html'>row_top</a></code></p>
+  <code><a href='row_top.html'>row_top</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

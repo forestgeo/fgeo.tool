@@ -40,7 +40,6 @@ nms_extract1(): Finds the first name that matchs the provided names.
 }
 }
 \examples{
-\dontrun{
 v <- c(a = 1, b = 1)
 nms_has_any(v, "a", "B")
 nms_has_any(v, "A", "B")
@@ -52,7 +51,14 @@ nms_extract_all(v, "a", "B")
 nms_extract_all(v, "a", "a", "b")
 
 nms_extract1(v, "a", "a", "b")
-}
+
+# Usage with ForestGEO data
+
+vft <- fgeo.data::luquillo_vft_4quad
+nms_extract_all(vft, "gx", "gy", "PX", "PY")
+
+stem <- fgeo.data::luquillo_stem6_1ha
+nms_extract_all(stem, "gx", "gy", "PX", "PY")
 }
 \seealso{
 Other functions for developers.: \code{\link{check_crucial_names}},
@@ -60,9 +66,9 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}},
-  \code{\link{type_ensure}}
+  \code{\link{round_any}}, \code{\link{type_ensure}}
 
 Other functions to manipulate names.: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}
+  \code{\link{nms_restore_newvar}}, \code{\link{round_any}}
 }
