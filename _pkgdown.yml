@@ -91,12 +91,8 @@ reference:
     contents:
     - exists_in_pkg
     - guess_plotdim
+    - find_data_of_class
     
-  - title: "Functions for developers with no external dependencies"
-    desc: "These section will be extracted for other packages to import"
-    contents:
-    - round_any
-
   - title: "Datasets"
     contents:
     - top1quad

@@ -17,8 +17,8 @@ create_habitat <- function(elevation, gridsize, n) {
   elevation$col %>%
     dplyr::as_tibble() %>% 
     dplyr::mutate(
-      x = round_any(.data$x, gridsize),
-      y = round_any(.data$y, gridsize)
+      x = fgeo.base::round_any(.data$x, gridsize),
+      y = fgeo.base::round_any(.data$y, gridsize)
     ) %>% 
     unique() %>% 
     dplyr::group_by(.data$x, .data$y) %>%

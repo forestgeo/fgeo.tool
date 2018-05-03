@@ -13,6 +13,7 @@ Depends:
     R (>= 3.1.2)
 Imports: 
     dplyr (>= 0.7.4),
+    fgeo.base,
     fgeo.data (>= 0.0.0.9002),
     fs (>= 1.2.2),
     purrr (>= 0.2.4),
@@ -28,9 +29,11 @@ Suggests:
     covr (>= 3.0.1),
     magrittr (>= 1.5),
     testthat (>= 2.0.0)
+Remotes: 
+    forestgeo/bciex,
+    forestgeo/fgeo.base,
+    forestgeo/fgeo.data
 Encoding: UTF-8
 LazyData: true
-Remotes: forestgeo/bciex,
-    forestgeo/fgeo.data
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1

@@ -59,7 +59,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
 
   if (is.null(plotdim)) {
     plotdim <- plotdim
-    plotdim <- guess_plotdim(x)
+    plotdim <- fgeo.base::guess_plotdim(x)
     message("  * If guess is wrong, provide the correct argument `plotdim`")
   }
 
@@ -182,41 +182,4 @@ add_var_from_quadratname <- function(x, pattern, new_var) {
   x$added_var <- stringr::str_replace(x$quadratname, pattern, "\\1")
   names(x)[grepl("added_var", names(x))] <- new_var
   fgeo.tool::nms_restore_newvar(x, new_var = new_var, old_nms = old_nms)
-}
-
-
-
-
-
-
-
-
-
-#' Guess plot dimensions.
-#'
-#' @template x_fgeo
-#' @param accuracy A number giving the accuracy with which to round `gx` and
-#'   `gy`.
-#'
-#' @return A numeric vector of length 2.
-#' @export
-#'
-#' @examples
-#' x <- data.frame(
-#'   gx = c(0, 300, 980),
-#'   gy = c(0, 300, 499)
-#' )
-#' guess_plotdim(x)
-guess_plotdim <- function(x, accuracy = 50) {
-  stopifnot(is.data.frame(x))
-  stopifnot(is.numeric(accuracy))
-  check_crucial_names(x, c("gx", "gy"))
-  
-  guess <- purrr::map_dbl(x[ , c("gx", "gy")], guess_max, accuracy = accuracy)
-  message("Gessing: plotdim = c(", commas(guess), ")")
-  guess <- unname(guess)
-}
-guess_max <- function(x, accuracy) {
-  xmax <- max0(x)
-  round_any(xmax, f = ceiling, accuracy = accuracy)
 }

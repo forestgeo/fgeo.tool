@@ -48,7 +48,7 @@ row_discard_twice_dead <- function(vft) {
   
   check_row_discard_twice_dead(vft)
 
-  last <- max0(vft$censusid)
+  last <- max(vft$censusid, na.rm = TRUE)
   last2 <- vft[vft$censusid %in% c(last, last - 1), ]
   by_tag <- group_by(last2, .data$tag)
   last2 <- ungroup(

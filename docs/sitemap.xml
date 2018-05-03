@@ -46,7 +46,7 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fill_na.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/guess_plotdim.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/find_data_of_class.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/ls_csv_df.html</loc>
@@ -86,9 +86,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/restructure_elev.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/round_any.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/row_collapse_censusid.html</loc>

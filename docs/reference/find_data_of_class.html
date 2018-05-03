@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if an object contains specific names. — check_crucial_names • fgeo.tool</title>
+<title>Find and hide dataset names in a package that match a class. — find_data_of_class • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Check if an object contains specific names. — check_crucial_names" />
+<meta property="og:title" content="Find and hide dataset names in a package that match a class. — find_data_of_class" />
 
-<meta property="og:description" content="Check if an object contains specific names." />
+<meta property="og:description" content="Find and hide dataset names in a package that match a class." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -100,63 +100,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if an object contains specific names.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/check.R'><code>R/check.R</code></a></small>
-    <div class="hidden name"><code>check_crucial_names.Rd</code></div>
+    <h1>Find and hide dataset names in a package that match a class.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/find_data_of_class.R'><code>R/find_data_of_class.R</code></a></small>
+    <div class="hidden name"><code>find_data_of_class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Check if an object contains specific names.</p>
+    <p>Find and hide dataset names in a package that match a class.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>check_crucial_names</span>(<span class='no'>x</span>, <span class='no'>nms</span>)</pre>
+    <pre class="usage"><span class='fu'>show_data_of_class</span>(<span class='no'>package</span>, <span class='no'>.class</span>)
+
+<span class='fu'>hide_data_of_class</span>(<span class='no'>package</span>, <span class='no'>.class</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A named object.</p></td>
+      <th>package</th>
+      <td><p>String; Package name to search datasets in.</p></td>
     </tr>
     <tr>
-      <th>nms</th>
-      <td><p>String; names expected to be found in <code>x</code>.</p></td>
+      <th>.class</th>
+      <td><p>Class of data to find or hide.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>Invisible <code>x</code>, or an error with informative message.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other functions to check inputs.: <code><a href='check_unique.html'>check_unique</a></code></p>
-<p>Other functions for developers.: <code><a href='check_unique.html'>check_unique</a></code>,
-  <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code>nms_lowercase</code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms.html'>nms</a></code>,
-  <code><a href='type_ensure.html'>type_ensure</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>check_crucial_names</span>(<span class='no'>v</span>, <span class='st'>"x"</span>)
-
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>check_crucial_names</span>(<span class='no'>dfm</span>, <span class='st'>"x"</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>show_data_of_class</span>(<span class='st'>"fgeo.tool"</span>, <span class='st'>"tbl"</span>)</div><div class='output co'>#&gt;    top1quad1    top1quad2    top1quad3    top4quad1    top4quad2    top4quad3 
+#&gt;     "tbl_df"        "tbl" "data.frame"     "tbl_df"        "tbl" "data.frame" </div><div class='input'><span class='fu'>hide_data_of_class</span>(<span class='st'>"fgeo.tool"</span>, <span class='st'>"data.frame"</span>)</div><div class='output co'>#&gt; NULL</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

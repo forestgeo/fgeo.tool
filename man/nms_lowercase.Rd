@@ -50,9 +50,8 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms}},
-  \code{\link{round_any}}, \code{\link{type_ensure}}
+  \code{\link{type_ensure}}
 
 Other functions to manipulate names.: \code{\link{nms_extract_anycase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms}},
-  \code{\link{round_any}}
+  \code{\link{nms_restore_newvar}}, \code{\link{nms}}
 }
