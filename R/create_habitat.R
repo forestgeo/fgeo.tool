@@ -12,7 +12,7 @@
 #' create_habitat(fgeo.data::luquillo_elevation, gridsize = 20, n = 4)
 create_habitat <- function(elevation, gridsize, n) {
   stopifnot(!missing(elevation), !missing(gridsize), !missing(n))
-  check_crucial_names(elevation, c("col", "xdim", "ydim"))
+  fgeo.base::check_crucial_names(elevation, c("col", "xdim", "ydim"))
   
   elevation$col %>%
     dplyr::as_tibble() %>% 

@@ -31,7 +31,7 @@
 row_collapse_censusid <- function(x) {
   stopifnot(is.data.frame(x))
   x <- fgeo.tool::nms_lowercase(x)
-  fgeo.tool::check_crucial_names(x, "censusid")
+  fgeo.base::check_crucial_names(x, "censusid")
   x$censusid <- commas(sort(unique(x$censusid)))
   unique(fgeo.tool::nms_restore(x))
 }

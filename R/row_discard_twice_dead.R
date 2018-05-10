@@ -61,7 +61,9 @@ row_discard_twice_dead <- function(vft) {
 
 check_row_discard_twice_dead <- function(vft) {
   stopifnot(is.data.frame(vft))
-  check_crucial_names(vft, c("censusid", "tag", "status", "status_tree"))
+  fgeo.base::check_crucial_names(
+    vft, c("censusid", "tag", "status", "status_tree")
+  )
   if (!length(unique(vft$censusid)) >= 2) {
     warning("The data set has less than two censuses; Keeping all trees")
     return(vft)

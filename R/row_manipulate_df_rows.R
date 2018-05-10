@@ -191,7 +191,7 @@ check_row_filter_status <- function(x, wood, .status, exclude) {
 
 check_valid_status <- function(x, .status, status_var) {
   .status_var <- x[[status_var]]
-  check_crucial_names(x, status_var)
+  fgeo.base::check_crucial_names(x, status_var)
   valid_status <- unique(.status_var)
   invalid_status <- setdiff(.status, valid_status)
   if (length(invalid_status) != 0) {

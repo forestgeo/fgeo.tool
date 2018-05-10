@@ -46,7 +46,7 @@ add_subquad <- function(df,
   stopifnot(is.data.frame(df))
   old <- names(df)
   df <- set_names(df, tolower)
-  check_crucial_names(df, c("qx", "qy"))
+  fgeo.base::check_crucial_names(df, c("qx", "qy"))
   check_subquad_dims(
     df = df,
     x_q = x_q, y_q = y_q, x_sq = x_sq, y_sq = y_sq,
@@ -135,7 +135,7 @@ recode_subquad <- function(x, offset = -1) {
 
 check_recode_subquad <- function(x, offset) {
   stopifnot(is.data.frame(x))
-  check_crucial_names(x, "subquadrat")
+  fgeo.base::check_crucial_names(x, "subquadrat")
   stopifnot(offset %in% c(1, -1))
   stop_if_invalid_subquad(x = x, offset = offset)
   invisible(x)

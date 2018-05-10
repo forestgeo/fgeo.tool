@@ -103,7 +103,7 @@ fieldforms_prepare <- function(x,
   crucial <- c(
     "qx", "qy", "quadratname", "tag","stemid","mnemonic","dbh","hom","status"
   )
-  fgeo.tool::check_crucial_names(x, crucial)
+  fgeo.base::check_crucial_names(x, crucial)
   msg <- paste0(
     "Filter data to keep a single census.\n",
     "Census found: ", commas(unique(x$censusid))
