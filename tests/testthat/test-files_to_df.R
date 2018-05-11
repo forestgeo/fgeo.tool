@@ -1,8 +1,10 @@
 context("files_to_df")
 
+library(fs)
+
 test_that("outputs expected object", {
   path <- system.file("extdata", "files/01.csv", package = "fgeo.tool")
-  input_dir <- fs::path_dir(path)
+  input_dir <- path_dir(path)
   input_dir
   dir(input_dir)
 
