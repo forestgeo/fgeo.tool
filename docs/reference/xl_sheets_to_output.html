@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Combine spreadsheets from excel workbooks into .csv files (one per workbook). — xl_sheets_to_output • fgeo.tool</title>
+<title>Combine spreadsheets from excel workbooks and output common data structures. — xl_sheets_to_output • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,22 +28,13 @@
 
 
 
-<meta property="og:title" content="Combine spreadsheets from excel workbooks into .csv files (one per workbook). — xl_sheets_to_output" />
+<meta property="og:title" content="Combine spreadsheets from excel workbooks and output common data structures. — xl_sheets_to_output" />
 
-<meta property="og:description" content="This is a rigid function with a very specific goal: To process
-data from a specific sampling software. Specifically, this is what this
-function does:
-Reads each spreadsheet from each workbook and map it to a dataframe.
-Lowercases and links the names of each dataframe.
-Keeps only these dataframes: (1) original_stems; (2) new_secondary_stems;
-and (3).
-Dates the data by submission_id (date comes from the spreadsheet
-root).
-Lowercases and links the names of each dataframe-variable.
-Drops fake stems.
-Output a single .csv file which name is prefixed with the name of the
-workbook.
-" />
+<meta property="og:description" content="These functions combine spreadsheets from excel workbooks into common data
+structures. xl_sheets_to_csv() and xl_sheets_to_xl() write a .csv or
+excel (.xlsx) file per workbook -- combining all spreadsheets.
+xl_sheets_to_df outputs a list where each dataframes combines all
+spreadsheeets of a workbook." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -113,27 +104,18 @@ workbook.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Combine spreadsheets from excel workbooks into .csv files (one per workbook).</h1>
+    <h1>Combine spreadsheets from excel workbooks and output common data structures.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/xl_sheets_to_output.R'><code>R/xl_sheets_to_output.R</code></a></small>
     <div class="hidden name"><code>xl_sheets_to_output.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This is a rigid function with a very specific goal: To process
-data from a specific sampling software. Specifically, this is what this
-function does:</p><ul>
-<li><p>Reads each spreadsheet from each workbook and map it to a dataframe.</p></li>
-<li><p>Lowercases and links the names of each dataframe.</p></li>
-<li><p>Keeps only these dataframes: (1) original_stems; (2) new_secondary_stems;
-and (3).</p></li>
-<li><p>Dates the data by <code>submission_id</code> (<code>date</code> comes from the spreadsheet
-<code>root</code>).</p></li>
-<li><p>Lowercases and links the names of each dataframe-variable.</p></li>
-<li><p>Drops fake stems.</p></li>
-<li><p>Output a single .csv file which name is prefixed with the name of the
-workbook.</p></li>
-</ul>
+    <p>These functions combine spreadsheets from excel workbooks into common data
+structures. <code>xl_sheets_to_csv()</code> and <code>xl_sheets_to_xl()</code> write a .csv or
+excel (.xlsx) file per workbook -- combining all spreadsheets.
+<code>xl_sheets_to_df</code> outputs a list where each dataframes combines all
+spreadsheeets of a workbook.</p>
     
     </div>
 
@@ -161,23 +143,39 @@ to read from.</p></td>
 
     <p>Writes one .csv file for each workbook.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This is a rigid function with a very specific goal: To process data from a
+specific sampling software -- FastField. Specifically, this is what this
+function does:</p><ul>
+<li><p>Reads each spreadsheet from each workbook and map it to a dataframe.</p></li>
+<li><p>Lowercases and links the names of each dataframe.</p></li>
+<li><p>Keeps only these dataframes: (1) original_stems; (2) new_secondary_stems;
+and (3).</p></li>
+<li><p>Dates the data by <code>submission_id</code> (<code>date</code> comes from the spreadsheet
+<code>root</code>).</p></li>
+<li><p>Lowercases and links the names of each dataframe-variable.</p></li>
+<li><p>Drops fake stems.</p></li>
+<li><p>Output a common data structure of your choice.</p></li>
+</ul>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>fs</span>)
 
 <span class='co'># Path to the folder I want to read excel files from</span>
-<span class='no'>input_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>path_example</span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"fgeo.tool"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in path_example("two_files/new_stem_1.xlsx", package = "fgeo.tool"): could not find function "path_example"</span></div><div class='input'><span class='co'># Files I want to read</span>
-<span class='fu'>dir</span>(<span class='no'>input_dir</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"xlsx"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in dir(input_dir, pattern = "xlsx"): object 'input_dir' not found</span></div><div class='input'>
+<span class='no'>input_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='example_path.html'>example_path</a></span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>))
+<span class='no'>input_dir</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.tool/inst/extdata/two_files"</div><div class='input'>
+<span class='co'># Files I want to read</span>
+<span class='fu'>dir</span>(<span class='no'>input_dir</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"xlsx"</span>)</div><div class='output co'>#&gt; [1] "new_stem_1.xlsx" "new_stem_2.xlsx"</div><div class='input'>
 <span class='co'># Path to the folder I want to write .csv files to</span>
 <span class='no'>output_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
 
 <span class='co'># Do the work</span>
-<span class='fu'>xl_sheets_to_csv</span>(<span class='no'>input_dir</span>, <span class='no'>output_dir</span>)</div><div class='output co'>#&gt; <span class='error'>Error in is.character(input_dir): object 'input_dir' not found</span></div><div class='input'>
+<span class='fu'>xl_sheets_to_csv</span>(<span class='no'>input_dir</span>, <span class='no'>output_dir</span>)
+
 <span class='co'># Confirm</span>
-<span class='fu'><a href='http://fs.r-lib.org/reference/path_file.html'>path_file</a></span>(<span class='fu'><a href='http://fs.r-lib.org/reference/dir_ls.html'>dir_ls</a></span>(<span class='no'>output_dir</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='st'>"csv$"</span>))</div><div class='output co'>#&gt; myfile-Existing_stems.csv      myfile-Field Meta Data.csv     
-#&gt; myfile-Form Meta Data.csv      myfile-new_secondary_stems.csv 
-#&gt; myfile-orignal_stems.csv       myfile-Recruits.csv            
-#&gt; myfile-Root.csv                myfile-Start_page.csv          </div></pre>
+<span class='fu'><a href='http://fs.r-lib.org/reference/path_file.html'>path_file</a></span>(<span class='fu'><a href='http://fs.r-lib.org/reference/dir_ls.html'>dir_ls</a></span>(<span class='no'>output_dir</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='st'>"new_stem.*csv$"</span>))</div><div class='output co'>#&gt; new_stem_1.csv new_stem_2.csv </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -185,6 +183,8 @@ to read from.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

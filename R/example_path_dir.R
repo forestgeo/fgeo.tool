@@ -5,6 +5,12 @@
 #' @return Path to directory containing example data.
 #' @export
 #'
+#' @export
+#' 
 #' @examples
-#' example_path_dir("two_files/new_stem_1.xlsx")
-example_path_dir <- fgeo.base::example_path_factory("fgeo.tool", dirname)
+#' example_path("two_files/new_stem_1.xlsx")
+#' dirname(example_path("two_files/new_stem_1.xlsx"))
+#' basename(example_path("two_files/new_stem_1.xlsx"))
+example_path <- function(path) {
+  system.file("extdata", path, package = "fgeo.tool")
+}

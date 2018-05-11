@@ -5,7 +5,7 @@
 \alias{xl_sheets_to_csv}
 \alias{xl_sheets_to_xl}
 \alias{xl_sheets_to_df}
-\title{Combine spreadsheets from excel workbooks into .csv files (one per workbook).}
+\title{Combine spreadsheets from excel workbooks and output common data structures.}
 \usage{
 xl_sheets_to_csv(input_dir, output_dir = "./")
 
@@ -23,8 +23,15 @@ to read from.}
 Writes one .csv file for each workbook.
 }
 \description{
-This is a rigid function with a very specific goal: To process
-data from a specific sampling software. Specifically, this is what this
+These functions combine spreadsheets from excel workbooks into common data
+structures. \code{xl_sheets_to_csv()} and \code{xl_sheets_to_xl()} write a .csv or
+excel (.xlsx) file per workbook -- combining all spreadsheets.
+\code{xl_sheets_to_df} outputs a list where each dataframes combines all
+spreadsheeets of a workbook.
+}
+\details{
+This is a rigid function with a very specific goal: To process data from a
+specific sampling software -- FastField. Specifically, this is what this
 function does:
 \itemize{
 \item Reads each spreadsheet from each workbook and map it to a dataframe.
@@ -35,15 +42,16 @@ and (3).
 \code{root}).
 \item Lowercases and links the names of each dataframe-variable.
 \item Drops fake stems.
-\item Output a single .csv file which name is prefixed with the name of the
-workbook.
+\item Output a common data structure of your choice.
 }
 }
 \examples{
 library(fs)
 
 # Path to the folder I want to read excel files from
-input_dir <- example_path_dir("two_files/new_stem_1.xlsx")
+input_dir <- dirname(example_path("two_files/new_stem_1.xlsx"))
+input_dir
+
 # Files I want to read
 dir(input_dir, pattern = "xlsx")
 
@@ -54,5 +62,5 @@ output_dir <- tempdir()
 xl_sheets_to_csv(input_dir, output_dir)
 
 # Confirm
-path_file(dir_ls(output_dir, regexp = "csv$"))
+path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
 }

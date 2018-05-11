@@ -1,7 +1,13 @@
-#' Combine spreadsheets from excel workbooks into .csv files (one per workbook).
+#' Combine spreadsheets from excel workbooks and output common data structures.
+#' 
+#' These functions combine spreadsheets from excel workbooks into common data
+#' structures. `xl_sheets_to_csv()` and `xl_sheets_to_xl()` write a .csv or
+#' excel (.xlsx) file per workbook -- combining all spreadsheets.
+#' `xl_sheets_to_df` outputs a list where each dataframes combines all 
+#' spreadsheeets of a workbook.
 #'
-#' This is a rigid function with a very specific goal: To process
-#' data from a specific sampling software. Specifically, this is what this
+#' This is a rigid function with a very specific goal: To process data from a
+#' specific sampling software -- FastField. Specifically, this is what this
 #' function does:
 #' * Reads each spreadsheet from each workbook and map it to a dataframe.
 #' * Lowercases and links the names of each dataframe.
@@ -11,8 +17,8 @@
 #' `root`).
 #' * Lowercases and links the names of each dataframe-variable.
 #' * Drops fake stems.
-#' * Output a single .csv file which name is prefixed with the name of the
-#'   workbook.
+#' * Output a common data structure of your choice.
+#' 
 #'
 #' @param input_dir String giving the directory containing the excel workbooks
 #'   to read from.
@@ -24,7 +30,9 @@
 #' library(fs)
 #' 
 #' # Path to the folder I want to read excel files from
-#' input_dir <- example_path_dir("two_files/new_stem_1.xlsx")
+#' input_dir <- dirname(example_path("two_files/new_stem_1.xlsx"))
+#' input_dir
+#' 
 #' # Files I want to read
 #' dir(input_dir, pattern = "xlsx")
 #' 
@@ -35,7 +43,7 @@
 #' xl_sheets_to_csv(input_dir, output_dir)
 #' 
 #' # Confirm
-#' path_file(dir_ls(output_dir, regexp = "csv$"))
+#' path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
 #' @name xl_sheets_to_output
 NULL
 
@@ -67,7 +75,7 @@ xl_sheets_to_df <- function(input_dir) {
 
 #' Do xl_sheets_to_df() for each excel file.
 #' @noRd
-xl_sheets_to_df_ <- function(file, sheets = ensure_key_sheets()) {
+xl_sheets_to_df_ <- function(file) {
   # Piping functions to avoid useless intermediate variables
   clean_dfm_list <- fgeo.tool::ls_list_spreadsheets(file) %>%
     fgeo.tool::nms_tidy() %>%
@@ -89,22 +97,14 @@ xl_sheets_to_df_ <- function(file, sheets = ensure_key_sheets()) {
   .df
 }
 
-
-
 #' Check that key spreadsheets exist.
-#'
-#' @param x 
-#'
-#' @return
-#' @export
-#'
-#' @examples
+#' @noRd
 ensure_key_sheets <- function(x) {
   key <- c("original_stems", "new_secondary_stems", "recruits", "root")
   missing_key_sheet <- !all(key %in% names(x))
   if (missing_key_sheet) {
     msg <- paste0(
-      "Data should contain these sheets:\n", collapse(key), "\n",
+      "Data should contain these sheets:\n", commas(key), "\n",
       "* Missing sheets: ", commas(setdiff(key, names(x)))
     )
     abort(msg)
