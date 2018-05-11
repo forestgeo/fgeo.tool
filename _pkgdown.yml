@@ -42,6 +42,10 @@ navbar:
 
 reference:
 
+  - title: Read files into dataframes
+    contents:
+    - files_to_df
+    
   - title: Manipulate dataframes by adding columns
     contents:
     - starts_with("add_")
@@ -65,6 +69,10 @@ reference:
   - title: Manipulate names
     contents:
     - starts_with("nms_")
+
+  - title: Process the output of FastField
+    contents:
+    - xl_sheets_to_output
     
   - title: Quality control
     contents:
@@ -97,3 +105,4 @@ reference:
     contents:
     - top1quad
     - top4quad
+    - example_path_dir

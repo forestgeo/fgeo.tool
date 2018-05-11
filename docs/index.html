@@ -156,12 +156,12 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb4-43" data-line-number="43"><span class="co">#&gt; 12        2     3 dead   A</span></a></code></pre></div>
 <p>Check inputs.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Silent means success</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="reference/check_crucial_names.html">check_crucial_names</a></span>(df, <span class="st">"Status"</span>)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># Errs if the data hasn't a given name</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw"><a href="reference/check_crucial_names.html">check_crucial_names</a></span>(df, <span class="st">"DBH"</span>)</a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; Error: Ensure your data set has these variables:</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; DBH</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">check_crucial_names</span>(df, <span class="st">"Status"</span>)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; Error in check_crucial_names(df, "Status"): could not find function "check_crucial_names"</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co"># Errs if the data hasn't a given name</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="kw">check_crucial_names</span>(df, <span class="st">"DBH"</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; Error in check_crucial_names(df, "DBH"): could not find function "check_crucial_names"</span></a>
 <a class="sourceLine" id="cb5-8" data-line-number="8"></a>
 <a class="sourceLine" id="cb5-9" data-line-number="9"><span class="kw"><a href="reference/check_unique.html">check_unique</a></span>(df, <span class="st">"CensusID"</span>, <span class="dt">msg =</span> <span class="st">"* Is this what you expect?"</span>)</a>
 <a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; Warning in do.call(cond, list(customized)): Duplicated values were detected</span></a>
