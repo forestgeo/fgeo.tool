@@ -64,3 +64,6 @@ xl_sheets_to_csv(input_dir, output_dir)
 # Confirm
 path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
 }
+\author{
+Mauro Lepore and Jessica Shue.
+}

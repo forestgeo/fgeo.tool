@@ -25,6 +25,8 @@
 #' @param output_dir String giving the directory where to write .csv files to.
 #'
 #' @return Writes one .csv file for each workbook.
+#' 
+#' @author Mauro Lepore and Jessica Shue.
 #'
 #' @examples
 #' library(fs)

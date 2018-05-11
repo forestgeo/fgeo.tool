@@ -33,6 +33,11 @@ Read all .csv, .xls, or .xlsx files from a directory into a dataframe or a
 list of dataframes, where each element of the list is named as the source
 file.
 }
+\section{Acknowledgment}{
+
+Thanks to Jessica Shue for inspiring this functions.
+}
+
 \examples{
 path <- system.file("extdata", "files/01.csv", package = "fgeo.tool")
 input_dir <- fs::path_dir(path)

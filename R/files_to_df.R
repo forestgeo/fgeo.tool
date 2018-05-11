@@ -6,6 +6,9 @@
 #' 
 #' @param input_dir String giving the directory containing the excel workbooks
 #'   to read from.
+#'   
+#' @section Acknowledgment:
+#' Thanks to Jessica Shue for inspiring this functions.
 #'
 #' @return The versions ending in _df output a single dataframe. The versions
 #'   ending in _lst output a list of dataframes.
