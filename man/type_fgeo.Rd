@@ -24,7 +24,7 @@ and friends, which guess column types correctly much more often than their
 analogs from the \strong{utils} package.
 
 The functions \code{type_vft()}, \code{type_taxa()}, and friends help you to read data
-more safely by explicitely specifying what type to expect from each column of
+more safely by explicitly specifying what type to expect from each column of
 known datasets. These functions output the specification for the argument
 \code{col_types()} of the functions \code{readr::read_*()}:
 \itemize{

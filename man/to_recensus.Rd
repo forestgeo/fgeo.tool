@@ -2,7 +2,7 @@
 % Please edit documentation in R/to_recensus.R
 \name{to_recensus}
 \alias{to_recensus}
-\title{Identify stems to recencus.}
+\title{Identify stems to recensus.}
 \usage{
 to_recensus(x, y, by = NULL, ...)
 }
@@ -36,8 +36,8 @@ For a dataset \code{y} Based on a reference dataset \code{x}, this function help
 to identify stems that remain to be recensused in a dataset \code{y}. This
 function does the same work as \code{\link[dplyr:anti_join]{dplyr::anti_join()}}. The difference is only
 that the signature of \code{to_recensus()} is a little simpler (irrelevant
-arguments hiden via \code{...}) to focus your attention to the arguments that are
-most useful in helpfing you identify stems to recensus. This function also
+arguments hidden via \code{...}) to focus your attention to the arguments that are
+most useful in helping you identify stems to recensus. This function also
 exists to help you discover the \code{*join()} functions of \strong{dplyr}, which will
 help you to solve more general problems.
 }

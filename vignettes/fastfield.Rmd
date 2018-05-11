@@ -1,0 +1,116 @@
+---
+title: "Process FastField data"
+author: "Mauro Lepore and Jessica Sue"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Process FastField data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(fgeo.tool)
+library(fs)
+```
+
+Combine spreadsheets from excel workbooks into .csv files -- one per workbook (see [`xl_sheets_to_csv()`](https://goo.gl/3L9f4k)).
+
+```{r}
+# Path to the folder I want to read excel files from
+input_dir <- dirname(example_path("two_files/new_stem_1.xlsx"))
+# Files I want to read
+dir(input_dir, pattern = "xlsx")
+
+# Path to the folder I want to write .csv files to
+output_dir <- tempdir()
+
+# Do the work
+xl_sheets_to_csv(input_dir, output_dir)
+
+# Confirm
+path_file(dir_ls(output_dir, regexp = "csv$"))
+```
+
+For details on _Data submission, export, and processing with fast field forms_ see [this blog post](https://goo.gl/4j72rk).
+
+### Read, combine, identify, and write multiple files.
+
+Once you have multiple files in a directory, you may want to combine them all into a single dataframe and export it as a .csv or excel file. Here is how you can do this and a a little more.
+
+Suppose you have these files in a directory:
+
+```{r}
+path <- system.file("extdata", "files/01.csv", package = "fgeo.tool")
+files <- path_dir(path)
+files
+dir(files)
+```
+
+Let's read all the .csv files into a single dataframe.
+
+```{r}
+combined <- csv_to_df(files)
+combined
+```
+
+You can then write a .csv file.
+
+```R
+readr::write_csv(combined, "combined.csv")
+```
+
+An alternative is to read each file into an individual dataframe and store all dataframes into a list.
+
+```{r}
+dfs <- xl_to_df_lst(files)
+dfs
+```
+
+This intermediate step is useful if you want to identify the source of each dataframe.
+
+```{r}
+id <- name_df_lst(dfs, name = "source")
+id
+```
+
+You can then reduce the structure of these data by row-binding each dataframe of the list into a single dataframe.
+
+```{r}
+combined_id <- Reduce(rbind, id)
+combined_id
+```
+
+Now you can save this dataframe to a .csv file exactly as you did before.
+
+```R
+readr::write_csv(combined_id, "combined_id.csv")
+```
+
+Instead of a .csv you may write an excel file of the combined dataframe.
+
+```R
+writexl::write_xlsx(combined_id, "combined_id.xlsx")
+```
+
+Or you may map each dataframe of the list to an individual sheet of a single excel workbook.
+
+```R
+writexl::write_xlsx(id, "combined_id.xlsx")
+```
+
+<img src="https://i.imgur.com/00TSP2C.png" align="center" height=250 />
+
+If later you need to read multiple excel files you may use the same approach you used to read .csv files with the functions `xl_to_df_lst()` and `xl_to_df()`. For more details see `?files_to_df`.
+
+### Reading data safely
+
+* [With __readr__ and RStudio](https://fgeo.netlify.com/2018/03/13/2018-03-13-import-dataset/) (recommended).
+* [With only base R](https://fgeo.netlify.com/2018/03/15/2018-03-15-how-to-read-data-safely-with-only-base-r/).

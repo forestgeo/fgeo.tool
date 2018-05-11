@@ -13,15 +13,15 @@ restructure_elev(elevation)
 A dataframe
 }
 \description{
-This functions helps standarize elevation data. Elevation data may be stored
+This functions helps standardize elevation data. Elevation data may be stored
 as a dataframe in the element \code{col} of a list or may be directly the
-dataframe. Also, the names may be \code{x} and \code{y} wich is inconsistent with the
+dataframe. Also, the names may be \code{x} and \code{y} which is inconsistent with the
 names \code{gx} and \code{gy} of census datasets. Whatever the structure of the input
 (either a dataframe or a list) and whatever the names (\code{x} and \code{y}, or \code{gx}
 and \code{gy}), this function outputs a dataframe with names \code{gx} and \code{gy}, and
 checks that the variable \code{elev} is present.
 }
-\section{Acknowledgements}{
+\section{Acknowledgments}{
 
 This function was inspired by David Kenfack.
 }

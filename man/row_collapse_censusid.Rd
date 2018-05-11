@@ -13,7 +13,7 @@ row_collapse_censusid(x)
 A modified version of \code{x}, most likely with less rows.
 }
 \description{
-This function is useful to summarize the status history of a tree tag accross
+This function is useful to summarize the status history of a tree tag across
 censuses. It is particularly useful to avoid duplicated tree tags on maps.
 }
 \examples{

@@ -66,15 +66,33 @@ single census. Pandoc must be installed (see section Installing Pandoc)." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Functions Index</a>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/fastfield.html">Process FastField data</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../news/index.html">News</a>
-</li>
-<li>
   <a href="https://github.com/maurolepore">
     <span class="fa fa-gavel"></span>
      
@@ -235,8 +253,8 @@ see the function <code>install.pandoc()</code> of the <strong>installr</strong> 
 #&gt;   |                                                                         |.................................................................| 100%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: forms_loop.knit.md</span></div><div class='output co'>#&gt; "C:/Users/LeporeM/AppData/Local/Pandoc/pandoc" +RTS -K512m -RTS forms_loop.utf8.md --to docx --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash+smart --output pandoc24f0246bdf.docx --highlight-style tango --reference-doc reference.docx </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: C:/Users/LeporeM/AppData/Local/Temp/1/Rtmpai6Nre/fieldforms.docx</span></div><div class='input'><span class='fu'>fieldforms_output</span>(
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: forms_loop.knit.md</span></div><div class='output co'>#&gt; "C:/Users/LeporeM/AppData/Local/Pandoc/pandoc" +RTS -K512m -RTS forms_loop.utf8.md --to docx --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash+smart --output pandoc4a42d406d1.docx --highlight-style tango --reference-doc reference.docx </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: C:/Users/LeporeM/AppData/Local/Temp/1/RtmpyK3ZRt/fieldforms.docx</span></div><div class='input'><span class='fu'>fieldforms_output</span>(
   <span class='no'>prep</span>, <span class='st'>"fieldforms2.docx"</span>, <span class='kw'>header</span> <span class='kw'>=</span> <span class='st'>"Custom Header"</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='no'>tmp</span>
 )</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'></span>
@@ -252,8 +270,8 @@ see the function <code>install.pandoc()</code> of the <strong>installr</strong> 
 #&gt;   |                                                                         |.................................................................| 100%
 #&gt;   ordinary text without R code
 #&gt; 
-#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: forms_loop.knit.md</span></div><div class='output co'>#&gt; "C:/Users/LeporeM/AppData/Local/Pandoc/pandoc" +RTS -K512m -RTS forms_loop.utf8.md --to docx --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash+smart --output pandoc24f037e657a.docx --highlight-style tango --reference-doc reference.docx </div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Output created: C:/Users/LeporeM/AppData/Local/Temp/1/Rtmpai6Nre/fieldforms2.docx</span></div><div class='input'>
+#&gt; </div><div class='output co'>#&gt; <span class='message'>output file: forms_loop.knit.md</span></div><div class='output co'>#&gt; "C:/Users/LeporeM/AppData/Local/Pandoc/pandoc" +RTS -K512m -RTS forms_loop.utf8.md --to docx --from markdown+autolink_bare_uris+ascii_identifiers+tex_math_single_backslash+smart --output pandoc4a4f5e1299.docx --highlight-style tango --reference-doc reference.docx </div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Output created: C:/Users/LeporeM/AppData/Local/Temp/1/RtmpyK3ZRt/fieldforms2.docx</span></div><div class='input'>
 <span class='co'># Confirm</span>
 <span class='fu'>dir</span>(<span class='no'>tmp</span>)[<span class='fu'>grepl</span>(<span class='st'>"docx$"</span>, <span class='fu'>dir</span>(<span class='no'>tmp</span>))]</div><div class='output co'>#&gt; [1] "fieldforms.docx"  "fieldforms2.docx"</div><div class='input'>
 <span class='co'># Cleaning temporary directory</span>

@@ -4,7 +4,7 @@
 #'
 #' @param path A path to an excel file.
 #'
-#' @source Adappted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
+#' @source Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 #' @return A list of dataframes.
 #'
 #' @seealso ls_csv_df
@@ -71,7 +71,7 @@ fill_missing_names <- function(x) {
 #'
 #' A useful complement of this function is [ls_list_spreadsheets()].
 #'
-#' @source Adappted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
+#' @source Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 #'
 #'
 #' @param df_list A list of dataframes.

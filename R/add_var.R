@@ -10,7 +10,7 @@
 #' @template gridsize
 #' @template plotdim
 #' @param start `1` or `0`, indicating how to label the first plot-column.
-#' @param width Number; width to padd the labels of plot-columns and -rows
+#' @param width Number; width to pad the labels of plot-columns and -rows
 #'   (passed to [stringr::str_pad()]).
 #'
 #' @family functions to add columns to dataframes.

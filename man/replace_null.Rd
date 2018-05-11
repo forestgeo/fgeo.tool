@@ -16,15 +16,15 @@ A modified version of \code{x} with literals "NULL" replaced by
 \code{NA_character_}.
 }
 \description{
-Importing a dataset can be challenging. A common problem occurrs when reading
+Importing a dataset can be challenging. A common problem occurs when reading
 data a dataset with missing values encoded as 'NULL'. The problem is this:
 When you read that dataset, R will interpret those missing values incorrectly
--- not as \code{NA} but as the literal string 'NULL'. This funciton sanitizes a
-dataset by converting the literal string 'NULL' to the missing charecter
+-- not as \code{NA} but as the literal string 'NULL'. This function sanitizes a
+dataset by converting the literal string 'NULL' to the missing character
 value \code{NA_character_}.
 }
 \details{
-Instead of using this function, you should avoid missinterpreting 'NULL' in
+Instead of using this function, you should avoid misinterpreting 'NULL' in
 the first place. You can pass 'NULL' to the argument \code{na} of the functions
 \code{read_*()} of the \strong{readr} package (e.g. read_csv()). For example:\preformatted{readr::read_csv("your-file.csv", na = c("", "NA", "NULL"))
 }

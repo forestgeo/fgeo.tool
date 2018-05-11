@@ -30,11 +30,11 @@
 
 <meta property="og:title" content="Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value). — replace_null" />
 
-<meta property="og:description" content="Importing a dataset can be challenging. A common problem occurrs when reading
+<meta property="og:description" content="Importing a dataset can be challenging. A common problem occurs when reading
 data a dataset with missing values encoded as 'NULL'. The problem is this:
 When you read that dataset, R will interpret those missing values incorrectly
--- not as NA but as the literal string 'NULL'. This funciton sanitizes a
-dataset by converting the literal string 'NULL' to the missing charecter
+-- not as NA but as the literal string 'NULL'. This function sanitizes a
+dataset by converting the literal string 'NULL' to the missing character
 value NA_character_." />
 <meta name="twitter:card" content="summary" />
 
@@ -70,15 +70,33 @@ value NA_character_." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Functions Index</a>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/fastfield.html">Process FastField data</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../news/index.html">News</a>
-</li>
-<li>
   <a href="https://github.com/maurolepore">
     <span class="fa fa-gavel"></span>
      
@@ -112,11 +130,11 @@ value NA_character_." />
 
     <div class="ref-description">
     
-    <p>Importing a dataset can be challenging. A common problem occurrs when reading
+    <p>Importing a dataset can be challenging. A common problem occurs when reading
 data a dataset with missing values encoded as 'NULL'. The problem is this:
 When you read that dataset, R will interpret those missing values incorrectly
--- not as <code>NA</code> but as the literal string 'NULL'. This funciton sanitizes a
-dataset by converting the literal string 'NULL' to the missing charecter
+-- not as <code>NA</code> but as the literal string 'NULL'. This function sanitizes a
+dataset by converting the literal string 'NULL' to the missing character
 value <code>NA_character_</code>.</p>
     
     </div>
@@ -143,7 +161,7 @@ value <code>NA_character_</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Instead of using this function, you should avoid missinterpreting 'NULL' in
+    <p>Instead of using this function, you should avoid misinterpreting 'NULL' in
 the first place. You can pass 'NULL' to the argument <code>na</code> of the functions
 <code>read_*()</code> of the <strong>readr</strong> package (e.g. read_csv()). For example:</p><pre>readr::read_csv("your-file.csv", na = c("", "NA", "NULL"))
 </pre>

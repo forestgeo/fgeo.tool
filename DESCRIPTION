@@ -29,7 +29,8 @@ Suggests:
     bciex (>= 0.0.0.9000),
     covr (>= 3.0.1),
     magrittr (>= 1.5),
-    testthat (>= 2.0.0)
+    testthat (>= 2.0.0),
+    knitr
 Remotes: 
     forestgeo/bciex,
     forestgeo/fgeo.base,
@@ -38,3 +39,4 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr

@@ -6,7 +6,7 @@ library(readxl)
 
 # Using sheets stored in the system.
 path_to_example <- system.file(
-  "extdata", "two_files/new_stem_1.xlsx", package = "fgeo.fastfield"
+  "extdata", "two_files/new_stem_1.xlsx", package = "fgeo.tool"
 )
 path_to_extdata <- fs::path(sub(basename(path_to_example), "", path_to_example))
 
@@ -38,7 +38,7 @@ context("xl_sheets_to_xl")
 test_that("works as expected", {
   # Create paths
   path_to_example <- system.file(
-    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.fastfield"
+    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.tool"
   )
   path_to_extdata <- sub(basename(path_to_example), "", path_to_example)
   input <- path_to_extdata
@@ -85,7 +85,7 @@ test_that("errs with informative message with input of wrong type", {
 test_that("works as expected", {
   # Create paths
   path_to_example <- system.file(
-    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.fastfield"
+    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.tool"
   )
   path_to_extdata <- sub(basename(path_to_example), "", path_to_example)
   input <- path_to_extdata
@@ -108,7 +108,7 @@ test_that("works as expected", {
 
 test_that("warns if it detects no new stem", {
   path_to_example <- system.file(
-    "extdata", "new_stem_0/new_stem_0.xlsx", package = "fgeo.fastfield"
+    "extdata", "new_stem_0/new_stem_0.xlsx", package = "fgeo.tool"
   )
   path_to_extdata <- sub(basename(path_to_example), "", path_to_example)
   input <- path_to_extdata
@@ -119,7 +119,7 @@ test_that("warns if it detects no new stem", {
 
 test_that("warns if it detects no recruits (#11)", {
   path_to_example <- system.file(
-    "extdata", "recruits_none/recruits_none.xlsx", package = "fgeo.fastfield"
+    "extdata", "recruits_none/recruits_none.xlsx", package = "fgeo.tool"
   )
   path_to_extdata <- sub(basename(path_to_example), "", path_to_example)
   input <- path_to_extdata
@@ -130,7 +130,7 @@ test_that("warns if it detects no recruits (#11)", {
 
 test_that("outputs column date (#12)", {
   path_to_example <- system.file(
-    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.fastfield"
+    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.tool"
   )
   path_to_extdata <- sub(basename(path_to_example), "", path_to_example)
   input <- path_to_extdata
@@ -145,7 +145,7 @@ test_that("outputs column date (#12)", {
 
 test_that("outputs column codes with commas replaced by semicolon (#13)", {
   path_to_example <- system.file(
-    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.fastfield"
+    "extdata", "new_stem_1/new_stem_1.xlsx", package = "fgeo.tool"
   )
   path_to_extdata <- sub(basename(path_to_example), "", path_to_example)
   input <- path_to_extdata

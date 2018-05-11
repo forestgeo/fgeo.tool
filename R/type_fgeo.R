@@ -14,7 +14,7 @@
 #' 
 #' @description 
 #' The functions `type_vft()`, `type_taxa()`, and friends help you to read data
-#' more safely by explicitely specifying what type to expect from each column of
+#' more safely by explicitly specifying what type to expect from each column of
 #' known datasets. These functions output the specification for the argument
 #' `col_types()` of the functions `readr::read_*()`:
 #' * `type_vft():` Type specification for ViewFullTable.

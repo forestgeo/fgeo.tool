@@ -2,9 +2,9 @@
 
 #' If necessary, pull elevation data and rename `x` and `y` to `gx` and `gy`.
 #' 
-#' This functions helps standarize elevation data. Elevation data may be stored
+#' This functions helps standardize elevation data. Elevation data may be stored
 #' as a dataframe in the element `col` of a list or may be directly the
-#' dataframe. Also, the names may be `x` and `y` wich is inconsistent with the
+#' dataframe. Also, the names may be `x` and `y` which is inconsistent with the
 #' names `gx` and `gy` of census datasets. Whatever the structure of the input
 #' (either a dataframe or a list) and whatever the names (`x` and `y`, or `gx`
 #' and `gy`), this function outputs a dataframe with names `gx` and `gy`, and
@@ -14,7 +14,7 @@
 #'
 #' @return A dataframe
 #' 
-#' @section Acknowledgements:
+#' @section Acknowledgments:
 #'   This function was inspired by David Kenfack.
 #' 
 #' @export

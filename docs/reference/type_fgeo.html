@@ -39,7 +39,7 @@ discouraged; instead consider using readr::read_csv(), readr::read_csv(),
 and friends, which guess column types correctly much more often than their
 analogs from the utils package.
 The functions type_vft(), type_taxa(), and friends help you to read data
-more safely by explicitely specifying what type to expect from each column of
+more safely by explicitly specifying what type to expect from each column of
 known datasets. These functions output the specification for the argument
 col_types() of the functions readr::read_*():
 type_vft(): Type specification for ViewFullTable.
@@ -79,15 +79,33 @@ type_taxa(): Type specification for ViewFullTaxonomy.
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Functions Index</a>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/fastfield.html">Process FastField data</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../news/index.html">News</a>
-</li>
-<li>
   <a href="https://github.com/maurolepore">
     <span class="fa fa-gavel"></span>
      
@@ -130,7 +148,7 @@ discouraged; instead consider using <code><a href='http://www.rdocumentation.org
 and friends, which guess column types correctly much more often than their
 analogs from the <strong>utils</strong> package.</p>
 <p>The functions <code>type_vft()</code>, <code>type_taxa()</code>, and friends help you to read data
-more safely by explicitely specifying what type to expect from each column of
+more safely by explicitly specifying what type to expect from each column of
 known datasets. These functions output the specification for the argument
 <code>col_types()</code> of the functions <code>readr::read_*()</code>:</p><ul>
 <li><p><code>type_vft():</code> Type specification for ViewFullTable.</p></li>

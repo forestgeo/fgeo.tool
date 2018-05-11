@@ -139,7 +139,7 @@ fieldforms_prepare <- function(x,
 
 #' Header for fieldforms.
 #' 
-#' @return A srting.
+#' @return A string.
 #' @export
 #'
 #' @examples

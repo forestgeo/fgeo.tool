@@ -1,7 +1,7 @@
 context("files_to_df")
 
 test_that("outputs expected object", {
-  path <- system.file("extdata", "files/01.csv", package = "fgeo.fastfield")
+  path <- system.file("extdata", "files/01.csv", package = "fgeo.tool")
   input_dir <- fs::path_dir(path)
   input_dir
   dir(input_dir)

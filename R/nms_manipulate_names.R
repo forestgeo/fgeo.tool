@@ -6,7 +6,7 @@
 #'
 #' @section Warning:
 #' [nms_restore()] is similar to [nms_restore_newvar()] but
-#' [nms_restore()] is necesary if the data is mutated with [dplyr::mutate()]:
+#' [nms_restore()] is necessary if the data is mutated with [dplyr::mutate()]:
 #' [dplyr::mutate()] drops attributes
 #' (https://github.com/tidyverse/dplyr/issues/1984), which makes it
 #' [nms_restore()] useless. attributes.
@@ -62,7 +62,7 @@ nms_restore <- function(x) {
 #' solution is to lowercase all names, do whatever the function needs to do, and
 #' then restore the old names. This function helps by restoring old names, which
 #' is not straight forward when the function adds a new variable and may contain
-#' a preexising variable with the same name of the added variable.
+#' a preexisting variable with the same name of the added variable.
 #'
 #' The length of `x` must equal the number of names in old_nms, or that + 1".
 #'
@@ -121,7 +121,7 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' Functions to detect and extract names.
 #' 
 #' These functions are handy to work with fgeo's data structures because the
-#' same variablel may be named differently in different data sets. For example,
+#' same variable may be named differently in different data sets. For example,
 #' the variable status is called `Status` or `status` in viewfull or census
 #' (tree and stem) tables.
 #' 
@@ -131,7 +131,7 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' * Returns a logical vector.
 #' nms_extract_all(): Finds the names that match the provided names. 
 #' * Returns a character vector.
-#' nms_extract1(): Finds the first name that matchs the provided names.
+#' nms_extract1(): Finds the first name that matches the provided names.
 #' * Returns a character string.
 #'
 #' @param x A named object.
@@ -222,7 +222,7 @@ nms_extract_anycase <- function(x, nm) {
 #' Create tidy names that are lowercase and have no empty spaces.
 #'
 #' These functions create tidy names that are lowercase and have no empty
-#' spaces. `nms_tidy()` tidyes the names of named objects. Unnamed strings are
+#' spaces. `nms_tidy()` tidies the names of named objects. Unnamed strings are
 #' also tidied via `str_as_tidy_names()`. `str_as_tidy_names()` tidies a string -- not
 #' its names.
 #'

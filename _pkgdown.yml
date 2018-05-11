@@ -21,14 +21,7 @@ navbar:
 
   type: default
 
-  left:
-    - text: Functions Index
-      href: reference/index.html
-
   right:
-      - text: News
-        href: news/index.html
-        
       - icon: fa-gavel
         href: https://github.com/maurolepore
 
@@ -98,7 +91,6 @@ reference:
   - title: "Functions for developers: Miscellaneous"
     contents:
     - exists_in_pkg
-    - guess_plotdim
     - find_data_of_class
     
   - title: "Datasets"

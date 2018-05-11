@@ -2,7 +2,7 @@ library(dplyr)
 
 context("add_var")
 
-test_that("converts as the equivalent funciton from the CFTSR Package", {
+test_that("converts as the equivalent function from the CFTSR Package", {
   x <- tibble(gx = 990:992, gy = 490:492)
 
   w_lxly <- suppressMessages(add_var(x, var = "lxly"))
