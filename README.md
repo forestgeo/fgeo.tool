@@ -1,29 +1,38 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=88 /> fgeo.tool: Functions for general purposes
+# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=88 /> Functions for general purposes
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build
 status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
 [![Coverage
 status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
+
+The goal of **fgeo.tool** is to provide functions for general purposes.
+Many of its functions are used in multiple other **fgeo** packages so
+**fgeo.tool** acts as a central repository of code. In particular, the
+funtions hosted here depend on a relatively large number of external
+packages. For general porpose functions with no expternal dependency see
+[**fgeo.base**](https://forestgeo.github.io/fgeo.base/).
 
 ## Installation
-
-You can install fgeo.tool from github with:
 
     # install.packages("remotes")
     remotes::install_github("forestgeo/fgeo.tool")
 
-``` r
-library(fgeo.tool)
-```
+For details on how to install packages from GitHub, see [this
+article](https://goo.gl/dQKEeg).
 
 ## Example
 
 Setup.
 
 ``` r
+library(fgeo.tool)
+
 df <- tibble::tribble(
   ~CensusID, ~Tag, ~Status,
           1,    1, "alive",
@@ -186,3 +195,13 @@ dplyr::arrange(
 #> # ... with 4 variables: CensusID <dbl>, Tag <dbl>, status_stem <chr>,
 #> #   status_tree <chr>
 ```
+
+## Information
+
+  - [Getting help](SUPPORT.md).
+  - [Contributing](CONTRIBUTING.md).
+  - [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Acknowledgements
+
+Thanks to all partners of ForestGEO, for sharing their ideas and code.

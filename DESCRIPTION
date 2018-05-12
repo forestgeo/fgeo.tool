@@ -27,10 +27,11 @@ Imports:
     writexl
 Suggests: 
     bciex (>= 0.0.0.9000),
-    covr (>= 3.0.1),
+    covr,
+    knitr,
     magrittr (>= 1.5),
-    testthat (>= 2.0.0),
-    knitr
+    testthat (>= 2.0.0)
+VignetteBuilder: knitr
 Remotes: 
     forestgeo/bciex,
     forestgeo/fgeo.base,
@@ -39,4 +40,3 @@ Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.0.1
-VignetteBuilder: knitr

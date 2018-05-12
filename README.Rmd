@@ -4,39 +4,44 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  fig.path = "README-"
 )
 ```
 
-# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=88 /> fgeo.tool: Functions for general purposes
+# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=88 /> Functions for general purposes
 
+[![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
+[![CRAN status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)  
+
+The goal of __fgeo.tool__ is to provide functions for general purposes.
+Many of its functions are used in multiple other __fgeo__ packages so
+__fgeo.tool__ acts as a central repository of code. In particular, the
+funtions hosted here depend on a relatively large number of external
+packages. For general porpose functions with no expternal dependency see
+[__fgeo.base__](https://forestgeo.github.io/fgeo.base/).
 
 ## Installation
-
-You can install fgeo.tool from github with:
 
 ```
 # install.packages("remotes")
 remotes::install_github("forestgeo/fgeo.tool")
 ```
 
-```{r}
-library(fgeo.tool)
-```
-
+For details on how to install packages from GitHub, see [this article](https://goo.gl/dQKEeg).
 
 ## Example
 
 Setup.
 
-```{r example, error=TRUE}
+```{r}
+library(fgeo.tool)
+
 df <- tibble::tribble(
   ~CensusID, ~Tag, ~Status,
           1,    1, "alive",
@@ -131,5 +136,13 @@ dplyr::arrange(
 )
 ```
 
+## Information
 
+* [Getting help](SUPPORT.md).
+* [Contributing](CONTRIBUTING.md).
+* [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Acknowledgements
+
+Thanks to all partners of ForestGEO, for sharing their ideas and code.
 
