@@ -14,7 +14,8 @@ type_ensure(df, ensure_nms, type = "numeric")
 \item{type}{A string giving the type to ensure in columns \code{ensure_nms}}
 }
 \value{
-A modified version of \code{df}, whith columns \code{ensure_nms} of type \code{type}.
+A modified version of \code{df}, with columns (specified in \code{ensure_nms})
+of type \code{type}.
 }
 \description{
 Ensure the specific columns of a dataframe have a particular type.

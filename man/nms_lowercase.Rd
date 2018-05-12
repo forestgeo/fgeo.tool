@@ -27,7 +27,7 @@ restore the original names.
 \section{Warning}{
 
 \code{\link[=nms_restore]{nms_restore()}} is similar to \code{\link[=nms_restore_newvar]{nms_restore_newvar()}} but
-\code{\link[=nms_restore]{nms_restore()}} is necesary if the data is mutated with \code{\link[dplyr:mutate]{dplyr::mutate()}}:
+\code{\link[=nms_restore]{nms_restore()}} is necessary if the data is mutated with \code{\link[dplyr:mutate]{dplyr::mutate()}}:
 \code{\link[dplyr:mutate]{dplyr::mutate()}} drops attributes
 (https://github.com/tidyverse/dplyr/issues/1984), which makes it
 \code{\link[=nms_restore]{nms_restore()}} useless. attributes.

@@ -4,7 +4,7 @@
 \alias{ls_list_spreadsheets}
 \title{Read an excel workbook and store each spreadsheet as a dataframe in a list.}
 \source{
-Adappted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
+Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 }
 \usage{
 ls_list_spreadsheets(path)

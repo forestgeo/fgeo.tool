@@ -15,7 +15,7 @@ A modified version of \code{x} with tidy names or a string of tidy names.
 }
 \description{
 These functions create tidy names that are lowercase and have no empty
-spaces. \code{nms_tidy()} tidyes the names of named objects. Unnamed strings are
+spaces. \code{nms_tidy()} tidies the names of named objects. Unnamed strings are
 also tidied via \code{str_as_tidy_names()}. \code{str_as_tidy_names()} tidies a string -- not
 its names.
 }

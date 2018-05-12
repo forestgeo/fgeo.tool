@@ -13,9 +13,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/add_var.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/check_crucial_names.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/check_unique.html</loc>
   </url>
   <url>
@@ -26,6 +23,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/datasets.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/example_path.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/exists_in_pkg.html</loc>
@@ -41,6 +41,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fieldforms_prepare.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_df.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fill_na.html</loc>
@@ -113,5 +116,11 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/type_fgeo.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/xl_sheets_to_output.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//articles/read_df_write.html</loc>
   </url>
 </urlset>

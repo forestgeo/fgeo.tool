@@ -39,7 +39,7 @@ maximum possible values of `gx` and `gy`).}
 
 \item{start}{\code{1} or \code{0}, indicating how to label the first plot-column.}
 
-\item{width}{Number; width to padd the labels of plot-columns and -rows
+\item{width}{Number; width to pad the labels of plot-columns and -rows
 (passed to \code{\link[stringr:str_pad]{stringr::str_pad()}}).}
 }
 \value{

@@ -6,9 +6,9 @@
 #' @param x A dataframe.
 #' @param filler A filler; whatever you want to replace NA's with.
 #'
-#' @return A modified versio of `x`.
+#' @return A modified version of `x`.
 #' 
-#' @section Acknowledgements:
+#' @section Acknowledgments:
 #'   This function was inspired by conversations with David Kenfack and by a 
 #'   [blog post by Rick Pack](https://goo.gl/aMTQck). Also tanks to Edgar Ruiz
 #'   (@edgararuiz) for discussing alternatives 

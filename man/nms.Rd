@@ -23,7 +23,7 @@ nms_extract1(x, ...)
 }
 \description{
 These functions are handy to work with fgeo's data structures because the
-same variablel may be named differently in different data sets. For example,
+same variable may be named differently in different data sets. For example,
 the variable status is called \code{Status} or \code{status} in viewfull or census
 (tree and stem) tables.
 }
@@ -35,7 +35,7 @@ nms_detect(): Checks if an object has the provided names.
 \item Returns a logical vector.
 nms_extract_all(): Finds the names that match the provided names.
 \item Returns a character vector.
-nms_extract1(): Finds the first name that matchs the provided names.
+nms_extract1(): Finds the first name that matches the provided names.
 \item Returns a character string.
 }
 }

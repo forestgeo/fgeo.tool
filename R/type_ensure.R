@@ -6,7 +6,8 @@
 #' 
 #' @family functions for developers.
 #'
-#' @return A modified version of `df`, whith columns `ensure_nms` of type `type`.
+#' @return A modified version of `df`, with columns (specified in `ensure_nms`)
+#'   of type `type`.
 #' @export
 #'
 #' @examples

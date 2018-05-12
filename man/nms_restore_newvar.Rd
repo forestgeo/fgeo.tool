@@ -24,7 +24,7 @@ developing functions that work with both ViewFullTables and fgeo tables, one
 solution is to lowercase all names, do whatever the function needs to do, and
 then restore the old names. This function helps by restoring old names, which
 is not straight forward when the function adds a new variable and may contain
-a preexising variable with the same name of the added variable.
+a preexisting variable with the same name of the added variable.
 }
 \details{
 The length of \code{x} must equal the number of names in old_nms, or that + 1".

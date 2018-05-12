@@ -7,7 +7,7 @@
 fieldforms_header()
 }
 \value{
-A srting.
+A string.
 }
 \description{
 Header for fieldforms.

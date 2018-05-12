@@ -4,7 +4,7 @@
 \alias{ls_csv_df}
 \title{Save each dataframe in a list to a different .csv file.}
 \source{
-Adappted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
+Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 }
 \usage{
 ls_csv_df(df_list, dir, prefix = NULL)

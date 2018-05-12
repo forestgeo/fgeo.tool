@@ -12,13 +12,13 @@ fill_na(x, filler = 0)
 \item{filler}{A filler; whatever you want to replace NA's with.}
 }
 \value{
-A modified versio of \code{x}.
+A modified version of \code{x}.
 }
 \description{
 This is a wrapper of \code{\link[base:replace]{base::replace()}} with a simplified interface and a name
 that target the specific job of filling NA's.
 }
-\section{Acknowledgements}{
+\section{Acknowledgments}{
 
 This function was inspired by conversations with David Kenfack and by a
 \href{https://goo.gl/aMTQck}{blog post by Rick Pack}. Also tanks to Edgar Ruiz
