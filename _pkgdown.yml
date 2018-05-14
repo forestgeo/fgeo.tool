@@ -53,6 +53,7 @@ reference:
     
   - title: Manipulate dataframes
     contents:
+    - lookup
     - recode_subquad
     
   - title: Manipulate strings
