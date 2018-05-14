@@ -18,9 +18,7 @@
 #' @export
 #'
 #' @examples
-#' set.seed(1)
 #' library(dplyr, warn.conflicts = FALSE)
-#' library(rlang)
 #'
 #' look <- tibble(
 #'   old = c("spp1", "unknown"),
