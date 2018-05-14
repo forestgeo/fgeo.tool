@@ -151,6 +151,11 @@ spreadsheet file.</p>
     <p>A "spliced" list with names from <code>old</code> and values from <code>new</code>. The
 kind of data structure that you can feed to <code>...</code> in dplyr::recode()`.</p>
     
+    <h2 class="hasAnchor" id="acknowledgment"><a class="anchor" href="#acknowledgment"></a>Acknowledgment</h2>
+
+    
+    <p>Thanks to David Kenfack for inspiring this function.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='http://dplyr.tidyverse.org/reference/recode.html'>dplyr::recode()</a></code></p></div>
@@ -159,40 +164,39 @@ kind of data structure that you can feed to <code>...</code> in dplyr::recode()`
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>set.seed</span>(<span class='fl'>1</span>)
 <span class='fu'>library</span>(<span class='no'>dplyr</span>, <span class='kw'>warn.conflicts</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
-<span class='fu'>library</span>(<span class='no'>rlang</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘rlang’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    is_false, is_null, is_true</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:devtools’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    ns_env, pkg_env, with_options</span></div><div class='input'>
+<span class='fu'>library</span>(<span class='no'>rlang</span>)
+
 <span class='no'>look</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(
   <span class='kw'>old</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"spp1"</span>, <span class='st'>"unknown"</span>),
   <span class='kw'>new</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"spp3"</span>, <span class='st'>"spp4"</span>)
 )
 
-<span class='fu'>lookup</span>(<span class='no'>look</span>$<span class='no'>old</span>, <span class='no'>look</span>$<span class='no'>new</span>)</div><div class='output co'>#&gt; $spp1
-#&gt; [1] "spp3"
-#&gt; 
-#&gt; $unknown
-#&gt; [1] "spp4"
-#&gt; 
-#&gt; attr(,"class")
-#&gt; [1] "spliced"</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"spp1"</span>, <span class='st'>"spp2"</span>, <span class='st'>"spp3"</span>, <span class='st'>"unknown"</span>, <span class='st'>"spp3"</span>, <span class='st'>"unknown"</span>, <span class='st'>"spp1"</span>, <span class='st'>"spp1"</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt; [1] "spp1"    "spp2"    "spp3"    "unknown" "spp3"    "unknown" "spp1"    "spp1"   </div><div class='input'><span class='fu'><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='fu'>lookup</span>(<span class='no'>look</span>$<span class='no'>old</span>, <span class='no'>look</span>$<span class='no'>new</span>))</div><div class='output co'>#&gt; [1] "spp3" "spp2" "spp3" "spp4" "spp3" "spp4" "spp3" "spp3"</div><div class='input'><span class='co'># Same</span>
-<span class='fu'><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, !!!<span class='fu'>as.list</span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/rlang/topics/set_names'>set_names</a></span>(<span class='no'>look</span>$<span class='no'>new</span>, <span class='no'>look</span>$<span class='no'>old</span>)))</div><div class='output co'>#&gt; [1] "spp3" "spp2" "spp3" "spp4" "spp3" "spp4" "spp3" "spp3"</div><div class='input'>
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>x</span>)
-<span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>dfm</span>, <span class='kw'>new_x</span> <span class='kw'>=</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>x</span>, <span class='fu'>lookup</span>(<span class='no'>look</span>$<span class='no'>old</span>, <span class='no'>look</span>$<span class='no'>new</span>)))</div><div class='output co'>#&gt; # A tibble: 8 x 2
-#&gt;   x       new_x
-#&gt;   &lt;chr&gt;   &lt;chr&gt;
-#&gt; 1 spp1    spp3 
-#&gt; 2 spp2    spp2 
-#&gt; 3 spp3    spp3 
-#&gt; 4 unknown spp4 
-#&gt; 5 spp3    spp3 
-#&gt; 6 unknown spp4 
-#&gt; 7 spp1    spp3 
-#&gt; 8 spp1    spp3 </div></pre>
+<span class='no'>sp</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"spp1"</span>, <span class='st'>"spp2"</span>, <span class='st'>"spp3"</span>, <span class='st'>"unknown"</span>, <span class='st'>"spp3"</span>, <span class='st'>"unknown"</span>, <span class='st'>"spp1"</span>, <span class='st'>"spp1"</span>)
+<span class='fu'><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>sp</span>, <span class='fu'>lookup</span>(<span class='no'>look</span>$<span class='no'>old</span>, <span class='no'>look</span>$<span class='no'>new</span>))</div><div class='output co'>#&gt; [1] "spp3" "spp2" "spp3" "spp4" "spp3" "spp4" "spp3" "spp3"</div><div class='input'>
+<span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>sp</span> <span class='kw'>=</span> <span class='no'>sp</span>)
+<span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>census</span>, <span class='kw'>new_sp</span> <span class='kw'>=</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>sp</span>, <span class='fu'>lookup</span>(<span class='no'>look</span>$<span class='no'>old</span>, <span class='no'>look</span>$<span class='no'>new</span>)))</div><div class='output co'>#&gt; # A tibble: 8 x 2
+#&gt;   sp      new_sp
+#&gt;   &lt;chr&gt;   &lt;chr&gt; 
+#&gt; 1 spp1    spp3  
+#&gt; 2 spp2    spp2  
+#&gt; 3 spp3    spp3  
+#&gt; 4 unknown spp4  
+#&gt; 5 spp3    spp3  
+#&gt; 6 unknown spp4  
+#&gt; 7 spp1    spp3  
+#&gt; 8 spp1    spp3  </div><div class='input'>
+<span class='co'># Overwrite</span>
+<span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='no'>census</span>, <span class='kw'>sp</span> <span class='kw'>=</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/recode.html'>recode</a></span>(<span class='no'>sp</span>, <span class='fu'>lookup</span>(<span class='no'>look</span>$<span class='no'>old</span>, <span class='no'>look</span>$<span class='no'>new</span>)))</div><div class='output co'>#&gt; # A tibble: 8 x 1
+#&gt;   sp   
+#&gt;   &lt;chr&gt;
+#&gt; 1 spp3 
+#&gt; 2 spp2 
+#&gt; 3 spp3 
+#&gt; 4 spp4 
+#&gt; 5 spp3 
+#&gt; 6 spp4 
+#&gt; 7 spp3 
+#&gt; 8 spp3 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -200,6 +204,8 @@ kind of data structure that you can feed to <code>...</code> in dplyr::recode()`
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#acknowledgment">Acknowledgment</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

@@ -19,6 +19,11 @@ from two other vectors, where \code{old} and \code{new} codes are looked up. The
 lookup vectors are commonly stored in a dataframe and come from a .csv or
 spreadsheet file.
 }
+\section{Acknowledgment}{
+
+Thanks to David Kenfack for inspiring this function.
+}
+
 \examples{
 set.seed(1)
 library(dplyr, warn.conflicts = FALSE)
@@ -29,16 +34,14 @@ look <- tibble(
   new = c("spp3", "spp4")
 )
 
-lookup(look$old, look$new)
+sp <- c("spp1", "spp2", "spp3", "unknown", "spp3", "unknown", "spp1", "spp1")
+recode(sp, lookup(look$old, look$new))
 
-x <- c("spp1", "spp2", "spp3", "unknown", "spp3", "unknown", "spp1", "spp1")
-x
-recode(x, lookup(look$old, look$new))
-# Same
-recode(x, !!!as.list(set_names(look$new, look$old)))
+census <- tibble(sp = sp)
+mutate(census, new_sp = recode(sp, lookup(look$old, look$new)))
 
-dfm <- tibble(x = x)
-mutate(dfm, new_x = recode(x, lookup(look$old, look$new)))
+# Overwrite
+mutate(census, sp = recode(sp, lookup(look$old, look$new)))
 }
 \seealso{
 \code{dplyr::recode()}
