@@ -9,3 +9,5 @@
 ^man-roxygen$
 ^tmp\.R$
 ^inst/useless$
+^\.github$
+^inst/issues$

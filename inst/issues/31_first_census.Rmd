@@ -1,0 +1,98 @@
+---
+title: "Process and explore FastField data of a first census"
+output: github_document
+params:
+  input_dir: !r dirname(system.file("extdata", "first_census/census.xlsx", package = "fgeo.tool"))
+  output_dir: !r tempdir()
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,  # {mine}
+  comment = "#>",
+  collapse = TRUE,
+  out.width = "95%",
+  fig.align = "center",
+  fig.width = 6,
+  fig.asp = 0.618,  # 1 / phi
+  fig.show = "hold",
+  rows.print = 3  # {mine}
+)
+```
+
+```{r}
+# https://forestgeo.github.io/fgeo.tool/#installation
+library(fgeo.tool)
+
+# Install with `install.packages("pkg")`
+library(fs)
+library(tidyverse)
+```
+
+Change your input and output directory before knitting this file, and re-run every day you come back from the field.
+
+![](https://i.imgur.com/fGOtlVz.png)
+
+![](https://i.imgur.com/C2SbGMb.png)
+
+```{r}
+# My input directory
+params$input_dir
+dir(params$input_dir, "xlsx")
+
+# My output directory (temporary)
+params$output_dir
+```
+
+```{r}
+xl_sheets_to_csv(params$input_dir, params$output_dir, first_census = TRUE)
+# Output is one .csv per workbook
+dir(params$output_dir, "csv")
+```
+
+```{r}
+# Now input multiple .csv and output a single dataframe
+combo <- csv_to_df(params$output_dir)
+combo
+```
+
+```{r}
+# Read data of tree positions
+where_dir <- example_path("first_census/position.csv")
+where <- read_csv(where_dir)
+
+# Compare
+where
+select(combo, quadrat, tag)
+```
+
+```{r}
+# Create a variable that we can later use to merge the two datasets
+combo <- mutate(combo, PtID = paste0(quadrat, tag))
+combo2 <- left_join(combo, where)
+# Reorganize columns for easier visualization
+combo2 <- select(combo2, PtID, East, North, date, everything())
+combo2
+```
+
+```{r}
+# Helpers to avoid duplication
+set_brk <- function(max, by) seq(0, max, by)
+set_lim <- function(max) c(0, max)
+
+xmax <- 560
+ymax <- 360
+ggplot(combo2, aes(East, North, color = date)) + 
+  geom_point() +
+  coord_equal() +
+  scale_x_continuous(minor_breaks = set_brk(xmax, 20), limits = set_lim(xmax)) +
+  scale_y_continuous(minor_breaks = set_brk(ymax, 20), limits = set_lim(ymax)) +
+  theme_bw()
+```
+
+__ggplot2__ removes missing values from `East` and `North` but there may be missing values in `date`.
+
+```{r}
+filter(combo2, is.na(date))
+```
+

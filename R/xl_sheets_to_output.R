@@ -11,26 +11,39 @@
 #' function does:
 #' * Reads each spreadsheet from each workbook and map it to a dataframe.
 #' * Lowercases and links the names of each dataframe.
-#' * Keeps only these dataframes: (1) original_stems; (2) new_secondary_stems;
-#'   and (3).
+#' * Keeps only these dataframes: (1) original_stems, (2) new_secondary_stems,
+#' and (3) "recruits".
 #' * Dates the data by `submission_id` (`date` comes from the spreadsheet
 #' `root`).
 #' * Lowercases and links the names of each dataframe-variable.
 #' * Drops fake stems.
 #' * Output a common data structure of your choice.
-#' 
 #'
 #' @param input_dir String giving the directory containing the excel workbooks
 #'   to read from.
 #' @param output_dir String giving the directory where to write .csv files to.
+#' @param first_census This argument tells these functions what sheets to expect
+#'   in the input. 
+#'   * Use `TRUE` if this is your first census. The expected input must have
+#'     sheets (1) "root", (2) "multi_stems", (3) "secondary_stems", and
+#'     (4) "single_stems".
+#'   * Use `FALSE` (default) if this is not your first census. The expected 
+#'     input must have sheets (1) "root", (2) "original_stems", (3) 
+#'     "new_secondary_stems", and (4) "recruits".
 #'
 #' @return Writes one .csv file for each workbook.
 #' 
 #' @author Mauro Lepore and Jessica Shue.
+#' 
+#' @section Acknowledgment:
+#' Sabrina Russo helped to make these functions useful with first censuses.
 #'
 #' @examples
 #' library(fs)
+#' library(readr)
+#' library(readxl)
 #' 
+#' # NOT A FIRST CENSUS
 #' # Path to the folder I want to read excel files from
 #' input_dir <- dirname(example_path("two_files/new_stem_1.xlsx"))
 #' input_dir
@@ -41,18 +54,33 @@
 #' # Path to the folder I want to write .csv files to
 #' output_dir <- tempdir()
 #' 
-#' # Do the work
+#' # Output a csv file
 #' xl_sheets_to_csv(input_dir, output_dir)
 #' 
 #' # Confirm
 #' path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
+#' 
+#' # Also possible to output excel and a list of dataframe. See next section.
+#' 
+#' # FIRST CENSUS
+#' input_dir <- dirname(example_path("first_census/census.xlsx"))
+#' # As a reminder you'll get a warning of missing sheets
+#' # Output list of dataframes (one per input workbook -- here only one)
+#' xl_sheets_to_df(input_dir, first_census = TRUE)
+#' 
+#' # Output excel
+#' xl_sheets_to_xl(input_dir, output_dir, first_census = TRUE)
+#' # Read back
+#' filename <- path(output_dir, "census.xlsx")
+#' out <- read_excel(filename)
+#' str(out, give.attr = FALSE)
 #' @name xl_sheets_to_output
 NULL
 
 xl_sheets_to_file <- function(ext, fun_write) {
-    function(input_dir, output_dir = "./") {
+    function(input_dir, output_dir = "./", first_census = FALSE) {
     check_output_dir(output_dir = output_dir, print_as = "`output_dir`")
-    dfs <- xl_sheets_to_df(input_dir = input_dir)
+    dfs <- xl_sheets_to_df(input_dir = input_dir, first_census = first_census)
     files <- fs::path_ext_remove(names(dfs))
     paths <- fs::path(output_dir, fs::path_ext_set(files, ext))
     purrr::walk2(dfs, paths, fun_write)
@@ -69,19 +97,30 @@ xl_sheets_to_xl <- xl_sheets_to_file("xlsx", writexl::write_xlsx)
 
 #' @export
 #' @rdname xl_sheets_to_output
-xl_sheets_to_df <- function(input_dir) {
+xl_sheets_to_df <- function(input_dir, first_census = FALSE) {
   check_input_dir(input_dir = input_dir, print_as = "`input_dir`")
-  out <- purrr::map(xl_workbooks_to_chr(input_dir), xl_sheets_to_df_)
+  out <- purrr::map(
+    xl_workbooks_to_chr(input_dir), 
+    xl_sheets_to_df_, first_census = first_census
+  )
   purrr::set_names(out, basename(names(out)))
 }
 
 #' Do xl_sheets_to_df() for each excel file.
 #' @noRd
-xl_sheets_to_df_ <- function(file) {
+xl_sheets_to_df_ <- function(file, first_census = FALSE) {
+  dfm_list <- fgeo.tool::nms_tidy(fgeo.tool::ls_list_spreadsheets(file))
+  
+  if (first_census) {
+    key <- c("root", "multi_stems", "secondary_stems", "single_stems")
+    dfm_list <- ensure_key_sheets(dfm_list, key = key)
+  } else {
+    key <- c("original_stems", "new_secondary_stems", "recruits", "root")
+    dfm_list <- ensure_key_sheets(dfm_list, key = key)
+  }
+  
   # Piping functions to avoid useless intermediate variables
-  clean_dfm_list <- fgeo.tool::ls_list_spreadsheets(file) %>%
-    fgeo.tool::nms_tidy() %>%
-    ensure_key_sheets() %>%
+  clean_dfm_list <- dfm_list %>% 
     purrr::keep(~!purrr::is_empty(.)) %>%
     lapply(fgeo.tool::nms_tidy) %>%
     drop_fake_stems() %>%
@@ -101,8 +140,7 @@ xl_sheets_to_df_ <- function(file) {
 
 #' Check that key spreadsheets exist.
 #' @noRd
-ensure_key_sheets <- function(x) {
-  key <- c("original_stems", "new_secondary_stems", "recruits", "root")
+ensure_key_sheets <- function(x, key) {
   missing_key_sheet <- !all(key %in% names(x))
   if (missing_key_sheet) {
     msg <- paste0(
@@ -128,6 +166,12 @@ drop_fake_stems <- function(.df) {
 #' @noRd
 warn_if_empty <- function(.x, dfm_nm) {
   dfm <- .x[[dfm_nm]]
+  
+  if (is.null(dfm)) {
+    warn(paste("`.x` has no dataframe", dfm_nm), ". Is this intentional?")
+    return(invisible(.x))
+  }
+  
   has_cero_rows <- nrow(dfm) == 0
   if (has_cero_rows) {
     warn(paste0("`", dfm_nm, "`", " has cero rows."))
@@ -140,18 +184,24 @@ coerce_as_character <- function(.x, ...) {
 }
 
 join_and_date <- function(.x) {
-  # Join data from all sheets except from `root`
-  is_not_root <- !grepl("root", names(.x))
-  not_root_dfm <- .x %>% 
-    purrr::keep(is_not_root) %>% 
-    fgeo.tool::ls_join_df() %>% 
-    dplyr::mutate(unique_stem = paste0(.data$tag, "_", .data$stem_tag))
-  
   # From `root`, pull only `date` (plus a column to merge by)
   date <- .x[["root"]][c("submission_id", "date")]
   
-  # Add date
-  dplyr::left_join(not_root_dfm, date, by = "submission_id")
+  # Join data from all sheets except from `root`
+  is_not_root <- !grepl("root", names(.x))
+  not_root_dfm <- purrr::keep(.x, is_not_root)
+  
+  # Nothing to join date with
+  first_census <- length(not_root_dfm) == 0
+  if (first_census) {
+    return(date)
+  }
+  
+  # Collapse into a single dataframe, add variable, and join with date
+  not_root_dfm %>% 
+    fgeo.tool::ls_join_df() %>% 
+    dplyr::mutate(unique_stem = paste0(.data$tag, "_", .data$stem_tag)) %>% 
+    dplyr::left_join(date, by = "submission_id")
 }
 
 check_input_dir <- function(input_dir, print_as) {

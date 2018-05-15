@@ -163,3 +163,15 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
     any()
   expect_false(has_comma)
 })
+
+test_that("allows first_census", {
+  input_dir <- dirname(example_path("first_census/census.xlsx"))
+  output_dir <- tempdir()
+  expect_warning(xl_sheets_to_csv(input_dir, output_dir, first_census = TRUE))
+  
+  out <- readr::read_csv(fs::path(output_dir, "census.csv"))
+  nms <- c("submission_id", "quadrat", "tag", "stem_tag", "species", 
+    "species_code", "dbh", "status", "codes", "notes", "pom", "sheet", 
+    "section_id", "unique_stem", "date")
+  expect_equal(names(out), nms)
+})

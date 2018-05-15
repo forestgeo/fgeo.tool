@@ -7,17 +7,28 @@
 \alias{xl_sheets_to_df}
 \title{Combine spreadsheets from excel workbooks and output common data structures.}
 \usage{
-xl_sheets_to_csv(input_dir, output_dir = "./")
+xl_sheets_to_csv(input_dir, output_dir = "./", first_census = FALSE)
 
-xl_sheets_to_xl(input_dir, output_dir = "./")
+xl_sheets_to_xl(input_dir, output_dir = "./", first_census = FALSE)
 
-xl_sheets_to_df(input_dir)
+xl_sheets_to_df(input_dir, first_census = FALSE)
 }
 \arguments{
 \item{input_dir}{String giving the directory containing the excel workbooks
 to read from.}
 
 \item{output_dir}{String giving the directory where to write .csv files to.}
+
+\item{first_census}{This argument tells these functions what sheets to expect
+in the input.
+\itemize{
+\item Use \code{TRUE} if this is your first census. The expected input must have
+sheets (1) "root", (2) "multi_stems", (3) "secondary_stems", and
+(4) "single_stems".
+\item Use \code{FALSE} (default) if this is not your first census. The expected
+input must have sheets (1) "root", (2) "original_stems", (3)
+"new_secondary_stems", and (4) "recruits".
+}}
 }
 \value{
 Writes one .csv file for each workbook.
@@ -36,8 +47,8 @@ function does:
 \itemize{
 \item Reads each spreadsheet from each workbook and map it to a dataframe.
 \item Lowercases and links the names of each dataframe.
-\item Keeps only these dataframes: (1) original_stems; (2) new_secondary_stems;
-and (3).
+\item Keeps only these dataframes: (1) original_stems, (2) new_secondary_stems,
+and (3) "recruits".
 \item Dates the data by \code{submission_id} (\code{date} comes from the spreadsheet
 \code{root}).
 \item Lowercases and links the names of each dataframe-variable.
@@ -45,9 +56,17 @@ and (3).
 \item Output a common data structure of your choice.
 }
 }
+\section{Acknowledgment}{
+
+Sabrina Russo helped to make these functions useful with first censuses.
+}
+
 \examples{
 library(fs)
+library(readr)
+library(readxl)
 
+# NOT A FIRST CENSUS
 # Path to the folder I want to read excel files from
 input_dir <- dirname(example_path("two_files/new_stem_1.xlsx"))
 input_dir
@@ -58,11 +77,26 @@ dir(input_dir, pattern = "xlsx")
 # Path to the folder I want to write .csv files to
 output_dir <- tempdir()
 
-# Do the work
+# Output a csv file
 xl_sheets_to_csv(input_dir, output_dir)
 
 # Confirm
 path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
+
+# Also possible to output excel and a list of dataframe. See next section.
+
+# FIRST CENSUS
+input_dir <- dirname(example_path("first_census/census.xlsx"))
+# As a reminder you'll get a warning of missing sheets
+# Output list of dataframes (one per input workbook -- here only one)
+xl_sheets_to_df(input_dir, first_census = TRUE)
+
+# Output excel
+xl_sheets_to_xl(input_dir, output_dir, first_census = TRUE)
+# Read back
+filename <- path(output_dir, "census.xlsx")
+out <- read_excel(filename)
+str(out, give.attr = FALSE)
 }
 \author{
 Mauro Lepore and Jessica Shue.

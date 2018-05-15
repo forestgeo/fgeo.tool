@@ -1,5 +1,7 @@
 # fgeo.tool 0.0.0.9002
 
+* `xl_sheets_to_csv()` and friends gain the argument `first_census` to now accept first census data.
+
 * Clarify the internal structure of fgeo.tool with function's prefixes.
     * `add_*()`
     * `str_*()`
