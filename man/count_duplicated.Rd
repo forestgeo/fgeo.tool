@@ -11,10 +11,12 @@ count_duplicated(x, ..., wt = NULL, sort = FALSE)
 
 \item{...}{Variables to group by.}
 
-\item{wt}{(Optional) If omitted, will count the number of rows. If
-specified, will perform a "weighted" tally by summing the
-(non-missing) values of variable \code{wt}. This argument is
-automatically \link[rlang:quo]{quoted} and later
+\item{wt}{(Optional) If omitted (and no variable named \code{n} exists in the
+data), will count the number of rows.
+If specified, will perform a "weighted" tally by summing the
+(non-missing) values of variable \code{wt}. A column named \code{n} (but not \code{nn} or
+\code{nnn}) will be used as weighting variable by default in \code{tally()}, but not
+in \code{count()}. This argument is automatically \link[rlang:quo]{quoted} and later
 \link[rlang:eval_tidy]{evaluated} in the context of the data
 frame. It supports \link[rlang:quasiquotation]{unquoting}. See
 \code{vignette("programming")} for an introduction to these concepts.}
