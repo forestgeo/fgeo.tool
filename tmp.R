@@ -31,6 +31,15 @@ create_habitat
 
 
 
+# Fieldforms
+# Maybe put on hold, don't export right now?
+# maybe suffix form_ 
+fieldforms_header
+fieldforms_output
+fieldforms_prepare
+
+
+
 
 
 
@@ -59,11 +68,6 @@ type_vft
 
 
 
-# Maybe put on hold, don't export right now?
-# Fieldforms
-fieldforms_header
-fieldforms_output
-fieldforms_prepare
 
 
 
@@ -115,8 +119,6 @@ row_top
 
 
 # fgeo.dev or fgeo.base
-# help work with fgeo packages, functions, datasets.
-example_path
 # search objects by names
 # TODO: Make it base only
 hide_data_of_class
