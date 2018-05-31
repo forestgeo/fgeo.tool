@@ -20,6 +20,11 @@ add_quad
 add_qxqy
 add_subquad
 
+
+
+
+
+
 # Add columns to a dataframe
 # stts_*(): Determine status
 add_status_tree
@@ -73,8 +78,6 @@ row_top
 # Output condition: Called for side effects: Trow messages, warnings
 # Maybe make it s3 (check_unique.numeric, check_unique.data.frame, etc.)
 # No external dependencies. Maybe move to fgeo.base
-check_unique
-check_unique_vector
 # output logical
 exists_in_pkg
 

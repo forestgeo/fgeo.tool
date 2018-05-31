@@ -82,18 +82,6 @@ row_top(df, Tag, -1)
 row_discard_twice_dead(df)
 ```
 
-Check inputs.
-
-```{r, error=TRUE}
-# Silent means success
-check_crucial_names(df, "Status")
-
-# Errs if the data hasn't a given name
-check_crucial_names(df, "DBH")
-
-check_unique(df, "CensusID", msg = "* Is this what you expect?")
-```
-
 Much you can do directly with __dplyr__.
 
 ```{r}

@@ -174,83 +174,71 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb3-41" data-line-number="41"><span class="co">#&gt; 10        2     2 dead   A          </span></a>
 <a class="sourceLine" id="cb3-42" data-line-number="42"><span class="co">#&gt; 11        2     3 dead   A          </span></a>
 <a class="sourceLine" id="cb3-43" data-line-number="43"><span class="co">#&gt; 12        2     3 dead   A</span></a></code></pre></div>
-<p>Check inputs.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Silent means success</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">check_crucial_names</span>(df, <span class="st">"Status"</span>)</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; Error in check_crucial_names(df, "Status"): could not find function "check_crucial_names"</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co"># Errs if the data hasn't a given name</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="kw">check_crucial_names</span>(df, <span class="st">"DBH"</span>)</a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; Error in check_crucial_names(df, "DBH"): could not find function "check_crucial_names"</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="kw"><a href="reference/check_unique.html">check_unique</a></span>(df, <span class="st">"CensusID"</span>, <span class="dt">msg =</span> <span class="st">"* Is this what you expect?"</span>)</a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; Warning in do.call(cond, list(customized)): Duplicated values were detected</span></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt; * Is this what you expect?</span></a></code></pre></div>
 <p>Much you can do directly with <strong>dplyr</strong>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Using notation dplyr::fun to make it obvious where fun comes from</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;     filter, lag</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb5-12" data-line-number="12">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(</a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">  <span class="dt">.data =</span> df,</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14">  CensusID <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>,</a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">  Tag  <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16">  Status <span class="op">==</span><span class="st"> "alive"</span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17">)</a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; # A tibble: 3 x 4</span></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19"><span class="co">#&gt;   CensusID   Tag Status status_tree</span></a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 1        2     1 alive  A          </span></a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"><span class="co">#&gt; 2        2     1 alive  A          </span></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23"><span class="co">#&gt; 3        2     2 alive  A</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Using notation dplyr::fun to make it obvious where fun comes from</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'dplyr'</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; The following objects are masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;     filter, lag</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; The following objects are masked from 'package:base':</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;     intersect, setdiff, setequal, union</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">  <span class="dt">.data =</span> df,</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">  CensusID <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">  Tag  <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>),</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">  Status <span class="op">==</span><span class="st"> "alive"</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt; # A tibble: 3 x 4</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;   CensusID   Tag Status status_tree</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; 1        2     1 alive  A          </span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; 2        2     1 alive  A          </span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; 3        2     2 alive  A</span></a></code></pre></div>
 <p>You can combine <strong>fgeo.tool</strong> with <strong>dplyr</strong>.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/row_top.html">row_top</a></span>(df, CensusID, <span class="dv">-1</span>))</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(edited, <span class="op">-</span>Status)</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt;   CensusID   Tag status_tree</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt; 1        2     1 A          </span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 2        2     1 A          </span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 3        2     2 A          </span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 4        2     2 A          </span></a>
-<a class="sourceLine" id="cb6-12" data-line-number="12"><span class="co">#&gt; 5        2     3 A          </span></a>
-<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co">#&gt; 6        2     3 A</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/row_top.html">row_top</a></span>(df, CensusID, <span class="dv">-1</span>))</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(edited, <span class="op">-</span>Status)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   CensusID   Tag status_tree</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      </span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 1        2     1 A          </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 2        2     1 A          </span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt; 3        2     2 A          </span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt; 4        2     2 A          </span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt; 5        2     3 A          </span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt; 6        2     3 A</span></a></code></pre></div>
 <p>You don’t have to, but if you want you can use the pipe (<code>%&gt;%</code>).</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># With the pipe</span></a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">desc</span>(CensusID))</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; # A tibble: 0 x 4</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; #   status_tree &lt;chr&gt;</span></a>
-<a class="sourceLine" id="cb7-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co"># Same but without the pipe: It is hard to understand what is going on.</span></a>
-<a class="sourceLine" id="cb7-14" data-line-number="14">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(</a>
-<a class="sourceLine" id="cb7-15" data-line-number="15">  dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(</a>
-<a class="sourceLine" id="cb7-16" data-line-number="16">    dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(</a>
-<a class="sourceLine" id="cb7-17" data-line-number="17">      <span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df), status_tree <span class="op">==</span><span class="st"> "alive"</span>), </a>
-<a class="sourceLine" id="cb7-18" data-line-number="18">    <span class="dt">status_stem =</span> Status</a>
-<a class="sourceLine" id="cb7-19" data-line-number="19">  ), </a>
-<a class="sourceLine" id="cb7-20" data-line-number="20">  <span class="kw">desc</span>(CensusID)</a>
-<a class="sourceLine" id="cb7-21" data-line-number="21">)</a>
-<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
-<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
-<a class="sourceLine" id="cb7-24" data-line-number="24"><span class="co">#&gt; # A tibble: 0 x 4</span></a>
-<a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span></a>
-<a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt; #   status_tree &lt;chr&gt;</span></a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># With the pipe</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">desc</span>(CensusID))</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; # A tibble: 0 x 4</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; #   status_tree &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co"># Same but without the pipe: It is hard to understand what is going on.</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">  dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">    dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17">      <span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df), status_tree <span class="op">==</span><span class="st"> "alive"</span>), </a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">    <span class="dt">status_stem =</span> Status</a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">  ), </a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">  <span class="kw">desc</span>(CensusID)</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21">)</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; # A tibble: 0 x 4</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; #   status_tree &lt;chr&gt;</span></a></code></pre></div>
 </div>
 <div id="information" class="section level2">
 <h2 class="hasAnchor">

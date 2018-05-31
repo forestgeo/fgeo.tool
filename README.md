@@ -103,22 +103,6 @@ row_discard_twice_dead(df)
 #> 12        2     3 dead   A
 ```
 
-Check inputs.
-
-``` r
-# Silent means success
-check_crucial_names(df, "Status")
-#> Error in check_crucial_names(df, "Status"): could not find function "check_crucial_names"
-
-# Errs if the data hasn't a given name
-check_crucial_names(df, "DBH")
-#> Error in check_crucial_names(df, "DBH"): could not find function "check_crucial_names"
-
-check_unique(df, "CensusID", msg = "* Is this what you expect?")
-#> Warning in do.call(cond, list(customized)): Duplicated values were detected
-#> * Is this what you expect?
-```
-
 Much you can do directly with **dplyr**.
 
 ``` r

@@ -108,7 +108,7 @@ fieldforms_prepare <- function(x,
     "Filter data to keep a single census.\n",
     "Census found: ", commas(unique(x$censusid))
   )
-  fgeo.tool::check_unique(x, "censusid", cond = "stop", msg = msg)
+  fgeo.base::check_unique(x, "censusid", cond = "stop", msg = msg)
   
   x <- x %>% 
     fgeo.tool::add_subquad(

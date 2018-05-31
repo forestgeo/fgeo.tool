@@ -45,7 +45,7 @@ check_add_status_tree <- function(x, status_d, status_a) {
   check_valid_status(x, .status = c(status_d, status_a), "status")
   is_vft <- "plotid" %in% names(x)
   if (is_vft) {
-    check_unique(
+    fgeo.base::check_unique(
       x, "plotid",
       "stop", msg = "  * Filter your data to keep a single plot and try again"
     )

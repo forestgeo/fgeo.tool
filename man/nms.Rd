@@ -61,8 +61,7 @@ stem <- fgeo.data::luquillo_stem6_1ha
 nms_extract_all(stem, "gx", "gy", "PX", "PY")
 }
 \seealso{
-Other functions for developers.: \code{\link{check_unique}},
-  \code{\link{exists_in_pkg}},
+Other functions for developers.: \code{\link{exists_in_pkg}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}},

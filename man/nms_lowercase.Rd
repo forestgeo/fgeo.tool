@@ -46,8 +46,7 @@ back_to_original <- nms_restore(lowered)
 back_to_original
 }
 \seealso{
-Other functions for developers.: \code{\link{check_unique}},
-  \code{\link{exists_in_pkg}},
+Other functions for developers.: \code{\link{exists_in_pkg}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms}},
   \code{\link{type_ensure}}
