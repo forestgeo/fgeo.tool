@@ -118,15 +118,18 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
     key <- c("original_stems", "new_secondary_stems", "recruits", "root")
     dfm_list <- ensure_key_sheets(dfm_list, key = key)
   }
-  
+
   # Piping functions to avoid useless intermediate variables
   clean_dfm_list <- dfm_list %>% 
     purrr::keep(~!purrr::is_empty(.)) %>%
     lapply(fgeo.tool::nms_tidy) %>%
-    drop_fake_stems() %>%
-    fgeo.tool::ls_name_df(name = "sheet") %>%
+    drop_fake_stems() %>% 
     warn_if_empty("new_secondary_stems") %>% 
     warn_if_empty("recruits") %>% 
+    # Avoid error in naming cero-row dataframes
+    warn_if_filling_cero_row_dataframe() %>% 
+    purrr::modify_if(~nrow(.x) == 0, ~purrr::map_df(.x, ~NA)) %>% 
+    fgeo.base::name_df_lst(name = "sheet") %>% 
     # Avoid merge errors
     coerce_as_character()
   
@@ -177,6 +180,18 @@ warn_if_empty <- function(.x, dfm_nm) {
     warn(paste0("`", dfm_nm, "`", " has cero rows."))
   }
   invisible(.x)
+}
+
+warn_if_filling_cero_row_dataframe <- function(dfs) {
+  cero_row_dfs <- purrr::keep(dfs, ~nrow(.x) == 0)
+  if (length(cero_row_dfs) != 0) {
+    warning(
+      "Filling every cero-row dataframe with NAs (", 
+      commas(names(cero_row_dfs)), ").", 
+      call. = FALSE
+    )
+  }
+  invisible(dfs)
 }
 
 coerce_as_character <- function(.x, ...) {

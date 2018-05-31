@@ -26,47 +26,6 @@ ls_list_spreadsheets <- function(path) {
 
 
 
-#' Mutate a list of dataframes to add column with the name of the list element.
-#'
-#' @param df_list A list of dataframes.
-#' @param name A string giving the name of the column that stores the name of
-#'   each dataframe of `x`.
-#'
-#' @return A modified version of `x`.
-#' @export
-#'
-#' @examples
-#' df_list <- list(a = data.frame(a = 1), data.frame(a = 2, b = 2))
-#' df_list
-#' ls_name_df(df_list)
-#' ls_name_df(df_list, name = "sheet")
-ls_name_df <- function(df_list, name = "name") {
-  # Must capture argument `name` before it is evaluated
-  .name <- rlang::quo_name(rlang::enquo(name))
-  stopifnot(is.list(df_list), is.character(name))
-
-  df_list <- fill_missing_names(df_list)
-  nms <- names(df_list)
-  for (i in seq_along(nms)) {
-    df_list[[i]] <- dplyr::mutate(df_list[[i]], !! .name := nms[[i]])
-  }
-  df_list
-}
-
-fill_missing_names <- function(x) {
-  filler_names <- paste0("df", seq_along(x))
-  if (is.null(names(x))) {
-    names(x) <- filler_names
-  }
-  missing_names <- names(x) %in% ""
-  if (any(missing_names)) {
-    names(x)[missing_names] <- filler_names[missing_names]
-  }
-  x
-}
-
-
-
 #' Save each dataframe in a list to a different .csv file.
 #'
 #' A useful complement of this function is [ls_list_spreadsheets()].
@@ -120,14 +79,12 @@ validate_dir <- function(dir, dir_name) {
   }
 }
 
-
 #' Do ls_csv_df() for each df.
 #' @noRd
 ls_csv_df_ <- function(df, df_name,  prefix = NULL, dir) {
   path <- file.path(paste0(dir, "/", prefix, df_name, ".csv"))
   readr::write_csv(df, path)
 }
-
 
 
 

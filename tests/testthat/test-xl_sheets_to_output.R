@@ -106,7 +106,7 @@ test_that("works as expected", {
   expect_true("sheet" %in% output_files)
 })
 
-test_that("warns if it detects no new stem", {
+test_that("warns if it detects no new stem and fills cero-row dataframes", {
   path_to_example <- system.file(
     "extdata", "new_stem_0/new_stem_0.xlsx", package = "fgeo.tool"
   )
@@ -114,7 +114,8 @@ test_that("warns if it detects no new stem", {
   input <- path_to_extdata
   output <- tempdir()
   
-  expect_warning(xl_sheets_to_csv(input, output), "secondary_stems")
+  expect_warning(xl_sheets_to_csv(input, output), "new_secondary_stems")
+  expect_warning(xl_sheets_to_csv(input, output), "Filling every cero-row")
 })
 
 test_that("warns if it detects no recruits (#11)", {

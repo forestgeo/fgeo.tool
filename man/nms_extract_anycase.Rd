@@ -25,7 +25,8 @@ dfm <- data.frame(a = 1, B = 1)
 nms_extract_anycase(dfm, "b")
 }
 \seealso{
-Other functions for developers.: \code{\link{nms_lowercase}},
+Other functions for developers.: \code{\link{find_data_of_class}},
+  \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms}},
   \code{\link{type_ensure}}
 

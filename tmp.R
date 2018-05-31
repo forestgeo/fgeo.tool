@@ -1,6 +1,5 @@
 # xxx cont here
-count_duplicated
-
+fgeo.tool::ls_list_spreadsheets()
 
 
 # SPECIFIC TO FGEO --------------------------------------------------------
@@ -69,11 +68,14 @@ type_vft
 # dependencies. GENERAL -- NOT SPECIFIC TO FGEO -----------------------------------------
 
 # Read/write; inputs and outputs; to/from file/data
+# Rename all of these functions to the format input_to_output().
 # Find common suffix?
 # replace _lst by s? e.g. csv_to_df_lst() by csv_to_dfs()
+# replace _ls by _lst? 
 csv_to_df
 csv_to_df_lst
 files_to_df
+# rename to end with output, something like df_to_csv() or dfs_to_csvs()
 ls_csv_df
 ls_join_df
 ls_list_spreadsheets
@@ -86,6 +88,11 @@ xl_to_df_lst
 
 
 
+
+
+
+# Sanitize/edit/mutate dataframe
+lookup
 
 
 
@@ -127,21 +134,16 @@ show_data_of_class
 
 
 
-# Maybe remove
-
 # Maybe use modify_if() instead and/or don't export
 type_ensure
 
 # Sanitize
 # Move to fgeo.base?
-fill_na
-
-lookup
 replace_null
 
-# Work on names
-# replace with fgeo.base::name_df_lst()
-ls_name_df
+
+
+
 
 
 

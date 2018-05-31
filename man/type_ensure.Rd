@@ -32,7 +32,8 @@ type_ensure(dfm, c("w", "x", "y"), "numeric")
 type_ensure(dfm, c("w", "x", "y", "z"), "character")
 }
 \seealso{
-Other functions for developers.: \code{\link{nms_extract_anycase}},
+Other functions for developers.: \code{\link{find_data_of_class}},
+  \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms}}
 }

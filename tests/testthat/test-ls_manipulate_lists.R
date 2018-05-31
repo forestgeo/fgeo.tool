@@ -13,33 +13,6 @@ test_that("input is a list of data frames", {
 
 
 
-context("ls_name_df")
-
-test_that("named lists pass names to dataframes", {
-  x <- list(df1 = data.frame(a = 1), df2 = data.frame(b = 2))
-  nms <- purrr::map(ls_name_df(x), names)
-  new_col <- purrr::reduce(purrr::map2(nms, "name", intersect), unique)
-  expect_equal(new_col, "name")
-})
-
-test_that("unnamed lists pass sinthetic names to dataframes", {
-  x <- list(data.frame(a = 1), data.frame(a = 2, b = 2))
-  .x <- ls_name_df(x)
-  expect_equal(names(.x), c("df1", "df2"))
-  expect_equal(.x[[1]]$name, "df1")
-  expect_equal(.x[[2]]$name, "df2")
-})
-
-test_that("partially named lists pass real + sinthetic names to dataframes", {
-  x <- list(a = data.frame(a = 1), data.frame(b = 2))
-  .x <- ls_name_df(x)
-  expect_equal(names(.x), c("a", "df2"))
-  expect_equal(.x[[1]]$name, "a")
-  expect_equal(.x[[2]]$name, "df2")
-})
-
-
-
 context("ls_csv_df")
 
 df_list <- ls_list_spreadsheets(input)

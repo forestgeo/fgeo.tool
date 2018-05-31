@@ -46,7 +46,8 @@ back_to_original <- nms_restore(lowered)
 back_to_original
 }
 \seealso{
-Other functions for developers.: \code{\link{nms_extract_anycase}},
+Other functions for developers.: \code{\link{find_data_of_class}},
+  \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms}},
   \code{\link{type_ensure}}
 

@@ -82,6 +82,12 @@ reference:
     contents:
     - create_habitat
 
+  - title: "Datasets"
+    contents:
+    - top1quad
+    - top4quad
+    - example_path
+
   - title: "Functions for developers: Checks"
     contents:
     - starts_with("check")
@@ -90,8 +96,3 @@ reference:
     contents:
     - find_data_of_class
     
-  - title: "Datasets"
-    contents:
-    - top1quad
-    - top4quad
-    - example_path
