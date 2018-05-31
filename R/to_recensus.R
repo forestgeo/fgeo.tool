@@ -1,6 +1,6 @@
 #' Identify stems to recensus.
 #'
-#' For a dataset `y` Based on a reference dataset `x`, this function helps you
+#' Based on a reference dataset `x`, this function helps you
 #' to identify stems that remain to be recensused in a dataset `y`. This
 #' function does the same work as [dplyr::anti_join()]. The difference is only
 #' that the signature of `to_recensus()` is a little simpler (irrelevant
