@@ -32,7 +32,7 @@ Returns all rows from \code{x} where there are not matching values in
 \code{y}, keeping just columns from \code{x}.
 }
 \description{
-For a dataset \code{y} Based on a reference dataset \code{x}, this function helps you
+Based on a reference dataset \code{x}, this function helps you
 to identify stems that remain to be recensused in a dataset \code{y}. This
 function does the same work as \code{\link[dplyr:anti_join]{dplyr::anti_join()}}. The difference is only
 that the signature of \code{to_recensus()} is a little simpler (irrelevant

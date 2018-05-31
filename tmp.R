@@ -1,4 +1,14 @@
 
+
+
+
+
+
+# xxx cont here
+count_duplicated
+
+
+
 # SPECIFIC TO FGEO --------------------------------------------------------
 
 # fgeo.tool: SPECIFIC TO FGEO, DEPENDENT ----------------------------------
@@ -19,10 +29,6 @@ add_subquad
 # Add columns to a dataframe
 # stts_*(): Determine status
 add_status_tree
-
-
-# xxx cont here
-
 
 # Maybe remove or not export
 # filter status
@@ -57,6 +63,11 @@ fieldforms_prepare
 
 
 # GENERAL -- NOT SPECIFIC TO FGEO -----------------------------------------
+
+
+# maybe remove and reexport anti_join()?
+to_recensus
+
 
 # filter other
 row_*
