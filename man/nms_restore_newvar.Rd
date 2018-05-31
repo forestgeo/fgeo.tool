@@ -57,8 +57,7 @@ mutated <- dplyr::mutate(dfm, newvar = x + 1)
 nms_restore_newvar(mutated, "newvar", old)
 }
 \seealso{
-Other functions for developers.: \code{\link{exists_in_pkg}},
-  \code{\link{nms_extract_anycase}},
+Other functions for developers.: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}}, \code{\link{nms}},
   \code{\link{type_ensure}}
 

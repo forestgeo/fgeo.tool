@@ -20,14 +20,21 @@ add_quad
 add_qxqy
 add_subquad
 
-
-
-
-
-
 # Add columns to a dataframe
 # stts_*(): Determine status
 add_status_tree
+
+
+
+# Create stuff
+create_habitat
+
+
+
+
+
+
+
 
 # Maybe remove or not export
 # filter status
@@ -50,8 +57,7 @@ type_taxa
 type_vft
 
 
-# Create stuff
-create_habitat
+
 
 # Maybe put on hold, don't export right now?
 # Fieldforms
@@ -61,7 +67,38 @@ fieldforms_prepare
 
 
 
-# GENERAL -- NOT SPECIFIC TO FGEO -----------------------------------------
+
+
+
+
+# dependencies. GENERAL -- NOT SPECIFIC TO FGEO -----------------------------------------
+
+# Read/write; inputs and outputs; to/from file/data
+# Find common suffix?
+# replace _lst by s? e.g. csv_to_df_lst() by csv_to_dfs()
+csv_to_df
+csv_to_df_lst
+files_to_df
+ls_csv_df
+ls_join_df
+ls_list_spreadsheets
+xl_sheets_to_csv
+xl_sheets_to_df
+xl_sheets_to_output
+xl_sheets_to_xl
+xl_to_df
+xl_to_df_lst
+
+
+
+
+
+
+
+
+
+
+
 
 
 # maybe remove and reexport anti_join()?
@@ -74,12 +111,7 @@ row_top
 
 
 
-# fgeo.dev or fgeo.base
-# Output condition: Called for side effects: Trow messages, warnings
-# Maybe make it s3 (check_unique.numeric, check_unique.data.frame, etc.)
-# No external dependencies. Maybe move to fgeo.base
-# output logical
-exists_in_pkg
+
 
 
 # fgeo.dev or fgeo.base
@@ -112,19 +144,6 @@ ls_name_df
 
 
 
-# Read/write; inputs and outputs; to/from file/data
-csv_to_df
-csv_to_df_lst
-files_to_df
-ls_csv_df
-ls_join_df
-ls_list_spreadsheets
-xl_sheets_to_csv
-xl_sheets_to_df
-xl_sheets_to_output
-xl_sheets_to_xl
-xl_to_df
-xl_to_df_lst
 
 
 

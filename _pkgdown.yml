@@ -90,7 +90,6 @@ reference:
     
   - title: "Functions for developers: Miscellaneous"
     contents:
-    - exists_in_pkg
     - find_data_of_class
     
   - title: "Datasets"
