@@ -75,13 +75,11 @@ reference:
   - title: Sanitize multiple data structures
     contents:
     - starts_with("type_")
-    - fill_na
     - replace_null
     - restructure_elev
     
-  - title: Create field forms and habiat data
+  - title: Create habiat data
     contents:
-    - starts_with("fieldforms")
     - create_habitat
 
   - title: "Functions for developers: Checks"
