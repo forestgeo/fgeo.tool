@@ -1,9 +1,3 @@
-
-
-
-
-
-
 # xxx cont here
 count_duplicated
 
@@ -101,10 +95,6 @@ show_data_of_class
 
 # Maybe use modify_if() instead and/or don't export
 type_ensure
-
-# Do I need this? Where do I use it?
-# summarize
-count_duplicated
 
 # Sanitize
 # Move to fgeo.base?
