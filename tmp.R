@@ -109,11 +109,19 @@ row_top
 
 
 
-# fgeo.dev or fgeo.base
+
+# dependencies, developers ------------------------------------------------
+
 # search objects by names
-# TODO: Make it base only
+# depends on purrr only
+# TODO: Make it base only?
 hide_data_of_class
 show_data_of_class
+
+
+
+
+
 
 
 
