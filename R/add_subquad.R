@@ -95,7 +95,7 @@ add_subquad <- function(df,
   }
 }
 
-#' Recode subquadrat labels.
+#' Recode subquadrat.
 #'
 #' @param x A dataframe with the variable `subquadrat`.
 #' @param offset A number; either -1 or 1, to rest or add one unit to the number

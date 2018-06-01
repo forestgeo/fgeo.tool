@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_subquad.R
 \name{recode_subquad}
 \alias{recode_subquad}
-\title{Recode subquadrat labels.}
+\title{Recode subquadrat.}
 \usage{
 recode_subquad(x, offset = -1)
 }
@@ -22,7 +22,7 @@ of column of each subquadrat.\preformatted{First column is 0    First column is 
 A modified version of the input.
 }
 \description{
-Recode subquadrat labels.
+Recode subquadrat.
 }
 \examples{
 first_subquad_11 <- tibble::tibble(subquadrat = c("11", "12", "22"))

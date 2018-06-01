@@ -1,5 +1,6 @@
 # xxx cont here
-fgeo.tool::ls_list_spreadsheets()
+
+
 
 
 # SPECIFIC TO FGEO --------------------------------------------------------
@@ -18,18 +19,20 @@ add_lxly
 add_quad
 add_qxqy
 add_subquad
-
-# Add columns to a dataframe
-# stts_*(): Determine status
 add_status_tree
 
 
 
-# Create stuff
+# Construct/structure data/dataframe
+# TODO: rename and refactor to as_*() or as_fgeo_*().
 create_habitat
+fgeo.tool::restructure_elev()
 
 
 
+
+# Mutate dataframe
+recode_subquad
 
 
 
@@ -43,7 +46,7 @@ row_keep_alive_stem
 row_keep_alive_tree
 
 # Sanitize
-recode_subquad
+
 # Maybe pull_elev or use_elev
 restructure_elev
 
@@ -92,9 +95,10 @@ xl_to_df_lst
 
 
 # Sanitize/edit/mutate dataframe
+# Depends on rlang
 lookup
-
-
+# Depends on purrr
+replace_null
 
 
 
@@ -127,6 +131,10 @@ show_data_of_class
 
 
 
+# work with namesnames
+# Depends on purrr and rlang
+nms_*()
+
 
 
 
@@ -136,12 +144,6 @@ show_data_of_class
 
 # Maybe use modify_if() instead and/or don't export
 type_ensure
-
-# Sanitize
-# Move to fgeo.base?
-replace_null
-
-
 
 
 
