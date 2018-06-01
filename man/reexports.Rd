@@ -4,8 +4,6 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
-\alias{reexports}
-\alias{name_df_lst}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -14,7 +12,5 @@ below to see their documentation.
 
 \describe{
   \item{dplyr}{\code{\link[dplyr]{\%>\%}}}
-
-  \item{fgeo.base}{\code{\link[fgeo.base]{name_df_lst}}}
 }}
 

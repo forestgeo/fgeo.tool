@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
+library(fgeo.base)
 library(fgeo.tool)
 library(fs)
 library(purrr)

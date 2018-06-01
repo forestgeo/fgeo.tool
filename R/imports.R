@@ -7,8 +7,4 @@ NULL
 #' @export
 dplyr::`%>%`
 
-#' @importFrom fgeo.base name_df_lst
-#' @export 
-fgeo.base::name_df_lst
-
 globalVariables(c(".data"))
