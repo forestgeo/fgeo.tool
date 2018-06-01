@@ -25,6 +25,9 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fgeo.tool-package.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/fgeo_elev.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_df.html</loc>
   </url>
   <url>
@@ -65,9 +68,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/replace_null.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/restructure_elev.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/row_collapse_censusid.html</loc>

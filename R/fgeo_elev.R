@@ -1,18 +1,16 @@
-# Manipulate elevation ----------------------------------------------------
-
-#' If necessary, pull elevation data and rename `x` and `y` to `gx` and `gy`.
+#' Construct elevation data
 #' 
-#' This functions helps standardize elevation data. Elevation data may be stored
-#' as a dataframe in the element `col` of a list or may be directly the
-#' dataframe. Also, the names may be `x` and `y` which is inconsistent with the
-#' names `gx` and `gy` of census datasets. Whatever the structure of the input
-#' (either a dataframe or a list) and whatever the names (`x` and `y`, or `gx`
-#' and `gy`), this function outputs a dataframe with names `gx` and `gy`, and
-#' checks that the variable `elev` is present.
+#' This function constructs an object of class fgeo_elev. It standarizes the
+#' structure of elevation data to always output a dataframe with names `gx`,
+#' `gy` and `elev` -- or it dies trying.
 #' 
-#' @param elevation A dataframe or list of ForestGEO's elevation data.
+#' The input may be a dataframe or a dataframe stored in the element `col` of a
+#' list; the column names of the dataframe may be `gx` and `gy` or `x` and `y`.
+#' 
+#' @param x Either a dataframe or a dataframe strored in the element `col` of a
+#'   list.
 #'
-#' @return A dataframe
+#' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
 #' 
 #' @section Acknowledgments:
 #'   This function was inspired by David Kenfack.
@@ -24,20 +22,40 @@
 #' elev_df <- bciex::bci_elevation
 #' str(elev_df)
 #' 
-#' elev_clean <- restructure_elev(elev_df)
-#' str(elev_clean)
+#' elev <- fgeo_elev(elev_df)
+#' str(elev)
 #' 
 #' # List input
 #' elev_list <- list(col = elev_df, other = "stuff")
 #' str(elev_list)
 #' 
-#' elev_clean <- restructure_elev(elev_list)
-#' str(elev_clean) 
-restructure_elev <- function(elevation) {
-  pull_elevation(x = elevation) %>% 
+#' elev <- fgeo_elev(elev_list)
+#' str(elev) 
+fgeo_elev <- function(x) {
+  UseMethod("fgeo_elev")
+}
+
+#' @export
+fgeo_elev.fgeo_elev <- function(x) {
+  x
+}
+
+#' @export
+fgeo_elev.default <- function(x) {
+  abort(paste0("Can't deal with data of class ", class(x)))
+}
+
+#' @export
+fgeo_elev.list <- function(x) {
+  elev <- pull_elevation(x) %>% 
     nms_try_rename(want = "gx", try = "x") %>% 
     nms_try_rename(want = "gy", try = "y")
+  
+  structure(elev, class = c("fgeo_elev", class(elev)))
 }
+
+#' @export
+fgeo_elev.data.frame <- fgeo_elev.list
 
 pull_elevation <- function(x) {
   UseMethod("pull_elevation")

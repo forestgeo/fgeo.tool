@@ -100,11 +100,12 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(fgeo.tool)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(fs)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(purrr)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(writexl)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(fgeo.base)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(fgeo.tool)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(fs)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">library</span>(writexl)</a></code></pre></div>
 <p>If you have multiple files in a directory, you may want to combine them all into a single dataframe and export it as a .csv or excel file. Here is how you can do this and a a little more.</p>
 <p>Suppose you have these files in a directory:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"files/01.csv"</span>, <span class="dt">package =</span> <span class="st">"fgeo.tool"</span>)</a>
@@ -164,7 +165,7 @@
 <a class="sourceLine" id="cb5-20" data-line-number="20"><span class="co">#&gt; 4     4 n    </span></a>
 <a class="sourceLine" id="cb5-21" data-line-number="21"><span class="co">#&gt; 5     5 o</span></a></code></pre></div>
 <p>This intermediate step is useful if you want to identify the source of each dataframe.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">id &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/fgeo.base/topics/name_df_lst">name_df_lst</a></span>(dfs, <span class="dt">name =</span> <span class="st">"source"</span>)</a>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">id &lt;-<span class="st"> </span><span class="kw">name_df_lst</span>(dfs, <span class="dt">name =</span> <span class="st">"source"</span>)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2">id</a>
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; $`01.xls`</span></a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt;   x y source</span></a>

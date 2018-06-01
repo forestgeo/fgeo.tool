@@ -1,6 +1,9 @@
 # xxx cont here
-
-
+# FIXME: Run examples
+# replace restructure_elev() by fgeo_elev() in fgeo.map
+# TODO:
+# Check guidelines in adv-r
+# Do the same with create_habitat
 
 
 # SPECIFIC TO FGEO --------------------------------------------------------
