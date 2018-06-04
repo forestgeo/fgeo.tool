@@ -47,15 +47,19 @@ fgeo_elev.default <- function(x) {
 
 #' @export
 fgeo_elev.list <- function(x) {
-  elev <- pull_elevation(x) %>% 
+  pull_elevation(x) %>% 
     nms_try_rename(want = "gx", try = "x") %>% 
-    nms_try_rename(want = "gy", try = "y")
-  
-  structure(elev, class = c("fgeo_elev", class(elev)))
+    nms_try_rename(want = "gy", try = "y") %>% 
+    new_fgeo_elev()
 }
 
 #' @export
 fgeo_elev.data.frame <- fgeo_elev.list
+
+new_fgeo_elev <- function(x) {
+  stopifnot(is.data.frame(x))
+  structure(x, class = c("fgeo_elev", class(x)))
+}
 
 pull_elevation <- function(x) {
   UseMethod("pull_elevation")

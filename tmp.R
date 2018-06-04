@@ -1,6 +1,5 @@
 # xxx cont here
-# FIXME: Run examples
-# replace restructure_elev() by fgeo_elev() in fgeo.map
+# Replace create_habitat with fgeo_habitat
 # TODO:
 # Check guidelines in adv-r
 # Do the same with create_habitat
@@ -29,7 +28,7 @@ add_status_tree
 # Construct/structure data/dataframe
 # TODO: rename and refactor to as_*() or as_fgeo_*().
 create_habitat
-fgeo.tool::restructure_elev()
+fgeo.tool::fgeo_elev()
 
 
 
