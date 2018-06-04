@@ -14,7 +14,7 @@ nms_try_rename(x, want, try)
 \item{try}{String of length 1 giving the name the object might have.}
 }
 \description{
-Given a name you want and a possible alternavive, this function renames an
+Given a name you want and a possible alternative, this function renames an
 object as you want or errs with an informative message.
 }
 \examples{

@@ -1,13 +1,13 @@
 #' Construct elevation data
 #' 
-#' This function constructs an object of class fgeo_elev. It standarizes the
-#' structure of elevation data to always output a dataframe with names `gx`,
+#' This function constructs an object of class fgeo_elevation. It standardizes
+#' the structure of elevation data to always output a dataframe with names `gx`,
 #' `gy` and `elev` -- or it dies trying.
 #' 
 #' The input may be a dataframe or a dataframe stored in the element `col` of a
 #' list; the column names of the dataframe may be `gx` and `gy` or `x` and `y`.
 #' 
-#' @param x Either a dataframe or a dataframe strored in the element `col` of a
+#' @param x Either a dataframe or a dataframe stored in the element `col` of a
 #'   list.
 #'
 #' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
@@ -22,43 +22,43 @@
 #' elev_df <- bciex::bci_elevation
 #' str(elev_df)
 #' 
-#' elev <- fgeo_elev(elev_df)
+#' elev <- fgeo_elevation(elev_df)
 #' str(elev)
 #' 
 #' # List input
 #' elev_list <- list(col = elev_df, other = "stuff")
 #' str(elev_list)
 #' 
-#' elev <- fgeo_elev(elev_list)
+#' elev <- fgeo_elevation(elev_list)
 #' str(elev) 
-fgeo_elev <- function(x) {
-  UseMethod("fgeo_elev")
+fgeo_elevation <- function(x) {
+  UseMethod("fgeo_elevation")
 }
 
 #' @export
-fgeo_elev.fgeo_elev <- function(x) {
+fgeo_elevation.fgeo_elevation <- function(x) {
   x
 }
 
 #' @export
-fgeo_elev.default <- function(x) {
+fgeo_elevation.default <- function(x) {
   abort(paste0("Can't deal with data of class ", class(x)))
 }
 
 #' @export
-fgeo_elev.list <- function(x) {
+fgeo_elevation.list <- function(x) {
   pull_elevation(x) %>% 
     nms_try_rename(want = "gx", try = "x") %>% 
     nms_try_rename(want = "gy", try = "y") %>% 
-    new_fgeo_elev()
+    new_fgeo_elevation()
 }
 
 #' @export
-fgeo_elev.data.frame <- fgeo_elev.list
+fgeo_elevation.data.frame <- fgeo_elevation.list
 
-new_fgeo_elev <- function(x) {
+new_fgeo_elevation <- function(x) {
   stopifnot(is.data.frame(x))
-  structure(x, class = c("fgeo_elev", class(x)))
+  structure(x, class = c("fgeo_elevation", class(x)))
 }
 
 pull_elevation <- function(x) {

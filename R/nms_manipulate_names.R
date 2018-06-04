@@ -197,7 +197,7 @@ nms_extract1 <- function(x, ...) {
 
 #' Try to rename an object.
 #' 
-#' Given a name you want and a possible alternavive, this function renames an 
+#' Given a name you want and a possible alternative, this function renames an 
 #' object as you want or errs with an informative message.
 #'
 #' @param x A named object.

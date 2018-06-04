@@ -76,11 +76,10 @@ reference:
     contents:
     - starts_with("type_")
     - replace_null
-    - restructure_elev
     
-  - title: Create habiat data
+  - title: Construct ForestGEO datasets (objects of class fgeo_*).
     contents:
-    - create_habitat
+    - starts_with("fgeo_")
 
   - title: "Datasets"
     contents:

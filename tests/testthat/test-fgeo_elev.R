@@ -1,27 +1,27 @@
-context("fgeo_elev")
+context("fgeo_elevation")
 
 elev_df <- bciex::bci_elevation
-.elev <- fgeo_elev(elev_df)
+.elev <- fgeo_elevation(elev_df)
 
 test_that("has class elev", {
-  expect_is(.elev, "fgeo_elev")
+  expect_is(.elev, "fgeo_elevation")
 })
 
 test_that("does nothing if structure is OK", {
-  expect_identical(fgeo_elev(.elev), .elev)
+  expect_identical(fgeo_elevation(.elev), .elev)
 })
 
 test_that("deals only with data.frame and list", {
-  expect_silent(fgeo_elev(elev_df))
-  expect_silent(fgeo_elev(list(col = elev_df)))
-  expect_error(fgeo_elev(1), "numeric")
-  expect_error(fgeo_elev("a"), "character")
+  expect_silent(fgeo_elevation(elev_df))
+  expect_silent(fgeo_elevation(list(col = elev_df)))
+  expect_error(fgeo_elevation(1), "numeric")
+  expect_error(fgeo_elevation("a"), "character")
 })
 
 test_that("errs with wrong list", {
   elev_list <- list(bad = elev_df, superbad = 1)
   expect_error(
-    fgeo_elev(elev_list)
+    fgeo_elevation(elev_list)
   )
 })
 

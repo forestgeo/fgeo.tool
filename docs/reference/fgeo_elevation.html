@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lower and restore names. — nms_lowercase • fgeo.tool</title>
+<title>Construct elevation data — fgeo_elevation • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,11 +28,11 @@
 
 
 
-<meta property="og:title" content="Lower and restore names. — nms_lowercase" />
+<meta property="og:title" content="Construct elevation data — fgeo_elevation" />
 
-<meta property="og:description" content="These functions are useful together, to lowercase names, then to do something
-(as long as attributes are preserved -- see section warning), and then
-restore the original names." />
+<meta property="og:description" content="This function constructs an object of class fgeo_elevation. It standardizes
+the structure of elevation data to always output a dataframe with names gx,
+gy and elev -- or it dies trying." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,79 +120,71 @@ restore the original names." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Lower and restore names.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/nms_manipulate_names.R'><code>R/nms_manipulate_names.R</code></a></small>
-    <div class="hidden name"><code>nms_lowercase.Rd</code></div>
+    <h1>Construct elevation data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/fgeo_elev.R'><code>R/fgeo_elev.R</code></a></small>
+    <div class="hidden name"><code>fgeo_elevation.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions are useful together, to lowercase names, then to do something
-(as long as attributes are preserved -- see section warning), and then
-restore the original names.</p>
+    <p>This function constructs an object of class fgeo_elevation. It standardizes
+the structure of elevation data to always output a dataframe with names <code>gx</code>,
+<code>gy</code> and <code>elev</code> -- or it dies trying.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nms_lowercase</span>(<span class='no'>x</span>)
-
-<span class='fu'>nms_restore</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>fgeo_elevation</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named object.</p></td>
+      <td><p>Either a dataframe or a dataframe stored in the element <code>col</code> of a
+list.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A dataframe with names <code>x/gx</code>, <code>y/gy</code> and <code>elev</code>.</p>
     
-<ul>
-<li><p><code>nms_lowercase()</code> Returns the object <code>x</code> with lowercase names</p></li>
-<li><p><code>nms_restore()</code> Returns the object <code>x</code> with original (restored) names.</p></li>
-</ul>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The input may be a dataframe or a dataframe stored in the element <code>col</code> of a
+list; the column names of the dataframe may be <code>gx</code> and <code>gy</code> or <code>x</code> and <code>y</code>.</p>
+    
+    <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
 
     
-    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
-
-    
-    <p><code>nms_restore()</code> is similar to <code><a href='nms_restore_newvar.html'>nms_restore_newvar()</a></code> but
-<code>nms_restore()</code> is necessary if the data is mutated with <code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code>:
-<code><a href='http://dplyr.tidyverse.org/reference/mutate.html'>dplyr::mutate()</a></code> drops attributes
-(https://github.com/tidyverse/dplyr/issues/1984), which makes it
-<code>nms_restore()</code> useless. attributes.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other functions for developers.: <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>,
-  <code><a href='nms_try_rename.html'>nms_try_rename</a></code>, <code><a href='nms.html'>nms</a></code>,
-  <code><a href='type_ensure.html'>type_ensure</a></code></p>
-<p>Other functions to manipulate names.: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>,
-  <code><a href='nms_try_rename.html'>nms_try_rename</a></code>, <code><a href='nms.html'>nms</a></code></p></div>
+    <p>This function was inspired by David Kenfack.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>status</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
-<span class='no'>original</span> <span class='kw'>&lt;-</span> <span class='no'>cns</span>
-<span class='no'>original</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   CensusID status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1        1 A     </div><div class='input'>
-<span class='no'>lowered</span> <span class='kw'>&lt;-</span> <span class='fu'>nms_lowercase</span>(<span class='no'>cns</span>)
-<span class='no'>lowered</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   censusid status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1        1 A     </div><div class='input'><span class='fu'>attr</span>(<span class='no'>lowered</span>, <span class='st'>"names_old"</span>)</div><div class='output co'>#&gt; [1] "CensusID" "status"  </div><div class='input'>
-<span class='no'>back_to_original</span> <span class='kw'>&lt;-</span> <span class='fu'>nms_restore</span>(<span class='no'>lowered</span>)
-<span class='no'>back_to_original</span></div><div class='output co'>#&gt; # A tibble: 1 x 2
-#&gt;   CensusID status
-#&gt;      &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1        1 A     </div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Dataframe input</span>
+<span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bciex</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/bciex/topics/bci_elevation'>bci_elevation</a></span>
+<span class='fu'>str</span>(<span class='no'>elev_df</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+#&gt;  $ x   : int  0 0 0 0 0 0 0 0 0 0 ...
+#&gt;  $ y   : int  0 5 10 15 20 25 30 35 40 45 ...
+#&gt;  $ elev: num  121 121 121 121 121 ...</div><div class='input'>
+<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_df</span>)
+<span class='fu'>str</span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes ‘fgeo_elevation’, ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
+#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
+#&gt;  $ elev: num  121 121 121 121 121 ...</div><div class='input'>
+<span class='co'># List input</span>
+<span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>elev_df</span>, <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"stuff"</span>)
+<span class='fu'>str</span>(<span class='no'>elev_list</span>)</div><div class='output co'>#&gt; List of 2
+#&gt;  $ col  :Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+#&gt;   ..$ x   : int [1:20301] 0 0 0 0 0 0 0 0 0 0 ...
+#&gt;   ..$ y   : int [1:20301] 0 5 10 15 20 25 30 35 40 45 ...
+#&gt;   ..$ elev: num [1:20301] 121 121 121 121 121 ...
+#&gt;  $ other: chr "stuff"</div><div class='input'>
+<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_list</span>)
+<span class='fu'>str</span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes ‘fgeo_elevation’, ‘tbl_df’, ‘tbl’ and 'data.frame':	20301 obs. of  3 variables:
+#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
+#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
+#&gt;  $ elev: num  121 121 121 121 121 ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -201,9 +193,9 @@ restore the original names.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#warning">Warning</a></li>
+      <li><a href="#details">Details</a></li>
 
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#acknowledgments">Acknowledgments</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

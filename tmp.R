@@ -4,6 +4,8 @@
 # Check guidelines in adv-r
 # Do the same with create_habitat
 
+# FIXME: Fix _pkgdown
+
 
 # SPECIFIC TO FGEO --------------------------------------------------------
 
@@ -27,8 +29,7 @@ add_status_tree
 
 # Construct/structure data/dataframe
 # TODO: rename and refactor to as_*() or as_fgeo_*().
-create_habitat
-fgeo.tool::fgeo_elev()
+
 
 
 
