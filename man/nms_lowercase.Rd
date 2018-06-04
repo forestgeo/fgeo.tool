@@ -48,9 +48,11 @@ back_to_original
 \seealso{
 Other functions for developers.: \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms}},
+  \code{\link{nms_restore_newvar}},
+  \code{\link{nms_try_rename}}, \code{\link{nms}},
   \code{\link{type_ensure}}
 
 Other functions to manipulate names.: \code{\link{nms_extract_anycase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms}}
+  \code{\link{nms_restore_newvar}},
+  \code{\link{nms_try_rename}}, \code{\link{nms}}
 }

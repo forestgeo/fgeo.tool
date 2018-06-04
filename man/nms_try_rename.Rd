@@ -28,3 +28,16 @@ nms_try_rename(c(a = 1, 1), "A", "a")
 nms_try_rename(1, "A", "A")
 }
 }
+\seealso{
+nms
+
+Other functions for developers.: \code{\link{find_data_of_class}},
+  \code{\link{nms_extract_anycase}},
+  \code{\link{nms_lowercase}},
+  \code{\link{nms_restore_newvar}}, \code{\link{nms}},
+  \code{\link{type_ensure}}
+
+Other functions to manipulate names.: \code{\link{nms_extract_anycase}},
+  \code{\link{nms_lowercase}},
+  \code{\link{nms_restore_newvar}}, \code{\link{nms}}
+}
