@@ -195,6 +195,44 @@ nms_extract1 <- function(x, ...) {
 
 
 
+#' Try to rename an object.
+#' 
+#' Given a name you want and a possible alternavive, this function renames an 
+#' object as you want or errs with an informative message.
+#'
+#' @param x A named object.
+#' @param want String of length 1 giving the name you want the object to have.
+#' @param try String of length 1 giving the name the object might have.
+#' 
+#' @family functions for developers.
+#' @family functions to manipulate names.
+#' 
+#' @seealso nms
+#' 
+#' @export
+#' @examples 
+#' nms_try_rename(c(a = 1), "A", "a")
+#' nms_try_rename(data.frame(a = 1), "A", "a")
+#' 
+#' # Passes
+#' nms_try_rename(c(a = 1, 1), "A", "a")
+#' # Errs
+#' \dontrun{
+#' nms_try_rename(1, "A", "A")
+#' }
+nms_try_rename <- function(x, want, try) {
+  nm <- fgeo.tool::nms_extract1(x = x, want = want, try = try)
+  if (length(nm) == 0) {
+    rlang::abort(
+      paste0("Data must have an element named `", want, "` or `", try, "`")
+    )
+  }
+  names(x)[grepl(nm, names(x))] <- want
+  x
+}
+
+
+
 #' Find a name exactly matching a string but regardless of case.
 #'
 #' @param x A named object.

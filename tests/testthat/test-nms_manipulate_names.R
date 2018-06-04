@@ -1,6 +1,5 @@
 context("nms_lowercase.R")
 
-
 test_that("errs with wrong input", {
   expect_error(
     nms_lowercase(1)
@@ -28,6 +27,8 @@ test_that("returns as expected", {
     names(lowered)
   )
 })
+
+
 
 context("nms_restore")
 
@@ -106,4 +107,19 @@ test_that("works other named vectors", {
   v <- c(`hi mE` = "one")
   out <- nms_tidy(v)
   expect_equal(names(out), "hi_me")
+})
+
+
+
+context("nms_try_rename")
+
+test_that("renames correctly", {
+  expect_equal(nms_try_rename(list(a = 1), "A", "a"), list(A = 1)) 
+  expect_equal(nms_try_rename(c(a = 1), "A", "a"), c(A = 1)) 
+  expect_equal(nms_try_rename(data.frame(a = 1), "A", "a"), data.frame(A = 1))
+  expect_equal(nms_try_rename(c(a = 1, 1), "A", "a"), c(A = 1, 1))
+})
+
+test_that("fails with informative message", {
+  expect_error(nms_try_rename(1, "A", "A"), "Data must have an element named")
 })

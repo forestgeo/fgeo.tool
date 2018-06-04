@@ -89,14 +89,3 @@ pull_elevation.list <- function(x) {
   elevation <- x[["col"]]
   elevation
 }
-
-nms_try_rename <- function(x, want, try) {
-  nm <- fgeo.tool::nms_extract1(x = x, want = want, try = try)
-  if (length(nm) == 0) {
-    rlang::abort(
-      paste0("Data must have a column named `", want, "` or `", try, "`")
-    )
-  }
-  names(x)[grepl(nm, names(x))] <- want
-  x
-}
