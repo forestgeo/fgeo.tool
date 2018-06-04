@@ -1,10 +1,5 @@
 # xxx cont here
-# Replace create_habitat with fgeo_habitat
-# TODO:
-# Check guidelines in adv-r
-# Do the same with create_habitat
-
-# FIXME: Fix _pkgdown
+# FIXME: Fix _pkgdown: fgeo_* appears in multiple places.
 
 
 # SPECIFIC TO FGEO --------------------------------------------------------
@@ -25,16 +20,13 @@ add_qxqy
 add_subquad
 add_status_tree
 
-
-
-# Construct/structure data/dataframe
-# TODO: rename and refactor to as_*() or as_fgeo_*().
-
-
+# Construct fgeo datasets
+fgeo_elevation
+fgeo_habitat
 
 
 
-# Mutate dataframe
+# Mutate/transform dataframe
 recode_subquad
 
 
@@ -50,8 +42,6 @@ row_keep_alive_tree
 
 # Sanitize
 
-# Maybe pull_elev or use_elev
-restructure_elev
 
 
 # read fgeo data
