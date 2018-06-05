@@ -57,5 +57,5 @@ pick_top(df, y, n = -2)
 \link[dplyr:pull]{dplyr::pull}, \link[dplyr:top_n]{dplyr::top_n}, \code{\link[utils:head]{utils::head()}}, \code{\link[utils:tail]{utils::tail()}}.
 
 Other functions to filter dataframes.: \code{\link{drop_twice_dead}},
-  \code{\link{filter_status}}, \code{\link{to_recensus}}
+  \code{\link{filter_status}}, \code{\link{pick_recensus}}
 }

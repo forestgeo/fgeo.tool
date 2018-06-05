@@ -3,7 +3,7 @@
 #' Based on a reference dataset `x`, this function helps you
 #' to identify stems that remain to be recensused in a dataset `y`. This
 #' function does the same work as [dplyr::anti_join()]. The difference is only
-#' that the signature of `to_recensus()` is a little simpler (irrelevant
+#' that the signature of `pick_recensus()` is a little simpler (irrelevant
 #' arguments hidden via `...`) to focus your attention to the arguments that are
 #' most useful in helping you identify stems to recensus. This function also
 #' exists to help you discover the `*join()` functions of __dplyr__, which will
@@ -49,10 +49,10 @@
 #'         "04_2"
 #' )
 #' 
-#' to_recensus(x, y)
+#' pick_recensus(x, y)
 #' 
 #' # Same
-#' to_recensus(x, y, by = "unique_stem")
+#' pick_recensus(x, y, by = "unique_stem")
 #' 
 #' y2 <- dplyr::tribble(
 #'   ~unq_stem,
@@ -60,10 +60,10 @@
 #'      "02_2",
 #'      "04_2"
 #' )
-#' to_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
+#' pick_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
 #' 
 #' # For this and more general problems you can use `dplyr::*_join()` functions
 #' dplyr::anti_join(x, y2, by = c("unique_stem" = "unq_stem"))
-to_recensus <- function(x, y, by = NULL, ...) {
+pick_recensus <- function(x, y, by = NULL, ...) {
   dplyr::anti_join(x = x, y = y, by = by, ...)
 }

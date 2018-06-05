@@ -52,5 +52,5 @@ drop_twice_dead(vft)
 }
 \seealso{
 Other functions to filter dataframes.: \code{\link{filter_status}},
-  \code{\link{pick_top}}, \code{\link{to_recensus}}
+  \code{\link{pick_recensus}}, \code{\link{pick_top}}
 }

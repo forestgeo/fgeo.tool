@@ -1,4 +1,4 @@
-context("to_recensus.R")
+context("pick_recensus.R")
 
 test_that("finds three stems known to be missing", {
   x <- dplyr::tribble(
@@ -15,7 +15,7 @@ test_that("finds three stems known to be missing", {
   expect <- "02_1"
   
   expect_message({
-    out <- to_recensus(x, y)
+    out <- pick_recensus(x, y)
   })
   expect_equal(out$unique_stem, expect)
   
@@ -36,7 +36,7 @@ test_that("works with parameter `by` as expected", {
   expect <- "02_1"
 
   expect_silent({
-    out <- to_recensus(x, y, by = "unique_stem")
+    out <- pick_recensus(x, y, by = "unique_stem")
   })
   expect_equal(out$unique_stem, expect)
   
@@ -45,6 +45,6 @@ test_that("works with parameter `by` as expected", {
     "01_1",
     "02_2"
   )
-  out2 <- to_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
+  out2 <- pick_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
   expect_equal(out, out2)
 })

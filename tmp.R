@@ -1,6 +1,6 @@
 # xxx cont here
 # FIXME: Fix _pkgdown: fgeo_* appears in multiple places.
-
+to_recensus
 
 
 
@@ -117,7 +117,7 @@ replace_null
 
 
 # maybe remove and reexport anti_join()?
-to_recensus  ## rename pick_recencus?
+pick_recensus  ## renamed from to_recensus
 pick_top
 
 

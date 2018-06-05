@@ -66,10 +66,6 @@ reference:
     contents:
     - xl_sheets_to_output
     
-  - title: Quality control
-    contents:
-    - to_recensus
-
   - title: Sanitize multiple data structures
     contents:
     - starts_with("type_")

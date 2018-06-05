@@ -155,5 +155,5 @@ table(result$status_tree)
 \code{\link[=add_status_tree]{add_status_tree()}}, \code{\link[fgeo.base:drop_status]{fgeo.base::drop_status()}}.
 
 Other functions to filter dataframes.: \code{\link{drop_twice_dead}},
-  \code{\link{pick_top}}, \code{\link{to_recensus}}
+  \code{\link{pick_recensus}}, \code{\link{pick_top}}
 }
