@@ -1,4 +1,4 @@
-context("row_discard_twice_dead")
+context("drop_twice_dead")
 
 vft <- tibble::tribble(
   ~CensusID, ~Tag,     ~Status,
@@ -24,7 +24,7 @@ vft <- tibble::tribble(
 )
 
 test_that("correctly removes trees found dead in two censuses", {
-  actual <- row_discard_twice_dead(add_status_tree(vft, "alive", "dead"))$status_tree
+  actual <- drop_twice_dead(add_status_tree(vft, "alive", "dead"))$status_tree
   expected <- c("alive", "alive",  "dead", "dead") 
   expect_equal(actual, expected)
 })
@@ -32,7 +32,7 @@ test_that("correctly removes trees found dead in two censuses", {
 test_that("works with with lowercase names", {
   vft <- add_status_tree(vft, "alive", "dead")
   expect_silent(
-    row_discard_twice_dead(
+    drop_twice_dead(
       set_names(vft,tolower)
       )
   )
@@ -40,6 +40,6 @@ test_that("works with with lowercase names", {
 
 test_that("requires `status_tree", {
   expect_error(
-    row_discard_twice_dead(vft)
+    drop_twice_dead(vft)
   )
 })

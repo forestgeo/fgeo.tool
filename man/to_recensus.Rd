@@ -83,3 +83,7 @@ to_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
 # For this and more general problems you can use `dplyr::*_join()` functions
 dplyr::anti_join(x, y2, by = c("unique_stem" = "unq_stem"))
 }
+\seealso{
+Other functions to filter dataframes.: \code{\link{drop_twice_dead}},
+  \code{\link{filter_status}}, \code{\link{pick_top}}
+}

@@ -2,6 +2,12 @@
 # FIXME: Fix _pkgdown: fgeo_* appears in multiple places.
 
 
+
+
+
+
+
+
 # SPECIFIC TO FGEO --------------------------------------------------------
 
 # fgeo.tool: SPECIFIC TO FGEO, DEPENDENT ----------------------------------
@@ -33,14 +39,24 @@ recode_subquad
 
 
 
-# Maybe remove or not export
-# filter status
-row_discard_twice_dead
-row_filter_status
-row_keep_alive_stem
-row_keep_alive_tree
+# Operate on rows (filter/keep/discard/subset rows)
+row_collapse_censusid  ## Can move to base
 
-# Sanitize
+row_discard_twice_dead  ## Depends on dplyr
+
+# Maybe remove or not export
+
+
+
+# Filter dataframes
+filter_status
+drop_dead_stem
+drop_dead_tree
+
+## -- rename keep to pick: use pick and drop instead of keep and drop.
+
+# Operate on rows, Miscellaneas
+collapse_censusid()
 
 
 
@@ -87,7 +103,7 @@ xl_to_df_lst
 
 
 
-# Sanitize/edit/mutate dataframe
+# dataframe mutate/transform/edit/sanitize
 # Depends on rlang
 lookup
 # Depends on purrr
@@ -101,14 +117,8 @@ replace_null
 
 
 # maybe remove and reexport anti_join()?
-to_recensus
-
-
-# filter other
-row_*
-row_top
-
-
+to_recensus  ## rename pick_recencus?
+pick_top
 
 
 

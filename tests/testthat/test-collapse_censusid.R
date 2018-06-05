@@ -10,14 +10,14 @@ x <- tibble::tribble(
   2,    2,  "dead"
 )
 
-context("row_collapse_censusid")
+context("collapse_censusid")
 
 test_that("outputs object of expected status and status_tree", {
-  expect_equal(row_collapse_censusid(x)$Status, c("alive", rep("dead", 2), "alive"))
+  expect_equal(collapse_censusid(x)$Status, c("alive", rep("dead", 2), "alive"))
   collapsed <- fgeo.tool::add_status_tree(x, "alive", "dead") %>% 
     select(-Status) %>% 
     unique() %>% 
-    row_collapse_censusid()
+    collapse_censusid()
   expected_status_tree <- c("alive", "dead", "alive")
   expect_equal(collapsed$status_tree, expected_status_tree)
 })

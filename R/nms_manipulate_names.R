@@ -261,7 +261,7 @@ nms_extract_anycase <- function(x, nm) {
 #'
 #' These functions create tidy names that are lowercase and have no empty
 #' spaces. `nms_tidy()` tidies the names of named objects. Unnamed strings are
-#' also tidied via `str_as_tidy_names()`. `str_as_tidy_names()` tidies a string -- not
+#' also tidied via `str_to_tidy_names()`. `str_to_tidy_names()` tidies a string -- not
 #' its names.
 #'
 #' @param x A named object or a character string.
@@ -269,6 +269,9 @@ nms_extract_anycase <- function(x, nm) {
 #' @return A modified version of `x` with tidy names or a string of tidy names.
 #'
 #' @examples
+#' # Use str_to_tidy_names()
+#' library(fgeo.base)
+#' 
 #' messy <- "Hi yOu"
 #' 
 #' # With unnamed strings, both functions do the same
@@ -276,7 +279,7 @@ nms_extract_anycase <- function(x, nm) {
 #' names(messy)
 #' nms_tidy(messy)
 #' # Same
-#' str_as_tidy_names(messy)
+#' str_to_tidy_names(messy)
 #' 
 #' # WHY TWO FUNCTIONS?
 #' 
@@ -284,15 +287,15 @@ nms_extract_anycase <- function(x, nm) {
 #' # Targets names
 #' nms_tidy(messy_named_string)
 #' # Targets strings -- not its names
-#' str_as_tidy_names(messy_named_string)
+#' str_to_tidy_names(messy_named_string)
 #' 
-#' # Same output, but here `str_as_tidy_names()` better communicates intention.
+#' # Same output, but here `str_to_tidy_names()` better communicates intention.
 #' dfm <- data.frame(1)
 #' setNames(dfm, nms_tidy(messy))
-#' setNames(dfm, str_as_tidy_names(messy))
+#' setNames(dfm, str_to_tidy_names(messy))
 #' 
 #' # Makes more sense when operating on strings
-#' setNames(list(1), str_as_tidy_names(messy))
+#' setNames(list(1), str_to_tidy_names(messy))
 #' # Makes more sense when operating on named objects
 #' messy_list <- list(`Hi yOu` = 1)
 #' nms_tidy(messy_list)
@@ -306,7 +309,7 @@ nms_tidy <- function(x) {
     names(x) <- gsub(" ", "_", tolower(names(x)))
     return(x)
   } else {
-    str_as_tidy_names(x)
+    fgeo.base::str_to_tidy_names(x)
   }
 }
 

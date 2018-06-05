@@ -43,10 +43,12 @@ reference:
     contents:
     - starts_with("add_")
 
-  - title: Manipulate dataframes by operating on rows
+  - title: Filter (pick and drop) rows of dataframes
     contents:
-    - starts_with("row_")
-
+    - starts_with("filter_")
+    - starts_with("drop_")
+    - starts_with("pick_")
+    
   - title: Manipulate lists of dataframes
     contents:
     - starts_with("ls_")
@@ -56,10 +58,6 @@ reference:
     - lookup
     - recode_subquad
     
-  - title: Manipulate strings
-    contents:
-    - starts_with("str_")
-
   - title: Manipulate names
     contents:
     - starts_with("nms_")
