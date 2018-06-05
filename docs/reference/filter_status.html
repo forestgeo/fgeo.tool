@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Filter a (fgeo) dataframe by the status of each stem or tree. — filter_status â€¢ fgeo.tool</title>
+<title>Filter a (fgeo) dataframe by the status of each stem or tree. â€” filter_status â€¢ fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,13 +18,24 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Filter a (fgeo) dataframe by the status of each stem or tree. â€” filter_status" />
+
+<meta property="og:description" content="In stem- and ViewFull-tables status and Status refer to each stem. In
+tree-tables status refers to tree. To get the status of each tree based
+on the status of its stems see add_status_tree()." />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,20 +58,42 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">fgeo.tool</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">fgeo.tool</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.900</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Functions Index</a>
+  <a href="../index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/read_df_write.html">Read, combine, identify, and write multiple files</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="../news/index.html">News</a>
-</li>
-<li>
   <a href="https://github.com/maurolepore">
     <span class="fa fa-gavel"></span>
      
@@ -76,6 +109,7 @@
   <a href="https://forestgeo.github.io/fgeo/">fgeo</a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -83,25 +117,29 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Filter a (fgeo) dataframe by the status of each stem or tree.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/filter_status.R'><code>R/filter_status.R</code></a></small>
+    <div class="hidden name"><code>filter_status.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>In stem- and ViewFull-tables <code>status</code> and <code>Status</code> refer to each stem. In
 tree-tables <code>status</code> refers to tree. To get the status of each tree based
 on the status of its stems see <code><a href='add_status_tree.html'>add_status_tree()</a></code>.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='no'>wood</span>, <span class='no'>.status</span>, <span class='kw'>exclude</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>stem_not_dead</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)
+<span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)
 
-<span class='fu'>tree_not_dead</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)</pre>
+<span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -132,24 +170,14 @@ to <code>.status</code>.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='add_status_tree.html'>add_status_tree()</a></code>.</p>
-<p>Other functions to filter dataframes.: <code><a href='discard_dead_twice.html'>discard_dead_twice</a></code>,
-  <code><a href='top.html'>top</a></code></p>
+    <div class='dont-index'><p><code><a href='add_status_tree.html'>add_status_tree()</a></code>, <code><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/keep_drop'>fgeo.base::drop_status()</a></code>.</p>
+<p>Other functions to filter dataframes.: <code><a href='drop_twice_dead.html'>drop_twice_dead</a></code>,
+  <code><a href='pick_recensus.html'>pick_recensus</a></code>, <code><a href='pick_top.html'>pick_top</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked _by_ ‘.GlobalEnv’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    collapse</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:fgeo.tool’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    collapse</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>fgeo.tool</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='fu'>library</span>(<span class='no'>fgeo.tool</span>)
 
 <span class='co'># Filter by the status of each stem (wood = "stem") -----------------------</span>
 
@@ -167,7 +195,7 @@ to <code>.status</code>.</p></td>
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
 #&gt;    A    G 
 #&gt;  665 1066 </div><div class='input'><span class='co'># Shortcut</span>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>stem_not_dead</span>(<span class='no'>x</span>)
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
 #&gt;    A    G 
 #&gt;  665 1066 </div><div class='input'>
@@ -188,7 +216,7 @@ to <code>.status</code>.</p></td>
 #&gt;   D 
 #&gt; 423 </div><div class='input'>
 <span class='co'># Shortcut</span>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>stem_not_dead</span>(<span class='no'>x</span>)
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
 #&gt;   A 
 #&gt; 577 </div><div class='input'>
@@ -206,9 +234,9 @@ to <code>.status</code>.</p></td>
 #&gt; alive 
 #&gt;  3853 </div><div class='input'>
 <span class='co'># Warns because `.status` defaults to "D" -- not to "dead".</span>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>stem_not_dead</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D</span>
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D</span>
 #&gt; <span class='warning'>  * Valid values: alive, dead</span></div><div class='input'><span class='co'># Fix and repeat</span>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>stem_not_dead</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"dead"</span>)
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"dead"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; 
 #&gt; alive 
 #&gt;  3853 </div><div class='input'>
@@ -234,7 +262,7 @@ to <code>.status</code>.</p></td>
 #&gt;    A 
 #&gt; 1809 </div><div class='input'>
 <span class='co'># Shortcut</span>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>tree_not_dead</span>(<span class='no'>x</span>)
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>)
 <span class='no'>result</span> <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>) <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 1,809 x 4
@@ -264,7 +292,7 @@ to <code>.status</code>.</p></td>
 <span class='no'>result1</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"tree"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
 <span class='no'>result2</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"stem"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
 <span class='fu'>identical</span>(<span class='no'>result1</span>, <span class='no'>result2</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># Shortcut</span>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>tree_not_dead</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)
 <span class='fu'>identical</span>(<span class='no'>result</span>, <span class='no'>result1</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
 
 
@@ -282,7 +310,7 @@ to <code>.status</code>.</p></td>
 #&gt; alive 
 #&gt;  3853 </div><div class='input'>
 <span class='co'># Shortcut</span>
-<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "alive" "dead" </div><div class='input'><span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>tree_not_dead</span>(<span class='no'>x</span>, <span class='st'>"dead"</span>)
+<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "alive" "dead" </div><div class='input'><span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>, <span class='st'>"dead"</span>)
 <span class='no'>result</span> <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>) <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 3,853 x 4
@@ -323,11 +351,14 @@ to <code>.status</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+

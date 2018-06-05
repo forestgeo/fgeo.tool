@@ -13,7 +13,13 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/add_var.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/collapse_censusid.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/datasets.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_twice_dead.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/example_path.html</loc>
@@ -29,6 +35,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_df.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/filter_status.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/find_data_of_class.html</loc>
@@ -64,6 +73,15 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_try_rename.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_recensus.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_top.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/read_fgeo.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/recode_subquad.html</loc>
   </url>
   <url>
@@ -71,27 +89,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/replace_null.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/row_collapse_censusid.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/row_discard_twice_dead.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/row_filter_status.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/row_top.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/str_as_tidy_names.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/str_suffix_match.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/to_recensus.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/type_ensure.html</loc>

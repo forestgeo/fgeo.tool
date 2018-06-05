@@ -32,7 +32,7 @@
 
 <meta property="og:description" content="These functions create tidy names that are lowercase and have no empty
 spaces. nms_tidy() tidies the names of named objects. Unnamed strings are
-also tidied via str_as_tidy_names(). str_as_tidy_names() tidies a string -- not
+also tidied via str_to_tidy_names(). str_to_tidy_names() tidies a string -- not
 its names." />
 <meta name="twitter:card" content="summary" />
 
@@ -61,7 +61,7 @@ its names." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9002</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.900</span>
       </span>
     </div>
 
@@ -130,7 +130,7 @@ its names." />
     
     <p>These functions create tidy names that are lowercase and have no empty
 spaces. <code>nms_tidy()</code> tidies the names of named objects. Unnamed strings are
-also tidied via <code><a href='str_as_tidy_names.html'>str_as_tidy_names()</a></code>. <code><a href='str_as_tidy_names.html'>str_as_tidy_names()</a></code> tidies a string -- not
+also tidied via <code>str_to_tidy_names()</code>. <code>str_to_tidy_names()</code> tidies a string -- not
 its names.</p>
     
     </div>
@@ -152,27 +152,30 @@ its names.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>messy</span> <span class='kw'>&lt;-</span> <span class='st'>"Hi yOu"</span>
+    <pre class="examples"><div class='input'><span class='co'># Use str_to_tidy_names()</span>
+<span class='fu'>library</span>(<span class='no'>fgeo.base</span>)
+
+<span class='no'>messy</span> <span class='kw'>&lt;-</span> <span class='st'>"Hi yOu"</span>
 
 <span class='co'># With unnamed strings, both functions do the same</span>
 <span class='no'>unnamed_string</span> <span class='kw'>&lt;-</span> <span class='no'>messy</span>
 <span class='fu'>names</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>nms_tidy</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'><span class='co'># Same</span>
-<span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/str_to_tidy_names'>str_to_tidy_names</a></span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'>
 <span class='co'># WHY TWO FUNCTIONS?</span>
 
 <span class='no'>messy_named_string</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>`Messy Name`</span> <span class='kw'>=</span> <span class='no'>messy</span>)
 <span class='co'># Targets names</span>
 <span class='fu'>nms_tidy</span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; messy_name 
 #&gt;   "Hi yOu" </div><div class='input'><span class='co'># Targets strings -- not its names</span>
-<span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; Messy Name 
+<span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/str_to_tidy_names'>str_to_tidy_names</a></span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; Messy Name 
 #&gt;   "hi_you" </div><div class='input'>
-<span class='co'># Same output, but here `str_as_tidy_names()` better communicates intention.</span>
+<span class='co'># Same output, but here `str_to_tidy_names()` better communicates intention.</span>
 <span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='fl'>1</span>)
 <span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'>nms_tidy</span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
-#&gt; 1      1</div><div class='input'><span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
+#&gt; 1      1</div><div class='input'><span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/str_to_tidy_names'>str_to_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
 #&gt; 1      1</div><div class='input'>
 <span class='co'># Makes more sense when operating on strings</span>
-<span class='fu'>setNames</span>(<span class='fu'>list</span>(<span class='fl'>1</span>), <span class='fu'><a href='str_as_tidy_names.html'>str_as_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt; $hi_you
+<span class='fu'>setNames</span>(<span class='fu'>list</span>(<span class='fl'>1</span>), <span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/str_to_tidy_names'>str_to_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt; $hi_you
 #&gt; [1] 1
 #&gt; </div><div class='input'><span class='co'># Makes more sense when operating on named objects</span>
 <span class='no'>messy_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>`Hi yOu`</span> <span class='kw'>=</span> <span class='fl'>1</span>)

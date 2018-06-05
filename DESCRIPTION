@@ -1,6 +1,6 @@
 Package: fgeo.tool
 Title: Functions for General Purposes
-Version: 0.0.0.9002
+Version: 0.0.0.900
 Authors@R: c(
     person("Mauro", "Lepore", , "leporem@si.edu", role = c("aut", "ctr", "cre")),
     person("CTFS-ForestGEO", , , "ForestGEO@si.edu", role = c("cph", "fnd"))
@@ -13,7 +13,7 @@ Depends:
     R (>= 3.1.2)
 Imports: 
     dplyr (>= 0.7.4),
-    fgeo.base,
+    fgeo.base (>= 0.0.0.9000),
     fgeo.data (>= 0.0.0.9002),
     fs (>= 1.2.2),
     purrr (>= 0.2.4),
@@ -24,11 +24,11 @@ Imports:
     rmarkdown (>= 1.9),
     stringr (>= 1.3.0),
     tibble (>= 1.4.2),
-    writexl
+    writexl (>= 1.0)
 Suggests: 
     bciex (>= 0.0.0.9000),
-    covr,
-    knitr,
+    covr (>= 3.1.0),
+    knitr (>= 1.20),
     magrittr (>= 1.5),
     testthat (>= 2.0.0)
 VignetteBuilder: knitr

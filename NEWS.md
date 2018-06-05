@@ -1,16 +1,8 @@
 # fgeo.tool 0.0.0.9002
 
-* `xl_sheets_to_*()` gain the argument `first_census` (Sabrina Russo, #31).
-
-* Clarify the internal structure of fgeo.tool with function's prefixes.
-    * `add_*()`
-    * `str_*()`
-    * `nms_*()`
-    * `check_*()`
-    * `ls_*()`
-    * `fieldforms_*()`
-* Add functions to deal with datasets with same variables but different names.
-* Add `str_suffix_match()`.
+* Refactor multiple functions (remove, rename, and move to __fgeo.base__).
+* `xl_sheets_to_*()` gains the argument `first_census` (Sabrina Russo, #31).
+* Organize functions with prefixes (e.g. `add_*()`, `nms_*()).
 
 # fgeo.tool 0.0.0.9001
 

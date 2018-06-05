@@ -55,7 +55,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.9002</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.0.0.900</span>
       </span>
     </div>
 
@@ -168,32 +168,32 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-manipulate-dataframes-by-operating-on-rows" class="hasAnchor"><a href="#section-manipulate-dataframes-by-operating-on-rows" class="anchor"></a>Manipulate dataframes by operating on rows</h2>
+          <h2 id="section-filter-pick-and-drop-rows-of-dataframes" class="hasAnchor"><a href="#section-filter-pick-and-drop-rows-of-dataframes" class="anchor"></a>Filter (pick and drop) rows of dataframes</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         <!--  -->
         <td>
-          <p><code><a href="row_collapse_censusid.html">row_collapse_censusid()</a></code> </p>
-        </td>
-        <td><p>Collapse the values of CensusID.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="row_discard_twice_dead.html">row_discard_twice_dead()</a></code> </p>
-        </td>
-        <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="row_filter_status.html">row_filter_status()</a></code> <code><a href="row_filter_status.html">row_keep_alive_stem()</a></code> <code><a href="row_filter_status.html">row_keep_alive_tree()</a></code> </p>
+          <p><code><a href="filter_status.html">filter_status()</a></code> <code><a href="filter_status.html">drop_dead_stem()</a></code> <code><a href="filter_status.html">drop_dead_tree()</a></code> </p>
         </td>
         <td><p>Filter a (fgeo) dataframe by the status of each stem or tree.</p></td>
       </tr><tr>
         <!--  -->
         <td>
-          <p><code><a href="row_top.html">row_top()</a></code> </p>
+          <p><code><a href="drop_twice_dead.html">drop_twice_dead()</a></code> </p>
+        </td>
+        <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
+        </td>
+        <td><p>Identify stems to recensus.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
         </td>
         <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
       </tr>
@@ -242,26 +242,6 @@
           <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
         </td>
         <td><p>Recode subquadrat.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-manipulate-strings" class="hasAnchor"><a href="#section-manipulate-strings" class="anchor"></a>Manipulate strings</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="str_as_tidy_names.html">str_as_tidy_names()</a></code> </p>
-        </td>
-        <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="str_suffix_match.html">str_suffix_match()</a></code> </p>
-        </td>
-        <td><p>Suffix a strings where a vector exactly matches one specific string.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -324,21 +304,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-quality-control" class="hasAnchor"><a href="#section-quality-control" class="anchor"></a>Quality control</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="to_recensus.html">to_recensus()</a></code> </p>
-        </td>
-        <td><p>Identify stems to recensus.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-sanitize-multiple-data-structures" class="hasAnchor"><a href="#section-sanitize-multiple-data-structures" class="anchor"></a>Sanitize multiple data structures</h2>
+          <h2 id="section-read-foresgeo-data" class="hasAnchor"><a href="#section-read-foresgeo-data" class="anchor"></a>Read ForesGEO data</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -355,6 +321,20 @@
         </td>
         <td><p>Help to read ForestGEO data safely, with consistent column type.</p></td>
       </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_fgeo.html">read_vft()</a></code> <code><a href="read_fgeo.html">read_taxa()</a></code> </p>
+        </td>
+        <td><p>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-sanitize-multiple-data-structures" class="hasAnchor"><a href="#section-sanitize-multiple-data-structures" class="anchor"></a>Sanitize multiple data structures</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         <!--  -->
         <td>
           <p><code><a href="replace_null.html">replace_null()</a></code> </p>
@@ -429,9 +409,21 @@
       </tr><tr>
         <!--  -->
         <td>
+          <p><code><a href="collapse_censusid.html">collapse_censusid()</a></code> </p>
+        </td>
+        <td><p>Collapse the values of CensusID.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
           <p><code><a href="datasets.html">top4quad</a></code> <code><a href="datasets.html">top1quad</a></code> </p>
         </td>
         <td><p>Data sets for examples; adapted from <a href='http://www.rdocumentation.org/packages/bciex/topics/bci12vft_mini'>bciex::bci12vft_mini</a>.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="drop_twice_dead.html">drop_twice_dead()</a></code> </p>
+        </td>
+        <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
       </tr><tr>
         <!--  -->
         <td>
@@ -456,6 +448,12 @@
           <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_df_lst()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_df_lst()</a></code> </p>
         </td>
         <td><p>Read all .csv or excel files from a directory into dataframes.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="filter_status.html">filter_status()</a></code> <code><a href="filter_status.html">drop_dead_stem()</a></code> <code><a href="filter_status.html">drop_dead_tree()</a></code> </p>
+        </td>
+        <td><p>Filter a (fgeo) dataframe by the status of each stem or tree.</p></td>
       </tr><tr>
         <!--  -->
         <td>
@@ -525,6 +523,24 @@
       </tr><tr>
         <!--  -->
         <td>
+          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
+        </td>
+        <td><p>Identify stems to recensus.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
+        </td>
+        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_fgeo.html">read_vft()</a></code> <code><a href="read_fgeo.html">read_taxa()</a></code> </p>
+        </td>
+        <td><p>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
           <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
         </td>
         <td><p>Recode subquadrat.</p></td>
@@ -534,48 +550,6 @@
           <p><code><a href="replace_null.html">replace_null()</a></code> </p>
         </td>
         <td><p>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value).</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="row_collapse_censusid.html">row_collapse_censusid()</a></code> </p>
-        </td>
-        <td><p>Collapse the values of CensusID.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="row_discard_twice_dead.html">row_discard_twice_dead()</a></code> </p>
-        </td>
-        <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="row_filter_status.html">row_filter_status()</a></code> <code><a href="row_filter_status.html">row_keep_alive_stem()</a></code> <code><a href="row_filter_status.html">row_keep_alive_tree()</a></code> </p>
-        </td>
-        <td><p>Filter a (fgeo) dataframe by the status of each stem or tree.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="row_top.html">row_top()</a></code> </p>
-        </td>
-        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="str_as_tidy_names.html">str_as_tidy_names()</a></code> </p>
-        </td>
-        <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="str_suffix_match.html">str_suffix_match()</a></code> </p>
-        </td>
-        <td><p>Suffix a strings where a vector exactly matches one specific string.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="to_recensus.html">to_recensus()</a></code> </p>
-        </td>
-        <td><p>Identify stems to recensus.</p></td>
       </tr><tr>
         <!--  -->
         <td>
@@ -618,13 +592,12 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-read-files-into-dataframes">Read files into dataframes</a></li>
       <li><a href="#section-manipulate-dataframes-by-adding-columns">Manipulate dataframes by adding columns</a></li>
-      <li><a href="#section-manipulate-dataframes-by-operating-on-rows">Manipulate dataframes by operating on rows</a></li>
+      <li><a href="#section-filter-pick-and-drop-rows-of-dataframes">Filter (pick and drop) rows of dataframes</a></li>
       <li><a href="#section-manipulate-lists-of-dataframes">Manipulate lists of dataframes</a></li>
       <li><a href="#section-manipulate-dataframes">Manipulate dataframes</a></li>
-      <li><a href="#section-manipulate-strings">Manipulate strings</a></li>
       <li><a href="#section-manipulate-names">Manipulate names</a></li>
       <li><a href="#section-process-the-output-of-fastfield">Process the output of FastField</a></li>
-      <li><a href="#section-quality-control">Quality control</a></li>
+      <li><a href="#section-read-foresgeo-data">Read ForesGEO data</a></li>
       <li><a href="#section-sanitize-multiple-data-structures">Sanitize multiple data structures</a></li>
       <li><a href="#section-construct-forestgeo-datasets-objects-of-class-fgeo-">Construct ForestGEO datasets (objects of class fgeo_*).</a></li>
       <li><a href="#section-datasets">Datasets</a></li>

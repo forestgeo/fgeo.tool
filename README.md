@@ -68,7 +68,7 @@ df <- add_status_tree(df)
 # Filter a data set
 
 # Filter from the head or tail of a variable
-row_top(df, Tag)
+pick_top(df, Tag)
 #> # A tibble: 4 x 4
 #>   CensusID   Tag Status status_tree
 #>      <dbl> <dbl> <chr>  <chr>      
@@ -76,7 +76,7 @@ row_top(df, Tag)
 #> 2        1     1 dead   A          
 #> 3        2     1 alive  A          
 #> 4        2     1 alive  A
-row_top(df, Tag, -1)
+pick_top(df, Tag, -1)
 #> # A tibble: 4 x 4
 #>   CensusID   Tag Status status_tree
 #>      <dbl> <dbl> <chr>  <chr>      
@@ -85,7 +85,7 @@ row_top(df, Tag, -1)
 #> 3        2     3 dead   A          
 #> 4        2     3 dead   A
 # Remove trees found dead in two or more censuses
-row_discard_twice_dead(df)
+drop_twice_dead(df)
 #> # A tibble: 12 x 4
 #>    CensusID   Tag Status status_tree
 #>       <dbl> <dbl> <chr>  <chr>      
@@ -134,7 +134,7 @@ dplyr::filter(
 You can combine **fgeo.tool** with **dplyr**.
 
 ``` r
-edited <- add_status_tree(row_top(df, CensusID, -1))
+edited <- add_status_tree(pick_top(df, CensusID, -1))
 #> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
 #>   * Valid values: alive, dead
 dplyr::select(edited, -Status)

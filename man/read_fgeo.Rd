@@ -44,7 +44,7 @@ read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
 
 }
 \seealso{
-\code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[=type_vft]{type_vft()}},  \code{\link[=type_taxa]{type_taxa()}}.
+\code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[=type_vft]{type_vft()}}, \code{\link[=type_taxa]{type_taxa()}}.
 
 Other functions to read text files delivered by ForestgGEO's database.: \code{\link{type_fgeo}}
 }
