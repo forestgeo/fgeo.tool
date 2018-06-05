@@ -17,16 +17,18 @@ This function is useful to summarize the status history of a tree tag across
 censuses. It is particularly useful to avoid duplicated tree tags on maps.
 }
 \examples{
-x <- tibble::tribble(
+library(dplyr)
+
+x <- dplyr::tribble(
   ~CensusID, ~Tag, ~Status,
-  "1",  "1", "alive",
-  "1",  "1",  "dead",
-  "1",  "2",  "dead",
-  "1",  "2",  "dead",
-  "2",  "1", "alive",
-  "2",  "1", "alive",
-  "2",  "2", "alive",
-  "2",  "2",  "dead"
+        "1",  "1", "alive",
+        "1",  "1",  "dead",
+        "1",  "2",  "dead",
+        "1",  "2",  "dead",
+        "2",  "1", "alive",
+        "2",  "1", "alive",
+        "2",  "2", "alive",
+        "2",  "2",  "dead"
 )
 
 collapse_censusid(x)
