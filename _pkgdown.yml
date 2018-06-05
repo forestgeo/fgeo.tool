@@ -66,9 +66,13 @@ reference:
     contents:
     - xl_sheets_to_output
     
-  - title: Sanitize multiple data structures
+  - title: Read ForesGEO data
     contents:
     - starts_with("type_")
+    - starts_with("read_")
+    
+  - title: Sanitize multiple data structures
+    contents:
     - replace_null
     
   - title: Construct ForestGEO datasets (objects of class fgeo_*).

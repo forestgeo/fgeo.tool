@@ -57,13 +57,14 @@ collapse_censusid()
 
 
 
-# Operate on column types
 # read fgeo data
+# Operate on column types
 # TODO: Add more compleate read_*() functions.
 # TODO: Maybe rename to col_types_*() or types_*()
 type_fgeo
 type_taxa
 type_vft
+read_fgeo
 
 
 

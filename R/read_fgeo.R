@@ -1,4 +1,39 @@
-# types -------------------------------------------------------------------
+#' Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.
+#' 
+#' These functions pre-fill arguments of [readr::read_delim()] to avoid the most
+#' common causes of problems when reading ForestGEO data as delivered by the
+#' database. In most cases you should only need to provide the argument `file`.
+#'
+#' @inheritParams readr::read_delim
+#' @param ... Other arguments passed to [readr::read_delim()].
+#' @seealso [readr::read_delim()], [type_vft()],  [type_taxa()].
+#' 
+#' @family functions to read text files delivered by ForestgGEO's database.
+#'
+#' @return A dataframe (or tibble).
+#'
+#' @examples
+#' 
+#' @name read_fgeo
+NULL
+
+read_fgeo <- function(col_types) {
+  function(file, delim = "\t", na = c("", "NA", "NULL"), ...) {
+    readr::read_delim(
+      file = file, delim = delim, col_types = col_types, na = na, ...
+    )
+  }
+}
+
+#' @rdname read_fgeo
+#' @export
+read_vft <- read_fgeo(col_types = type_vft())
+
+#' @rdname read_fgeo
+#' @export
+read_taxa <- read_fgeo(col_types = type_taxa())
+
+
 
 #' Help to read ForestGEO data safely, with consistent column type.
 #'
@@ -33,9 +68,10 @@
 #' * ? = guess,
 #' * or _/- to skip the column.'.
 #'
-#' @seealso [readr::read_delim()], [readr::read_csv()].
+#' @seealso [readr::read_delim()], [readr::read_csv()], [read_fgeo()].
 #' 
 #' @family functions to operate on column types.
+#' @family functions to read text files delivered by ForestgGEO's database.
 #'
 #' @return A list.
 #' @export
