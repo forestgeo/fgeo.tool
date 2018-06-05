@@ -23,37 +23,24 @@ add_qxqy
 add_subquad
 add_status_tree
 
+# Mutate/transform dataframe
+recode_subquad
+
+
+
 # Construct fgeo datasets
 fgeo_elevation
 fgeo_habitat
 
 
 
-# Mutate/transform dataframe
-recode_subquad
-
-
-
-
-
 # Operate on rows (filter/keep/discard/subset rows)
-row_collapse_censusid  ## Can move to base
-
-row_discard_twice_dead  ## Depends on dplyr
-
-# Maybe remove or not export
-
-
-
+collapse_censusid  ## Can move to base
+drop_twice_dead  ## Depends on dplyr
 # Filter dataframes
 filter_status
 drop_dead_stem
 drop_dead_tree
-
-## -- rename keep to pick: use pick and drop instead of keep and drop.
-
-# Operate on rows, Miscellaneas
-collapse_censusid()
 
 
 
