@@ -32,9 +32,13 @@ type_ensure(dfm, c("w", "x", "y"), "numeric")
 type_ensure(dfm, c("w", "x", "y", "z"), "character")
 }
 \seealso{
+\code{\link[purrr:modify_at]{purrr::modify_at()}}.
+
 Other functions for developers.: \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
+
+Other functions to operate on column types.: \code{\link{type_fgeo}}
 }

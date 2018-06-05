@@ -34,6 +34,8 @@
 #' * or _/- to skip the column.'.
 #'
 #' @seealso [readr::read_delim()], [readr::read_csv()].
+#' 
+#' @family functions to operate on column types.
 #'
 #' @return A list.
 #' @export

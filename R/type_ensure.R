@@ -5,6 +5,8 @@
 #' @param type A string giving the type to ensure in columns `ensure_nms`
 #' 
 #' @family functions for developers.
+#' @family functions to operate on column types.
+#' @seealso [purrr::modify_at()].
 #'
 #' @return A modified version of `df`, with columns (specified in `ensure_nms`)
 #'   of type `type`.

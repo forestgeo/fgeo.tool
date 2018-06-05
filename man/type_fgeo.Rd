@@ -64,4 +64,6 @@ readr::read_delim("ViewTaxonomy.csv", col_types = type_taxa())
 }
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[readr:read_csv]{readr::read_csv()}}.
+
+Other functions to operate on column types.: \code{\link{type_ensure}}
 }

@@ -1,10 +1,7 @@
 # xxx cont here
-# FIXME: Fix _pkgdown: fgeo_* appears in multiple places.
-to_recensus
-
-
-
-
+# FIXME: Fix _pkgdown: 
+#   * Review funs clasification.
+#   * fgeo_* appears in multiple places.
 
 
 
@@ -60,20 +57,13 @@ collapse_censusid()
 
 
 
+# Operate on column types
 # read fgeo data
 # TODO: Add more compleate read_*() functions.
 # TODO: Maybe rename to col_types_*() or types_*()
 type_fgeo
 type_taxa
 type_vft
-
-
-
-
-
-
-
-
 
 
 
@@ -110,17 +100,9 @@ lookup
 replace_null
 
 
-
-
-
-
-
-
-# maybe remove and reexport anti_join()?
+# Filter dataframes
 pick_recensus  ## renamed from to_recensus
 pick_top
-
-
 
 
 
