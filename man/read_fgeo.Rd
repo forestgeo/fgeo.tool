@@ -39,6 +39,8 @@ common causes of problems when reading ForestGEO data as delivered by the
 database. In most cases you should only need to provide the argument \code{file}.
 }
 \examples{
+read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
+read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
 
 }
 \seealso{

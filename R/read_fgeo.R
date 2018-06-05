@@ -6,13 +6,15 @@
 #'
 #' @inheritParams readr::read_delim
 #' @param ... Other arguments passed to [readr::read_delim()].
-#' @seealso [readr::read_delim()], [type_vft()],  [type_taxa()].
+#' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #' 
 #' @family functions to read text files delivered by ForestgGEO's database.
 #'
 #' @return A dataframe (or tibble).
 #'
 #' @examples
+#' read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
+#' read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
 #' 
 #' @name read_fgeo
 NULL
