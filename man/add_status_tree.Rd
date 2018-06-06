@@ -31,7 +31,7 @@ x <- tibble::tribble(
           2,    2, "alive",
           2,    2,  "dead"
 )
-add_status_tree(x)
+add_status_tree(x, "alive", "dead")
 }
 \seealso{
 Other functions to add columns to dataframes.: \code{\link{add_var}}

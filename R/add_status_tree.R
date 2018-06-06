@@ -25,7 +25,7 @@
 #'           2,    2, "alive",
 #'           2,    2,  "dead"
 #' )
-#' add_status_tree(x)
+#' add_status_tree(x, "alive", "dead")
 add_status_tree <- function(x, status_a = "A", status_d = "D") {
 
   old <- names(x)
@@ -51,7 +51,7 @@ check_add_status_tree <- function(x, status_d, status_a) {
   if (is_vft) {
     fgeo.base::check_unique(
       x, "plotid",
-      "stop", msg = "  * Filter your data to keep a single plot and try again"
+      "stop", msg = "\n  * Filter your data to keep a single plot and try again"
     )
   }
 }
