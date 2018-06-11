@@ -179,12 +179,12 @@ check_filter_status <- function(x, wood, .status, exclude) {
   if (wood == "stem") {
     check_valid_status(x, .status, "status")
     na_n <- sum(is.na(x$status))
-    if (na_n > 0) {warning("Ignoring ", na_n, " NA(s)")}
+    if (na_n > 0) {warning("Ignoring ", na_n, " NA(s)", call. = FALSE)}
   }
   if (wood == "tree") {
     check_valid_status(x, .status, "status_tree")
     na_n <- sum(is.na(x$status_tree))
-    if (na_n > 0) {warning("Ignoring ", na_n, " NA(s)")}
+    if (na_n > 0) {warning("Ignoring ", na_n, " NA(s)", call. = FALSE)}
   }
   stopifnot(is.logical(exclude))
 }
@@ -197,7 +197,8 @@ check_valid_status <- function(x, .status, status_var) {
   if (length(invalid_status) != 0) {
     warning(
       "No observation has .status = ", commas(invalid_status), "\n",
-      "  * Detected values: ", commas(valid_status)
+      "  * Detected values: ", commas(valid_status),
+      call. = FALSE
     )
   }
 }

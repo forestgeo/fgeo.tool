@@ -65,7 +65,10 @@ check_drop_twice_dead <- function(vft) {
     vft, c("censusid", "tag", "status", "status_tree")
   )
   if (!length(unique(vft$censusid)) >= 2) {
-    warning("The data set has less than two censuses; Keeping all trees")
-    return(vft)
+    warning(
+      "The data set has less than two censuses; Keeping all trees",
+      call. = FALSE
+    )
   }
+  invisible(vft)
 }
