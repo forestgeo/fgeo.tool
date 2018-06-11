@@ -197,7 +197,7 @@ check_valid_status <- function(x, .status, status_var) {
   if (length(invalid_status) != 0) {
     warning(
       "No observation has .status = ", commas(invalid_status), "\n",
-      "  * Valid values: ", commas(valid_status)
+      "  * Detected values: ", commas(valid_status)
     )
   }
 }
