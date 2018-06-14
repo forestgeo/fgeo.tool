@@ -1,5 +1,10 @@
 # fgeo.tool 0.0.0.9003
 
+## `xlff_to_csv()`, `xlff_to_xl()` and `xlff_to_dfs()`
+
+* `xlff_to_*()` replace `xl_sheets_to_*()` to make it clear that input is not a generic **xl** file but a specific **xl** file from the **f**ast **f**ield forms software. Also, the ending `_dfs()` replaces `_df()` to more clearly indicate that the output of `xlff_to_dfs()` is not a simple dataframe but a list of dataframes.
+
+* These functions now accept input with missing key-sheets with a warning (#33; David Orwin; @jess-sue).
 
 # fgeo.tool 0.0.0.9002
 
