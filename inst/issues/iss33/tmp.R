@@ -1,14 +1,7 @@
-# TODO: 1. DONE. Create vectors containig column names for each key sheet.
-# TODO: 2. DONE Create function that creates a 0-row dataframe given its column name
-# TODO: 3. DONE Add missing sheets to imported sheets' list.
+# Ask Jess
 
-# input_dir <- here::here("inst/issues/iss33/1")
-# output_dir <- tempdir()
-input_dir <- here::here("inst/issues/iss33/2")
-output_dir <- here::here("inst/issues/iss33/out")
-xl_sheets_to_csv(input_dir, output_dir)
+# The sheet recruits from a first censu has different columns than the sheet recruits from a recensus. Is this expected? Will this cause any problem when the data from a first censes is to be integrated with future recensuses?
 
+# Now the code drops empty sheets (other than the key sheets). This decision is what makes key sheets to be so. But in the light of issue 33 it may be a good time to reflect on this decision. The most conservative alternative is to drop nothing that comes in the input (and from #33 on, to add key sheets if they are missing), even if that is an empty sheet.
 
-# Ask Jess ----------------------------------------------------------------
-
-# Sheets with the same names can have different column names. Is this ok
+# Should we add a submission_id to the (single) row that flags a missing key-sheet?

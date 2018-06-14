@@ -168,14 +168,12 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
 test_that("allows first_census", {
   input_dir <- dirname(example_path("first_census/census.xlsx"))
   output_dir <- tempdir()
-  xl_sheets_to_csv(input_dir, output_dir, first_census = TRUE)
-  
-  out <- readr::read_csv(fs::path(output_dir, "census.csv"))
+  out <- xl_sheets_to_df(input_dir, first_census = TRUE)[[1]]
+
   nms <- c(
     "submission_id", "quadrat", "tag", "stem_tag", "species", 
     "species_code", "dbh", "status", "codes", "notes", "pom", "sheet", 
     "section_id", "unique_stem", "date",
-    # TODO: Ask Jess if this variables should be kept or not (added in #33).
     "start_form_time_stamp", "end_form_time_stamp"
   )
   expect_equal(sort(names(out)), sort(nms))

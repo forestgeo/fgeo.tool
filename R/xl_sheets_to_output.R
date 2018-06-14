@@ -122,7 +122,6 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
 
   # Piping functions to avoid useless intermediate variables
   clean_dfm_list <- dfm_list %>% 
-    # TODO: Ask Jess if emptly sheets (other than key sheets) should be dropped
     purrr::keep(~!purrr::is_empty(.)) %>%
     lapply(fgeo.tool::nms_tidy) %>%
     drop_fake_stems()
@@ -216,22 +215,10 @@ join_and_date <- function(.x) {
   is_not_root <- !grepl("root", names(.x))
   not_root_dfm <- purrr::keep(.x, is_not_root)
   
-  # Nothing to join date with
-  # TODO: Review this with first_census = TRUE, is it still length cero?
-  first_census <- length(not_root_dfm) == 0
-  if (first_census) {
-    return(date)
-  }
-  
   # Collapse into a single dataframe, add variable, and join with date
   not_root_dfm %>% 
     fgeo.tool::ls_join_df() %>% 
     dplyr::mutate(unique_stem = paste0(.data$tag, "_", .data$stem_tag)) %>% 
-    # TODO: Ask Jess if missing key sheets should get a submission_id
-    # TODO: Check if sheets with empty submission_id are dropped (e.g. empty 
-    # recruits), the columns that come from such sheets remain in the output.
-    # Specifically, if recriuts is missing in input, does the output get the 
-    # columns that come from it? Is this desirable or not? (TODO: Ask Jess).
     dplyr::left_join(date, by = "submission_id")
 }
 
