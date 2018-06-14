@@ -1,9 +1,9 @@
 #' Combine spreadsheets from excel workbooks and output common data structures.
 #' 
 #' These functions combine spreadsheets from excel workbooks into common data
-#' structures. `xl_sheets_to_csv()` and `xl_sheets_to_xl()` write a .csv or
+#' structures. `xlff_to_csv()` and `xlff_to_xl()` write a .csv or
 #' excel (.xlsx) file per workbook -- combining all spreadsheets.
-#' `xl_sheets_to_df` outputs a list where each dataframes combines all 
+#' `xlff_to_dfs` outputs a list of dataframes where each dataframes combines all
 #' spreadsheeets of a workbook.
 #'
 #' This is a rigid function with a very specific goal: To process data from a
@@ -11,8 +11,11 @@
 #' function does:
 #' * Reads each spreadsheet from each workbook and map it to a dataframe.
 #' * Lowercases and links the names of each dataframe.
-#' * Keeps only these dataframes: (1) original_stems, (2) new_secondary_stems,
-#' and (3) "recruits".
+#' * Adds any missing __key-sheets__:
+#'     * For first census: (1) "root", (2) "multi_stems", (3) "secondary_stems",
+#'     and (4) "single_stems".
+#'     * For recensus: (1) "root", (2) "original_stems", (3)
+#'     "new_secondary_stems", and (4) "recruits"
 #' * Dates the data by `submission_id` (`date` comes from the spreadsheet
 #' `root`).
 #' * Lowercases and links the names of each dataframe-variable.
@@ -22,16 +25,12 @@
 #' @param input_dir String giving the directory containing the excel workbooks
 #'   to read from.
 #' @param output_dir String giving the directory where to write .csv files to.
-#' @param first_census This argument tells these functions what sheets to expect
-#'   in the input. 
-#'   * Use `TRUE` if this is your first census. The expected input must have
-#'     sheets (1) "root", (2) "multi_stems", (3) "secondary_stems", and
-#'     (4) "single_stems".
-#'   * Use `FALSE` (default) if this is not your first census. The expected 
-#'     input must have sheets (1) "root", (2) "original_stems", (3) 
-#'     "new_secondary_stems", and (4) "recruits".
-#'
-#' @return Writes one .csv file for each workbook.
+#' @param first_census Use `TRUE` if this is your first census. Use `FALSE`
+#'   (default) if this is not your first census but a recensus.
+#' 
+#' @return `xlff_to_csv()` and `xlff_to_xl()` write a .csv or excel (.xlsx) file
+#'   per workbook -- combining all spreadsheets. `xlff_to_dfs` outputs a list
+#'   where each dataframes combines all spreadsheeets of a workbook.
 #' 
 #' @author Mauro Lepore and Jessica Shue.
 #' 
@@ -56,7 +55,7 @@
 #' output_dir <- tempdir()
 #' 
 #' # Output a csv file
-#' xl_sheets_to_csv(input_dir, output_dir)
+#' xlff_to_csv(input_dir, output_dir)
 #' 
 #' # Confirm
 #' path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
@@ -67,21 +66,21 @@
 #' input_dir <- dirname(example_path("first_census/census.xlsx"))
 #' # As a reminder you'll get a warning of missing sheets
 #' # Output list of dataframes (one per input workbook -- here only one)
-#' xl_sheets_to_df(input_dir, first_census = TRUE)
+#' xlff_to_dfs(input_dir, first_census = TRUE)
 #' 
 #' # Output excel
-#' xl_sheets_to_xl(input_dir, output_dir, first_census = TRUE)
+#' xlff_to_xl(input_dir, output_dir, first_census = TRUE)
 #' # Read back
 #' filename <- path(output_dir, "census.xlsx")
 #' out <- read_excel(filename)
 #' str(out, give.attr = FALSE)
-#' @name xl_sheets_to_output
+#' @name xlff_to_output
 NULL
 
-xl_sheets_to_file <- function(ext, fun_write) {
+xlff_to_file <- function(ext, fun_write) {
     function(input_dir, output_dir = "./", first_census = FALSE) {
     check_output_dir(output_dir = output_dir, print_as = "`output_dir`")
-    dfs <- xl_sheets_to_df(input_dir = input_dir, first_census = first_census)
+    dfs <- xlff_to_dfs(input_dir = input_dir, first_census = first_census)
     files <- fs::path_ext_remove(names(dfs))
     paths <- fs::path(output_dir, fs::path_ext_set(files, ext))
     purrr::walk2(dfs, paths, fun_write)
@@ -89,27 +88,27 @@ xl_sheets_to_file <- function(ext, fun_write) {
 }
 
 #' @export
-#' @rdname xl_sheets_to_output
-xl_sheets_to_csv <- xl_sheets_to_file("csv", readr::write_csv)
+#' @rdname xlff_to_output
+xlff_to_csv <- xlff_to_file("csv", readr::write_csv)
 
 #' @export
-#' @rdname xl_sheets_to_output
-xl_sheets_to_xl <- xl_sheets_to_file("xlsx", writexl::write_xlsx)
+#' @rdname xlff_to_output
+xlff_to_xl <- xlff_to_file("xlsx", writexl::write_xlsx)
 
 #' @export
-#' @rdname xl_sheets_to_output
-xl_sheets_to_df <- function(input_dir, first_census = FALSE) {
+#' @rdname xlff_to_output
+xlff_to_dfs <- function(input_dir, first_census = FALSE) {
   check_input_dir(input_dir = input_dir, print_as = "`input_dir`")
   out <- purrr::map(
     xl_workbooks_to_chr(input_dir), 
-    xl_sheets_to_df_, first_census = first_census
+    xlff_to_dfs_, first_census = first_census
   )
   purrr::set_names(out, basename(names(out)))
 }
 
-#' Do xl_sheets_to_df() for each excel file.
+#' Do xlff_to_dfs() for each excel file.
 #' @noRd
-xl_sheets_to_df_ <- function(file, first_census = FALSE) {
+xlff_to_dfs_ <- function(file, first_census = FALSE) {
   dfm_list <- fgeo.tool::nms_tidy(fgeo.tool::ls_list_spreadsheets(file))
   
   if (first_census) {

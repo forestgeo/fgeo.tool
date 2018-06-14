@@ -67,10 +67,10 @@ files_to_df
 ls_csv_df
 ls_join_df
 ls_list_spreadsheets
-xl_sheets_to_csv
-xl_sheets_to_df
-xl_sheets_to_output
-xl_sheets_to_xl
+xlff_to_csv
+xlff_to_df
+xlff_to_output
+xlff_to_xl
 xl_to_df
 xl_to_df_lst
 

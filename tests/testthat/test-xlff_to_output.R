@@ -15,10 +15,10 @@ sheets_directory <- path_to_extdata
 
 
 
-context("xl_sheets_to_df")
+context("xlff_to_dfs")
 
 test_that("outputs expected dataframe", {
-  out <- xl_sheets_to_df(sheets_directory)
+  out <- xlff_to_dfs(sheets_directory)
   expect_is(out, "list")
   
   nms <- c(
@@ -33,7 +33,7 @@ test_that("outputs expected dataframe", {
 
 
 
-context("xl_sheets_to_xl")
+context("xlff_to_xl")
 
 test_that("works as expected", {
   # Create paths
@@ -44,7 +44,7 @@ test_that("works as expected", {
   input <- path_to_extdata
   output <- tempdir()
   
-  expect_silent(xl_sheets_to_xl(input, output))
+  expect_silent(xlff_to_xl(input, output))
   
   # Check output
   files <- dir(output)
@@ -56,11 +56,11 @@ test_that("works as expected", {
 
 
 
-context("xl_sheets_to_csv")
+context("xlff_to_csv")
 
 test_that("errs if input_dir does not exist", {
   expect_error(
-    xl_sheets_to_csv("invalid_dir"),
+    xlff_to_csv("invalid_dir"),
     "must match a valid directory"
   )
 })
@@ -72,14 +72,14 @@ test_that("errs without excel file", {
   file_delete(dir_ls(tempdir()))
   
   msg <- "must contain at least one excel file"
-  expect_error(xl_sheets_to_csv(tempdir()), msg)
+  expect_error(xlff_to_csv(tempdir()), msg)
 })
 
 
 test_that("errs with informative message with input of wrong type", {
   not_a_string <- 1
-  expect_error(xl_sheets_to_csv(not_a_string))
-  expect_error(xl_sheets_to_csv("./sheets", not_a_string))
+  expect_error(xlff_to_csv(not_a_string))
+  expect_error(xlff_to_csv("./sheets", not_a_string))
 })
 
 test_that("works as expected", {
@@ -93,7 +93,7 @@ test_that("works as expected", {
   
   # Do work
   expect_silent(
-    xl_sheets_to_csv(input, output)
+    xlff_to_csv(input, output)
   )
   
   # Check output
@@ -114,8 +114,8 @@ test_that("warns if it detects no new stem and fills cero-row dataframes", {
   input <- path_to_extdata
   output <- tempdir()
   
-  expect_warning(xl_sheets_to_csv(input, output), "new_secondary_stems")
-  expect_warning(xl_sheets_to_csv(input, output), "Filling every cero-row")
+  expect_warning(xlff_to_csv(input, output), "new_secondary_stems")
+  expect_warning(xlff_to_csv(input, output), "Filling every cero-row")
 })
 
 test_that("warns if it detects no recruits (#11)", {
@@ -126,7 +126,7 @@ test_that("warns if it detects no recruits (#11)", {
   input <- path_to_extdata
   output <- tempdir()
   
-  expect_warning(xl_sheets_to_csv(input, output), "recruits")
+  expect_warning(xlff_to_csv(input, output), "recruits")
 })
 
 test_that("outputs column date (#12)", {
@@ -137,7 +137,7 @@ test_that("outputs column date (#12)", {
   input <- path_to_extdata
   output <- tempdir()
   
-  xl_sheets_to_csv(input, output)
+  xlff_to_csv(input, output)
   
   exported <- read_csv(fs::path(output, "new_stem_1.csv"))
   expect_true(any(grepl("date", names(exported))))
@@ -152,7 +152,7 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
   input <- path_to_extdata
   output <- tempdir()
   
-  xl_sheets_to_csv(input, output)
+  xlff_to_csv(input, output)
   
   exported <- read_csv(fs::path(output, "new_stem_1.csv"))
   
@@ -168,7 +168,7 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
 test_that("allows first_census", {
   input_dir <- dirname(example_path("first_census/census.xlsx"))
   output_dir <- tempdir()
-  out <- xl_sheets_to_df(input_dir, first_census = TRUE)[[1]]
+  out <- xlff_to_dfs(input_dir, first_census = TRUE)[[1]]
 
   nms <- c(
     "submission_id", "quadrat", "tag", "stem_tag", "species", 
@@ -182,7 +182,7 @@ test_that("allows first_census", {
 test_that("passes with input missing key sheets (#33)", {
   input_dir <- dirname(example_path("missing_key/recensus.xlsx"))
   expect_warning(
-    xl_sheets_to_df(input_dir),
+    xlff_to_dfs(input_dir),
     "Adding missing sheets: original_stems, new_secondary_stems, recruits, root"
   )
 })
