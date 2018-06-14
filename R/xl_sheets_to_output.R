@@ -113,11 +113,11 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
   dfm_list <- fgeo.tool::nms_tidy(fgeo.tool::ls_list_spreadsheets(file))
   
   if (first_census) {
-    key <- c("root", "multi_stems", "secondary_stems", "single_stems")
-    dfm_list <- ensure_key_sheets(dfm_list, key = key)
+    key <- key_first_census()
+    dfm_list <- ensure_key_sheets(dfm_list, key)
   } else {
-    key <- c("original_stems", "new_secondary_stems", "recruits", "root")
-    dfm_list <- ensure_key_sheets(dfm_list, key = key)
+    key <- key_recensus()
+    dfm_list <- ensure_key_sheets(dfm_list, key)
   }
 
   # Piping functions to avoid useless intermediate variables
@@ -145,27 +145,23 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
 #' Check that key spreadsheets exist.
 #' @noRd
 ensure_key_sheets <- function(x, key) {
-  missing_key_sheet <- !all(key %in% names(x))
+  missing_key_sheet <- !all(names(key) %in% names(x))
   if (missing_key_sheet) {
-    
-    # FIXME: Create function
-    # x <- add_missing_sheet(x, key)
+    missing_sheets <- commas(setdiff(names(key), names(x)))
     msg <- paste0(
-      "FIXME: Adding a cero-row dataframe for each missing sheet: ", 
-      commas(setdiff(key, names(x))), "."
+      "Adding missing sheets: ", missing_sheets, "."
     )
     warn(msg)
-    
-    # TODO: Remove.
-    # msg <- paste0(
-    #   "Data should contain these sheets:\n", commas(key), "\n",
-    #   "* Missing sheets: ", commas(setdiff(key, names(x)))
-    # )
-    # abort(msg)
+    complement <- missing_sheets %>%
+      purrr::map(~key[[.x]]) %>%
+      purrr::set_names(missing_sheets) %>%
+      purrr::map(str_df)
+    x <- append(x, complement)
   }
-  
-  x[intersect(key, names(x))]
+  x
 }
+
+
 
 #' Remove rows equal to cero from the spreadsheet sheet new_secondary_stem.
 #' @noRd

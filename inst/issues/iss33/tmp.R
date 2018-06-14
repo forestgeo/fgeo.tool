@@ -1,17 +1,21 @@
 # TODO: 1. DONE. Create vectors containig column names for each key sheet.
 # TODO: 2. DONE Create function that creates a 0-row dataframe given its column name
+# TODO: 3. DONE Add missing sheets to imported sheets' list.
 
-.key_rcns
+library(fs)
+library(readr)
+library(readxl)
 
-.rcns_new_secondary_stems, .rcns_original_stems, .rcns_recruits, .rcns_root
+# NOT A FIRST CENSUS
+# Path to the folder I want to read excel files from
+input_dir <- here::here("inst/issues/iss33/1")
+input_dir
 
+# Path to the folder I want to write .csv files to
+output_dir <- tempdir()
 
-key_recensus_nms <- list(
-  .rcns_new_secondary_stems, .rcns_original_stems, .rcns_recruits, .rcns_root
-) 
-setNames(key_recensus_nms, sort(.key_rcns))
-# TODO: Map function created in 2. over all names of all key sheets.
-
+# Output a csv file
+xl_sheets_to_csv(input_dir, output_dir)
 
 
 # Ask Jess ----------------------------------------------------------------
