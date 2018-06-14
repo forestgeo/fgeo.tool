@@ -6,7 +6,7 @@ test_that("reads data correctly", {
   expect_equal(names(vft), names(type_vft()))
 
   url_taxa <- "http://bit.ly/fgeo-data-luquillo-taxa"
-  taxa <- read_vft(url_taxa)
+  expect_warning(taxa <- read_vft(url_taxa))
   expect_equal(names(taxa), names(type_taxa()))
   
   taxa_readr <- readr::read_delim(url_taxa, "\t")

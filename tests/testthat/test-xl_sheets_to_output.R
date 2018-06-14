@@ -18,17 +18,17 @@ sheets_directory <- path_to_extdata
 context("xl_sheets_to_df")
 
 test_that("outputs expected dataframe", {
-  # Do the work
   out <- xl_sheets_to_df(sheets_directory)
   expect_is(out, "list")
   
   nms <- c(
-  "submission_id", "section_id", "quadrat", "tag", "stem_tag", "species",
-  "lx", "ly", "dbh", "status", "codes", "pom", "dbh_2018", "status_2018",
-  "codes_2018", "notes", "data_check", "dbh_check", "sheet", "px", "py",
-  "new_stem", "unique_stem", "date"
+    "submission_id", "section_id", "quadrat", "tag", "stem_tag", "species",
+    "lx", "ly", "dbh", "status", "codes", "pom", "dbh_2018", "status_2018",
+    "codes_2018", "notes", "data_check", "dbh_check", "sheet", "px", "py",
+    "new_stem", "unique_stem", "date",
+    "start_form_time_stamp", "end_form_time_stamp"
   )
-  expect_named(out[[1]], nms)
+  expect_named(out[[1]], nms, ignore.order = TRUE)
 })
 
 
@@ -168,11 +168,23 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
 test_that("allows first_census", {
   input_dir <- dirname(example_path("first_census/census.xlsx"))
   output_dir <- tempdir()
-  expect_warning(xl_sheets_to_csv(input_dir, output_dir, first_census = TRUE))
+  xl_sheets_to_csv(input_dir, output_dir, first_census = TRUE)
   
   out <- readr::read_csv(fs::path(output_dir, "census.csv"))
-  nms <- c("submission_id", "quadrat", "tag", "stem_tag", "species", 
+  nms <- c(
+    "submission_id", "quadrat", "tag", "stem_tag", "species", 
     "species_code", "dbh", "status", "codes", "notes", "pom", "sheet", 
-    "section_id", "unique_stem", "date")
-  expect_equal(names(out), nms)
+    "section_id", "unique_stem", "date",
+    # TODO: Ask Jess if this variables should be kept or not (added in #33).
+    "start_form_time_stamp", "end_form_time_stamp"
+  )
+  expect_equal(sort(names(out)), sort(nms))
+})
+
+test_that("passes with input missing key sheets (#33)", {
+  input_dir <- dirname(example_path("missing_key/recensus.xlsx"))
+  expect_warning(
+    xl_sheets_to_df(input_dir),
+    "Adding missing sheets: original_stems, new_secondary_stems, recruits, root"
+  )
 })

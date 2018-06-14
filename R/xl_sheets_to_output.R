@@ -122,11 +122,16 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
 
   # Piping functions to avoid useless intermediate variables
   clean_dfm_list <- dfm_list %>% 
+    # TODO: Ask Jess if emptly sheets (other than key sheets) should be dropped
     purrr::keep(~!purrr::is_empty(.)) %>%
     lapply(fgeo.tool::nms_tidy) %>%
-    drop_fake_stems() %>% 
-    warn_if_empty("new_secondary_stems") %>% 
-    warn_if_empty("recruits") %>% 
+    drop_fake_stems()
+  
+  # After dropping fake stems new_secondary_stems might be empty (0-row)
+  purrr::walk(names(clean_dfm_list), ~warn_if_empty(clean_dfm_list, .x))
+  
+  # Sanitize
+  sane <- clean_dfm_list %>% 
     # Avoid error in naming cero-row dataframes
     warn_if_filling_cero_row_dataframe() %>% 
     purrr::modify_if(~nrow(.x) == 0, ~purrr::map_df(.x, ~NA)) %>% 
@@ -134,7 +139,7 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
     # Avoid merge errors
     coerce_as_character()
   
-  with_date <- join_and_date(clean_dfm_list)
+  with_date <- join_and_date(sane)
   # In columns matching "codes", replace commas by semicolon
   .df <- purrr::modify_if(
     with_date, grepl("codes", names(with_date)), ~gsub(",", ";", .x)
@@ -147,16 +152,14 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
 ensure_key_sheets <- function(x, key) {
   missing_key_sheet <- !all(names(key) %in% names(x))
   if (missing_key_sheet) {
-    missing_sheets <- commas(setdiff(names(key), names(x)))
+    missing_sheets <- setdiff(names(key), names(x))
     msg <- paste0(
-      "Adding missing sheets: ", missing_sheets, "."
+      "Adding missing sheets: ", commas(missing_sheets), "."
     )
     warn(msg)
-    complement <- missing_sheets %>%
-      purrr::map(~key[[.x]]) %>%
-      purrr::set_names(missing_sheets) %>%
-      purrr::map(str_df)
-    x <- append(x, complement)
+    
+    missing_appendix <- purrr::map(key[missing_sheets], str_df)
+    x <- append(x, missing_appendix)
   }
   x
 }
@@ -214,6 +217,7 @@ join_and_date <- function(.x) {
   not_root_dfm <- purrr::keep(.x, is_not_root)
   
   # Nothing to join date with
+  # TODO: Review this with first_census = TRUE, is it still length cero?
   first_census <- length(not_root_dfm) == 0
   if (first_census) {
     return(date)
@@ -223,6 +227,11 @@ join_and_date <- function(.x) {
   not_root_dfm %>% 
     fgeo.tool::ls_join_df() %>% 
     dplyr::mutate(unique_stem = paste0(.data$tag, "_", .data$stem_tag)) %>% 
+    # TODO: Ask Jess if missing key sheets should get a submission_id
+    # TODO: Check if sheets with empty submission_id are dropped (e.g. empty 
+    # recruits), the columns that come from such sheets remain in the output.
+    # Specifically, if recriuts is missing in input, does the output get the 
+    # columns that come from it? Is this desirable or not? (TODO: Ask Jess).
     dplyr::left_join(date, by = "submission_id")
 }
 
