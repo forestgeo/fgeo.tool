@@ -5,7 +5,7 @@
 \alias{xlff_to_csv}
 \alias{xlff_to_xl}
 \alias{xlff_to_dfs}
-\title{Combine spreadsheets from excel workbooks and output common data structures.}
+\title{Convert excel-FastField to .csv, .xlsx and a list of dataframes.}
 \usage{
 xlff_to_csv(input_dir, output_dir = "./", first_census = FALSE)
 

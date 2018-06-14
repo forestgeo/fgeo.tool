@@ -1,4 +1,4 @@
-#' Combine spreadsheets from excel workbooks and output common data structures.
+#' Convert excel-FastField to .csv, .xlsx and a list of dataframes.
 #' 
 #' These functions combine spreadsheets from excel workbooks into common data
 #' structures. `xlff_to_csv()` and `xlff_to_xl()` write a .csv or
