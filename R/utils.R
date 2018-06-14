@@ -12,3 +12,4 @@ each_list_item_is_df <- function(x) {
   }
   all(vapply(x, has_class_df, logical(1)))
 }
+

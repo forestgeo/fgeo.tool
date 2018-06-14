@@ -36,7 +36,8 @@
 #' @author Mauro Lepore and Jessica Shue.
 #' 
 #' @section Acknowledgment:
-#' Sabrina Russo helped to make these functions useful with first censuses.
+#' * Sabrina Russo helped to make these functions useful with first censuses.
+#' * David Orwig helped to fix a debug.
 #'
 #' @examples
 #' library(fs)
@@ -146,11 +147,21 @@ xl_sheets_to_df_ <- function(file, first_census = FALSE) {
 ensure_key_sheets <- function(x, key) {
   missing_key_sheet <- !all(key %in% names(x))
   if (missing_key_sheet) {
+    
+    # FIXME: Create function
+    # x <- add_missing_sheet(x, key)
     msg <- paste0(
-      "Data should contain these sheets:\n", commas(key), "\n",
-      "* Missing sheets: ", commas(setdiff(key, names(x)))
+      "FIXME: Adding a cero-row dataframe for each missing sheet: ", 
+      commas(setdiff(key, names(x))), "."
     )
-    abort(msg)
+    warn(msg)
+    
+    # TODO: Remove.
+    # msg <- paste0(
+    #   "Data should contain these sheets:\n", commas(key), "\n",
+    #   "* Missing sheets: ", commas(setdiff(key, names(x)))
+    # )
+    # abort(msg)
   }
   
   x[intersect(key, names(x))]

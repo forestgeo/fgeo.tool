@@ -58,7 +58,10 @@ and (3) "recruits".
 }
 \section{Acknowledgment}{
 
-Sabrina Russo helped to make these functions useful with first censuses.
+\itemize{
+\item Sabrina Russo helped to make these functions useful with first censuses.
+\item David Orwig helped to fix a debug.
+}
 }
 
 \examples{
