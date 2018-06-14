@@ -135,8 +135,8 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb3-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co"># Determine the status of each tree based on the status of its stems</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4">df &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(df)</a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; Warning: No observation has .status = D, A</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   * Detected values: alive, dead</span></a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co"># Filter a data set</span></a>
 <a class="sourceLine" id="cb3-9" data-line-number="9"></a>
@@ -200,8 +200,8 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; 3        2     2 alive  A</span></a></code></pre></div>
 <p>You can combine <strong>fgeo.tool</strong> with <strong>dplyr</strong>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">edited &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(<span class="kw"><a href="reference/pick_top.html">pick_top</a></span>(df, CensusID, <span class="dv">-1</span>))</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; Warning: No observation has .status = D, A</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;   * Detected values: alive, dead</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(edited, <span class="op">-</span>Status)</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; # A tibble: 6 x 3</span></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;   CensusID   Tag status_tree</span></a>
@@ -219,8 +219,8 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(status_tree <span class="op">==</span><span class="st"> "alive"</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">rename</a></span>(<span class="dt">status_stem =</span> Status) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">desc</span>(CensusID))</a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt; Warning: No observation has .status = D, A</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;   * Detected values: alive, dead</span></a>
 <a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; # A tibble: 0 x 4</span></a>
 <a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; #   status_tree &lt;chr&gt;</span></a>
@@ -234,8 +234,8 @@ remotes::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb6-19" data-line-number="19">  ), </a>
 <a class="sourceLine" id="cb6-20" data-line-number="20">  <span class="kw">desc</span>(CensusID)</a>
 <a class="sourceLine" id="cb6-21" data-line-number="21">)</a>
-<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A</span></a>
-<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;   * Valid values: alive, dead</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt; Warning: No observation has .status = D, A</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt;   * Detected values: alive, dead</span></a>
 <a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; # A tibble: 0 x 4</span></a>
 <a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; # ... with 4 variables: CensusID &lt;dbl&gt;, Tag &lt;dbl&gt;, status_stem &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb6-26" data-line-number="26"><span class="co">#&gt; #   status_tree &lt;chr&gt;</span></a></code></pre></div>

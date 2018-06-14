@@ -91,7 +91,8 @@ path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
 input_dir <- dirname(example_path("first_census/census.xlsx"))
 # As a reminder you'll get a warning of missing sheets
 # Output list of dataframes (one per input workbook -- here only one)
-xlff_to_dfs(input_dir, first_census = TRUE)
+dfs <- xlff_to_dfs(input_dir, first_census = TRUE)
+str(dfs, give.attr = FALSE)
 
 # Output excel
 xlff_to_xl(input_dir, output_dir, first_census = TRUE)

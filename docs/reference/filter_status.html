@@ -201,7 +201,7 @@ to <code>.status</code>.</p></td>
 #&gt;  665 1066 </div><div class='input'>
 <span class='co'># Warns</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"stem"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='st'>"wrong-status"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = wrong-status</span>
-#&gt; <span class='warning'>  * Valid values: A, G, D</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
+#&gt; <span class='warning'>  * Detected values: A, G, D</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
 #&gt;   A 
 #&gt; 665 </div><div class='input'>
 <span class='co'># CENSUS TABLE: TREE TABLE</span>
@@ -235,7 +235,7 @@ to <code>.status</code>.</p></td>
 #&gt;  3853 </div><div class='input'>
 <span class='co'># Warns because `.status` defaults to "D" -- not to "dead".</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D</span>
-#&gt; <span class='warning'>  * Valid values: alive, dead</span></div><div class='input'><span class='co'># Fix and repeat</span>
+#&gt; <span class='warning'>  * Detected values: alive, dead</span></div><div class='input'><span class='co'># Fix and repeat</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"dead"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; 
 #&gt; alive 

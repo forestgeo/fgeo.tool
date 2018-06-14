@@ -167,18 +167,17 @@ capital "S" in ViewFull tables).</p></td>
           <span class='fl'>2</span>,    <span class='fl'>2</span>, <span class='st'>"alive"</span>,
           <span class='fl'>2</span>,    <span class='fl'>2</span>,  <span class='st'>"dead"</span>
 )
-<span class='fu'>add_status_tree</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D, A</span>
-#&gt; <span class='warning'>  * Valid values: alive, dead</span></div><div class='output co'>#&gt; # A tibble: 8 x 4
+<span class='fu'>add_status_tree</span>(<span class='no'>x</span>, <span class='st'>"alive"</span>, <span class='st'>"dead"</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
 #&gt;   CensusID   Tag Status status_tree
 #&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt; 1        1     1 alive  A          
-#&gt; 2        1     1 dead   A          
-#&gt; 3        1     2 dead   A          
-#&gt; 4        1     2 dead   A          
-#&gt; 5        2     1 alive  A          
-#&gt; 6        2     1 alive  A          
-#&gt; 7        2     2 alive  A          
-#&gt; 8        2     2 dead   A          </div></pre>
+#&gt; 1        1     1 alive  alive      
+#&gt; 2        1     1 dead   alive      
+#&gt; 3        1     2 dead   dead       
+#&gt; 4        1     2 dead   dead       
+#&gt; 5        2     1 alive  alive      
+#&gt; 6        2     1 alive  alive      
+#&gt; 7        2     2 alive  alive      
+#&gt; 8        2     2 dead   alive      </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
