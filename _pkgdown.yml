@@ -57,7 +57,7 @@ reference:
     contents:
     - lookup
     - recode_subquad
-    - starts_with("convert_units")
+    - starts_with("conv_unit")
     
   - title: Manipulate names
     contents:

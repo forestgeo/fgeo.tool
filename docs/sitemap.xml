@@ -16,7 +16,7 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/collapse_censusid.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/convert_units.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/conv_unit_at.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/datasets.html</loc>
@@ -92,6 +92,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/replace_null.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/standardize_at.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/type_ensure.html</loc>

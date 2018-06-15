@@ -2,7 +2,11 @@
 #' @import rlang
 #' @importFrom tibble tibble tribble
 #' @importFrom utils head tail
+#' @importFrom measurements conv_unit
 NULL
+
+#' @export 
+measurements::conv_unit
 
 #' @export
 dplyr::`%>%`
