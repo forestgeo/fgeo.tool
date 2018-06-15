@@ -84,6 +84,8 @@ xl_to_df_lst
 lookup
 # Depends on purrr
 replace_null
+convert_units
+convert_units_at
 
 
 # Filter dataframes

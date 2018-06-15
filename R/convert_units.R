@@ -5,9 +5,8 @@
 #'
 #' @param x A vector or dataframe.
 #' @param from,to String of the units to convert from/to as in [units::ud_units].
-#' @param .at A character vector of names or a numeric vector of positions. Only
-#'   those elements corresponding to .at will be modified.
-#'
+#' @inheritParams purrr::map_at
+#' 
 #' @seealso [units::valid_udunits()], [purrr::map_at()].
 #'
 #' @return An object with the same structure as `x` (vector or dataframe).
