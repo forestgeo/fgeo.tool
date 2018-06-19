@@ -14,7 +14,6 @@ status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.
 The goal of **fgeo.tool** is to provide functions for general purposes.
 Many of its functions are used in multiple other **fgeo** packages so
 **fgeo.tool** acts as a central repository of code. In particular, the
-funtions hosted here depend on a relatively large number of external
 packages. For general porpose functions with no expternal dependency see
 [**fgeo.base**](https://forestgeo.github.io/fgeo.base/).
 
@@ -62,8 +61,8 @@ Manipulate data.
 
 # Determine the status of each tree based on the status of its stems
 df <- add_status_tree(df)
-#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
-#>   * Valid values: alive, dead
+#> Warning: No observation has .status = D, A
+#>   * Detected values: alive, dead
 
 # Filter a data set
 
@@ -135,8 +134,8 @@ You can combine **fgeo.tool** with **dplyr**.
 
 ``` r
 edited <- add_status_tree(pick_top(df, CensusID, -1))
-#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
-#>   * Valid values: alive, dead
+#> Warning: No observation has .status = D, A
+#>   * Detected values: alive, dead
 dplyr::select(edited, -Status)
 #> # A tibble: 6 x 3
 #>   CensusID   Tag status_tree
@@ -158,8 +157,8 @@ df %>%
   dplyr::filter(status_tree == "alive") %>%
   dplyr::rename(status_stem = Status) %>%
   dplyr::arrange(desc(CensusID))
-#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
-#>   * Valid values: alive, dead
+#> Warning: No observation has .status = D, A
+#>   * Detected values: alive, dead
 #> # A tibble: 0 x 4
 #> # ... with 4 variables: CensusID <dbl>, Tag <dbl>, status_stem <chr>,
 #> #   status_tree <chr>
@@ -173,8 +172,8 @@ dplyr::arrange(
   ), 
   desc(CensusID)
 )
-#> Warning in check_valid_status(x, .status = c(status_d, status_a), "status"): No observation has .status = D, A
-#>   * Valid values: alive, dead
+#> Warning: No observation has .status = D, A
+#>   * Detected values: alive, dead
 #> # A tibble: 0 x 4
 #> # ... with 4 variables: CensusID <dbl>, Tag <dbl>, status_stem <chr>,
 #> #   status_tree <chr>

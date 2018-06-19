@@ -9,10 +9,6 @@ standardize_at(x, .at, total)
 \arguments{
 \item{x}{Dataframe.}
 
-\item{.at}{A character vector of names or a numeric vector of
-positions. Only those elements corresponding to \code{.at} will be
-modified.}
-
 \item{total}{A numeric vector of length 1.}
 }
 \value{
@@ -23,6 +19,6 @@ Standardize specific columns of a dataframe.
 }
 \examples{
 dfm <- data.frame(a = 1:3, b = 11:13)
-standardize_at(dfm, "b", total = 50)
-standardize_at(dfm, names(dfm), total = 50)
+standardize_at(dfm, "a", total = 100)
+standardize_at(dfm, names(dfm), total = 100)
 }

@@ -22,7 +22,6 @@ knitr::opts_chunk$set(
 The goal of __fgeo.tool__ is to provide functions for general purposes.
 Many of its functions are used in multiple other __fgeo__ packages so
 __fgeo.tool__ acts as a central repository of code. In particular, the
-funtions hosted here depend on a relatively large number of external
 packages. For general porpose functions with no expternal dependency see
 [__fgeo.base__](https://forestgeo.github.io/fgeo.base/).
 

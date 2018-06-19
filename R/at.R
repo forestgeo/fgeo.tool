@@ -44,8 +44,8 @@ conv_unit_at <- function(x, .at, from, to) {
 #' 
 #' @examples
 #' dfm <- data.frame(a = 1:3, b = 11:13)
-#' standardize_at(dfm, "b", total = 50)
-#' standardize_at(dfm, names(dfm), total = 50)
+#' standardize_at(dfm, "a", total = 100)
+#' standardize_at(dfm, names(dfm), total = 100)
 standardize_at <- function(x, .at, total) {
   x[] <- purrr::map_at(x, .at = .at, ~ .x / total)
   x
