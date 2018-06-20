@@ -8,9 +8,9 @@
 #' @export
 #' 
 #' @examples
-#' example_path("two_files/new_stem_1.xlsx")
-#' dirname(example_path("two_files/new_stem_1.xlsx"))
-#' basename(example_path("two_files/new_stem_1.xlsx"))
-example_path <- function(path) {
+#' tool_example("two_files/new_stem_1.xlsx")
+#' dirname(tool_example("two_files/new_stem_1.xlsx"))
+#' basename(tool_example("two_files/new_stem_1.xlsx"))
+tool_example <- function(path) {
   system.file("extdata", path, package = "fgeo.tool")
 }

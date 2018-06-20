@@ -13,19 +13,10 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/add_var.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/collapse_censusid.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/conv_unit_at.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/datasets.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_twice_dead.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/example_path.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fgeo.tool-package.html</loc>
@@ -98,6 +89,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/standardize_at.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/tool_example.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/type_ensure.html</loc>

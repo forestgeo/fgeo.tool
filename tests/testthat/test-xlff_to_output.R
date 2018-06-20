@@ -166,7 +166,7 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
 })
 
 test_that("allows first_census", {
-  input_dir <- dirname(example_path("first_census/census.xlsx"))
+  input_dir <- dirname(tool_example("first_census/census.xlsx"))
   output_dir <- tempdir()
   out <- xlff_to_dfs(input_dir, first_census = TRUE)[[1]]
 
@@ -180,7 +180,7 @@ test_that("allows first_census", {
 })
 
 test_that("passes with input missing key sheets (#33)", {
-  input_dir <- dirname(example_path("missing_key/recensus.xlsx"))
+  input_dir <- dirname(tool_example("missing_key/recensus.xlsx"))
   expect_warning(
     xlff_to_dfs(input_dir),
     "Adding missing sheets: original_stems, new_secondary_stems, recruits, root"

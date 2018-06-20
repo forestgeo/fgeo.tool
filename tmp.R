@@ -1,9 +1,7 @@
 # TODO --------------------------------------------------------------------
 
 # xxx cont here
-# In fgeo.data, replace top_num_quad with data from luquillo, then here refer to 
-# data with fgeo.data::
-
+# * Replace bci data by luquillo data in map (top1quad by vft_1quad, ...)
 
 # Families ----------------------------------------------------------------
 
@@ -60,9 +58,6 @@ type_vft
 
 
 # Datasets
-top1quad # TODO: Remove
-top4quad # TODO: Remove
-example_path # TODO: Rename to tool_example()
 
 # dependencies. GENERAL -- NOT SPECIFIC TO FGEO -----------------------------
 

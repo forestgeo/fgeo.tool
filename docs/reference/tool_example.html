@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find and hide dataset names in a package that match a class. — find_data_of_class • fgeo.tool</title>
+<title>Path to directory containing example data. — tool_example • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Find and hide dataset names in a package that match a class. — find_data_of_class" />
+<meta property="og:title" content="Path to directory containing example data. — tool_example" />
 
-<meta property="og:description" content="Find and hide dataset names in a package that match a class." />
+<meta property="og:description" content="Path to directory containing example data." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,52 +121,42 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find and hide dataset names in a package that match a class.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/find_data_of_class.R'><code>R/find_data_of_class.R</code></a></small>
-    <div class="hidden name"><code>find_data_of_class.Rd</code></div>
+    <h1>Path to directory containing example data.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/tool_example.R'><code>R/tool_example.R</code></a></small>
+    <div class="hidden name"><code>tool_example.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Find and hide dataset names in a package that match a class.</p>
+    <p>Path to directory containing example data.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>show_data_of_class</span>(<span class='no'>package</span>, <span class='no'>.class</span>)
-
-<span class='fu'>hide_data_of_class</span>(<span class='no'>package</span>, <span class='no'>.class</span>)</pre>
+    <pre class="usage"><span class='fu'>tool_example</span>(<span class='no'>path</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>package</th>
-      <td><p>String; Package name to search datasets in.</p></td>
-    </tr>
-    <tr>
-      <th>.class</th>
-      <td><p>Class of data to find or hide.</p></td>
+      <th>path</th>
+      <td><p>Path to a file (with extension) from inst/extdata/.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <div class='dont-index'><p>Other functions for developers.: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>,
-  <code><a href='nms_try_rename.html'>nms_try_rename</a></code>, <code><a href='nms.html'>nms</a></code>,
-  <code><a href='type_ensure.html'>type_ensure</a></code></p></div>
+    <p>Path to directory containing example data.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>show_data_of_class</span>(<span class='st'>"fgeo.tool"</span>, <span class='st'>"tbl"</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>hide_data_of_class</span>(<span class='st'>"fgeo.tool"</span>, <span class='st'>"data.frame"</span>)</div><div class='output co'>#&gt; NULL</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>tool_example</span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>)</div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.tool/inst/extdata/two_files/new_stem_1.xlsx"</div><div class='input'><span class='fu'>dirname</span>(<span class='fu'>tool_example</span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>))</div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.tool/inst/extdata/two_files"</div><div class='input'><span class='fu'>basename</span>(<span class='fu'>tool_example</span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>))</div><div class='output co'>#&gt; [1] "new_stem_1.xlsx"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#see-also">See also</a></li>
+      <li><a href="#value">Value</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

@@ -96,7 +96,7 @@ reference:
   - title: Data 
     desc: Specific to ForestGEO
     contents:
-    - example_path
+    - tool_example
     - fgeo_elevation
     - fgeo_habitat
 
