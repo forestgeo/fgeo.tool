@@ -19,6 +19,9 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/dfs_to_csv.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/dfs_to_df.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_twice_dead.html</loc>
   </url>
   <url>
@@ -41,9 +44,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/lookup.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/ls_join_df.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/nms.html</loc>

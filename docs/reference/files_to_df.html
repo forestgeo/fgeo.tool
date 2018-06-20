@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read all files from a directory into dataframes. — files_to_df • fgeo.tool</title>
+<title>Read all .csv or flat excel files from a directory into dataframes. — files_to_df • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,15 @@
 
 
 
-<meta property="og:title" content="Read all files from a directory into dataframes. — files_to_df" />
+<meta property="og:title" content="Read all .csv or flat excel files from a directory into dataframes. — files_to_df" />
 
-<meta property="og:description" content="Read all .csv, .xls, or .xlsx files from a directory into a single dataframe
-or a list of dataframes -- where each element of the list is named as the
-source file." />
+<meta property="og:description" content="Read all .csv (csv_*()), or excel files (xl_*()) from a directory into a
+single dataframe (*_df()) or a list of dataframes (*_dfs()) -- where each
+element of the list is named as the source file. Excel files are treated as
+if they were flat -- meaning that these xl_*() functions can read only a
+single sheet (specified via the argument sheet passed to
+readxl::read_excel() via ...). For reading multiple all sheets in a single
+file see xlsheets_to_dfs()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,34 +127,43 @@ source file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read all files from a directory into dataframes.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/files_to_df.R'><code>R/files_to_df.R</code></a></small>
+    <h1>Read all .csv or flat excel files from a directory into dataframes.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/inout_files_to_df.R'><code>R/inout_files_to_df.R</code></a></small>
     <div class="hidden name"><code>files_to_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Read all .csv, .xls, or .xlsx files from a directory into a single dataframe
-or a list of dataframes -- where each element of the list is named as the
-source file.</p>
+    <p>Read all .csv (<code>csv_*()</code>), or excel files (<code>xl_*()</code>) from a directory into a
+single dataframe (<code>*_df()</code>) or a list of dataframes (<code>*_dfs()</code>) -- where each
+element of the list is named as the source file. Excel files are treated as
+if they were flat -- meaning that these <code>xl_*()</code> functions can read only a
+single sheet (specified via the argument <code>sheet</code> passed to
+<code><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>readxl::read_excel()</a></code> via <code>...</code>). For reading multiple all sheets in a single
+file see <code><a href='xlsheets_to_dfs.html'>xlsheets_to_dfs()</a></code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>csv_to_df</span>(<span class='no'>input_dir</span>)
+    <pre class="usage"><span class='fu'>csv_to_df</span>(<span class='no'>dir</span>, <span class='no'>...</span>)
 
-<span class='fu'>csv_to_dfs</span>(<span class='no'>input_dir</span>)
+<span class='fu'>csv_to_dfs</span>(<span class='no'>dir</span>, <span class='no'>...</span>)
 
-<span class='fu'>xl_to_df</span>(<span class='no'>input_dir</span>)
+<span class='fu'>xl_to_df</span>(<span class='no'>dir</span>, <span class='no'>...</span>)
 
-<span class='fu'>xl_to_dfs</span>(<span class='no'>input_dir</span>)</pre>
+<span class='fu'>xl_to_dfs</span>(<span class='no'>dir</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>input_dir</th>
+      <th>dir</th>
       <td><p>String giving the directory containing the excel workbooks
 to read from.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed to <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_csv()</a></code> (<code>csv_*()</code>) or
+<code><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>readxl::read_excel()</a></code> (<code>xl_*()</code>).</p></td>
     </tr>
     </table>
     
@@ -164,93 +177,118 @@ ending in <code>_dfs</code> output a list of dataframes.</p>
     
     <p>Thanks to Jessica Shue for inspiring this functions.</p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_csv()</a></code>, <code><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>readxl::read_excel()</a></code>.</p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'>system.file</span>(<span class='st'>"extdata"</span>, <span class='st'>"files/01.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"fgeo.tool"</span>)
-<span class='no'>input_dir</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fs</span><span class='kw ns'>::</span><span class='fu'><a href='http://fs.r-lib.org/reference/path_file.html'>path_dir</a></span>(<span class='no'>path</span>)
-<span class='no'>input_dir</span></div><div class='output co'>#&gt; C:/Users/LeporeM/Dropbox/git_repos/fgeo.tool/inst/extdata/files</div><div class='input'><span class='fu'>dir</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; [1] "01.csv"  "01.xls"  "02.csv"  "02.xlsx"</div><div class='input'>
-<span class='co'># Read all .csv files</span>
-<span class='fu'>csv_to_df</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  x = col_integer(),</span>
-#&gt; <span class='message'>  y = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  x = col_integer(),</span>
-#&gt; <span class='message'>  y = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; # A tibble: 10 x 2
-#&gt;        x y    
-#&gt;    &lt;int&gt; &lt;chr&gt;
-#&gt;  1     1 a    
-#&gt;  2     2 b    
-#&gt;  3     3 c    
-#&gt;  4     4 d    
-#&gt;  5     5 e    
-#&gt;  6     1 k    
-#&gt;  7     2 l    
-#&gt;  8     3 m    
-#&gt;  9     4 n    
-#&gt; 10     5 o    </div><div class='input'><span class='fu'>csv_to_dfs</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  x = col_integer(),</span>
-#&gt; <span class='message'>  y = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  x = col_integer(),</span>
-#&gt; <span class='message'>  y = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $`01.csv`
-#&gt; # A tibble: 5 x 2
-#&gt;       x y    
-#&gt;   &lt;int&gt; &lt;chr&gt;
-#&gt; 1     1 a    
-#&gt; 2     2 b    
-#&gt; 3     3 c    
-#&gt; 4     4 d    
-#&gt; 5     5 e    
+    <pre class="examples"><div class='input'><span class='fu'>xl_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>))</div><div class='output co'>#&gt; $workbook1.xlsx
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;dbl&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 3       3 c      
 #&gt; 
-#&gt; $`02.csv`
-#&gt; # A tibble: 5 x 2
-#&gt;       x y    
-#&gt;   &lt;int&gt; &lt;chr&gt;
-#&gt; 1     1 k    
-#&gt; 2     2 l    
-#&gt; 3     3 m    
-#&gt; 4     4 n    
-#&gt; 5     5 o    
+#&gt; $workbook2.xlsx
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;dbl&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 3       3 c      
 #&gt; </div><div class='input'>
-<span class='co'># Read all .xls or .xlsx files</span>
-<span class='fu'>xl_to_dfs</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; $`01.xls`
-#&gt; # A tibble: 5 x 2
-#&gt;       x y    
-#&gt;   &lt;dbl&gt; &lt;chr&gt;
-#&gt; 1     1 a    
-#&gt; 2     2 b    
-#&gt; 3     3 c    
-#&gt; 4     4 d    
-#&gt; 5     5 e    
+<span class='fu'>xl_to_df</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>))</div><div class='output co'>#&gt; # A tibble: 6 x 2
+#&gt;   numbers letters
+#&gt;     &lt;dbl&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 3       3 c      
+#&gt; 4       1 a      
+#&gt; 5       2 b      
+#&gt; 6       3 c      </div><div class='input'>
+<span class='co'># Pass an argument to `read_excel()` via `...`</span>
+<span class='fu'>xl_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>), <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; $workbook1.xlsx
+#&gt; # A tibble: 3 x 2
+#&gt;   colors LETTERS
+#&gt;   &lt;chr&gt;  &lt;chr&gt;  
+#&gt; 1 red    A      
+#&gt; 2 yellow B      
+#&gt; 3 blue   C      
 #&gt; 
-#&gt; $`02.xlsx`
-#&gt; # A tibble: 5 x 2
-#&gt;       x y    
-#&gt;   &lt;dbl&gt; &lt;chr&gt;
-#&gt; 1     1 k    
-#&gt; 2     2 l    
-#&gt; 3     3 m    
-#&gt; 4     4 n    
-#&gt; 5     5 o    
-#&gt; </div><div class='input'><span class='fu'>xl_to_df</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; # A tibble: 10 x 2
-#&gt;        x y    
-#&gt;    &lt;dbl&gt; &lt;chr&gt;
-#&gt;  1     1 a    
-#&gt;  2     2 b    
-#&gt;  3     3 c    
-#&gt;  4     4 d    
-#&gt;  5     5 e    
-#&gt;  6     1 k    
-#&gt;  7     2 l    
-#&gt;  8     3 m    
-#&gt;  9     4 n    
-#&gt; 10     5 o    </div></pre>
+#&gt; $workbook2.xlsx
+#&gt; # A tibble: 3 x 2
+#&gt;   colors LETTERS
+#&gt;   &lt;chr&gt;  &lt;chr&gt;  
+#&gt; 1 red    A      
+#&gt; 2 yellow B      
+#&gt; 3 blue   C      
+#&gt; </div><div class='input'>
+<span class='fu'>csv_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $csv1.csv
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 3       3 c      
+#&gt; 
+#&gt; $csv2.csv
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       4 a      
+#&gt; 2       5 b      
+#&gt; 3       6 c      
+#&gt; </div><div class='input'>
+<span class='fu'>csv_to_df</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; # A tibble: 6 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 3       3 c      
+#&gt; 4       4 a      
+#&gt; 5       5 b      
+#&gt; 6       6 c      </div><div class='input'>
+<span class='co'># Pass an argument to `read_csv()` via `...`</span>
+<span class='fu'>csv_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>), <span class='kw'>n_max</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $csv1.csv
+#&gt; # A tibble: 2 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 
+#&gt; $csv2.csv
+#&gt; # A tibble: 2 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       4 a      
+#&gt; 2       5 b      
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -260,6 +298,8 @@ ending in <code>_dfs</code> output a list of dataframes.</p>
       <li><a href="#value">Value</a></li>
 
       <li><a href="#acknowledgment">Acknowledgment</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

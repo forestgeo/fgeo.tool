@@ -132,7 +132,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-read-write" class="hasAnchor"><a href="#section-read-write" class="anchor"></a>Read/write</h2>
+          <h2 id="section-read" class="hasAnchor"><a href="#section-read" class="anchor"></a>Read</h2>
           <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
       </tr>
@@ -152,8 +152,8 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-read-write" class="hasAnchor"><a href="#section-read-write" class="anchor"></a>Read/write</h2>
-          <p class="section-desc"><p>General (not specificto ForestGEO)</p></p>
+          <h2 id="section-input-to-output" class="hasAnchor"><a href="#section-input-to-output" class="anchor"></a>Input to output</h2>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
         </th>
       </tr>
       <tr>
@@ -161,31 +161,31 @@
         <td>
           <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_dfs()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_dfs()</a></code> </p>
         </td>
-        <td><p>Read all files from a directory into dataframes.</p></td>
+        <td><p>Read all .csv or flat excel files from a directory into dataframes.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dfs_to_csv.html">dfs_to_csv()</a></code> </p>
+        </td>
+        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dfs_to_df.html">dfs_to_df()</a></code> </p>
+        </td>
+        <td><p>Reduce a list of dataframes into a single dataframe via dplyr::full_join()</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="xlsheets_to_dfs.html">xlsheets_to_dfs()</a></code> </p>
+        </td>
+        <td><p>Read one excel workbook and map each spreadsheet to a dataframe in a list.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="xlff_to_output.html">xlff_to_csv()</a></code> <code><a href="xlff_to_output.html">xlff_to_xl()</a></code> <code><a href="xlff_to_output.html">xlff_to_dfs()</a></code> </p>
         </td>
         <td><p>Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ls_csv_df.html">ls_csv_df()</a></code> </p>
-        </td>
-        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ls_join_df.html">ls_join_df()</a></code> </p>
-        </td>
-        <td><p>Full-join all or some dataframes from a list of dataframes</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="ls_list_spreadsheets.html">ls_list_spreadsheets()</a></code> </p>
-        </td>
-        <td><p>Read an excel workbook and store each spreadsheet as a dataframe in a list.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -245,7 +245,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section-edit-dataframe-columns-or-vectors" class="hasAnchor"><a href="#section-edit-dataframe-columns-or-vectors" class="anchor"></a>Edit dataframe columns or vectors</h2>
-          <p class="section-desc"><p>General (not specificto ForestGEO)</p></p>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
         </th>
       </tr>
       <tr>
@@ -341,7 +341,7 @@
       <tr>
         <th colspan="2">
           <h2 id="section-for-developers" class="hasAnchor"><a href="#section-for-developers" class="anchor"></a>For developers</h2>
-          <p class="section-desc"><p>General (not specificto ForestGEO)</p></p>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
         </th>
       </tr>
       <tr>
@@ -400,8 +400,8 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-read-write">Read/write</a></li>
-      <li><a href="#section-read-write">Read/write</a></li>
+      <li><a href="#section-read">Read</a></li>
+      <li><a href="#section-input-to-output">Input to output</a></li>
       <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
       <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
       <li><a href="#section-edit-dataframe-columns-or-vectors">Edit dataframe columns or vectors</a></li>

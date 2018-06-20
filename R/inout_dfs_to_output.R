@@ -1,28 +1,3 @@
-#' Read one excel workbook and map each spreadsheet to a dataframe in a list.
-#'
-#' A useful complement of this function is [dfs_to_csv()].
-#'
-#' @param path A path to an excel file.
-#'
-#' @source Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
-#' @return A list of dataframes.
-#'
-#' @seealso [dfs_to_csv()].
-#' @family functions to handle multiple spreadsheets of an excel workbook.
-#'
-#' @export
-#' @examples
-#' xlsheets_to_dfs(tool_example("multiple_sheets.xlsx"))
-xlsheets_to_dfs <- function(path) {
-  # Piping to avoid useless intermediate variables
-  path %>%
-    readxl::excel_sheets() %>%
-    rlang::set_names() %>%
-    purrr::map(readxl::read_excel, path = path)
-}
-
-
-
 #' Save each dataframe in a list to a different .csv file.
 #'
 #' A useful complement of this function is [xlsheets_to_dfs()].
@@ -53,10 +28,7 @@ dfs_to_csv <- function(dfs, dir, prefix = NULL) {
   }
   validate_dir(dir = dir, dir_name = "`dir`")
 
-  purrr::walk2(
-    dfs, names(dfs),
-    dfs_to_csv_, prefix = prefix, dir = dir
-  )
+  purrr::walk2(dfs, names(dfs), dfs_to_csv_, prefix = prefix, dir = dir)
 }
 
 validate_dir <- function(dir, dir_name) {

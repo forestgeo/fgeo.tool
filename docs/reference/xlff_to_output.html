@@ -127,7 +127,7 @@ multiple dataframes, multiple .csv files, or multiple .excel files." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/xlff_to_output.R'><code>R/xlff_to_output.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/inout_xlff_to_output.R'><code>R/inout_xlff_to_output.R</code></a></small>
     <div class="hidden name"><code>xlff_to_output.Rd</code></div>
     </div>
 
@@ -142,22 +142,22 @@ multiple dataframes, multiple .csv files, or multiple .excel files.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>xlff_to_csv</span>(<span class='no'>input_dir</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='st'>"./"</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>xlff_to_csv</span>(<span class='no'>dir_in</span>, <span class='kw'>dir_out</span> <span class='kw'>=</span> <span class='st'>"./"</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>xlff_to_xl</span>(<span class='no'>input_dir</span>, <span class='kw'>output_dir</span> <span class='kw'>=</span> <span class='st'>"./"</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>xlff_to_xl</span>(<span class='no'>dir_in</span>, <span class='kw'>dir_out</span> <span class='kw'>=</span> <span class='st'>"./"</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>xlff_to_dfs</span>(<span class='no'>input_dir</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>xlff_to_dfs</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>input_dir</th>
+      <th>dir_in</th>
       <td><p>String giving the directory containing the excel workbooks
 to read from.</p></td>
     </tr>
     <tr>
-      <th>output_dir</th>
+      <th>dir_out</th>
       <td><p>String giving the directory where to write .csv files to.</p></td>
     </tr>
     <tr>
@@ -208,25 +208,25 @@ and (4) "single_stems".</p></li>
 
 <span class='co'># NOT A FIRST CENSUS</span>
 <span class='co'># Path to the folder I want to read excel files from</span>
-<span class='no'>input_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>))
-<span class='no'>input_dir</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.tool/inst/extdata/two_files"</div><div class='input'>
+<span class='no'>dir_in</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>))
+<span class='no'>dir_in</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.tool/inst/extdata/two_files"</div><div class='input'>
 <span class='co'># Files I want to read</span>
-<span class='fu'>dir</span>(<span class='no'>input_dir</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"xlsx"</span>)</div><div class='output co'>#&gt; [1] "new_stem_1.xlsx" "new_stem_2.xlsx"</div><div class='input'>
+<span class='fu'>dir</span>(<span class='no'>dir_in</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"xlsx"</span>)</div><div class='output co'>#&gt; [1] "new_stem_1.xlsx" "new_stem_2.xlsx"</div><div class='input'>
 <span class='co'># Path to the folder I want to write .csv files to</span>
-<span class='no'>output_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
+<span class='no'>dir_out</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
 
 <span class='co'># Output a csv file</span>
-<span class='fu'>xlff_to_csv</span>(<span class='no'>input_dir</span>, <span class='no'>output_dir</span>)
+<span class='fu'>xlff_to_csv</span>(<span class='no'>dir_in</span>, <span class='no'>dir_out</span>)
 
 <span class='co'># Confirm</span>
-<span class='fu'><a href='http://fs.r-lib.org/reference/path_file.html'>path_file</a></span>(<span class='fu'><a href='http://fs.r-lib.org/reference/dir_ls.html'>dir_ls</a></span>(<span class='no'>output_dir</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='st'>"new_stem.*csv$"</span>))</div><div class='output co'>#&gt; new_stem_1.csv new_stem_2.csv </div><div class='input'>
+<span class='fu'><a href='http://fs.r-lib.org/reference/path_file.html'>path_file</a></span>(<span class='fu'><a href='http://fs.r-lib.org/reference/dir_ls.html'>dir_ls</a></span>(<span class='no'>dir_out</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='st'>"new_stem.*csv$"</span>))</div><div class='output co'>#&gt; new_stem_1.csv new_stem_2.csv </div><div class='input'>
 <span class='co'># Also possible to output excel and a list of dataframe. See next section.</span>
 
 <span class='co'># FIRST CENSUS</span>
-<span class='no'>input_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"first_census/census.xlsx"</span>))
+<span class='no'>dir_in</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"first_census/census.xlsx"</span>))
 <span class='co'># As a reminder you'll get a warning of missing sheets</span>
 <span class='co'># Output list of dataframes (one per input workbook -- here only one)</span>
-<span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'>xlff_to_dfs</span>(<span class='no'>input_dir</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'>xlff_to_dfs</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'>str</span>(<span class='no'>dfs</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; List of 1
 #&gt;  $ census.xlsx:'data.frame':	54 obs. of  17 variables:
 #&gt;   ..$ submission_id        : chr [1:54] "c01b37d5-2c30-4086-b4a1-78327dfa0a9a" "efd8e991-2e34-40c8-b503-44def6e542d9" "7997596a-c94e-47b6-ab28-4b0e6a94e9df" "a4e952e6-dcad-4410-aba9-36918fa1fa62" ...
@@ -247,9 +247,9 @@ and (4) "single_stems".</p></li>
 #&gt;   ..$ unique_stem          : chr [1:54] "NA_NA" "NA_NA" "NA_NA" "NA_NA" ...
 #&gt;   ..$ date                 : chr [1:54] "2018.05.14" "2018.05.14" "2018.05.14" NA ...</div><div class='input'>
 <span class='co'># Output excel</span>
-<span class='fu'>xlff_to_xl</span>(<span class='no'>input_dir</span>, <span class='no'>output_dir</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>xlff_to_xl</span>(<span class='no'>dir_in</span>, <span class='no'>dir_out</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='co'># Read back</span>
-<span class='no'>filename</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span>(<span class='no'>output_dir</span>, <span class='st'>"census.xlsx"</span>)
+<span class='no'>filename</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span>(<span class='no'>dir_out</span>, <span class='st'>"census.xlsx"</span>)
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>read_excel</a></span>(<span class='no'>filename</span>)
 <span class='fu'>str</span>(<span class='no'>out</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	54 obs. of  17 variables:
 #&gt;  $ submission_id        : chr  "c01b37d5-2c30-4086-b4a1-78327dfa0a9a" "efd8e991-2e34-40c8-b503-44def6e542d9" "7997596a-c94e-47b6-ab28-4b0e6a94e9df" "a4e952e6-dcad-4410-aba9-36918fa1fa62" ...

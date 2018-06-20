@@ -30,9 +30,7 @@ If you have multiple files in a directory, you may want to combine them all into
 Suppose you have these files in a directory:
 
 ```{r}
-path <- system.file("extdata", "files/01.csv", package = "fgeo.tool")
-files <- path_dir(path)
-files
+files <- tool_example("files")
 dir(files)
 ```
 

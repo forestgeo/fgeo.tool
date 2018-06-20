@@ -108,12 +108,9 @@
 <a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">library</span>(writexl)</a></code></pre></div>
 <p>If you have multiple files in a directory, you may want to combine them all into a single dataframe and export it as a .csv or excel file. Here is how you can do this and a a little more.</p>
 <p>Suppose you have these files in a directory:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">path &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">"extdata"</span>, <span class="st">"files/01.csv"</span>, <span class="dt">package =</span> <span class="st">"fgeo.tool"</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">files &lt;-<span class="st"> </span><span class="kw">path_dir</span>(path)</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">files</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; C:/Users/LeporeM/Documents/R/R-3.5.0/library/fgeo.tool/extdata/files</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">dir</span>(files)</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] "01.csv"  "01.xls"  "02.csv"  "02.xlsx"</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">files &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tool_example.html">tool_example</a></span>(<span class="st">"files"</span>)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw">dir</span>(files)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; [1] "01.csv"  "01.xls"  "02.csv"  "02.xlsx"</span></a></code></pre></div>
 <p>Let’s read all the .csv files into a single dataframe.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">combined &lt;-<span class="st"> </span><span class="kw"><a href="../reference/files_to_df.html">csv_to_df</a></span>(files)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; Parsed with column specification:</span></a>

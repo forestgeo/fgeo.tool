@@ -2,6 +2,7 @@
 
 # xxx cont here
 # * Replace bci data by luquillo data in map (top1quad by vft_1quad, ...)
+# * Remove internal data functions_priority
 
 # Families ----------------------------------------------------------------
 
@@ -62,18 +63,11 @@ type_vft
 # dependencies. GENERAL -- NOT SPECIFIC TO FGEO -----------------------------
 
 # Read or write
-# TODO: Rename all of these functions to the format input_to_output().
-# Find common suffix?
-# replace _lst by s? e.g. csv_to_df_lst() by csv_to_dfs()
-# replace _ls by _lst? 
 files_to_df
 csv_to_df
 csv_to_dfs
 xl_to_df
 xl_to_dfs
-
-# TODO: consider renaming xl_ to sheets when appropriate
-# TODO: rename to end with output, something like df_to_csv() or dfs_to_csvs()
 dfs_to_csv
 dfs_to_df
 xlsheets_to_dfs

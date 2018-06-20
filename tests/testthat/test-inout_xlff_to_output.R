@@ -58,7 +58,7 @@ test_that("works as expected", {
 
 context("xlff_to_csv")
 
-test_that("errs if input_dir does not exist", {
+test_that("errs if `dir` does not exist", {
   expect_error(
     xlff_to_csv("invalid_dir"),
     "must match a valid directory"
@@ -166,9 +166,9 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
 })
 
 test_that("allows first_census", {
-  input_dir <- dirname(tool_example("first_census/census.xlsx"))
+  `dir` <- dirname(tool_example("first_census/census.xlsx"))
   output_dir <- tempdir()
-  out <- xlff_to_dfs(input_dir, first_census = TRUE)[[1]]
+  out <- xlff_to_dfs(`dir`, first_census = TRUE)[[1]]
 
   nms <- c(
     "submission_id", "quadrat", "tag", "stem_tag", "species", 
@@ -180,9 +180,9 @@ test_that("allows first_census", {
 })
 
 test_that("passes with input missing key sheets (#33)", {
-  input_dir <- dirname(tool_example("missing_key/recensus.xlsx"))
+  `dir` <- dirname(tool_example("missing_key/recensus.xlsx"))
   expect_warning(
-    xlff_to_dfs(input_dir),
+    xlff_to_dfs(`dir`),
     "Adding missing sheets: original_stems, new_secondary_stems, recruits, root"
   )
 })

@@ -22,9 +22,9 @@
 #' * Drops fake stems.
 #' * Output a common data structure of your choice.
 #'
-#' @param input_dir String giving the directory containing the excel workbooks
+#' @param dir_in String giving the directory containing the excel workbooks
 #'   to read from.
-#' @param output_dir String giving the directory where to write .csv files to.
+#' @param dir_out String giving the directory where to write .csv files to.
 #' @param first_census Use `TRUE` if this is your first census. Use `FALSE`
 #'   (default) if this is not your first census but a recensus.
 #' 
@@ -45,45 +45,45 @@
 #' 
 #' # NOT A FIRST CENSUS
 #' # Path to the folder I want to read excel files from
-#' input_dir <- dirname(tool_example("two_files/new_stem_1.xlsx"))
-#' input_dir
+#' dir_in <- dirname(tool_example("two_files/new_stem_1.xlsx"))
+#' dir_in
 #' 
 #' # Files I want to read
-#' dir(input_dir, pattern = "xlsx")
+#' dir(dir_in, pattern = "xlsx")
 #' 
 #' # Path to the folder I want to write .csv files to
-#' output_dir <- tempdir()
+#' dir_out <- tempdir()
 #' 
 #' # Output a csv file
-#' xlff_to_csv(input_dir, output_dir)
+#' xlff_to_csv(dir_in, dir_out)
 #' 
 #' # Confirm
-#' path_file(dir_ls(output_dir, regexp = "new_stem.*csv$"))
+#' path_file(dir_ls(dir_out, regexp = "new_stem.*csv$"))
 #' 
 #' # Also possible to output excel and a list of dataframe. See next section.
 #' 
 #' # FIRST CENSUS
-#' input_dir <- dirname(tool_example("first_census/census.xlsx"))
+#' dir_in <- dirname(tool_example("first_census/census.xlsx"))
 #' # As a reminder you'll get a warning of missing sheets
 #' # Output list of dataframes (one per input workbook -- here only one)
-#' dfs <- xlff_to_dfs(input_dir, first_census = TRUE)
+#' dfs <- xlff_to_dfs(dir_in, first_census = TRUE)
 #' str(dfs, give.attr = FALSE)
 #' 
 #' # Output excel
-#' xlff_to_xl(input_dir, output_dir, first_census = TRUE)
+#' xlff_to_xl(dir_in, dir_out, first_census = TRUE)
 #' # Read back
-#' filename <- path(output_dir, "census.xlsx")
+#' filename <- path(dir_out, "census.xlsx")
 #' out <- read_excel(filename)
 #' str(out, give.attr = FALSE)
 #' @name xlff_to_output
 NULL
 
 xlff_to_file <- function(ext, fun_write) {
-    function(input_dir, output_dir = "./", first_census = FALSE) {
-    check_output_dir(output_dir = output_dir, print_as = "`output_dir`")
-    dfs <- xlff_to_dfs(input_dir = input_dir, first_census = first_census)
+    function(dir_in, dir_out = "./", first_census = FALSE) {
+    check_dir_out(dir_out = dir_out, print_as = "`dir_out`")
+    dfs <- xlff_to_dfs(dir_in = dir_in, first_census = first_census)
     files <- fs::path_ext_remove(names(dfs))
-    paths <- fs::path(output_dir, fs::path_ext_set(files, ext))
+    paths <- fs::path(dir_out, fs::path_ext_set(files, ext))
     purrr::walk2(dfs, paths, fun_write)
   }
 }
@@ -98,10 +98,10 @@ xlff_to_xl <- xlff_to_file("xlsx", writexl::write_xlsx)
 
 #' @export
 #' @rdname xlff_to_output
-xlff_to_dfs <- function(input_dir, first_census = FALSE) {
-  check_input_dir(input_dir = input_dir, print_as = "`input_dir`")
+xlff_to_dfs <- function(dir_in, first_census = FALSE) {
+  check_dir_in(dir_in = dir_in, print_as = "`dir_in`")
   out <- purrr::map(
-    xl_workbooks_to_chr(input_dir), 
+    xl_workbooks_to_chr(dir_in), 
     xlff_to_dfs_, first_census = first_census
   )
   purrr::set_names(out, basename(names(out)))
@@ -222,20 +222,20 @@ join_and_date <- function(.x) {
     dplyr::left_join(date, by = "submission_id")
 }
 
-check_input_dir <- function(input_dir, print_as) {
-  stopifnot(is.character(input_dir))
-  validate_dir(input_dir, "`input_dir`")
-  msg <- "`input_dir` must contain at least one excel file."
-  file_names <- xl_workbooks_to_chr(input_dir)
+check_dir_in <- function(dir_in, print_as) {
+  stopifnot(is.character(dir_in))
+  validate_dir(dir_in, "`dir_in`")
+  msg <- "`dir_in` must contain at least one excel file."
+  file_names <- xl_workbooks_to_chr(dir_in)
   if (length(file_names) == 0) {
     abort(msg)
   }
   invisible()
 }
 
-check_output_dir <- function(output_dir, print_as) {
-  stopifnot(is.character(output_dir))
-  validate_dir(output_dir, "`output_dir`")
+check_dir_out <- function(dir_out, print_as) {
+  stopifnot(is.character(dir_out))
+  validate_dir(dir_out, "`dir_out`")
   invisible()
 }
 
@@ -252,6 +252,6 @@ validate_dir <- function(dir, dir_name) {
   }
 }
 
-xl_workbooks_to_chr <- function(input_dir) {
-  fs::dir_ls(input_dir, regexp = "\\.xls")
+xl_workbooks_to_chr <- function(dir_in) {
+  fs::dir_ls(dir_in, regexp = "\\.xls")
 }
