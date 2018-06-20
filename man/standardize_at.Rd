@@ -2,9 +2,9 @@
 % Please edit documentation in R/at.R
 \name{standardize_at}
 \alias{standardize_at}
-\title{Standardize specific columns of a dataframe.}
+\title{Divide (standardize) columns of a dataframe by a constant denominator.}
 \usage{
-standardize_at(x, .at, total)
+standardize_at(x, .at, denominator)
 }
 \arguments{
 \item{x}{Dataframe.}
@@ -13,16 +13,16 @@ standardize_at(x, .at, total)
 positions. Only those elements corresponding to \code{.at} will be
 modified.}
 
-\item{total}{A numeric vector of length 1.}
+\item{denominator}{A numeric vector of length 1.}
 }
 \value{
 A data.frame.
 }
 \description{
-Standardize specific columns of a dataframe.
+Divide (standardize) columns of a dataframe by a constant denominator.
 }
 \examples{
 dfm <- data.frame(a = 1:3, b = 11:13)
-standardize_at(dfm, "a", total = 100)
-standardize_at(dfm, names(dfm), total = 100)
+standardize_at(dfm, "a", denominator = 100)
+standardize_at(dfm, names(dfm), denominator = 100)
 }

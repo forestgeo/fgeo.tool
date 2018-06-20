@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Standardize specific columns of a dataframe. — standardize_at • fgeo.tool</title>
+<title>Divide (standardize) columns of a dataframe by a constant denominator. — standardize_at • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Standardize specific columns of a dataframe. — standardize_at" />
+<meta property="og:title" content="Divide (standardize) columns of a dataframe by a constant denominator. — standardize_at" />
 
-<meta property="og:description" content="Standardize specific columns of a dataframe." />
+<meta property="og:description" content="Divide (standardize) columns of a dataframe by a constant denominator." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -121,18 +121,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Standardize specific columns of a dataframe.</h1>
+    <h1>Divide (standardize) columns of a dataframe by a constant denominator.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/at.R'><code>R/at.R</code></a></small>
     <div class="hidden name"><code>standardize_at.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Standardize specific columns of a dataframe.</p>
+    <p>Divide (standardize) columns of a dataframe by a constant denominator.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>standardize_at</span>(<span class='no'>x</span>, <span class='no'>.at</span>, <span class='no'>total</span>)</pre>
+    <pre class="usage"><span class='fu'>standardize_at</span>(<span class='no'>x</span>, <span class='no'>.at</span>, <span class='no'>denominator</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,7 +148,7 @@ positions. Only those elements corresponding to <code>.at</code> will be
 modified.</p></td>
     </tr>
     <tr>
-      <th>total</th>
+      <th>denominator</th>
       <td><p>A numeric vector of length 1.</p></td>
     </tr>
     </table>
@@ -160,10 +160,10 @@ modified.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>11</span>:<span class='fl'>13</span>)
-<span class='fu'>standardize_at</span>(<span class='no'>dfm</span>, <span class='st'>"a"</span>, <span class='kw'>total</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt;      a  b
+<span class='fu'>standardize_at</span>(<span class='no'>dfm</span>, <span class='st'>"a"</span>, <span class='kw'>denominator</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt;      a  b
 #&gt; 1 0.01 11
 #&gt; 2 0.02 12
-#&gt; 3 0.03 13</div><div class='input'><span class='fu'>standardize_at</span>(<span class='no'>dfm</span>, <span class='fu'>names</span>(<span class='no'>dfm</span>), <span class='kw'>total</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt;      a    b
+#&gt; 3 0.03 13</div><div class='input'><span class='fu'>standardize_at</span>(<span class='no'>dfm</span>, <span class='fu'>names</span>(<span class='no'>dfm</span>), <span class='kw'>denominator</span> <span class='kw'>=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt;      a    b
 #&gt; 1 0.01 0.11
 #&gt; 2 0.02 0.12
 #&gt; 3 0.03 0.13</div></pre>
