@@ -96,8 +96,6 @@ reference:
   - title: Data 
     desc: Specific to ForestGEO
     contents:
-    - top1quad
-    - top4quad
     - example_path
     - fgeo_elevation
     - fgeo_habitat

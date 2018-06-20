@@ -1,8 +1,8 @@
 # TODO --------------------------------------------------------------------
 
 # xxx cont here
-# FIXME: Fix _pkgdown: 
-
+# In fgeo.data, replace top_num_quad with data from luquillo, then here refer to 
+# data with fgeo.data::
 
 
 # Families ----------------------------------------------------------------
@@ -45,7 +45,6 @@ fgeo_habitat
 
 
 # Filter (pick and drop) rows of dataframes
-collapse_censusid  ## TODO: Refactor and move to base
 drop_twice_dead 
 filter_status
 drop_dead_stem
