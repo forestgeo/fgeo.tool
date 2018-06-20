@@ -35,27 +35,30 @@ navbar:
 
 reference:
 
-  - title: Read/write 
+  - title: Read
     desc: Specific to ForestGEO
     contents:
     - read_fgeo
     - type_fgeo
 
-  - title: Read/write
+  - title: Input to output
     desc: General (not specificto ForestGEO)
     contents:
-    - csv_to_df
-    - csv_to_df_lst
     - files_to_df
-    - ls_csv_df
-    - ls_join_df
-    - ls_list_spreadsheets
+    - csv_to_df
+    - csv_to_dfs
+    - xl_to_df
+    - xl_to_dfs
+
+    - xlff_to_output
     - xlff_to_csv
     - xlff_to_dfs
-    - xlff_to_output
     - xlff_to_xl
-    - xl_to_df
-    - xl_to_df_lst
+
+    - xlsheets_to_dfs
+    - dfs_to_csv
+    - ls_join_df
+    
 
   - title: Pick/drop rows with matching conditions 
     desc: Specific to ForestGEO

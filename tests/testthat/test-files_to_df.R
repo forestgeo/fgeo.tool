@@ -9,8 +9,8 @@ test_that("outputs expected object", {
   dir(input_dir)
 
   expect_is(csv_to_df(input_dir), "data.frame")
-  expect_is(csv_to_df_lst(input_dir), "list")
+  expect_is(csv_to_dfs(input_dir), "list")
 
   expect_is(xl_to_df(input_dir), "data.frame")
-  expect_is(xl_to_df_lst(input_dir), "list")
+  expect_is(xl_to_dfs(input_dir), "list")
 })

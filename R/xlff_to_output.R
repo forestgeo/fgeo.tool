@@ -1,14 +1,14 @@
-#' Convert excel-FastField to .csv, .xlsx and a list of dataframes.
+#' Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.
 #' 
-#' These functions combine spreadsheets from excel workbooks into common data
-#' structures. `xlff_to_csv()` and `xlff_to_xl()` write a .csv or
-#' excel (.xlsx) file per workbook -- combining all spreadsheets.
-#' `xlff_to_dfs` outputs a list of dataframes where each dataframes combines all
-#' spreadsheeets of a workbook.
+#' These functions read and wrangle excel workbooks produced by the FastField
+#' app and output dataframes (`xlff_to_dfs()` and `xlff_to_df()`), .csv files
+#' (`xlff_to_csv()`) or .xlsx files (`xlff_to_xl()`). Each dataframe or file
+#' combines all spreadsheets from a single excel workbook in the input
+#' directory. If the input directory has multiple workbooks, the output will be
+#' multiple dataframes, multiple .csv files, or multiple .excel files.
 #'
-#' This is a rigid function with a very specific goal: To process data from a
-#' specific sampling software -- FastField. Specifically, this is what this
-#' function does:
+#' This is a rigid function with a very specific goal: To process data from
+#' FastField forms. Specifically, this is what this function does:
 #' * Reads each spreadsheet from each workbook and map it to a dataframe.
 #' * Lowercases and links the names of each dataframe.
 #' * Adds any missing __key-sheets__:
@@ -110,7 +110,7 @@ xlff_to_dfs <- function(input_dir, first_census = FALSE) {
 #' Do xlff_to_dfs() for each excel file.
 #' @noRd
 xlff_to_dfs_ <- function(file, first_census = FALSE) {
-  dfm_list <- fgeo.tool::nms_tidy(fgeo.tool::ls_list_spreadsheets(file))
+  dfm_list <- fgeo.tool::nms_tidy(fgeo.tool::xlsheets_to_dfs(file))
   
   if (first_census) {
     key <- key_first_census()
@@ -217,7 +217,7 @@ join_and_date <- function(.x) {
   
   # Collapse into a single dataframe, add variable, and join with date
   not_root_dfm %>% 
-    fgeo.tool::ls_join_df() %>% 
+    dfs_to_df() %>% 
     dplyr::mutate(unique_stem = paste0(.data$tag, "_", .data$stem_tag)) %>% 
     dplyr::left_join(date, by = "submission_id")
 }

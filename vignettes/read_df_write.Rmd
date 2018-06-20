@@ -52,7 +52,7 @@ write_csv(combined, "combined.csv")
 An alternative is to read each file into an individual dataframe and store all dataframes into a list.
 
 ```{r}
-dfs <- xl_to_df_lst(files)
+dfs <- xl_to_dfs(files)
 dfs
 ```
 
@@ -90,7 +90,7 @@ write_xlsx(id, "combined_id.xlsx")
 
 <img src="https://i.imgur.com/00TSP2C.png" align="center" height=250 />
 
-If later you need to read multiple excel files you may use the same approach you used to read .csv files with the functions `xl_to_df_lst()` and `xl_to_df()`. For more details see `?files_to_df`.
+If later you need to read multiple excel files you may use the same approach you used to read .csv files with the functions `xl_to_dfs()` and `xl_to_df()`. For more details see `?files_to_df`.
 
 ### Reading data safely
 

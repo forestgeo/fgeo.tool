@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert excel-FastField to .csv, .xlsx and a list of dataframes. — xlff_to_output • fgeo.tool</title>
+<title>Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files. — xlff_to_output • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,13 +30,14 @@
 
 
 
-<meta property="og:title" content="Convert excel-FastField to .csv, .xlsx and a list of dataframes. — xlff_to_output" />
+<meta property="og:title" content="Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files. — xlff_to_output" />
 
-<meta property="og:description" content="These functions combine spreadsheets from excel workbooks into common data
-structures. xlff_to_csv() and xlff_to_xl() write a .csv or
-excel (.xlsx) file per workbook -- combining all spreadsheets.
-xlff_to_dfs outputs a list of dataframes where each dataframes combines all
-spreadsheeets of a workbook." />
+<meta property="og:description" content="These functions read and wrangle excel workbooks produced by the FastField
+app and output dataframes (xlff_to_dfs() and xlff_to_df()), .csv files
+(xlff_to_csv()) or .xlsx files (xlff_to_xl()). Each dataframe or file
+combines all spreadsheets from a single excel workbook in the input
+directory. If the input directory has multiple workbooks, the output will be
+multiple dataframes, multiple .csv files, or multiple .excel files." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -125,18 +126,19 @@ spreadsheeets of a workbook." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert excel-FastField to .csv, .xlsx and a list of dataframes.</h1>
+    <h1>Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/xlff_to_output.R'><code>R/xlff_to_output.R</code></a></small>
     <div class="hidden name"><code>xlff_to_output.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions combine spreadsheets from excel workbooks into common data
-structures. <code>xlff_to_csv()</code> and <code>xlff_to_xl()</code> write a .csv or
-excel (.xlsx) file per workbook -- combining all spreadsheets.
-<code>xlff_to_dfs</code> outputs a list of dataframes where each dataframes combines all
-spreadsheeets of a workbook.</p>
+    <p>These functions read and wrangle excel workbooks produced by the FastField
+app and output dataframes (<code>xlff_to_dfs()</code> and <code>xlff_to_df()</code>), .csv files
+(<code>xlff_to_csv()</code>) or .xlsx files (<code>xlff_to_xl()</code>). Each dataframe or file
+combines all spreadsheets from a single excel workbook in the input
+directory. If the input directory has multiple workbooks, the output will be
+multiple dataframes, multiple .csv files, or multiple .excel files.</p>
     
     </div>
 
@@ -173,9 +175,8 @@ where each dataframes combines all spreadsheeets of a workbook.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a rigid function with a very specific goal: To process data from a
-specific sampling software -- FastField. Specifically, this is what this
-function does:</p><ul>
+    <p>This is a rigid function with a very specific goal: To process data from
+FastField forms. Specifically, this is what this function does:</p><ul>
 <li><p>Reads each spreadsheet from each workbook and map it to a dataframe.</p></li>
 <li><p>Lowercases and links the names of each dataframe.</p></li>
 <li><p>Adds any missing <strong>key-sheets</strong>:</p><ul>

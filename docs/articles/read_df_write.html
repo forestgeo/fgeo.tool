@@ -143,7 +143,7 @@
 <p>You can then write a .csv file.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">write_csv</span>(combined, <span class="st">"combined.csv"</span>)</a></code></pre></div>
 <p>An alternative is to read each file into an individual dataframe and store all dataframes into a list.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">dfs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/files_to_df.html">xl_to_df_lst</a></span>(files)</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">dfs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/files_to_df.html">xl_to_dfs</a></span>(files)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2">dfs</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; $`01.xls`</span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; # A tibble: 5 x 2</span></a>
@@ -203,7 +203,7 @@
 <p>Or you may map each dataframe of the list to an individual sheet of a single excel workbook.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">write_xlsx</span>(id, <span class="st">"combined_id.xlsx"</span>)</a></code></pre></div>
 <p><img src="https://i.imgur.com/00TSP2C.png" align="center" height="250"></p>
-<p>If later you need to read multiple excel files you may use the same approach you used to read .csv files with the functions <code><a href="../reference/files_to_df.html">xl_to_df_lst()</a></code> and <code><a href="../reference/files_to_df.html">xl_to_df()</a></code>. For more details see <code><a href="../reference/files_to_df.html">?files_to_df</a></code>.</p>
+<p>If later you need to read multiple excel files you may use the same approach you used to read .csv files with the functions <code><a href="../reference/files_to_df.html">xl_to_dfs()</a></code> and <code><a href="../reference/files_to_df.html">xl_to_df()</a></code>. For more details see <code><a href="../reference/files_to_df.html">?files_to_df</a></code>.</p>
 <div id="reading-data-safely" class="section level3">
 <h3 class="hasAnchor">
 <a href="#reading-data-safely" class="anchor"></a>Reading data safely</h3>

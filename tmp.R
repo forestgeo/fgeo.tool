@@ -66,23 +66,22 @@ type_vft
 # Find common suffix?
 # replace _lst by s? e.g. csv_to_df_lst() by csv_to_dfs()
 # replace _ls by _lst? 
-csv_to_df
-
-
-
-csv_to_df_lst
 files_to_df
-
-# TODO: rename to end with output, something like df_to_csv() or dfs_to_csvs()
-ls_csv_df
-ls_join_df
-ls_list_spreadsheets
-xlff_to_csv
-xlff_to_df
-xlff_to_output
-xlff_to_xl
+csv_to_df
+csv_to_dfs
 xl_to_df
-xl_to_df_lst
+xl_to_dfs
+
+# TODO: consider renaming xl_ to sheets when appropriate
+# TODO: rename to end with output, something like df_to_csv() or dfs_to_csvs()
+dfs_to_csv
+dfs_to_df
+xlsheets_to_dfs
+
+xlff_to_output
+xlff_to_csv
+xlff_to_dfs
+xlff_to_xl
 
 # Filter dataframes
 pick_recensus  ## renamed from to_recensus

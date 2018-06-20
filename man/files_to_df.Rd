@@ -3,31 +3,38 @@
 \name{files_to_df}
 \alias{files_to_df}
 \alias{csv_to_df}
-\alias{csv_to_df_lst}
+\alias{csv_to_dfs}
 \alias{xl_to_df}
-\alias{xl_to_df_lst}
-\title{Read all .csv or excel files from a directory into dataframes.}
+\alias{xl_to_dfs}
+\title{Read flat .csv or flat excel files from a directory into dataframes.}
 \usage{
-csv_to_df(input_dir)
+csv_to_df(input_dir, ...)
 
-csv_to_df_lst(input_dir)
+csv_to_dfs(input_dir, ...)
 
-xl_to_df(input_dir)
+xl_to_df(input_dir, ...)
 
-xl_to_df_lst(input_dir)
+xl_to_dfs(input_dir, ...)
 }
 \arguments{
 \item{input_dir}{String giving the directory containing the excel workbooks
 to read from.}
+
+\item{...}{Arguments passed to \code{\link[readr:read_csv]{readr::read_csv()}} (\code{csv_*()}) or
+\code{\link[readxl:read_excel]{readxl::read_excel()}} (\code{xl_*()}).}
 }
 \value{
-The versions ending in _df output a single dataframe. The versions
-ending in _lst output a list of dataframes.
+The versions ending in \code{_df} output a single dataframe. The versions
+ending in \code{_dfs} output a list of dataframes.
 }
 \description{
-Read all .csv, .xls, or .xlsx files from a directory into a dataframe or a
-list of dataframes, where each element of the list is named as the source
-file.
+Read all .csv (\code{csv_*()}), or excel files (\code{xl_*()}) from a directory into a
+single dataframe (\code{*_df()}) or a list of dataframes (\code{*_dfs()}) -- where each
+element of the list is named as the source file. Excel files are treated as
+if they were flat -- meaning that these \code{xl_*()} functions can read only a
+single sheet (specified via the argument \code{sheet} passed to
+\code{\link[readr:read_excel]{readr::read_excel()}} via \code{...}). For reading multiple all sheets in a single
+file see \code{\link[=xlsheets_to_dfs]{xlsheets_to_dfs()}}.
 }
 \section{Acknowledgment}{
 
@@ -35,16 +42,20 @@ Thanks to Jessica Shue for inspiring this functions.
 }
 
 \examples{
-path <- system.file("extdata", "files/01.csv", package = "fgeo.tool")
-input_dir <- fs::path_dir(path)
-input_dir
-dir(input_dir)
+xl_to_dfs(tool_example("multiple_workbooks"))
 
-# Read all .csv files
-csv_to_df(input_dir)
-csv_to_df_lst(input_dir)
+xl_to_df(tool_example("multiple_workbooks"))
 
-# Read all .xls or .xlsx files
-xl_to_df_lst(input_dir)
-xl_to_df(input_dir)
+# Pass an argument to `reaxl::read_excel()` via `...`
+xl_to_dfs(tool_example("multiple_workbooks"), sheet = 2)
+
+csv_to_dfs(tool_example("multiple_csv"))
+
+csv_to_df(tool_example("multiple_csv"))
+
+# Pass an argument to `readr::read_csv()` via `...`
+csv_to_dfs(tool_example("multiple_csv"), n_max = 2)
+}
+\seealso{
+\code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[readxl:read_excel]{readxl::read_excel()}}.
 }

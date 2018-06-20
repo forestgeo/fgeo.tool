@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read all .csv or excel files from a directory into dataframes. — files_to_df • fgeo.tool</title>
+<title>Read all files from a directory into dataframes. — files_to_df • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,11 @@
 
 
 
-<meta property="og:title" content="Read all .csv or excel files from a directory into dataframes. — files_to_df" />
+<meta property="og:title" content="Read all files from a directory into dataframes. — files_to_df" />
 
-<meta property="og:description" content="Read all .csv, .xls, or .xlsx files from a directory into a dataframe or a
-list of dataframes, where each element of the list is named as the source
-file." />
+<meta property="og:description" content="Read all .csv, .xls, or .xlsx files from a directory into a single dataframe
+or a list of dataframes -- where each element of the list is named as the
+source file." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,26 +123,26 @@ file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read all .csv or excel files from a directory into dataframes.</h1>
+    <h1>Read all files from a directory into dataframes.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/files_to_df.R'><code>R/files_to_df.R</code></a></small>
     <div class="hidden name"><code>files_to_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Read all .csv, .xls, or .xlsx files from a directory into a dataframe or a
-list of dataframes, where each element of the list is named as the source
-file.</p>
+    <p>Read all .csv, .xls, or .xlsx files from a directory into a single dataframe
+or a list of dataframes -- where each element of the list is named as the
+source file.</p>
     
     </div>
 
     <pre class="usage"><span class='fu'>csv_to_df</span>(<span class='no'>input_dir</span>)
 
-<span class='fu'>csv_to_df_lst</span>(<span class='no'>input_dir</span>)
+<span class='fu'>csv_to_dfs</span>(<span class='no'>input_dir</span>)
 
 <span class='fu'>xl_to_df</span>(<span class='no'>input_dir</span>)
 
-<span class='fu'>xl_to_df_lst</span>(<span class='no'>input_dir</span>)</pre>
+<span class='fu'>xl_to_dfs</span>(<span class='no'>input_dir</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -156,8 +156,8 @@ to read from.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The versions ending in _df output a single dataframe. The versions
-ending in _lst output a list of dataframes.</p>
+    <p>The versions ending in <code>_df</code> output a single dataframe. The versions
+ending in <code>_dfs</code> output a list of dataframes.</p>
     
     <h2 class="hasAnchor" id="acknowledgment"><a class="anchor" href="#acknowledgment"></a>Acknowledgment</h2>
 
@@ -190,7 +190,7 @@ ending in _lst output a list of dataframes.</p>
 #&gt;  7     2 l    
 #&gt;  8     3 m    
 #&gt;  9     4 n    
-#&gt; 10     5 o    </div><div class='input'><span class='fu'>csv_to_df_lst</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; 10     5 o    </div><div class='input'><span class='fu'>csv_to_dfs</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  x = col_integer(),</span>
 #&gt; <span class='message'>  y = col_character()</span>
@@ -219,7 +219,7 @@ ending in _lst output a list of dataframes.</p>
 #&gt; 5     5 o    
 #&gt; </div><div class='input'>
 <span class='co'># Read all .xls or .xlsx files</span>
-<span class='fu'>xl_to_df_lst</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; $`01.xls`
+<span class='fu'>xl_to_dfs</span>(<span class='no'>input_dir</span>)</div><div class='output co'>#&gt; $`01.xls`
 #&gt; # A tibble: 5 x 2
 #&gt;       x y    
 #&gt;   &lt;dbl&gt; &lt;chr&gt;

@@ -5,7 +5,7 @@
 \alias{xlff_to_csv}
 \alias{xlff_to_xl}
 \alias{xlff_to_dfs}
-\title{Convert excel-FastField to .csv, .xlsx and a list of dataframes.}
+\title{Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.}
 \usage{
 xlff_to_csv(input_dir, output_dir = "./", first_census = FALSE)
 
@@ -28,16 +28,16 @@ per workbook -- combining all spreadsheets. \code{xlff_to_dfs} outputs a list
 where each dataframes combines all spreadsheeets of a workbook.
 }
 \description{
-These functions combine spreadsheets from excel workbooks into common data
-structures. \code{xlff_to_csv()} and \code{xlff_to_xl()} write a .csv or
-excel (.xlsx) file per workbook -- combining all spreadsheets.
-\code{xlff_to_dfs} outputs a list of dataframes where each dataframes combines all
-spreadsheeets of a workbook.
+These functions read and wrangle excel workbooks produced by the FastField
+app and output dataframes (\code{xlff_to_dfs()} and \code{xlff_to_df()}), .csv files
+(\code{xlff_to_csv()}) or .xlsx files (\code{xlff_to_xl()}). Each dataframe or file
+combines all spreadsheets from a single excel workbook in the input
+directory. If the input directory has multiple workbooks, the output will be
+multiple dataframes, multiple .csv files, or multiple .excel files.
 }
 \details{
-This is a rigid function with a very specific goal: To process data from a
-specific sampling software -- FastField. Specifically, this is what this
-function does:
+This is a rigid function with a very specific goal: To process data from
+FastField forms. Specifically, this is what this function does:
 \itemize{
 \item Reads each spreadsheet from each workbook and map it to a dataframe.
 \item Lowercases and links the names of each dataframe.
