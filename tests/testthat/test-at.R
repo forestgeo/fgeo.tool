@@ -5,7 +5,7 @@ test_that("output has correct structure", {
   
   dfm <- data.frame(a = 1, b = 1)
   expect_is(
-    out <- conv_unit_at(dfm, .at = "a", "mm", "m"), "data.frame"
+    out <- convert_unit_at(dfm, .at = "a", "mm", "m"), "data.frame"
   )
   expect_named(out, c("a", "b"))
   expect_equal(out[[1]], 1 / 1000)
