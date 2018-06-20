@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sanitize ViewFullTable and ViewTaxonomy. — sanitze_vft • fgeo.tool</title>
+<title>Sanitize ViewFullTable and ViewTaxonomy. — sanitize_vft • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Sanitize ViewFullTable and ViewTaxonomy. — sanitze_vft" />
+<meta property="og:title" content="Sanitize ViewFullTable and ViewTaxonomy. — sanitize_vft" />
 
 <meta property="og:description" content="These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to
 achieve the same effect as reading with read_vft() and read_taxa(). The
@@ -129,7 +129,7 @@ literal string &quot;NULL&quot;.
     <div class="page-header">
     <h1>Sanitize ViewFullTable and ViewTaxonomy.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/sanitize.R'><code>R/sanitize.R</code></a></small>
-    <div class="hidden name"><code>sanitze_vft.Rd</code></div>
+    <div class="hidden name"><code>sanitize_vft.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -144,7 +144,7 @@ literal string "NULL".</p></li>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sanitze_vft</span>(<span class='no'>vft</span>)</pre>
+    <pre class="usage"><span class='fu'>sanitize_vft</span>(<span class='no'>x</span>, <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'><a href='type_fgeo.html'>type_vft</a></span>(), <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,28 +174,38 @@ literal string "NULL".</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Example data</span>
-<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>QuadratName</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0000</span>, <span class='fl'>0001</span>), <span class='kw'>DBH</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"NULL"</span>, <span class='st'>"NULL"</span>))
-<span class='fu'>str</span>(<span class='no'>vft</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	2 obs. of  2 variables:
-#&gt;  $ QuadratName: num  0 1
-#&gt;  $ DBH        : chr  "NULL" "NULL"</div><div class='input'>
-<span class='co'># Warns because lot's of columns are missing</span>
-<span class='no'>sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitze_vft</span>(<span class='no'>vft</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: The following named parsers don't match the column names: DBHID, PlotName, PlotID, Family, Genus, SpeciesName, Mnemonic, Subspecies, SpeciesID, SubspeciesID, QuadratID, PX, PY, QX, QY, TreeID, Tag, StemID, StemNumber, StemTag, PrimaryStem, CensusID, PlotCensusNumber, HOM, ExactDate, Date, ListOfTSM, HighHOM, LargeStem, Status</span></div><div class='input'><span class='fu'>str</span>(<span class='no'>sane</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	2 obs. of  2 variables:
-#&gt;  $ QuadratName: chr  "0" "1"
-#&gt;  $ DBH        : num  NA NA</div><div class='input'>
-<span class='no'>taxa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>luquillo</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/luquillo/topics/ViewTaxonomy_luquillo'>ViewTaxonomy_luquillo</a></span>
-<span class='co'># Introduce mistakes</span>
+    <pre class="examples"><div class='input'><span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_vft_4quad'>luquillo_vft_4quad</a></span>
+
+<span class='co'># Introdue problems to show how to fix them</span>
+<span class='co'># Bad column types</span>
+<span class='no'>vft</span>[] <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='no'>vft</span>, <span class='no'>as.character</span>)
+<span class='co'># Bad representation of missing values</span>
+<span class='no'>vft</span>$<span class='no'>PlotName</span> <span class='kw'>&lt;-</span> <span class='st'>"NULL"</span>
+
+<span class='co'># "NULL" should be replaced by `NA` and `DBH` should be numeric -- not character</span>
+<span class='fu'>str</span>(<span class='no'>vft</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	3302 obs. of  2 variables:
+#&gt;  $ PlotName: chr  "NULL" "NULL" "NULL" "NULL" ...
+#&gt;  $ DBH     : chr  NA "185" NA "341" ...</div><div class='input'>
+<span class='no'>vft_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_vft</span>(<span class='no'>vft</span>)
+<span class='fu'>str</span>(<span class='no'>vft_sane</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	3302 obs. of  2 variables:
+#&gt;  $ PlotName: chr  NA NA NA NA ...
+#&gt;  $ DBH     : num  NA 185 NA 341 370 375 167 172 187 141 ...</div><div class='input'>
+
+
+<span class='no'>taxa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_taxa'>luquillo_taxa</a></span>
+<span class='co'># Bad column types</span>
+<span class='no'>taxa</span>[] <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='no'>taxa</span>, <span class='no'>as.character</span>)
+<span class='co'># Bad representation of missing values</span>
 <span class='no'>taxa</span>$<span class='no'>SubspeciesID</span> <span class='kw'>&lt;-</span> <span class='st'>"NULL"</span>
-<span class='no'>taxa</span>$<span class='no'>SpeciesID</span> <span class='kw'>&lt;-</span> <span class='fu'>as.double</span>(<span class='no'>taxa</span>$<span class='no'>SpeciesID</span>)
-<span class='fu'>str</span>(<span class='no'>taxa</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  3 variables:
-#&gt;  $ ViewID      : int  1 2 3 4 5 6 7 8 9 10 ...
-#&gt;  $ SpeciesID   : num  56 57 58 59 60 61 62 63 64 65 ...
-#&gt;  $ SubspeciesID: chr  "NULL" "NULL" "NULL" "NULL" ...</div><div class='input'>
-<span class='no'>sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitze_taxa</span>(<span class='no'>taxa</span>)
-<span class='fu'>str</span>(<span class='no'>sane</span>[<span class='fl'>1</span>:<span class='fl'>3</span>], <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  3 variables:
-#&gt;  $ ViewID      : int  1 2 3 4 5 6 7 8 9 10 ...
-#&gt;  $ SpeciesID   : int  56 57 58 59 60 61 62 63 64 65 ...
-#&gt;  $ SubspeciesID: chr  NA NA NA NA ...</div></pre>
+
+<span class='co'># "NULL" should be replaced by `NA` and `ViewID` should be integer</span>
+<span class='fu'>str</span>(<span class='no'>taxa</span>[<span class='fu'>c</span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  2 variables:
+#&gt;  $ SubspeciesID: chr  "NULL" "NULL" "NULL" "NULL" ...
+#&gt;  $ ViewID      : chr  "1" "2" "3" "4" ...</div><div class='input'>
+<span class='no'>taxa_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_taxa</span>(<span class='no'>taxa</span>)
+<span class='fu'>str</span>(<span class='no'>taxa_sane</span>[<span class='fu'>c</span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  2 variables:
+#&gt;  $ SubspeciesID: chr  NA NA NA NA ...
+#&gt;  $ ViewID      : int  1 2 3 4 5 6 7 8 9 10 ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

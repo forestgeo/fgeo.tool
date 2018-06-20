@@ -35,68 +35,78 @@ navbar:
 
 reference:
 
-  - title: Functions for ForestGEO data
-    desc: Add columns to a dataframe
+  - title: Read/write 
+    desc: Specific to ForestGEO
+    contents:
+    - read_fgeo
+    - type_fgeo
+
+  - title: Read/write
+    desc: General (not specificto ForestGEO)
+    contents:
+    - csv_to_df
+    - csv_to_df_lst
+    - files_to_df
+    - ls_csv_df
+    - ls_join_df
+    - ls_list_spreadsheets
+    - xlff_to_csv
+    - xlff_to_dfs
+    - xlff_to_output
+    - xlff_to_xl
+    - xl_to_df
+    - xl_to_df_lst
+
+  - title: Pick/drop rows with matching conditions 
+    desc: Specific to ForestGEO
+    contents:
+    - collapse_censusid
+    - drop_twice_dead
+    - filter_status
+    - drop_dead_stem
+    - drop_dead_tree
+
+  - title: Pick/drop rows with matching conditions
+    desc: General (not specific to ForestGEO)
+    contents:
+    - pick_recensus
+    - pick_top
+
+  - title: Edit dataframe columns or vectors 
+    desc: Specific to ForestGEO
+    contents:
+    - recode_subquad
+
+  - title: Edit dataframe columns or vectors
+    desc: General (not specificto ForestGEO)
+    contents:
+    - conv_unit_at
+    - conv_unit
+    - lookup
+    - replace_null
+    - sanitize_vft
+    - sanitize_taxa
+    - standardize_at
+
+
+  - title: Add new columns 
+    desc: Specific to ForestGEO
     contents:
     - starts_with("add_")
 
-
-
-
-
-
-  - title: Read files into dataframes
-    contents:
-    - files_to_df
-    
-  - title: Filter (pick and drop) rows of dataframes
-    contents:
-    - starts_with("filter_")
-    - starts_with("drop_")
-    - starts_with("pick_")
-    
-  - title: Manipulate lists of dataframes
-    contents:
-    - starts_with("ls_")
-    
-  - title: Manipulate dataframes
-    contents:
-    - lookup
-    - recode_subquad
-    - starts_with("conv_unit")
-    
-  - title: Manipulate names
-    contents:
-    - starts_with("nms_")
-
-  - title: Process the output of FastField
-    contents:
-    - xlff_
-    
-  - title: Read ForesGEO data
-    contents:
-    - starts_with("type_")
-    - starts_with("read_")
-    
-  - title: Sanitize multiple data structures
-    contents:
-    - replace_null
-    
-  - title: Construct ForestGEO datasets (objects of class fgeo_*).
-    contents:
-    - starts_with("fgeo_")
-
-  - title: "Datasets"
+  - title: Data 
+    desc: Specific to ForestGEO
     contents:
     - top1quad
     - top4quad
     - example_path
+    - fgeo_elevation
+    - fgeo_habitat
 
-  - title: "Functions for developers: Checks"
+  - title: For developers
+    desc: General (not specificto ForestGEO)
     contents:
-    - starts_with("check")
-    
-  - title: "Functions for developers: Miscellaneous"
-    contents:
-    - find_data_of_class
-    
+    - hide_data_of_class
+    - show_data_of_class
+    - starts_with("nms_")
+    - type_ensure

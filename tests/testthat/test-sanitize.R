@@ -1,22 +1,38 @@
-context("sanitize")
+context("sanitize_vft")
 
-test_that("", {
-  stop("Write test")
-  # # Example data
-  # vft <- tibble::tibble(QuadratName = c(0000, 0001), DBH = c("NULL", "NULL"))
-  # str(vft)
-  # 
-  # # Warns because lot's of columns are missing
-  # sane <- sanitze_vft(vft)
-  # str(sane, give.attr = FALSE)
-  # 
-  # taxa <- luquillo::ViewTaxonomy_luquillo
-  # # Introduce mistakes
-  # taxa$SubspeciesID <- "NULL"
-  # taxa$SpeciesID <- as.double(taxa$SpeciesID)
-  # str(taxa[1:3], give.attr = FALSE)
-  # 
-  # sane <- sanitze_taxa(taxa)
-  # str(sane[1:3], give.attr = FALSE)
-  
+vft <- dplyr::sample_n(fgeo.data::luquillo_vft_4quad, 2)
+
+# Introdue problems to show how to fix them
+vft[] <- lapply(vft, as.character)
+vft$PlotName <- "NULL"
+
+# Fix
+vft_sane <- sanitize_vft(vft)
+
+test_that("fixes NULL and column types", {
+  # Bada data
+  expect_is(vft$DBH, "character")
+  expect_equal(unique(vft$PlotName), "NULL")
+
+  expect_is(vft_sane$DBH, "numeric")
+  expect_equal(unique(vft_sane$PlotName), NA_character_)
+})
+
+
+
+context("sanitize_taxa")
+
+taxa <- dplyr::sample_n(fgeo.data::luquillo_taxa, 2)
+taxa[] <- lapply(taxa, as.character)
+taxa$SubspeciesID <- "NULL"
+
+taxa_sane <- sanitize_taxa(taxa)
+
+test_that("fixes NULL and column types", {
+  # Bad data
+  expect_is(taxa$ViewID, "character")
+  expect_equal(unique(taxa$SubspeciesID), "NULL")
+  # Sanitized
+  expect_is(taxa_sane$ViewID, "integer")
+  expect_equal(unique(taxa_sane$SubspeciesID), NA_character_)
 })

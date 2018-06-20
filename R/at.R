@@ -37,7 +37,7 @@ conv_unit_at <- function(x, .at, from, to) {
 #' 
 #' @param x Dataframe.
 #' @param total A numeric vector of length 1.
-#' @inheritParams purrr::map_at %>% 
+#' @inheritParams purrr::map_at
 #'
 #' @return A data.frame.
 #' @export

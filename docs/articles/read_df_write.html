@@ -8,8 +8,8 @@
 <title>Read, combine, identify, and write multiple files • fgeo.tool</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script><script src="../pkgdown.js"></script><meta property="og:title" content="Read, combine, identify, and write multiple files">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Read, combine, identify, and write multiple files">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
@@ -91,7 +91,7 @@
       <h1>Read, combine, identify, and write multiple files</h1>
                         <h4 class="author">Mauro Lepore</h4>
             
-            <h4 class="date">2018-06-19</h4>
+            <h4 class="date">2018-06-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/forestgeo/fgeo.tool/blob/master/vignettes/read_df_write.Rmd"><code>vignettes/read_df_write.Rmd</code></a></small>
       <div class="hidden name"><code>read_df_write.Rmd</code></div>
@@ -203,7 +203,7 @@
 <p>Or you may map each dataframe of the list to an individual sheet of a single excel workbook.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">write_xlsx</span>(id, <span class="st">"combined_id.xlsx"</span>)</a></code></pre></div>
 <p><img src="https://i.imgur.com/00TSP2C.png" align="center" height="250"></p>
-<p>If later you need to read multiple excel files you may use the same approach you used to read .csv files with the functions <code><a href="../reference/files_to_df.html">xl_to_df_lst()</a></code> and <code><a href="../reference/files_to_df.html">xl_to_df()</a></code>. For more details see <code>?files_to_df</code>.</p>
+<p>If later you need to read multiple excel files you may use the same approach you used to read .csv files with the functions <code><a href="../reference/files_to_df.html">xl_to_df_lst()</a></code> and <code><a href="../reference/files_to_df.html">xl_to_df()</a></code>. For more details see <code><a href="../reference/files_to_df.html">?files_to_df</a></code>.</p>
 <div id="reading-data-safely" class="section level3">
 <h3 class="hasAnchor">
 <a href="#reading-data-safely" class="anchor"></a>Reading data safely</h3>

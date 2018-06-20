@@ -9,6 +9,10 @@ standardize_at(x, .at, total)
 \arguments{
 \item{x}{Dataframe.}
 
+\item{.at}{A character vector of names or a numeric vector of
+positions. Only those elements corresponding to \code{.at} will be
+modified.}
+
 \item{total}{A numeric vector of length 1.}
 }
 \value{

@@ -21,14 +21,17 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
 
 <meta property="og:title" content="Function reference" />
+
 
 
 <!-- mathjax -->
@@ -121,6 +124,7 @@
     <table class="ref-index">
 
     <colgroup>
+      
       <col class="alias" />
       <col class="title" />
     </colgroup>
@@ -128,372 +132,56 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-read-files-into-dataframes" class="hasAnchor"><a href="#section-read-files-into-dataframes" class="anchor"></a>Read files into dataframes</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-read-write" class="hasAnchor"><a href="#section-read-write" class="anchor"></a>Read/write</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
       </tr>
       <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_df_lst()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_df_lst()</a></code> </p>
-        </td>
-        <td><p>Read all .csv or excel files from a directory into dataframes.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-manipulate-dataframes-by-adding-columns" class="hasAnchor"><a href="#section-manipulate-dataframes-by-adding-columns" class="anchor"></a>Manipulate dataframes by adding columns</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_status_tree.html">add_status_tree()</a></code> </p>
-        </td>
-        <td><p>Define the status of a tree based on the status of its stems.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_subquad.html">add_subquad()</a></code> </p>
-        </td>
-        <td><p>Add a quadrat variable to a dataframe based based on qx and qy coordinates.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_var.html">add_var()</a></code> <code><a href="add_var.html">add_lxly()</a></code> <code><a href="add_var.html">add_qxqy()</a></code> <code><a href="add_var.html">add_index()</a></code> <code><a href="add_var.html">add_col_row()</a></code> <code><a href="add_var.html">add_hectindex()</a></code> <code><a href="add_var.html">add_quad()</a></code> <code><a href="add_var.html">add_col_row2()</a></code> </p>
-        </td>
-        <td><p>Add columns to a dataframe.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-filter-pick-and-drop-rows-of-dataframes" class="hasAnchor"><a href="#section-filter-pick-and-drop-rows-of-dataframes" class="anchor"></a>Filter (pick and drop) rows of dataframes</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="filter_status.html">filter_status()</a></code> <code><a href="filter_status.html">drop_dead_stem()</a></code> <code><a href="filter_status.html">drop_dead_tree()</a></code> </p>
-        </td>
-        <td><p>Filter a (fgeo) dataframe by the status of each stem or tree.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="drop_twice_dead.html">drop_twice_dead()</a></code> </p>
-        </td>
-        <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
-        </td>
-        <td><p>Identify stems to recensus.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
-        </td>
-        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-manipulate-lists-of-dataframes" class="hasAnchor"><a href="#section-manipulate-lists-of-dataframes" class="anchor"></a>Manipulate lists of dataframes</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_csv_df.html">ls_csv_df()</a></code> </p>
-        </td>
-        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_join_df.html">ls_join_df()</a></code> </p>
-        </td>
-        <td><p>Full-join all or some dataframes from a list of dataframes</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_list_spreadsheets.html">ls_list_spreadsheets()</a></code> </p>
-        </td>
-        <td><p>Read an excel workbook and store each spreadsheet as a dataframe in a list.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-manipulate-dataframes" class="hasAnchor"><a href="#section-manipulate-dataframes" class="anchor"></a>Manipulate dataframes</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="lookup.html">lookup()</a></code> </p>
-        </td>
-        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
-        </td>
-        <td><p>Recode subquadrat.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="conv_unit_at.html">conv_unit_at()</a></code> </p>
-        </td>
-        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-manipulate-names" class="hasAnchor"><a href="#section-manipulate-names" class="anchor"></a>Manipulate names</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms.html">nms_has_any()</a></code> <code><a href="nms.html">nms_detect()</a></code> <code><a href="nms.html">nms_extract_all()</a></code> <code><a href="nms.html">nms_extract1()</a></code> </p>
-        </td>
-        <td><p>Functions to detect and extract names.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_extract_anycase.html">nms_extract_anycase()</a></code> </p>
-        </td>
-        <td><p>Find a name exactly matching a string but regardless of case.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_lowercase.html">nms_lowercase()</a></code> <code><a href="nms_lowercase.html">nms_restore()</a></code> </p>
-        </td>
-        <td><p>Lower and restore names.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_restore_newvar.html">nms_restore_newvar()</a></code> </p>
-        </td>
-        <td><p>Restore the names of a dataframe to which a new variable has been added.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_tidy.html">nms_tidy()</a></code> </p>
-        </td>
-        <td><p>Create tidy names that are lowercase and have no empty spaces.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_try_rename.html">nms_try_rename()</a></code> </p>
-        </td>
-        <td><p>Try to rename an object.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-process-the-output-of-fastfield" class="hasAnchor"><a href="#section-process-the-output-of-fastfield" class="anchor"></a>Process the output of FastField</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_status_tree.html">add_status_tree()</a></code> </p>
-        </td>
-        <td><p>Define the status of a tree based on the status of its stems.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_subquad.html">add_subquad()</a></code> </p>
-        </td>
-        <td><p>Add a quadrat variable to a dataframe based based on qx and qy coordinates.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_var.html">add_var()</a></code> <code><a href="add_var.html">add_lxly()</a></code> <code><a href="add_var.html">add_qxqy()</a></code> <code><a href="add_var.html">add_index()</a></code> <code><a href="add_var.html">add_col_row()</a></code> <code><a href="add_var.html">add_hectindex()</a></code> <code><a href="add_var.html">add_quad()</a></code> <code><a href="add_var.html">add_col_row2()</a></code> </p>
-        </td>
-        <td><p>Add columns to a dataframe.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="collapse_censusid.html">collapse_censusid()</a></code> </p>
-        </td>
-        <td><p>Collapse the values of CensusID.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="conv_unit_at.html">conv_unit_at()</a></code> </p>
-        </td>
-        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="datasets.html">top4quad</a></code> <code><a href="datasets.html">top1quad</a></code> </p>
-        </td>
-        <td><p>Data sets for examples; adapted from <a href='http://www.rdocumentation.org/packages/bciex/topics/bci12vft_mini'>bciex::bci12vft_mini</a>.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="drop_twice_dead.html">drop_twice_dead()</a></code> </p>
-        </td>
-        <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="example_path.html">example_path()</a></code> </p>
-        </td>
-        <td><p>Path to directory containing example data.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="fgeo_elevation.html">fgeo_elevation()</a></code> </p>
-        </td>
-        <td><p>Construct elevation data</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="fgeo_habitat.html">fgeo_habitat()</a></code> </p>
-        </td>
-        <td><p>Construct habitat data.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_df_lst()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_df_lst()</a></code> </p>
-        </td>
-        <td><p>Read all .csv or excel files from a directory into dataframes.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="filter_status.html">filter_status()</a></code> <code><a href="filter_status.html">drop_dead_stem()</a></code> <code><a href="filter_status.html">drop_dead_tree()</a></code> </p>
-        </td>
-        <td><p>Filter a (fgeo) dataframe by the status of each stem or tree.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="find_data_of_class.html">show_data_of_class()</a></code> <code><a href="find_data_of_class.html">hide_data_of_class()</a></code> </p>
-        </td>
-        <td><p>Find and hide dataset names in a package that match a class.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="lookup.html">lookup()</a></code> </p>
-        </td>
-        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_csv_df.html">ls_csv_df()</a></code> </p>
-        </td>
-        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_join_df.html">ls_join_df()</a></code> </p>
-        </td>
-        <td><p>Full-join all or some dataframes from a list of dataframes</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_list_spreadsheets.html">ls_list_spreadsheets()</a></code> </p>
-        </td>
-        <td><p>Read an excel workbook and store each spreadsheet as a dataframe in a list.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms.html">nms_has_any()</a></code> <code><a href="nms.html">nms_detect()</a></code> <code><a href="nms.html">nms_extract_all()</a></code> <code><a href="nms.html">nms_extract1()</a></code> </p>
-        </td>
-        <td><p>Functions to detect and extract names.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_extract_anycase.html">nms_extract_anycase()</a></code> </p>
-        </td>
-        <td><p>Find a name exactly matching a string but regardless of case.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_lowercase.html">nms_lowercase()</a></code> <code><a href="nms_lowercase.html">nms_restore()</a></code> </p>
-        </td>
-        <td><p>Lower and restore names.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_restore_newvar.html">nms_restore_newvar()</a></code> </p>
-        </td>
-        <td><p>Restore the names of a dataframe to which a new variable has been added.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_tidy.html">nms_tidy()</a></code> </p>
-        </td>
-        <td><p>Create tidy names that are lowercase and have no empty spaces.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_try_rename.html">nms_try_rename()</a></code> </p>
-        </td>
-        <td><p>Try to rename an object.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
-        </td>
-        <td><p>Identify stems to recensus.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
-        </td>
-        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
-      </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="read_fgeo.html">read_vft()</a></code> <code><a href="read_fgeo.html">read_taxa()</a></code> </p>
         </td>
         <td><p>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</p></td>
       </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
-        </td>
-        <td><p>Recode subquadrat.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="replace_null.html">replace_null()</a></code> </p>
-        </td>
-        <td><p>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value).</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="sanitze_vft.html">sanitze_vft()</a></code> </p>
-        </td>
-        <td><p>Sanitize ViewFullTable and ViewTaxonomy.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
-        </td>
-        <td><p>Standardize specific columns of a dataframe.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="type_ensure.html">type_ensure()</a></code> </p>
-        </td>
-        <td><p>Ensure the specific columns of a dataframe have a particular type.</p></td>
-      </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="type_fgeo.html">type_vft()</a></code> <code><a href="type_fgeo.html">type_taxa()</a></code> </p>
         </td>
         <td><p>Help to read ForestGEO data safely, with consistent column type.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-read-write" class="hasAnchor"><a href="#section-read-write" class="anchor"></a>Read/write</h2>
+          <p class="section-desc"><p>General (not specificto ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_df_lst()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_df_lst()</a></code> </p>
+        </td>
+        <td><p>Read all .csv or excel files from a directory into dataframes.</p></td>
       </tr><tr>
-        <!--  -->
+        
+        <td>
+          <p><code><a href="ls_csv_df.html">ls_csv_df()</a></code> </p>
+        </td>
+        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ls_join_df.html">ls_join_df()</a></code> </p>
+        </td>
+        <td><p>Full-join all or some dataframes from a list of dataframes</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="ls_list_spreadsheets.html">ls_list_spreadsheets()</a></code> </p>
+        </td>
+        <td><p>Read an excel workbook and store each spreadsheet as a dataframe in a list.</p></td>
+      </tr><tr>
+        
         <td>
           <p><code><a href="xlff_to_output.html">xlff_to_csv()</a></code> <code><a href="xlff_to_output.html">xlff_to_xl()</a></code> <code><a href="xlff_to_output.html">xlff_to_dfs()</a></code> </p>
         </td>
@@ -502,302 +190,220 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-read-foresgeo-data" class="hasAnchor"><a href="#section-read-foresgeo-data" class="anchor"></a>Read ForesGEO data</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-pick-drop-rows-with-matching-conditions" class="hasAnchor"><a href="#section-pick-drop-rows-with-matching-conditions" class="anchor"></a>Pick/drop rows with matching conditions</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
       </tr>
       <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="type_ensure.html">type_ensure()</a></code> </p>
-        </td>
-        <td><p>Ensure the specific columns of a dataframe have a particular type.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="type_fgeo.html">type_vft()</a></code> <code><a href="type_fgeo.html">type_taxa()</a></code> </p>
-        </td>
-        <td><p>Help to read ForestGEO data safely, with consistent column type.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="read_fgeo.html">read_vft()</a></code> <code><a href="read_fgeo.html">read_taxa()</a></code> </p>
-        </td>
-        <td><p>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-sanitize-multiple-data-structures" class="hasAnchor"><a href="#section-sanitize-multiple-data-structures" class="anchor"></a>Sanitize multiple data structures</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="replace_null.html">replace_null()</a></code> </p>
-        </td>
-        <td><p>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value).</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-construct-forestgeo-datasets-objects-of-class-fgeo-" class="hasAnchor"><a href="#section-construct-forestgeo-datasets-objects-of-class-fgeo-" class="anchor"></a>Construct ForestGEO datasets (objects of class fgeo_*).</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="fgeo_elevation.html">fgeo_elevation()</a></code> </p>
-        </td>
-        <td><p>Construct elevation data</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="fgeo_habitat.html">fgeo_habitat()</a></code> </p>
-        </td>
-        <td><p>Construct habitat data.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="datasets.html">top4quad</a></code> <code><a href="datasets.html">top1quad</a></code> </p>
-        </td>
-        <td><p>Data sets for examples; adapted from <a href='http://www.rdocumentation.org/packages/bciex/topics/bci12vft_mini'>bciex::bci12vft_mini</a>.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="example_path.html">example_path()</a></code> </p>
-        </td>
-        <td><p>Path to directory containing example data.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-functions-for-developers-checks" class="hasAnchor"><a href="#section-functions-for-developers-checks" class="anchor"></a>Functions for developers: Checks</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_status_tree.html">add_status_tree()</a></code> </p>
-        </td>
-        <td><p>Define the status of a tree based on the status of its stems.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_subquad.html">add_subquad()</a></code> </p>
-        </td>
-        <td><p>Add a quadrat variable to a dataframe based based on qx and qy coordinates.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="add_var.html">add_var()</a></code> <code><a href="add_var.html">add_lxly()</a></code> <code><a href="add_var.html">add_qxqy()</a></code> <code><a href="add_var.html">add_index()</a></code> <code><a href="add_var.html">add_col_row()</a></code> <code><a href="add_var.html">add_hectindex()</a></code> <code><a href="add_var.html">add_quad()</a></code> <code><a href="add_var.html">add_col_row2()</a></code> </p>
-        </td>
-        <td><p>Add columns to a dataframe.</p></td>
-      </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="collapse_censusid.html">collapse_censusid()</a></code> </p>
         </td>
         <td><p>Collapse the values of CensusID.</p></td>
       </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="conv_unit_at.html">conv_unit_at()</a></code> </p>
-        </td>
-        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="datasets.html">top4quad</a></code> <code><a href="datasets.html">top1quad</a></code> </p>
-        </td>
-        <td><p>Data sets for examples; adapted from <a href='http://www.rdocumentation.org/packages/bciex/topics/bci12vft_mini'>bciex::bci12vft_mini</a>.</p></td>
-      </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="drop_twice_dead.html">drop_twice_dead()</a></code> </p>
         </td>
         <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
       </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="example_path.html">example_path()</a></code> </p>
-        </td>
-        <td><p>Path to directory containing example data.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="fgeo_elevation.html">fgeo_elevation()</a></code> </p>
-        </td>
-        <td><p>Construct elevation data</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="fgeo_habitat.html">fgeo_habitat()</a></code> </p>
-        </td>
-        <td><p>Construct habitat data.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_df_lst()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_df_lst()</a></code> </p>
-        </td>
-        <td><p>Read all .csv or excel files from a directory into dataframes.</p></td>
-      </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="filter_status.html">filter_status()</a></code> <code><a href="filter_status.html">drop_dead_stem()</a></code> <code><a href="filter_status.html">drop_dead_tree()</a></code> </p>
         </td>
         <td><p>Filter a (fgeo) dataframe by the status of each stem or tree.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="find_data_of_class.html">show_data_of_class()</a></code> <code><a href="find_data_of_class.html">hide_data_of_class()</a></code> </p>
-        </td>
-        <td><p>Find and hide dataset names in a package that match a class.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="lookup.html">lookup()</a></code> </p>
-        </td>
-        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_csv_df.html">ls_csv_df()</a></code> </p>
-        </td>
-        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_join_df.html">ls_join_df()</a></code> </p>
-        </td>
-        <td><p>Full-join all or some dataframes from a list of dataframes</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="ls_list_spreadsheets.html">ls_list_spreadsheets()</a></code> </p>
-        </td>
-        <td><p>Read an excel workbook and store each spreadsheet as a dataframe in a list.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms.html">nms_has_any()</a></code> <code><a href="nms.html">nms_detect()</a></code> <code><a href="nms.html">nms_extract_all()</a></code> <code><a href="nms.html">nms_extract1()</a></code> </p>
-        </td>
-        <td><p>Functions to detect and extract names.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_extract_anycase.html">nms_extract_anycase()</a></code> </p>
-        </td>
-        <td><p>Find a name exactly matching a string but regardless of case.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_lowercase.html">nms_lowercase()</a></code> <code><a href="nms_lowercase.html">nms_restore()</a></code> </p>
-        </td>
-        <td><p>Lower and restore names.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_restore_newvar.html">nms_restore_newvar()</a></code> </p>
-        </td>
-        <td><p>Restore the names of a dataframe to which a new variable has been added.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_tidy.html">nms_tidy()</a></code> </p>
-        </td>
-        <td><p>Create tidy names that are lowercase and have no empty spaces.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_try_rename.html">nms_try_rename()</a></code> </p>
-        </td>
-        <td><p>Try to rename an object.</p></td>
-      </tr><tr>
-        <!--  -->
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-pick-drop-rows-with-matching-conditions" class="hasAnchor"><a href="#section-pick-drop-rows-with-matching-conditions" class="anchor"></a>Pick/drop rows with matching conditions</h2>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
+        
         <td>
           <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
         </td>
         <td><p>Identify stems to recensus.</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="pick_top.html">pick_top()</a></code> </p>
         </td>
         <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="read_fgeo.html">read_vft()</a></code> <code><a href="read_fgeo.html">read_taxa()</a></code> </p>
-        </td>
-        <td><p>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</p></td>
-      </tr><tr>
-        <!--  -->
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-edit-dataframe-columns-or-vectors" class="hasAnchor"><a href="#section-edit-dataframe-columns-or-vectors" class="anchor"></a>Edit dataframe columns or vectors</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+        </th>
+      </tr>
+      <tr>
+        
         <td>
           <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
         </td>
         <td><p>Recode subquadrat.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-edit-dataframe-columns-or-vectors" class="hasAnchor"><a href="#section-edit-dataframe-columns-or-vectors" class="anchor"></a>Edit dataframe columns or vectors</h2>
+          <p class="section-desc"><p>General (not specificto ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="conv_unit_at.html">conv_unit_at()</a></code> </p>
+        </td>
+        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
       </tr><tr>
-        <!--  -->
+        
+        <td>
+          <p><code><a href="reexports.html">reexports</a></code> </p>
+        </td>
+        <td><p>Objects exported from other packages</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lookup.html">lookup()</a></code> </p>
+        </td>
+        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
+      </tr><tr>
+        
         <td>
           <p><code><a href="replace_null.html">replace_null()</a></code> </p>
         </td>
         <td><p>Replace literal 'NULL' (string) by <code>NA_character_</code> (missing value).</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
-          <p><code><a href="sanitze_vft.html">sanitze_vft()</a></code> </p>
+          <p><code><a href="sanitize.html">sanitize_vft()</a></code> <code><a href="sanitize.html">sanitize_taxa()</a></code> </p>
         </td>
         <td><p>Sanitize ViewFullTable and ViewTaxonomy.</p></td>
       </tr><tr>
-        <!--  -->
+        
         <td>
           <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
         </td>
         <td><p>Standardize specific columns of a dataframe.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="type_ensure.html">type_ensure()</a></code> </p>
-        </td>
-        <td><p>Ensure the specific columns of a dataframe have a particular type.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="type_fgeo.html">type_vft()</a></code> <code><a href="type_fgeo.html">type_taxa()</a></code> </p>
-        </td>
-        <td><p>Help to read ForestGEO data safely, with consistent column type.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="xlff_to_output.html">xlff_to_csv()</a></code> <code><a href="xlff_to_output.html">xlff_to_xl()</a></code> <code><a href="xlff_to_output.html">xlff_to_dfs()</a></code> </p>
-        </td>
-        <td><p>Convert excel-FastField to .csv, .xlsx and a list of dataframes.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-functions-for-developers-miscellaneous" class="hasAnchor"><a href="#section-functions-for-developers-miscellaneous" class="anchor"></a>Functions for developers: Miscellaneous</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-add-new-columns" class="hasAnchor"><a href="#section-add-new-columns" class="anchor"></a>Add new columns</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
       </tr>
       <tr>
-        <!--  -->
+        
+        <td>
+          <p><code><a href="add_status_tree.html">add_status_tree()</a></code> </p>
+        </td>
+        <td><p>Define the status of a tree based on the status of its stems.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_subquad.html">add_subquad()</a></code> </p>
+        </td>
+        <td><p>Add a quadrat variable to a dataframe based based on qx and qy coordinates.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="add_var.html">add_lxly()</a></code> <code><a href="add_var.html">add_qxqy()</a></code> <code><a href="add_var.html">add_index()</a></code> <code><a href="add_var.html">add_col_row()</a></code> <code><a href="add_var.html">add_hectindex()</a></code> <code><a href="add_var.html">add_quad()</a></code> <code><a href="add_var.html">add_col_row2()</a></code> </p>
+        </td>
+        <td><p>Add columns to a ForestGEO dataframe to position stems in a forest plot.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="datasets.html">top4quad</a></code> <code><a href="datasets.html">top1quad</a></code> </p>
+        </td>
+        <td><p>Data sets for examples; adapted from <a href='http://www.rdocumentation.org/packages/bciex/topics/bci12vft_mini'>bciex::bci12vft_mini</a>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="example_path.html">example_path()</a></code> </p>
+        </td>
+        <td><p>Path to directory containing example data.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fgeo_elevation.html">fgeo_elevation()</a></code> </p>
+        </td>
+        <td><p>Construct elevation data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fgeo_habitat.html">fgeo_habitat()</a></code> </p>
+        </td>
+        <td><p>Construct habitat data.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-for-developers" class="hasAnchor"><a href="#section-for-developers" class="anchor"></a>For developers</h2>
+          <p class="section-desc"><p>General (not specificto ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
+        
         <td>
           <p><code><a href="find_data_of_class.html">show_data_of_class()</a></code> <code><a href="find_data_of_class.html">hide_data_of_class()</a></code> </p>
         </td>
         <td><p>Find and hide dataset names in a package that match a class.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nms.html">nms_has_any()</a></code> <code><a href="nms.html">nms_detect()</a></code> <code><a href="nms.html">nms_extract_all()</a></code> <code><a href="nms.html">nms_extract1()</a></code> </p>
+        </td>
+        <td><p>Functions to detect and extract names.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nms_extract_anycase.html">nms_extract_anycase()</a></code> </p>
+        </td>
+        <td><p>Find a name exactly matching a string but regardless of case.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nms_lowercase.html">nms_lowercase()</a></code> <code><a href="nms_lowercase.html">nms_restore()</a></code> </p>
+        </td>
+        <td><p>Lower and restore names.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nms_restore_newvar.html">nms_restore_newvar()</a></code> </p>
+        </td>
+        <td><p>Restore the names of a dataframe to which a new variable has been added.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nms_tidy.html">nms_tidy()</a></code> </p>
+        </td>
+        <td><p>Create tidy names that are lowercase and have no empty spaces.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nms_try_rename.html">nms_try_rename()</a></code> </p>
+        </td>
+        <td><p>Try to rename an object.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="type_ensure.html">type_ensure()</a></code> </p>
+        </td>
+        <td><p>Ensure the specific columns of a dataframe have a particular type.</p></td>
       </tr>
     </tbody>
     </table>
@@ -806,19 +412,15 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-read-files-into-dataframes">Read files into dataframes</a></li>
-      <li><a href="#section-manipulate-dataframes-by-adding-columns">Manipulate dataframes by adding columns</a></li>
-      <li><a href="#section-filter-pick-and-drop-rows-of-dataframes">Filter (pick and drop) rows of dataframes</a></li>
-      <li><a href="#section-manipulate-lists-of-dataframes">Manipulate lists of dataframes</a></li>
-      <li><a href="#section-manipulate-dataframes">Manipulate dataframes</a></li>
-      <li><a href="#section-manipulate-names">Manipulate names</a></li>
-      <li><a href="#section-process-the-output-of-fastfield">Process the output of FastField</a></li>
-      <li><a href="#section-read-foresgeo-data">Read ForesGEO data</a></li>
-      <li><a href="#section-sanitize-multiple-data-structures">Sanitize multiple data structures</a></li>
-      <li><a href="#section-construct-forestgeo-datasets-objects-of-class-fgeo-">Construct ForestGEO datasets (objects of class fgeo_*).</a></li>
-      <li><a href="#section-datasets">Datasets</a></li>
-      <li><a href="#section-functions-for-developers-checks">Functions for developers: Checks</a></li>
-      <li><a href="#section-functions-for-developers-miscellaneous">Functions for developers: Miscellaneous</a></li>
+      <li><a href="#section-read-write">Read/write</a></li>
+      <li><a href="#section-read-write">Read/write</a></li>
+      <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
+      <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
+      <li><a href="#section-edit-dataframe-columns-or-vectors">Edit dataframe columns or vectors</a></li>
+      <li><a href="#section-edit-dataframe-columns-or-vectors">Edit dataframe columns or vectors</a></li>
+      <li><a href="#section-add-new-columns">Add new columns</a></li>
+      <li><a href="#section-data">Data</a></li>
+      <li><a href="#section-for-developers">For developers</a></li>
     </ul>
   </div>
 </div>

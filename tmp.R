@@ -1,11 +1,4 @@
-# Families
-#' @family functions for ForestGEO data.
-#' @family functions for fgeo census.
-#' @family functions for fgeo vft.
-#' @family functions to add columns to dataframes.
-
-
-
+# TODO --------------------------------------------------------------------
 
 # xxx cont here
 # FIXME: Fix _pkgdown: 
@@ -13,6 +6,13 @@
 #   * fgeo_* appears in multiple places.
 
 
+
+# Families ----------------------------------------------------------------
+
+#' @family functions for ForestGEO data.
+#' @family functions for fgeo census.
+#' @family functions for fgeo vft.
+#' @family functions to add columns to dataframes.
 
 # SPECIFIC TO FGEO --------------------------------------------------------
 
@@ -33,9 +33,9 @@ add_subquad
 
 add_status_tree
 
-# TODO: next xxxcont. here
 
-# Mutate/transform dataframe
+
+# Add columns to dataframes
 recode_subquad
 
 
@@ -46,36 +46,42 @@ fgeo_habitat
 
 
 
-# Operate on rows (filter/keep/discard/subset rows)
-collapse_censusid  ## Can move to base
-drop_twice_dead  ## Depends on dplyr
-# Filter dataframes
+# Filter (pick and drop) rows of dataframes
+collapse_censusid  ## TODO: Refactor and move to base
+drop_twice_dead 
 filter_status
 drop_dead_stem
 drop_dead_tree
 
 
 
-# read fgeo data
+# Read or write data
 read_fgeo
-# Operate on column types
 type_fgeo
 type_taxa
 type_vft
 
 
+# Datasets
+top1quad # TODO: Remove
+top4quad # TODO: Remove
+example_path # TODO: Rename to tool_example()
 
-# dependencies. GENERAL -- NOT SPECIFIC TO FGEO -----------------------------------------
+# dependencies. GENERAL -- NOT SPECIFIC TO FGEO -----------------------------
 
-# Read/write; inputs and outputs; to/from file/data
-# Rename all of these functions to the format input_to_output().
+# Read or write
+# TODO: Rename all of these functions to the format input_to_output().
 # Find common suffix?
 # replace _lst by s? e.g. csv_to_df_lst() by csv_to_dfs()
 # replace _ls by _lst? 
 csv_to_df
+
+
+
 csv_to_df_lst
 files_to_df
-# rename to end with output, something like df_to_csv() or dfs_to_csvs()
+
+# TODO: rename to end with output, something like df_to_csv() or dfs_to_csvs()
 ls_csv_df
 ls_join_df
 ls_list_spreadsheets
@@ -86,27 +92,22 @@ xlff_to_xl
 xl_to_df
 xl_to_df_lst
 
-
-
-
-
-
-# dataframe mutate/transform/edit/sanitize
-# Depends on rlang
-lookup
-# Depends on purrr
-replace_null
-conv_unit
-conv_unit_at
-
-
 # Filter dataframes
 pick_recensus  ## renamed from to_recensus
 pick_top
 
+# Edit dataframes or vectors
+
+lookup
+replace_null
+conv_unit_at
+conv_unit
+
 
 
 # dependencies, developers ------------------------------------------------
+
+# TODO: Move to its own package
 
 # search objects by names
 # depends on purrr only
@@ -114,34 +115,10 @@ pick_top
 hide_data_of_class
 show_data_of_class
 
-
-
 # work with namesnames
 # Depends on purrr and rlang
 nms_*()
 
-
-
-
-
-
-
-
 # Maybe use modify_if() instead and/or don't export
 type_ensure
-
-
-
-
-
-
-
-
-
-
-
-# REMOVE
-datasets
-top1quad
-top4quad
 

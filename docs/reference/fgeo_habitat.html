@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -33,6 +35,7 @@
 <meta property="og:description" content="This function constructs an object of class fgeo_habitat. It can handle
 a multiple inputs and always outputs the same data structure." />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -182,21 +185,21 @@ Commonly, <code>n = 4</code>.</p></td>
     <pre class="examples"><div class='input'><span class='co'># Input: Object of class list</span>
 <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>
 <span class='no'>hab1</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-<span class='fu'>str</span>(<span class='no'>hab1</span>)</div><div class='output co'>#&gt; Classes ‘fgeo_habitat’, ‘tbl_df’, ‘tbl’ and 'data.frame':	6400 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>hab1</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	6400 obs. of  3 variables:
 #&gt;  $ gx      : int  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy      : int  0 5 10 15 20 25 30 35 40 45 ...
 #&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
 <span class='co'># Input: Object of class dataframe</span>
 <span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>$<span class='no'>col</span>
 <span class='no'>hab2</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)
-<span class='fu'>str</span>(<span class='no'>hab2</span>)</div><div class='output co'>#&gt; Classes ‘fgeo_habitat’, ‘tbl_df’, ‘tbl’ and 'data.frame':	6400 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>hab2</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	6400 obs. of  3 variables:
 #&gt;  $ gx      : int  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy      : int  0 5 10 15 20 25 30 35 40 45 ...
 #&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
 <span class='co'># Input: Object of class fgeo_elev</span>
 <span class='no'>fgeo_elev</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fgeo_elevation.html'>fgeo_elevation</a></span>(<span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>)
 <span class='no'>hab3</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)
-<span class='fu'>str</span>(<span class='no'>hab3</span>)</div><div class='output co'>#&gt; Classes ‘fgeo_habitat’, ‘tbl_df’, ‘tbl’ and 'data.frame':	6400 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>hab3</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	6400 obs. of  3 variables:
 #&gt;  $ gx      : int  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy      : int  0 5 10 15 20 25 30 35 40 45 ...
 #&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
