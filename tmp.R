@@ -2,8 +2,6 @@
 
 # xxx cont here
 # FIXME: Fix _pkgdown: 
-#   * Review funs clasification.
-#   * fgeo_* appears in multiple places.
 
 
 

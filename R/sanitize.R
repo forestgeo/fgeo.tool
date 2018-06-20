@@ -10,6 +10,7 @@
 #' @param x A dataframe; either a ForestGEO ViewFullTable (`sanitize_vft()`) or
 #'   ViewTaxonomy (`sanitize_vft()`).
 #' @inheritParams readr::type_convert
+#' @inheritDotParams readr::type_convert
 #' 
 #' @seealso [read_fgeo()].
 #' 
