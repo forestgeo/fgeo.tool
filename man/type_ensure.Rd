@@ -42,3 +42,5 @@ Other functions for developers.: \code{\link{find_data_of_class}},
 
 Other functions to operate on column types.: \code{\link{type_fgeo}}
 }
+\concept{functions for developers.}
+\concept{functions to operate on column types.}

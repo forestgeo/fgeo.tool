@@ -87,3 +87,4 @@ dplyr::anti_join(x, y2, by = c("unique_stem" = "unq_stem"))
 Other functions to filter dataframes.: \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}, \code{\link{pick_top}}
 }
+\concept{functions to filter dataframes.}

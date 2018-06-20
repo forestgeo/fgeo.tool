@@ -72,3 +72,5 @@ Other functions to manipulate names.: \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}},
   \code{\link{nms_try_rename}}
 }
+\concept{functions for developers.}
+\concept{functions to manipulate names.}

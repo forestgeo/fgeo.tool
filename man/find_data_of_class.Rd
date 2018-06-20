@@ -29,3 +29,4 @@ Other functions for developers.: \code{\link{nms_extract_anycase}},
   \code{\link{nms_try_rename}}, \code{\link{nms}},
   \code{\link{type_ensure}}
 }
+\concept{functions for developers.}

@@ -5,8 +5,8 @@
 #'   to the values of the variable `status` (in census tables) or `Status` (with
 #'   capital "S" in ViewFull tables).
 #'   
-#' @family functions for fgeo census and vft.
 #' @family functions to add columns to dataframes.
+#' @family functions for ForestGEO data.
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
 #'

@@ -157,3 +157,4 @@ table(result$status_tree)
 Other functions to filter dataframes.: \code{\link{drop_twice_dead}},
   \code{\link{pick_recensus}}, \code{\link{pick_top}}
 }
+\concept{functions to filter dataframes.}

@@ -6,7 +6,10 @@
 #' @template x_sq_y_sq
 #' @param subquad_offset A number; either `-1` or `1`, to rest or add one unit
 #'   to the number of column of each subquadrat.
+#'
 #' @family functions to add columns to dataframes.
+#' @family functions for ForestGEO data.
+#' @family functions for fgeo vft.
 #'
 #'   ```R
 #'   First column is 0    First column is 1

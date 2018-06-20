@@ -2,7 +2,6 @@
 % Please edit documentation in R/nms_manipulate_names.R
 \name{nms_lowercase}
 \alias{nms_lowercase}
-\alias{nms_lowercase}
 \alias{nms_restore}
 \title{Lower and restore names.}
 \usage{
@@ -56,3 +55,5 @@ Other functions to manipulate names.: \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
 }
+\concept{functions for developers.}
+\concept{functions to manipulate names.}

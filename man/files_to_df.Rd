@@ -2,13 +2,9 @@
 % Please edit documentation in R/files_to_df.R
 \name{files_to_df}
 \alias{files_to_df}
-\alias{files_to_df}
 \alias{csv_to_df}
-\alias{files_to_df}
 \alias{csv_to_df_lst}
-\alias{files_to_df}
 \alias{xl_to_df}
-\alias{files_to_df}
 \alias{xl_to_df_lst}
 \title{Read all .csv or excel files from a directory into dataframes.}
 \usage{

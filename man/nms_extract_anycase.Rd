@@ -35,3 +35,5 @@ Other functions to manipulate names.: \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
 }
+\concept{functions for developers.}
+\concept{functions to manipulate names.}

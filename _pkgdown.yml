@@ -35,14 +35,20 @@ navbar:
 
 reference:
 
+  - title: Functions for ForestGEO data
+    desc: Add columns to a dataframe
+    contents:
+    - starts_with("add_")
+
+
+
+
+
+
   - title: Read files into dataframes
     contents:
     - files_to_df
     
-  - title: Manipulate dataframes by adding columns
-    contents:
-    - starts_with("add_")
-
   - title: Filter (pick and drop) rows of dataframes
     contents:
     - starts_with("filter_")

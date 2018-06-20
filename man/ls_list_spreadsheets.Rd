@@ -29,3 +29,4 @@ ls_csv_df
 
 Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{ls_csv_df}}
 }
+\concept{functions to handle multiple spreadsheets of an excel workbook.}
