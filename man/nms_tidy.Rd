@@ -2,7 +2,6 @@
 % Please edit documentation in R/nms_manipulate_names.R
 \name{nms_tidy}
 \alias{nms_tidy}
-\alias{nms_tidy}
 \title{Create tidy names that are lowercase and have no empty spaces.}
 \usage{
 nms_tidy(x)

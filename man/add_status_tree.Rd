@@ -34,5 +34,17 @@ x <- tibble::tribble(
 add_status_tree(x, "alive", "dead")
 }
 \seealso{
-Other functions to add columns to dataframes.: \code{\link{add_var}}
+Other functions to add columns to dataframes.: \code{\link{add_subquad}},
+  \code{\link{add_var}}
+
+Other functions for ForestGEO data.: \code{\link{add_subquad}},
+  \code{\link{add_var}}
+
+Other functions for fgeo census.: \code{\link{add_var}}
+
+Other functions for fgeo vft.: \code{\link{add_var}}
 }
+\concept{functions for ForestGEO data.}
+\concept{functions for fgeo census.}
+\concept{functions for fgeo vft.}
+\concept{functions to add columns to dataframes.}

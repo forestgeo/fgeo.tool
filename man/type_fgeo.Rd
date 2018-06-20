@@ -69,3 +69,5 @@ Other functions to operate on column types.: \code{\link{type_ensure}}
 
 Other functions to read text files delivered by ForestgGEO's database.: \code{\link{read_fgeo}}
 }
+\concept{functions to operate on column types.}
+\concept{functions to read text files delivered by ForestgGEO's database.}

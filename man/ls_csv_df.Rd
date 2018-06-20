@@ -38,3 +38,4 @@ ls_list_spreadsheets.
 
 Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{ls_list_spreadsheets}}
 }
+\concept{functions to handle multiple spreadsheets of an excel workbook.}

@@ -9,10 +9,8 @@
 \alias{add_hectindex}
 \alias{add_quad}
 \alias{add_col_row2}
-\title{Add columns to a dataframe.}
+\title{Add columns to a ForestGEO dataframe to position stems in a forest plot.}
 \usage{
-add_var(x, var, gridsize = 20, plotdim = NULL)
-
 add_lxly(x, gridsize = 20, plotdim = NULL)
 
 add_qxqy(x, gridsize = 20, plotdim = NULL)
@@ -30,12 +28,10 @@ add_col_row2(x)
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
 
-\item{var}{A character string; either "lxly", "colrow", "index", hectindex.}
-
 \item{gridsize}{The gridsize of the census plot (commonly 20 m).}
 
 \item{plotdim}{The global dimensions of the census plot (i.e. the
-maximum possible values of `gx` and `gy`).}
+maximum possible values of \code{gx} and \code{gy}).}
 
 \item{start}{\code{1} or \code{0}, indicating how to label the first plot-column.}
 
@@ -47,16 +43,16 @@ A modified version of the dataframe \code{x} with the additional
 variable(s) \code{var}.
 }
 \description{
-These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS RPackage}. The functions
-\code{add_col_row()} and \code{add_col_row2()} differ in that the former inputs
-plot coordinates and the later inputs \code{QuadratName}.
+These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
+}
+\details{
+These functions add columns to locate stems in a forest plot. \code{add_col_row()}
+and \code{add_col_row2()} differ in that the former inputs plot coordinates and
+the later inputs \code{QuadratName}.
 }
 \examples{
 x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
 
-# Each `add_var(x, var = "*")` has a shortcut: `add_*()`
-add_var(x, var = "lxly")
-# same
 add_lxly(x)
 
 add_qxqy(x)
@@ -73,7 +69,6 @@ add_quad(x, start = 0)
 # extra trhree zeros, resulting in a total of 6 zeros.
 add_quad(x, start = 0, width = 3)
 
-
 add_col_row(x)
 
 # Column and row from QuadratName
@@ -89,5 +84,17 @@ add_col_row2(x)
 \seealso{
 \code{\link[stringr:str_pad]{stringr::str_pad()}}.
 
-Other functions to add columns to dataframes.: \code{\link{add_status_tree}}
+Other functions to add columns to dataframes.: \code{\link{add_status_tree}},
+  \code{\link{add_subquad}}
+
+Other functions for ForestGEO data.: \code{\link{add_status_tree}},
+  \code{\link{add_subquad}}
+
+Other functions for fgeo census.: \code{\link{add_status_tree}}
+
+Other functions for fgeo vft.: \code{\link{add_status_tree}}
 }
+\concept{functions for ForestGEO data.}
+\concept{functions for fgeo census.}
+\concept{functions for fgeo vft.}
+\concept{functions to add columns to dataframes.}

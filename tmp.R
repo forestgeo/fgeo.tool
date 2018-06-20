@@ -1,3 +1,12 @@
+# Families
+#' @family functions for ForestGEO data.
+#' @family functions for fgeo census.
+#' @family functions for fgeo vft.
+#' @family functions to add columns to dataframes.
+
+
+
+
 # xxx cont here
 # FIXME: Fix _pkgdown: 
 #   * Review funs clasification.
@@ -10,9 +19,9 @@
 # fgeo.tool: SPECIFIC TO FGEO, DEPENDENT ----------------------------------
 
 # add_*(): Add columns to a dataframe
+# Add col, row, hectindex, index, lx, ly, quad, qx, qy, subquad, status_tree.
+# Add columns to a ForestGEO dataframe.
 # georeference: position stems in a forest plot
-# TODO: Maybe change to add_plot_*()
-add_var  # TODO: Don't export
 add_col_row
 add_col_row2
 add_hectindex
@@ -21,7 +30,10 @@ add_lxly
 add_quad
 add_qxqy
 add_subquad
+
 add_status_tree
+
+# TODO: next xxxcont. here
 
 # Mutate/transform dataframe
 recode_subquad

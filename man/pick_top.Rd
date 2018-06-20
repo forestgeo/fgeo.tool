@@ -59,3 +59,4 @@ pick_top(df, y, n = -2)
 Other functions to filter dataframes.: \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}, \code{\link{pick_recensus}}
 }
+\concept{functions to filter dataframes.}

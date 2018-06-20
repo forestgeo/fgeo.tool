@@ -1,12 +1,13 @@
-#' Add columns to a dataframe.
+#' Add columns to a ForestGEO dataframe to position stems in a forest plot.
 #'
 #' These functions mostly wrap legacy code from the [CTFS R
-#' Package](http://ctfs.si.edu/Public/CTFSRPackage/). The functions 
-#' `add_col_row()` and `add_col_row2()` differ in that the former inputs 
-#' plot coordinates and the later inputs `QuadratName`.
+#' Package](http://ctfs.si.edu/Public/CTFSRPackage/). 
+#' 
+#' These functions add columns to locate stems in a forest plot. `add_col_row()`
+#' and `add_col_row2()` differ in that the former inputs plot coordinates and
+#' the later inputs `QuadratName`.
 #'
 #' @template x_fgeo
-#' @param var A character string; either "lxly", "colrow", "index", hectindex.
 #' @template gridsize
 #' @template plotdim
 #' @param start `1` or `0`, indicating how to label the first plot-column.
@@ -14,18 +15,17 @@
 #'   (passed to [stringr::str_pad()]).
 #'
 #' @family functions to add columns to dataframes.
+#' @family functions for ForestGEO data.
+#' @family functions for fgeo census.
+#' @family functions for fgeo vft.
 #' @seealso [stringr::str_pad()].
 #'
 #' @return A modified version of the dataframe `x` with the additional
 #'   variable(s) `var`.
-#' @export
 #'
 #' @examples
 #' x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
 #'
-#' # Each `add_var(x, var = "*")` has a shortcut: `add_*()`
-#' add_var(x, var = "lxly")
-#' # same
 #' add_lxly(x)
 #' 
 #' add_qxqy(x)
@@ -42,7 +42,6 @@
 #' # extra trhree zeros, resulting in a total of 6 zeros.
 #' add_quad(x, start = 0, width = 3)
 #'
-#' 
 #' add_col_row(x)
 #' 
 #' # Column and row from QuadratName
@@ -54,6 +53,9 @@
 #'   "1001"
 #' )
 #' add_col_row2(x)
+#' @name add_var
+NULL
+
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   check_add_var(x = x, var = var, gridsize = gridsize, plotdim = plotdim)
 

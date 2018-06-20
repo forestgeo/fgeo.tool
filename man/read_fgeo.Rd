@@ -48,3 +48,4 @@ read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
 
 Other functions to read text files delivered by ForestgGEO's database.: \code{\link{type_fgeo}}
 }
+\concept{functions to read text files delivered by ForestgGEO's database.}
