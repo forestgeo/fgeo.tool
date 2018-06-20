@@ -60,7 +60,6 @@ reference:
   - title: Pick/drop rows with matching conditions 
     desc: Specific to ForestGEO
     contents:
-    - collapse_censusid
     - drop_twice_dead
     - filter_status
     - drop_dead_stem
