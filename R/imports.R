@@ -5,9 +5,6 @@
 #' @importFrom measurements conv_unit
 NULL
 
-#' @export 
-measurements::conv_unit
-
 #' @export
 dplyr::`%>%`
 
