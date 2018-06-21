@@ -3,7 +3,6 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
-\alias{conv_unit}
 \alias{\%>\%}
 \title{Objects exported from other packages}
 \keyword{internal}
@@ -13,7 +12,5 @@ below to see their documentation.
 
 \describe{
   \item{dplyr}{\code{\link[dplyr]{\%>\%}}}
-
-  \item{measurements}{\code{\link[measurements]{conv_unit}}}
 }}
 

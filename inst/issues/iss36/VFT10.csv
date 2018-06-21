@@ -1,0 +1,10 @@
+DBHID,PlotName,PlotID,Family,Genus,SpeciesName,Mnemonic,Subspecies,SpeciesID,SubspeciesID,QuadratName,QuadratID,PX,PY,QX,QY,TreeID,Tag,StemID,StemNumber,StemTag,PrimaryStem,CensusID,PlotCensusNumber,DBH,HOM,ExactDate,Date,ListOfTSM,HighHOM,LargeStem,Status
+1,sinharaja,1,Euphorbiaceae,Aporosa,,APOR**,NULL,12,NULL,0000,1,0.05000,0.25000,0.05000,0.25000,1,000001,1,1,1,main,1,1,18,1.30,1996-01-23,13171,BA,1,NULL,alive
+423321,sinharaja,1,Euphorbiaceae,Aporosa,,APOR**,NULL,12,NULL,0000,1,0.05000,0.25000,0.05000,0.25000,1,000001,1,1,1,main,2,2,18,1.30,2001-02-27,15033,NULL,1,NULL,alive
+3,sinharaja,1,Euphorbiaceae,Aporosa,,APOR**,NULL,12,NULL,0000,1,0.05000,0.25000,0.05000,0.25000,1,000001,1,1,1,,3,3,NULL,1.30,2008-03-15,17606,S,1,NULL,broken below
+720408,sinharaja,1,Euphorbiaceae,Aporosa,,APOR**,NULL,12,NULL,0000,1,0.05000,0.25000,0.05000,0.25000,1,000001,1,1,1,NULL,4,4,NULL,NULL,2013-03-14,19431,S,1,NULL,broken below
+4,sinharaja,1,Myristicaceae,Myristica,dactyloides,MYRIDA,NULL,142,NULL,0000,1,0.80000,0.30000,0.80000,0.30000,2,000002,2,1,1,main,1,1,73,1.30,1996-01-23,13171,SB,1,NULL,alive
+423324,sinharaja,1,Myristicaceae,Myristica,dactyloides,MYRIDA,NULL,142,NULL,0000,1,0.80000,0.30000,0.80000,0.30000,2,000002,2,1,1,main,2,2,73,1.30,2001-02-27,15033,NULL,1,NULL,alive
+6,sinharaja,1,Myristicaceae,Myristica,dactyloides,MYRIDA,NULL,142,NULL,0000,1,0.80000,0.30000,0.80000,0.30000,2,000002,2,1,1,,3,3,NULL,1.30,2008-03-15,17606,D,1,NULL,dead
+720409,sinharaja,1,Myristicaceae,Myristica,dactyloides,MYRIDA,NULL,142,NULL,0000,1,0.80000,0.30000,0.80000,0.30000,2,000002,2,1,1,NULL,4,4,NULL,NULL,2013-03-14,19431,D,1,NULL,dead
+7,sinharaja,1,Malvaceae,Durio,ceylanica,CULLCE,NULL,49,NULL,0000,1,1.50000,0.30000,1.50000,0.30000,3,000003,3,1,1,main,1,1,364,1.30,1996-01-23,13171,IR,1,NULL,alive

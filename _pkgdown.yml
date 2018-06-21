@@ -77,18 +77,16 @@ reference:
     desc: Specific to ForestGEO
     contents:
     - recode_subquad
+    - sanitize_vft
+    - sanitize_taxa
 
   - title: Edit dataframe columns or vectors
     desc: General (not specific to ForestGEO)
     contents:
-    - conv_unit_at
-    - conv_unit
+    - convert_unit
     - lookup
     - replace_null
-    - sanitize_vft
-    - sanitize_taxa
     - standardize_at
-
 
   - title: Add new columns 
     desc: Specific to ForestGEO
