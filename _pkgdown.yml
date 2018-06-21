@@ -41,6 +41,10 @@ reference:
     - read_fgeo
     - type_fgeo
 
+    - xlff_to_csv
+    - xlff_to_dfs
+    - xlff_to_xl
+
   - title: Input to output
     desc: General (not specific to ForestGEO)
     contents:
@@ -54,10 +58,6 @@ reference:
     - xl_to_dfs
 
     - xlsheets_to_dfs
-
-    - xlff_to_csv
-    - xlff_to_dfs
-    - xlff_to_xl
 
   - title: Pick/drop rows with matching conditions 
     desc: Specific to ForestGEO
