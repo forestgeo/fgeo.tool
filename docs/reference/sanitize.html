@@ -228,12 +228,12 @@ names.</p></dd>
 <span class='no'>vft</span>$<span class='no'>PlotName</span> <span class='kw'>&lt;-</span> <span class='st'>"NULL"</span>
 
 <span class='co'># "NULL" should be replaced by `NA` and `DBH` should be numeric</span>
-<span class='fu'>str</span>(<span class='no'>vft</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	3302 obs. of  2 variables:
+<span class='fu'>str</span>(<span class='no'>vft</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	3302 obs. of  2 variables:
 #&gt;  $ PlotName: chr  "NULL" "NULL" "NULL" "NULL" ...
 #&gt;  $ DBH     : chr  NA "185" NA "341" ...</div><div class='input'>
 <span class='co'># Fix</span>
 <span class='no'>vft_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_vft</span>(<span class='no'>vft</span>)
-<span class='fu'>str</span>(<span class='no'>vft_sane</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	3302 obs. of  2 variables:
+<span class='fu'>str</span>(<span class='no'>vft_sane</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	3302 obs. of  2 variables:
 #&gt;  $ PlotName: chr  NA NA NA NA ...
 #&gt;  $ DBH     : num  NA 185 NA 341 370 375 167 172 187 141 ...</div><div class='input'>
 
@@ -245,12 +245,12 @@ names.</p></dd>
 <span class='no'>taxa</span>$<span class='no'>SubspeciesID</span> <span class='kw'>&lt;-</span> <span class='st'>"NULL"</span>
 
 <span class='co'># "NULL" should be replaced by `NA` and `ViewID` should be integer</span>
-<span class='fu'>str</span>(<span class='no'>taxa</span>[<span class='fu'>c</span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	163 obs. of  2 variables:
+<span class='fu'>str</span>(<span class='no'>taxa</span>[<span class='fu'>c</span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  2 variables:
 #&gt;  $ SubspeciesID: chr  "NULL" "NULL" "NULL" "NULL" ...
 #&gt;  $ ViewID      : chr  "1" "2" "3" "4" ...</div><div class='input'>
 <span class='co'># Fix</span>
 <span class='no'>taxa_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_taxa</span>(<span class='no'>taxa</span>)
-<span class='fu'>str</span>(<span class='no'>taxa_sane</span>[<span class='fu'>c</span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	163 obs. of  2 variables:
+<span class='fu'>str</span>(<span class='no'>taxa_sane</span>[<span class='fu'>c</span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  2 variables:
 #&gt;  $ SubspeciesID: chr  NA NA NA NA ...
 #&gt;  $ ViewID      : int  1 2 3 4 5 6 7 8 9 10 ...</div></pre>
   </div>

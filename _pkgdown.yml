@@ -45,7 +45,7 @@ reference:
     - xlff_to_dfs
     - xlff_to_xl
 
-  - title: Input to output
+  - title: Move data from an input to an output
     desc: General (not specific to ForestGEO)
     contents:
     - csv_to_df
@@ -73,14 +73,14 @@ reference:
     - pick_recensus
     - pick_top
 
-  - title: Edit dataframe columns or vectors 
+  - title: Edit data in place
     desc: Specific to ForestGEO
     contents:
     - recode_subquad
     - sanitize_vft
     - sanitize_taxa
 
-  - title: Edit dataframe columns or vectors
+  - title: Edit data in place
     desc: General (not specific to ForestGEO)
     contents:
     - convert_unit
@@ -93,23 +93,25 @@ reference:
     contents:
     - starts_with("add_")
 
-  - title: Data 
-    desc: Specific to ForestGEO
-    contents:
-    - tool_example
-    - fgeo_elevation
-    - fgeo_habitat
-
-
-
-  - title: Type and class (for developers)
+  - title: Deal with objects' type or class
     desc: General (not specific to ForestGEO)
     contents:
     - hide_data_of_class
     - show_data_of_class
     - type_ensure
 
-  - title: Names (for developers)
+  - title: Deal with objects' names
     desc: General (not specific to ForestGEO)
     contents:
     - starts_with("nms_")
+
+  - title: Construct or restructure data
+    desc: Specific to ForestGEO
+    contents:
+    - fgeo_elevation
+    - fgeo_habitat
+
+  - title: Access data 
+    desc: Specific to ForestGEO
+    contents:
+    - tool_example
