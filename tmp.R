@@ -3,6 +3,25 @@
 # xxx cont here
 # * Replace bci data by luquillo data in map (top1quad by vft_1quad, ...)
 # * Remove internal data functions_priority
+# * Rename input_to_output() to begin with from_*(), e.g. from_df_csv
+
+# * Improve interface of input_to_output(from, to, ...)
+# Table input / output and find missing pieces.
+# input/output:
+# * xlsheet
+# * xlsheets
+# * xlbook
+# * xlbooks
+# * df
+# * dfs
+# from/to:
+# * file
+# * directory
+# * df
+# * dfs
+
+
+
 
 # Families ----------------------------------------------------------------
 
@@ -16,9 +35,6 @@
 # fgeo.tool: SPECIFIC TO FGEO, DEPENDENT ----------------------------------
 
 # add_*(): Add columns to a dataframe
-# Add col, row, hectindex, index, lx, ly, quad, qx, qy, subquad, status_tree.
-# Add columns to a ForestGEO dataframe.
-# georeference: position stems in a forest plot
 add_col_row
 add_col_row2
 add_hectindex

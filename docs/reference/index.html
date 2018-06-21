@@ -148,11 +148,17 @@
           <p><code><a href="type_fgeo.html">type_vft()</a></code> <code><a href="type_fgeo.html">type_taxa()</a></code> </p>
         </td>
         <td><p>Help to read ForestGEO data safely, with consistent column type.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="xlff_to_output.html">xlff_to_csv()</a></code> <code><a href="xlff_to_output.html">xlff_to_xl()</a></code> <code><a href="xlff_to_output.html">xlff_to_dfs()</a></code> </p>
+        </td>
+        <td><p>Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-input-to-output" class="hasAnchor"><a href="#section-input-to-output" class="anchor"></a>Input to output</h2>
+          <h2 id="section-move-data-from-an-input-to-an-output" class="hasAnchor"><a href="#section-move-data-from-an-input-to-an-output" class="anchor"></a>Move data from an input to an output</h2>
           <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
         </th>
       </tr>
@@ -180,12 +186,6 @@
           <p><code><a href="xlsheets_to_dfs.html">xlsheets_to_dfs()</a></code> </p>
         </td>
         <td><p>Read one excel workbook and map each spreadsheet to a dataframe in a list.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="xlff_to_output.html">xlff_to_csv()</a></code> <code><a href="xlff_to_output.html">xlff_to_xl()</a></code> <code><a href="xlff_to_output.html">xlff_to_dfs()</a></code> </p>
-        </td>
-        <td><p>Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -230,7 +230,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-edit-dataframe-columns-or-vectors" class="hasAnchor"><a href="#section-edit-dataframe-columns-or-vectors" class="anchor"></a>Edit dataframe columns or vectors</h2>
+          <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
           <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
       </tr>
@@ -250,7 +250,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-edit-dataframe-columns-or-vectors" class="hasAnchor"><a href="#section-edit-dataframe-columns-or-vectors" class="anchor"></a>Edit dataframe columns or vectors</h2>
+          <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
           <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
         </th>
       </tr>
@@ -308,33 +308,7 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="tool_example.html">tool_example()</a></code> </p>
-        </td>
-        <td><p>Path to directory containing example data.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fgeo_elevation.html">fgeo_elevation()</a></code> </p>
-        </td>
-        <td><p>Construct elevation data.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fgeo_habitat.html">fgeo_habitat()</a></code> </p>
-        </td>
-        <td><p>Construct habitat data.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-for-developers" class="hasAnchor"><a href="#section-for-developers" class="anchor"></a>For developers</h2>
+          <h2 id="section-deal-with-objects-type-or-class" class="hasAnchor"><a href="#section-deal-with-objects-type-or-class" class="anchor"></a>Deal with objects' type or class</h2>
           <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
         </th>
       </tr>
@@ -345,6 +319,20 @@
         </td>
         <td><p>Find and hide dataset names in a package that match a class.</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="type_ensure.html">type_ensure()</a></code> </p>
+        </td>
+        <td><p>Ensure the specific columns of a dataframe have a particular type.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-deal-with-objects-names" class="hasAnchor"><a href="#section-deal-with-objects-names" class="anchor"></a>Deal with objects' names</h2>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="nms.html">nms_has_any()</a></code> <code><a href="nms.html">nms_detect()</a></code> <code><a href="nms.html">nms_extract_all()</a></code> <code><a href="nms.html">nms_extract1()</a></code> </p>
@@ -380,12 +368,40 @@
           <p><code><a href="nms_try_rename.html">nms_try_rename()</a></code> </p>
         </td>
         <td><p>Try to rename an object.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-construct-or-restructure-data" class="hasAnchor"><a href="#section-construct-or-restructure-data" class="anchor"></a>Construct or restructure data</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="fgeo_elevation.html">fgeo_elevation()</a></code> </p>
+        </td>
+        <td><p>Construct elevation data.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="type_ensure.html">type_ensure()</a></code> </p>
+          <p><code><a href="fgeo_habitat.html">fgeo_habitat()</a></code> </p>
         </td>
-        <td><p>Ensure the specific columns of a dataframe have a particular type.</p></td>
+        <td><p>Construct habitat data.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-access-data" class="hasAnchor"><a href="#section-access-data" class="anchor"></a>Access data</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="tool_example.html">tool_example()</a></code> </p>
+        </td>
+        <td><p>Path to directory containing example data.</p></td>
       </tr>
     </tbody>
     </table>
@@ -395,14 +411,16 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-read">Read</a></li>
-      <li><a href="#section-input-to-output">Input to output</a></li>
+      <li><a href="#section-move-data-from-an-input-to-an-output">Move data from an input to an output</a></li>
       <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
       <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
-      <li><a href="#section-edit-dataframe-columns-or-vectors">Edit dataframe columns or vectors</a></li>
-      <li><a href="#section-edit-dataframe-columns-or-vectors">Edit dataframe columns or vectors</a></li>
+      <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
+      <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
       <li><a href="#section-add-new-columns">Add new columns</a></li>
-      <li><a href="#section-data">Data</a></li>
-      <li><a href="#section-for-developers">For developers</a></li>
+      <li><a href="#section-deal-with-objects-type-or-class">Deal with objects' type or class</a></li>
+      <li><a href="#section-deal-with-objects-names">Deal with objects' names</a></li>
+      <li><a href="#section-construct-or-restructure-data">Construct or restructure data</a></li>
+      <li><a href="#section-access-data">Access data</a></li>
     </ul>
   </div>
 </div>
