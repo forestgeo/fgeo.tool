@@ -100,10 +100,16 @@ reference:
     - fgeo_elevation
     - fgeo_habitat
 
-  - title: For developers
+
+
+  - title: Type and class (for developers)
     desc: General (not specific to ForestGEO)
     contents:
     - hide_data_of_class
     - show_data_of_class
-    - starts_with("nms_")
     - type_ensure
+
+  - title: Names (for developers)
+    desc: General (not specific to ForestGEO)
+    contents:
+    - starts_with("nms_")

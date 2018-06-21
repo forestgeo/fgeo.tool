@@ -3,6 +3,7 @@
 # xxx cont here
 # * Replace bci data by luquillo data in map (top1quad by vft_1quad, ...)
 # * Remove internal data functions_priority
+# * Rename input_to_output() to begin with from_*(), e.g. from_df_csv
 
 # Families ----------------------------------------------------------------
 
