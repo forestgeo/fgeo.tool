@@ -57,7 +57,7 @@ dfs
 This intermediate step is useful if you want to identify the source of each dataframe.
 
 ```{r}
-id <- name_df_lst(dfs, name = "source")
+id <- name_dfs(dfs, name = "source")
 id
 ```
 

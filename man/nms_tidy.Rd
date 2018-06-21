@@ -15,11 +15,11 @@ A modified version of \code{x} with tidy names or a string of tidy names.
 \description{
 These functions create tidy names that are lowercase and have no empty
 spaces. \code{nms_tidy()} tidies the names of named objects. Unnamed strings are
-also tidied via \code{str_to_tidy_names()}. \code{str_to_tidy_names()} tidies a string -- not
+also tidied via \code{to_tidy_names()}. \code{to_tidy_names()} tidies a string -- not
 its names.
 }
 \examples{
-# Use str_to_tidy_names()
+# Use to_tidy_names()
 library(fgeo.base)
 
 messy <- "Hi yOu"
@@ -29,7 +29,7 @@ unnamed_string <- messy
 names(messy)
 nms_tidy(messy)
 # Same
-str_to_tidy_names(messy)
+to_tidy_names(messy)
 
 # WHY TWO FUNCTIONS?
 
@@ -37,15 +37,15 @@ messy_named_string <- c(`Messy Name` = messy)
 # Targets names
 nms_tidy(messy_named_string)
 # Targets strings -- not its names
-str_to_tidy_names(messy_named_string)
+to_tidy_names(messy_named_string)
 
-# Same output, but here `str_to_tidy_names()` better communicates intention.
+# Same output, but here `to_tidy_names()` better communicates intention.
 dfm <- data.frame(1)
 setNames(dfm, nms_tidy(messy))
-setNames(dfm, str_to_tidy_names(messy))
+setNames(dfm, to_tidy_names(messy))
 
 # Makes more sense when operating on strings
-setNames(list(1), str_to_tidy_names(messy))
+setNames(list(1), to_tidy_names(messy))
 # Makes more sense when operating on named objects
 messy_list <- list(`Hi yOu` = 1)
 nms_tidy(messy_list)

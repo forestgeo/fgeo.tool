@@ -134,7 +134,7 @@ xlff_to_dfs_ <- function(file, first_census = FALSE) {
     # Avoid error in naming cero-row dataframes
     warn_if_filling_cero_row_dataframe() %>% 
     purrr::modify_if(~nrow(.x) == 0, ~purrr::map_df(.x, ~NA)) %>% 
-    fgeo.base::name_df_lst(name = "sheet") %>% 
+    fgeo.base::name_dfs(name = "sheet") %>% 
     # Avoid merge errors
     coerce_as_character()
   
