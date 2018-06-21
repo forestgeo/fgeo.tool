@@ -1,0 +1,20 @@
+---
+title: "fgeo.tool, issue 36"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(fgeo.tool)
+path <- here::here("inst/issues/iss36/VFT10.csv")
+
+# Fails because read_vft expects tab delimited
+read_vft(path)
+
+# Fix by using the argument `delim` to specify that this is comma separated
+read_vft(path, delim = ", ")
+```
+
