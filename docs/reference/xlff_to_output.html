@@ -209,7 +209,7 @@ and (4) "single_stems".</p></li>
 <span class='co'># NOT A FIRST CENSUS</span>
 <span class='co'># Path to the folder I want to read excel files from</span>
 <span class='no'>dir_in</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"two_files/new_stem_1.xlsx"</span>))
-<span class='no'>dir_in</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.tool/inst/extdata/two_files"</div><div class='input'>
+<span class='no'>dir_in</span></div><div class='output co'>#&gt; [1] "/cloud/project/inst/extdata/two_files"</div><div class='input'>
 <span class='co'># Files I want to read</span>
 <span class='fu'>dir</span>(<span class='no'>dir_in</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"xlsx"</span>)</div><div class='output co'>#&gt; [1] "new_stem_1.xlsx" "new_stem_2.xlsx"</div><div class='input'>
 <span class='co'># Path to the folder I want to write .csv files to</span>
@@ -251,7 +251,7 @@ and (4) "single_stems".</p></li>
 <span class='co'># Read back</span>
 <span class='no'>filename</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span>(<span class='no'>dir_out</span>, <span class='st'>"census.xlsx"</span>)
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>read_excel</a></span>(<span class='no'>filename</span>)
-<span class='fu'>str</span>(<span class='no'>out</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	54 obs. of  17 variables:
+<span class='fu'>str</span>(<span class='no'>out</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	54 obs. of  17 variables:
 #&gt;  $ submission_id        : chr  "c01b37d5-2c30-4086-b4a1-78327dfa0a9a" "efd8e991-2e34-40c8-b503-44def6e542d9" "7997596a-c94e-47b6-ab28-4b0e6a94e9df" "a4e952e6-dcad-4410-aba9-36918fa1fa62" ...
 #&gt;  $ start_form_time_stamp: chr  "2018.05.14 11:55:32 AM" "2018.05.14 01:10:33 PM" "2018.05.14 04:14:23 PM" "2018.05.14 04:38:45 PM" ...
 #&gt;  $ end_form_time_stamp  : chr  "2018.05.14 06:03:12 PM" "2018.05.14 06:03:11 PM" "2018.05.14 06:03:11 PM" "2018.05.14 06:03:10 PM" ...
