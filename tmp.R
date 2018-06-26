@@ -1,34 +1,3 @@
-
-vft <- tibble::tribble(
-  ~CensusID, ~TreeID, ~StemID, ~Status,
-  1,       1,       1, "alive",
-  1,       1,       2,  "dead",
-  1,       2,       3,  "dead",
-  1,       2,       4,  "dead",
-  2,       1,       1, "alive",
-  2,       1,       2, "alive",
-  2,       2,       3, "alive",
-  2,       2,       4,  "dead"
-)
-vft
-
-add_status_tree(x, status_a = "alive", status_d = "dead")
-
-
-
-
-
-
-library(fgeo)
-library(tidyverse)
-
-stem <- fgeo.data::luquillo_stem6_1ha
-treestatus <- fgeo.tool::add_status_tree(stem)
-
-
-lapply(list(stem, treestatus), nrow)
-
-
 # TODO --------------------------------------------------------------------
 
 # xxx cont here
