@@ -4,6 +4,9 @@
 \name{reexports}
 \alias{reexports}
 \alias{\%>\%}
+\alias{tibble}
+\alias{tribble}
+\alias{as_tibble}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -12,5 +15,7 @@ below to see their documentation.
 
 \describe{
   \item{dplyr}{\code{\link[dplyr]{\%>\%}}}
+
+  \item{tibble}{\code{\link[tibble]{tibble}}, \code{\link[tibble]{tribble}}, \code{\link[tibble]{as_tibble}}}
 }}
 
