@@ -1,7 +1,7 @@
 context("drop_twice_dead")
 
 vft <- tibble::tribble(
-  ~CensusID, ~TreeID,     ~Status,
+  ~CensusID, ~TreeID,  ~Status,
           0,    1,      "dead",  # this is irrelevant; census too early
           0,    1,      "dead",  
           
