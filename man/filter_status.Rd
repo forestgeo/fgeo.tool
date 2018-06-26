@@ -37,7 +37,7 @@ on the status of its stems see \code{\link[=add_status_tree]{add_status_tree()}}
 library(dplyr)
 library(fgeo.tool)
 
-# Filter by the status of each stem (wood = "stem") -----------------------
+#' # Filter by the status of each stem (wood = "stem") -----------------------
 
 # CENSUS TABLE: STEM TABLE
 
@@ -60,7 +60,7 @@ table(result$status)
 # CENSUS TABLE: TREE TABLE
 
 # Works exactly in the same way
-x <- bciex::bci12t7mini
+x <- fgeo.data::luquillo_tree6_random
 table(x$status)
 
 result <- filter_status(x, wood = "stem", .status = "D")
@@ -75,7 +75,7 @@ table(result$status)
 # Works exactly in the same way, but notice the following:
 # * The variable Status starts with capital S;
 # * The values of Status are not, say "A" or "D", but "alive" or "dead".
-x <- bciex::bci12vft_mini
+x <- fgeo.data::luquillo_vft_4quad
 table(x$Status)
 
 result <- filter_status(x, wood = "stem", .status = "alive")
@@ -93,7 +93,7 @@ table(result$Status)
 
 # CENSUS TABLE: STEM TABLE
 
-x <- bciex::bci12s7mini
+x <- fgeo.data::luquillo_stem_random_tiny
 
 # Add the variable status_tree, which gives the status of each tree, not stem
 unique(x$status)
@@ -109,14 +109,14 @@ table(result$status_tree)
 # Shortcut
 result <- drop_dead_tree(x)
 result \%>\%
-  dplyr::arrange(TreeID, stemID, status) \%>\%
-  dplyr::select(TreeID, stemID, status, status_tree)
+  dplyr::arrange(treeID, stemID, status) \%>\%
+  dplyr::select(treeID, stemID, status, status_tree)
 table(result$status_tree)
 
 
 
 # CENSUS TABLE: TREE TABLE
-x <- bciex::bci12t7mini
+x <- fgeo.data::luquillo_tree6_random
 # For a tree census-table, each stem maps to a tree, so the value of the
 # variable `status` gives, at the same time, the status of the stem and tree.
 x <- add_status_tree(x, "D", "A")
