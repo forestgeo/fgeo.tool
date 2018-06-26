@@ -271,21 +271,8 @@ to <code>.status</code>.</p></td>
 <span class='co'># Shortcut</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>)
 <span class='no'>result</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>tag</span>, <span class='no'>stemID</span>, <span class='no'>status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 1,809 x 4
-#&gt;    tag    stemID status status_tree
-#&gt;    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt;  1 000851      1 A      A          
-#&gt;  2 001080      1 G      A          
-#&gt;  3 001080      2 G      A          
-#&gt;  4 001080      3 G      A          
-#&gt;  5 001080      4 G      A          
-#&gt;  6 001080      5 G      A          
-#&gt;  7 001080      6 G      A          
-#&gt;  8 001080      7 G      A          
-#&gt;  9 001080      8 G      A          
-#&gt; 10 001080      9 G      A          
-#&gt; # ... with 1,799 more rows</div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>TreeID</span>, <span class='no'>stemID</span>, <span class='no'>status</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>TreeID</span>, <span class='no'>stemID</span>, <span class='no'>status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; <span class='error'>Error in arrange_impl(.data, dots): Evaluation error: object 'TreeID' not found.</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt;    A 
 #&gt; 1809 </div><div class='input'>
 
@@ -319,20 +306,20 @@ to <code>.status</code>.</p></td>
 <span class='co'># Shortcut</span>
 <span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "alive" "dead" </div><div class='input'><span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>, <span class='st'>"dead"</span>)
 <span class='no'>result</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>Tag</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 3,853 x 4
-#&gt;    Tag    StemID Status status_tree
-#&gt;    &lt;chr&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt;  1 000002      1 alive  alive      
-#&gt;  2 000002      1 alive  alive      
-#&gt;  3 000004      1 alive  alive      
-#&gt;  4 000004      1 alive  alive      
-#&gt;  5 000006      7 alive  alive      
-#&gt;  6 000006      7 alive  alive      
-#&gt;  7 000007      1 alive  alive      
-#&gt;  8 000007      1 alive  alive      
-#&gt;  9 000008      1 alive  alive      
-#&gt; 10 000008      1 alive  alive      
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>TreeID</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>TreeID</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 3,853 x 4
+#&gt;    TreeID StemID Status status_tree
+#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;      
+#&gt;  1     19      1 alive  alive      
+#&gt;  2     19      1 alive  alive      
+#&gt;  3     21      1 alive  alive      
+#&gt;  4     21      1 alive  alive      
+#&gt;  5     23      7 alive  alive      
+#&gt;  6     23      7 alive  alive      
+#&gt;  7     24      1 alive  alive      
+#&gt;  8     24      1 alive  alive      
+#&gt;  9     25      1 alive  alive      
+#&gt; 10     25      1 alive  alive      
 #&gt; # ... with 3,843 more rows</div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt; alive 
 #&gt;  3853 </div></pre>

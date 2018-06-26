@@ -109,8 +109,8 @@ table(result$status_tree)
 # Shortcut
 result <- drop_dead_tree(x)
 result \%>\%
-  dplyr::arrange(tag, stemID, status) \%>\%
-  dplyr::select(tag, stemID, status, status_tree)
+  dplyr::arrange(TreeID, stemID, status) \%>\%
+  dplyr::select(TreeID, stemID, status, status_tree)
 table(result$status_tree)
 
 
@@ -147,8 +147,8 @@ table(result$status_tree)
 unique(x$Status)
 result <- drop_dead_tree(x, "dead")
 result \%>\%
-  dplyr::arrange(Tag, StemID, Status) \%>\%
-  dplyr::select(Tag, StemID, Status, status_tree)
+  dplyr::arrange(TreeID, StemID, Status) \%>\%
+  dplyr::select(TreeID, StemID, Status, status_tree)
 table(result$status_tree)
 }
 \seealso{

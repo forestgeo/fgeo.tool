@@ -165,7 +165,7 @@ capital "S" in ViewFull tables).</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
-  ~<span class='no'>CensusID</span>, ~<span class='no'>Tag</span>, ~<span class='no'>Status</span>,
+  ~<span class='no'>CensusID</span>, ~<span class='no'>TreeID</span>, ~<span class='no'>Status</span>,
           <span class='fl'>1</span>,    <span class='fl'>1</span>, <span class='st'>"alive"</span>,
           <span class='fl'>1</span>,    <span class='fl'>1</span>,  <span class='st'>"dead"</span>,
           <span class='fl'>1</span>,    <span class='fl'>2</span>,  <span class='st'>"dead"</span>,
@@ -176,16 +176,16 @@ capital "S" in ViewFull tables).</p></td>
           <span class='fl'>2</span>,    <span class='fl'>2</span>,  <span class='st'>"dead"</span>
 )
 <span class='fu'>add_status_tree</span>(<span class='no'>x</span>, <span class='st'>"alive"</span>, <span class='st'>"dead"</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
-#&gt;   CensusID   Tag Status status_tree
-#&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt; 1        1     1 alive  alive      
-#&gt; 2        1     1 dead   alive      
-#&gt; 3        1     2 dead   dead       
-#&gt; 4        1     2 dead   dead       
-#&gt; 5        2     1 alive  alive      
-#&gt; 6        2     1 alive  alive      
-#&gt; 7        2     2 alive  alive      
-#&gt; 8        2     2 dead   alive      </div></pre>
+#&gt;   CensusID TreeID Status status_tree
+#&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
+#&gt; 1        1      1 alive  alive      
+#&gt; 2        1      1 dead   alive      
+#&gt; 3        1      2 dead   dead       
+#&gt; 4        1      2 dead   dead       
+#&gt; 5        2      1 alive  alive      
+#&gt; 6        2      1 alive  alive      
+#&gt; 7        2      2 alive  alive      
+#&gt; 8        2      2 dead   alive      </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

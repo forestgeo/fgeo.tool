@@ -1,3 +1,13 @@
+library(fgeo)
+library(tidyverse)
+
+stem <- fgeo.data::luquillo_stem6_1ha
+treestatus <- fgeo.tool::add_status_tree(stem)
+
+
+lapply(list(stem, treestatus), nrow)
+
+
 # TODO --------------------------------------------------------------------
 
 # xxx cont here

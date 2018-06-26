@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' vft <- tibble::tribble(
-#'   ~censusid, ~tag,   ~Status,
+#'   ~CensusID, ~Treeid,   ~Status,
 #'   1,    1,   "alive",  # Irrelevant: not one of the last two censuses
 #'   1,    1,    "dead",  # 
 #'   
@@ -50,9 +50,9 @@ drop_twice_dead <- function(vft) {
 
   last <- max(vft$censusid, na.rm = TRUE)
   last2 <- vft[vft$censusid %in% c(last, last - 1), ]
-  by_tag <- group_by(last2, .data$tag)
+  by_treeid <- group_by(last2, .data$treeid)
   last2 <- ungroup(
-    mutate(by_tag, to_keep = !identical(unique(.data$status_tree), "dead"))
+    mutate(by_treeid, to_keep = !identical(unique(.data$status_tree), "dead"))
   )
   keep <- select(dplyr::filter(last2, .data$to_keep), -.data$to_keep)
 
@@ -62,7 +62,7 @@ drop_twice_dead <- function(vft) {
 check_drop_twice_dead <- function(vft) {
   stopifnot(is.data.frame(vft))
   fgeo.base::check_crucial_names(
-    vft, c("censusid", "tag", "status", "status_tree")
+    vft, c("censusid", "treeid", "status", "status_tree")
   )
   if (!length(unique(vft$censusid)) >= 2) {
     warning(

@@ -42,7 +42,7 @@ Setup.
 library(fgeo.tool)
 
 df <- tibble::tribble(
-  ~CensusID, ~Tag, ~Status,
+  ~CensusID, ~TreeID, ~Status,
           1,    1, "alive",
           1,    1,  "dead",
                            
@@ -75,8 +75,8 @@ df <- add_status_tree(df)
 # Filter a data set
 
 # Filter from the head or tail of a variable
-pick_top(df, Tag)
-pick_top(df, Tag, -1)
+pick_top(df, TreeID)
+pick_top(df, TreeID, -1)
 # Remove trees found dead in two or more censuses
 drop_twice_dead(df)
 ```
@@ -90,7 +90,7 @@ library(dplyr)
 dplyr::filter(
   .data = df,
   CensusID > 1,
-  Tag  %in% c(1, 2),
+  TreeID  %in% c(1, 2),
   Status == "alive"
 )
 ```
