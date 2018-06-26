@@ -1,7 +1,7 @@
 library(dplyr)
 
 fgeo <- tribble(
-  ~CensusID, ~Tag, ~Status,
+  ~CensusID, ~TreeID, ~Status,
          1,    1, "alive",
          1,    1,  "dead",
          1,    2,  "dead",
@@ -58,12 +58,12 @@ test_that("returns expected values", {
   expect_equal(unique(out$status_tree), "dead")
   expect_equal(unique(out$Status), "dead")
   expect_equal(unique(out$CensusID), 1)
-  expect_equal(unique(out$Tag), 2)
+  expect_equal(unique(out$TreeID), 2)
 })
 
 test_that("Warns when ignoring NA(s)", {
   w_na <- tribble(
-    ~CensusID, ~Tag, ~Status,
+    ~CensusID, ~TreeID, ~Status,
             1,    1, "alive",
             1,    1,  "dead",
             1,    2,  "dead",

@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' x <- tibble::tribble(
-#'   ~CensusID, ~Tag, ~Status,
+#'   ~CensusID, ~TreeID, ~Status,
 #'           1,    1, "alive",
 #'           1,    1,  "dead",
 #'           1,    2,  "dead",
@@ -32,7 +32,7 @@ add_status_tree <- function(x, status_a = "A", status_d = "D") {
   x <- set_names(x, tolower)
   check_add_status_tree(x, status_a = status_a, status_d = status_d)
 
-  grp <- group_by(x, .data$censusid, .data$tag)
+  grp <- group_by(x, .data$censusid, .data$treeid)
   mut <- mutate(
     grp, status_tree = ifelse(
       all(.data$status == status_d),
@@ -45,7 +45,7 @@ add_status_tree <- function(x, status_a = "A", status_d = "D") {
 
 check_add_status_tree <- function(x, status_d, status_a) {
   stopifnot(is.data.frame(x))
-  fgeo.base::check_crucial_names(x, c("tag", "status", "censusid"))
+  fgeo.base::check_crucial_names(x, c("treeid", "status", "censusid"))
   check_valid_status(x, .status = c(status_d, status_a), "status")
   is_vft <- "plotid" %in% names(x)
   if (is_vft) {

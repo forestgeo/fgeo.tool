@@ -21,7 +21,7 @@ Define the status of a tree based on the status of its stems.
 }
 \examples{
 x <- tibble::tribble(
-  ~CensusID, ~Tag, ~Status,
+  ~CensusID, ~TreeID, ~Status,
           1,    1, "alive",
           1,    1,  "dead",
           1,    2,  "dead",

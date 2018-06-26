@@ -1,11 +1,11 @@
 context("drop_twice_dead")
 
 vft <- tibble::tribble(
-  ~CensusID, ~Tag,     ~Status,
+  ~CensusID, ~TreeID,  ~Status,
           0,    1,      "dead",  # this is irrelevant; census too early
           0,    1,      "dead",  
           
-          1,    1,      "dead",  # tag 1 should stay; tree is dead only in cns 2
+          1,    1,      "dead",  # TreeID 1 should stay; tree is dead only in cns 2
           1,    1,      "alive",
           
           2,    1,      "dead",
@@ -16,7 +16,7 @@ vft <- tibble::tribble(
           0,    2,      "dead",  # this is irrelevant; census too early
           0,    2,      "dead",
           
-          1,    2,      "dead",  # tag 2 should go; tree is dead in cns 1 & 2
+          1,    2,      "dead",  # TreeID 2 should go; tree is dead in cns 1 & 2
           1,    2,      "dead",
           
           2,    2,      "dead",

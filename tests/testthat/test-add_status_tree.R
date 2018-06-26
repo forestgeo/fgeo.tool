@@ -1,8 +1,34 @@
 context("add_status_tree")
 
+stem <- tibble::tribble(
+  ~CensusID, ~treeID, ~stemID, ~status,
+          1,       1,       1,     "A",
+          1,       1,       2,     "D",
+          
+          1,       2,       3,     "D",
+          1,       2,       4,     "D",
+          # ++++++++++++++++++++++++++
+          2,       1,       1,     "A",
+          2,       1,       2,     "G",
+          
+          2,       2,       3,     "D",
+          2,       2,       4,     "G"
+)
+
+
+test_that("determines the correct status of a stem", {
+  .stem <- add_status_tree(stem)
+  expect_equal(.stem$status_tree, c("A", "A", "D", "D", "A", "A", "A", "A"))
+  
+  .stem1 <- add_status_tree(filter(stem, CensusID == 1))
+  expect_equal(.stem1$status_tree, c("A", "A", "D", "D"))
+})
+
+
+
 test_that("the tree status is dead only if one stem is dead", {
   one_dead <- tibble(
-    tag = c(
+    TreeID = c(
       1, 1,
       2, 2,
       3, 3
@@ -23,7 +49,7 @@ test_that("the tree status is dead only if one stem is dead", {
 
 test_that("works even if data already contains the variable `status_tree`", {
   .df <- tribble(
-    ~CensusID, ~Tag,  ~Status,
+    ~CensusID, ~TreeID,  ~Status,
             1,    1,   "A",
             1,    1,    "D",
             1,    2,    "D",
@@ -39,7 +65,7 @@ test_that("works even if data already contains the variable `status_tree`", {
 
 test_that("outputs the correct variable `status_tree`", {
   .df <- tribble(
-    ~CensusID, ~Tag,  ~Status,
+    ~CensusID, ~TreeID,  ~Status,
             1,    1,   "A",
             1,    1,    "D",
             1,    2,    "D",
@@ -56,7 +82,7 @@ test_that("outputs the correct variable `status_tree`", {
 
 test_that("warns if the status is invalid", {
   .df <- tribble(
-    ~CensusID, ~Tag,  ~Status,
+    ~CensusID, ~TreeID,  ~Status,
     1,    1,     "alive",
     1,    1,     "dead",
     1,    2,     "dead",
@@ -82,14 +108,14 @@ test_that("warns if the status is invalid", {
 
 test_that("handles names as in viewfull (vf) and census (cns) tables", {
   vf <- tibble::tribble(
-    ~CensusID, ~Tag, ~Status,
+    ~CensusID, ~TreeID, ~Status,
                 1,    2,  "A",
                 2,    2,  "D"
   )
   expect_silent(add_status_tree(vf))
 
   cns <- tibble::tribble(
-    ~CensusID, ~tag, ~status,
+    ~CensusID, ~TreeID, ~status,
                 1,    2,  "A",
                 2,    2,  "D"
   )
@@ -98,7 +124,7 @@ test_that("handles names as in viewfull (vf) and census (cns) tables", {
 
 test_that("names of data are equal in input and output, except status_tree", {
   cns <- tibble::tribble(
-    ~CensusID, ~tag, ~status,
+    ~CensusID, ~TreeID, ~status,
                 1,    2,  "A",
                 2,    2,  "D"
   )

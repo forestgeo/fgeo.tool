@@ -33,7 +33,7 @@ Setup.
 library(fgeo.tool)
 
 df <- tibble::tribble(
-  ~CensusID, ~Tag, ~Status,
+  ~CensusID, ~TreeID, ~Status,
           1,    1, "alive",
           1,    1,  "dead",
                            
@@ -67,39 +67,39 @@ df <- add_status_tree(df)
 # Filter a data set
 
 # Filter from the head or tail of a variable
-pick_top(df, Tag)
+pick_top(df, TreeID)
 #> # A tibble: 4 x 4
-#>   CensusID   Tag Status status_tree
-#>      <dbl> <dbl> <chr>  <chr>      
-#> 1        1     1 alive  A          
-#> 2        1     1 dead   A          
-#> 3        2     1 alive  A          
-#> 4        2     1 alive  A
-pick_top(df, Tag, -1)
+#>   CensusID TreeID Status status_tree
+#>      <dbl>  <dbl> <chr>  <chr>      
+#> 1        1      1 alive  A          
+#> 2        1      1 dead   A          
+#> 3        2      1 alive  A          
+#> 4        2      1 alive  A
+pick_top(df, TreeID, -1)
 #> # A tibble: 4 x 4
-#>   CensusID   Tag Status status_tree
-#>      <dbl> <dbl> <chr>  <chr>      
-#> 1        1     3 dead   A          
-#> 2        1     3 dead   A          
-#> 3        2     3 dead   A          
-#> 4        2     3 dead   A
+#>   CensusID TreeID Status status_tree
+#>      <dbl>  <dbl> <chr>  <chr>      
+#> 1        1      3 dead   A          
+#> 2        1      3 dead   A          
+#> 3        2      3 dead   A          
+#> 4        2      3 dead   A
 # Remove trees found dead in two or more censuses
 drop_twice_dead(df)
 #> # A tibble: 12 x 4
-#>    CensusID   Tag Status status_tree
-#>       <dbl> <dbl> <chr>  <chr>      
-#>  1        1     1 alive  A          
-#>  2        1     1 dead   A          
-#>  3        1     2 dead   A          
-#>  4        1     2 dead   A          
-#>  5        1     3 dead   A          
-#>  6        1     3 dead   A          
-#>  7        2     1 alive  A          
-#>  8        2     1 alive  A          
-#>  9        2     2 alive  A          
-#> 10        2     2 dead   A          
-#> 11        2     3 dead   A          
-#> 12        2     3 dead   A
+#>    CensusID TreeID Status status_tree
+#>       <dbl>  <dbl> <chr>  <chr>      
+#>  1        1      1 alive  A          
+#>  2        1      1 dead   A          
+#>  3        1      2 dead   A          
+#>  4        1      2 dead   A          
+#>  5        1      3 dead   A          
+#>  6        1      3 dead   A          
+#>  7        2      1 alive  A          
+#>  8        2      1 alive  A          
+#>  9        2      2 alive  A          
+#> 10        2      2 dead   A          
+#> 11        2      3 dead   A          
+#> 12        2      3 dead   A
 ```
 
 Much you can do directly with **dplyr**.
@@ -119,15 +119,15 @@ library(dplyr)
 dplyr::filter(
   .data = df,
   CensusID > 1,
-  Tag  %in% c(1, 2),
+  TreeID  %in% c(1, 2),
   Status == "alive"
 )
 #> # A tibble: 3 x 4
-#>   CensusID   Tag Status status_tree
-#>      <dbl> <dbl> <chr>  <chr>      
-#> 1        2     1 alive  A          
-#> 2        2     1 alive  A          
-#> 3        2     2 alive  A
+#>   CensusID TreeID Status status_tree
+#>      <dbl>  <dbl> <chr>  <chr>      
+#> 1        2      1 alive  A          
+#> 2        2      1 alive  A          
+#> 3        2      2 alive  A
 ```
 
 You can combine **fgeo.tool** with **dplyr**.
@@ -138,14 +138,14 @@ edited <- add_status_tree(pick_top(df, CensusID, -1))
 #>   * Detected values: alive, dead
 dplyr::select(edited, -Status)
 #> # A tibble: 6 x 3
-#>   CensusID   Tag status_tree
-#>      <dbl> <dbl> <chr>      
-#> 1        2     1 A          
-#> 2        2     1 A          
-#> 3        2     2 A          
-#> 4        2     2 A          
-#> 5        2     3 A          
-#> 6        2     3 A
+#>   CensusID TreeID status_tree
+#>      <dbl>  <dbl> <chr>      
+#> 1        2      1 A          
+#> 2        2      1 A          
+#> 3        2      2 A          
+#> 4        2      2 A          
+#> 5        2      3 A          
+#> 6        2      3 A
 ```
 
 You don’t have to, but if you want you can use the pipe (`%>%`).
@@ -160,7 +160,7 @@ df %>%
 #> Warning: No observation has .status = D, A
 #>   * Detected values: alive, dead
 #> # A tibble: 0 x 4
-#> # ... with 4 variables: CensusID <dbl>, Tag <dbl>, status_stem <chr>,
+#> # ... with 4 variables: CensusID <dbl>, TreeID <dbl>, status_stem <chr>,
 #> #   status_tree <chr>
 
 # Same but without the pipe: It is hard to understand what is going on.
@@ -175,7 +175,7 @@ dplyr::arrange(
 #> Warning: No observation has .status = D, A
 #>   * Detected values: alive, dead
 #> # A tibble: 0 x 4
-#> # ... with 4 variables: CensusID <dbl>, Tag <dbl>, status_stem <chr>,
+#> # ... with 4 variables: CensusID <dbl>, TreeID <dbl>, status_stem <chr>,
 #> #   status_tree <chr>
 ```
 

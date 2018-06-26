@@ -23,7 +23,7 @@ were found either alive or dead for the first time.
 }
 \examples{
 vft <- tibble::tribble(
-  ~censusid, ~tag,   ~Status,
+  ~CensusID, ~Treeid,   ~Status,
   1,    1,   "alive",  # Irrelevant: not one of the last two censuses
   1,    1,    "dead",  # 
   
