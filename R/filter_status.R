@@ -23,85 +23,85 @@
 #' @examples
 #' library(dplyr)
 #' library(fgeo.tool)
-#'
+#' 
 #' # Filter by the status of each stem (wood = "stem") -----------------------
-#'
+#' 
 #' # CENSUS TABLE: STEM TABLE
-#'
-#' x <- bciex::bci12s7mini
+#' 
+#' x <- fgeo.data::luquillo_stem_random_tiny
 #' table(x$status)
-#'
+#' 
 #' result <- filter_status(x, wood = "stem", .status = "D")
 #' table(result$status)
-#'
+#' 
 #' result <- filter_status(x, wood = "stem", .status = "D", exclude = TRUE)
 #' table(result$status)
 #' # Shortcut
 #' result <- drop_dead_stem(x)
 #' table(result$status)
-#'
+#' 
 #' # Warns
 #' result <- filter_status(x, wood = "stem", .status = c("A", "wrong-status"))
 #' table(result$status)
-#'
+#' 
 #' # CENSUS TABLE: TREE TABLE
-#'
+#' 
 #' # Works exactly in the same way
 #' x <- bciex::bci12t7mini
 #' table(x$status)
-#'
+#' 
 #' result <- filter_status(x, wood = "stem", .status = "D")
 #' table(result$status)
-#'
+#' 
 #' # Shortcut
 #' result <- drop_dead_stem(x)
 #' table(result$status)
-#'
+#' 
 #' # VIEWFULL TABLE
-#'
+#' 
 #' # Works exactly in the same way, but notice the following:
 #' # * The variable Status starts with capital S;
 #' # * The values of Status are not, say "A" or "D", but "alive" or "dead".
 #' x <- bciex::bci12vft_mini
 #' table(x$Status)
-#'
+#' 
 #' result <- filter_status(x, wood = "stem", .status = "alive")
 #' table(result$Status)
-#'
+#' 
 #' # Warns because `.status` defaults to "D" -- not to "dead".
 #' result <- drop_dead_stem(x)
 #' # Fix and repeat
 #' result <- drop_dead_stem(x, .status = "dead")
 #' table(result$Status)
-#'
-#'
-#'
+#' 
+#' 
+#' 
 #' # Filter by the status of each tree (wood = "tree") -----------------------
-#'
+#' 
 #' # CENSUS TABLE: STEM TABLE
-#'
+#' 
 #' x <- bciex::bci12s7mini
-#'
+#' 
 #' # Add the variable status_tree, which gives the status of each tree, not stem
 #' unique(x$status)
 #' x <- add_status_tree(x, status_d = "D", status_a = "A")
 #' table(x$status_tree)
-#'
+#' 
 #' result <- filter_status(x, wood = "tree", .status = "A")
 #' table(result$status_tree)
-#'
+#' 
 #' result <- filter_status(x, wood = "tree", .status = "D", exclude = TRUE)
 #' table(result$status_tree)
-#'
+#' 
 #' # Shortcut
 #' result <- drop_dead_tree(x)
 #' result %>%
 #'   dplyr::arrange(TreeID, stemID, status) %>%
 #'   dplyr::select(TreeID, stemID, status, status_tree)
 #' table(result$status_tree)
-#'
-#'
-#'
+#' 
+#' 
+#' 
 #' # CENSUS TABLE: TREE TABLE
 #' x <- bciex::bci12t7mini
 #' # For a tree census-table, each stem maps to a tree, so the value of the
@@ -115,21 +115,21 @@
 #' # Shortcut
 #' result <- drop_dead_tree(x, .status = "D")
 #' identical(result, result1)
-#'
-#'
-#'
+#' 
+#' 
+#' 
 #' # VIEWFULL TABLE
-#'
-#' x <- bciex::bci12vft_mini
-#'
+#' 
+#' x <- fgeo.data::luquillo_vft_4quad
+#' 
 #' # Add the variable status_tree, which gives the status of each tree, not stem
 #' unique(x$Status)
 #' x <- add_status_tree(x, status_d = "dead", status_a = "alive")
 #' table(x$status_tree)
-#'
+#' 
 #' result <- filter_status(x, wood = "tree", .status = "alive")
 #' table(result$status_tree)
-#'
+#' 
 #' # Shortcut
 #' unique(x$Status)
 #' result <- drop_dead_tree(x, "dead")

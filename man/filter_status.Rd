@@ -41,7 +41,7 @@ library(fgeo.tool)
 
 # CENSUS TABLE: STEM TABLE
 
-x <- bciex::bci12s7mini
+x <- fgeo.data::luquillo_stem_random_tiny
 table(x$status)
 
 result <- filter_status(x, wood = "stem", .status = "D")
@@ -133,7 +133,7 @@ identical(result, result1)
 
 # VIEWFULL TABLE
 
-x <- bciex::bci12vft_mini
+x <- fgeo.data::luquillo_vft_4quad
 
 # Add the variable status_tree, which gives the status of each tree, not stem
 unique(x$Status)

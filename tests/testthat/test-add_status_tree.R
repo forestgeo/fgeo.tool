@@ -1,6 +1,3 @@
-library(fgeo.tool)
-library(tidyverse)
-
 context("add_status_tree")
 
 stem <- tibble::tribble(
