@@ -88,9 +88,6 @@
     </li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -164,28 +161,35 @@ capital "S" in ViewFull tables).</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
-  ~<span class='no'>CensusID</span>, ~<span class='no'>TreeID</span>, ~<span class='no'>Status</span>,
-          <span class='fl'>1</span>,    <span class='fl'>1</span>, <span class='st'>"alive"</span>,
-          <span class='fl'>1</span>,    <span class='fl'>1</span>,  <span class='st'>"dead"</span>,
-          <span class='fl'>1</span>,    <span class='fl'>2</span>,  <span class='st'>"dead"</span>,
-          <span class='fl'>1</span>,    <span class='fl'>2</span>,  <span class='st'>"dead"</span>,
-          <span class='fl'>2</span>,    <span class='fl'>1</span>, <span class='st'>"alive"</span>,
-          <span class='fl'>2</span>,    <span class='fl'>1</span>, <span class='st'>"alive"</span>,
-          <span class='fl'>2</span>,    <span class='fl'>2</span>, <span class='st'>"alive"</span>,
-          <span class='fl'>2</span>,    <span class='fl'>2</span>,  <span class='st'>"dead"</span>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>fgeo.tool</span>)
+
+<span class='no'>stem</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>CensusID</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>, ~<span class='no'>status</span>,
+  <span class='fl'>1</span>,       <span class='fl'>1</span>,       <span class='fl'>1</span>,     <span class='st'>"A"</span>,
+  <span class='fl'>1</span>,       <span class='fl'>1</span>,       <span class='fl'>2</span>,     <span class='st'>"D"</span>,
+  <span class='co'># -- -- -- -- -- -- -- -- -- </span>
+  <span class='fl'>1</span>,       <span class='fl'>2</span>,       <span class='fl'>3</span>,     <span class='st'>"D"</span>,
+  <span class='fl'>1</span>,       <span class='fl'>2</span>,       <span class='fl'>4</span>,     <span class='st'>"D"</span>,
+  <span class='co'># == == == == == == == == ==</span>
+  <span class='fl'>2</span>,       <span class='fl'>1</span>,       <span class='fl'>1</span>,     <span class='st'>"A"</span>,
+  <span class='fl'>2</span>,       <span class='fl'>1</span>,       <span class='fl'>2</span>,     <span class='st'>"G"</span>,
+  <span class='co'># -- -- -- -- -- -- -- -- -- </span>
+  <span class='fl'>2</span>,       <span class='fl'>2</span>,       <span class='fl'>3</span>,     <span class='st'>"D"</span>,
+  <span class='fl'>2</span>,       <span class='fl'>2</span>,       <span class='fl'>4</span>,     <span class='st'>"G"</span>
 )
-<span class='fu'>add_status_tree</span>(<span class='no'>x</span>, <span class='st'>"alive"</span>, <span class='st'>"dead"</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 4
-#&gt;   CensusID TreeID Status status_tree
-#&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt; 1        1      1 alive  alive      
-#&gt; 2        1      1 dead   alive      
-#&gt; 3        1      2 dead   dead       
-#&gt; 4        1      2 dead   dead       
-#&gt; 5        2      1 alive  alive      
-#&gt; 6        2      1 alive  alive      
-#&gt; 7        2      2 alive  alive      
-#&gt; 8        2      2 dead   alive      </div></pre>
+
+<span class='co'># Determine the status of each tree based on the status of its stems</span>
+<span class='fu'>add_status_tree</span>(<span class='no'>stem</span>)</div><div class='output co'>#&gt; # A tibble: 8 x 5
+#&gt;   CensusID treeID stemID status status_tree
+#&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
+#&gt; 1        1      1      1 A      A          
+#&gt; 2        1      1      2 D      A          
+#&gt; 3        1      2      3 D      D          
+#&gt; 4        1      2      4 D      D          
+#&gt; 5        2      1      1 A      A          
+#&gt; 6        2      1      2 G      A          
+#&gt; 7        2      2      3 D      A          
+#&gt; 8        2      2      4 G      A          </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
