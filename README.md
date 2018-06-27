@@ -19,6 +19,9 @@ packages. For general porpose functions with no expternal dependency see
 
 ## Installation
 
+[Install all **fgeo** packages in one
+step](https://forestgeo.github.io/fgeo/index.html#installation)
+
     # install.packages("remotes")
     remotes::install_github("forestgeo/fgeo.tool")
 
@@ -27,157 +30,41 @@ article](https://goo.gl/dQKEeg).
 
 ## Example
 
-Setup.
-
 ``` r
 library(fgeo.tool)
 
-df <- tibble::tribble(
-  ~CensusID, ~TreeID, ~Status,
-          1,    1, "alive",
-          1,    1,  "dead",
-                           
-          1,    2,  "dead",
-          1,    2,  "dead",
-                           
-          1,    3,  "dead",
-          1,    3,  "dead",
-                           
-          2,    1, "alive",
-          2,    1, "alive",
-                           
-          2,    2, "alive",
-          2,    2,  "dead",
-                           
-          2,    3,  "dead",
-          2,    3,  "dead"
+stem <- tibble::tribble(
+  ~CensusID, ~treeID, ~stemID, ~status,
+          1,       1,       1,     "A",
+          1,       1,       2,     "D",
+          # -- -- -- -- -- -- -- -- -- 
+          1,       2,       3,     "D",
+          1,       2,       4,     "D",
+          # == == == == == == == == ==
+          2,       1,       1,     "A",
+          2,       1,       2,     "G",
+          # -- -- -- -- -- -- -- -- -- 
+          2,       2,       3,     "D",
+          2,       2,       4,     "G"
 )
-```
-
-Manipulate data.
-
-``` r
-# Mutate a data set
 
 # Determine the status of each tree based on the status of its stems
-df <- add_status_tree(df)
-#> Warning: No observation has .status = D, A
-#>   * Detected values: alive, dead
-
-# Filter a data set
-
-# Filter from the head or tail of a variable
-pick_top(df, TreeID)
-#> # A tibble: 4 x 4
-#>   CensusID TreeID Status status_tree
-#>      <dbl>  <dbl> <chr>  <chr>      
-#> 1        1      1 alive  A          
-#> 2        1      1 dead   A          
-#> 3        2      1 alive  A          
-#> 4        2      1 alive  A
-pick_top(df, TreeID, -1)
-#> # A tibble: 4 x 4
-#>   CensusID TreeID Status status_tree
-#>      <dbl>  <dbl> <chr>  <chr>      
-#> 1        1      3 dead   A          
-#> 2        1      3 dead   A          
-#> 3        2      3 dead   A          
-#> 4        2      3 dead   A
-# Remove trees found dead in two or more censuses
-drop_twice_dead(df)
-#> # A tibble: 12 x 4
-#>    CensusID TreeID Status status_tree
-#>       <dbl>  <dbl> <chr>  <chr>      
-#>  1        1      1 alive  A          
-#>  2        1      1 dead   A          
-#>  3        1      2 dead   A          
-#>  4        1      2 dead   A          
-#>  5        1      3 dead   A          
-#>  6        1      3 dead   A          
-#>  7        2      1 alive  A          
-#>  8        2      1 alive  A          
-#>  9        2      2 alive  A          
-#> 10        2      2 dead   A          
-#> 11        2      3 dead   A          
-#> 12        2      3 dead   A
+add_status_tree(stem)
+#> # A tibble: 8 x 5
+#>   CensusID treeID stemID status status_tree
+#>      <dbl>  <dbl>  <dbl> <chr>  <chr>      
+#> 1        1      1      1 A      A          
+#> 2        1      1      2 D      A          
+#> 3        1      2      3 D      D          
+#> 4        1      2      4 D      D          
+#> 5        2      1      1 A      A          
+#> 6        2      1      2 G      A          
+#> 7        2      2      3 D      A          
+#> 8        2      2      4 G      A
 ```
 
-Much you can do directly with **dplyr**.
-
-``` r
-# Using notation dplyr::fun to make it obvious where fun comes from
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
-
-dplyr::filter(
-  .data = df,
-  CensusID > 1,
-  TreeID  %in% c(1, 2),
-  Status == "alive"
-)
-#> # A tibble: 3 x 4
-#>   CensusID TreeID Status status_tree
-#>      <dbl>  <dbl> <chr>  <chr>      
-#> 1        2      1 alive  A          
-#> 2        2      1 alive  A          
-#> 3        2      2 alive  A
-```
-
-You can combine **fgeo.tool** with **dplyr**.
-
-``` r
-edited <- add_status_tree(pick_top(df, CensusID, -1))
-#> Warning: No observation has .status = D, A
-#>   * Detected values: alive, dead
-dplyr::select(edited, -Status)
-#> # A tibble: 6 x 3
-#>   CensusID TreeID status_tree
-#>      <dbl>  <dbl> <chr>      
-#> 1        2      1 A          
-#> 2        2      1 A          
-#> 3        2      2 A          
-#> 4        2      2 A          
-#> 5        2      3 A          
-#> 6        2      3 A
-```
-
-You don’t have to, but if you want you can use the pipe (`%>%`).
-
-``` r
-# With the pipe
-df %>% 
-  add_status_tree() %>%
-  dplyr::filter(status_tree == "alive") %>%
-  dplyr::rename(status_stem = Status) %>%
-  dplyr::arrange(desc(CensusID))
-#> Warning: No observation has .status = D, A
-#>   * Detected values: alive, dead
-#> # A tibble: 0 x 4
-#> # ... with 4 variables: CensusID <dbl>, TreeID <dbl>, status_stem <chr>,
-#> #   status_tree <chr>
-
-# Same but without the pipe: It is hard to understand what is going on.
-dplyr::arrange(
-  dplyr::rename(
-    dplyr::filter(
-      add_status_tree(df), status_tree == "alive"), 
-    status_stem = Status
-  ), 
-  desc(CensusID)
-)
-#> Warning: No observation has .status = D, A
-#>   * Detected values: alive, dead
-#> # A tibble: 0 x 4
-#> # ... with 4 variables: CensusID <dbl>, TreeID <dbl>, status_stem <chr>,
-#> #   status_tree <chr>
-```
+[Get started with
+**fgeo**](https://forestgeo.github.io/fgeo/articles/fgeo.html)
 
 ## Information
 

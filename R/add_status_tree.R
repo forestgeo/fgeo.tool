@@ -14,18 +14,25 @@
 #' @export
 #'
 #' @examples
-#' x <- tibble::tribble(
-#'   ~CensusID, ~TreeID, ~Status,
-#'           1,    1, "alive",
-#'           1,    1,  "dead",
-#'           1,    2,  "dead",
-#'           1,    2,  "dead",
-#'           2,    1, "alive",
-#'           2,    1, "alive",
-#'           2,    2, "alive",
-#'           2,    2,  "dead"
+#' library(fgeo.tool)
+#' 
+#' stem <- tibble::tribble(
+#'   ~CensusID, ~treeID, ~stemID, ~status,
+#'   1,       1,       1,     "A",
+#'   1,       1,       2,     "D",
+#'   # -- -- -- -- -- -- -- -- -- 
+#'   1,       2,       3,     "D",
+#'   1,       2,       4,     "D",
+#'   # == == == == == == == == ==
+#'   2,       1,       1,     "A",
+#'   2,       1,       2,     "G",
+#'   # -- -- -- -- -- -- -- -- -- 
+#'   2,       2,       3,     "D",
+#'   2,       2,       4,     "G"
 #' )
-#' add_status_tree(x, "alive", "dead")
+#' 
+#' # Determine the status of each tree based on the status of its stems
+#' add_status_tree(stem)
 add_status_tree <- function(x, status_a = "A", status_d = "D") {
 
   old <- names(x)
