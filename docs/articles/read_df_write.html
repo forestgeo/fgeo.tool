@@ -88,7 +88,7 @@
       <h1>Read, combine, identify, and write multiple files</h1>
                         <h4 class="author">Mauro Lepore</h4>
             
-            <h4 class="date">2018-06-27</h4>
+            <h4 class="date">2018-06-28</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/forestgeo/fgeo.tool/blob/master/vignettes/read_df_write.Rmd"><code>vignettes/read_df_write.Rmd</code></a></small>
       <div class="hidden name"><code>read_df_write.Rmd</code></div>
@@ -99,10 +99,15 @@
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(fgeo.base)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">library</span>(fgeo.tool)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw">library</span>(fs)</a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">library</span>(purrr)</a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw">library</span>(writexl)</a></code></pre></div>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'fgeo.tool'</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; The following object is masked from 'package:stats':</span></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;     filter</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw">library</span>(fs)</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw">library</span>(purrr)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="kw">library</span>(writexl)</a></code></pre></div>
 <p>If you have multiple files in a directory, you may want to combine them all into a single dataframe and export it as a .csv or excel file. Here is how you can do this and a a little more.</p>
 <p>Suppose you have these files in a directory:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">files &lt;-<span class="st"> </span><span class="kw"><a href="../reference/tool_example.html">tool_example</a></span>(<span class="st">"files"</span>)</a>

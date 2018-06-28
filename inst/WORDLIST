@@ -1,11 +1,8 @@
 Anudeep
-bci
-bciex
-CensusID
-colrow
+centric
 csv
 CTFS
-df
+dfs
 dplyr
 dplyr's
 Esufali
@@ -21,18 +18,13 @@ funder
 github
 gl
 gridsize
-gx
-gy
 gz
-hectindex
 https
 Jafferjee
 Kenfack
 knitr
 Lepore
 Lowercases
-lst
-lxly
 nms
 Orwig
 pre
@@ -49,7 +41,6 @@ Recode
 recognised
 rlang
 rmarkdown
-RPackage
 RStudio
 Shameema
 Shue
@@ -68,5 +59,5 @@ ViewTaxonomy
 VignetteEncoding
 VignetteEngine
 VignetteIndexEntry
-xls
+xlsheets
 xlsx
