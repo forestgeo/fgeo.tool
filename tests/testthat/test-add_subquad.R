@@ -1,20 +1,5 @@
 context("add_subquad")
 
-vft <- tibble::tribble(
-   ~QX,  ~QY,
-  17.9,    0,
-   4.1,   15,
-   6.1, 17.3,
-   3.8,  5.9,
-   4.5, 12.4,
-   4.9,  9.3,
-   9.8,  3.2,
-  18.6,  1.1,
-  17.3,  4.1,
-   1.5, 16.3
-)
-
-
 test_that("passes with non-numeric input", {
   vft <- tibble::tribble(
      ~QX,  ~QY,
@@ -38,8 +23,19 @@ test_that("passes with non-numeric input", {
   expect_warning(add_subquad(vft, x_q = 20, x_sq = 5))
 })
 
-
-
+vft <- tibble::tribble(
+  ~QX,  ~QY,
+  17.9,    0,
+  4.1,   15,
+  6.1, 17.3,
+  3.8,  5.9,
+  4.5, 12.4,
+  4.9,  9.3,
+  9.8,  3.2,
+  18.6,  1.1,
+  17.3,  4.1,
+  1.5, 16.3
+)
 
 test_that("outputs a dataframe with new expected variable", {
   with_sq <- vft %>% add_subquad(x_q = 20, x_sq = 5)
