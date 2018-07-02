@@ -42,7 +42,7 @@ files_to_df <- function(.map, .read, ext) {
   function(dir, ...) {
     files <- fs::dir_ls(dir, regexp = ext)
     dfs <- .map(files, .read, ...)
-    rlang::set_names(dfs, fs::path_file(names(dfs)))
+    set_names(dfs, fs::path_file(names(dfs)))
   }
 }
 
@@ -80,6 +80,6 @@ xlsheets_to_dfs <- function(path) {
   # Piping to avoid useless intermediate variables
   path %>%
     readxl::excel_sheets() %>%
-    rlang::set_names() %>%
+    set_names() %>%
     purrr::map(readxl::read_excel, path = path)
 }

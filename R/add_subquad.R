@@ -47,30 +47,28 @@ add_subquad <- function(df,
                         y_sq = x_sq,
                         subquad_offset = NULL) {
   stopifnot(is.data.frame(df))
-  old <- names(df)
-  df <- set_names(df, tolower)
-  fgeo.base::check_crucial_names(df, c("qx", "qy"))
-  check_subquad_dims(
-    df = df,
-    x_q = x_q, y_q = y_q, x_sq = x_sq, y_sq = y_sq,
-    subquad_offset = subquad_offset
-  )
-
-  df <- type_ensure(df = df, ensure_nms = c("qx", "qy"), type = "numeric")
-  df <- dplyr::filter(df, !is.na(.data$qx), !is.na(.data$qy))
-
+  
+  .df <- set_names(df, tolower) %>% 
+    check_crucial_names(c("qx", "qy")) %>% 
+    check_subquad_dims(
+      x_q = x_q, y_q = y_q, x_sq = x_sq, y_sq = y_sq, 
+      subquad_offset = subquad_offset
+    ) %>% 
+    type_ensure(ensure_nms = c("qx", "qy"), type = "numeric") %>% 
+    dplyr::filter(!is.na(.data$qx), !is.na(.data$qy))
+  
   # Simplify nested parentheses
   x_q_mns.1 <- x_q - 0.1
   y_q_mns.1 <- y_q - 0.1
-
+  
   # Conditions (odd means that the coordinate goes beyond normal limits)
-  is_odd_both <- df$qx >=  x_q & df$qy >=  y_q
-  is_odd_x <- df$qx >=  x_q
-  is_odd_y <- df$qy >=  y_q
+  is_odd_both <- .df$qx >=  x_q & .df$qy >=  y_q
+  is_odd_x <- .df$qx >=  x_q
+  is_odd_y <- .df$qy >=  y_q
   is_not_odd <- TRUE
-
+  
   # Cases
-  w_subquad <- mutate(df,
+  .df <- mutate(.df,
     subquadrat = dplyr::case_when(
       is_odd_both ~ paste0(
         (1 + floor((x_q_mns.1 - x_q * floor(x_q_mns.1 / x_q)) / x_sq)),
@@ -78,23 +76,25 @@ add_subquad <- function(df,
       ),
       is_odd_x ~ paste0(
         (1 + floor((x_q_mns.1 - x_q * floor(x_q_mns.1 / x_q)) / x_sq)),
-        (1 + floor((df$qy - y_q * floor(df$qy/ y_q)) / y_sq))
+        (1 + floor((.df$qy - y_q * floor(.df$qy/ y_q)) / y_sq))
       ),
       is_odd_y ~ paste0(
-        (1 + floor((df$qx - x_q * floor(df$qx/ x_q)) / x_sq)),
+        (1 + floor((.df$qx - x_q * floor(.df$qx/ x_q)) / x_sq)),
         (1 + floor((y_q_mns.1- y_q * floor(y_q_mns.1 / y_q)) / y_sq))
       ),
       is_not_odd ~ paste0(
-        (1 + floor((df$qx - x_q * floor(df$qx/ x_q)) / x_sq)),
-        (1 + floor((df$qy - y_q * floor(df$qy/ y_q)) / y_sq))
+        (1 + floor((.df$qx - x_q * floor(.df$qx/ x_q)) / x_sq)),
+        (1 + floor((.df$qy - y_q * floor(.df$qy/ y_q)) / y_sq))
       )
     )
   )
-  w_subquad <- nms_restore_newvar(w_subquad, "subquadrat", old)
+  
+  .df <- fgeo.base::rename_matches(.df, df)
+  
   if (!is.null(subquad_offset)) {
-    recode_subquad(w_subquad, offset = subquad_offset)
+    recode_subquad(.df, offset = subquad_offset)
   } else {
-    w_subquad
+    .df
   }
 }
 
@@ -138,7 +138,7 @@ recode_subquad <- function(x, offset = -1) {
 
 check_recode_subquad <- function(x, offset) {
   stopifnot(is.data.frame(x))
-  fgeo.base::check_crucial_names(x, "subquadrat")
+  check_crucial_names(x, "subquadrat")
   stopifnot(offset %in% c(1, -1))
   stop_if_invalid_subquad(x = x, offset = offset)
   invisible(x)
@@ -169,5 +169,6 @@ check_subquad_dims <- function(df, x_q, y_q, x_sq, y_sq, subquad_offset) {
   lapply(remaining_args, function(x) stopifnot(all(x >= 0)))
   lapply(remaining_args, function(x) stopifnot(all(abs(x) != Inf)))
   if (!is.null(subquad_offset)) stopifnot(is.numeric(subquad_offset))
+  invisible(df)
 }
 

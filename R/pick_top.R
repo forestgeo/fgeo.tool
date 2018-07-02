@@ -31,7 +31,7 @@
 #' # Negative values select from the tail
 #' pick_top(df, y, n = -2)
 pick_top <- function(.data, var, n = 1) {
-  var <- rlang::enquo(var)
+  var <- enquo(var)
   pulled <- dplyr::pull(.data, !!var)
   sorted <- sort(unique(pulled))
   if (n > 0 ) {
