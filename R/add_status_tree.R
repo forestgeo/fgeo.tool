@@ -41,7 +41,7 @@ add_status_tree <- function(x, status_a = "A", status_d = "D") {
       status_tree = ifelse(all(.data$status == status_d), status_d, status_a)
     ) %>% 
     ungroup() %>% 
-    fgeo.base::nms_restore_matching(x)
+    fgeo.base::rename_matches(x)
 }
 
 check_add_status_tree <- function(x, status_d, status_a) {
