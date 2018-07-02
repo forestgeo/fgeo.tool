@@ -37,6 +37,6 @@ lookup <- function(old, new) {
   if (length(old) != length(new)) {
     stop("`old` and `new` must be of equal length.")
   }
-  lookup <- rlang::set_names(new, old)
+  lookup <- set_names(new, old)
   rlang::splice(as.list(lookup))
 }

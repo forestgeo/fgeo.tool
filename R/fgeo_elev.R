@@ -74,7 +74,7 @@ pull_elevation.default <- function(x) {
   msg <- paste0(
     "`elevation` must be data.frame or list but its class is: ", class(x)
   )
-  rlang::abort(msg)
+  abort(msg)
 }
 
 pull_elevation.list <- function(x) {
@@ -87,7 +87,7 @@ pull_elevation.list <- function(x) {
       "* Names of the elements of the list provided:\n",
       commas(names(x))
     )
-    rlang::abort(msg)
+    abort(msg)
   }
   
   elevation <- x[["col"]]

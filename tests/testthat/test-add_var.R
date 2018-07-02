@@ -77,14 +77,9 @@ x <- tibble::tribble(
   "0101",
   "1001"
 )
-x
 
 test_that("adds expected names", {
-  expect_true(
-    all(
-      c("col", "row")  %in%  names(add_col_row2(x))
-    )
-  )
+  expect_named(add_col_row2(x), c("QuadratName", "col", "row"))
 })
 
 test_that("with wrong inputs aborts", {

@@ -175,7 +175,7 @@ add_col_row2 <- function(x) {
 
 add_var_from_quadratname <- function(x, pattern, new_var) {
   if (!is.data.frame(x)) {
-    rlang::abort("`x` must be a data.frame")
+    abort("`x` must be a data.frame")
   }
   old_nms <- names(x)
   x <- set_names(x, tolower)
@@ -185,3 +185,15 @@ add_var_from_quadratname <- function(x, pattern, new_var) {
   names(x)[grepl("added_var", names(x))] <- new_var
   fgeo.tool::nms_restore_newvar(x, new_var = new_var, old_nms = old_nms)
 }
+# add_var_from_quadratname <- function(x, pattern, new_var) {
+#   if (!is.data.frame(x)) {
+#     abort("`x` must be a data.frame")
+#   }
+#   old_nms <- names(x)
+#   x <- set_names(x, tolower)
+#   check_crucial_names(x, "quadratname")
+#   
+#   x$added_var <- stringr::str_replace(x$quadratname, pattern, "\\1")
+#   names(x)[grepl("added_var", names(x))] <- new_var
+#   fgeo.tool::nms_restore_newvar(x, new_var = new_var, old_nms = old_nms)
+# }

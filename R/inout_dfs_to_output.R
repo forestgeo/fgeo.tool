@@ -108,7 +108,7 @@ dfs_to_df <- function(dfs, df_names = NULL, by = NULL) {
         "* Values of `which` :", commas(df_names), "\n",
         "* Valid names of `.df` :", commas(names(dfs))
       )
-      rlang::abort(msg)
+      abort(msg)
     }
   }
 
