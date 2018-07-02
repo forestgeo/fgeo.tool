@@ -34,20 +34,14 @@
 #' # Determine the status of each tree based on the status of its stems
 #' add_status_tree(stem)
 add_status_tree <- function(x, status_a = "A", status_d = "D") {
-
-  old <- names(x)
-  x <- set_names(x, tolower)
-  check_add_status_tree(x, status_a = status_a, status_d = status_d)
-
-  grp <- group_by(x, .data$censusid, .data$treeid)
-  mut <- mutate(
-    grp, status_tree = ifelse(
-      all(.data$status == status_d),
-      status_d,
-      status_a
-    )
-  )
-  nms_restore_newvar(ungroup(mut), "status_tree", old)
+  fgeo.base::insensitive(x) %>% 
+    check_add_status_tree(status_a = status_a, status_d = status_d) %>% 
+    group_by(.data$censusid, .data$treeid) %>% 
+    mutate(
+      status_tree = ifelse(all(.data$status == status_d), status_d, status_a)
+    ) %>% 
+    ungroup() %>% 
+    fgeo.base::nms_restore_matching(x)
 }
 
 check_add_status_tree <- function(x, status_d, status_a) {
@@ -61,4 +55,5 @@ check_add_status_tree <- function(x, status_d, status_a) {
       "stop", msg = "\n  * Filter your data to keep a single plot and try again"
     )
   }
+  invisible(x)
 }
