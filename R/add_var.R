@@ -177,7 +177,7 @@ add_var_from_quadratname <- function(x, pattern, new_var) {
   if (!is.data.frame(x)) {
     abort("`x` must be a data.frame")
   }
-  .x <- check_crucial_names(insensitive(x), "quadratname")
+  .x <- check_crucial_names(set_names(x, tolower), "quadratname")
   new_col <- set_names(data.frame(.x$quadratname), new_var)
   cbind(x, new_col)
 }

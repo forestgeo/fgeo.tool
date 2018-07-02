@@ -48,7 +48,7 @@ add_subquad <- function(df,
                         subquad_offset = NULL) {
   stopifnot(is.data.frame(df))
   
-  .df <- insensitive(df) %>% 
+  .df <- set_names(df, tolower) %>% 
     check_crucial_names(c("qx", "qy")) %>% 
     check_subquad_dims(
       x_q = x_q, y_q = y_q, x_sq = x_sq, y_sq = y_sq, 
