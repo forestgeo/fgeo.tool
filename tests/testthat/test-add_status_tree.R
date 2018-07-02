@@ -15,6 +15,10 @@ stem <- tibble::tribble(
           2,       2,       4,     "G"
 )
 
+test_that("outputs with expected names", {
+  out <- add_status_tree(stem)
+  expect_named(out, c("CensusID", "treeID", "stemID", "status", "status_tree"))
+})
 
 test_that("determines the correct status of a stem", {
   .stem <- add_status_tree(stem)
