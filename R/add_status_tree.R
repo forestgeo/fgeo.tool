@@ -34,7 +34,7 @@
 #' # Determine the status of each tree based on the status of its stems
 #' add_status_tree(stem)
 add_status_tree <- function(x, status_a = "A", status_d = "D") {
-  fgeo.base::insensitive(x) %>% 
+  insensitive(x) %>% 
     check_add_status_tree(status_a = status_a, status_d = status_d) %>% 
     group_by(.data$censusid, .data$treeid) %>% 
     mutate(
