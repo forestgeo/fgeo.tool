@@ -50,7 +50,7 @@ fgeo_habitat.default <- function(elevation, gridsize, n, ...) {
 #' @export
 #' @rdname fgeo_habitat
 fgeo_habitat.list <- function(elevation, gridsize, n, ...) {
-  fgeo.base::check_crucial_names(elevation, c("col", "xdim", "ydim"))
+  check_crucial_names(elevation, c("col", "xdim", "ydim"))
   fgeo_habitat.data.frame(
     elevation$col, gridsize, n, elevation$xdim, elevation$ydim
   )

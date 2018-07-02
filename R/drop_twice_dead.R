@@ -61,7 +61,7 @@ drop_twice_dead <- function(vft) {
 
 check_drop_twice_dead <- function(vft) {
   stopifnot(is.data.frame(vft))
-  fgeo.base::check_crucial_names(
+  check_crucial_names(
     vft, c("censusid", "treeid", "status", "status_tree")
   )
   if (!length(unique(vft$censusid)) >= 2) {

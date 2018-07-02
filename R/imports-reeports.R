@@ -1,4 +1,5 @@
 #' @import rlang
+#' @importFrom fgeo.base check_crucial_names
 #' @importFrom utils head tail
 #' @importFrom measurements conv_unit
 NULL

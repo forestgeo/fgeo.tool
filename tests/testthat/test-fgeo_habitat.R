@@ -9,7 +9,7 @@ test_that("outputs a dataframe with expected structure", {
   expect_is(hab, "data.frame")
   expect_is(hab, "fgeo_habitat")
   
-  expect_silent(fgeo.base::check_crucial_names(hab, c("gx", "gy", "habitats")))
+  expect_silent(check_crucial_names(hab, c("gx", "gy", "habitats")))
   expect_false(dplyr::is_grouped_df(hab))
   expect_equal(hab, fgeo.data::luquillo_habitat)
   

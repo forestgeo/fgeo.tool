@@ -106,7 +106,7 @@ index_to_rowcol <- function(index, gridsize, plotdim) {
 #' @noRd
 gxgy_to_index <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
-    plotdim <- fgeo.base::guess_plotdim(tibble(gx = gx, gy = gy))
+    plotdim <- guess_plotdim(tibble(gx = gx, gy = gy))
   }
 
   badgxgy <- (gx < 0 | gy < 0 | gx >= plotdim[1] | gy >= plotdim[2] |
@@ -123,7 +123,7 @@ gxgy_to_index <- function(gx, gy, gridsize, plotdim) {
 #' @noRd
 gxgy_to_lxly <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
-    plotdim <- fgeo.base::guess_plotdim(tibble(gx, gy))
+    plotdim <- guess_plotdim(tibble(gx, gy))
   }
 
   rc <- gxgy_to_rowcol(gx, gy, gridsize, plotdim) - 1
@@ -143,7 +143,7 @@ gxgy_to_qxqy <- function(gx, gy, gridsize, plotdim) {
 #' @noRd
 gxgy_to_rowcol <- function(gx, gy, gridsize, plotdim) {
   if (missing(plotdim)) {
-    plotdim <- fgeo.base::guess_plotdim(tibble(gx, gy))
+    plotdim <- guess_plotdim(tibble(gx, gy))
   }
 
   index <- gxgy_to_index(gx, gy, gridsize, plotdim)
@@ -154,7 +154,7 @@ gxgy_to_rowcol <- function(gx, gy, gridsize, plotdim) {
 #' @noRd
 gxgy_to_hectindex <- function(gx, gy, plotdim) {
   if (missing(plotdim)) {
-    plotdim <- fgeo.base::guess_plotdim(tibble(gx = gx, gy = gy))
+    plotdim <- guess_plotdim(tibble(gx = gx, gy = gy))
   }
 
   if (gx >= plotdim[1] || gy >= plotdim[2] || gx < 0 || gy < 0) {

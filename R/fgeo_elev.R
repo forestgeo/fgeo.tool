@@ -66,7 +66,7 @@ pull_elevation <- function(x) {
 }
 
 pull_elevation.data.frame <- function(x) {
-  fgeo.base::check_crucial_names(x, "elev")
+  check_crucial_names(x, "elev")
   x
 }
 
@@ -78,7 +78,7 @@ pull_elevation.default <- function(x) {
 }
 
 pull_elevation.list <- function(x) {
-  safe_check <- purrr::safely(fgeo.base::check_crucial_names)
+  safe_check <- purrr::safely(check_crucial_names)
   check_result <- safe_check(x, "col")
   if (!is.null(check_result$error)) {
     

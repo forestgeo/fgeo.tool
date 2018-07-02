@@ -149,7 +149,7 @@ add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
 
 check_add_var <- function(x, var, from, gridsize, plotdim) {
   stopifnot(is.data.frame(x))
-  fgeo.base::check_crucial_names(x, c("gx", "gy"))
+  check_crucial_names(x, c("gx", "gy"))
   no_gx_is_na <- !any(is.na(x$gx))
   stopifnot(no_gx_is_na)
   no_gy_is_na <- !any(is.na(x$gy))
@@ -179,7 +179,7 @@ add_var_from_quadratname <- function(x, pattern, new_var) {
   }
   old_nms <- names(x)
   x <- set_names(x, tolower)
-  fgeo.base::check_crucial_names(x, "quadratname")
+  check_crucial_names(x, "quadratname")
   
   x$added_var <- stringr::str_replace(x$quadratname, pattern, "\\1")
   names(x)[grepl("added_var", names(x))] <- new_var

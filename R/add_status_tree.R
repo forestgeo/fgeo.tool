@@ -52,7 +52,7 @@ add_status_tree <- function(x, status_a = "A", status_d = "D") {
 
 check_add_status_tree <- function(x, status_d, status_a) {
   stopifnot(is.data.frame(x))
-  fgeo.base::check_crucial_names(x, c("treeid", "status", "censusid"))
+  check_crucial_names(x, c("treeid", "status", "censusid"))
   check_valid_status(x, .status = c(status_d, status_a), "status")
   is_vft <- "plotid" %in% names(x)
   if (is_vft) {
