@@ -14,7 +14,7 @@
 #' @param x A named object.
 #'
 #' @family functions for developers.
-#' @family functions to manipulate names.
+#' @family functions dealing with names.
 #'
 #' @return
 #' * `nms_lowercase()` Returns the object `x` with lowercase names
@@ -77,7 +77,7 @@ nms_restore <- function(x) {
 #' @param old_nms A vector containing the old names of `x`.
 #'
 #' @family functions for developers.
-#' @family functions to manipulate names.
+#' @family functions dealing with names.
 #'
 #' @return Returns the input with the names changed accordingly.
 #' @export
@@ -158,7 +158,7 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' stem <- fgeo.data::luquillo_stem6_1ha
 #' nms_extract_all(stem, "gx", "gy", "PX", "PY")
 #' @family functions for developers.
-#' @family functions to manipulate names.
+#' @family functions dealing with names.
 #' @name nms
 NULL
 
@@ -205,7 +205,7 @@ nms_extract1 <- function(x, ...) {
 #' @param try String of length 1 giving the name the object might have.
 #' 
 #' @family functions for developers.
-#' @family functions to manipulate names.
+#' @family functions dealing with names.
 #' 
 #' @seealso nms
 #' 
@@ -246,7 +246,7 @@ nms_try_rename <- function(x, want, try) {
 #' dfm <- data.frame(a = 1, B = 1)
 #' nms_extract_anycase(dfm, "b")
 #' @family functions for developers.
-#' @family functions to manipulate names.
+#' @family functions dealing with names.
 nms_extract_anycase <- function(x, nm) {
   has_nms <- !is.null(attr(x, "names"))
   stopifnot(has_nms, is.character(nm))
@@ -263,6 +263,9 @@ nms_extract_anycase <- function(x, nm) {
 #' its names.
 #'
 #' @param x A named object or a character string.
+#' 
+#' @family functions for developers.
+#' @family functions dealing with names.
 #'
 #' @return A modified version of `x` with tidy names or a string of tidy names.
 #'
@@ -325,13 +328,14 @@ nms_tidy <- function(x) {
 #
 #' Comparing two dataframes, How many names differ only in case?
 #'
-#' @param table1 A dataframe
-#' @param table2 A dataframe
+#' @param table1 A dataframe.
+#' @param table2 A dataframe.
+#' 
+#' @family functions for developers.
+#' @family functions dealing with names.
 #'
 #' @return An number indicating how many names are different only in their case.
-#'
-#' @family functions for developers.
-#' @family functions to manipulate names.
+#' 
 #' @noRd
 nms_minus_lower_nms <- function(table1, table2) {
   stopifnot(is.data.frame(table1), is.data.frame(table2))

@@ -37,7 +37,7 @@ type_ensure(dfm, c("w", "x", "y", "z"), "character")
 Other functions for developers.: \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}},
+  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
 
 Other functions to operate on column types.: \code{\link{type_fgeo}}
