@@ -50,3 +50,18 @@ setNames(list(1), to_tidy_names(messy))
 messy_list <- list(`Hi yOu` = 1)
 nms_tidy(messy_list)
 }
+\seealso{
+Other functions for developers.: \code{\link{find_data_of_class}},
+  \code{\link{nms_extract_anycase}},
+  \code{\link{nms_lowercase}},
+  \code{\link{nms_restore_newvar}},
+  \code{\link{nms_try_rename}}, \code{\link{nms}},
+  \code{\link{type_ensure}}
+
+Other functions dealing with names.: \code{\link{nms_extract_anycase}},
+  \code{\link{nms_lowercase}},
+  \code{\link{nms_restore_newvar}},
+  \code{\link{nms_try_rename}}, \code{\link{nms}}
+}
+\concept{functions dealing with names.}
+\concept{functions for developers.}

@@ -64,13 +64,13 @@ nms_extract_all(stem, "gx", "gy", "PX", "PY")
 Other functions for developers.: \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}},
+  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{type_ensure}}
 
-Other functions to manipulate names.: \code{\link{nms_extract_anycase}},
+Other functions dealing with names.: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}},
+  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}
 }
+\concept{functions dealing with names.}
 \concept{functions for developers.}
-\concept{functions to manipulate names.}

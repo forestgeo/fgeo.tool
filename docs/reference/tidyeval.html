@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Try to rename an object. — nms_try_rename • fgeo.tool</title>
+<title>Tidy eval helpers — tidyeval • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,13 @@
 
 
 
-<meta property="og:title" content="Try to rename an object. — nms_try_rename" />
+<meta property="og:title" content="Tidy eval helpers — tidyeval" />
 
-<meta property="og:description" content="Given a name you want and a possible alternative, this function renames an
-object as you want or errs with an informative message." />
+<meta property="og:description" content="These functions provide tidy eval-compatible ways to capture
+symbols (sym(), syms(), ensym()), expressions (expr(),
+exprs(), enexpr()), and quosures (quo(), quos(), enquo()).
+To learn more about tidy eval and how to use these tools, read
+http://rlang.tidyverse.org/articles/tidy-evaluation.html" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -119,71 +122,28 @@ object as you want or errs with an informative message." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Try to rename an object.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/nms_manipulate_names.R'><code>R/nms_manipulate_names.R</code></a></small>
-    <div class="hidden name"><code>nms_try_rename.Rd</code></div>
+    <h1>Tidy eval helpers</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/imports-reeports.R'><code>R/imports-reeports.R</code></a></small>
+    <div class="hidden name"><code>tidyeval.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Given a name you want and a possible alternative, this function renames an
-object as you want or errs with an informative message.</p>
+    <p>These functions provide tidy eval-compatible ways to capture
+symbols (<code>sym()</code>, <code>syms()</code>, <code>ensym()</code>), expressions (<code>expr()</code>,
+<code>exprs()</code>, <code>enexpr()</code>), and quosures (<code>quo()</code>, <code>quos()</code>, <code>enquo()</code>).
+To learn more about tidy eval and how to use these tools, read
+<a href='http://rlang.tidyverse.org/articles/tidy-evaluation.html'>http://rlang.tidyverse.org/articles/tidy-evaluation.html</a></p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nms_try_rename</span>(<span class='no'>x</span>, <span class='no'>want</span>, <span class='no'>try</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A named object.</p></td>
-    </tr>
-    <tr>
-      <th>want</th>
-      <td><p>String of length 1 giving the name you want the object to have.</p></td>
-    </tr>
-    <tr>
-      <th>try</th>
-      <td><p>String of length 1 giving the name the object might have.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+        
 
-    <div class='dont-index'><p>nms</p>
-<p>Other functions for developers.: <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms_tidy.html'>nms_tidy</a></code>,
-  <code><a href='nms.html'>nms</a></code>, <code><a href='type_ensure.html'>type_ensure</a></code></p>
-<p>Other functions dealing with names.: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms_tidy.html'>nms_tidy</a></code>,
-  <code><a href='nms.html'>nms</a></code></p></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nms_try_rename</span>(<span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; A 
-#&gt; 1 </div><div class='input'><span class='fu'>nms_try_rename</span>(<span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   A
-#&gt; 1 1</div><div class='input'>
-<span class='co'># Passes</span>
-<span class='fu'>nms_try_rename</span>(<span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; A   
-#&gt; 1 1 </div><div class='input'># Errs
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'>nms_try_rename</span>(<span class='fl'>1</span>, <span class='st'>"A"</span>, <span class='st'>"A"</span>)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>
