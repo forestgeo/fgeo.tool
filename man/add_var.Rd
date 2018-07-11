@@ -45,11 +45,12 @@ variable(s) \code{var}.
 \description{
 These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
 }
-\details{
-These functions add columns to locate stems in a forest plot. \code{add_col_row()}
-and \code{add_col_row2()} differ in that the former inputs plot coordinates and
-the later inputs \code{QuadratName}.
+\section{Warning}{
+
+If columns \code{gx} and \code{gy} are missing but \code{PX} and \code{PY} are not,\code{PX} and \code{PY}
+will be renamed to \code{gx} and \code{gy} with a warning.
 }
+
 \examples{
 x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
 
