@@ -9,7 +9,7 @@
 \alias{add_hectindex}
 \alias{add_quad}
 \alias{add_col_row2}
-\title{Add columns to a ForestGEO dataframe to position stems in a forest plot.}
+\title{Add columns lx, ly; qx, qy; index; colrow; and hectindex to a ForestGEO dataframe.}
 \usage{
 add_lxly(x, gridsize = 20, plotdim = NULL)
 
@@ -43,14 +43,12 @@ A modified version of the dataframe \code{x} with the additional
 variable(s) \code{var}.
 }
 \description{
+These functions add columns to position trees/stems in a forest plot. They
+work with ViewFull-tables and census-tables (tree and stem).
+}
+\details{
 These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
 }
-\section{Warning}{
-
-If columns \code{gx} and \code{gy} are missing but \code{PX} and \code{PY} are not,\code{PX} and \code{PY}
-will be renamed to \code{gx} and \code{gy} with a warning.
-}
-
 \examples{
 x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
 
