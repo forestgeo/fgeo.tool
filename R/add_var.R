@@ -1,11 +1,11 @@
 #' Add columns to a ForestGEO dataframe to position stems in a forest plot.
 #'
 #' These functions mostly wrap legacy code from the [CTFS R
-#' Package](http://ctfs.si.edu/Public/CTFSRPackage/). 
+#' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
 #' 
-#' These functions add columns to locate stems in a forest plot. `add_col_row()`
-#' and `add_col_row2()` differ in that the former inputs plot coordinates and
-#' the later inputs `QuadratName`.
+#' @section Warning:
+#' If columns `gx` and `gy` are missing but `PX` and `PY` are not,`PX` and `PY` 
+#' will be renamed to `gx` and `gy` with a warning.
 #'
 #' @template x_fgeo
 #' @template gridsize

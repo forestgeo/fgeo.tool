@@ -175,11 +175,11 @@ maximum possible values of <code>gx</code> and <code>gy</code>).</p></td>
     <p>A modified version of the dataframe <code>x</code> with the additional
 variable(s) <code>var</code>.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
-    <p>These functions add columns to locate stems in a forest plot. <code>add_col_row()</code>
-and <code>add_col_row2()</code> differ in that the former inputs plot coordinates and
-the later inputs <code>QuadratName</code>.</p>
+    
+    <p>If columns <code>gx</code> and <code>gy</code> are missing but <code>PX</code> and <code>PY</code> are not,<code>PX</code> and <code>PY</code>
+will be renamed to <code>gx</code> and <code>gy</code> with a warning.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -274,7 +274,7 @@ the later inputs <code>QuadratName</code>.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#warning">Warning</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
