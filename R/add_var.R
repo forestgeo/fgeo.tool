@@ -1,11 +1,10 @@
-#' Add columns to a ForestGEO dataframe to position stems in a forest plot.
+#' Add columns lx, ly; qx, qy; index; colrow; and hectindex to a ForestGEO dataframe.
+#' 
+#' These functions add columns to position trees/stems in a forest plot. They 
+#' work with ViewFull-tables and census-tables (tree and stem).
 #'
 #' These functions mostly wrap legacy code from the [CTFS R
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
-#' 
-#' @section Warning:
-#' If columns `gx` and `gy` are missing but `PX` and `PY` are not,`PX` and `PY` 
-#' will be renamed to `gx` and `gy` with a warning.
 #'
 #' @template x_fgeo
 #' @template gridsize
@@ -56,9 +55,10 @@
 #' @name add_var
 NULL
 
+# FIXME: Flatten if statements via switch or functionals.
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
-  .x <- set_names(x, tolower)
-  .x <- sanitize_xy(.x)
+  xlow <- set_names(x, tolower)
+  .x <- sanitize_xy(xlow)
   
   check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
 
@@ -71,6 +71,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   if (var == "lxly") {
     lxly <- gxgy_to_lxly(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
     out <- tibble::add_column(.x, lx = lxly$lx, ly = lxly$ly)
+    out <- restore_pxpy_if_necessary(out, xlow)
     out <- rename_matches(out, x)
     return(out)
   }
@@ -78,6 +79,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   if (var == "qxqy") {
     lxly <- gxgy_to_lxly(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
     out <- tibble::add_column(.x, QX = lxly$lx, QY = lxly$ly)
+    out <- restore_pxpy_if_necessary(out, xlow)
     out <- rename_matches(out, x)
     return(out)
   }
@@ -85,6 +87,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   if (var == "index") {
     index <- gxgy_to_index(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
     out <- tibble::add_column(.x, index = index)
+    out <- restore_pxpy_if_necessary(out, xlow)
     out <- rename_matches(out, x)
     return(out)
   }
@@ -96,6 +99,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
       col = stringr::str_pad(rowcol$col, width = 2, pad = 0), 
       row = stringr::str_pad(rowcol$row, width = 2, pad = 0)
     )
+    out <- restore_pxpy_if_necessary(out, xlow)
     out <- rename_matches(out, x)
     return(out)
   }
@@ -103,6 +107,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   if (var == "hectindex") {
     w_hectindex <- gxgy_to_hectindex(.x$gx, .x$gy, plotdim = plotdim)
     out <- tibble::add_column(.x, hectindex = w_hectindex)
+    out <- restore_pxpy_if_necessary(out, xlow)
     out <- rename_matches(out, x)
     return(out)
   }
@@ -164,13 +169,29 @@ add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
 #' @param x fgeo dataframe.
 #' @noRd
 sanitize_xy <- function(x) {
-  missing_names_gxgy <- !fgeo.tool::nms_has_any(x, "gx", "gy")
-  has_names_pxpy <- fgeo.tool::nms_has_any(x, "px", "py")
-  rename <- missing_names_gxgy && has_names_pxpy
-  if (rename) {
+  if (rename_pxpy(x)) {
     x <- nms_try_rename(x, "gx", "px")
     x <- nms_try_rename(x, "gy", "py")
-    warning("Renaming `PX` and `PY` to `gx` and `gy`.", call. = FALSE)
+  }
+  x
+}
+
+rename_pxpy <- function(x) {
+  missing_names_gxgy <- !fgeo.tool::nms_has_any(x, "gx", "gy")
+  has_names_pxpy <- fgeo.tool::nms_has_any(x, "px", "py")
+  missing_names_gxgy && has_names_pxpy
+}
+
+
+#' Restore px py columns if they were renamed to gx gy.
+#'
+#' @param x A dataframe to rename if necessary. 
+#' @param ref The reference dataframe that needs to be checked to see if
+#'   renaming is necessary.
+#' @noRd
+restore_pxpy_if_necessary <- function(x, ref) {
+  if (rename_pxpy(ref)) {
+    x <- dplyr::rename(x, px = gx, py = gy)
   }
   x
 }
