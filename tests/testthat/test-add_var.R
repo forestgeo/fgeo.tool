@@ -2,6 +2,34 @@ library(dplyr)
 
 context("add_var")
 
+test_that("it works with ViewFullTable", {
+  x <- fgeo.data::luquillo_vft_4quad
+  expect_warning(
+    expect_message(add_var(x, "lxly"), "Gessing"), 
+    "Renaming"
+  )
+})
+
+test_that("it outputs the original names minus PX/PY plus gx/gy/lx/ly", {
+  x <- fgeo.data::luquillo_vft_4quad
+  minus <- setdiff(names(x), c("PX", "PY"))
+  plus <- c("gx", "gy", "lx", "ly")
+  expect_warning(
+    expect_named(add_var(x, "lxly"), c(minus, plus), ignore.order = TRUE),
+    "Renaming"
+  )
+})
+
+test_that("it throws a warning when renaming", {
+  x <- fgeo.data::luquillo_vft_4quad
+  msg <- "Renaming `PX` and `PY` to `gx` and `gy`."
+  expect_warning(add_var(x, "lxly"), msg)
+  # Top level functions
+  expect_warning(add_lxly(x), msg)
+  expect_warning(add_col_row(x), msg)
+  expect_warning(add_index(x), msg)
+})
+
 test_that("converts as the equivalent function from the CFTSR Package", {
   x <- tibble(gx = 990:992, gy = 490:492)
 

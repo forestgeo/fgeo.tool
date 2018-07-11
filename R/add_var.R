@@ -57,42 +57,54 @@
 NULL
 
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
-  check_add_var(x = x, var = var, gridsize = gridsize, plotdim = plotdim)
+  .x <- set_names(x, tolower)
+  .x <- sanitize_xy(.x)
+  
+  check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
 
   if (is.null(plotdim)) {
     plotdim <- plotdim
-    plotdim <- fgeo.base::guess_plotdim(x)
+    plotdim <- fgeo.base::guess_plotdim(.x)
     message("  * If guess is wrong, provide the correct argument `plotdim`")
   }
 
   if (var == "lxly") {
-    lxly <- gxgy_to_lxly(x$gx, x$gy, gridsize = gridsize, plotdim = plotdim)
-    return(tibble::add_column(x, lx = lxly$lx, ly = lxly$ly))
+    lxly <- gxgy_to_lxly(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
+    out <- tibble::add_column(.x, lx = lxly$lx, ly = lxly$ly)
+    out <- rename_matches(out, x)
+    return(out)
   }
 
   if (var == "qxqy") {
-    lxly <- gxgy_to_lxly(x$gx, x$gy, gridsize = gridsize, plotdim = plotdim)
-    return(tibble::add_column(x, QX = lxly$lx, QY = lxly$ly))
+    lxly <- gxgy_to_lxly(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
+    out <- tibble::add_column(.x, QX = lxly$lx, QY = lxly$ly)
+    out <- rename_matches(out, x)
+    return(out)
   }
 
   if (var == "index") {
-    index <- gxgy_to_index(x$gx, x$gy, gridsize = gridsize, plotdim = plotdim)
-    return(tibble::add_column(x, index = index))
+    index <- gxgy_to_index(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
+    out <- tibble::add_column(.x, index = index)
+    out <- rename_matches(out, x)
+    return(out)
   }
 
   if (var == "colrow") {
-    rowcol <- gxgy_to_rowcol(x$gx, x$gy, gridsize = gridsize, plotdim = plotdim)
-    x <- tibble::add_column(
-      x, 
+    rowcol <- gxgy_to_rowcol(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
+    out <- tibble::add_column(
+      .x, 
       col = stringr::str_pad(rowcol$col, width = 2, pad = 0), 
       row = stringr::str_pad(rowcol$row, width = 2, pad = 0)
     )
-    return(x)
+    out <- rename_matches(out, x)
+    return(out)
   }
 
   if (var == "hectindex") {
-    w_hectindex <- gxgy_to_hectindex(x$gx, x$gy, plotdim = plotdim)
-    return(tibble::add_column(x, hectindex = w_hectindex))
+    w_hectindex <- gxgy_to_hectindex(.x$gx, .x$gy, plotdim = plotdim)
+    out <- tibble::add_column(.x, hectindex = w_hectindex)
+    out <- rename_matches(out, x)
+    return(out)
   }
 }
 
@@ -145,6 +157,22 @@ add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
     col = NULL
   )
   w_rowcol
+}
+
+#' Rename px/py to gx/gy if x lacks gx/gy but has px/py.
+#' 
+#' @param x fgeo dataframe.
+#' @noRd
+sanitize_xy <- function(x) {
+  missing_names_gxgy <- !fgeo.tool::nms_has_any(x, "gx", "gy")
+  has_names_pxpy <- fgeo.tool::nms_has_any(x, "px", "py")
+  rename <- missing_names_gxgy && has_names_pxpy
+  if (rename) {
+    x <- nms_try_rename(x, "gx", "px")
+    x <- nms_try_rename(x, "gy", "py")
+    warning("Renaming `PX` and `PY` to `gx` and `gy`.", call. = FALSE)
+  }
+  x
 }
 
 check_add_var <- function(x, var, from, gridsize, plotdim) {
