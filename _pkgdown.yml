@@ -100,7 +100,13 @@ reference:
     - show_data_of_class
     - type_ensure
 
-  - title: Deal with objects' names
+  - title: Deal with objects' structure
+    desc: Specific to ForestGEO
+    contents:
+    - detect_duplicated_treeid
+    - warn_duplicated_treeid
+
+  - title: Deal with objects' structure
     desc: General (not specific to ForestGEO)
     contents:
     - starts_with("nms_")
@@ -115,3 +121,5 @@ reference:
     desc: Specific to ForestGEO
     contents:
     - tool_example
+    
+    

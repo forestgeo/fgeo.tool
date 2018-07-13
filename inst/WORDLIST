@@ -27,7 +27,8 @@ Kenfack
 knitr
 Lepore
 Lowercases
-lxly
+lx
+ly
 nms
 Orwig
 pre
@@ -36,7 +37,6 @@ quadrat
 quadrat's
 quosures
 qx
-qxqy
 qy
 readr
 recensus
@@ -54,6 +54,7 @@ subquadrat
 subquadrat's
 tibble
 tidyverse
+treeid
 vft
 viewfull
 ViewFull
