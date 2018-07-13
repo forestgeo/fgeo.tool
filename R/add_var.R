@@ -167,7 +167,7 @@ sanitize_xy <- function(x) {
 }
 
 gxgy_to_var <- function(.x, var, gridsize, plotdim) {
-  .f <- getFromNamespace(paste0("gxgy_to_", var), "fgeo.tool")
+  .f <- utils::getFromNamespace(paste0("gxgy_to_", var), "fgeo.tool")
   if (identical(var, "hectindex")) {
     # `gridsize` is unused
     return(.f(.x$gx, .x$gy, plotdim = plotdim))
@@ -195,7 +195,7 @@ rename_pxpy <- function(x) {
 
 restore_pxpy_if_necessary <- function(.x, x) {
   if (rename_pxpy(x)) {
-    .x <- dplyr::rename(.x, px = gx, py = gy)
+    .x <- dplyr::rename(.x, px = .data$gx, py = .data$gy)
   }
   .x
 }
@@ -216,6 +216,8 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
   stopifnot(is.numeric(gridsize))
   if (!is.null(plotdim)) stopifnot(is.numeric(plotdim))
   if (!is.null(plotdim)) stopifnot(length(plotdim) == 2)
+  
+  invisible(x)
 }
 
 #' @rdname add_var
