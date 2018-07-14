@@ -2,7 +2,7 @@
 #'
 #' @param .x A dataframe.
 #' @param .f A function.
-#' @param ... Addditional arguments passed to `.f`.
+#' @param ... Additional arguments passed to `.f`.
 #'
 #' @return The value of `.f` applied to groups with this caveats:
 #' * Following the approach split/apply/combine, `.f` does not compute on the 
@@ -38,7 +38,7 @@
 #' # Grouped
 #' dfm %>% group_by(x) %>% by_group(first_row)
 #' 
-#' # Computes on any non-groping variable and returns the original groups
+#' # Computes on any non-grouping variable and returns the original groups
 #' dfm %>% group_by(x) %>% by_group(first_row, to_chr = TRUE)
 by_group <- function(.x, .f, ...) {
   stopifnot(is.data.frame(.x), is.function(.f))

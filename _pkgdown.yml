@@ -110,6 +110,7 @@ reference:
     desc: General (not specific to ForestGEO)
     contents:
     - starts_with("nms_")
+    - by_group
 
   - title: Construct or restructure data
     desc: Specific to ForestGEO
