@@ -38,10 +38,10 @@ detect_duplicated_treeid <- function(.data) {
   .x <- set_names(.data, tolower)
   
   if ("censusid" %in% names(.x)) {
-    .x <- dplyr::group_by(.x, censusid)
+    .x <- dplyr::group_by(.x, .data$censusid)
   }
-    .x <- dplyr::group_by(.x, treeid, add = TRUE)
+    .x <- dplyr::group_by(.x, .data$treeid, add = TRUE)
     
-    n <- dplyr::summarize(.x, n = dplyr::n_distinct(stemid))
+    n <- dplyr::summarize(.x, n = dplyr::n_distinct(.data$stemid))
     any(n$n > 1)
   }
