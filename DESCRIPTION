@@ -26,7 +26,6 @@ Imports:
     rmarkdown (>= 1.9),
     stringr (>= 1.3.0),
     tibble (>= 1.4.2),
-    tidyr,
     tidyselect,
     writexl (>= 1.0)
 Suggests: 
