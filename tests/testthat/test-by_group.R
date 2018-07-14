@@ -36,15 +36,9 @@ describe("by_group()", {
   })
   
   it("is sensitive to arguments passed via ...", {
-    out <- dfm %>% group_by(x) %>% by_group(first_row, to_chr = TRUE)
-    dfm_chr <- dfm
-    dfm_chr[-1] <- lapply(dfm[-1], as.character)
-    expect_equal(out, dfm_chr)
-    
-    # it excludes the grouping variables from the computation of `.f`
-    expect_is(dfm_chr[1][[1]], "numeric")
-    expect_is(dfm_chr[2][[1]], "character")
-    expect_is(dfm_chr[3][[1]], "character")
+    grouped <-  dfm %>% group_by(x)
+    out <- grouped %>% by_group(first_row, to_chr = TRUE)
+    expect_equal(out, purrr::map_df(grouped, as.character))
   })
   
   it("fails with informative message", {

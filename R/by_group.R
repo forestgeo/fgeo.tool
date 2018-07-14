@@ -4,9 +4,11 @@
 #' @param .f A function.
 #' @param ... Additional arguments passed to `.f`.
 #'
-#' @return The value of `.f` applied to groups with this caveats:
-#' * Following the approach split/apply/combine, `.f` does not compute on the 
-#' grouping variables.
+#' @return The value of `.f` applied to groups.
+#' 
+#' @section Acknowledgments:
+#' Tristan Mahr (https://www.tjmahr.com/) helped improve this function
+#' (via http://bit.ly/2L8YaMZ).
 #' 
 #' @export
 #'
@@ -38,18 +40,11 @@
 #' # Grouped
 #' dfm %>% group_by(x) %>% by_group(first_row)
 #' 
-#' # Computes on any non-grouping variable and returns the original groups
 #' dfm %>% group_by(x) %>% by_group(first_row, to_chr = TRUE)
 by_group <- function(.x, .f, ...) {
   stopifnot(is.data.frame(.x), is.function(.f))
-  
-  nested <- tidyr::nest(.x)
-  out <- dplyr::mutate(nested, data = purrr::map(.data$data, .f, ...))
-  out <- tidyr::unnest(out)
-
-  if (dplyr::is.grouped_df(.x)) {
-    out <- dplyr::grouped_df(out, dplyr::group_vars(.x))
-  }
-  
-  out
+  split <- split(.x, dplyr::group_indices(.x))
+  purrr::map_df(split, .f, ...)
 }
+
+

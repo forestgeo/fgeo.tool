@@ -14,15 +14,17 @@ by_group(.x, .f, ...)
 \item{...}{Additional arguments passed to \code{.f}.}
 }
 \value{
-The value of \code{.f} applied to groups with this caveats:
-\itemize{
-\item Following the approach split/apply/combine, \code{.f} does not compute on the
-grouping variables.
-}
+The value of \code{.f} applied to groups.
 }
 \description{
 Make any function work with grouped data.
 }
+\section{Acknowledgments}{
+
+Tristan Mahr (https://www.tjmahr.com/) helped improve this function
+(via http://bit.ly/2L8YaMZ).
+}
+
 \examples{
 dfm <- tibble::tribble(
   ~x, ~y,  ~z,
@@ -51,6 +53,5 @@ dfm \%>\% by_group(first_row)
 # Grouped
 dfm \%>\% group_by(x) \%>\% by_group(first_row)
 
-# Computes on any non-grouping variable and returns the original groups
 dfm \%>\% group_by(x) \%>\% by_group(first_row, to_chr = TRUE)
 }
