@@ -81,18 +81,6 @@ multiple dataframes, multiple .csv files, or multiple .excel files." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/read_df_write.html">Read, combine, identify, and write multiple files</a>
-    </li>
-  </ul>
-</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -216,7 +204,7 @@ and (4) "single_stems".</p></li>
 <span class='fu'>xlff_to_csv</span>(<span class='no'>dir_in</span>, <span class='no'>dir_out</span>)
 
 <span class='co'># Confirm</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/fs/topics/path_file'>path_file</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/fs/topics/dir_ls'>dir_ls</a></span>(<span class='no'>dir_out</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='st'>"new_stem.*csv$"</span>))</div><div class='output co'>#&gt; new_stem_1.csv new_stem_2.csv </div><div class='input'>
+<span class='fu'><a href='http://fs.r-lib.org/reference/path_file.html'>path_file</a></span>(<span class='fu'><a href='http://fs.r-lib.org/reference/dir_ls.html'>dir_ls</a></span>(<span class='no'>dir_out</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='st'>"new_stem.*csv$"</span>))</div><div class='output co'>#&gt; new_stem_1.csv new_stem_2.csv </div><div class='input'>
 <span class='co'># Also possible to output excel and a list of dataframe. See next section.</span>
 
 <span class='co'># FIRST CENSUS</span>
@@ -246,7 +234,7 @@ and (4) "single_stems".</p></li>
 <span class='co'># Output excel</span>
 <span class='fu'>xlff_to_xl</span>(<span class='no'>dir_in</span>, <span class='no'>dir_out</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='co'># Read back</span>
-<span class='no'>filename</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/fs/topics/path'>path</a></span>(<span class='no'>dir_out</span>, <span class='st'>"census.xlsx"</span>)
+<span class='no'>filename</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://fs.r-lib.org/reference/path.html'>path</a></span>(<span class='no'>dir_out</span>, <span class='st'>"census.xlsx"</span>)
 <span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>read_excel</a></span>(<span class='no'>filename</span>)
 <span class='fu'>str</span>(<span class='no'>out</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	54 obs. of  17 variables:
 #&gt;  $ submission_id        : chr  "c01b37d5-2c30-4086-b4a1-78327dfa0a9a" "efd8e991-2e34-40c8-b503-44def6e542d9" "7997596a-c94e-47b6-ab28-4b0e6a94e9df" "a4e952e6-dcad-4410-aba9-36918fa1fa62" ...
