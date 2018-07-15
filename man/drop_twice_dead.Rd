@@ -51,7 +51,8 @@ vft <- add_status_tree(vft, status_a = "alive", status_d = "dead")
 drop_twice_dead(vft)
 }
 \seealso{
-Other functions to filter dataframes.: \code{\link{filter_status}},
-  \code{\link{pick_recensus}}, \code{\link{pick_top}}
+Other functions to filter dataframes.: \code{\link{collapse_treeid}},
+  \code{\link{filter_status}}, \code{\link{pick_recensus}},
+  \code{\link{pick_top}}
 }
 \concept{functions to filter dataframes.}

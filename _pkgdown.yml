@@ -66,6 +66,7 @@ reference:
     - filter_status
     - drop_dead_stem
     - drop_dead_tree
+    - matches("collapse_treeid")
 
   - title: Pick/drop rows with matching conditions
     desc: General (not specific to ForestGEO)
