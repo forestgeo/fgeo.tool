@@ -2,11 +2,7 @@
 title: "Read, combine, identify, and write multiple files"
 author: "Mauro Lepore"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Read, combine, identify, and write multiple files}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: github_document
 ---
 
 ```{r setup, include = FALSE}

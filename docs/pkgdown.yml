@@ -1,8 +1,7 @@
 pandoc: 2.1.1
 pkgdown: 1.1.0
 pkgdown_sha: ~
-articles:
-  read_df_write: read_df_write.html
+articles: []
 urls:
   reference: https://forestgeo.github.io/fgeo.tool//reference
   article: https://forestgeo.github.io/fgeo.tool//articles

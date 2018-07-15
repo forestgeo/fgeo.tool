@@ -1,3 +1,4 @@
+^inst/tutorials$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
