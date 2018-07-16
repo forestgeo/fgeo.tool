@@ -84,8 +84,8 @@ pick_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
 dplyr::anti_join(x, y2, by = c("unique_stem" = "unq_stem"))
 }
 \seealso{
-Other functions to filter dataframes.: \code{\link{collapse_treeid}},
+Other functions to pick or drop rows of a dataframe.: \code{\link{collapse_treeid}},
   \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}, \code{\link{pick_top}}
 }
-\concept{functions to filter dataframes.}
+\concept{functions to pick or drop rows of a dataframe.}
