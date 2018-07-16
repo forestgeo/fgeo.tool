@@ -21,8 +21,8 @@ Make any function work with grouped data.
 }
 \section{Acknowledgments}{
 
-Tristan Mahr (https://www.tjmahr.com/) helped improve this function
-(via http://bit.ly/2L8YaMZ).
+\href{https://www.tjmahr.com/}{Tristan Mahr} and \href{https://alistaire.rbind.io/}{Edward Visel} helped improve this function
+(\href{http://bit.ly/2uDrf97}{post}).
 }
 
 \examples{

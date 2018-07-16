@@ -7,8 +7,9 @@
 #' @return The value of `.f` applied to groups.
 #' 
 #' @section Acknowledgments:
-#' Tristan Mahr (https://www.tjmahr.com/) helped improve this function
-#' (via http://bit.ly/2L8YaMZ).
+#' [Tristan Mahr](https://www.tjmahr.com/) and [Edward
+#' Visel](https://alistaire.rbind.io/) helped improve this function
+#' ([post](http://bit.ly/2uDrf97)).
 #' 
 #' @export
 #'
