@@ -102,12 +102,6 @@ reference:
     - type_ensure
 
   - title: Deal with objects' structure
-    desc: Specific to ForestGEO
-    contents:
-    - detect_duplicated_treeid
-    - warn_duplicated_treeid
-
-  - title: Deal with objects' structure
     desc: General (not specific to ForestGEO)
     contents:
     - starts_with("nms_")
@@ -124,4 +118,9 @@ reference:
     contents:
     - tool_example
     
+  - title: Function factories
+    desc: Not specific to ForestGEO
+    contents:
+    - detect_duplicated_var
+    - flag_duplicated_var
     

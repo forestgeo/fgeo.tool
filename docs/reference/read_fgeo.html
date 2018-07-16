@@ -167,36 +167,36 @@ option to <code>character()</code> to indicate no missing values.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-vft-random"</span>)</div><div class='output co'>#&gt; # A tibble: 5,921 x 32
-#&gt;     DBHID PlotName PlotID Family      Genus     SpeciesName Mnemonic Subspecies
-#&gt;     &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;     
-#&gt;  1    143 luquillo      1 Burseraceae Dacryodes excelsa     DACEXC   &lt;NA&gt;      
-#&gt;  2 103518 luquillo      1 Burseraceae Dacryodes excelsa     DACEXC   &lt;NA&gt;      
-#&gt;  3 217487 luquillo      1 Burseraceae Dacryodes excelsa     DACEXC   &lt;NA&gt;      
-#&gt;  4 347333 luquillo      1 Burseraceae Dacryodes excelsa     DACEXC   &lt;NA&gt;      
-#&gt;  5 439947 luquillo      1 Burseraceae Dacryodes excelsa     DACEXC   &lt;NA&gt;      
-#&gt;  6 582850 luquillo      1 Burseraceae Dacryodes excelsa     DACEXC   &lt;NA&gt;      
-#&gt;  7    158 luquillo      1 Myrtaceae   Myrcia    splendens   MYRSPL   &lt;NA&gt;      
-#&gt;  8 103533 luquillo      1 Myrtaceae   Myrcia    splendens   MYRSPL   &lt;NA&gt;      
-#&gt;  9 217498 luquillo      1 Myrtaceae   Myrcia    splendens   MYRSPL   &lt;NA&gt;      
-#&gt; 10 384255 luquillo      1 Myrtaceae   Myrcia    splendens   MYRSPL   &lt;NA&gt;      
-#&gt; # ... with 5,911 more rows, and 24 more variables: SpeciesID &lt;int&gt;,
-#&gt; #   SubspeciesID &lt;chr&gt;, QuadratName &lt;chr&gt;, QuadratID &lt;int&gt;, PX &lt;dbl&gt;, PY &lt;dbl&gt;,
-#&gt; #   QX &lt;dbl&gt;, QY &lt;dbl&gt;, TreeID &lt;int&gt;, Tag &lt;chr&gt;, StemID &lt;int&gt;,
-#&gt; #   StemNumber &lt;int&gt;, StemTag &lt;int&gt;, PrimaryStem &lt;chr&gt;, CensusID &lt;int&gt;,
-#&gt; #   PlotCensusNumber &lt;int&gt;, DBH &lt;dbl&gt;, HOM &lt;dbl&gt;, ExactDate &lt;date&gt;, Date &lt;int&gt;,
-#&gt; #   ListOfTSM &lt;chr&gt;, HighHOM &lt;int&gt;, LargeStem &lt;chr&gt;, Status &lt;chr&gt;</div><div class='input'><span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-taxa"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: The following named parsers don't match the column names: DBHID, PlotName, PlotID, QuadratName, QuadratID, PX, PY, QX, QY, TreeID, Tag, StemID, StemNumber, StemTag, PrimaryStem, CensusID, PlotCensusNumber, DBH, HOM, ExactDate, Date, ListOfTSM, HighHOM, LargeStem, Status</span></div><div class='output co'>#&gt; # A tibble: 163 x 21
-#&gt;    ViewID SpeciesID SubspeciesID Family      Mnemonic Genus   SpeciesName Rank 
-#&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;       &lt;chr&gt;
-#&gt;  1      1        56 &lt;NA&gt;         Fabaceae    AESAME   Aeschy~ americana   &lt;NA&gt; 
-#&gt;  2      2        57 &lt;NA&gt;         Euphorbiac~ ALCFLO   Alchor~ floribunda  &lt;NA&gt; 
-#&gt;  3      3        58 &lt;NA&gt;         Euphorbiac~ ALCLAT   Alchor~ latifolia   &lt;NA&gt; 
-#&gt;  4      4        59 &lt;NA&gt;         Fabaceae-p~ ANDINE   Andira  inermis     &lt;NA&gt; 
-#&gt;  5      5        60 &lt;NA&gt;         Rubiaceae   ANTOBT   Stenos~ obtusifoli~ &lt;NA&gt; 
-#&gt;  6      6        61 &lt;NA&gt;         Myrsinaceae ARDGLA   Ardisia glauciflora &lt;NA&gt; 
-#&gt;  7      7        62 &lt;NA&gt;         Moraceae    ARTALT   Artoca~ altilis     &lt;NA&gt; 
-#&gt;  8      8        63 &lt;NA&gt;         Lauraceae   BEIPEN   Beilsc~ pendula     &lt;NA&gt; 
-#&gt;  9      9        64 &lt;NA&gt;         Solanaceae  BRUPOR   Brunfe~ portoricen~ &lt;NA&gt; 
-#&gt; 10     10        65 &lt;NA&gt;         Combretace~ BUCTET   Buchen~ tetraphylla &lt;NA&gt; 
+#&gt;     DBHID PlotName PlotID Family Genus SpeciesName Mnemonic Subspecies SpeciesID
+#&gt;     &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;
+#&gt;  1    143 luquillo      1 Burse~ Dacr~ excelsa     DACEXC   &lt;NA&gt;              99
+#&gt;  2 103518 luquillo      1 Burse~ Dacr~ excelsa     DACEXC   &lt;NA&gt;              99
+#&gt;  3 217487 luquillo      1 Burse~ Dacr~ excelsa     DACEXC   &lt;NA&gt;              99
+#&gt;  4 347333 luquillo      1 Burse~ Dacr~ excelsa     DACEXC   &lt;NA&gt;              99
+#&gt;  5 439947 luquillo      1 Burse~ Dacr~ excelsa     DACEXC   &lt;NA&gt;              99
+#&gt;  6 582850 luquillo      1 Burse~ Dacr~ excelsa     DACEXC   &lt;NA&gt;              99
+#&gt;  7    158 luquillo      1 Myrta~ Myrc~ splendens   MYRSPL   &lt;NA&gt;             156
+#&gt;  8 103533 luquillo      1 Myrta~ Myrc~ splendens   MYRSPL   &lt;NA&gt;             156
+#&gt;  9 217498 luquillo      1 Myrta~ Myrc~ splendens   MYRSPL   &lt;NA&gt;             156
+#&gt; 10 384255 luquillo      1 Myrta~ Myrc~ splendens   MYRSPL   &lt;NA&gt;             156
+#&gt; # ... with 5,911 more rows, and 23 more variables: SubspeciesID &lt;chr&gt;,
+#&gt; #   QuadratName &lt;chr&gt;, QuadratID &lt;int&gt;, PX &lt;dbl&gt;, PY &lt;dbl&gt;, QX &lt;dbl&gt;, QY &lt;dbl&gt;,
+#&gt; #   TreeID &lt;int&gt;, Tag &lt;chr&gt;, StemID &lt;int&gt;, StemNumber &lt;int&gt;, StemTag &lt;int&gt;,
+#&gt; #   PrimaryStem &lt;chr&gt;, CensusID &lt;int&gt;, PlotCensusNumber &lt;int&gt;, DBH &lt;dbl&gt;,
+#&gt; #   HOM &lt;dbl&gt;, ExactDate &lt;date&gt;, Date &lt;int&gt;, ListOfTSM &lt;chr&gt;, HighHOM &lt;int&gt;,
+#&gt; #   LargeStem &lt;chr&gt;, Status &lt;chr&gt;</div><div class='input'><span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-taxa"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: The following named parsers don't match the column names: DBHID, PlotName, PlotID, QuadratName, QuadratID, PX, PY, QX, QY, TreeID, Tag, StemID, StemNumber, StemTag, PrimaryStem, CensusID, PlotCensusNumber, DBH, HOM, ExactDate, Date, ListOfTSM, HighHOM, LargeStem, Status</span></div><div class='output co'>#&gt; # A tibble: 163 x 21
+#&gt;    ViewID SpeciesID SubspeciesID Family Mnemonic Genus SpeciesName Rank 
+#&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;
+#&gt;  1      1        56 &lt;NA&gt;         Fabac~ AESAME   Aesc~ americana   &lt;NA&gt; 
+#&gt;  2      2        57 &lt;NA&gt;         Eupho~ ALCFLO   Alch~ floribunda  &lt;NA&gt; 
+#&gt;  3      3        58 &lt;NA&gt;         Eupho~ ALCLAT   Alch~ latifolia   &lt;NA&gt; 
+#&gt;  4      4        59 &lt;NA&gt;         Fabac~ ANDINE   Andi~ inermis     &lt;NA&gt; 
+#&gt;  5      5        60 &lt;NA&gt;         Rubia~ ANTOBT   Sten~ obtusifoli~ &lt;NA&gt; 
+#&gt;  6      6        61 &lt;NA&gt;         Myrsi~ ARDGLA   Ardi~ glauciflora &lt;NA&gt; 
+#&gt;  7      7        62 &lt;NA&gt;         Morac~ ARTALT   Arto~ altilis     &lt;NA&gt; 
+#&gt;  8      8        63 &lt;NA&gt;         Laura~ BEIPEN   Beil~ pendula     &lt;NA&gt; 
+#&gt;  9      9        64 &lt;NA&gt;         Solan~ BRUPOR   Brun~ portoricen~ &lt;NA&gt; 
+#&gt; 10     10        65 &lt;NA&gt;         Combr~ BUCTET   Buch~ tetraphylla &lt;NA&gt; 
 #&gt; # ... with 153 more rows, and 13 more variables: Subspecies &lt;chr&gt;,
 #&gt; #   Authority &lt;chr&gt;, IDLevel &lt;chr&gt;, subspMnemonic &lt;chr&gt;, subspAuthority &lt;chr&gt;,
 #&gt; #   FieldFamily &lt;chr&gt;, Lifeform &lt;chr&gt;, Description &lt;chr&gt;, wsg &lt;dbl&gt;,

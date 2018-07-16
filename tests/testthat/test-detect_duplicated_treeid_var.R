@@ -1,5 +1,16 @@
 library(tibble)
 
+context("detect_duplicated_var")
+
+describe("*_duplicated_var()", {
+  tree <- tibble(treeID = c(1, 1))
+  it("creates functionsl closures", {
+    expect_message(flag_duplicated_var(message, treeid)(tree), "Detected")
+    expect_warning(flag_duplicated_var(warning, treeid)(tree), "Detected")
+    expect_error(flag_duplicated_var(stop, treeid)(tree), "Detected")
+  })
+})
+
 describe("detect_duplicated_treeid", {
   it("is silent with a tree table", {
     tree <- tibble(treeID = c(1, 2))
@@ -9,6 +20,7 @@ describe("detect_duplicated_treeid", {
   it("works with a vft", {
     vft <- tibble(TreeID = c(1, 2))
     expect_false(detect_duplicated_treeid(vft))
+    expect_silent(warn_duplicated_treeid(vft))
   })
   
   it("doesn't group by censusid", {
