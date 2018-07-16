@@ -35,9 +35,8 @@ collapse_treeid_max(census)
 collapse_treeid_min(census)
 }
 \seealso{
-Other functions to filter dataframes.: \code{\link{drop_twice_dead}},
+Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}, \code{\link{pick_recensus}},
   \code{\link{pick_top}}
 }
-\concept{functions to filter dataframes.}
-\concept{pick drop}
+\concept{functions to pick or drop rows of a dataframe.}

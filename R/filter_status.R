@@ -15,7 +15,7 @@
 #'
 #' @seealso [add_status_tree()], [fgeo.base::drop_status()].
 #'
-#' @family functions to filter dataframes.
+#' @family functions to pick or drop rows of a dataframe.
 #'
 #' @return A filtered version of the dataframe `x`.
 #' @export

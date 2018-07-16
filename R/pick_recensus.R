@@ -25,7 +25,7 @@
 #' @return Returns all rows from `x` where there are not matching values in
 #'   `y`, keeping just columns from `x`.
 #'   
-#' @family functions to filter dataframes.
+#' @family functions to pick or drop rows of a dataframe.
 #'
 #' @export
 #'

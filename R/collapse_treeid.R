@@ -5,10 +5,9 @@
 #'
 #' @param .x A dataframe; particularly a ForestGEO census or ViewFullTable.
 #'
-#' @family functions to filter dataframes.
-#'
 #' @return A dataframe with one row per per treeid per censusid.
-#' @concept pick drop
+#' 
+#' @family functions to pick or drop rows of a dataframe.
 #'
 #' @examples
 #' census <- tibble::tribble(

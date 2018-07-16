@@ -7,12 +7,14 @@
 #' @param vft A dataframe -- specifically a ForestGEO ViewFullTable with
 #'   variables `status_tree` (see [add_status_tree()]).
 #'
+#' @family functions to pick or drop rows of a dataframe.
+#' 
 #' @return A modified version of the input data set:
 #'     * With the rows removed of all censuses except the last two.
 #'     * With the rows removed of trees found dead on both the last and previous
 #'       last censuses.
+#'
 #' @export
-#' @family functions to filter dataframes.
 #'
 #' @examples
 #' vft <- tibble::tribble(
