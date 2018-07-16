@@ -4,7 +4,7 @@
 \alias{by_treeid_pick_dbh}
 \alias{by_treeid_pick_dbh_min}
 \alias{by_treeid_pick_dbh_max}
-\title{Pick only the one stem per treeid per censusid.}
+\title{Pick only the one stem per treeid (per censusid).}
 \usage{
 by_treeid_pick_dbh_min(.x)
 
@@ -14,11 +14,14 @@ by_treeid_pick_dbh_max(.x)
 \item{.x}{A dataframe; particularly a ForestGEO census or ViewFullTable.}
 }
 \value{
-A dataframe with one row per per treeid per censusid.
+A dataframe with one row per per treeid per censusid and a single
+plotname.
 }
 \description{
 \code{by_treeid_pick_dbh_max()} and \code{by_treeid_pick_dbh_min()} pick the stem with the
-maximum and minimum dbh per treeid per censusid.
+maximum and minimum dbh per treeid per censusid. It intentionally errs if
+it detects multiple distinct values of plotname (i.e. if the data is a
+ViewFullTable).
 }
 \examples{
 census <- tibble::tribble(
@@ -32,6 +35,7 @@ census <- tibble::tribble(
 )
 
 by_treeid_pick_dbh_max(census)
+
 by_treeid_pick_dbh_min(census)
 }
 \seealso{

@@ -1,11 +1,14 @@
-#' Pick only the one stem per treeid per censusid.
+#' Pick only the one stem per treeid (per censusid).
 #' 
 #' `by_treeid_pick_dbh_max()` and `by_treeid_pick_dbh_min()` pick the stem with the 
-#' maximum and minimum dbh per treeid per censusid.
+#' maximum and minimum dbh per treeid per censusid. It intentionally errs if
+#' it detects multiple distinct values of plotname (i.e. if the data is a 
+#' ViewFullTable).
 #'
 #' @param .x A dataframe; particularly a ForestGEO census or ViewFullTable.
 #'
-#' @return A dataframe with one row per per treeid per censusid.
+#' @return A dataframe with one row per per treeid per censusid and a single 
+#'   plotname.
 #' 
 #' @family functions to pick or drop rows of a dataframe.
 #'
@@ -21,6 +24,7 @@
 #' )
 #' 
 #' by_treeid_pick_dbh_max(census)
+#' 
 #' by_treeid_pick_dbh_min(census)
 #' @name by_treeid_pick_dbh
 NULL
@@ -51,6 +55,7 @@ by_treeid_pick_dbh_min <- by_treeid_pick_dbh(.arrange = identity)
 by_treeid_pick_dbh_max <- by_treeid_pick_dbh(.arrange = dplyr::desc)
 
 by_treeid_pick_dbh_impl <- function(x, .arrange) {
+  # Grouping must be handleded at higher levels.
   .x <- dplyr::ungroup(x)
   
   if (multiple_plotname(.x)) {
