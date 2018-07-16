@@ -56,7 +56,7 @@ pick_top(df, y, n = -2)
 \seealso{
 \link[dplyr:pull]{dplyr::pull}, \link[dplyr:top_n]{dplyr::top_n}, \code{\link[utils:head]{utils::head()}}, \code{\link[utils:tail]{utils::tail()}}.
 
-Other functions to pick or drop rows of a dataframe.: \code{\link{collapse_treeid}},
+Other functions to pick or drop rows of a dataframe.: \code{\link{by_treeid_pick_dbh}},
   \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}, \code{\link{pick_recensus}}
 }

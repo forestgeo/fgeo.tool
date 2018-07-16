@@ -1,6 +1,6 @@
 #' Pick only the one stem per treeid per censusid.
 #' 
-#' `collapse_treeid_max()` and `collapse_treeid_min()` pick the stem with the 
+#' `by_treeid_pick_dbh_max()` and `by_treeid_pick_dbh_min()` pick the stem with the 
 #' maximum and minimum dbh per treeid per censusid.
 #'
 #' @param .x A dataframe; particularly a ForestGEO census or ViewFullTable.
@@ -20,12 +20,12 @@
 #'     NA, "sp2",     "2",   "2.4"
 #' )
 #' 
-#' collapse_treeid_max(census)
-#' collapse_treeid_min(census)
-#' @name collapse_treeid
+#' by_treeid_pick_dbh_max(census)
+#' by_treeid_pick_dbh_min(census)
+#' @name by_treeid_pick_dbh
 NULL
 
-collapse_treeid <- function(.arrange) {
+by_treeid_pick_dbh <- function(.arrange) {
   force(.arrange)
   function(.x) {
     stopifnot(is.data.frame(.x))
@@ -34,7 +34,7 @@ collapse_treeid <- function(.arrange) {
     .data <- dplyr::grouped_df(.data, tolower(dplyr::group_vars(.data)))
     
     fgeo.base::check_crucial_names(.data, c("treeid", "dbh"))
-    .data <- collapse_treeid_impl(.data, .arrange)
+    .data <- by_treeid_pick_dbh_impl(.data, .arrange)
     
     # Restore original names; then original groups
     out <- fgeo.base::rename_matches(.data , .x)
@@ -42,15 +42,15 @@ collapse_treeid <- function(.arrange) {
   }
 }
 
-#' @rdname collapse_treeid
+#' @rdname by_treeid_pick_dbh
 #' @export
-collapse_treeid_min <- collapse_treeid(.arrange = identity)
+by_treeid_pick_dbh_min <- by_treeid_pick_dbh(.arrange = identity)
 
-#' @rdname collapse_treeid
+#' @rdname by_treeid_pick_dbh
 #' @export
-collapse_treeid_max <- collapse_treeid(.arrange = dplyr::desc)
+by_treeid_pick_dbh_max <- by_treeid_pick_dbh(.arrange = dplyr::desc)
 
-collapse_treeid_impl <- function(x, .arrange) {
+by_treeid_pick_dbh_impl <- function(x, .arrange) {
   .x <- dplyr::ungroup(x)
   
   if (multiple_plotname(.x)) {
