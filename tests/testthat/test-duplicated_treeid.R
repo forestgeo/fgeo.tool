@@ -1,15 +1,34 @@
-context("duplicated_treeid")
+library(tibble)
 
-test_that("warns when appropriate", {
-  expect_warning(
-    warn_duplicated_treeid(fgeo.data::luquillo_stem6_1ha),
-    "Detected duplicated `treeID`"
-  )
-  expect_silent(warn_duplicated_treeid(fgeo.data::luquillo_tree6_1ha))
+describe("detect_duplicated_treeid", {
+  it("is silent with a tree table", {
+    tree <- tibble(treeID = c(1, 2))
+    expect_silent(warn_duplicated_treeid(tree))
+  })
   
-  combo56 <- purrr::reduce(
-    list(fgeo.data::luquillo_tree5_random, fgeo.data::luquillo_tree5_random),
-    rbind
-  )
-  expect_silent(warn_duplicated_treeid(combo56))
+  it("works with a vft", {
+    vft <- tibble(TreeID = c(1, 2))
+    expect_false(detect_duplicated_treeid(vft))
+  })
+  
+  it("doesn't group by censusid", {
+    # Not duplicated by census but is duplicated across the entire dataset
+    # This is an issue but it's not the job of this function to deal with this
+    tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
+    expect_true(detect_duplicated_treeid(tree))
+  })
+  
+  it("handles grouped data", {
+    tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
+    by_censusid <- group_by(tree, CensusID)
+    expect_false(detect_duplicated_treeid(by_censusid))
+  })
 })
+
+describe("warn_duplicated_treeid", {
+  it("warns with stem table", {
+    stem <- tibble(treeID = c(1, 1), stemID = c(1.1, 1.2))
+    expect_warning(warn_duplicated_treeid(stem), "Detected duplicated treeid")
+  })
+})
+

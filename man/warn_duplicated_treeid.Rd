@@ -22,17 +22,22 @@ detect_duplicated_treeid(.data)
 Detect and warn duplicated treeid.
 }
 \examples{
-detect_duplicated_treeid(fgeo.data::luquillo_stem6_1ha)
-warn_duplicated_treeid(fgeo.data::luquillo_stem6_1ha)
+stem <- tibble(treeID = c(1, 1), stemID = c(1.1, 1.2))
+warn_duplicated_treeid(stem)
 
-detect_duplicated_treeid(fgeo.data::luquillo_tree6_1ha)
-warn_duplicated_treeid(fgeo.data::luquillo_tree6_1ha)
+# No duplicates
+stem <- tibble(treeID = c(1, 2), stemID = c(1.1, 2.1))
+warn_duplicated_treeid(tree)
 
-combo56 <- purrr::reduce(
-  list(fgeo.data::luquillo_tree5_random, fgeo.data::luquillo_tree5_random),
-  rbind
-)
-# Silent because it cheks for each censusid
-detect_duplicated_treeid(combo56)
-warn_duplicated_treeid(combo56)
+vft <- tibble(TreeID = c(1, 2))
+detect_duplicated_treeid(vft)
+vft <- tibble(TreeID = c(1, 1))
+detect_duplicated_treeid(vft)
+
+# Warns even if the duplicatd treeid come from multiple censuses.
+tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
+detect_duplicated_treeid(tree)
+# Deal with this separately, e.g.
+split_censusid <- split(tree, tree$CensusID)
+any(purrr::map_lgl(split_censusid, detect_duplicated_treeid))
 }

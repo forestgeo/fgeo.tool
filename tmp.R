@@ -1,6 +1,22 @@
+
+* warn_ and detect_duplicated_treeid: Simplify and test:
+  * not use stemid
+  * not deal with groups
+
+
+
+
+* use lowercase treeid in the message or substitute()
+* generalize warn_duplicated_treeid to flag_duplicated_var(flag) (function factory):
+    * flag can be message(), warning(), stop()
+    * var could be any .data$var, maybe use tidyeval
+    * var is used to group by and to summarize
+  
+
 # TODO --------------------------------------------------------------------
- 
+
 # xxx cont here
+
 # * remove nms_restore_newvar()
 
 
