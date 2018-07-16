@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Remove trees found dead in both the last and previous last censuses. — drop_twice_dead • fgeo.tool</title>
+<title>Pick only the one stem per treeid per censusid. — by_treeid_pick_dbh • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,10 @@
 
 
 
-<meta property="og:title" content="Remove trees found dead in both the last and previous last censuses. — drop_twice_dead" />
+<meta property="og:title" content="Pick only the one stem per treeid per censusid. — by_treeid_pick_dbh" />
 
-<meta property="og:description" content="Removes trees that were found dead both in the last and previous last
-censuses. Thus the resulting data set contains trees that in the last census
-were found either alive or dead for the first time." />
+<meta property="og:description" content="by_treeid_pick_dbh_max() and by_treeid_pick_dbh_min() pick the stem with the
+maximum and minimum dbh per treeid per censusid." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,79 +107,62 @@ were found either alive or dead for the first time." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Remove trees found dead in both the last and previous last censuses.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/drop_twice_dead.R'><code>R/drop_twice_dead.R</code></a></small>
-    <div class="hidden name"><code>drop_twice_dead.Rd</code></div>
+    <h1>Pick only the one stem per treeid per censusid.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/collapse_treeid.R'><code>R/collapse_treeid.R</code></a></small>
+    <div class="hidden name"><code>by_treeid_pick_dbh.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Removes trees that were found dead both in the last and previous last
-censuses. Thus the resulting data set contains trees that in the last census
-were found either alive or dead for the first time.</p>
+    <p><code>by_treeid_pick_dbh_max()</code> and <code>by_treeid_pick_dbh_min()</code> pick the stem with the
+maximum and minimum dbh per treeid per censusid.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>drop_twice_dead</span>(<span class='no'>vft</span>)</pre>
+    <pre class="usage"><span class='fu'>by_treeid_pick_dbh_min</span>(<span class='no'>.x</span>)
+
+<span class='fu'>by_treeid_pick_dbh_max</span>(<span class='no'>.x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>vft</th>
-      <td><p>A dataframe -- specifically a ForestGEO ViewFullTable with
-variables <code>status_tree</code> (see <code><a href='add_status_tree.html'>add_status_tree()</a></code>).</p></td>
+      <th>.x</th>
+      <td><p>A dataframe; particularly a ForestGEO census or ViewFullTable.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified version of the input data set:
-* With the rows removed of all censuses except the last two.
-* With the rows removed of trees found dead on both the last and previous
-last censuses.</p>
+    <p>A dataframe with one row per per treeid per censusid.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to pick or drop rows of a dataframe.: <code><a href='by_treeid_pick_dbh.html'>by_treeid_pick_dbh</a></code>,
+    <div class='dont-index'><p>Other functions to pick or drop rows of a dataframe.: <code><a href='drop_twice_dead.html'>drop_twice_dead</a></code>,
   <code><a href='filter_status.html'>filter_status</a></code>, <code><a href='pick_recensus.html'>pick_recensus</a></code>,
   <code><a href='pick_top.html'>pick_top</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
-  ~<span class='no'>CensusID</span>, ~<span class='no'>Treeid</span>,   ~<span class='no'>Status</span>,
-  <span class='fl'>1</span>,    <span class='fl'>1</span>,   <span class='st'>"alive"</span>,  <span class='co'># Irrelevant: not one of the last two censuses</span>
-  <span class='fl'>1</span>,    <span class='fl'>1</span>,    <span class='st'>"dead"</span>,  <span class='co'># </span>
-
-  <span class='fl'>1</span>,    <span class='fl'>2</span>,   <span class='st'>"alive"</span>,  <span class='co'># Irrelevant: not one of the last two censuses</span>
-  <span class='fl'>1</span>,    <span class='fl'>2</span>,   <span class='st'>"alive"</span>,  <span class='co'># </span>
-
-  <span class='fl'>2</span>,    <span class='fl'>1</span>,   <span class='st'>"alive"</span>,  <span class='co'># Tree is alive: at lease one stem is alive</span>
-  <span class='fl'>2</span>,    <span class='fl'>1</span>,    <span class='st'>"dead"</span>,  <span class='co'># </span>
-
-  <span class='fl'>2</span>,    <span class='fl'>2</span>,    <span class='st'>"dead"</span>,  <span class='co'># Tree is dead: all stems are dead. Notice that</span>
-  <span class='fl'>2</span>,    <span class='fl'>2</span>,    <span class='st'>"dead"</span>,  <span class='co'># this tree is also dead in census 3.</span>
-
-  <span class='fl'>3</span>,    <span class='fl'>1</span>,   <span class='st'>"alive"</span>,  <span class='co'># Tree is alive: at lease one stem is alive</span>
-  <span class='fl'>3</span>,    <span class='fl'>1</span>,    <span class='st'>"dead"</span>,  <span class='co'># </span>
-
-  <span class='fl'>3</span>,    <span class='fl'>2</span>,    <span class='st'>"dead"</span>,  <span class='co'># Tree is dead: all stems are dead. Notice that</span>
-  <span class='fl'>3</span>,    <span class='fl'>2</span>,    <span class='st'>"dead"</span>   <span class='co'># this tree is also dead in census 2.</span>
+    <pre class="examples"><div class='input'><span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>dbh</span>,   ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,
+    <span class='fl'>10</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,
+   <span class='fl'>100</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.2"</span>,
+    <span class='fl'>22</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.1"</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.2"</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.3"</span>,
+    <span class='fl'>NA</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.4"</span>
 )
 
-<span class='co'># `Status` refers to stems while `status_tree` refers to trees.</span>
-<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_status_tree.html'>add_status_tree</a></span>(<span class='no'>vft</span>, <span class='kw'>status_a</span> <span class='kw'>=</span> <span class='st'>"alive"</span>, <span class='kw'>status_d</span> <span class='kw'>=</span> <span class='st'>"dead"</span>)
-
-<span class='co'># * Remove all censuses except the last two.</span>
-<span class='co'># * Remove trees found dead on both the last and previous last censuses.</span>
-<span class='fu'>drop_twice_dead</span>(<span class='no'>vft</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 4
-#&gt;   CensusID Treeid Status status_tree
-#&gt;      &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt; 1        2      1 alive  alive      
-#&gt; 2        2      1 dead   alive      
-#&gt; 3        3      1 alive  alive      
-#&gt; 4        3      1 dead   alive      </div></pre>
+<span class='fu'>by_treeid_pick_dbh_max</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
+#&gt;     dbh sp    treeID stemID
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; 
+#&gt; 1   100 sp1   1      1.2   
+#&gt; 2    99 sp2   2      2.2   </div><div class='input'><span class='fu'>by_treeid_pick_dbh_min</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
+#&gt;     dbh sp    treeID stemID
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; 
+#&gt; 1    10 sp1   1      1.1   
+#&gt; 2    22 sp2   2      2.1   </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

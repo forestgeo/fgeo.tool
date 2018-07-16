@@ -154,7 +154,7 @@ table(result$status_tree)
 \seealso{
 \code{\link[=add_status_tree]{add_status_tree()}}, \code{\link[fgeo.base:drop_status]{fgeo.base::drop_status()}}.
 
-Other functions to pick or drop rows of a dataframe.: \code{\link{collapse_treeid}},
+Other functions to pick or drop rows of a dataframe.: \code{\link{by_treeid_pick_dbh}},
   \code{\link{drop_twice_dead}},
   \code{\link{pick_recensus}}, \code{\link{pick_top}}
 }
