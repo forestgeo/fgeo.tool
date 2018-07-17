@@ -52,12 +52,16 @@ flag_duplicated_var <- function(.f, var) {
   function(.data) {
     var <- enquo(var)
     if (detect_duplicated_var(!! var)(.data)) {
-      msg <- "Detected duplicated treeid (each should be unique)."
+      var <- rlang::quo_name(var)
+      msg <- glue::glue("
+        Detected duplicated values of {var}.
+          Expected unique values of {var} within each data-group (if any)
+      ")
       .f(msg)
     }
     invisible(.data)
   }
 }
 
-warn_duplicated_treeid <- flag_duplicated_var(warning, treeid)
+warn_duplicated_treeid <- flag_duplicated_var(rlang::warn, treeid)
 

@@ -1,13 +1,14 @@
 library(tibble)
+library(rlang)
 
 context("detect_duplicated_var")
 
 describe("*_duplicated_var()", {
   tree <- tibble(treeID = c(1, 1))
   it("creates functionsl closures", {
-    expect_message(flag_duplicated_var(message, treeid)(tree), "Detected")
-    expect_warning(flag_duplicated_var(warning, treeid)(tree), "Detected")
-    expect_error(flag_duplicated_var(stop, treeid)(tree), "Detected")
+    expect_message(flag_duplicated_var(inform, treeid)(tree), "Detected")
+    expect_warning(flag_duplicated_var(warn, treeid)(tree), "Detected")
+    expect_error(flag_duplicated_var(abort, treeid)(tree), "Detected")
   })
 })
 
@@ -40,7 +41,10 @@ describe("detect_duplicated_treeid", {
 describe("warn_duplicated_treeid", {
   it("warns with stem table", {
     stem <- tibble(treeID = c(1, 1), stemID = c(1.1, 1.2))
-    expect_warning(warn_duplicated_treeid(stem), "Detected duplicated treeid")
+    expect_warning(
+      warn_duplicated_treeid(stem), 
+      "Detected duplicated values of treeid"
+    )
   })
 })
 
