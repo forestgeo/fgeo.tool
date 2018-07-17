@@ -1,8 +1,10 @@
 Anudeep
+censusid
 centric
 colrow
 csv
 CTFS
+dbh
 dfs
 dplyr
 dplyr's
@@ -21,11 +23,9 @@ gl
 gridsize
 gz
 hectindex
-http
 https
 Jafferjee
 Kenfack
-knitr
 Lepore
 Lowercases
 lx
@@ -33,6 +33,7 @@ ly
 Mahr
 nms
 Orwig
+plotname
 pre
 qkX
 quadrat
@@ -47,8 +48,6 @@ recode
 Recode
 recognised
 rlang
-rmarkdown
-RStudio
 Shameema
 Shue
 spreadsheeets
@@ -56,7 +55,6 @@ subquadrat
 subquadrat's
 tibble
 tidyverse
-tjmahr
 treeid
 vft
 viewfull
@@ -65,10 +63,6 @@ ViewFullTable
 ViewFullTables
 ViewFullTaxonomy
 ViewTaxonomy
-VignetteEncoding
-VignetteEngine
-VignetteIndexEntry
-www
+Visel
 xlsheets
 xlsx
-YaMZ

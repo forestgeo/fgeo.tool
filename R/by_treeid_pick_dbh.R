@@ -35,14 +35,14 @@ by_treeid_pick_dbh <- function(.arrange) {
     stopifnot(is.data.frame(.x))
     # Lowercase names and groups for work with both census and ViewFullTable
     .data <- rlang::set_names(.x, tolower)
-    .data <- dplyr::grouped_df(.data, tolower(dplyr::group_vars(.data)))
+    .data <- groups_lower(.data)
     
     fgeo.base::check_crucial_names(.data, c("treeid", "dbh"))
     .data <- by_treeid_pick_dbh_impl(.data, .arrange)
     
     # Restore original names; then original groups
     out <- fgeo.base::rename_matches(.data , .x)
-    dplyr::grouped_df(out, dplyr::group_vars(.x))
+    groups_restore(out, .x)
   }
 }
 

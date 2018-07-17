@@ -16,3 +16,12 @@ each_list_item_is_df <- function(x) {
 multiple_censusid <- fgeo.base::multiple_var("censusid")
 
 multiple_plotname <- fgeo.base::multiple_var("plotname")
+
+groups_lower <- function(x) {
+  dplyr::grouped_df(x, tolower(dplyr::group_vars(x)))
+}
+
+groups_restore <- function(x, ref) {
+  dplyr::grouped_df(x, dplyr::group_vars(ref))
+}
+
