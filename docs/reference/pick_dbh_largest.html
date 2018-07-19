@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Factory to flag duplicated values of a variable (message, warning or error). — flag_duplicated_var • fgeo.tool</title>
+<title>Pick the (stem of) largest dbh per treeid per censusid. — pick_dbh_largest • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Factory to flag duplicated values of a variable (message, warning or error). — flag_duplicated_var" />
+<meta property="og:title" content="Pick the (stem of) largest dbh per treeid per censusid. — pick_dbh_largest" />
 
-<meta property="og:description" content="Factory to flag duplicated values of a variable (message, warning or error)." />
+<meta property="og:description" content="This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,55 +108,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Factory to flag duplicated values of a variable (message, warning or error).</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/detect_duplicated_var.R'><code>R/detect_duplicated_var.R</code></a></small>
-    <div class="hidden name"><code>flag_duplicated_var.Rd</code></div>
+    <h1>Pick the (stem of) largest dbh per treeid per censusid.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_dbh_largest.R'><code>R/pick_dbh_largest.R</code></a></small>
+    <div class="hidden name"><code>pick_dbh_largest.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Factory to flag duplicated values of a variable (message, warning or error).</p>
+    <p>This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>flag_duplicated_var</span>(<span class='no'>.f</span>, <span class='no'>var</span>)</pre>
+    <pre class="usage"><span class='fu'>pick_dbh_largest</span>(<span class='no'>.x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.f</th>
-      <td><p>A condition function: One of message, warning, or stop.</p></td>
-    </tr>
-    <tr>
-      <th>var</th>
-      <td><p>Bare name of a variable.</p></td>
+      <th>.x</th>
+      <td><p>A ForestGEO-like dataframe, census or ViewFullTable.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A closure with the formal argument <code>.data</code> that returns the flag
-produced by <code>.f</code> when duplicated values of <code>var</code> are detected.</p>
+    <p>A dataframe with one row per per treeid per censusid and a single
+plotname.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other function factories.: <code><a href='detect_duplicated_var.html'>detect_duplicated_var</a></code></p>
-<p>Other functions for developers.: <code><a href='detect_duplicated_var.html'>detect_duplicated_var</a></code>,
-  <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms_tidy.html'>nms_tidy</a></code>,
-  <code><a href='nms_try_rename.html'>nms_try_rename</a></code>, <code><a href='nms.html'>nms</a></code>,
-  <code><a href='type_ensure.html'>type_ensure</a></code></p></div>
+    <div class='dont-index'><p>Other functions to pick or drop rows of a dataframe.: <code><a href='drop_twice_dead.html'>drop_twice_dead</a></code>,
+  <code><a href='filter_status.html'>filter_status</a></code>, <code><a href='pick_recensus.html'>pick_recensus</a></code>,
+  <code><a href='pick_top.html'>pick_top</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>warn_duplicated_treeid</span> <span class='kw'>&lt;-</span> <span class='fu'>flag_duplicated_var</span>(<span class='no'>warning</span>, <span class='no'>treeid</span>)
-<span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>treeID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>))
-<span class='fu'>warn_duplicated_treeid</span>(<span class='no'>tree</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning:   Detected duplicated values of treeid.</span>
-#&gt; <span class='warning'>    Expected unique values of treeid within each data-group (if any)</span></div><div class='input'><span class='fu'>flag_duplicated_var</span>(<span class='no'>message</span>, <span class='no'>treeid</span>)(<span class='no'>tree</span>)</div><div class='output co'>#&gt; <span class='message'>  Detected duplicated values of treeid.</span>
-#&gt; <span class='message'>    Expected unique values of treeid within each data-group (if any)</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>dbh</span>,   ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,
+    <span class='fl'>10</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,
+   <span class='fl'>100</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.2"</span>,
+    <span class='fl'>22</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.1"</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.2"</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.3"</span>,
+    <span class='fl'>NA</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.4"</span>
+)
+
+<span class='fu'>pick_dbh_largest</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
+#&gt;     dbh sp    treeID stemID
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; 
+#&gt; 1   100 sp1   1      1.2   
+#&gt; 2    99 sp2   2      2.2   </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
