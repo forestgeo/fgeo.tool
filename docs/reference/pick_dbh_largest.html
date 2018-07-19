@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pick only the one stem per treeid (per censusid). — by_treeid_pick_dbh • fgeo.tool</title>
+<title>Pick the (stem of) largest dbh per treeid per censusid. — pick_dbh_largest • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,12 +30,11 @@
 
 
 
-<meta property="og:title" content="Pick only the one stem per treeid (per censusid). — by_treeid_pick_dbh" />
+<meta property="og:title" content="Pick the (stem of) largest dbh per treeid per censusid. — pick_dbh_largest" />
 
-<meta property="og:description" content="by_treeid_pick_dbh_max() and by_treeid_pick_dbh_min() pick the stem with the
-maximum and minimum dbh per treeid per censusid. It intentionally errs if
-it detects multiple distinct values of plotname (i.e. if the data is a
-ViewFullTable)." />
+<meta property="og:description" content="This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,30 +108,27 @@ ViewFullTable)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pick only the one stem per treeid (per censusid).</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/by_treeid_pick_dbh.R'><code>R/by_treeid_pick_dbh.R</code></a></small>
-    <div class="hidden name"><code>by_treeid_pick_dbh.Rd</code></div>
+    <h1>Pick the (stem of) largest dbh per treeid per censusid.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_dbh_largest.R'><code>R/pick_dbh_largest.R</code></a></small>
+    <div class="hidden name"><code>pick_dbh_largest.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>by_treeid_pick_dbh_max()</code> and <code>by_treeid_pick_dbh_min()</code> pick the stem with the
-maximum and minimum dbh per treeid per censusid. It intentionally errs if
-it detects multiple distinct values of plotname (i.e. if the data is a
-ViewFullTable).</p>
+    <p>This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>by_treeid_pick_dbh_min</span>(<span class='no'>.x</span>)
-
-<span class='fu'>by_treeid_pick_dbh_max</span>(<span class='no'>.x</span>)</pre>
+    <pre class="usage"><span class='fu'>pick_dbh_largest</span>(<span class='no'>.x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.x</th>
-      <td><p>A dataframe; particularly a ForestGEO census or ViewFullTable.</p></td>
+      <td><p>A ForestGEO-like dataframe, census or ViewFullTable.</p></td>
     </tr>
     </table>
     
@@ -159,16 +155,11 @@ plotname.</p>
     <span class='fl'>NA</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.4"</span>
 )
 
-<span class='fu'>by_treeid_pick_dbh_max</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
+<span class='fu'>pick_dbh_largest</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
 #&gt;     dbh sp    treeID stemID
 #&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; 
 #&gt; 1   100 sp1   1      1.2   
-#&gt; 2    99 sp2   2      2.2   </div><div class='input'>
-<span class='fu'>by_treeid_pick_dbh_min</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 4
-#&gt;     dbh sp    treeID stemID
-#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt; 
-#&gt; 1    10 sp1   1      1.1   
-#&gt; 2    22 sp2   2      2.1   </div></pre>
+#&gt; 2    99 sp2   2      2.2   </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

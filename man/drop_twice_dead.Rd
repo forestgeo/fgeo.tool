@@ -51,8 +51,8 @@ vft <- add_status_tree(vft, status_a = "alive", status_d = "dead")
 drop_twice_dead(vft)
 }
 \seealso{
-Other functions to pick or drop rows of a dataframe.: \code{\link{by_treeid_pick_dbh}},
-  \code{\link{filter_status}}, \code{\link{pick_recensus}},
-  \code{\link{pick_top}}
+Other functions to pick or drop rows of a dataframe.: \code{\link{filter_status}},
+  \code{\link{pick_dbh_largest}},
+  \code{\link{pick_recensus}}, \code{\link{pick_top}}
 }
 \concept{functions to pick or drop rows of a dataframe.}

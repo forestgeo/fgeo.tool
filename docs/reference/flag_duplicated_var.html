@@ -152,7 +152,9 @@ produced by <code>.f</code> when duplicated values of <code>var</code> are detec
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>warn_duplicated_treeid</span> <span class='kw'>&lt;-</span> <span class='fu'>flag_duplicated_var</span>(<span class='no'>warning</span>, <span class='no'>treeid</span>)
 <span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>treeID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>))
-<span class='fu'>warn_duplicated_treeid</span>(<span class='no'>tree</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Detected duplicated treeid (each should be unique).</span></div><div class='input'><span class='fu'>flag_duplicated_var</span>(<span class='no'>message</span>, <span class='no'>treeid</span>)(<span class='no'>tree</span>)</div><div class='output co'>#&gt; <span class='message'>Detected duplicated treeid (each should be unique).</span></div></pre>
+<span class='fu'>warn_duplicated_treeid</span>(<span class='no'>tree</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning:   Detected duplicated values of treeid.</span>
+#&gt; <span class='warning'>    Expected unique values of treeid within each data-group (if any)</span></div><div class='input'><span class='fu'>flag_duplicated_var</span>(<span class='no'>message</span>, <span class='no'>treeid</span>)(<span class='no'>tree</span>)</div><div class='output co'>#&gt; <span class='message'>  Detected duplicated values of treeid.</span>
+#&gt; <span class='message'>    Expected unique values of treeid within each data-group (if any)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
