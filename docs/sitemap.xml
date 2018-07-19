@@ -19,9 +19,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/by_group.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/by_treeid_pick_dbh.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/convert_unit.html</loc>
   </url>
   <url>
@@ -77,6 +74,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_try_rename.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_dbh_largest.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_recensus.html</loc>
