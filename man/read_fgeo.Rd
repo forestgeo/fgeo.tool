@@ -39,9 +39,11 @@ common causes of problems when reading ForestGEO data as delivered by the
 database. In most cases you should only need to provide the argument \code{file}.
 }
 \examples{
+\dontrun{
+# Needs internet connection.
 read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
 read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
-
+}
 }
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[=type_vft]{type_vft()}}, \code{\link[=type_taxa]{type_taxa()}}.

@@ -2,7 +2,13 @@ context("test-read_fgeo")
 
 test_that("reads data correctly", {
   url_vft <- "http://bit.ly/fgeo-data-luquillo-vft-random"
-  vft <- read_vft(url_vft)
+  tryCatch(
+    vft <- read_vft(url_vft),
+    error = function(e) {
+      skip("Are you connected to internet?")
+    }
+  )
+  
   expect_equal(names(vft), names(type_vft()))
 
   url_taxa <- "http://bit.ly/fgeo-data-luquillo-taxa"

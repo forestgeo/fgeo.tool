@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database. — read_fgeo • fgeo.tool</title>
+<title>Factory of functions to pick woods and then apply a function. — pick_woods_f • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database. — read_fgeo" />
+<meta property="og:title" content="Factory of functions to pick woods and then apply a function. — pick_woods_f" />
 
-<meta property="og:description" content="These functions pre-fill arguments of readr::read_delim() to avoid the most
-common causes of problems when reading ForestGEO data as delivered by the
-database. In most cases you should only need to provide the argument file." />
+<meta property="og:description" content="Factory of functions to pick woods and then apply a function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,81 +106,35 @@ database. In most cases you should only need to provide the argument file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/read_fgeo.R'><code>R/read_fgeo.R</code></a></small>
-    <div class="hidden name"><code>read_fgeo.Rd</code></div>
+    <h1>Factory of functions to pick woods and then apply a function.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_woods.R'><code>R/pick_woods.R</code></a></small>
+    <div class="hidden name"><code>pick_woods_f.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions pre-fill arguments of <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code> to avoid the most
-common causes of problems when reading ForestGEO data as delivered by the
-database. In most cases you should only need to provide the argument <code>file</code>.</p>
+    <p>Factory of functions to pick woods and then apply a function.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_vft</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
-
-<span class='fu'>read_taxa</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>pick_woods_f</span>(<span class='no'>.f</span>, <span class='kw'>.collapse</span> <span class='kw'>=</span> <span class='kw pkg'>fgeo.tool</span><span class='kw ns'>::</span><span class='no'>pick_dbh_largest</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>Either a path to a file, a connection, or literal data
-(either a single string or a raw vector).</p>
-<p>Files ending in <code>.gz</code>, <code>.bz2</code>, <code>.xz</code>, or <code>.zip</code> will
-be automatically uncompressed. Files starting with <code>http://</code>,
-<code>https://</code>, <code>ftp://</code>, or <code>ftps://</code> will be automatically
-downloaded. Remote gz files can also be automatically downloaded and
-decompressed.</p>
-<p>Literal data is most useful for examples and tests. It must contain at
-least one new line to be recognised as data (instead of a path).</p></td>
-    </tr>
-    <tr>
-      <th>delim</th>
-      <td><p>Single character used to separate fields within a record.</p></td>
-    </tr>
-    <tr>
-      <th>na</th>
-      <td><p>Character vector of strings to use for missing values. Set this
-option to <code>character()</code> to indicate no missing values.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other arguments passed to <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>.</p></td>
+      <th>.f</th>
+      <td><p>A function to apply after picking woods. For example, <code>.f = identity</code> returns the picked woods unchanged.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe (or tibble).</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>, <code><a href='type_fgeo.html'>type_vft()</a></code>, <code><a href='type_fgeo.html'>type_taxa()</a></code>.</p>
-<p>Other functions to read text files delivered by ForestgGEO's database.: <code><a href='type_fgeo.html'>type_fgeo</a></code></p></div>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># Needs internet connection.</span>
-<span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-vft-random"</span>)
-<span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-taxa"</span>)
-<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

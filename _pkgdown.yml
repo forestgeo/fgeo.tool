@@ -66,7 +66,8 @@ reference:
     - filter_status
     - drop_dead_stem
     - drop_dead_tree
-    - pick_dbh_largest
+    - pick_largest_hom_dbh
+    - pick_woods
 
   - title: Pick/drop rows with matching conditions
     desc: General (not specific to ForestGEO)

@@ -76,13 +76,19 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_try_rename.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_dbh_largest.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_largest_hom_dbh.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_recensus.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_top.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_woods.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_woods_f.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pipe.html</loc>

@@ -1,5 +1,3 @@
-# TODO: Move to fgeo.tool
-
 #' Add a new id column to a dataframe by pasting values of preexisting columns.
 #'
 #' @param .data A dataframe.

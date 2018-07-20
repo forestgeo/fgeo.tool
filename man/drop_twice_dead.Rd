@@ -52,7 +52,7 @@ drop_twice_dead(vft)
 }
 \seealso{
 Other functions to pick or drop rows of a dataframe.: \code{\link{filter_status}},
-  \code{\link{pick_dbh_largest}},
+  \code{\link{pick_largest_hom_dbh}},
   \code{\link{pick_recensus}}, \code{\link{pick_top}}
 }
 \concept{functions to pick or drop rows of a dataframe.}

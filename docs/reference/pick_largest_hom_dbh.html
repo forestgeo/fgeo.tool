@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database. — read_fgeo • fgeo.tool</title>
+<title>Pick the (stem of) largest hom and dbh per treeid per censusid. — pick_largest_hom_dbh • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,11 @@
 
 
 
-<meta property="og:title" content="Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database. — read_fgeo" />
+<meta property="og:title" content="Pick the (stem of) largest hom and dbh per treeid per censusid. — pick_largest_hom_dbh" />
 
-<meta property="og:description" content="These functions pre-fill arguments of readr::read_delim() to avoid the most
-common causes of problems when reading ForestGEO data as delivered by the
-database. In most cases you should only need to provide the argument file." />
+<meta property="og:description" content="This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,69 +108,58 @@ database. In most cases you should only need to provide the argument file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/read_fgeo.R'><code>R/read_fgeo.R</code></a></small>
-    <div class="hidden name"><code>read_fgeo.Rd</code></div>
+    <h1>Pick the (stem of) largest hom and dbh per treeid per censusid.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_largest_hom_dbh.R'><code>R/pick_largest_hom_dbh.R</code></a></small>
+    <div class="hidden name"><code>pick_largest_hom_dbh.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions pre-fill arguments of <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code> to avoid the most
-common causes of problems when reading ForestGEO data as delivered by the
-database. In most cases you should only need to provide the argument <code>file</code>.</p>
+    <p>This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_vft</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
-
-<span class='fu'>read_taxa</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>pick_largest_hom_dbh</span>(<span class='no'>.x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>Either a path to a file, a connection, or literal data
-(either a single string or a raw vector).</p>
-<p>Files ending in <code>.gz</code>, <code>.bz2</code>, <code>.xz</code>, or <code>.zip</code> will
-be automatically uncompressed. Files starting with <code>http://</code>,
-<code>https://</code>, <code>ftp://</code>, or <code>ftps://</code> will be automatically
-downloaded. Remote gz files can also be automatically downloaded and
-decompressed.</p>
-<p>Literal data is most useful for examples and tests. It must contain at
-least one new line to be recognised as data (instead of a path).</p></td>
-    </tr>
-    <tr>
-      <th>delim</th>
-      <td><p>Single character used to separate fields within a record.</p></td>
-    </tr>
-    <tr>
-      <th>na</th>
-      <td><p>Character vector of strings to use for missing values. Set this
-option to <code>character()</code> to indicate no missing values.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other arguments passed to <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>.</p></td>
+      <th>.x</th>
+      <td><p>A ForestGEO-like dataframe, census or ViewFullTable.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe (or tibble).</p>
+    <p>A dataframe with one row per per treeid per censusid and a single
+plotname.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>, <code><a href='type_fgeo.html'>type_vft()</a></code>, <code><a href='type_fgeo.html'>type_taxa()</a></code>.</p>
-<p>Other functions to read text files delivered by ForestgGEO's database.: <code><a href='type_fgeo.html'>type_fgeo</a></code></p></div>
+    <div class='dont-index'><p>Other functions to pick or drop rows of a dataframe.: <code><a href='drop_twice_dead.html'>drop_twice_dead</a></code>,
+  <code><a href='filter_status.html'>filter_status</a></code>, <code><a href='pick_recensus.html'>pick_recensus</a></code>,
+  <code><a href='pick_top.html'>pick_top</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># Needs internet connection.</span>
-<span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-vft-random"</span>)
-<span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-taxa"</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>dbh</span>,   ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>, ~<span class='no'>hom</span>,
+    <span class='fl'>10</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>10</span>,
+   <span class='fl'>100</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.2"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>22</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.1"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.2"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.3"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>NA</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.4"</span>,   <span class='fl'>10</span>
+)
+
+<span class='fu'>pick_largest_hom_dbh</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 5
+#&gt;     dbh sp    treeID stemID   hom
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
+#&gt; 1   100 sp1   1      1.2       10
+#&gt; 2    99 sp2   2      2.2       10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

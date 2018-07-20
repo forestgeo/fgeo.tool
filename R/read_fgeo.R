@@ -13,9 +13,11 @@
 #' @return A dataframe (or tibble).
 #'
 #' @examples
+#' \dontrun{
+#' # Needs internet connection.
 #' read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
 #' read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
-#' 
+#' }
 #' @name read_fgeo
 NULL
 

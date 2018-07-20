@@ -55,7 +55,6 @@
 #' @name add_var
 NULL
 
-# FIXME: Flatten if statements via switch or functionals.
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   .x <- set_names(x, tolower)
   .x <- sanitize_xy(.x)
