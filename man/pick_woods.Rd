@@ -2,10 +2,38 @@
 % Please edit documentation in R/pick_woods.R
 \name{pick_woods}
 \alias{pick_woods}
+\alias{pick_trees}
+\alias{pick_saplings}
 \title{Pick woods after collapsing multiple stems by treeid and censusid.}
 \usage{
 pick_woods(.data, ...)
+
+pick_trees(.data)
+
+pick_saplings(.data)
 }
 \description{
-Pick woods after collapsing multiple stems by treeid and censusid.
+These functions pick rows by groups. At the core they run \code{dplyr::filter()}
+but include these additional features:
+\itemize{
+\item They reject multiple plots with an informative error message.
+\item They operate within groups define with \code{dplyr::group_by()}.
+\item If the data has multiple censuses, they automatically group by census.
+\item They collapse data of multi-stem trees by picking a single stem per treeid.
+The picked stem depends on the values of \code{hom} or \code{dbh} detected for each
+census of each treeid. The selection is as follows:
+FIXME: Not yet implemented
+\itemize{
+\item If there is a single \code{hom} value, it is the stem of maximum \code{dbh}.
+\item If there is more than one \code{hom} value, it is the stem of maximum \code{dbh}.
+}
+}
+
+\itemize{
+\item \code{pick_woods()} is a general function that takes any dataframe and any
+number of expressions to filter the dataframe.
+\item \code{pick_trees()} picks stems of 100 mm dbh and above.
+\item \code{pick_saplings()} picks stems between 10 mm dbh inclusive and 100 mm dbh
+exclusive.
+}
 }

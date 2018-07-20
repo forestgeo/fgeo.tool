@@ -5,7 +5,6 @@
 #' @param .f A function to apply after picking woods. For example, `.f =
 #'   identity` returns the picked woods unchanged.
 #'
-#' @return
 #' @keywords internal
 #' @export
 #'
@@ -44,6 +43,25 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
 
 #' Pick woods after collapsing multiple stems by treeid and censusid.
 #' 
+#' @description 
+#' These functions pick rows by groups. At the core they run `dplyr::filter()`
+#' but include these additional features:
+#' * They reject multiple plots with an informative error message.
+#' * They operate within groups define with `dplyr::group_by()`.
+#' * If the data has multiple censuses, they automatically group by census.
+#' * They collapse data of multi-stem trees by picking a single stem per treeid.
+#' The picked stem depends on the values of `hom` or `dbh` detected for each 
+#' census of each treeid. The selection is as follows:
+#' FIXME: Not yet implemented
+#'   * If there is a single `hom` value, it is the stem of maximum `dbh`.
+#'   * If there is more than one `hom` value, it is the stem of maximum `dbh`.
+#' 
+#' @description
+#' * `pick_woods()` is a general function that takes any dataframe and any 
+#' number of expressions to filter the dataframe.
+#' * `pick_trees()` picks stems of 100 mm dbh and above.
+#' * `pick_saplings()` picks stems between 10 mm dbh inclusive and 100 mm dbh 
+#' exclusive.
 #' 
 #' 
 #' @export
