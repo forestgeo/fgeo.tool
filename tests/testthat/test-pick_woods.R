@@ -3,12 +3,12 @@ context("pick_woods")
 library(dplyr)
 
 cns <- tibble::tribble(
-  ~dbh,   ~sp, ~treeID, ~stemID,
-    10, "sp1",     "1",   "1.1",
-   100, "sp1",     "1",   "1.2",
-    22, "sp2",     "2",   "2.1",
-    99, "sp2",     "2",   "2.2",
-    NA, "sp2",     "2",   "2.3"
+  ~dbh,   ~sp, ~treeID, ~stemID, ~hom,
+    10, "sp1",     "1",   "1.1", 10,
+   100, "sp1",     "1",   "1.2", 10,
+    22, "sp2",     "2",   "2.1", 10,
+    99, "sp2",     "2",   "2.2", 10,
+    NA, "sp2",     "2",   "2.3", 10
 )
 
 describe("pick_woods", {

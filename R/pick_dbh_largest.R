@@ -32,6 +32,11 @@ pick_dbh_largest <- function(.x) {
   .data <- rlang::set_names(.x, tolower)
   .data <- groups_lower(.data)
   
+  fgeo.base::check_crucial_names(.data, c("stemid", "hom"))
+  .data <- pick_hom_by_stemid_by_treeid_censusid(
+    .data, .arrange = dplyr::desc, .pick = dplyr::row_number() == 1L
+  )
+  
   fgeo.base::check_crucial_names(.data, c("treeid", "dbh"))
   .data <- pick_dbh_by_treeid_by_censusid(
     .data, .arrange = dplyr::desc, .pick = dplyr::row_number() == 1L
@@ -66,6 +71,27 @@ pick_dbh_by_treeid_by_censusid <- function(x, .arrange, .pick) {
   .x %>%
     dplyr::group_by(.data$treeid, add = TRUE) %>% 
     dplyr::arrange(.arrange(.data$dbh)) %>%
+    # row_number() can be used with single table verbs without specifying x
+    dplyr::filter(!! .pick) %>% 
+    dplyr::ungroup()
+}
+
+# FIXME: DRY with function just above
+pick_hom_by_stemid_by_treeid_censusid <- function(x, .arrange, .pick) {
+  .pick <- enquo(.pick)
+  # Grouping must be handleded at higher levels.
+  .x <- dplyr::ungroup(x)
+  
+  stopifnot_single_plotname(.x)
+  
+  if (multiple_censusid(.x)) {
+    .x <- fgeo.base::drop_if_na(.x, "censusid")
+    .x <- dplyr::group_by(.x, .data$censusid)
+  }
+  
+  .x %>%
+    dplyr::group_by(.data$treeid, .data$stemid, add = TRUE) %>% 
+    dplyr::arrange(.arrange(.data$hom), .arrange(.data$dbh)) %>%
     # row_number() can be used with single table verbs without specifying x
     dplyr::filter(!! .pick) %>% 
     dplyr::ungroup()
