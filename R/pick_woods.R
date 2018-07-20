@@ -5,10 +5,6 @@
 #'
 #' @keywords internal
 #' @export
-#'
-#' @examples
-#' 
-#' @noRd
 pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
   force(.f)
   
