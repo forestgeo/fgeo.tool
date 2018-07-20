@@ -50,6 +50,18 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
 #' @rdname pick_woods
 pick_woods <- pick_woods_f(identity, .collapse = fgeo.tool::pick_dbh_largest)
 
+#' @export
+#' @rdname pick_woods
+pick_trees <- function(.data) {
+  pick_woods(.data, .data$dbh >= 100)
+}
+
+#' @export
+#' @rdname pick_woods
+pick_saplings <- function(.data) {
+  pick_woods(.data, .data$dbh >= 10, .data$dbh < 100)
+}
+
 multiple_plotname <- fgeo.base::multiple_var("plotname")
 
 multiple_censusid <- fgeo.base::multiple_var("censusid")
