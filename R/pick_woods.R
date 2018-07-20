@@ -59,12 +59,32 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
 #' exclusive.
 #' 
 #' @param .data A ForestGEO-like dataframe, either a census or ViewFullTable.
-#' 
+#' @param ... Expressions passed to `dplyr::filter()`, E.g. the 
+#'   expression `dbh >= 100` picks `dbh` values of 100 mm and above.
+#'
 #' @family functions for fgeo census and vft.
 #' 
 #' @return A dataframe. See description.
 #' 
 #' @export
+#' 
+#' @examples 
+#' census <- tibble::tribble(
+#'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+#'   "sp1",     "1",   "1.2",   130,  122,
+#'   "sp1",     "1",   "1.1",   130,   10,
+#'   "sp2",     "2",   "2.1",   130,   22,
+#'   "sp2",     "2",   "2.2",   130,   99,
+#'   "sp2",     "2",   "2.2",   144,   88,
+#'   "sp2",     "2",   "2.3",   130,   NA,
+#' )
+#' 
+#' # Piks largest hom first, then largest dbh (to correct effect of batreesses)
+#' pick_woods(census, dbh >=10, dbh < 100)
+#' # Same
+#' pick_saplings(census)
+#' 
+#' pick_trees(census)
 #' @rdname pick_woods
 pick_woods <- pick_woods_f(identity, .collapse = fgeo.tool::pick_dbh_largest)
 

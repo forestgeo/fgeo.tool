@@ -14,6 +14,9 @@ pick_saplings(.data)
 }
 \arguments{
 \item{.data}{A ForestGEO-like dataframe, either a census or ViewFullTable.}
+
+\item{...}{Expressions passed to \code{dplyr::filter()}, E.g. the
+expression \code{dbh >= 100} picks \code{dbh} values of 100 mm and above.}
 }
 \value{
 A dataframe. See description.
@@ -41,5 +44,23 @@ number of expressions to filter the dataframe.
 \item \code{pick_saplings()} picks stems between 10 mm dbh inclusive and 100 mm dbh
 exclusive.
 }
+}
+\examples{
+census <- tibble::tribble(
+    ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+  "sp1",     "1",   "1.2",   130,  122,
+  "sp1",     "1",   "1.1",   130,   10,
+  "sp2",     "2",   "2.1",   130,   22,
+  "sp2",     "2",   "2.2",   130,   99,
+  "sp2",     "2",   "2.2",   144,   88,
+  "sp2",     "2",   "2.3",   130,   NA,
+)
+
+# Piks largest hom first, then largest dbh (to correct effect of batreesses)
+pick_woods(census, dbh >=10, dbh < 100)
+# Same
+pick_saplings(census)
+
+pick_trees(census)
 }
 \concept{functions for fgeo census and vft.}

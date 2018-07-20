@@ -1,3 +1,5 @@
+# TODO: Rename to convey that picking also is on hom. e.g. pick_largest_hom_dbh
+
 #' Pick the (stem of) largest dbh per treeid per censusid.
 #' 
 #' This function picks the stem with the maximum dbh per treeid per censusid. It
