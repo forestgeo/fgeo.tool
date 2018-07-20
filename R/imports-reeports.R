@@ -4,7 +4,7 @@
 #' @importFrom measurements conv_unit
 NULL
 
-globalVariables(c(".data"))
+globalVariables(c(".data", "."))
 
 # Tidy eval ---------------------------------------------------------------
 
