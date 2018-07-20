@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Factory of functions to pick woods and then apply a function. — pick_woods_f • fgeo.tool</title>
+<title>Pick the (stem of) largest hom and dbh per treeid per censusid. — pick_largest_hom_dbh • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Factory of functions to pick woods and then apply a function. — pick_woods_f" />
+<meta property="og:title" content="Pick the (stem of) largest hom and dbh per treeid per censusid. — pick_largest_hom_dbh" />
 
-<meta property="og:description" content="Factory of functions to pick woods and then apply a function." />
+<meta property="og:description" content="This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,35 +108,70 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Factory of functions to pick woods and then apply a function.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_woods.R'><code>R/pick_woods.R</code></a></small>
-    <div class="hidden name"><code>pick_woods_f.Rd</code></div>
+    <h1>Pick the (stem of) largest hom and dbh per treeid per censusid.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_largest_hom_dbh.R'><code>R/pick_largest_hom_dbh.R</code></a></small>
+    <div class="hidden name"><code>pick_largest_hom_dbh.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Factory of functions to pick woods and then apply a function.</p>
+    <p>This function picks the stem with the maximum dbh per treeid per censusid. It
+intentionally errs if it detects multiple distinct values of plotname (i.e.
+if the data is a ViewFullTable with multiple plots).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>pick_woods_f</span>(<span class='no'>.f</span>, <span class='kw'>.collapse</span> <span class='kw'>=</span> <span class='kw pkg'>fgeo.tool</span><span class='kw ns'>::</span><span class='no'>pick_dbh_largest</span>)</pre>
+    <pre class="usage"><span class='fu'>pick_largest_hom_dbh</span>(<span class='no'>.x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.f</th>
-      <td><p>A function to apply after picking woods. For example, <code>.f = identity</code> returns the picked woods unchanged.</p></td>
+      <th>.x</th>
+      <td><p>A ForestGEO-like dataframe, census or ViewFullTable.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A dataframe with one row per per treeid per censusid and a single
+plotname.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other functions to pick or drop rows of a dataframe.: <code><a href='drop_twice_dead.html'>drop_twice_dead</a></code>,
+  <code><a href='filter_status.html'>filter_status</a></code>, <code><a href='pick_recensus.html'>pick_recensus</a></code>,
+  <code><a href='pick_top.html'>pick_top</a></code></p></div>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>dbh</span>,   ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>, ~<span class='no'>hom</span>,
+    <span class='fl'>10</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>10</span>,
+   <span class='fl'>100</span>, <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.2"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>22</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.1"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.2"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>99</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.3"</span>,   <span class='fl'>10</span>,
+    <span class='fl'>NA</span>, <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.4"</span>,   <span class='fl'>10</span>
+)
+
+<span class='fu'>pick_largest_hom_dbh</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 5
+#&gt;     dbh sp    treeID stemID   hom
+#&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
+#&gt; 1   100 sp1   1      1.2       10
+#&gt; 2    99 sp2   2      2.2       10</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

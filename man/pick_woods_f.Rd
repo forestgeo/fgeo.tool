@@ -4,7 +4,7 @@
 \alias{pick_woods_f}
 \title{Factory of functions to pick woods and then apply a function.}
 \usage{
-pick_woods_f(.f, .collapse = fgeo.tool::pick_dbh_largest)
+pick_woods_f(.f, .collapse = fgeo.tool::pick_largest_hom_dbh)
 }
 \arguments{
 \item{.f}{A function to apply after picking woods. For example, \code{.f = identity} returns the picked woods unchanged.}

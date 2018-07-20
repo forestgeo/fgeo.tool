@@ -1,6 +1,4 @@
-# TODO: Rename to convey that picking also is on hom. e.g. pick_largest_hom_dbh
-
-#' Pick the (stem of) largest dbh per treeid per censusid.
+#' Pick the (stem of) largest hom and dbh per treeid per censusid.
 #' 
 #' This function picks the stem with the maximum dbh per treeid per censusid. It
 #' intentionally errs if it detects multiple distinct values of plotname (i.e.
@@ -26,8 +24,8 @@
 #'     NA, "sp2",     "2",   "2.4",   10
 #' )
 #' 
-#' pick_dbh_largest(census)
-pick_dbh_largest <- function(.x) {
+#' pick_largest_hom_dbh(census)
+pick_largest_hom_dbh <- function(.x) {
   stopifnot(is.data.frame(.x))
   
   # Lowercase names and groups for work with both census and ViewFullTable
@@ -49,7 +47,7 @@ pick_dbh_largest <- function(.x) {
   groups_restore(out, .x)
 }
 
-#' Implementation of pick_dbh_largest.
+#' Implementation of pick_largest_hom_dbh
 #' 
 #' Name is intentionally different. It's less concise but more descriptive.
 #' 

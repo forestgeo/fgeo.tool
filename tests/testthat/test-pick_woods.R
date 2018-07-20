@@ -14,8 +14,8 @@ cns <- tibble::tribble(
 )
 
 describe("pick_woods", {
-  it("with no filtering expressions it outputs equal to pick_dbh_largest()", {
-    expect_equal(pick_woods(cns), pick_dbh_largest(cns))
+  it("with no filtering expressions it outputs equal to pick_largest_hom_dbh()", {
+    expect_equal(pick_woods(cns), pick_largest_hom_dbh(cns))
   })
   
   it("returns the expected data structure", {

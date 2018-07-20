@@ -3,7 +3,7 @@
 # * Simplify data.
 # * Use minimal data to test each feature.
 
-context("pick_dbh_largest")
+context("pick_largest_hom_dbh")
 
 library(dplyr)
 
@@ -18,27 +18,27 @@ cns <- tibble::tribble(
     10,   NA, "sp2",     "2",   "2.3"
 )
 
-describe("pick_dbh_largest()", {
+describe("pick_largest_hom_dbh()", {
   it("outputs the expected data structure", {
-    out <- pick_dbh_largest(cns)
+    out <- pick_largest_hom_dbh(cns)
     expect_named(out, c("hom", "dbh", "sp", "treeID", "stemID"))
   })
   
   
   it("picks first by hom then by dbh", {
-    collapsed <- pick_dbh_largest(cns)
+    collapsed <- pick_largest_hom_dbh(cns)
     expect_equal(collapsed$hom, c(20, 22))
     expect_equal(collapsed$dbh, c(100, 99))
   })
   
   it("outputs the same groups as input", {
     # Ungrouped
-    collapsed <- pick_dbh_largest(cns)
+    collapsed <- pick_largest_hom_dbh(cns)
     expect_equal(group_vars(collapsed), group_vars(cns))
     
     # Grouped
     bysp <- group_by(cns, sp)
-    collapsed <- pick_dbh_largest(bysp)
+    collapsed <- pick_largest_hom_dbh(bysp)
     expect_equal(group_vars(collapsed), group_vars(bysp))
   })
   
@@ -54,7 +54,7 @@ describe("pick_dbh_largest()", {
     
     cns$CensusID <- c(1, 2, 1, 2, 2)
     .cns <- arrange(cns, CensusID, treeID, stemID, dbh)
-    out <- pick_dbh_largest(.cns)
+    out <- pick_largest_hom_dbh(.cns)
     out <- arrange(out, CensusID, treeID, stemID, dbh)
     # Output all available censuses
     expect_equal(out$CensusID, as.double(c(1, 1, 2, 2)))
@@ -69,7 +69,7 @@ describe("pick_dbh_largest()", {
       .cns, 
       list(dbh = 200, sp = "sp2", treeID = "2", stemID = "2.4", CensusID = 2)
     )
-    out2 <- pick_dbh_largest(.cns2)
+    out2 <- pick_largest_hom_dbh(.cns2)
     picked <- filter(out2, CensusID == 2, treeID == 2)
     expect_equal(picked$stemID, "2.4")
     expect_equal(picked$dbh, 200)
@@ -87,12 +87,12 @@ describe("pick_dbh_largest()", {
     
     # Doesn't drop missing censusid if they are unambiguous (only one censusid)
     cns$CensusID <- c(1, 1, 1, 1, NA)
-    expect_silent(out <- pick_dbh_largest(cns))
+    expect_silent(out <- pick_largest_hom_dbh(cns))
     
     # Drops missing censusid if they are unambiguous (multiple censusid)
     cns$CensusID <- c(1, 1, 2, 2, NA)
     expect_warning(
-      out <- pick_dbh_largest(cns),
+      out <- pick_largest_hom_dbh(cns),
       "Dropping.*rows with missing.*values"
     )
     
@@ -111,7 +111,7 @@ describe("pick_dbh_largest()", {
     
     cns$PlotName <- c(1, 1, 2, 2, NA)
     expect_error(
-      out <- pick_dbh_largest(cns),
+      out <- pick_largest_hom_dbh(cns),
       "must have a single plotname"
     )
   })

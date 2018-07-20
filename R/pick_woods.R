@@ -5,7 +5,7 @@
 #'
 #' @keywords internal
 #' @export
-pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
+pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
   force(.f)
   
   function(.data, ...) {
@@ -82,7 +82,7 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
 #' 
 #' pick_trees(census)
 #' @rdname pick_woods
-pick_woods <- pick_woods_f(identity, .collapse = fgeo.tool::pick_dbh_largest)
+pick_woods <- pick_woods_f(identity, .collapse = fgeo.tool::pick_largest_hom_dbh)
 
 #' @export
 #' @rdname pick_woods
