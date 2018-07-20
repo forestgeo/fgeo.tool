@@ -1,5 +1,3 @@
-# fgeo.tool ---------------------------------------------------------------
-
 #' Factory of functions to pick woods and then apply a function.
 #'
 #' @param .f A function to apply after picking woods. For example, `.f =
