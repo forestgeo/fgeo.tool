@@ -48,7 +48,6 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
 #' * They collapse data of multi-stem trees by picking a single stem per treeid.
 #' The picked stem depends on the values of `hom` or `dbh` detected for each 
 #' census of each treeid. The selection is as follows:
-#' FIXME: Not yet implemented
 #'   * If there is a single `hom` value, it is the stem of maximum `dbh`.
 #'   * If there is more than one `hom` value, it is the stem of maximum `dbh`.
 #' 
@@ -58,6 +57,12 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
 #' * `pick_trees()` picks stems of 100 mm dbh and above.
 #' * `pick_saplings()` picks stems between 10 mm dbh inclusive and 100 mm dbh 
 #' exclusive.
+#' 
+#' @param .data A ForestGEO-like dataframe, either a census or ViewFullTable.
+#' 
+#' @family functions for fgeo census and vft.
+#' 
+#' @return A dataframe. See description.
 #' 
 #' @export
 #' @rdname pick_woods

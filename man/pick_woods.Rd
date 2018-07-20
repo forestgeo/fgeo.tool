@@ -12,6 +12,12 @@ pick_trees(.data)
 
 pick_saplings(.data)
 }
+\arguments{
+\item{.data}{A ForestGEO-like dataframe, either a census or ViewFullTable.}
+}
+\value{
+A dataframe. See description.
+}
 \description{
 These functions pick rows by groups. At the core they run \code{dplyr::filter()}
 but include these additional features:
@@ -22,7 +28,6 @@ but include these additional features:
 \item They collapse data of multi-stem trees by picking a single stem per treeid.
 The picked stem depends on the values of \code{hom} or \code{dbh} detected for each
 census of each treeid. The selection is as follows:
-FIXME: Not yet implemented
 \itemize{
 \item If there is a single \code{hom} value, it is the stem of maximum \code{dbh}.
 \item If there is more than one \code{hom} value, it is the stem of maximum \code{dbh}.
@@ -37,3 +42,4 @@ number of expressions to filter the dataframe.
 exclusive.
 }
 }
+\concept{functions for fgeo census and vft.}

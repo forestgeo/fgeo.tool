@@ -15,13 +15,13 @@
 #'
 #' @examples
 #' census <- tibble::tribble(
-#'   ~dbh,   ~sp, ~treeID, ~stemID,
-#'     10, "sp1",     "1",   "1.1",
-#'    100, "sp1",     "1",   "1.2",
-#'     22, "sp2",     "2",   "2.1",
-#'     99, "sp2",     "2",   "2.2",
-#'     99, "sp2",     "2",   "2.3",
-#'     NA, "sp2",     "2",   "2.4"
+#'   ~dbh,   ~sp, ~treeID, ~stemID, ~hom,
+#'     10, "sp1",     "1",   "1.1",   10,
+#'    100, "sp1",     "1",   "1.2",   10,
+#'     22, "sp2",     "2",   "2.1",   10,
+#'     99, "sp2",     "2",   "2.2",   10,
+#'     99, "sp2",     "2",   "2.3",   10,
+#'     NA, "sp2",     "2",   "2.4",   10
 #' )
 #' 
 #' pick_dbh_largest(census)
@@ -76,7 +76,7 @@ pick_dbh_by_treeid_by_censusid <- function(x, .arrange, .pick) {
     dplyr::ungroup()
 }
 
-# FIXME: DRY with function just above
+# TODO: DRY with function just above
 pick_hom_by_stemid_by_treeid_censusid <- function(x, .arrange, .pick) {
   .pick <- enquo(.pick)
   # Grouping must be handleded at higher levels.

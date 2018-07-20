@@ -20,13 +20,13 @@ if the data is a ViewFullTable with multiple plots).
 }
 \examples{
 census <- tibble::tribble(
-  ~dbh,   ~sp, ~treeID, ~stemID,
-    10, "sp1",     "1",   "1.1",
-   100, "sp1",     "1",   "1.2",
-    22, "sp2",     "2",   "2.1",
-    99, "sp2",     "2",   "2.2",
-    99, "sp2",     "2",   "2.3",
-    NA, "sp2",     "2",   "2.4"
+  ~dbh,   ~sp, ~treeID, ~stemID, ~hom,
+    10, "sp1",     "1",   "1.1",   10,
+   100, "sp1",     "1",   "1.2",   10,
+    22, "sp2",     "2",   "2.1",   10,
+    99, "sp2",     "2",   "2.2",   10,
+    99, "sp2",     "2",   "2.3",   10,
+    NA, "sp2",     "2",   "2.4",   10
 )
 
 pick_dbh_largest(census)
