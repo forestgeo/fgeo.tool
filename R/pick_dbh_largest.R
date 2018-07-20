@@ -56,9 +56,7 @@ pick_dbh_by_treeid_by_censusid <- function(x, .arrange, .pick) {
   # Grouping must be handleded at higher levels.
   .x <- dplyr::ungroup(x)
   
-  if (multiple_plotname(.x)) {
-    stop("`.x` must have a single plotname.", call. = FALSE)
-  }
+  stopifnot_single_plotname(.x)
   
   if (multiple_censusid(.x)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")

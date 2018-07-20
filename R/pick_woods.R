@@ -20,9 +20,7 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
     .x <- set_names(.data, tolower)
     .x <- groups_lower(.x)
     
-    if (multiple_plotname(.x)) {
-      stop("`.x` must have a single plotname.", call. = FALSE)
-    }
+    stopifnot_single_plotname(.x)
     
     if (multiple_censusid(.x)) {
       .x <- fgeo.base::drop_if_na(.x, "censusid")
@@ -32,7 +30,7 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
     # do() prefferred to by_group() to not drop empty groups (they result in 0L)
     dots <- rlang::enquos(...)
     out <- dplyr::do(
-      .x, picked_woods_f_impl(., !!! dots, .collapse = .collapse, .f = .f)
+      .x, pick_woods_f_impl(., !!! dots, .collapse = .collapse, .f = .f)
     )
     
     # Restore original names; then original groups
@@ -63,7 +61,6 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_dbh_largest) {
 #' * `pick_saplings()` picks stems between 10 mm dbh inclusive and 100 mm dbh 
 #' exclusive.
 #' 
-#' 
 #' @export
 #' @rdname pick_woods
 pick_woods <- pick_woods_f(identity, .collapse = fgeo.tool::pick_dbh_largest)
@@ -84,7 +81,7 @@ multiple_plotname <- fgeo.base::multiple_var("plotname")
 
 multiple_censusid <- fgeo.base::multiple_var("censusid")
 
-picked_woods_f_impl <- function(.data, ..., .collapse, .f) {
+pick_woods_f_impl <- function(.data, ..., .collapse, .f) {
   .dots <- rlang::enquos(...)
   pick <- dplyr::filter( .collapse(.data), !!! .dots)
   .f(pick)

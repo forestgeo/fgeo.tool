@@ -25,3 +25,8 @@ groups_restore <- function(x, ref) {
   dplyr::grouped_df(x, dplyr::group_vars(ref))
 }
 
+stopifnot_single_plotname <- function(.x) {
+  if (multiple_plotname(.x)) {
+    stop("`.x` must have a single plotname.", call. = FALSE)
+  }
+}
