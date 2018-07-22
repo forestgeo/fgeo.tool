@@ -8,8 +8,10 @@ pick_woods_f(.f, .collapse = fgeo.tool::pick_largest_hom_dbh)
 }
 \arguments{
 \item{.f}{A function to apply after picking woods. For example, \code{.f = identity} returns the picked woods unchanged.}
+
+\item{.collapse}{A function to collapse multiple values of \code{treeID} into a
+single one.}
 }
 \description{
 Factory of functions to pick woods and then apply a function.
 }
-\keyword{internal}
