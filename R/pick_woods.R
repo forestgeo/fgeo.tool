@@ -3,7 +3,6 @@
 #' @param .f A function to apply after picking woods. For example, `.f =
 #'   identity` returns the picked woods unchanged.
 #'
-#' @keywords internal
 #' @export
 pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
   force(.f)
@@ -81,8 +80,9 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
 #' pick_saplings(census)
 #' 
 #' pick_trees(census)
-#' @rdname pick_woods
-pick_woods <- pick_woods_f(identity, .collapse = fgeo.tool::pick_largest_hom_dbh)
+pick_woods <- fgeo.tool::pick_woods_f(
+  identity, .collapse = fgeo.tool::pick_largest_hom_dbh
+)
 
 #' @export
 #' @rdname pick_woods

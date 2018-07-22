@@ -12,4 +12,3 @@ pick_woods_f(.f, .collapse = fgeo.tool::pick_largest_hom_dbh)
 \description{
 Factory of functions to pick woods and then apply a function.
 }
-\keyword{internal}
