@@ -117,7 +117,7 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>pick_woods_f</span>(<span class='no'>.f</span>, <span class='kw'>.collapse</span> <span class='kw'>=</span> <span class='kw pkg'>fgeo.tool</span><span class='kw ns'>::</span><span class='no'>pick_dbh_largest</span>)</pre>
+    <pre class="usage"><span class='fu'>pick_woods_f</span>(<span class='no'>.f</span>, <span class='kw'>.collapse</span> <span class='kw'>=</span> <span class='kw pkg'>fgeo.tool</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.tool/topics/pick_largest_hom_dbh'>pick_largest_hom_dbh</a></span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +125,11 @@
     <tr>
       <th>.f</th>
       <td><p>A function to apply after picking woods. For example, <code>.f = identity</code> returns the picked woods unchanged.</p></td>
+    </tr>
+    <tr>
+      <th>.collapse</th>
+      <td><p>A function to collapse multiple values of <code>treeID</code> into a
+single one.</p></td>
     </tr>
     </table>
     

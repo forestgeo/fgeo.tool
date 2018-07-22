@@ -2,6 +2,8 @@
 #'
 #' @param .f A function to apply after picking woods. For example, `.f =
 #'   identity` returns the picked woods unchanged.
+#' @param .collapse A function to collapse multiple values of `treeID` into a 
+#'   single one.
 #'
 #' @export
 pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
@@ -80,7 +82,7 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
 #' pick_saplings(census)
 #' 
 #' pick_trees(census)
-pick_woods <- fgeo.tool::pick_woods_f(
+pick_woods <- pick_woods_f(
   identity, .collapse = fgeo.tool::pick_largest_hom_dbh
 )
 
