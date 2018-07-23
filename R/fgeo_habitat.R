@@ -59,6 +59,12 @@ fgeo_habitat.list <- function(elevation, gridsize, n, ...) {
 #' @export
 #' @rdname fgeo_habitat
 fgeo_habitat.data.frame <- function(elevation, gridsize, n, xdim, ydim, ...) {
+  if (missing(xdim) || missing(ydim)) {
+    stop(
+      "`xdim` and `ydim` can't be missing if `elevation is a data.frame", 
+      call. = FALSE
+    )
+  }
   elevation_to_habitat(fgeo_elevation(elevation), gridsize, n, xdim, ydim)
 }
 

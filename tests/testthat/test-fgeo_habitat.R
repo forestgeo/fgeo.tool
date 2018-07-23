@@ -1,5 +1,17 @@
 context("fgeo_habitat.R")
 
+test_that("it works with data from bci", {
+  skip_if_not_installed("bciex")
+  elev <- bciex::bci_elevation
+  expect_error(
+    fgeo_habitat(elev, gridsize = 20, 2),
+    "`xdim` and `ydim` can't be missing if `elevation is a data.frame"
+  )
+  expect_silent(fgeo_habitat(elev, gridsize = 20, 2, xdim = 1000, ydim = 500))
+  expect_silent(out <- fgeo_habitat(list(col = elev), gridsize = 20, 2))
+})
+
+
 test_that("outputs a dataframe with expected structure", {
   skip_if_not_installed("fgeo.data")
   skip_on_travis()
