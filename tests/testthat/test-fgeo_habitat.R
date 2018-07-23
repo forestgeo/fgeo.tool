@@ -5,12 +5,12 @@ test_that("it works with data from bci", {
   elev <- bciex::bci_elevation
   expect_error(
     fgeo_habitat(elev, gridsize = 20, 2),
-    "`xdim` and `ydim` can't be missing if `elevation is a data.frame"
+    "`xdim` and `ydim` can't be missing if `elevation` is a data.frame"
   )
   expect_silent(fgeo_habitat(elev, gridsize = 20, 2, xdim = 1000, ydim = 500))
-  expect_silent(out <- fgeo_habitat(list(col = elev), gridsize = 20, 2))
+  bci_elev_ls <- list(col = elev, xdim = 1000, ydim = 500)
+  expect_silent(fgeo_habitat(bci_elev_ls, gridsize = 20, n = 4))
 })
-
 
 test_that("outputs a dataframe with expected structure", {
   skip_if_not_installed("fgeo.data")
@@ -41,6 +41,12 @@ test_that("outputs a dataframe with expected structure", {
 test_that("errs with informative messages", {
   expect_error(fgeo_habitat(1), "Can't deal with data of class")
   expect_error(fgeo_habitat(fgeo.data::luquillo_elevation), "is missing")
-  expect_error(fgeo_habitat(fgeo.data::luquillo_elevation$col), "is missing")
+  expect_error(
+    fgeo_habitat(fgeo.data::luquillo_elevation$col), 
+    "can't be missing"
+  )
+  
+  elev_missing_xydims <- list(col = fgeo.data::luquillo_elevation$col)
+  expect_error(fgeo_habitat(elev_missing_xydims), "Ensure your data set")
   expect_error(fgeo_habitat(fgeo.data::luquillo_elevation, 20), "is missing")
 })

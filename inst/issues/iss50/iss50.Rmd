@@ -1,0 +1,24 @@
+---
+title: "`xdim` and `ydim` must be provided if using the elevation dataframe"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE)
+```
+
+```{r}
+library(fgeo)
+
+load(here::here("data-raw/private/CTFSElev_rabi.rdata"))
+
+# If using the list, you don't need `xdim`, `ydim` because they come in the list
+elev_list <- CTFSElev_rabi
+str(elev_list)
+fgeo_habitat(elev_list, gridsize = 20, n = 3)
+
+# If using the dataframe, you must provide `xdim`, `ydim`
+
+elev_dataframe <- elev_list$col
+fgeo_habitat(elev_dataframe, gridsize = 20, n = 3, xdim = 500, ydim = 500)
+```
