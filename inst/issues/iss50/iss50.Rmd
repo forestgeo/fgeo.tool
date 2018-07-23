@@ -16,9 +16,18 @@ load(here::here("data-raw/private/CTFSElev_rabi.rdata"))
 elev_list <- CTFSElev_rabi
 str(elev_list)
 fgeo_habitat(elev_list, gridsize = 20, n = 3)
+```
 
+```{r}
 # If using the dataframe, you must provide `xdim`, `ydim`
 
 elev_dataframe <- elev_list$col
 fgeo_habitat(elev_dataframe, gridsize = 20, n = 3, xdim = 500, ydim = 500)
 ```
+
+This fix adds a more informative message if you forget to pass `xdim`, `ydim`.
+
+```{r, error=TRUE}
+fgeo_habitat(elev_dataframe, gridsize = 20, n = 3)
+```
+

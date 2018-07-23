@@ -38,7 +38,9 @@ fgeo_habitat(elev_list, gridsize = 20, n = 3)
 ##  9     0    40        3
 ## 10     0    45        3
 ## # ... with 9,990 more rows
+```
 
+``` r
 # If using the dataframe, you must provide `xdim`, `ydim`
 
 elev_dataframe <- elev_list$col
@@ -57,4 +59,12 @@ fgeo_habitat(elev_dataframe, gridsize = 20, n = 3, xdim = 500, ydim = 500)
 ##  9     0    40        3
 ## 10     0    45        3
 ## # ... with 9,990 more rows
+```
+
+This fix adds a more informative message if you forget to pass `xdim`,
+`ydim`.
+
+``` r
+fgeo_habitat(elev_dataframe, gridsize = 20, n = 3)
+## Error: `xdim` and `ydim` can't be missing if `elevation` is a data.frame
 ```
