@@ -1,7 +1,10 @@
 #' Construct habitat data.
 #'
-#' This function constructs an object of class fgeo_habitat. It can handle 
-#' a multiple inputs and always outputs the same data structure.
+#' This function constructs an object of class fgeo_habitat. It takes either the
+#' elevation list that ForestGEO delivers, or its element `col` -- which
+#' contains the elevation data. Notice that the required arguments to
+#' `fgeo_habitat()` vary according to the main input (the elevation list or the
+#' elevation dataframe).
 #' 
 #' @param elevation
 #'   * A list with at least three elements: `col` containing
@@ -16,7 +19,9 @@
 #' @param xdim,ydim `x` and `y` dimensions of the plot.
 #' @param ... Other arguments passed to methods.
 #'
-#' @return A dataframe of habitat data.
+#' @return A dataframe of habitat data, with columns `gx` and `gy`, rounded
+#'   with accuracy determined by `gridsize`, and column `habitats`, with as 
+#'   many distinct values as determined by the argument `n`. 
 #' @export
 #'
 #' @examples
@@ -80,8 +85,12 @@ elevation_to_habitat <- function(elevation, gridsize, n, xdim, ydim) {
     dplyr::summarise(elev = mean(.data$elev)) %>% 
     dplyr::ungroup() %>% 
     dplyr::mutate(
-      habitats = as.integer(cut_number(.data$elev, n)), elev = NULL
+      gx = as.integer(fgeo.base::round_any(gx, accuracy = gridsize)),
+      gy = as.integer(fgeo.base::round_any(gy, accuracy = gridsize)),
+      habitats = as.integer(cut_number(.data$elev, n)), 
+      elev = NULL
     ) %>% 
+    unique() %>% 
     dplyr::filter(.data$gx < xdim, .data$gy < ydim) %>% 
     new_fgeo_habitat()
 }

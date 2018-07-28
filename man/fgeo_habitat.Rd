@@ -34,11 +34,16 @@ Commonly, \code{n = 4}.}
 \item{xdim, ydim}{\code{x} and \code{y} dimensions of the plot.}
 }
 \value{
-A dataframe of habitat data.
+A dataframe of habitat data, with columns \code{gx} and \code{gy}, rounded
+with accuracy determined by \code{gridsize}, and column \code{habitats}, with as
+many distinct values as determined by the argument \code{n}.
 }
 \description{
-This function constructs an object of class fgeo_habitat. It can handle
-a multiple inputs and always outputs the same data structure.
+This function constructs an object of class fgeo_habitat. It takes either the
+elevation list that ForestGEO delivers, or its element \code{col} -- which
+contains the elevation data. Notice that the required arguments to
+\code{fgeo_habitat()} vary according to the main input (the elevation list or the
+elevation dataframe).
 }
 \examples{
 # Input: Object of class list
