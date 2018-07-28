@@ -8,7 +8,8 @@
 \usage{
 sanitize_vft(x, col_types = type_vft(), na = c("", "NA", "NULL"), ...)
 
-sanitize_taxa(x, col_types = type_taxa(), na = c("", "NA", "NULL"), ...)
+sanitize_taxa(x, col_types = type_taxa(), na = c("", "NA", "NULL"),
+  ...)
 }
 \arguments{
 \item{x}{A dataframe; either a ForestGEO ViewFullTable (\code{sanitize_vft()}) or

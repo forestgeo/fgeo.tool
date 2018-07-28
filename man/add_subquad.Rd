@@ -4,7 +4,8 @@
 \alias{add_subquad}
 \title{Add a quadrat variable to a dataframe based based on qx and qy coordinates.}
 \usage{
-add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq, subquad_offset = NULL)
+add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq,
+  subquad_offset = NULL)
 }
 \arguments{
 \item{df}{A dataframe with quadrat coordinates \code{QX} and \code{QY} (e.g. a

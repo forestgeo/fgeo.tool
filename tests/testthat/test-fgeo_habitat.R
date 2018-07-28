@@ -1,5 +1,19 @@
 context("fgeo_habitat.R")
 
+
+test_that("it rounds any gx and gy with accuracy given by gridsize", {
+  elev <- tibble::tribble(
+    ~x, ~y, ~elev,
+     0,  0,    89,
+    11,  0,    99
+  )
+  
+  gsz <- 20
+  out <- fgeo_habitat(elev, gridsize = gsz, n = 1, xdim = 100, ydim = 100)
+  expect_equal(out$gx, c(0, 20))
+  expect_equal(out$gx, c(0, 20))
+})
+
 test_that("it works with data from bci", {
   skip_if_not_installed("bciex")
   elev <- bciex::bci_elevation

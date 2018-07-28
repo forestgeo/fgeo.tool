@@ -1,3 +1,9 @@
+# TODO:
+# * Update fgeo.data::luquillo_habitat
+# * Check where this may brake code
+
+  
+
 * warn_ and detect_duplicated_treeid: Simplify and test:
   * not use stemid
   * not deal with groups
