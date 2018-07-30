@@ -23,7 +23,7 @@ Imports:
     readr,
     readxl,
     remotes,
-    rlang,
+    rlang (>= 0.1.2),
     rmarkdown,
     stringr,
     tibble,
