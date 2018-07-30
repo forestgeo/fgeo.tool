@@ -85,8 +85,8 @@ elevation_to_habitat <- function(elevation, gridsize, n, xdim, ydim) {
     dplyr::summarise(elev = mean(.data$elev)) %>% 
     dplyr::ungroup() %>% 
     dplyr::mutate(
-      gx = as.integer(fgeo.base::round_any(gx, accuracy = gridsize)),
-      gy = as.integer(fgeo.base::round_any(gy, accuracy = gridsize)),
+      gx = as.integer(fgeo.base::round_any(.data$gx, accuracy = gridsize)),
+      gy = as.integer(fgeo.base::round_any(.data$gy, accuracy = gridsize)),
       habitats = as.integer(cut_number(.data$elev, n)), 
       elev = NULL
     ) %>% 
