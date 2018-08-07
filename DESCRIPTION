@@ -28,7 +28,8 @@ Imports:
     stringr,
     tibble,
     tidyselect,
-    writexl
+    writexl,
+    tidyr
 Suggests: 
     bciex,
     covr,
