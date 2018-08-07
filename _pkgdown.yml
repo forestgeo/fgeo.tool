@@ -125,4 +125,8 @@ reference:
     contents:
     - detect_duplicated_var
     - flag_duplicated_var
-    
+
+  - title: "Generics"
+    contents:
+      - starts_with("to_df")
+
