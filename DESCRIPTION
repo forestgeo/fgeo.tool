@@ -34,7 +34,8 @@ Suggests:
     bciex,
     covr,
     knitr,
-    testthat
+    testthat,
+    fgeo.map
 VignetteBuilder: knitr
 Remotes: 
     forestgeo/bciex,
