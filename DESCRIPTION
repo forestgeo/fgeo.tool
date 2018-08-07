@@ -27,20 +27,21 @@ Imports:
     rmarkdown,
     stringr,
     tibble,
+    tidyr,
     tidyselect,
-    writexl,
-    tidyr
+    writexl
 Suggests: 
     bciex,
     covr,
+    fgeo.map,
     knitr,
-    testthat,
-    fgeo.map
+    testthat
 VignetteBuilder: knitr
 Remotes: 
     forestgeo/bciex,
     forestgeo/fgeo.base,
-    forestgeo/fgeo.data
+    forestgeo/fgeo.data,
+    forestgeo/fgeo.map
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
