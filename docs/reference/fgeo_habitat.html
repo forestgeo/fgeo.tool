@@ -32,8 +32,11 @@
 
 <meta property="og:title" content="Construct habitat data. — fgeo_habitat" />
 
-<meta property="og:description" content="This function constructs an object of class fgeo_habitat. It can handle
-a multiple inputs and always outputs the same data structure." />
+<meta property="og:description" content="This function constructs an object of class fgeo_habitat. It takes either the
+elevation list that ForestGEO delivers, or its element col -- which
+contains the elevation data. Notice that the required arguments to
+fgeo_habitat() vary according to the main input (the elevation list or the
+elevation dataframe)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,8 +117,11 @@ a multiple inputs and always outputs the same data structure." />
 
     <div class="ref-description">
     
-    <p>This function constructs an object of class fgeo_habitat. It can handle
-a multiple inputs and always outputs the same data structure.</p>
+    <p>This function constructs an object of class fgeo_habitat. It takes either the
+elevation list that ForestGEO delivers, or its element <code>col</code> -- which
+contains the elevation data. Notice that the required arguments to
+<code>fgeo_habitat()</code> vary according to the main input (the elevation list or the
+elevation dataframe).</p>
     
     </div>
 
@@ -163,45 +169,47 @@ Commonly, <code>n = 4</code>.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe of habitat data.</p>
+    <p>A dataframe of habitat data, with columns <code>gx</code> and <code>gy</code>, rounded
+with accuracy determined by <code>gridsize</code>, and column <code>habitats</code>, with as
+many distinct values as determined by the argument <code>n</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Input: Object of class list</span>
 <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>
 <span class='no'>hab1</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-<span class='fu'>str</span>(<span class='no'>hab1</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	6400 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>hab1</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	503 obs. of  3 variables:
 #&gt;  $ gx      : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy      : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
+#&gt;  $ gy      : int  0 20 40 40 60 80 80 100 120 140 ...
+#&gt;  $ habitats: int  1 1 1 2 2 2 1 1 1 1 ...</div><div class='input'>
 <span class='co'># Input: Object of class dataframe</span>
 <span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>$<span class='no'>col</span>
 <span class='no'>hab2</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)
-<span class='fu'>str</span>(<span class='no'>hab2</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	6400 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>hab2</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	503 obs. of  3 variables:
 #&gt;  $ gx      : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy      : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
+#&gt;  $ gy      : int  0 20 40 40 60 80 80 100 120 140 ...
+#&gt;  $ habitats: int  1 1 1 2 2 2 1 1 1 1 ...</div><div class='input'>
 <span class='co'># Input: Object of class fgeo_elev</span>
 <span class='no'>fgeo_elev</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fgeo_elevation.html'>fgeo_elevation</a></span>(<span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>)
 <span class='no'>hab3</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)
-<span class='fu'>str</span>(<span class='no'>hab3</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	6400 obs. of  3 variables:
+<span class='fu'>str</span>(<span class='no'>hab3</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	503 obs. of  3 variables:
 #&gt;  $ gx      : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy      : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
-<span class='fu'>identical</span>(<span class='no'>hab1</span>, <span class='no'>hab2</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>identical</span>(<span class='no'>hab2</span>, <span class='no'>hab3</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='no'>hab1</span></div><div class='output co'>#&gt; # A tibble: 6,400 x 3
+#&gt;  $ gy      : int  0 20 40 40 60 80 80 100 120 140 ...
+#&gt;  $ habitats: int  1 1 1 2 2 2 1 1 1 1 ...</div><div class='input'>
+<span class='fu'>identical</span>(<span class='no'>hab1</span>, <span class='no'>hab2</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>identical</span>(<span class='no'>hab2</span>, <span class='no'>hab3</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='no'>hab1</span></div><div class='output co'>#&gt; # A tibble: 503 x 3
 #&gt;       gx    gy habitats
 #&gt;  * &lt;int&gt; &lt;int&gt;    &lt;int&gt;
 #&gt;  1     0     0        1
-#&gt;  2     0     5        1
-#&gt;  3     0    10        1
-#&gt;  4     0    15        1
-#&gt;  5     0    20        1
-#&gt;  6     0    25        1
-#&gt;  7     0    30        1
-#&gt;  8     0    35        1
-#&gt;  9     0    40        1
-#&gt; 10     0    45        1
-#&gt; # ... with 6,390 more rows</div></pre>
+#&gt;  2     0    20        1
+#&gt;  3     0    40        1
+#&gt;  4     0    40        2
+#&gt;  5     0    60        2
+#&gt;  6     0    80        2
+#&gt;  7     0    80        1
+#&gt;  8     0   100        1
+#&gt;  9     0   120        1
+#&gt; 10     0   140        1
+#&gt; # ... with 493 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
