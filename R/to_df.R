@@ -78,7 +78,8 @@ to_df.tt_lst <- function(.x, ...) {
   with_probability <- calculate_probability(wide_df)
   explained <- explain_distribution(with_probability)
   out <- reorganize_columns(explained)
-  tibble::as.tibble(dplyr::arrange(out, .data$habitat, .data$sp))
+  out <- tibble::as.tibble(dplyr::arrange(out, .data$habitat, .data$sp))
+  new_tt_df(out)
 }
 
 separate_habitat_metric <- function(x) {
@@ -126,4 +127,9 @@ reorganize_columns <- function(x) {
     .data$habitat, .data$sp, .data$probability, .data$distribution,
     .data$stem_count, dplyr::everything()
   )
+}
+
+new_tt_df <- function(.x) {
+  stopifnot(is.data.frame(.x))
+  structure(.x, class = c("tt_df", class(.x)))
 }
