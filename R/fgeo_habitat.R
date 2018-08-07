@@ -30,6 +30,11 @@
 #' hab1 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
 #' str(hab1)
 #' 
+#' if (requireNamespace("fgeo.map")) {
+#'   library(fgeo.map)
+#'   plot(hab1)
+#' }
+#' 
 #' # Input: Object of class dataframe
 #' elev_df <- fgeo.data::luquillo_elevation$col
 #' hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
