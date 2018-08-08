@@ -7,11 +7,11 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
     warning("Input to elev must be a list with one element named 'col'.")
   }
   rw <- cl <- 0
-  on.exit(cat(rw, " ", cl, "\n"))
+  on.exit(message(rw, " ", cl, "\n"))
   columns <- 1 + max(elev$col$x) / gridsize
   rows <- 1 + max(elev$col$y) / gridsize
   totalquads <- (columns - 1) * (rows - 1)
-  cat("Calculating topographic indices for ", totalquads, " quadrats\n")
+  message("Calculating topographic indices for ", totalquads, " quadrats\n")
   elevdata <- elev$col[elev$col$x %% gridsize == 0 & elev$col$y %% gridsize ==
     0, ]
   elevmat <- matrix(elevdata$elev,
@@ -32,18 +32,17 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
       meanelev[quad.index] <- mean(corner)
       slope[quad.index] <- quadslope(corner, gridsize = gridsize)[1]
       if (c %% 33 == 0 & r %% 33 == 0) {
-        cat("Finding elevation and slope of quadrat ", quad.index, "\n")
+        message("Finding elevation and slope of quadrat ", quad.index, "\n")
       }
     }
   for (i in 1:totalquads) {
-    neighbor.quads <- findborderquads(i,
-      dist = gridsize,
-      gridsize = gridsize, plotdim = plotdim
+    neighbor.quads <- findborderquads(
+      i, dist = gridsize, gridsize = gridsize, plotdim = plotdim
     )
     meanelev.neighbor <- mean(meanelev[neighbor.quads])
     convex[i] <- meanelev[i] - meanelev.neighbor
     if (i %% 1000 == 0) {
-      cat("Finding convexity of quadrat ", i, "\n")
+      message("Finding convexity of quadrat ", i, "\n")
     }
   }
   if (edgecorrect) {
@@ -75,10 +74,7 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
 #'
 #' @family functions from http://ctfs.si.edu/Public/CTFSRPackage/
 #' @keywords internal
-findborderquads <- function(index,
-                            dist = 20,
-                            gridsize = 20,
-                            plotdim = c(1000, 500)) {
+findborderquads <- function(index, dist, gridsize, plotdim) {
   bound.index <- numeric(8)
   no.boundaries <- 0
   row <- index_to_rowcol(index, gridsize, plotdim)$row
@@ -103,7 +99,7 @@ findborderquads <- function(index,
 #'
 #' @family functions from http://ctfs.si.edu/Public/CTFSRPackage/
 #' @keywords internal
-quadslope <- function(cornerelev, gridsize = 20) {
+quadslope <- function(cornerelev, gridsize) {
   slope <- numeric(4)
   z <- numeric(3)
   for (j in 1:4) {
@@ -126,7 +122,7 @@ quadslope <- function(cornerelev, gridsize = 20) {
 #'
 #' @family functions from http://ctfs.si.edu/Public/CTFSRPackage/
 #' @keywords internal
-calcslope <- function(z, gridsize = 20) {
+calcslope <- function(z, gridsize) {
   z2 <- z[3] - z[2]
   z1 <- z[1] - z[2]
   if (z2 == 0) {
