@@ -48,7 +48,12 @@
 #' identical(hab1, hab2)
 #' identical(hab2, hab3)
 #' hab1
-fgeo_habitat <- function(elevation, gridsize, n, ...) {
+fgeo_habitat <- function(elevation,
+                         gridsize,
+                         n,
+                         only_elev = FALSE,
+                         edgecorrect = TRUE,
+                         ...) {
   UseMethod("fgeo_habitat")
 }
 
@@ -59,79 +64,51 @@ fgeo_habitat.default <- function(elevation, gridsize, n, ...) {
 
 #' @export
 #' @rdname fgeo_habitat
-fgeo_habitat.list <- function(elevation, gridsize, n, ...) {
+fgeo_habitat.list <- function(elevation,
+                              gridsize,
+                              n,
+                              only_elev = FALSE,
+                              edgecorrect = TRUE,
+                              ...) {
   check_crucial_names(elevation, c("col", "xdim", "ydim"))
   fgeo_habitat.data.frame(
-    elevation$col, gridsize, n, elevation$xdim, elevation$ydim
+    elevation$col, gridsize, n, elevation$xdim, elevation$ydim, 
+    only_elev, edgecorrect
   )
 }
 
 #' @export
 #' @rdname fgeo_habitat
-fgeo_habitat.data.frame <- function(elevation, gridsize, n, xdim, ydim, ...) {
+fgeo_habitat.data.frame <- function(elevation,
+                                    gridsize,
+                                    n,
+                                    xdim,
+                                    ydim,
+                                    only_elev = FALSE,
+                                    edgecorrect = TRUE,
+                                    ...) {
   if (missing(xdim) || missing(ydim)) {
     stop(
       "`xdim` and `ydim` can't be missing if `elevation` is a data.frame.", 
       call. = FALSE
     )
   }
-  elevation_to_habitat(fgeo_elevation(elevation), gridsize, n, xdim, ydim)
-}
-
-elevation_to_habitat <- function(elevation, gridsize, n, xdim, ydim) {
-  fgeo.tool::fgeo_elevation(elevation) %>%
-    dplyr::as_tibble() %>% 
-    dplyr::mutate(
-      x = fgeo.base::round_any(.data$gx, gridsize),
-      y = fgeo.base::round_any(.data$gy, gridsize)
-    ) %>% 
-    unique() %>% 
-    dplyr::group_by(.data$gx, .data$gy) %>%
-    dplyr::summarise(elev = mean(.data$elev)) %>% 
-    dplyr::ungroup() %>% 
-    dplyr::mutate(
-      gx = as.integer(fgeo.base::round_any(.data$gx, accuracy = gridsize)),
-      gy = as.integer(fgeo.base::round_any(.data$gy, accuracy = gridsize)),
-      habitats = as.integer(cut_number(.data$elev, n)), 
-      elev = NULL
-    ) %>% 
-    unique() %>% 
-    dplyr::filter(.data$gx < xdim, .data$gy < ydim) %>% 
-    new_fgeo_habitat()
-}
-
-new_fgeo_habitat <- function(x) {
-  structure(x, class = c("fgeo_habitat", class(x)))
-}
-
-
-
-# TODO: Test it with elevation dataframe and maybe write method for df and ls
-# TODO: Document and export
-# TODO: Convert cat() to message()
-measure_topography <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
-  plotdim <- c(elev_ls$xdim, elev_ls$ydim)
-  topo <- allquadratslopes(elev_ls, gridsize, plotdim, edgecorrect)
-  quad_idx <- as.integer(rownames(topo))
-  gxgy <- index_to_gxgy(quad_idx, gridsize, plotdim)
-  tibble::as.tibble(cbind(gxgy, topo))
-}
-
-# TODO: Document and export
-cluster_elevation <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
-  hab <- measure_topography(elev_ls, gridsize, n, edgecorrect)
-  hab$cluster <- stats::kmeans(hab[c("meanelev", "convex", "slope")], n)$cluster
-  hab
+  elevation_to_habitat(
+    fgeo_elevation(elevation), gridsize, n, xdim, ydim, only_elev, edgecorrect
+  )
 }
 
 # TODO: Test if output passes tt_test() without warnings.
 # TODO: Document and export
 # TODO: Test it with elevation dataframe and maybe write method for df and ls
-fgeo_habitat2 <- function(elev_ls,
-                          gridsize,
-                          n,
-                          only_elev = FALSE,
-                          edgecorrect = TRUE) {
+elevation_to_habitat <- function(elevation,
+                                 gridsize,
+                                 n,
+                                 xdim,
+                                 ydim,
+                                 only_elev = FALSE,
+                                 edgecorrect = TRUE) {
+  elev_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
   out <- cluster_elevation(elev_ls, gridsize, n, edgecorrect)
   if (only_elev) {
     out$cluster <- cut(out$meanelev, n, 1:n)
@@ -142,3 +119,31 @@ fgeo_habitat2 <- function(elev_ls,
   new_fgeo_habitat(out)
 }
 
+# TODO: Document and export
+cluster_elevation <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
+  hab <- measure_topography(elev_ls, gridsize, n, edgecorrect)
+  hab$cluster <- stats::kmeans(hab[c("meanelev", "convex", "slope")], n)$cluster
+  hab
+}
+
+# TODO: Document and export
+measure_topography <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
+  force(gridsize)
+  force(n)
+  plotdim <- c(elev_ls$xdim, elev_ls$ydim)
+  
+  # Match names-requirements of allquadratslopes()
+  names(elev_ls$col) <- sub("gx", "x", names(elev_ls$col))
+  names(elev_ls$col) <- sub("gy", "y", names(elev_ls$col))
+  topo <- suppressMessages(
+    allquadratslopes(elev_ls, gridsize, plotdim, edgecorrect)
+  )
+  
+  quad_idx <- as.integer(rownames(topo))
+  gxgy <- index_to_gxgy(quad_idx, gridsize, plotdim)
+  tibble::as.tibble(cbind(gxgy, topo))
+}
+
+new_fgeo_habitat <- function(x) {
+  structure(x, class = c("fgeo_habitat", class(x)))
+}

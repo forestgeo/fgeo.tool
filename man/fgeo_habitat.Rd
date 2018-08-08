@@ -6,11 +6,14 @@
 \alias{fgeo_habitat.data.frame}
 \title{Construct habitat data.}
 \usage{
-fgeo_habitat(elevation, gridsize, n, ...)
+fgeo_habitat(elevation, gridsize, n, only_elev = FALSE,
+  edgecorrect = TRUE, ...)
 
-\method{fgeo_habitat}{list}(elevation, gridsize, n, ...)
+\method{fgeo_habitat}{list}(elevation, gridsize, n, only_elev = FALSE,
+  edgecorrect = TRUE, ...)
 
-\method{fgeo_habitat}{data.frame}(elevation, gridsize, n, xdim, ydim, ...)
+\method{fgeo_habitat}{data.frame}(elevation, gridsize, n, xdim, ydim,
+  only_elev = FALSE, edgecorrect = TRUE, ...)
 }
 \arguments{
 \item{elevation}{\itemize{

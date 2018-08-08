@@ -1,69 +1,45 @@
 context("fgeo_habitat.R")
 
-describe("measure_topography", {
-  elev_ls <- fgeo.data::luquillo_elevation
-  it("Outputs the expected data structure", {
-    gridsize <- 20
-    out <- measure_topography(elev_ls, gridsize = gridsize, n = 4)
-    expect_is(out, "tbl_df")
-    expect_named(out, c("gx", "gy", "meanelev", "convex", "slope"))
-    
-    n_plot_row <- elev_ls$xdim / gridsize
-    n_plot_col <- elev_ls$ydim / gridsize
-    n_quadrats <- n_plot_row * n_plot_col
-    expect_equal(nrow(out), n_quadrats)
-  })
-})
-
-describe("cluster_elevation", {
-  it("Outputs the expected data structure", {
-    elev_ls <- fgeo.data::luquillo_elevation
-    gridsize <- 20
-    out <- cluster_elevation(elev_ls, gridsize = gridsize, n = 4)
-    expect_is(out, "tbl_df")
-    expect_named(out, c("gx", "gy", "meanelev", "convex", "slope", "cluster"))
-    
-    n_plot_row <- elev_ls$xdim / gridsize
-    n_plot_col <- elev_ls$ydim / gridsize
-    n_quadrats <- n_plot_row * n_plot_col
-    expect_equal(nrow(out), n_quadrats)
-  })
+describe("fgeo_habitat", {
+  skip_if_not_installed("fgeo.habitat")
+  library(fgeo.habitat)
   
-  it("outputs an object that works with tt_test() with no warning", {
-    skip_if_not_installed("fgeo.habitat")
-    library(fgeo.habitat)
-
-    # Pick alive trees, of 10 mm or more
-    census <- luquillo_top3_sp
-    census <- census[census$status == "A" & census$dbh >= 10, ]
-    # Pick sufficiently abundant species
-    species <- c("CASARB", "PREMON", "SLOBER")
-    # Calculate habitats
-    elev_ls <- fgeo.data::luquillo_elevation
-
-    habitat2 <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
-    expect_silent(expect_message(tt_test(census, species, habitat2)))
-  })
+  census <- luquillo_top3_sp
+  census <- census[census$status == "A" & census$dbh >= 10, ]
+  species <- c("CASARB", "PREMON", "SLOBER")
   
+  it("outputs object that throws no warning with tt_test()", {
+    elev_ls <- fgeo.data::luquillo_elevation
+    habitat_ls <- fgeo_habitat(elev_ls, gridsize = 20, n = 4)
+    expect_silent(expect_message(tt_test(census, species, habitat_ls)))
+    
+    elev_df <- fgeo.data::luquillo_elevation$col
+    habitat_df <- fgeo_habitat(
+      elev_df, gridsize = 20, n = 4, xdim = elev_ls$xdim, ydim = elev_ls$ydim
+    )
+    expect_silent(expect_message(tt_test(census, species, habitat_df)))
+    
+    # FIXME
+    expect_identical(habitat_df, habitat_ls)
+  })
+
   it("plots with plot.fgeo_habitat()", {
     skip_if_not_installed("fgeo.map")
     library(fgeo.map)
-
+    
     elev_ls <- fgeo.data::luquillo_elevation
-    habitat <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
+    habitat <- fgeo_habitat(elev_ls, gridsize = 20, n = 4)
     p <- plot(habitat)
     expect_is(p, "ggplot")
   })
+  
+  it("results in gx and gy that are multiple of gridsize", {
+    elev_ls <- fgeo.data::luquillo_elevation
+    gridsize <- 20
+    habitat <- fgeo_habitat(elev_ls, gridsize = gridsize, n = 4)
+    expect_true(all(habitat$gx %% gridsize == 0))
+  })
 })
-
-
-
-
-
-
-
-
-
 
 test_that("outputs object with number of rows equal to number of quadrats", {
   elev_luq <- fgeo.data::luquillo_elevation
@@ -84,19 +60,6 @@ test_that("outputs object with number of rows equal to number of quadrats", {
   expect_equal(nrow(habitat_pasoh), rw * cl)
 })
 
-test_that("it rounds any gx and gy with accuracy given by gridsize", {
-  elev <- tibble::tribble(
-    ~x, ~y, ~elev,
-     0,  0,    89,
-    11,  0,    99
-  )
-  
-  gsz <- 20
-  out <- fgeo_habitat(elev, gridsize = gsz, n = 1, xdim = 100, ydim = 100)
-  expect_equal(out$gx, c(0, 20))
-  expect_equal(out$gx, c(0, 20))
-})
-
 test_that("it works with data from bci", {
   skip_if_not_installed("bciex")
   elev <- bciex::bci_elevation
@@ -107,32 +70,6 @@ test_that("it works with data from bci", {
   expect_silent(fgeo_habitat(elev, gridsize = 20, 2, xdim = 1000, ydim = 500))
   bci_elev_ls <- list(col = elev, xdim = 1000, ydim = 500)
   expect_silent(fgeo_habitat(bci_elev_ls, gridsize = 20, n = 4))
-})
-
-test_that("outputs a dataframe with expected structure", {
-  skip_if_not_installed("fgeo.data")
-  skip_on_travis()
-  
-  # A list
-  hab <- fgeo_habitat(fgeo.data::luquillo_elevation, 20, 4)
-  expect_is(hab, "data.frame")
-  expect_is(hab, "fgeo_habitat")
-  
-  expect_silent(check_crucial_names(hab, c("gx", "gy", "habitats")))
-  expect_false(dplyr::is_grouped_df(hab))
-  expect_equal(hab, fgeo.data::luquillo_habitat)
-  
-  # A dataframe
-  hab <- fgeo_habitat(
-    fgeo.data::luquillo_elevation$col, gridsize = 20, n = 4, xdim = 320, 
-    ydim = 500
-  )
-  expect_equal(hab, fgeo.data::luquillo_habitat)
-  
-  # An object of class fgeo_elevation
-  elev <- fgeo_elevation(fgeo.data::luquillo_elevation)
-  hab <- fgeo_habitat(elev, gridsize = 20, n = 4, xdim = 320, ydim = 500)
-  expect_equal(hab, fgeo.data::luquillo_habitat)
 })
 
 test_that("errs with informative messages", {
@@ -146,4 +83,42 @@ test_that("errs with informative messages", {
   elev_missing_xydims <- list(col = fgeo.data::luquillo_elevation$col)
   expect_error(fgeo_habitat(elev_missing_xydims), "Ensure your data set")
   expect_error(fgeo_habitat(fgeo.data::luquillo_elevation, 20), "is missing")
+})
+
+
+
+context("measure_topography")
+
+describe("measure_topography", {
+  elev_ls <- fgeo.data::luquillo_elevation
+  it("Outputs the expected data structure", {
+    gridsize <- 20
+    out <- measure_topography(elev_ls, gridsize = gridsize, n = 4)
+    expect_is(out, "tbl_df")
+    expect_named(out, c("gx", "gy", "meanelev", "convex", "slope"))
+    
+    n_plot_row <- elev_ls$xdim / gridsize
+    n_plot_col <- elev_ls$ydim / gridsize
+    n_quadrats <- n_plot_row * n_plot_col
+    expect_equal(nrow(out), n_quadrats)
+  })
+})
+
+
+
+context("cluster_elevation")
+
+describe("cluster_elevation", {
+  it("Outputs the expected data structure", {
+    elev_ls <- fgeo.data::luquillo_elevation
+    gridsize <- 20
+    out <- cluster_elevation(elev_ls, gridsize = gridsize, n = 4)
+    expect_is(out, "tbl_df")
+    expect_named(out, c("gx", "gy", "meanelev", "convex", "slope", "cluster"))
+    
+    n_plot_row <- elev_ls$xdim / gridsize
+    n_plot_col <- elev_ls$ydim / gridsize
+    n_quadrats <- n_plot_row * n_plot_col
+    expect_equal(nrow(out), n_quadrats)
+  })
 })
