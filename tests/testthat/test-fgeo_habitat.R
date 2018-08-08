@@ -1,5 +1,71 @@
 context("fgeo_habitat.R")
 
+describe("measure_topography", {
+  elev_ls <- fgeo.data::luquillo_elevation
+  it("Outputs the expected data structure", {
+    gridsize <- 20
+    out <- measure_topography(elev_ls, gridsize = gridsize, n = 4)
+    expect_is(out, "tbl_df")
+    expect_named(out, c("gx", "gy", "meanelev", "convex", "slope"))
+    
+    n_plot_row <- elev_ls$xdim / gridsize
+    n_plot_col <- elev_ls$ydim / gridsize
+    n_quadrats <- n_plot_row * n_plot_col
+    expect_equal(nrow(out), n_quadrats)
+  })
+})
+
+describe("cluster_elevation", {
+  it("Outputs the expected data structure", {
+    elev_ls <- fgeo.data::luquillo_elevation
+    gridsize <- 20
+    out <- cluster_elevation(elev_ls, gridsize = gridsize, n = 4)
+    expect_is(out, "tbl_df")
+    expect_named(out, c("gx", "gy", "meanelev", "convex", "slope", "cluster"))
+    
+    n_plot_row <- elev_ls$xdim / gridsize
+    n_plot_col <- elev_ls$ydim / gridsize
+    n_quadrats <- n_plot_row * n_plot_col
+    expect_equal(nrow(out), n_quadrats)
+  })
+  
+  it("outputs an object that works with tt_test() with no warning", {
+    skip_if_not_installed("fgeo.habitat")
+    library(fgeo.habitat)
+
+    # Pick alive trees, of 10 mm or more
+    census <- luquillo_top3_sp
+    census <- census[census$status == "A" & census$dbh >= 10, ]
+    # Pick sufficiently abundant species
+    species <- c("CASARB", "PREMON", "SLOBER")
+    # Calculate habitats
+    elev_ls <- fgeo.data::luquillo_elevation
+    habitat <- fgeo_habitat(elev_ls, gridsize = 20, n = 4)
+    habitat2 <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
+    
+    tt_lst <- tt_test(census, species, habitat)
+  })
+  
+  it("plots with plot.fgeo_habitat()", {
+    skip_if_not_installed("fgeo.map")
+    library(fgeo.map)
+
+    elev_ls <- fgeo.data::luquillo_elevation
+    habitat <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
+    p <- plot(habitat)
+    expect_is(p, "ggplot")
+  })
+})
+
+
+
+
+
+
+
+
+
+
 test_that("outputs object with number of rows equal to number of quadrats", {
   elev_luq <- fgeo.data::luquillo_elevation
   hab <- fgeo_habitat(elev_luq, gridsize = 20, n = 4)

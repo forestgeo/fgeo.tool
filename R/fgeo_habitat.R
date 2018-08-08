@@ -103,3 +103,72 @@ elevation_to_habitat <- function(elevation, gridsize, n, xdim, ydim) {
 new_fgeo_habitat <- function(x) {
   structure(x, class = c("fgeo_habitat", class(x)))
 }
+
+
+
+# TODO: Test it with elevation dataframe and maybe write method for df and ls
+# TODO: Document and export
+# TODO: Convert cat() to message()
+measure_topography <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
+  plotdim <- c(elev_ls$xdim, elev_ls$ydim)
+  topo <- ctfs::allquadratslopes(elev_ls, gridsize, plotdim, edgecorrect)
+  quad_idx <- as.integer(rownames(topo))
+  gxgy <- index_gxgy(quad_idx, gridsize, plotdim)
+  tibble::as.tibble(cbind(gxgy, topo))
+}
+
+# TODO: Document and export
+cluster_elevation <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
+  hab <- measure_topography(elev_ls, gridsize, n, edgecorrect)
+  hab$cluster <- stats::kmeans(hab[c("meanelev", "convex", "slope")], n)$cluster
+  hab
+}
+
+# TODO: Test if output passes tt_test() without warnings.
+# TODO: Document and export
+# TODO: Test it with elevation dataframe and maybe write method for df and ls
+fgeo_habitat2 <- function(elev_ls,
+                          gridsize,
+                          n,
+                          only_elev = FALSE,
+                          edgecorrect = TRUE) {
+  out <- cluster_elevation(elev_ls, gridsize, n, edgecorrect)
+  if (only_elev) {
+    out$cluster <- cut(out$meanelev, n, 1:n)
+  }
+  
+  names(out) <- sub("cluster", "habitats", names(out))
+  out <- out[c("gx", "gy", "habitats")]
+  new_fgeo_habitat(out)
+}
+
+# TODO: Write an add_*() version.
+# TODO: Regression test with ctfs::index.to.gxgy
+# TODO: Document and export
+index_gxgy <- function(index, gridsize, plotdim) {
+  badindex <- (index <= 0 | index > plotdim[1] * plotdim[2] / (gridsize ^ 2))
+  rc <- index_rowcol(index, gridsize, plotdim)
+  gx <- gridsize * (rc$col - 1)
+  gy <- gridsize * (rc$row - 1)
+  if (length(badindex[badindex > 0])) {
+    gx[badindex] <- gy[badindex] = -1
+  }
+  data.frame(gx = gx, gy = gy)
+}
+
+# TODO: Document and export
+# TODO: Write an add_*() version.
+# TODO: Regression test with ctfs::index.to.rowcol
+index_rowcol <- function(index, gridsize, plotdim) {
+  index <- index - 1
+  badindex <- (index < 0 | index >= plotdim[1] * plotdim[2] / (gridsize ^ 2))
+  maxrow <- floor(plotdim[2] / gridsize)
+  rowno <- index %% maxrow
+  colno <- floor((index - rowno) / maxrow)
+  row <- rowno + 1
+  col <- colno + 1
+  if (length(badindex[badindex > 0])) {
+    row[badindex] <- col[badindex] = -1
+  }
+  data.frame(row = row, col = col)
+}

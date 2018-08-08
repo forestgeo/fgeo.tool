@@ -1,0 +1,86 @@
+---
+title: "Slope"
+author: Mauro Lepore
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(tibble)
+```
+
+## Example data
+
+```{r}
+elevation_ls <- fgeo.data::luquillo_elevation
+str(elevation_ls)
+```
+
+## Paramenters
+
+```{r}
+gridsize <- 20
+plotdim <- c(320, 500)
+edgecorrect <- TRUE
+n_clusters <- 4
+```
+
+## Slope and convexity
+
+```{r}
+meanelev_convex_slope <- ctfs::allquadratslopes(
+  elevation_ls,
+  gridsize = gridsize,
+  plotdim = plotdim,
+  edgecorrect = edgecorrect
+)
+as_tibble(meanelev_convex_slope)
+```
+
+We can create "habitats" by clustering `meanelev`, `convex` and `slope`.
+
+```{r}
+meanelev_convex_slope <- mutate(
+  meanelev_convex_slope, 
+  habitats =  kmeans(meanelev_convex_slope, n_clusters)$cluster
+)
+
+habitat <- rowid_to_column(meanelev_convex_slope, "index")
+as_tibble(habitat)
+```
+
+`ctfs::allquadratslopes()` didn't output the `gx` and `gy` coordinates of each row of the output, but the row indices correspond to quadrat index.
+
+```{r}
+# The names of the columns isn't quite right. I plan to make `add_index()` a bit
+# more flexible: https://github.com/forestgeo/fgeo.tool/issues/52
+elevation_df <- dplyr::rename(elevation_ls$col, gx = x, gy = y)
+
+elevation_df <- fgeo.tool::add_index(elevation_df)
+elevation_df
+```
+
+Now we can use `index` to link `gx`, `gy` to `hatibats` created with `ctfs::allquadratslopes()`.
+
+```{r}
+round_gxgy_to_gridsize <- function(x, gridsize) {
+  fgeo.base::check_crucial_names(x, c("gx", "gy"))
+  
+  x$gx <- fgeo.base::round_any(x$gx, gridsize)
+  x$gy <- fgeo.base::round_any(x$gy, gridsize)
+  x
+}
+
+gxgy <- ctfs::index.to.gxgy(habitat$index, gridsize = gridsize, plotdim = plotdim)
+gxgy_hab <- cbind(habitat, gxgy)
+gxgy_hab <- dplyr::select(gxgy_hab, index, gx, gy, habitats, everything())
+tibble::as.tibble(gxgy_hab)
+```
+
+## Acknowledgments
+
+Daniel Zuleta guided the development of this code, that I hope to use to improve `fgeo_habitat()`.

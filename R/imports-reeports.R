@@ -1,4 +1,5 @@
 #' @importFrom rlang set_names abort warn inform
+#' @importFrom glue glue
 #' @importFrom fgeo.base check_crucial_names rename_matches
 #' @importFrom utils head tail
 #' @importFrom measurements conv_unit

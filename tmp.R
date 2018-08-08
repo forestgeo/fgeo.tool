@@ -1,3 +1,39 @@
+# FIXME: plot(habitat2) shows that clusters are too symetric. Is this ok?
+
+plot(
+  fgeo_habitat2(
+    list(
+      col = bciex::bci_elevation,
+      xdim = 1000,
+      ydim = 500
+    ),
+    gridsize = 20, 
+    n = 12
+  )
+)
+
+library(fgeo.habitat)
+
+# Input: Object of class list
+elev_list <- fgeo.data::luquillo_elevation
+
+debugonce(fgeo_habitat)
+hab1 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
+str(hab1)
+# FIXME
+expect_equal(nrow(hab1[1:2]), nrow(unique(hab1[1:2])))
+
+
+# FIXME:
+# The problem is that some habitats are different for the same quadrat.
+# How did this happen?
+nrow(unique(fgeo.data::luquillo_habitat[1:2]))
+320 / 20 * 500 / 20
+
+
+
+
+
 # TODO:
 # * Update fgeo.data::luquillo_habitat
 # * Check where this may brake code
