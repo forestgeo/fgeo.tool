@@ -1,5 +1,23 @@
 context("fgeo_habitat.R")
 
+test_that("outputs object with number of rows equal to number of quadrats", {
+  elev_luq <- fgeo.data::luquillo_elevation
+  hab <- fgeo_habitat(elev_luq, gridsize = 20, n = 4)
+  
+  plotdim <- c(320, 500)
+  gridsize <- 20
+  rows <- plotdim[[1]] / gridsize
+  cols <- plotdim[[2]] / gridsize
+  expect_equal(nrow(hab), rows * cols)
+  
+  # Reference: This habitat dataset was created by the authors of tt_test()
+  habitat_pasoh <- pasoh::pasoh_hab_index20
+  pd <- c(1000, 500)
+  gs <- 20
+  rw <- pd[[1]] / gs
+  cl <- pd[[2]] / gs
+  expect_equal(nrow(habitat_pasoh), rw * cl)
+})
 
 test_that("it rounds any gx and gy with accuracy given by gridsize", {
   elev <- tibble::tribble(
