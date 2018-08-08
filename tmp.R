@@ -1,5 +1,3 @@
-# FIXME: plot(habitat2) shows that clusters are too symetric. Is this ok?
-
 plot(
   fgeo_habitat2(
     list(

@@ -40,10 +40,9 @@ describe("cluster_elevation", {
     species <- c("CASARB", "PREMON", "SLOBER")
     # Calculate habitats
     elev_ls <- fgeo.data::luquillo_elevation
-    habitat <- fgeo_habitat(elev_ls, gridsize = 20, n = 4)
+
     habitat2 <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
-    
-    tt_lst <- tt_test(census, species, habitat)
+    expect_silent(expect_message(tt_test(census, species, habitat2)))
   })
   
   it("plots with plot.fgeo_habitat()", {

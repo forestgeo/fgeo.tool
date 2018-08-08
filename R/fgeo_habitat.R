@@ -111,9 +111,9 @@ new_fgeo_habitat <- function(x) {
 # TODO: Convert cat() to message()
 measure_topography <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
   plotdim <- c(elev_ls$xdim, elev_ls$ydim)
-  topo <- ctfs::allquadratslopes(elev_ls, gridsize, plotdim, edgecorrect)
+  topo <- allquadratslopes(elev_ls, gridsize, plotdim, edgecorrect)
   quad_idx <- as.integer(rownames(topo))
-  gxgy <- index_gxgy(quad_idx, gridsize, plotdim)
+  gxgy <- index_to_gxgy(quad_idx, gridsize, plotdim)
   tibble::as.tibble(cbind(gxgy, topo))
 }
 
@@ -142,33 +142,3 @@ fgeo_habitat2 <- function(elev_ls,
   new_fgeo_habitat(out)
 }
 
-# TODO: Write an add_*() version.
-# TODO: Regression test with ctfs::index.to.gxgy
-# TODO: Document and export
-index_gxgy <- function(index, gridsize, plotdim) {
-  badindex <- (index <= 0 | index > plotdim[1] * plotdim[2] / (gridsize ^ 2))
-  rc <- index_rowcol(index, gridsize, plotdim)
-  gx <- gridsize * (rc$col - 1)
-  gy <- gridsize * (rc$row - 1)
-  if (length(badindex[badindex > 0])) {
-    gx[badindex] <- gy[badindex] = -1
-  }
-  data.frame(gx = gx, gy = gy)
-}
-
-# TODO: Document and export
-# TODO: Write an add_*() version.
-# TODO: Regression test with ctfs::index.to.rowcol
-index_rowcol <- function(index, gridsize, plotdim) {
-  index <- index - 1
-  badindex <- (index < 0 | index >= plotdim[1] * plotdim[2] / (gridsize ^ 2))
-  maxrow <- floor(plotdim[2] / gridsize)
-  rowno <- index %% maxrow
-  colno <- floor((index - rowno) / maxrow)
-  row <- rowno + 1
-  col <- colno + 1
-  if (length(badindex[badindex > 0])) {
-    row[badindex] <- col[badindex] = -1
-  }
-  data.frame(row = row, col = col)
-}

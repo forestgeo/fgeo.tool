@@ -67,6 +67,8 @@
 #' is.data.frame(x)
 #' is.vector(x)
 #' }
+#' 
+#' index_to_gxgy(1:3, gridsize, plotdim)
 #' @name from_var_to_var
 #' @noRd
 NULL
@@ -165,4 +167,17 @@ gxgy_to_hectindex <- function(gx, gy, plotdim) {
     max.ha.row <- plotdim[2] / 100
     return(ha.colno * max.ha.row + ha.rowno + 1)
   }
+}
+
+#' @rdname from_var_to_var
+#' @noRd
+index_to_gxgy <- function(index, gridsize, plotdim) {
+  badindex <- (index <= 0 | index > plotdim[1] * plotdim[2] / (gridsize ^ 2))
+  rc <- index_to_rowcol(index, gridsize, plotdim)
+  gx <- gridsize * (rc$col - 1)
+  gy <- gridsize * (rc$row - 1)
+  if (length(badindex[badindex > 0])) {
+    gx[badindex] <- gy[badindex] = -1
+  }
+  data.frame(gx = gx, gy = gy)
 }
