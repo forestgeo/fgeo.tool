@@ -107,9 +107,8 @@ fgeo_habitat.data.frame <- function(elevation,
                                     edgecorrect = TRUE,
                                     ...) {
   msg <- "`xdim` and `ydim` can't be `NULL` if `elevation` is a data.frame."
-  xdim %||% stop(msg, call. = FALSE)
-  ydim %||% stop(msg, call. = FALSE)
-  
+  xdim %||% abort(msg)
+  ydim %||% abort(msg)
   
   elevation_to_habitat(
     fgeo_elevation(elevation), gridsize, n, xdim, ydim, only_elev, edgecorrect
@@ -121,8 +120,8 @@ elevation_to_habitat <- function(elevation,
                                  n,
                                  xdim,
                                  ydim,
-                                 only_elev = FALSE,
-                                 edgecorrect = TRUE) {
+                                 only_elev,
+                                 edgecorrect) {
   elev_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
   out <- cluster_elevation(elev_ls, gridsize, n, edgecorrect)
   if (only_elev) {
