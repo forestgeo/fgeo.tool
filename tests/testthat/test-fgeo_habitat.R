@@ -100,7 +100,6 @@ describe("fgeo_habitat", {
 
 
 describe("measure_topography", {
-  elev_ls <- fgeo.data::luquillo_elevation
   it("Outputs the expected data structure", {
     elev_ls <- fgeo.data::luquillo_elevation
     gridsize <- 20
@@ -130,9 +129,8 @@ describe("measure_topography", {
     
     elev_ls <- fgeo.data::luquillo_elevation
     expect_error(measure_topography(elev_ls), "gridsize.*is missing")
-    
     expect_error(measure_topography(elev_ls$col), "gridsize.*is missing")
-    expect_error(measure_topography(elev_ls$col, 20), "xdim.*is missing")
+    expect_error(measure_topography(elev_ls$col, 20), "xdim.*can't be `NULL`")
   })
 })
 
@@ -171,8 +169,12 @@ describe("cluster_elevation", {
     expect_error(cluster_elevation(elev_ls, n = 4), "gridsize.*is missing")
     expect_error(cluster_elevation(elev_ls$col, n = 4), "gridsize.*is missing")
 
-    expect_error(cluster_elevation(elev_ls, 20), "n*is missing")
-    expect_error(cluster_elevation(elev_ls$col, 20), "n*is missing")
+    expect_error(cluster_elevation(elev_ls, 20), "n.*is missing")
+    expect_error(cluster_elevation(elev_ls$col, 20), "n.*is missing")
+    expect_error(
+      cluster_elevation(elev_ls$col, gridsize = 20, n = 4),
+      "xdim.*can't be `NULL`"
+    )
   })
   
   it("is sensitive to `edgecorrect`", {

@@ -177,7 +177,8 @@ index_to_gxgy <- function(index, gridsize, plotdim) {
   gx <- gridsize * (rc$col - 1)
   gy <- gridsize * (rc$row - 1)
   if (length(badindex[badindex > 0])) {
-    gx[badindex] <- gy[badindex] = -1
+    gx[badindex] <- (-1)
+    gy[badindex] <- (-1)
   }
   data.frame(gx = gx, gy = gy)
 }

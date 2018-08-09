@@ -1,6 +1,5 @@
 #' Construct habitats from measures of topography (or only elevation).
 #'
-#' @description 
 #' This function constructs habitat data based on elevation data. It calculates
 #' habitats in two steps:
 #' 1. It calculates mean elevation, convexity and slope for each quadrat (via
@@ -13,16 +12,10 @@
 #'     * If `only_elev = TRUE` habitats are calculated by applying [base::cut()]
 #'     on the mean elevation from step 1 (ignoring convexity and slope).
 #'
-#' @description 
 #' The input can be either the elevation list that ForestGEO delivers, or the
 #' element `col` of such list -- which is a dataframe containing the elevation
 #' data. Notice that the required arguments to `fgeo_habitat()` vary according
 #' to the main input (the elevation list or the elevation dataframe).
-#' 
-#' @description 
-#' The outputs an object of class fgeo_habitat, which you can visualize directly
-#' with `plot()` (assuming you are using __fgeo.map__, for example via 
-#' `library(fgeo)`). 
 #' 
 #' @seealso [fgeo.map::plot.fgeo_habitat()], [measure_topography()],
 #'   [cluster_elevation()].
@@ -37,7 +30,8 @@
 #' @param gridsize Number giving the size of each quadrat for which a habitat
 #'   is calculated. Commonly, `gridsize = 20`.
 #' @param n Number of distinct habitat-categories to construct. 
-#' @param xdim,ydim `x` and `y` dimensions of the plot.
+#' @param xdim,ydim (If `elevation` is a dataframe) `x` and `y` dimensions of
+#'   the plot.
 #' @param only_elev Should the clusters be calculated using only elevation?
 #' * If `FALSE` (default) habitats are calculated by applying
 #' [stats::kmeans()] clustering on all three topographic metrics from step 1.
@@ -49,7 +43,6 @@
 #' @return A dataframe of subclass fgeo_habitat, with columns `gx` and `gy`
 #'   rounded with accuracy determined by `gridsize`, and column `habitats`, with
 #'   as many distinct integer values as determined by the argument `n`.
-#' @export
 #'
 #' @examples
 #' # Input: Object of class list
@@ -70,21 +63,22 @@
 #' elev_df <- fgeo.data::luquillo_elevation$col
 #' hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 #' str(hab2)
-fgeo_habitat <- function(elevation,
-                         gridsize,
-                         n,
-                         xdim = NULL,
-                         ydim = NULL,
-                         only_elev = FALSE,
-                         edgecorrect = TRUE,
-                         ...) {
+#' @name construct_habitats
+#' @aliases fgeo_habitat
+NULL
+
+#' @export
+fgeo_habitat <- function(elevation, ...) {
   UseMethod("fgeo_habitat")
 }
 
+#' @export
 fgeo_habitat.default <- function(elevation, ...) {
   abort_bad_class(elevation)
 }
 
+#' @rdname construct_habitats
+#' @export
 fgeo_habitat.list <- function(elevation,
                               gridsize,
                               n,
@@ -98,6 +92,8 @@ fgeo_habitat.list <- function(elevation,
   )
 }
 
+#' @rdname construct_habitats
+#' @export
 fgeo_habitat.data.frame <- function(elevation,
                                     gridsize,
                                     n,
@@ -106,9 +102,7 @@ fgeo_habitat.data.frame <- function(elevation,
                                     only_elev = FALSE,
                                     edgecorrect = TRUE,
                                     ...) {
-  msg <- "`xdim` and `ydim` can't be `NULL` if `elevation` is a data.frame."
-  xdim %||% abort(msg)
-  ydim %||% abort(msg)
+  abort_if_xdim_ydim_is_null(xdim, ydim)
   
   elevation_to_habitat(
     fgeo_elevation(elevation), gridsize, n, xdim, ydim, only_elev, edgecorrect
@@ -133,12 +127,82 @@ elevation_to_habitat <- function(elevation,
   new_fgeo_habitat(out)
 }
 
-new_fgeo_habitat <- function(x) {
-  structure(x, class = c("fgeo_habitat", class(x)))
+#' Measure topography and apply `kmeans()` clustering.
+#' 
+#' These functions overlap, but -- depending on the context -- you may choose
+#' one or the other to more clearly communicate your intention:
+#' * `measure_topography()` calculates mean elevation, convexity and slope.
+#' * `cluster_elevation()` outputs one additional column, `cluster`, calculated
+#' by applying [stats::kmeans()] on the topographic metrics calculated by
+#' `measure_topography()`. 
+#' 
+#' @inheritParams construct_habitats
+#' 
+#' @inherit construct_habitats details
+#'
+#' @return A dataframe.
+#'
+#' @examples
+#' elev_ls <- fgeo.data::luquillo_elevation
+#' measure_topography(elev_ls, gridsize = 20)
+#' cluster_elevation(elev_ls, gridsize = 20, n = 4)
+#' 
+#' elev_df <- elev_ls$col
+#' measure_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
+#' cluster_elevation(elev_df, gridsize = 20, n = 4 , xdim = 320, ydim = 500)
+#' @name topography_metrics
+#' @aliases measure_topography cluster_elevation
+NULL
+
+#' @export
+cluster_elevation <- function(elevation, ...) {
+  UseMethod("cluster_elevation")
 }
 
 #' @export
-measure_topography <- function(elevation, gridsize, ...) {
+cluster_elevation.default <- function(elevation, ...) {
+  abort_bad_class(elevation)
+}
+
+#' @rdname topography_metrics
+#' @export
+cluster_elevation.list <- function(elevation, 
+                                   gridsize, 
+                                   n, 
+                                   edgecorrect = TRUE, 
+                                   ...) {
+  force(gridsize)
+  force(n)
+  
+  # Ensure kmeans() returns always the same result
+  old_seed <- get(".Random.seed", .GlobalEnv)
+  on.exit(assign(".Randon.seed", old_seed, .GlobalEnv))
+  set.seed(1)
+  
+  hab <- measure_topography.list(elevation, gridsize, edgecorrect = edgecorrect)
+  cluster_vars <- c("meanelev", "convex", "slope")
+  hab$cluster <- stats::kmeans(hab[cluster_vars], n)$cluster
+  hab
+}
+
+#' @rdname topography_metrics
+#' @export
+cluster_elevation.data.frame <- function(elevation,
+                                         gridsize,
+                                         n,
+                                         xdim = NULL,
+                                         ydim = NULL,
+                                         edgecorrect = TRUE,
+                                         ...) {
+  force(gridsize)
+  force(n)
+  abort_if_xdim_ydim_is_null(xdim, ydim)
+  
+  elevation_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
+  cluster_elevation.list(elevation_ls, gridsize, n, edgecorrect)
+}
+#' @export
+measure_topography <- function(elevation, ...) {
   UseMethod("measure_topography")
 }
 
@@ -147,19 +211,27 @@ measure_topography.default <- function(elevation, gridsize, ...) {
   abort_bad_class(elevation)
 }
 
+#' @rdname topography_metrics
 #' @export
 measure_topography.data.frame <- function(elevation, 
                                           gridsize, 
-                                          xdim,
-                                          ydim,
-                                          edgecorrect = TRUE) {
+                                          xdim = NULL,
+                                          ydim = NULL,
+                                          edgecorrect = TRUE,
+                                          ...) {
   force(gridsize)
+  abort_if_xdim_ydim_is_null(xdim, ydim)
+  
   elevation_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
   measure_topography.list(elevation = elevation_ls, gridsize, edgecorrect)
 }
 
+#' @rdname topography_metrics
 #' @export
-measure_topography.list <- function(elevation, gridsize, edgecorrect = TRUE) {
+measure_topography.list <- function(elevation, 
+                                    gridsize, 
+                                    edgecorrect = TRUE, 
+                                    ...) {
   force(gridsize)
   plotdim <- c(elevation$xdim, elevation$ydim)
   
@@ -175,46 +247,16 @@ measure_topography.list <- function(elevation, gridsize, edgecorrect = TRUE) {
   tibble::as.tibble(cbind(gxgy, topo))
 }
 
-#' @export
-cluster_elevation <- function(elevation, gridsize, n, ...) {
-  UseMethod("cluster_elevation")
-}
-
-#' @export
-cluster_elevation.default <- function(elevation, gridsize, ...) {
-  abort_bad_class(elevation)
-}
-
-#' @export
-cluster_elevation.list <- function(elevation, gridsize, n, edgecorrect = TRUE) {
-  force(gridsize)
-  force(n)
-  
-  # Ensure kmeans() returns always the same result
-  old_seed <- get(".Random.seed", .GlobalEnv)
-  on.exit(assign(".Randon.seed", old_seed, .GlobalEnv))
-  set.seed(1)
-  
-  hab <- measure_topography.list(elevation, gridsize, edgecorrect = edgecorrect)
-  cluster_vars <- c("meanelev", "convex", "slope")
-  hab$cluster <- stats::kmeans(hab[cluster_vars], n)$cluster
-  hab
-}
-
-#' @export
-cluster_elevation.data.frame <- function(elevation,
-                                         gridsize,
-                                         n,
-                                         xdim,
-                                         ydim,
-                                         edgecorrect = TRUE) {
-  force(gridsize)
-  force(n)
-  
-  elevation_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
-  cluster_elevation.list(elevation_ls, gridsize, n, edgecorrect)
+new_fgeo_habitat <- function(x) {
+  structure(x, class = c("fgeo_habitat", class(x)))
 }
 
 abort_bad_class <- function(x) {
   abort(glue("Can't deal with data of class {class(x)}."))
+}
+
+abort_if_xdim_ydim_is_null <- function(xdim, ydim) {
+  msg <- "`xdim` and `ydim` can't be `NULL` if `elevation` is a data.frame."
+  xdim %||% abort(msg)
+  ydim %||% abort(msg)
 }

@@ -1,8 +1,6 @@
 # TODO:
 # fgeo_habitat and friends:
-# * Refactor to simplify 
 # * Update fgeo.data::luquillo_habitat
-# * Check where this may brake code
 
 
 

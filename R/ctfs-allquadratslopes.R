@@ -109,7 +109,7 @@ quadslope <- function(cornerelev, gridsize) {
     }
     slope[j] <- calcslope(z, gridsize)
   }
-  return(c(mean(slope), sqrt(var(slope))))
+  return(c(mean(slope), sqrt(stats::var(slope))))
 }
 
 #' Internal.
