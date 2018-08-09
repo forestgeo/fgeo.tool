@@ -40,7 +40,6 @@ reference:
     contents:
     - read_fgeo
     - type_fgeo
-
     - xlff_to_csv
     - xlff_to_dfs
     - xlff_to_xl
@@ -50,13 +49,10 @@ reference:
     contents:
     - csv_to_df
     - csv_to_dfs
-
     - dfs_to_csv
     - dfs_to_df
-
     - xl_to_df
     - xl_to_dfs
-
     - xlsheets_to_dfs
 
   - title: Pick/drop rows with matching conditions 
@@ -109,11 +105,13 @@ reference:
     - starts_with("nms_")
     - by_group
 
-  - title: Construct or restructure data
+  - title: Deal with elevation data and its products
     desc: Specific to ForestGEO
     contents:
     - fgeo_elevation
     - fgeo_habitat
+    - measure_topography
+    - cluster_elevation
 
   - title: Access data 
     desc: Specific to ForestGEO

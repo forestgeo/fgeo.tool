@@ -4,7 +4,7 @@
 #' habitats in two steps:
 #' 1. It calculates mean elevation, convexity and slope for each quadrat (via
 #' [measure_topography()])).
-#' 2. It calculates habitas based on the topographic metrics from step 1:
+#' 2. It calculates habitats based on the topographic metrics from step 1:
 #'     * If `only_elev = FALSE` (default) habitats are calculated by applying 
 #'     [stats::kmeans()] clustering on all three topographic metrics from step 1.
 #'     (For an output that shows all three topographic metrics plus the 
@@ -53,13 +53,28 @@
 #' if (requireNamespace("fgeo.map")) {
 #'   library(fgeo.map)
 #'   plot(hab1)
+#' }
+#' 
+#' # Compare
+#' if (requireNamespace("fgeo.map")) {
+#'   library(fgeo.map)
 #'   
-#'   # Compare
 #'   hab2 <- fgeo_habitat(elev_list, gridsize = 20, n = 4, only_elev = TRUE)
 #'   plot(hab2)
 #' }
 #' 
-#' # Input: Object of class dataframe
+#' # A good use of habitat data is for calculating species-habitat associations
+#' if (requireNamespace("fgeo.habitat")) {
+#'   library(fgeo.habitat)
+#'   
+#'   elev_list <- fgeo.data::luquillo_elevation
+#'   habitat <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
+#'   census <- fgeo.habitat::luquillo_top3_sp
+#'   species <- unique(census$sp)
+#'   to_df(tt_test(census, species, habitat))
+#' }
+#' 
+#' # If working with elevation dataframe you must provide xdim and ydim
 #' elev_df <- fgeo.data::luquillo_elevation$col
 #' hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 #' str(hab2)
@@ -137,6 +152,7 @@ elevation_to_habitat <- function(elevation,
 #' `measure_topography()`. 
 #' 
 #' @inheritParams construct_habitats
+#' @seealso [fgeo_habitat()].
 #' 
 #' @inherit construct_habitats details
 #'

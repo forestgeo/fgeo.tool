@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract plot dimensions from habitat data. — extract_from_habitat • fgeo.tool</title>
+<title>Internal. — quadslope • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Extract plot dimensions from habitat data. — extract_from_habitat" />
+<meta property="og:title" content="Internal. — quadslope" />
 
-<meta property="og:description" content="Extract plot dimensions from habitat data." />
+<meta property="og:description" content="Internal." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,56 +106,32 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract plot dimensions from habitat data.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/extract_from_habitat.R'><code>R/extract_from_habitat.R</code></a></small>
-    <div class="hidden name"><code>extract_from_habitat.Rd</code></div>
+    <h1>Internal.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/ctfs-allquadratslopes.R'><code>R/ctfs-allquadratslopes.R</code></a></small>
+    <div class="hidden name"><code>quadslope.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Extract plot dimensions from habitat data.</p>
+    <p>Internal.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>extract_gridsize</span>(<span class='no'>habitats</span>)
+    <pre class="usage"><span class='fu'>quadslope</span>(<span class='no'>cornerelev</span>, <span class='no'>gridsize</span>)</pre>
+        
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-<span class='fu'>extract_plotdim</span>(<span class='no'>habitats</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>habitats</th>
-      <td><p>Data frame giving the habitat designation for each 20x20
-quadrat.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    
-<ul>
-<li><p><code>extract_plotdim()</code>: <code>plotdim</code> (vector of length 2);</p></li>
-<li><p><code>extract_gridsize()</code>: <code>gridsize</code> (scalar).</p></li>
-</ul>
-
+    <div class='dont-index'><p>Other functions from http://ctfs.si.edu/Public/CTFSRPackage/: <code><a href='allquadratslopes.html'>allquadratslopes</a></code>,
+  <code><a href='calcslope.html'>calcslope</a></code>, <code><a href='findborderquads.html'>findborderquads</a></code></p></div>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>fgeo.data</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'fgeo.data'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:fgeo.habitat':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    luquillo_habitat</span></div><div class='input'><span class='fu'>extract_plotdim</span>(<span class='no'>luquillo_habitat</span>)</div><div class='output co'>#&gt; [1] 320 500</div><div class='input'><span class='fu'>extract_gridsize</span>(<span class='no'>luquillo_habitat</span>)</div><div class='output co'>#&gt; [1] 20</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      <li><a href="#see-also">See also</a></li>
+          </ul>
 
   </div>
 </div>

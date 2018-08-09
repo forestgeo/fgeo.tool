@@ -76,3 +76,6 @@ elev_df <- elev_ls$col
 measure_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 cluster_elevation(elev_df, gridsize = 20, n = 4 , xdim = 320, ydim = 500)
 }
+\seealso{
+\code{\link[=fgeo_habitat]{fgeo_habitat()}}.
+}
