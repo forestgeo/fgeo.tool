@@ -29,10 +29,12 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    withr,
     writexl
 Suggests: 
     bciex,
     covr,
+    fgeo.habitat,
     fgeo.map,
     knitr,
     testthat
