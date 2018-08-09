@@ -190,14 +190,9 @@ cluster_elevation.list <- function(elevation,
   force(gridsize)
   force(n)
   
-  # Ensure kmeans() returns always the same result
-  old_seed <- get(".Random.seed", .GlobalEnv)
-  on.exit(assign(".Randon.seed", old_seed, .GlobalEnv))
-  set.seed(1)
-  
   hab <- measure_topography.list(elevation, gridsize, edgecorrect = edgecorrect)
   cluster_vars <- c("meanelev", "convex", "slope")
-  hab$cluster <- stats::kmeans(hab[cluster_vars], n)$cluster
+  hab$cluster <- withr::with_seed(1, stats::kmeans(hab[cluster_vars], n)$cluster)
   hab
 }
 

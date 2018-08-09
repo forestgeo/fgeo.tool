@@ -53,6 +53,7 @@ describe("fgeo_habitat", {
   })
   
   it("outputs object with number of rows equal to number of quadrats", {
+    skip_if_not_installed("pasoh")
     elev_luq <- fgeo.data::luquillo_elevation
     hab <- fgeo_habitat(elev_luq, gridsize = 20, n = 4)
     

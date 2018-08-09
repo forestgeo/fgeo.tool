@@ -29,10 +29,12 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
+    withr,
     writexl
 Suggests: 
     bciex,
     covr,
+    fgeo.habitat,
     fgeo.map,
     knitr,
     testthat
@@ -41,6 +43,7 @@ Remotes:
     forestgeo/bciex,
     forestgeo/fgeo.base,
     forestgeo/fgeo.data,
+    forestgeo/fgeo.habitat,
     forestgeo/fgeo.map
 Encoding: UTF-8
 LazyData: true
