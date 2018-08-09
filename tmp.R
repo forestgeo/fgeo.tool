@@ -1,14 +1,13 @@
 # TODO:
+# fgeo_habitat and friends:
 # * Update fgeo.data::luquillo_habitat
-# * Check where this may brake code
 
-  
+
 
 * warn_ and detect_duplicated_treeid: Simplify and test:
   * not use stemid
   * not deal with groups
   * use lowercase treeid in the message or substitute()
-
 
 # TODO --------------------------------------------------------------------
 
