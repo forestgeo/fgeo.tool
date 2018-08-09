@@ -2,51 +2,71 @@
 % Please edit documentation in R/fgeo_habitat.R
 \name{fgeo_habitat}
 \alias{fgeo_habitat}
-\alias{fgeo_habitat.list}
-\alias{fgeo_habitat.data.frame}
-\title{Construct habitat data.}
+\title{Construct habitats from measures of topography (or only elevation).}
 \usage{
-fgeo_habitat(elevation, gridsize, n, only_elev = FALSE,
-  edgecorrect = TRUE, ...)
-
-\method{fgeo_habitat}{list}(elevation, gridsize, n, only_elev = FALSE,
-  edgecorrect = TRUE, ...)
-
-\method{fgeo_habitat}{data.frame}(elevation, gridsize, n, xdim, ydim,
+fgeo_habitat(elevation, gridsize, n, xdim = NULL, ydim = NULL,
   only_elev = FALSE, edgecorrect = TRUE, ...)
 }
 \arguments{
-\item{elevation}{\itemize{
+\item{elevation}{One of these:
+\itemize{
 \item A list with at least three elements: \code{col} containing
 elevation data; and \code{xdim} and \code{ydim} giving plot dimensions; OR
-\itemize{
 \item A dataframe containing elevation data, in which
 case the parameters \code{xdim} and \code{ydim} must be provided. It may be the
 element \code{col} of a ForestGEO elevation-list or an object of class
 fgeo_elevation (see \code{\link[=fgeo_elevation]{fgeo_elevation()}}).
-}
 }}
 
-\item{gridsize}{Number to round \code{x} and \code{y} by. Commonly, \code{gridsize = 20}.}
+\item{gridsize}{Number giving the size of each quadrat for which a habitat
+is calculated. Commonly, \code{gridsize = 20}.}
 
-\item{n}{Number of elevation groups (habitats) to cut elevation data by.
-Commonly, \code{n = 4}.}
-
-\item{...}{Other arguments passed to methods.}
+\item{n}{Number of distinct habitat-categories to construct.}
 
 \item{xdim, ydim}{\code{x} and \code{y} dimensions of the plot.}
+
+\item{only_elev}{Should the clusters be calculated using only elevation?
+\itemize{
+\item If \code{FALSE} (default) habitats are calculated by applying
+\code{\link[stats:kmeans]{stats::kmeans()}} clustering on all three topographic metrics from step 1.
+\item If \code{TRUE} habitats are calculated by applying \code{\link[base:cut]{base::cut()}} on the mean
+elevation from step 1 (ignoring convexity and slope).
+}}
+
+\item{edgecorrect}{Correct convexity in edge quadrats?}
+
+\item{...}{Other arguments passed to methods.}
 }
 \value{
-A dataframe of habitat data, with columns \code{gx} and \code{gy}, rounded
-with accuracy determined by \code{gridsize}, and column \code{habitats}, with as
-many distinct values as determined by the argument \code{n}.
+A dataframe of subclass fgeo_habitat, with columns \code{gx} and \code{gy}
+rounded with accuracy determined by \code{gridsize}, and column \code{habitats}, with
+as many distinct integer values as determined by the argument \code{n}.
 }
 \description{
-This function constructs an object of class fgeo_habitat. It takes either the
-elevation list that ForestGEO delivers, or its element \code{col} -- which
-contains the elevation data. Notice that the required arguments to
-\code{fgeo_habitat()} vary according to the main input (the elevation list or the
-elevation dataframe).
+This function constructs habitat data based on elevation data. It calculates
+habitats in two steps:
+\enumerate{
+\item It calculates mean elevation, convexity and slope for each quadrat (via
+\code{\link[=measure_topography]{measure_topography()}})).
+\item It calculates habitas based on the topographic metrics from step 1:
+\itemize{
+\item If \code{only_elev = FALSE} (default) habitats are calculated by applying
+\code{\link[stats:kmeans]{stats::kmeans()}} clustering on all three topographic metrics from step 1.
+(For an output that shows all three topographic metrics plus the
+resulting cluster, use \code{\link[=cluster_elevation]{cluster_elevation()}}).
+\item If \code{only_elev = TRUE} habitats are calculated by applying \code{\link[base:cut]{base::cut()}}
+on the mean elevation from step 1 (ignoring convexity and slope).
+}
+}
+
+The input can be either the elevation list that ForestGEO delivers, or the
+element \code{col} of such list -- which is a dataframe containing the elevation
+data. Notice that the required arguments to \code{fgeo_habitat()} vary according
+to the main input (the elevation list or the elevation dataframe).
+
+The outputs an object of class fgeo_habitat, which you can visualize directly
+with \code{plot()} (assuming you are using \strong{fgeo.map}, for example via
+\code{library(fgeo)}).
 }
 \examples{
 # Input: Object of class list
@@ -57,19 +77,18 @@ str(hab1)
 if (requireNamespace("fgeo.map")) {
   library(fgeo.map)
   plot(hab1)
+  
+  # Compare
+  hab2 <- fgeo_habitat(elev_list, gridsize = 20, n = 4, only_elev = TRUE)
+  plot(hab2)
 }
 
 # Input: Object of class dataframe
 elev_df <- fgeo.data::luquillo_elevation$col
 hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 str(hab2)
-
-# Input: Object of class fgeo_elev
-fgeo_elev <- fgeo_elevation(fgeo.data::luquillo_elevation)
-hab3 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
-str(hab3)
-
-identical(hab1, hab2)
-identical(hab2, hab3)
-hab1
+}
+\seealso{
+\code{\link[fgeo.map:plot.fgeo_habitat]{fgeo.map::plot.fgeo_habitat()}}, \code{\link[=measure_topography]{measure_topography()}},
+\code{\link[=cluster_elevation]{cluster_elevation()}}.
 }

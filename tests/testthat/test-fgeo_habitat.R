@@ -19,7 +19,7 @@ describe("fgeo_habitat", {
     elev_ls_missing_xdim$xdim <- NULL
     expect_error(fgeo_habitat(elev_ls_missing_xdim), "Ensure your data set")
     
-    expect_error(fgeo_habitat(elev_ls$col), "xdim.*ydim.*can't be missing")
+    expect_error(fgeo_habitat(elev_ls$col), "xdim.*ydim.*can't be `NULL`")
   })
   
   it("outputs object that throws no warning with tt_test()", {
@@ -75,8 +75,7 @@ describe("fgeo_habitat", {
     skip_if_not_installed("bciex")
     elev <- bciex::bci_elevation
     expect_error(
-      fgeo_habitat(elev, gridsize = 20, n = 2),
-      "`xdim` and `ydim` can't be missing if `elevation` is a data.frame"
+      fgeo_habitat(elev, gridsize = 20, n = 2), "xdim.*ydim.*can't be `NULL`"
     )
     expect_silent(fgeo_habitat(elev, gridsize = 20, 2, xdim = 1000, ydim = 500))
     bci_elev_ls <- list(col = elev, xdim = 1000, ydim = 500)
