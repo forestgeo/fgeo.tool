@@ -59,7 +59,7 @@ fgeo_habitat <- function(elevation,
 
 #' @export
 fgeo_habitat.default <- function(elevation, gridsize, n, ...) {
-  abort(paste0("Can't deal with data of class ", class(elevation)))
+  abort_bad_class(elevation)
 }
 
 #' @export
@@ -98,9 +98,6 @@ fgeo_habitat.data.frame <- function(elevation,
   )
 }
 
-# TODO: Test if output passes tt_test() without warnings.
-# TODO: Document and export
-# TODO: Test it with elevation dataframe and maybe write method for df and ls
 elevation_to_habitat <- function(elevation,
                                  gridsize,
                                  n,
@@ -111,7 +108,7 @@ elevation_to_habitat <- function(elevation,
   elev_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
   out <- cluster_elevation(elev_ls, gridsize, n, edgecorrect)
   if (only_elev) {
-    out$cluster <- cut(out$meanelev, n, 1:n)
+    out$cluster <- as.integer(cut(out$meanelev, n, 1:n))
   }
   
   names(out) <- sub("cluster", "habitats", names(out))
@@ -119,24 +116,41 @@ elevation_to_habitat <- function(elevation,
   new_fgeo_habitat(out)
 }
 
-# TODO: Document and export
-cluster_elevation <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
-  hab <- measure_topography(elev_ls, gridsize, n, edgecorrect)
-  hab$cluster <- stats::kmeans(hab[c("meanelev", "convex", "slope")], n)$cluster
-  hab
+new_fgeo_habitat <- function(x) {
+  structure(x, class = c("fgeo_habitat", class(x)))
 }
 
-# TODO: Document and export
-measure_topography <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
+#' @export
+measure_topography <- function(elevation, gridsize, ...) {
+  UseMethod("measure_topography")
+}
+
+#' @export
+measure_topography.default <- function(elevation, gridsize, ...) {
+  abort_bad_class(elevation)
+}
+
+#' @export
+measure_topography.data.frame <- function(elevation, 
+                                          gridsize, 
+                                          xdim,
+                                          ydim,
+                                          edgecorrect = TRUE) {
   force(gridsize)
-  force(n)
-  plotdim <- c(elev_ls$xdim, elev_ls$ydim)
+  elevation_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
+  measure_topography.list(elevation = elevation_ls, gridsize, edgecorrect)
+}
+
+#' @export
+measure_topography.list <- function(elevation, gridsize, edgecorrect = TRUE) {
+  force(gridsize)
+  plotdim <- c(elevation$xdim, elevation$ydim)
   
   # Match names-requirements of allquadratslopes()
-  names(elev_ls$col) <- sub("gx", "x", names(elev_ls$col))
-  names(elev_ls$col) <- sub("gy", "y", names(elev_ls$col))
+  names(elevation$col) <- sub("gx", "x", names(elevation$col))
+  names(elevation$col) <- sub("gy", "y", names(elevation$col))
   topo <- suppressMessages(
-    allquadratslopes(elev_ls, gridsize, plotdim, edgecorrect)
+    allquadratslopes(elevation, gridsize, plotdim, edgecorrect)
   )
   
   quad_idx <- as.integer(rownames(topo))
@@ -144,6 +158,46 @@ measure_topography <- function(elev_ls, gridsize, n, edgecorrect = TRUE) {
   tibble::as.tibble(cbind(gxgy, topo))
 }
 
-new_fgeo_habitat <- function(x) {
-  structure(x, class = c("fgeo_habitat", class(x)))
+#' @export
+cluster_elevation <- function(elevation, gridsize, n, ...) {
+  UseMethod("cluster_elevation")
+}
+
+#' @export
+cluster_elevation.default <- function(elevation, gridsize, ...) {
+  abort_bad_class(elevation)
+}
+
+#' @export
+cluster_elevation.list <- function(elevation, gridsize, n, edgecorrect = TRUE) {
+  force(gridsize)
+  force(n)
+  
+  # Ensure kmeans() returns always the same result
+  old_seed <- get(".Random.seed", .GlobalEnv)
+  on.exit(assign(".Randon.seed", old_seed, .GlobalEnv))
+  set.seed(1)
+  
+  hab <- measure_topography.list(elevation, gridsize, edgecorrect = edgecorrect)
+  cluster_vars <- c("meanelev", "convex", "slope")
+  hab$cluster <- stats::kmeans(hab[cluster_vars], n)$cluster
+  hab
+}
+
+#' @export
+cluster_elevation.data.frame <- function(elevation,
+                                         gridsize,
+                                         n,
+                                         xdim,
+                                         ydim,
+                                         edgecorrect = TRUE) {
+  force(gridsize)
+  force(n)
+  
+  elevation_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
+  cluster_elevation.list(elevation_ls, gridsize, n, edgecorrect)
+}
+
+abort_bad_class <- function(x) {
+  abort(glue("Can't deal with data of class {class(x)}."))
 }
