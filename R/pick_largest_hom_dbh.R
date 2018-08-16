@@ -1,8 +1,11 @@
-#' Pick the (stem of) largest hom and dbh per treeid per censusid.
+#' Pick the main stem of each tree in each census.
 #' 
-#' This function picks the stem with the maximum dbh per treeid per censusid. It
-#' intentionally errs if it detects multiple distinct values of plotname (i.e.
-#' if the data is a ViewFullTable with multiple plots).
+#' This function picks the main stem of each tree in each census. 
+#' 
+#' 
+#' It
+#' intentionally errs if it detects multiple plots. It ignores groups of grouped
+#' data (to operate within groups see ?[pick_woods()]).
 #'
 #' @param .x A ForestGEO-like dataframe, census or ViewFullTable.
 #'

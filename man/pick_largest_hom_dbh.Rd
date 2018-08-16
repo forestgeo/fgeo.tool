@@ -2,7 +2,7 @@
 % Please edit documentation in R/pick_largest_hom_dbh.R
 \name{pick_largest_hom_dbh}
 \alias{pick_largest_hom_dbh}
-\title{Pick the (stem of) largest hom and dbh per treeid per censusid.}
+\title{Pick the main stem of each tree in each census.}
 \usage{
 pick_largest_hom_dbh(.x)
 }
@@ -14,9 +14,9 @@ A dataframe with one row per per treeid per censusid and a single
 plotname.
 }
 \description{
-This function picks the stem with the maximum dbh per treeid per censusid. It
-intentionally errs if it detects multiple distinct values of plotname (i.e.
-if the data is a ViewFullTable with multiple plots).
+This function picks the main stem of each tree in each census. It
+intentionally errs if it detects multiple plots. It ignores groups of grouped
+data -- to operate within groups see ?\code{\link[=pick_woods]{pick_woods()}}.
 }
 \examples{
 census <- tibble::tribble(

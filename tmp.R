@@ -1,6 +1,15 @@
 # TODO:
-# fgeo_habitat and friends:
-# * Update fgeo.data::luquillo_habitat
+# In pick_woods(), force expressions to be of dbh: Add something like:
+# (From fgeo.abundance)
+dots <- lowercase_var(..., .var = "dbh")
+flag_if_not_expression_of_var(dots, .flag = rlang::abort, .var = "dbh")
+
+
+
+
+
+
+
 
 
 

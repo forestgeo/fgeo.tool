@@ -2,6 +2,54 @@ context("pick_woods")
 
 library(dplyr)
 
+describe("pick_woods with real-ish ViewFullTables and census tables", {
+  it("outputs a tibble", {
+    stem_one_census <- fgeo.data::luquillo_stem6_1ha
+    expect_is(pick_woods(stem_one_census, dbh >= 10), "tbl_df")
+    
+    tree_one_census <- fgeo.data::luquillo_tree6_random
+    expect_is(pick_woods(tree_one_census, dbh >= 10), "tbl_df")
+
+    vft <- fgeo.data::luquillo_vft_4quad
+    expect_is(pick_woods(vft, dbh >= 10), "tbl_df")
+  })
+})
+
+describe("pick_woods with multiple censuses", {
+  it("picks main stem independently for each censusID", {
+    census <- tibble::tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+      "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+      "sp1",     "1",   "1.2",   140,   30,         1,
+      "sp1",     "1",   "1.3",   130,   30,         1,  # buttresses
+      "sp1",     "1",   "1.4",   130,   20,         1,  # buttresses
+      
+      "sp1",     "1",   "1.1",   140,   40,         2,  # main stem
+      "sp1",     "1",   "1.2",   140,   30,         2,
+      "sp1",     "1",   "1.3",   130,   60,         2,  # buttresses
+      "sp1",     "1",   "1.4",   130,   50,         2   # buttresses
+    )
+    
+    # FIXME: It seems to not be picking main stems independently for each census
+    expect_equal(pick_woods(census, dbh >= 10)$stemID, c("1.1", "1.1"))
+  })
+  
+  it("outputs the same for a census in a single or multi-census dataset", {
+    cns_n <- 6
+    multi <- fgeo.data::luquillo_vft_4quad
+    single <- filter(multi, CensusID == cns_n)
+    
+    out_m <- filter(pick_woods(multi, dbh > 0), CensusID == cns_n)
+    out_s <- pick_woods(single, dbh > 0)
+    expect_equal(out_m, out_s)
+  })
+  
+  
+})
+
+
+
+
 cns <- tibble::tribble(
   ~dbh,   ~sp, ~treeID, ~stemID, ~hom,
     10, "sp1",     "1",   "1.1",   10,
@@ -13,7 +61,7 @@ cns <- tibble::tribble(
     NA, "sp2",     "2",   "2.3",   10
 )
 
-describe("pick_woods", {
+describe("pick_woods with single census", {
   it("with no filtering expressions it outputs equal to pick_largest_hom_dbh()", {
     expect_equal(pick_woods(cns), pick_largest_hom_dbh(cns))
   })

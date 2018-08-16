@@ -34,26 +34,29 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
   }
 }
 
-#' Pick woods after collapsing multiple stems by treeid and censusid.
+#' Pick main stems within a specific dbh range.
 #' 
 #' @description 
+#' 
+#' * It rejects multiple plots with an informative error message.
+#' * If the data has multiple censuses, it automatically group by census.
+#' * They collapse data of multi-stem trees by picking a single stem per
+#' `treeid` per `censusid`: Within this groups they pick the stem at the top of
+#' a list sorted first by descending order of `hom`, and then by descending
+#' order of `dbh` -- this corrects the effect of buttresses and picks the main
+#' stem.
+#' 
 #' These functions pick rows by groups. At the core they run `dplyr::filter()`
 #' but include these additional features:
-#' * They reject multiple plots with an informative error message.
-#' * They operate within groups define with `dplyr::group_by()`.
-#' * If the data has multiple censuses, they automatically group by census.
-#' * They collapse data of multi-stem trees by picking a single stem per treeid.
-#' The picked stem depends on the values of `hom` or `dbh` detected for each 
-#' census of each treeid. The selection is as follows:
-#'   * If there is a single `hom` value, it is the stem of maximum `dbh`.
-#'   * If there is more than one `hom` value, it is the stem of maximum `dbh`.
+#' * They operate within groups defined with `dplyr::group_by()`.
 #' 
 #' @description
-#' * `pick_woods()` is a general function that takes any dataframe and any 
-#' number of expressions to filter the dataframe.
+#' `pick_woods()` is a general function that picks rows of a dataframe based on
+#' any number of expressions. The other functions are shortcuts:
 #' * `pick_trees()` picks stems of 100 mm dbh and above.
 #' * `pick_saplings()` picks stems between 10 mm dbh inclusive and 100 mm dbh 
 #' exclusive.
+#' * `pick_saplings_and_trees()` picks stems of 10 mm dbh and above.
 #' 
 #' @param .data A ForestGEO-like dataframe, either a census or ViewFullTable.
 #' @param ... Expressions passed to `dplyr::filter()`, E.g. the 
@@ -67,21 +70,32 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
 #' 
 #' @examples 
 #' census <- tibble::tribble(
-#'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
-#'   "sp1",     "1",   "1.2",   130,  122,
-#'   "sp1",     "1",   "1.1",   130,   10,
-#'   "sp2",     "2",   "2.1",   130,   22,
-#'   "sp2",     "2",   "2.2",   130,   99,
-#'   "sp2",     "2",   "2.2",   144,   88,
-#'   "sp2",     "2",   "2.3",   130,   NA,
+#'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+#'   "sp1",     "1",   "1.2",   130,  122,         1,
+#'   "sp1",     "1",   "1.1",   130,   10,         1,
+#'   "sp2",     "2",   "2.1",   130,   22,         1,
+#'   "sp2",     "2",   "2.2",   130,   99,         1,
+#'   "sp2",     "2",   "2.2",   144,   88,         1,
+#'   "sp2",     "2",   "2.3",   130,   NA,         1,
+#'                                        
+#'   "sp1",     "1",   "1.2",   130,  123,         2,
+#'   "sp1",     "1",   "1.1",   130,   11,         2,
+#'   "sp2",     "2",   "2.1",   130,   22,         2,
+#'   "sp2",     "2",   "2.2",   130,  110,         2,
+#'   "sp2",     "2",   "2.2",   144,  101,         2,
+#'   "sp2",     "2",   "2.3",   130,   NA,         2
 #' )
 #' 
-#' # Piks largest hom first, then largest dbh (to correct effect of batreesses)
+#' # Piks largest hom first (to correct effect of batreesses) then largest dbh
+#' pick_woods(census, dbh >=10)
+#' 
 #' pick_woods(census, dbh >=10, dbh < 100)
 #' # Same
 #' pick_saplings(census)
 #' 
 #' pick_trees(census)
+#' 
+#' pick_saplings_and_trees(census)
 pick_woods <- pick_woods_f(
   identity, .collapse = fgeo.tool::pick_largest_hom_dbh
 )
@@ -96,6 +110,12 @@ pick_trees <- function(.data) {
 #' @rdname pick_woods
 pick_saplings <- function(.data) {
   pick_woods(.data, .data$dbh >= 10, .data$dbh < 100)
+}
+
+#' @export
+#' @rdname pick_woods
+pick_saplings_and_trees <- function(.data) {
+  pick_woods(.data, .data$dbh >= 10)
 }
 
 multiple_plotname <- fgeo.base::multiple_var("plotname")
