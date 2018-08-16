@@ -23,9 +23,9 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
     }
     
     # do() prefferred to by_group() to not drop empty groups (they result in 0L)
-    dots <- rlang::enquos(...)
+    filter_dots <- enquos(...)
     out <- dplyr::do(
-      .x, pick_woods_f_impl(., !!! dots, .collapse = .collapse, .f = .f)
+      .x, pick_woods_f_impl(., !!! filter_dots, .collapse = .collapse, .f = .f)
     )
     
     # Restore original names; then original groups
@@ -124,7 +124,6 @@ multiple_plotname <- fgeo.base::multiple_var("plotname")
 multiple_censusid <- fgeo.base::multiple_var("censusid")
 
 pick_woods_f_impl <- function(.data, ..., .collapse, .f) {
-  .dots <- rlang::enquos(...)
-  pick <- dplyr::filter( .collapse(.data), !!! .dots)
+  pick <- dplyr::filter( .collapse(.data), !!! enquos(...))
   .f(pick)
 }

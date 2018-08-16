@@ -64,8 +64,7 @@ pick_by_groups_by_censusid <- function(.x, ...) {
     .x <- group_by(.x, .data$censusid)
   }
   
-  group_vars <- enquos(...)
-  grouped <- group_by(.x, !!! group_vars, add = TRUE)
+  grouped <- group_by(.x, !!! enquos(...), add = TRUE)
   main_stems_at_top <- arrange(grouped, desc(.data$hom), desc(.data$dbh), .by_group = TRUE)
   main_stems <- filter(main_stems_at_top, dplyr::row_number() == 1L)
   ungroup(main_stems)
