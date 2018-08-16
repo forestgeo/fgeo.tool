@@ -57,18 +57,16 @@ pick_largest_hom_dbh <- function(.x) {
 }
 
 pick_by_groups_by_censusid <- function(.x, ...) {
-  group_vars <- enquos(...)
   .x <- ungroup(.x)
-  
   
   if (multiple_censusid(.x)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")
     .x <- group_by(.x, .data$censusid)
   }
   
-  .x %>%
-    group_by(!!! group_vars, add = TRUE) %>% 
-    arrange(desc(.data$hom), desc(.data$dbh), .by_group = TRUE) %>%
-    filter(dplyr::row_number() == 1L) %>% 
-    ungroup()
+  group_vars <- enquos(...)
+  grouped <- group_by(.x, !!! group_vars, add = TRUE)
+  main_stems_at_top <- arrange(grouped, desc(.data$hom), desc(.data$dbh), .by_group = TRUE)
+  main_stems <- filter(main_stems_at_top, dplyr::row_number() == 1L)
+  ungroup(main_stems)
 }
