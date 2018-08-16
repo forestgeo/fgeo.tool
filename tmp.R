@@ -1,6 +1,5 @@
 # TODO:
 # FIX FIXME
-# Refactor to remove unused argument .arrange -- to much unused complexity.
 # In pick_woods(), force expressions to be of dbh: Add something like:
 # (From fgeo.abundance)
 dots <- lowercase_var(..., .var = "dbh")
