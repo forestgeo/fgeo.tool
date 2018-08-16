@@ -46,9 +46,6 @@ describe("pick_woods with buttressess and smaller diameter higher up the tree", 
   })
 })
 
-
-
-
 cns <- tibble::tribble(
   ~dbh,   ~sp, ~treeID, ~stemID, ~hom,
     10, "sp1",     "1",   "1.1",   10,

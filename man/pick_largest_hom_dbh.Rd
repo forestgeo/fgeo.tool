@@ -14,24 +14,35 @@ A dataframe with one row per per treeid per censusid and a single
 plotname.
 }
 \description{
+This function picks the main stem of each tree in each census.
+}
+\details{
 This function picks the main stem of each tree in each census. It
-intentionally errs if it detects multiple plots. It ignores groups of grouped
-data -- to operate within groups see ?\code{\link[=pick_woods]{pick_woods()}}.
+collapses data of multi-stem trees by picking a single stem per \code{treeid} per
+\code{censusid}: Within this groups it picks the stem at the top of a list sorted
+first by descending order of \code{hom}, and then by descending order of \code{dbh} --
+this corrects the effect of buttresses and picks the main stem. It
+intentionally rejects data with multiple plots, and ignores groups of grouped
+data (to operate within groups see ?\code{\link[=pick_woods]{pick_woods()}}).
 }
 \examples{
-census <- tibble::tribble(
-  ~dbh,   ~sp, ~treeID, ~stemID, ~hom,
-    10, "sp1",     "1",   "1.1",   10,
-   100, "sp1",     "1",   "1.2",   10,
-    22, "sp2",     "2",   "2.1",   10,
-    99, "sp2",     "2",   "2.2",   10,
-    99, "sp2",     "2",   "2.3",   10,
-    NA, "sp2",     "2",   "2.4",   10
+library(tibble)
+
+# Trees with buttresses may have more than one measurements per stem.
+census <- tribble(
+    ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+  "sp1",     "1",   "1.1",   140,   40,         1,  # main stem # FIXME
+  "sp1",     "1",   "1.1",   130,   60,         1,  # buttress
+  "sp1",     "1",   "1.2",   130,   55,         1,  
+  "sp2",     "2",   "2.1",   130,    5,         1,
 )
 
+# Piks largest hom first (to correct effect of batreesses) then largest dbh
 pick_largest_hom_dbh(census)
 }
 \seealso{
+\code{\link[=pick_woods]{pick_woods()}}.
+
 Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}, \code{\link{pick_recensus}},
   \code{\link{pick_top}}

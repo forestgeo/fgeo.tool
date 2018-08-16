@@ -36,27 +36,15 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
 
 #' Pick main stems within a specific dbh range.
 #' 
-#' @description 
-#' 
-#' * It rejects multiple plots with an informative error message.
-#' * If the data has multiple censuses, it automatically group by census.
-#' * They collapse data of multi-stem trees by picking a single stem per
-#' `treeid` per `censusid`: Within this groups they pick the stem at the top of
-#' a list sorted first by descending order of `hom`, and then by descending
-#' order of `dbh` -- this corrects the effect of buttresses and picks the main
-#' stem.
-#' 
-#' These functions pick rows by groups. At the core they run `dplyr::filter()`
-#' but include these additional features:
-#' * They operate within groups defined with `dplyr::group_by()`.
-#' 
-#' @description
-#' `pick_woods()` is a general function that picks rows of a dataframe based on
-#' any number of expressions. The other functions are shortcuts:
-#' * `pick_trees()` picks stems of 100 mm dbh and above.
-#' * `pick_saplings()` picks stems between 10 mm dbh inclusive and 100 mm dbh 
-#' exclusive.
-#' * `pick_saplings_and_trees()` picks stems of 10 mm dbh and above.
+#' These functions extend `pick_largest_hom_dbh()`. Working with simple or
+#' grouped dataframes (via `dplyr::group_by()`) these functions let you pick
+#' main stems within a given `dbh` range:
+#' * `pick_woods()` is a general function and lets you choose the `dbh` range. The
+#' other functions are shortcuts with pre-defined `dbh` ranges:
+#'   * `pick_saplings_and_trees()` picks stems of 10 mm dbh and above.
+#'   * `pick_saplings()` picks stems between 10 mm dbh inclusive and 100 mm dbh
+#'   exclusive.
+#'   * `pick_trees()` picks stems of 100 mm dbh and above.
 #' 
 #' @param .data A ForestGEO-like dataframe, either a census or ViewFullTable.
 #' @param ... Expressions passed to `dplyr::filter()`, E.g. the 
@@ -68,33 +56,46 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_largest_hom_dbh) {
 #' 
 #' @export
 #' 
-#' @examples 
-#' census <- tibble::tribble(
+#' @examples
+#' library(tibble)
+#' 
+#' census <- tribble(
 #'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
-#'   "sp1",     "1",   "1.2",   130,  122,         1,
-#'   "sp1",     "1",   "1.1",   130,   10,         1,
-#'   "sp2",     "2",   "2.1",   130,   22,         1,
-#'   "sp2",     "2",   "2.2",   130,   99,         1,
-#'   "sp2",     "2",   "2.2",   144,   88,         1,
-#'   "sp2",     "2",   "2.3",   130,   NA,         1,
-#'                                        
-#'   "sp1",     "1",   "1.2",   130,  123,         2,
-#'   "sp1",     "1",   "1.1",   130,   11,         2,
-#'   "sp2",     "2",   "2.1",   130,   22,         2,
-#'   "sp2",     "2",   "2.2",   130,  110,         2,
-#'   "sp2",     "2",   "2.2",   144,  101,         2,
-#'   "sp2",     "2",   "2.3",   130,   NA,         2
+#'   "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+#'   "sp1",     "1",   "1.1",   130,   60,         1   # buttress
 #' )
 #' 
+#' # Trees with buttresses may have more than one measurements per stem.
 #' # Piks largest hom first (to correct effect of batreesses) then largest dbh
-#' pick_woods(census, dbh >=10)
+#' pick_largest_hom_dbh(census)
 #' 
-#' pick_woods(census, dbh >=10, dbh < 100)
-#' # Same
+#' # Also works with multiple censuses
+#' censuses <- tribble(
+#'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+#'   "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+#'   "sp1",     "1",   "1.1",   130,   60,         1,  # buttress
+#'   "sp1",     "1",   "1.1",   140,   50,         2,  # main stem
+#'   "sp1",     "1",   "1.1",   130,   70,         2   # buttress
+#' )
+#' 
+#' pick_largest_hom_dbh(censuses)
+#' 
+#' # pick_woods() and friends internally pick the main stem, then pick by dbh
+#' pick_woods(censuses)
+#' 
+#' pick_woods(censuses, dbh > 40)
+#' 
+#' # These functions are convenient shortcuts
+#' census <- tribble(
+#'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+#'   "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+#'   "sp1",     "1",   "1.1",   130,   60,         1,  # buttress
+#'   "sp1",     "2",   "2.1",   130,   100,        1,
+#'   "sp1",     "3",   "2.1",   130,   110,        1,
+#' )
+#' 
 #' pick_saplings(census)
-#' 
 #' pick_trees(census)
-#' 
 #' pick_saplings_and_trees(census)
 pick_woods <- pick_woods_f(
   identity, .collapse = fgeo.tool::pick_largest_hom_dbh

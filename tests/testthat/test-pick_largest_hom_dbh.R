@@ -6,15 +6,95 @@
 context("pick_largest_hom_dbh")
 
 library(dplyr)
+library(tibble)
+
+describe("pick_largest_hom_dbh with multiple stems including buttress", {
+  it("doesn't mess the original order of the data", {
+    census <- tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~rowindex,
+      "sp1",     "1",   "1.1",     2,    1,         1,
+      "sp1",     "1",   "1.1",     1,    1,         2,
+      "sp1",     "2",   "2.1",     1,    1,         3,
+      "sp1",     "3",   "3.1",     1,    1,         4,
+    )
+    out <- pick_largest_hom_dbh(census)
+    expect_identical(out$rowindex, sort(out$rowindex))
+    
+    census <- tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~rowindex,
+      "sp1",     "3",   "3.1",     1,    1,         1,
+      "sp1",     "2",   "2.1",     1,    1,         2,
+      "sp1",     "1",   "1.1",     1,    1,         3,
+      "sp1",     "1",   "1.1",     2,    1,         4,
+    )
+    out <- pick_largest_hom_dbh(census)
+    expect_identical(out$rowindex, sort(out$rowindex))
+
+    census <- tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~rowindex,
+      "sp1",     "3",   "3.1",     1,    1,         1,
+      "sp1",     "1",   "1.1",     2,    1,         2,
+      "sp1",     "2",   "2.1",     1,    1,         3,
+      "sp1",     "1",   "1.1",     1,    1,         4,
+    )
+    out <- pick_largest_hom_dbh(census)
+    expect_identical(out$rowindex, sort(out$rowindex))
+  })
+  
+  it("chooses the stem of largest hom regardless of dbh", {
+    census <- tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+      "sp1",     "1",   "1.1",     2,    1,
+      "sp1",     "1",   "1.1",     1,    1,
+    )
+    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    
+    census <- tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+      "sp1",     "1",   "1.1",     2,    2,
+      "sp1",     "1",   "1.1",     1,    1,
+    )
+    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    
+    census <- tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+      "sp1",     "1",   "1.1",     2,    1,
+      "sp1",     "1",   "1.1",     1,    2,
+    )
+    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    
+    census <- tibble::tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+      "sp1",     "1",   "1.1",     2,    1,
+      "sp1",     "1",   "1.2",     1,    2,
+    )
+    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    
+    census <- tibble::tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+      "sp1",     "1",   "1.1",     2,    2,
+      "sp1",     "1",   "1.2",     1,    2,
+    )
+    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    
+    census <- tibble::tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
+      "sp1",     "1",   "1.1",     2,    2,
+      "sp1",     "1",   "1.2",     1,    1,
+    )
+    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+  })
+})
 
 cns <- tibble::tribble(
   ~hom, ~dbh,   ~sp, ~treeID, ~stemID,
     10,   10, "sp1",     "1",   "1.1",
+    20,  100, "sp1",     "1",   "1.2",  # main stem
     10,  111, "sp1",     "1",   "1.2",
-    20,  100, "sp1",     "1",   "1.2",
+  
     10,   22, "sp2",     "2",   "2.1",
     22,   88, "sp2",     "2",   "2.2",
-    22,   99, "sp2",     "2",   "2.2",
+    22,   99, "sp2",     "2",   "2.2",  # main stem
     10,   NA, "sp2",     "2",   "2.3"
 )
 
@@ -23,7 +103,6 @@ describe("pick_largest_hom_dbh()", {
     out <- pick_largest_hom_dbh(cns)
     expect_named(out, c("hom", "dbh", "sp", "treeID", "stemID"))
   })
-  
   
   it("picks first by hom then by dbh", {
     collapsed <- pick_largest_hom_dbh(cns)
@@ -62,17 +141,6 @@ describe("pick_largest_hom_dbh()", {
     expect_equal(out$treeID, as.character(c(1, 2, 1, 2)))
     # Ouput largest stem per tree per census
     expect_equal(out$stemID, as.character(c(1.1, 2.1, 1.2, 2.2)))
-    
-    # It picks an oviously larger stem added to census 2
-    cns$CensusID <- c(1, 2, 1, 2, 2)
-    .cns2 <- bind_rows(
-      .cns, 
-      list(dbh = 200, sp = "sp2", treeID = "2", stemID = "2.4", CensusID = 2)
-    )
-    out2 <- pick_largest_hom_dbh(.cns2)
-    picked <- filter(out2, CensusID == 2, treeID == 2)
-    expect_equal(picked$stemID, "2.4")
-    expect_equal(picked$dbh, 200)
   })
   
   it("drops missing values of censusid if there are multiple unique censusid", {
