@@ -44,12 +44,12 @@ pick_largest_hom_dbh <- function(.x) {
   
   fgeo.base::check_crucial_names(.data, c("stemid", "hom"))
   .data <- pick_hom_by_stemid_by_treeid_censusid(
-    .data, .arrange = dplyr::desc, .pick = dplyr::row_number() == 1L
+    .data, .pick = dplyr::row_number() == 1L
   )
   
   fgeo.base::check_crucial_names(.data, c("treeid", "dbh"))
   .data <- pick_dbh_by_treeid_by_censusid(
-    .data, .arrange = dplyr::desc, .pick = dplyr::row_number() == 1L
+    .data, .pick = dplyr::row_number() == 1L
   )
   
   # Restore row order
@@ -64,12 +64,10 @@ pick_largest_hom_dbh <- function(.x) {
 #' 
 #' Name is intentionally different. It's less concise but more descriptive.
 #' 
-#' @param .arrange Function to control arrangement of data within each group:
-#'   E.g. `identity()` or `dplyr::desc()`.
 #' @param .pick Expression to control what rows to pick within each group: E.g.
 #'   `row_number() == 1L` or `dplyr::between(row_number(), 1, 10)`.
 #' @noRd
-pick_dbh_by_treeid_by_censusid <- function(x, .arrange, .pick) {
+pick_dbh_by_treeid_by_censusid <- function(x, .pick) {
   .pick <- enquo(.pick)
   # Grouping must be handleded at higher levels.
   .x <- dplyr::ungroup(x)
@@ -84,14 +82,14 @@ pick_dbh_by_treeid_by_censusid <- function(x, .arrange, .pick) {
   .x %>%
     dplyr::group_by(.data$treeid, add = TRUE) %>% 
     # FIXME: Restore original order, by using original rownumber.
-    dplyr::arrange(.arrange(.data$hom), .arrange(.data$dbh), .by_group = TRUE) %>%
+    dplyr::arrange(dplyr::desc(.data$hom), dplyr::desc(.data$dbh), .by_group = TRUE) %>%
     # row_number() can be used with single table verbs without specifying x
     dplyr::filter(!! .pick) %>% 
     dplyr::ungroup()
 }
 
 # TODO: DRY with function just above
-pick_hom_by_stemid_by_treeid_censusid <- function(x, .arrange, .pick) {
+pick_hom_by_stemid_by_treeid_censusid <- function(x, .pick) {
   .pick <- enquo(.pick)
   # Grouping must be handleded at higher levels.
   .x <- dplyr::ungroup(x)
@@ -105,7 +103,7 @@ pick_hom_by_stemid_by_treeid_censusid <- function(x, .arrange, .pick) {
   
   .x %>%
     dplyr::group_by(.data$treeid, .data$stemid, add = TRUE) %>% 
-    dplyr::arrange(.arrange(.data$hom), .arrange(.data$dbh)) %>%
+    dplyr::arrange(dplyr::desc(.data$hom), dplyr::desc(.data$dbh)) %>%
     # row_number() can be used with single table verbs without specifying x
     dplyr::filter(!! .pick) %>% 
     dplyr::ungroup()
