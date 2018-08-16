@@ -36,9 +36,10 @@
 #' pick_largest_hom_dbh(census)
 pick_largest_hom_dbh <- function(.x) {
   stopifnot(is.data.frame(.x))
-  .x <- tibble::rowid_to_column(.x)
   
-  # Lowercase names and groups for work with both census and ViewFullTable
+  # Store original row order to restore it at the end
+  .x <- tibble::rowid_to_column(.x)
+  # Lowercase names and groups to work with both census and ViewFullTable
   .data <- rlang::set_names(.x, tolower)
   .data <- groups_lower(.data)
   
@@ -48,51 +49,47 @@ pick_largest_hom_dbh <- function(.x) {
   fgeo.base::check_crucial_names(.data, c("treeid", "dbh"))
   .data <- pick_dbh_by_treeid_by_censusid(.data)
   
-  # Restore row order
-  .data <- dplyr::select(dplyr::arrange(.data, .data$rowid), -.data$rowid)
+  # Restore rows order
+  .data <- select(arrange(.data, .data$rowid), -.data$rowid)
   # Restore original names
   out <- fgeo.base::rename_matches(.data , .x)
   # Restore original groups
   groups_restore(out, .x)
 }
 
-pick_dbh_by_treeid_by_censusid <- function(x) {
+pick_dbh_by_treeid_by_censusid <- function(.x) {
   # Grouping must be handleded at higher levels.
-  .x <- dplyr::ungroup(x)
+  .x <- ungroup(.x)
   
   stopifnot_single_plotname(.x)
   
   if (multiple_censusid(.x)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")
-    .x <- dplyr::group_by(.x, .data$censusid)
+    .x <- group_by(.x, .data$censusid)
   }
   
   .x %>%
-    dplyr::group_by(.data$treeid, add = TRUE) %>% 
-    # FIXME: Restore original order, by using original rownumber.
-    dplyr::arrange(
-      dplyr::desc(.data$hom), dplyr::desc(.data$dbh), .by_group = TRUE
-    ) %>%
-    # row_number() can be used with single table verbs without specifying x
-    dplyr::filter(dplyr::row_number() == 1L) %>% 
-    dplyr::ungroup()
+    group_by(.data$treeid, add = TRUE) %>% 
+    arrange(desc(.data$hom), desc(.data$dbh), .by_group = TRUE) %>%
+    filter(dplyr::row_number() == 1L) %>% 
+    ungroup()
 }
 
 # TODO: DRY with function just above
-pick_hom_by_stemid_by_treeid_censusid <- function(x) {
+pick_hom_by_stemid_by_treeid_censusid <- function(.x) {
   # Grouping must be handleded at higher levels.
-  .x <- dplyr::ungroup(x)
+  .x <- ungroup(.x)
   
   stopifnot_single_plotname(.x)
   
   if (multiple_censusid(.x)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")
-    .x <- dplyr::group_by(.x, .data$censusid)
+    .x <- group_by(.x, .data$censusid)
   }
   
   .x %>%
-    dplyr::group_by(.data$treeid, .data$stemid, add = TRUE) %>% 
-    dplyr::arrange(dplyr::desc(.data$hom), dplyr::desc(.data$dbh)) %>%
-    dplyr::filter(dplyr::row_number() == 1L) %>% 
-    dplyr::ungroup()
+    group_by(.data$treeid, .data$stemid, add = TRUE) %>% 
+    arrange(desc(.data$hom), desc(.data$dbh)) %>%
+    filter(dplyr::row_number() == 1L) %>% 
+    ungroup()
 }

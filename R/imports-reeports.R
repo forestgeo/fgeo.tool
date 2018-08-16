@@ -40,7 +40,7 @@ NULL
 NULL
 
 # Main verbs
-#' @importFrom dplyr filter mutate select arrange summarize summarise
+#' @importFrom dplyr filter mutate select arrange summarize summarise desc
 NULL
 #' @export
 dplyr::filter
