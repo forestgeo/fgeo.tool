@@ -36,6 +36,7 @@
 #' pick_largest_hom_dbh(census)
 pick_largest_hom_dbh <- function(.x) {
   stopifnot(is.data.frame(.x))
+  stopifnot_single_plotname(.x)
   
   # Store original row order to restore it at the end
   .x <- tibble::rowid_to_column(.x)
@@ -43,11 +44,9 @@ pick_largest_hom_dbh <- function(.x) {
   .data <- rlang::set_names(.x, tolower)
   .data <- groups_lower(.data)
   
-  fgeo.base::check_crucial_names(.data, c("stemid", "hom"))
-  .data <- pick_hom_by_stemid_by_treeid_censusid(.data)
-  
-  fgeo.base::check_crucial_names(.data, c("treeid", "dbh"))
-  .data <- pick_dbh_by_treeid_by_censusid(.data)
+  fgeo.base::check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
+  .data <- pick_by_groups_by_censusid(.data, treeid, stemid)
+  .data <- pick_by_groups_by_censusid(.data, treeid)
   
   # Restore rows order
   .data <- select(arrange(.data, .data$rowid), -.data$rowid)
@@ -57,11 +56,10 @@ pick_largest_hom_dbh <- function(.x) {
   groups_restore(out, .x)
 }
 
-pick_dbh_by_treeid_by_censusid <- function(.x) {
-  # Grouping must be handleded at higher levels.
+pick_by_groups_by_censusid <- function(.x, ...) {
+  group_vars <- enquos(...)
   .x <- ungroup(.x)
   
-  stopifnot_single_plotname(.x)
   
   if (multiple_censusid(.x)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")
@@ -69,27 +67,8 @@ pick_dbh_by_treeid_by_censusid <- function(.x) {
   }
   
   .x %>%
-    group_by(.data$treeid, add = TRUE) %>% 
+    group_by(!!! group_vars, add = TRUE) %>% 
     arrange(desc(.data$hom), desc(.data$dbh), .by_group = TRUE) %>%
-    filter(dplyr::row_number() == 1L) %>% 
-    ungroup()
-}
-
-# TODO: DRY with function just above
-pick_hom_by_stemid_by_treeid_censusid <- function(.x) {
-  # Grouping must be handleded at higher levels.
-  .x <- ungroup(.x)
-  
-  stopifnot_single_plotname(.x)
-  
-  if (multiple_censusid(.x)) {
-    .x <- fgeo.base::drop_if_na(.x, "censusid")
-    .x <- group_by(.x, .data$censusid)
-  }
-  
-  .x %>%
-    group_by(.data$treeid, .data$stemid, add = TRUE) %>% 
-    arrange(desc(.data$hom), desc(.data$dbh)) %>%
     filter(dplyr::row_number() == 1L) %>% 
     ungroup()
 }
