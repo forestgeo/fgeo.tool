@@ -20,9 +20,19 @@ describe("pick_woods with buttressess and smaller diameter higher up the tree", 
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
       "sp1",     "1",   "1.1",   140,   40,         2,  # main stem
-      "sp1",     "1",   "1.3",   130,   60,         2,  # buttresses
+      "sp1",     "1",   "1.1",   130,   60,         2,  # buttresses
     )
-    expect_equal(pick_woods(census, dbh >= 10)$stemID, "1.1")
+    expect_equal(pick_woods(census, dbh >= 10)$dbh, 40)
+
+    census <- tibble::tribble(
+        ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+      "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+      "sp1",     "1",   "1.1",   130,   60,         1,  # buttresses
+      
+      "sp1",     "1",   "1.1",   140,   60,         2,  # main stem
+      "sp1",     "1",   "1.1",   130,   40,         2,  # buttresses
+    )
+    expect_equal(pick_woods(census, dbh >= 10)$dbh, c(40, 60))
   })
   
   it("outputs the same for a census in a single or multi-census dataset", {
