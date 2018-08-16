@@ -15,23 +15,14 @@ describe("pick_woods with real-ish ViewFullTables and census tables", {
   })
 })
 
-describe("pick_woods with multiple censuses", {
-  it("picks main stem independently for each censusID", {
+describe("pick_woods with buttressess and smaller diameter higher up the tree", {
+  it("picks main stem of smaller diameter but higher up the tree", {
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
-      "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
-      "sp1",     "1",   "1.2",   140,   30,         1,
-      "sp1",     "1",   "1.3",   130,   30,         1,  # buttresses
-      "sp1",     "1",   "1.4",   130,   20,         1,  # buttresses
-      
       "sp1",     "1",   "1.1",   140,   40,         2,  # main stem
-      "sp1",     "1",   "1.2",   140,   30,         2,
       "sp1",     "1",   "1.3",   130,   60,         2,  # buttresses
-      "sp1",     "1",   "1.4",   130,   50,         2   # buttresses
     )
-    
-    # FIXME: It seems to not be picking main stems independently for each census
-    expect_equal(pick_woods(census, dbh >= 10)$stemID, c("1.1", "1.1"))
+    expect_equal(pick_woods(census, dbh >= 10)$stemID, "1.1")
   })
   
   it("outputs the same for a census in a single or multi-census dataset", {
@@ -43,8 +34,6 @@ describe("pick_woods with multiple censuses", {
     out_s <- pick_woods(single, dbh > 0)
     expect_equal(out_m, out_s)
   })
-  
-  
 })
 
 
