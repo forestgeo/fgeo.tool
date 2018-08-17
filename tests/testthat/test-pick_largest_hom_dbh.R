@@ -1,8 +1,3 @@
-# TODO: Polish tests. 
-# * Remove reduncancy.
-# * Simplify data.
-# * Use minimal data to test each feature.
-
 context("pick_largest_hom_dbh")
 
 library(dplyr)

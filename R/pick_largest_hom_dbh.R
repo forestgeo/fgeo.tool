@@ -26,10 +26,10 @@
 #' # Trees with buttresses may have more than one measurements per stem.
 #' census <- tribble(
 #'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
-#'   "sp1",     "1",   "1.1",   140,   40,         1,  # main stem # FIXME
-#'   "sp1",     "1",   "1.1",   130,   60,         1,  # buttress
+#'   "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+#'   "sp1",     "1",   "1.1",   130,   60,         1,  
 #'   "sp1",     "1",   "1.2",   130,   55,         1,  
-#'   "sp2",     "2",   "2.1",   130,    5,         1,
+#'   "sp2",     "2",   "2.1",   130,    5,         1   # main stem
 #' )
 #' 
 #' # Piks largest hom first (to correct effect of batreesses) then largest dbh
