@@ -8,10 +8,12 @@
 #' first by descending order of `hom`, and then by descending order of `dbh` --
 #' this corrects the effect of buttresses and picks the main stem. It
 #' intentionally rejects data with multiple plots, and ignores groups of grouped
-#' data (to operate within groups see ?[pick_woods()]).
+#' data.
+#' 
+#' @section Warning:
+#' Currently this function is considerably slow.
 #'
 #' @param .x A ForestGEO-like dataframe, census or ViewFullTable.
-#' @seealso [pick_woods()].
 #'
 #' @return A dataframe with one row per per treeid per censusid and a single 
 #'   plotname.

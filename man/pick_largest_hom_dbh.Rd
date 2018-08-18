@@ -23,8 +23,13 @@ collapses data of multi-stem trees by picking a single stem per \code{treeid} pe
 first by descending order of \code{hom}, and then by descending order of \code{dbh} --
 this corrects the effect of buttresses and picks the main stem. It
 intentionally rejects data with multiple plots, and ignores groups of grouped
-data (to operate within groups see ?\code{\link[=pick_woods]{pick_woods()}}).
+data.
 }
+\section{Warning}{
+
+Currently this function is considerably slow.
+}
+
 \examples{
 library(tibble)
 
@@ -41,8 +46,6 @@ census <- tribble(
 pick_largest_hom_dbh(census)
 }
 \seealso{
-\code{\link[=pick_woods]{pick_woods()}}.
-
 Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}, \code{\link{pick_recensus}},
   \code{\link{pick_top}}
