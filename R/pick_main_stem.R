@@ -17,7 +17,10 @@
 #' function. It is slowest if it also duplicated values of `stemid` per `treeid`
 #' (per `censusid`) -- which may happen if trees have buttresses -- in which
 #' case, this function will check every stem for potential duplicates and pick
-#' the one with the largest `hom` value.
+#' the one with the largest `hom` value. In my computer, for example, a dataset
+#' of 2 million rows with multiple stems and buttresses took about 3 minutes
+#' to run, whereas a dataset with 2 million rows made up entirely of main stems
+#' took about ten seconds to run.
 #'
 #' @param .x A ForestGEO-like dataframe, census or ViewFullTable.
 #'
@@ -53,8 +56,8 @@ pick_main_stem <- function(.x) {
   .data <- groups_lower(.data)
   
   fgeo.base::check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
-  .data <- pick_by_groups_by_censusid(.data, treeid, stemid)
-  .data <- pick_by_groups_by_censusid(.data, treeid)
+  .data <- pick_by_groups_by_censusid(.data, .data$treeid, .data$stemid)
+  .data <- pick_by_groups_by_censusid(.data, .data$treeid)
   
   # Restore rows order
   .data <- select(arrange(.data, .data$rowid), -.data$rowid)
