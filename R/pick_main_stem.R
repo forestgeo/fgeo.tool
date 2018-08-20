@@ -2,8 +2,8 @@
 #' 
 #' This function picks the main stem of each tree in each census. 
 #' 
-#' This function picks the main stem of each tree in each census. It
-#' collapses data of multi-stem trees by picking a single stem per `treeid` per
+#' This function picks the main stem of each tree in each census. It collapses
+#' data of multi-stem trees by picking a single stem per `treeid` per
 #' `censusid`: Within this groups it picks the stem at the top of a list sorted
 #' first by descending order of `hom`, and then by descending order of `dbh` --
 #' this corrects the effect of buttresses and picks the main stem. It
@@ -11,7 +11,13 @@
 #' data.
 #' 
 #' @section Warning:
-#' Currently this function is considerably slow.
+#' This function may be considerably slow. It is fastest if the data already has
+#' a single stem per treeid. It is slower if it detects multiple stems per
+#' `treeid` (per `censusid`) -- which is the main reason for using this
+#' function. It is slowest if it also duplicated values of `stemid` per `treeid`
+#' (per `censusid`) -- which may happen if trees have buttresses -- in which
+#' case, this function will check every stem for potential duplicates and pick
+#' the one with the largest `hom` value.
 #'
 #' @param .x A ForestGEO-like dataframe, census or ViewFullTable.
 #'
