@@ -67,7 +67,13 @@ pick_by_groups_by_censusid <- function(.x, ...) {
   }
   
   grouped <- group_by(.x, !!! enquos(...), add = TRUE)
-  main_stems_at_top <- arrange(grouped, desc(.data$hom), desc(.data$dbh), .by_group = TRUE)
+  
+  not_duplicated <- !any(count(grouped)$n > 1)
+  if (not_duplicated) return(ungroup(grouped))
+  
+  main_stems_at_top <- arrange(
+    grouped, desc(.data$hom), desc(.data$dbh), .by_group = TRUE
+  )
   main_stems <- filter(main_stems_at_top, dplyr::row_number() == 1L)
   ungroup(main_stems)
 }
