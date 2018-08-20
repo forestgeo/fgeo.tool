@@ -25,7 +25,7 @@ expression \code{dbh >= 100} picks \code{dbh} values of 100 mm and above.}
 A dataframe. See description.
 }
 \description{
-These functions extend \code{pick_largest_hom_dbh()}. Working with simple or
+These functions extend \code{pick_main_stem()}. Working with simple or
 grouped dataframes (via \code{dplyr::group_by()}) these functions let you pick
 main stems within a given \code{dbh} range:
 \itemize{
@@ -50,7 +50,7 @@ census <- tribble(
 
 # Trees with buttresses may have more than one measurements per stem.
 # Piks largest hom first (to correct effect of batreesses) then largest dbh
-pick_largest_hom_dbh(census)
+pick_main_stem(census)
 
 # Also works with multiple censuses
 censuses <- tribble(
@@ -61,7 +61,7 @@ censuses <- tribble(
   "sp1",     "1",   "1.1",   130,   70,         2   # buttress
 )
 
-pick_largest_hom_dbh(censuses)
+pick_main_stem(censuses)
 
 # pick_woods() and friends internally pick the main stem, then pick by dbh
 pick_woods(censuses)

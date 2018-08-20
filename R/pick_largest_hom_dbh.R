@@ -35,8 +35,8 @@
 #' )
 #' 
 #' # Piks largest hom first (to correct effect of batreesses) then largest dbh
-#' pick_largest_hom_dbh(census)
-pick_largest_hom_dbh <- function(.x) {
+#' pick_main_stem(census)
+pick_main_stem <- function(.x) {
   stopifnot(is.data.frame(.x))
   stopifnot_single_plotname(.x)
   

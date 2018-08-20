@@ -62,7 +62,7 @@ reference:
     - filter_status
     - drop_dead_stem
     - drop_dead_tree
-    - pick_largest_hom_dbh
+    - pick_main_stem
     - pick_woods
     - -pick_woods_f
 

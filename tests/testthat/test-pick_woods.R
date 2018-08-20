@@ -58,8 +58,8 @@ cns <- tibble::tribble(
 )
 
 describe("pick_woods with single census", {
-  it("with no filtering expressions it outputs equal to pick_largest_hom_dbh()", {
-    expect_equal(pick_woods(cns), pick_largest_hom_dbh(cns))
+  it("with no filtering expressions it outputs equal to pick_main_stem()", {
+    expect_equal(pick_woods(cns), pick_main_stem(cns))
   })
   
   it("returns the expected data structure", {

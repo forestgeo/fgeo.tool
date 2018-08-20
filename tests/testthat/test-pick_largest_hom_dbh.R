@@ -1,9 +1,9 @@
-context("pick_largest_hom_dbh")
+context("pick_main_stem")
 
 library(dplyr)
 library(tibble)
 
-describe("pick_largest_hom_dbh with multiple stems including buttress", {
+describe("pick_main_stem with multiple stems including buttress", {
   it("doesn't mess the original order of the data", {
     census <- tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~rowindex,
@@ -12,7 +12,7 @@ describe("pick_largest_hom_dbh with multiple stems including buttress", {
       "sp1",     "2",   "2.1",     1,    1,         3,
       "sp1",     "3",   "3.1",     1,    1,         4,
     )
-    out <- pick_largest_hom_dbh(census)
+    out <- pick_main_stem(census)
     expect_identical(out$rowindex, sort(out$rowindex))
     
     census <- tribble(
@@ -22,7 +22,7 @@ describe("pick_largest_hom_dbh with multiple stems including buttress", {
       "sp1",     "1",   "1.1",     1,    1,         3,
       "sp1",     "1",   "1.1",     2,    1,         4,
     )
-    out <- pick_largest_hom_dbh(census)
+    out <- pick_main_stem(census)
     expect_identical(out$rowindex, sort(out$rowindex))
 
     census <- tribble(
@@ -32,7 +32,7 @@ describe("pick_largest_hom_dbh with multiple stems including buttress", {
       "sp1",     "2",   "2.1",     1,    1,         3,
       "sp1",     "1",   "1.1",     1,    1,         4,
     )
-    out <- pick_largest_hom_dbh(census)
+    out <- pick_main_stem(census)
     expect_identical(out$rowindex, sort(out$rowindex))
   })
   
@@ -42,42 +42,42 @@ describe("pick_largest_hom_dbh with multiple stems including buttress", {
       "sp1",     "1",   "1.1",     2,    1,
       "sp1",     "1",   "1.1",     1,    1,
     )
-    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    expect_equal(pick_main_stem(census)$hom, 2)
     
     census <- tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    2,
       "sp1",     "1",   "1.1",     1,    1,
     )
-    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    expect_equal(pick_main_stem(census)$hom, 2)
     
     census <- tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    1,
       "sp1",     "1",   "1.1",     1,    2,
     )
-    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    expect_equal(pick_main_stem(census)$hom, 2)
     
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    1,
       "sp1",     "1",   "1.2",     1,    2,
     )
-    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    expect_equal(pick_main_stem(census)$hom, 2)
     
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    2,
       "sp1",     "1",   "1.2",     1,    2,
     )
-    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    expect_equal(pick_main_stem(census)$hom, 2)
     
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    2,
       "sp1",     "1",   "1.2",     1,    1,
     )
-    expect_equal(pick_largest_hom_dbh(census)$hom, 2)
+    expect_equal(pick_main_stem(census)$hom, 2)
   })
 })
 
@@ -93,26 +93,26 @@ cns <- tibble::tribble(
     10,   NA, "sp2",     "2",   "2.3"
 )
 
-describe("pick_largest_hom_dbh()", {
+describe("pick_main_stem()", {
   it("outputs the expected data structure", {
-    out <- pick_largest_hom_dbh(cns)
+    out <- pick_main_stem(cns)
     expect_named(out, c("hom", "dbh", "sp", "treeID", "stemID"))
   })
   
   it("picks first by hom then by dbh", {
-    collapsed <- pick_largest_hom_dbh(cns)
+    collapsed <- pick_main_stem(cns)
     expect_equal(collapsed$hom, c(20, 22))
     expect_equal(collapsed$dbh, c(100, 99))
   })
   
   it("outputs the same groups as input", {
     # Ungrouped
-    collapsed <- pick_largest_hom_dbh(cns)
+    collapsed <- pick_main_stem(cns)
     expect_equal(group_vars(collapsed), group_vars(cns))
     
     # Grouped
     bysp <- group_by(cns, sp)
-    collapsed <- pick_largest_hom_dbh(bysp)
+    collapsed <- pick_main_stem(bysp)
     expect_equal(group_vars(collapsed), group_vars(bysp))
   })
   
@@ -128,7 +128,7 @@ describe("pick_largest_hom_dbh()", {
     
     cns$CensusID <- c(1, 2, 1, 2, 2)
     .cns <- arrange(cns, CensusID, treeID, stemID, dbh)
-    out <- pick_largest_hom_dbh(.cns)
+    out <- pick_main_stem(.cns)
     out <- arrange(out, CensusID, treeID, stemID, dbh)
     # Output all available censuses
     expect_equal(out$CensusID, as.double(c(1, 1, 2, 2)))
@@ -150,12 +150,12 @@ describe("pick_largest_hom_dbh()", {
     
     # Doesn't drop missing censusid if they are unambiguous (only one censusid)
     cns$CensusID <- c(1, 1, 1, 1, NA)
-    expect_silent(out <- pick_largest_hom_dbh(cns))
+    expect_silent(out <- pick_main_stem(cns))
     
     # Drops missing censusid if they are unambiguous (multiple censusid)
     cns$CensusID <- c(1, 1, 2, 2, NA)
     expect_warning(
-      out <- pick_largest_hom_dbh(cns),
+      out <- pick_main_stem(cns),
       "Dropping.*rows with missing.*values"
     )
     
@@ -174,7 +174,7 @@ describe("pick_largest_hom_dbh()", {
     
     cns$PlotName <- c(1, 1, 2, 2, NA)
     expect_error(
-      out <- pick_largest_hom_dbh(cns),
+      out <- pick_main_stem(cns),
       "must have a single plotname"
     )
   })
