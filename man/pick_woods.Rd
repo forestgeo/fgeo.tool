@@ -4,13 +4,16 @@
 \alias{pick_woods}
 \alias{pick_trees}
 \alias{pick_saplings}
-\title{Pick woods after collapsing multiple stems by treeid and censusid.}
+\alias{pick_saplings_and_trees}
+\title{Pick main stems within a specific dbh range.}
 \usage{
 pick_woods(.data, ...)
 
 pick_trees(.data)
 
 pick_saplings(.data)
+
+pick_saplings_and_trees(.data)
 }
 \arguments{
 \item{.data}{A ForestGEO-like dataframe, either a census or ViewFullTable.}
@@ -22,45 +25,60 @@ expression \code{dbh >= 100} picks \code{dbh} values of 100 mm and above.}
 A dataframe. See description.
 }
 \description{
-These functions pick rows by groups. At the core they run \code{dplyr::filter()}
-but include these additional features:
+These functions extend \code{pick_main_stem()}. Working with simple or
+grouped dataframes (via \code{dplyr::group_by()}) these functions let you pick
+main stems within a given \code{dbh} range:
 \itemize{
-\item They reject multiple plots with an informative error message.
-\item They operate within groups define with \code{dplyr::group_by()}.
-\item If the data has multiple censuses, they automatically group by census.
-\item They collapse data of multi-stem trees by picking a single stem per treeid.
-The picked stem depends on the values of \code{hom} or \code{dbh} detected for each
-census of each treeid. The selection is as follows:
+\item \code{pick_woods()} is a general function and lets you choose the \code{dbh} range. The
+other functions are shortcuts with pre-defined \code{dbh} ranges:
 \itemize{
-\item If there is a single \code{hom} value, it is the stem of maximum \code{dbh}.
-\item If there is more than one \code{hom} value, it is the stem of maximum \code{dbh}.
-}
-}
-
-\itemize{
-\item \code{pick_woods()} is a general function that takes any dataframe and any
-number of expressions to filter the dataframe.
-\item \code{pick_trees()} picks stems of 100 mm dbh and above.
+\item \code{pick_saplings_and_trees()} picks stems of 10 mm dbh and above.
 \item \code{pick_saplings()} picks stems between 10 mm dbh inclusive and 100 mm dbh
 exclusive.
+\item \code{pick_trees()} picks stems of 100 mm dbh and above.
+}
 }
 }
 \examples{
-census <- tibble::tribble(
-    ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
-  "sp1",     "1",   "1.2",   130,  122,
-  "sp1",     "1",   "1.1",   130,   10,
-  "sp2",     "2",   "2.1",   130,   22,
-  "sp2",     "2",   "2.2",   130,   99,
-  "sp2",     "2",   "2.2",   144,   88,
-  "sp2",     "2",   "2.3",   130,   NA,
+library(tibble)
+
+census <- tribble(
+    ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+  "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+  "sp1",     "1",   "1.1",   130,   60,         1   # buttress
 )
 
-# Piks largest hom first, then largest dbh (to correct effect of batreesses)
-pick_woods(census, dbh >=10, dbh < 100)
-# Same
-pick_saplings(census)
+# Trees with buttresses may have more than one measurements per stem.
+# Piks largest hom first (to correct effect of batreesses) then largest dbh
+pick_main_stem(census)
 
+# Also works with multiple censuses
+censuses <- tribble(
+    ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+  "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+  "sp1",     "1",   "1.1",   130,   60,         1,  # buttress
+  "sp1",     "1",   "1.1",   140,   50,         2,  # main stem
+  "sp1",     "1",   "1.1",   130,   70,         2   # buttress
+)
+
+pick_main_stem(censuses)
+
+# pick_woods() and friends internally pick the main stem, then pick by dbh
+pick_woods(censuses)
+
+pick_woods(censuses, dbh > 40)
+
+# These functions are convenient shortcuts
+census <- tribble(
+    ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
+  "sp1",     "1",   "1.1",   140,   40,         1,  # main stem
+  "sp1",     "1",   "1.1",   130,   60,         1,  # buttress
+  "sp1",     "2",   "2.1",   130,   100,        1,
+  "sp1",     "3",   "2.1",   130,   110,        1,
+)
+
+pick_saplings(census)
 pick_trees(census)
+pick_saplings_and_trees(census)
 }
 \concept{functions for fgeo census and vft.}

@@ -30,3 +30,4 @@ stopifnot_single_plotname <- function(.x) {
     stop("`.x` must have a single plotname.", call. = FALSE)
   }
 }
+

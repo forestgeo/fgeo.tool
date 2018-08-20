@@ -12,6 +12,7 @@
 \alias{exprs}
 \alias{enexpr}
 \alias{quo_name}
+\alias{enquos}
 \title{Tidy eval helpers}
 \description{
 These functions provide tidy eval-compatible ways to capture
