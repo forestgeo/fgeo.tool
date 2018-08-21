@@ -20,8 +20,7 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)  
 
 The goal of __fgeo.tool__ is to provide functions for general purposes.
-Many of its functions are used in multiple other __fgeo__ packages. For general porpose functions with no expternal dependency see
-[__fgeo.base__](https://forestgeo.github.io/fgeo.base/).
+Many of its functions are used in multiple other __fgeo__ packages.
 
 ## Installation
 

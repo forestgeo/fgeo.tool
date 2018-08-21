@@ -12,9 +12,7 @@ status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https:
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 
 The goal of **fgeo.tool** is to provide functions for general purposes.
-Many of its functions are used in multiple other **fgeo** packages. For
-general porpose functions with no expternal dependency see
-[**fgeo.base**](https://forestgeo.github.io/fgeo.base/).
+Many of its functions are used in multiple other **fgeo** packages.
 
 ## Installation
 

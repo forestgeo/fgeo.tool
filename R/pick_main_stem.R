@@ -7,8 +7,9 @@
 #' `censusid`: Within this groups it picks the stem at the top of a list sorted
 #' first by descending order of `hom`, and then by descending order of `dbh` --
 #' this corrects the effect of buttresses and picks the main stem. It
-#' intentionally rejects data with multiple plots, and ignores groups of grouped
-#' data.
+#' ignores groups of grouped data. And rejects data with multiple plots (to 
+#' work with data with multiple `plotnames` you may use `split()` or 
+#' `dplyr::nest()`).
 #' 
 #' @section Warning:
 #' This function may be considerably slow. It is fastest if the data already has
@@ -17,7 +18,10 @@
 #' function. It is slowest if it also duplicated values of `stemid` per `treeid`
 #' (per `censusid`) -- which may happen if trees have buttresses -- in which
 #' case, this function will check every stem for potential duplicates and pick
-#' the one with the largest `hom` value.
+#' the one with the largest `hom` value. In my computer, for example, a dataset
+#' of 2 million rows with multiple stems and buttresses took about 3 minutes
+#' to run, whereas a dataset with 2 million rows made up entirely of main stems
+#' took about ten seconds to run.
 #'
 #' @param .x A ForestGEO-like dataframe, census or ViewFullTable.
 #'
@@ -50,11 +54,12 @@ pick_main_stem <- function(.x) {
   .x <- tibble::rowid_to_column(.x)
   # Lowercase names and groups to work with both census and ViewFullTable
   .data <- rlang::set_names(.x, tolower)
+  # The net effect is to ignore groups: Store them now and restore them on exit.
   .data <- groups_lower(.data)
   
   fgeo.base::check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
-  .data <- pick_by_groups_by_censusid(.data, treeid, stemid)
-  .data <- pick_by_groups_by_censusid(.data, treeid)
+  .data <- pick_by_groups_by_censusid(.data, .data$treeid, .data$stemid)
+  .data <- pick_by_groups_by_censusid(.data, .data$treeid)
   
   # Restore rows order
   .data <- select(arrange(.data, .data$rowid), -.data$rowid)

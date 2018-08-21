@@ -1,13 +1,5 @@
 # TODO:
-# * In pick_main_stem, check if it's already a single stem per treeid to
-#   avoid computations
-# * In 
-# * Remove pick_woods()
-# * 
-
-
-# Test that pick_woods(pick_main_stem(.data)) and filter(pick_main_stem(.data)) are equivalent.
-
+# * Remove pick_woods()? Or simplify it to be filter(pick_main_stem(.data))
 
 # Check documentation of funs downstream of pick_large_hom_dbh() in fgeo.abundance
 
