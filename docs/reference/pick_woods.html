@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pick woods after collapsing multiple stems by treeid and censusid. — pick_woods • fgeo.tool</title>
+<title>Pick main stems within a specific dbh range. — pick_woods • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,27 +30,18 @@
 
 
 
-<meta property="og:title" content="Pick woods after collapsing multiple stems by treeid and censusid. — pick_woods" />
+<meta property="og:title" content="Pick main stems within a specific dbh range. — pick_woods" />
 
-<meta property="og:description" content="These functions pick rows by groups. At the core they run dplyr::filter()
-but include these additional features:
-They reject multiple plots with an informative error message.
-They operate within groups define with dplyr::group_by().
-If the data has multiple censuses, they automatically group by census.
-They collapse data of multi-stem trees by picking a single stem per treeid.
-The picked stem depends on the values of hom or dbh detected for each
-census of each treeid. The selection is as follows:
-If there is a single hom value, it is the stem of maximum dbh.
-If there is more than one hom value, it is the stem of maximum dbh.
-
-" />
-
-<meta property="og:description" content="
-pick_woods() is a general function that takes any dataframe and any
-number of expressions to filter the dataframe.
-pick_trees() picks stems of 100 mm dbh and above.
+<meta property="og:description" content="These functions extend pick_main_stem(). Working with simple or
+grouped dataframes (via dplyr::group_by()) these functions let you pick
+main stems within a given dbh range:
+pick_woods() is a general function and lets you choose the dbh range. The
+other functions are shortcuts with pre-defined dbh ranges:
+pick_saplings_and_trees() picks stems of 10 mm dbh and above.
 pick_saplings() picks stems between 10 mm dbh inclusive and 100 mm dbh
 exclusive.
+pick_trees() picks stems of 100 mm dbh and above.
+
 " />
 <meta name="twitter:card" content="summary" />
 
@@ -125,32 +116,23 @@ exclusive.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pick woods after collapsing multiple stems by treeid and censusid.</h1>
+    <h1>Pick main stems within a specific dbh range.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_woods.R'><code>R/pick_woods.R</code></a></small>
     <div class="hidden name"><code>pick_woods.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions pick rows by groups. At the core they run <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>
-but include these additional features:</p><ul>
-<li><p>They reject multiple plots with an informative error message.</p></li>
-<li><p>They operate within groups define with <code><a href='http://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>.</p></li>
-<li><p>If the data has multiple censuses, they automatically group by census.</p></li>
-<li><p>They collapse data of multi-stem trees by picking a single stem per treeid.
-The picked stem depends on the values of <code>hom</code> or <code>dbh</code> detected for each
-census of each treeid. The selection is as follows:</p><ul>
-<li><p>If there is a single <code>hom</code> value, it is the stem of maximum <code>dbh</code>.</p></li>
-<li><p>If there is more than one <code>hom</code> value, it is the stem of maximum <code>dbh</code>.</p></li>
-</ul></li>
-</ul>
-
-    <ul>
-<li><p><code>pick_woods()</code> is a general function that takes any dataframe and any
-number of expressions to filter the dataframe.</p></li>
-<li><p><code>pick_trees()</code> picks stems of 100 mm dbh and above.</p></li>
+    <p>These functions extend <code><a href='pick_main_stem.html'>pick_main_stem()</a></code>. Working with simple or
+grouped dataframes (via <code><a href='http://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>) these functions let you pick
+main stems within a given <code>dbh</code> range:</p><ul>
+<li><p><code>pick_woods()</code> is a general function and lets you choose the <code>dbh</code> range. The
+other functions are shortcuts with pre-defined <code>dbh</code> ranges:</p><ul>
+<li><p><code>pick_saplings_and_trees()</code> picks stems of 10 mm dbh and above.</p></li>
 <li><p><code>pick_saplings()</code> picks stems between 10 mm dbh inclusive and 100 mm dbh
 exclusive.</p></li>
+<li><p><code>pick_trees()</code> picks stems of 100 mm dbh and above.</p></li>
+</ul></li>
 </ul>
     
     </div>
@@ -159,7 +141,9 @@ exclusive.</p></li>
 
 <span class='fu'>pick_trees</span>(<span class='no'>.data</span>)
 
-<span class='fu'>pick_saplings</span>(<span class='no'>.data</span>)</pre>
+<span class='fu'>pick_saplings</span>(<span class='no'>.data</span>)
+
+<span class='fu'>pick_saplings_and_trees</span>(<span class='no'>.data</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,29 +165,66 @@ expression <code>dbh &gt;= 100</code> picks <code>dbh</code> values of 100 mm an
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
-    ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,  ~<span class='no'>hom</span>, ~<span class='no'>dbh</span>,
-  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.2"</span>,   <span class='fl'>130</span>,  <span class='fl'>122</span>,
-  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>10</span>,
-  <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>22</span>,
-  <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.2"</span>,   <span class='fl'>130</span>,   <span class='fl'>99</span>,
-  <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.2"</span>,   <span class='fl'>144</span>,   <span class='fl'>88</span>,
-  <span class='st'>"sp2"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.3"</span>,   <span class='fl'>130</span>,   <span class='fl'>NA</span>,
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>tibble</span>)
+
+<span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+    ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,  ~<span class='no'>hom</span>, ~<span class='no'>dbh</span>, ~<span class='no'>CensusID</span>,
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>140</span>,   <span class='fl'>40</span>,         <span class='fl'>1</span>,  <span class='co'># main stem</span>
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>60</span>,         <span class='fl'>1</span>   <span class='co'># buttress</span>
 )
 
-<span class='co'># Piks largest hom first, then largest dbh (to correct effect of batreesses)</span>
-<span class='fu'>pick_woods</span>(<span class='no'>census</span>, <span class='no'>dbh</span> <span class='kw'>&gt;=</span><span class='fl'>10</span>, <span class='no'>dbh</span> <span class='kw'>&lt;</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 5
-#&gt;   sp    treeID stemID   hom   dbh
-#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 sp2   2      2.2      144    88</div><div class='input'><span class='co'># Same</span>
-<span class='fu'>pick_saplings</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 5
-#&gt;   sp    treeID stemID   hom   dbh
-#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 sp2   2      2.2      144    88</div><div class='input'>
-<span class='fu'>pick_trees</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 5
-#&gt;   sp    treeID stemID   hom   dbh
-#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 sp1   1      1.2      130   122</div></pre>
+<span class='co'># Trees with buttresses may have more than one measurements per stem.</span>
+<span class='co'># Piks largest hom first (to correct effect of batreesses) then largest dbh</span>
+<span class='fu'><a href='pick_main_stem.html'>pick_main_stem</a></span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   sp    treeID stemID   hom   dbh CensusID
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 sp1   1      1.1      140    40        1</div><div class='input'>
+<span class='co'># Also works with multiple censuses</span>
+<span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+    ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,  ~<span class='no'>hom</span>, ~<span class='no'>dbh</span>, ~<span class='no'>CensusID</span>,
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>140</span>,   <span class='fl'>40</span>,         <span class='fl'>1</span>,  <span class='co'># main stem</span>
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>60</span>,         <span class='fl'>1</span>,  <span class='co'># buttress</span>
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>140</span>,   <span class='fl'>50</span>,         <span class='fl'>2</span>,  <span class='co'># main stem</span>
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>70</span>,         <span class='fl'>2</span>   <span class='co'># buttress</span>
+)
+
+<span class='fu'><a href='pick_main_stem.html'>pick_main_stem</a></span>(<span class='no'>censuses</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 6
+#&gt;   sp    treeID stemID   hom   dbh CensusID
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 sp1   1      1.1      140    40        1
+#&gt; 2 sp1   1      1.1      140    50        2</div><div class='input'>
+<span class='co'># pick_woods() and friends internally pick the main stem, then pick by dbh</span>
+<span class='fu'>pick_woods</span>(<span class='no'>censuses</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 6
+#&gt;   sp    treeID stemID   hom   dbh CensusID
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 sp1   1      1.1      140    40        1
+#&gt; 2 sp1   1      1.1      140    50        2</div><div class='input'>
+<span class='fu'>pick_woods</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>40</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   sp    treeID stemID   hom   dbh CensusID
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 sp1   1      1.1      140    50        2</div><div class='input'>
+<span class='co'># These functions are convenient shortcuts</span>
+<span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+    ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,  ~<span class='no'>hom</span>, ~<span class='no'>dbh</span>, ~<span class='no'>CensusID</span>,
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>140</span>,   <span class='fl'>40</span>,         <span class='fl'>1</span>,  <span class='co'># main stem</span>
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>60</span>,         <span class='fl'>1</span>,  <span class='co'># buttress</span>
+  <span class='st'>"sp1"</span>,     <span class='st'>"2"</span>,   <span class='st'>"2.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>100</span>,        <span class='fl'>1</span>,
+  <span class='st'>"sp1"</span>,     <span class='st'>"3"</span>,   <span class='st'>"2.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>110</span>,        <span class='fl'>1</span>,
+)
+
+<span class='fu'>pick_saplings</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+#&gt;   sp    treeID stemID   hom   dbh CensusID
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 sp1   1      1.1      140    40        1</div><div class='input'><span class='fu'>pick_trees</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 6
+#&gt;   sp    treeID stemID   hom   dbh CensusID
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 sp1   2      2.1      130   100        1
+#&gt; 2 sp1   3      2.1      130   110        1</div><div class='input'><span class='fu'>pick_saplings_and_trees</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 6
+#&gt;   sp    treeID stemID   hom   dbh CensusID
+#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 sp1   1      1.1      140    40        1
+#&gt; 2 sp1   2      2.1      130   100        1
+#&gt; 3 sp1   3      2.1      130   110        1</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

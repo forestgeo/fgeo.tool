@@ -22,8 +22,9 @@ data of multi-stem trees by picking a single stem per \code{treeid} per
 \code{censusid}: Within this groups it picks the stem at the top of a list sorted
 first by descending order of \code{hom}, and then by descending order of \code{dbh} --
 this corrects the effect of buttresses and picks the main stem. It
-intentionally rejects data with multiple plots, and ignores groups of grouped
-data.
+ignores groups of grouped data. And rejects data with multiple plots (to
+work with data with multiple \code{plotnames} you may use \code{split()} or
+\code{dplyr::nest()}).
 }
 \section{Warning}{
 

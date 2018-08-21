@@ -7,8 +7,9 @@
 #' `censusid`: Within this groups it picks the stem at the top of a list sorted
 #' first by descending order of `hom`, and then by descending order of `dbh` --
 #' this corrects the effect of buttresses and picks the main stem. It
-#' intentionally rejects data with multiple plots, and ignores groups of grouped
-#' data.
+#' ignores groups of grouped data. And rejects data with multiple plots (to 
+#' work with data with multiple `plotnames` you may use `split()` or 
+#' `dplyr::nest()`).
 #' 
 #' @section Warning:
 #' This function may be considerably slow. It is fastest if the data already has
@@ -53,6 +54,7 @@ pick_main_stem <- function(.x) {
   .x <- tibble::rowid_to_column(.x)
   # Lowercase names and groups to work with both census and ViewFullTable
   .data <- rlang::set_names(.x, tolower)
+  # The net effect is to ignore groups: Store them now and restore them on exit.
   .data <- groups_lower(.data)
   
   fgeo.base::check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
