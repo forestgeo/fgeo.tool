@@ -64,7 +64,7 @@
 #' 
 #' # FIRST CENSUS
 #' dir_in <- dirname(tool_example("first_census/census.xlsx"))
-#' # As a reminder you'll get a warning of missing sheets
+#' # As a reminder you will get a warning of missing sheets
 #' # Output list of dataframes (one per input workbook -- here only one)
 #' dfs <- xlff_to_dfs(dir_in, first_census = TRUE)
 #' str(dfs, give.attr = FALSE)
