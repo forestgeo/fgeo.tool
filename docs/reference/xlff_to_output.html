@@ -209,7 +209,7 @@ and (4) "single_stems".</p></li>
 
 <span class='co'># FIRST CENSUS</span>
 <span class='no'>dir_in</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"first_census/census.xlsx"</span>))
-<span class='co'># As a reminder you'll get a warning of missing sheets</span>
+<span class='co'># As a reminder you will get a warning of missing sheets</span>
 <span class='co'># Output list of dataframes (one per input workbook -- here only one)</span>
 <span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'>xlff_to_dfs</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'>str</span>(<span class='no'>dfs</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; List of 1
