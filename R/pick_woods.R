@@ -119,9 +119,9 @@ pick_saplings_and_trees <- function(.data) {
   pick_woods(.data, .data$dbh >= 10)
 }
 
-multiple_plotname <- fgeo.base::multiple_var("plotname")
+multiple_plotname <- fgeo.base::detect_multiple_f("plotname")
 
-multiple_censusid <- fgeo.base::multiple_var("censusid")
+multiple_censusid <- fgeo.base::detect_multiple_f("censusid")
 
 pick_woods_f_impl <- function(.data, ..., .collapse, .f) {
   pick <- dplyr::filter( .collapse(.data), !!! enquos(...))
