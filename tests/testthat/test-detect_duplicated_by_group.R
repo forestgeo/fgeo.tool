@@ -1,10 +1,12 @@
-context("flag_duplicated_by_group")
-
 library(tibble)
 library(rlang)
 
+# FIXME: Rename file
+
+context("flag_duplicated_by_group")
+
 describe("flag_duplicated_treeid_by_group", {
-  tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
+  tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 1))
   msg <- "Duplicated values were detected"
   
   it("handles grouped data", {
@@ -15,17 +17,17 @@ describe("flag_duplicated_treeid_by_group", {
 
   it("handles multiple conditions and a custom message", {
     expect_message(flag_duplicated_by_group_f("treeID", message)(tree), msg)
-    expect_error(flag_duplicated_by_group_f("treeID", abort)(tree), msg)
+    expect_error(flag_duplicated_by_group_f("treeID", rlang::abort)(tree), msg)
     
     custom_msg <- "Custom message"
-    flag_dup_treeid_by_grp <- flag_duplicated_by_group_f("treeID", warn)
+    flag_dup_treeid_by_grp <- flag_duplicated_by_group_f("treeID", rlang::warn)
     expect_warning(flag_dup_treeid_by_grp(tree, custom_msg), custom_msg)
   })
 
   it("is insensitive to case of variable names", {
     vft <- tibble(TreeID = c(1, 2))
     expect_false(detect_duplicated_treeid_by_group(vft))
-    expect_silent(flag_duplicated_by_group_f("treeid", warn)(vft))
+    expect_silent(flag_duplicated_by_group_f("treeid", rlang::warn)(vft))
   })
 })
 
@@ -35,7 +37,7 @@ context("detect_duplicated_by_group")
 
 describe("detect_duplicated_treeid_by_group", {
   it("handles grouped data", {
-    tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
+    tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 1))
     by_censusid <- group_by(tree, CensusID)
     expect_false(detect_duplicated_by_group_f("treeID")(by_censusid))
     expect_false(detect_duplicated_by_group_f("treeid")(by_censusid))

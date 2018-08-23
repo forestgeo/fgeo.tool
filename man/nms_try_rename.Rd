@@ -33,7 +33,6 @@ nms
 
 Other functions for developers.: \code{\link{detect_duplicated_var}},
   \code{\link{find_data_of_class}},
-  \code{\link{flag_duplicated_var}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
