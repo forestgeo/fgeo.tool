@@ -3,9 +3,9 @@ library(rlang)
 
 # FIXME: Rename file
 
-context("flag_duplicated_by_group")
+context("flag_duplicated_by_group_f")
 
-describe("flag_duplicated_treeid_by_group", {
+describe("flag_duplicated_by_group_f", {
   tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 1))
   msg <- "Duplicated values were detected"
   
@@ -26,16 +26,16 @@ describe("flag_duplicated_treeid_by_group", {
 
   it("is insensitive to case of variable names", {
     vft <- tibble(TreeID = c(1, 2))
-    expect_false(detect_duplicated_treeid_by_group(vft))
+    expect_false(detect_duplicated_by_group_f("treeid")(vft))
     expect_silent(flag_duplicated_by_group_f("treeid", rlang::warn)(vft))
   })
 })
 
 
 
-context("detect_duplicated_by_group")
+context("detect_duplicated_by_group_f")
 
-describe("detect_duplicated_treeid_by_group", {
+describe("detect_duplicated_by_group_f", {
   it("handles grouped data", {
     tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 1))
     by_censusid <- group_by(tree, CensusID)
@@ -49,13 +49,13 @@ describe("detect_duplicated_treeid_by_group", {
     # Not duplicated by census but is duplicated across the entire dataset
     # This is an issue but it's not the job of this function to deal with this
     tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
-    expect_true(detect_duplicated_treeid_by_group(tree))
+    expect_true(detect_duplicated_by_group_f("treeid")(tree))
   })
   
   it("handles grouped data", {
     tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
     by_censusid <- group_by(tree, CensusID)
-    expect_false(detect_duplicated_treeid_by_group(by_censusid))
+    expect_false(detect_duplicated_by_group_f("treeid")(by_censusid))
   })
 })
 
