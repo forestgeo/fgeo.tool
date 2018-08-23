@@ -11,7 +11,7 @@
 #' @export
 #' 
 #' @examples
-#' detect_duplicated_treeid <- detect_duplicated_var(treeid)
+#' detect_duplicated_treeid_by_group <- detect_duplicated_var(treeid)
 #' tree <- tibble::tibble(treeID = c(1, 1))
 #' detect_duplicated_var(treeid)(tree)
 detect_duplicated_var <- function(var) {
@@ -29,7 +29,15 @@ detect_duplicated_var <- function(var) {
   }
 }
 
-detect_duplicated_treeid <- detect_duplicated_var(treeid)
+detect_duplicated_by_group_f <- function(name) {
+  force(name)
+  function(.data) {
+    nested <- tidyr::nest(.data)$data
+    any(purrr::map_lgl(nested, fgeo.base::detect_duplicated_f(name)))
+  }
+}
+
+detect_duplicated_treeid_by_group <- detect_duplicated_by_group_f("treeid")
 
 #' Factory to flag duplicated values of a variable (message, warning or error).
 #' 
@@ -64,4 +72,3 @@ flag_duplicated_var <- function(.f, var) {
 }
 
 warn_duplicated_treeid <- flag_duplicated_var(rlang::warn, treeid)
-

@@ -3,6 +3,21 @@ library(rlang)
 
 context("detect_duplicated_var")
 
+describe("detect_duplicated_treeid_by_group", {
+  it("handles grouped data", {
+    tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 1))
+    by_censusid <- group_by(tree, CensusID)
+    expect_false(detect_duplicated_treeid_by_group(by_censusid))
+    expect_true(detect_duplicated_treeid_by_group(tree))
+  })
+})
+
+
+
+
+
+
+
 describe("*_duplicated_var()", {
   tree <- tibble(treeID = c(1, 1))
   it("creates functionsl closures", {
@@ -12,7 +27,7 @@ describe("*_duplicated_var()", {
   })
 })
 
-describe("detect_duplicated_treeid", {
+describe("detect_duplicated_treeid_by_group", {
   it("is silent with a tree table", {
     tree <- tibble(treeID = c(1, 2))
     expect_silent(warn_duplicated_treeid(tree))
@@ -20,7 +35,7 @@ describe("detect_duplicated_treeid", {
   
   it("works with a vft", {
     vft <- tibble(TreeID = c(1, 2))
-    expect_false(detect_duplicated_treeid(vft))
+    expect_false(detect_duplicated_treeid_by_group(vft))
     expect_silent(warn_duplicated_treeid(vft))
   })
   
@@ -28,13 +43,13 @@ describe("detect_duplicated_treeid", {
     # Not duplicated by census but is duplicated across the entire dataset
     # This is an issue but it's not the job of this function to deal with this
     tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
-    expect_true(detect_duplicated_treeid(tree))
+    expect_true(detect_duplicated_treeid_by_group(tree))
   })
   
   it("handles grouped data", {
     tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
     by_censusid <- group_by(tree, CensusID)
-    expect_false(detect_duplicated_treeid(by_censusid))
+    expect_false(detect_duplicated_treeid_by_group(by_censusid))
   })
 })
 
