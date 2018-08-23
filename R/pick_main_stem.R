@@ -48,7 +48,6 @@
 #' pick_main_stem(census)
 pick_main_stem <- function(.x) {
   stopifnot(is.data.frame(.x))
-  stopifnot_single_plotname(.x)
   
   # Store original row order to restore it at the end
   .x <- tibble::rowid_to_column(.x)
@@ -57,6 +56,7 @@ pick_main_stem <- function(.x) {
   # The net effect is to ignore groups: Store them now and restore them on exit.
   .data <- groups_lower(.data)
   
+  stopifnot_single_plotname(.data)
   fgeo.base::check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
   .data <- pick_by_groups_by_censusid(.data, .data$treeid, .data$stemid)
   .data <- pick_by_groups_by_censusid(.data, .data$treeid)
@@ -72,7 +72,7 @@ pick_main_stem <- function(.x) {
 pick_by_groups_by_censusid <- function(.x, ...) {
   .x <- ungroup(.x)
   
-  if (multiple_censusid(.x)) {
+  if (hasName(.x, "censusid") && multiple_censusid(.x)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")
     .x <- group_by(.x, .data$censusid)
   }

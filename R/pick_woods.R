@@ -17,7 +17,7 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_main_stem) {
     
     stopifnot_single_plotname(.x)
     
-    if (multiple_censusid(.x)) {
+    if (hasName(.x, "censusid") && multiple_censusid(.x)) {
       .x <- fgeo.base::drop_if_na(.x, "censusid")
       .x <- dplyr::group_by(.x, .data$censusid, add = TRUE)
     }
