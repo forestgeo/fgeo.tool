@@ -12,9 +12,9 @@ detect_duplicated_treeid_by_group <- detect_duplicated_by_group_f("treeid")
 
 
 # TODO: Add flag_multiple_by_group_f then remove duplication
-flag_duplicated_by_group_f <- function(name) {
+flag_duplicated_by_group_f <- function(name, cond = rlang::warn) {
   force(name)
-  function(.data, cond, msg = NULL) {
+  function(.data, msg = NULL) {
     stopifnot(length(cond) == 1)
     
     nested <- tidyr::nest(.data)$data
@@ -94,4 +94,3 @@ flag_duplicated_var <- function(.f, var) {
   }
 }
 
-warn_duplicated_treeid <- flag_duplicated_var(rlang::warn, treeid)

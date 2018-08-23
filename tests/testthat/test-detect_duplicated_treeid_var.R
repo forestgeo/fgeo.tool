@@ -11,20 +11,22 @@ describe("flag_duplicated_treeid_by_group", {
   
   it("handles grouped data", {
     by_censusid <- group_by(tree, CensusID)
-    expect_silent(flag_duplicated_by_group_f("treeID")(by_censusid, warning))
-    expect_warning(flag_duplicated_by_group_f("treeID")(tree, warning), msg)
+    expect_silent(flag_duplicated_by_group_f("treeID")(by_censusid))
+    expect_warning(flag_duplicated_by_group_f("treeID")(tree), msg)
   })
 
   it("handles multiple conditions and a custom message", {
-    expect_message(flag_duplicated_by_group_f("treeID")(tree, message), msg)
-    expect_error(flag_duplicated_by_group_f("treeID")(tree, rlang::abort), msg)
-    msg <- "Custom message"
-    expect_error(flag_duplicated_by_group_f("treeID")(tree, rlang::abort, msg))
+    expect_message(flag_duplicated_by_group_f("treeID", message)(tree), msg)
+    expect_error(flag_duplicated_by_group_f("treeID", rlang::abort)(tree), msg)
+    
+    custom_msg <- "Custom message"
+    flag_dup_treeid_by_grp <- flag_duplicated_by_group_f("treeID", rlang::warn)
+    expect_warning(flag_dup_treeid_by_grp(tree, custom_msg), custom_msg)
   })
   
   it("handles grouped data", {
     by_censusid <- group_by(tree, CensusID)
-    expect_warning(flag_duplicated_by_group_f("treeid")(tree, warning), msg)
+    expect_warning(flag_duplicated_by_group_f("treeid")(tree), msg)
   })
 })
 
@@ -59,16 +61,19 @@ describe("*_duplicated_var()", {
   })
 })
 
+
+
+
 describe("detect_duplicated_treeid_by_group", {
   it("is silent with a tree table", {
     tree <- tibble(treeID = c(1, 2))
-    expect_silent(warn_duplicated_treeid(tree))
+    expect_silent(flag_duplicated_by_group_f("treeid")(tree))
   })
   
   it("works with a vft", {
     vft <- tibble(TreeID = c(1, 2))
     expect_false(detect_duplicated_treeid_by_group(vft))
-    expect_silent(warn_duplicated_treeid(vft))
+    expect_silent(flag_duplicated_by_group_f("treeid", rlang::warn)(vft))
   })
   
   it("doesn't group by censusid", {
@@ -84,14 +89,3 @@ describe("detect_duplicated_treeid_by_group", {
     expect_false(detect_duplicated_treeid_by_group(by_censusid))
   })
 })
-
-describe("warn_duplicated_treeid", {
-  it("warns with stem table", {
-    stem <- tibble(treeID = c(1, 1), stemID = c(1.1, 1.2))
-    expect_warning(
-      warn_duplicated_treeid(stem), 
-      "Detected duplicated values of treeid"
-    )
-  })
-})
-
