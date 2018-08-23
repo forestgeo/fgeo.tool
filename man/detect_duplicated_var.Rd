@@ -2,7 +2,7 @@
 % Please edit documentation in R/detect_duplicated_var.R
 \name{detect_duplicated_var}
 \alias{detect_duplicated_var}
-\title{Factory of functions to detect duplicated values of a variable.}
+\title{Factory of functions to detect duplicated values of a variable by groups.}
 \usage{
 detect_duplicated_var(var)
 }
@@ -14,10 +14,10 @@ A closure with the formal argument \code{.data} that returns \code{TRUE} or
 when duplicated values of \code{var} are detected or \code{FALSE} if not.
 }
 \description{
-Factory of functions to detect duplicated values of a variable.
+Factory of functions to detect duplicated values of a variable by groups.
 }
 \examples{
-detect_duplicated_treeid <- detect_duplicated_var(treeid)
+detect_duplicated_treeid_by_group <- detect_duplicated_var(treeid)
 tree <- tibble::tibble(treeID = c(1, 1))
 detect_duplicated_var(treeid)(tree)
 }
