@@ -13,17 +13,33 @@ describe("detect_duplicated_by_group_f", {
     expect_true(detect_duplicated_by_group_f("treeID")(tree))
   })
   
-  it("doesn't group by censusid", {
-    # Not duplicated by census but is duplicated across the entire dataset
-    # This is an issue but it's not the job of this function to deal with this
-    tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
-    expect_true(detect_duplicated_by_group_f("treeid")(tree))
-  })
-  
   it("handles grouped data", {
     tree <- tibble(CensusID = c(1, 2), treeID = c(1, 1))
     by_censusid <- group_by(tree, CensusID)
     expect_false(detect_duplicated_by_group_f("treeid")(by_censusid))
+    expect_true(detect_duplicated_by_group_f("treeid")(tree))
+  })
+})
+
+
+
+context("detect_multiple_by_group_f")
+
+describe("detect_multiple_by_group_f", {
+  it("handles grouped data", {
+    tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 2))
+    by_censusid <- group_by(tree, CensusID)
+    expect_false(detect_multiple_by_group_f("treeID")(by_censusid))
+    expect_false(detect_multiple_by_group_f("treeid")(by_censusid))
+    expect_true(detect_multiple_by_group_f("treeid")(tree))
+    expect_true(detect_multiple_by_group_f("treeID")(tree))
+  })
+  
+  it("handles grouped data", {
+    tree <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
+    by_censusid <- group_by(tree, CensusID)
+    expect_false(detect_multiple_by_group_f("treeid")(by_censusid))
+    expect_true(detect_multiple_by_group_f("treeid")(tree))
   })
 })
 

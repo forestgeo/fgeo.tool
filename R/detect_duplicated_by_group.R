@@ -1,11 +1,19 @@
 # TODO Document
 
-detect_duplicated_by_group_f <- function(name) {
+detect_predicate_by_group_f <- function(name, predicate) {
   force(name)
   function(.data) {
     nested <- tidyr::nest(.data)$data
-    any(purrr::map_lgl(nested, fgeo.base::detect_duplicated_f(name)))
+    any(purrr::map_lgl(nested, predicate(name)))
   }
+}
+
+detect_duplicated_by_group_f <- function(name, predicate) {
+  detect_predicate_by_group_f(name, fgeo.base::detect_duplicated_f)
+}
+
+detect_multiple_by_group_f <- function(name, predicate) {
+  detect_predicate_by_group_f(name, fgeo.base::detect_multiple_f)
 }
 
 flag_predicate_by_group_f <- function(name, cond, predicate, prefix) {
