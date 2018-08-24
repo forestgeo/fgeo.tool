@@ -121,8 +121,7 @@ reference:
   - title: Function factories
     desc: Not specific to ForestGEO
     contents:
-    - detect_duplicated_var
-    - flag_duplicated_var
+    - ends_with("_f")
 
   - title: "Generics"
     contents:

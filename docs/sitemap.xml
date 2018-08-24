@@ -31,7 +31,7 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/convert_unit.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/detect_duplicated_var.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/detect_duplicated_by_group_f.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/dfs_to_csv.html</loc>
@@ -62,9 +62,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/find_data_of_class.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/flag_duplicated_var.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/lookup.html</loc>
