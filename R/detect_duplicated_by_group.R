@@ -6,8 +6,8 @@
 #' @inheritParams fgeo.base::detect_multiple_f
 #' 
 #' @section Arguments to the resulting function:
-#' * `.data` A dataframe.
-#' * `msg` String; an optional custom
+#' * `.data`: A dataframe.
+#' * `msg`: String; an optional custom
 #'   message.
 #'
 #' @seealso [detect_multiple_f()], [flag_multiple_f()], [detect_duplicated_f()],

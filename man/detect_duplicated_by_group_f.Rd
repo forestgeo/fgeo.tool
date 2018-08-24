@@ -31,8 +31,8 @@ defined with \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 \section{Arguments to the resulting function}{
 
 \itemize{
-\item \code{.data} A dataframe.
-\item \code{msg} String; an optional custom
+\item \code{.data}: A dataframe.
+\item \code{msg}: String; an optional custom
 message.
 }
 }
