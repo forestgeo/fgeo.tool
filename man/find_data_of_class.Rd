@@ -23,7 +23,8 @@ show_data_of_class("fgeo.tool", "tbl")
 hide_data_of_class("fgeo.tool", "data.frame")
 }
 \seealso{
-Other functions for developers.: \code{\link{nms_extract_anycase}},
+Other functions for developers.: \code{\link{detect_duplicated_by_group_f}},
+  \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}},

@@ -34,7 +34,8 @@ type_ensure(dfm, c("w", "x", "y", "z"), "character")
 \seealso{
 \code{\link[purrr:modify_at]{purrr::modify_at()}}.
 
-Other functions for developers.: \code{\link{find_data_of_class}},
+Other functions for developers.: \code{\link{detect_duplicated_by_group_f}},
+  \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},

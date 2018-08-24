@@ -69,6 +69,11 @@ describe("flag_duplicated_by_group_f", {
     expect_warning(flag_duplicated_by_group_f("treeID")(tree), msg)
   })
   
+  it("handles variable that is also a grouping variable", {
+    by_censusid <- group_by(tree, CensusID)
+    flag_duplicated_by_group_f("CensusID")(by_censusid)
+  })
+  
   it("handles multiple conditions and a custom message", {
     expect_message(flag_duplicated_by_group_f("treeID", message)(tree), msg)
     expect_error(flag_duplicated_by_group_f("treeID", rlang::abort)(tree), msg)
@@ -101,6 +106,11 @@ describe("flag_multiple_by_group_f", {
     by_censusid <- group_by(tree, CensusID)
     expect_silent(flag_multiple_by_group_f("treeID")(by_censusid))
     expect_warning(flag_multiple_by_group_f("treeID")(tree), msg)
+  })
+  
+  it("handles variable that is also a grouping variable", {
+    by_censusid <- group_by(tree, CensusID)
+    flag_multiple_by_group_f("CensusID")(by_censusid)
   })
   
   it("handles multiple conditions and a custom message", {

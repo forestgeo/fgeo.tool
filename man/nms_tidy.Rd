@@ -51,7 +51,8 @@ messy_list <- list(`Hi yOu` = 1)
 nms_tidy(messy_list)
 }
 \seealso{
-Other functions for developers.: \code{\link{find_data_of_class}},
+Other functions for developers.: \code{\link{detect_duplicated_by_group_f}},
+  \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}},
