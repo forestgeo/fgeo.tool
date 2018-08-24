@@ -45,9 +45,8 @@ back_to_original <- nms_restore(lowered)
 back_to_original
 }
 \seealso{
-Other functions for developers.: \code{\link{detect_duplicated_var}},
+Other functions for developers.: \code{\link{detect_duplicated_by_group_f}},
   \code{\link{find_data_of_class}},
-  \code{\link{flag_duplicated_var}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}},

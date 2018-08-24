@@ -1,10 +1,9 @@
 # TODO:
 # * Remove pick_woods()? Or simplify it to be filter(pick_main_stem(.data))
-
 # Check documentation of funs downstream of pick_large_hom_dbh() in fgeo.abundance
 
 
-
+# * Make test-fgeo_habitat run faster.
 
 
 

@@ -17,7 +17,7 @@ pick_woods_f <- function(.f, .collapse = fgeo.tool::pick_main_stem) {
     
     stopifnot_single_plotname(.x)
     
-    if (multiple_censusid(.x)) {
+    if (has_name(.x, "censusid") && multiple_censusid(.x)) {
       .x <- fgeo.base::drop_if_na(.x, "censusid")
       .x <- dplyr::group_by(.x, .data$censusid, add = TRUE)
     }
@@ -119,9 +119,9 @@ pick_saplings_and_trees <- function(.data) {
   pick_woods(.data, .data$dbh >= 10)
 }
 
-multiple_plotname <- fgeo.base::multiple_var("plotname")
+multiple_plotname <- fgeo.base::detect_multiple_f("plotname")
 
-multiple_censusid <- fgeo.base::multiple_var("censusid")
+multiple_censusid <- fgeo.base::detect_multiple_f("censusid")
 
 pick_woods_f_impl <- function(.data, ..., .collapse, .f) {
   pick <- dplyr::filter( .collapse(.data), !!! enquos(...))

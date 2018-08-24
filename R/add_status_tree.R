@@ -44,13 +44,15 @@ add_status_tree <- function(x, status_a = "A", status_d = "D") {
     fgeo.base::rename_matches(x)
 }
 
+
 check_add_status_tree <- function(x, status_d, status_a) {
   stopifnot(is.data.frame(x))
   check_crucial_names(x, c("treeid", "status", "censusid"))
   check_valid_status(x, .status = c(status_d, status_a), "status")
   if ("plotid" %in% names(x)) {
     msg <-  "\n  * Filter your data to keep a single plot and try again"
-    fgeo.base::flag_multiple(x, "plotid", abort, msg = msg)
+    fgeo.base::flag_multiple_f("plotid", abort)(x, msg = msg)
   }
   invisible(x)
 }
+

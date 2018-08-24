@@ -13,10 +13,6 @@ each_list_item_is_df <- function(x) {
   all(vapply(x, has_class_df, logical(1)))
 }
 
-multiple_censusid <- fgeo.base::multiple_var("censusid")
-
-multiple_plotname <- fgeo.base::multiple_var("plotname")
-
 groups_lower <- function(x) {
   dplyr::grouped_df(x, tolower(dplyr::group_vars(x)))
 }
@@ -26,7 +22,7 @@ groups_restore <- function(x, ref) {
 }
 
 stopifnot_single_plotname <- function(.x) {
-  if (multiple_plotname(.x)) {
+  if (has_name(.x, "plotname") && multiple_plotname(.x)) {
     stop("`.x` must have a single plotname.", call. = FALSE)
   }
 }

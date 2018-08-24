@@ -57,9 +57,8 @@ mutated <- dplyr::mutate(dfm, newvar = x + 1)
 nms_restore_newvar(mutated, "newvar", old)
 }
 \seealso{
-Other functions for developers.: \code{\link{detect_duplicated_var}},
+Other functions for developers.: \code{\link{detect_duplicated_by_group_f}},
   \code{\link{find_data_of_class}},
-  \code{\link{flag_duplicated_var}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}},
