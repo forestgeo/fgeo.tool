@@ -66,6 +66,10 @@ describe("flag_duplicated_by_group_f", {
     expect_warning(flag_dup_treeid_by_grp(tree, custom_msg), custom_msg)
   })
   
+  it("includes in the message the name of the variable being tested", {
+    expect_warning(flag_duplicated_by_group_f("treeID")(tree), "treeID")
+  })
+  
   it("is insensitive to case of variable names", {
     vft <- tibble(TreeID = c(1, 2))
     expect_false(detect_duplicated_by_group_f("treeid")(vft))
@@ -94,6 +98,10 @@ describe("flag_multiple_by_group_f", {
     custom_msg <- "Custom message"
     flag_dup_treeid_by_grp <- flag_multiple_by_group_f("treeID", rlang::warn)
     expect_warning(flag_dup_treeid_by_grp(tree, custom_msg), custom_msg)
+  })
+  
+  it("includes in the message the name of the variable being tested", {
+    expect_warning(flag_multiple_by_group_f("treeID")(tree), "treeID")
   })
   
   it("is insensitive to case of variable names", {
