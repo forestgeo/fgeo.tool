@@ -3,8 +3,9 @@
 detect_predicate_by_group_f <- function(name, predicate) {
   force(name)
   function(.data) {
-    nested <- tidyr::nest(.data)$data
-    any(purrr::map_lgl(nested, predicate(name)))
+    # nested <- tidyr::nest(.data)$data
+    # any(purrr::map_lgl(nested, predicate(name)))
+    any(t(by_group(.data, predicate(name))))
   }
 }
 
@@ -23,8 +24,9 @@ flag_predicate_by_group_f <- function(name, cond, predicate, prefix) {
   function(.data, msg = NULL) {
     stopifnot(length(cond) == 1)
 
-    nested <- tidyr::nest(.data)$data
-    detected <- any(purrr::map_lgl(nested, predicate(name)))
+    # nested <- tidyr::nest(.data)$data
+    # detected <- any(purrr::map_lgl(nested, predicate(name)))
+    detected <- any(t(by_group(.data, predicate(name))))
     if (detected) cond(msg %||% glue("{name}: {prefix} values were detected."))
 
     invisible(.data)

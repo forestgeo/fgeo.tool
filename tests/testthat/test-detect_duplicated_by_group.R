@@ -19,6 +19,12 @@ describe("detect_duplicated_by_group_f", {
     expect_false(detect_duplicated_by_group_f("treeid")(by_censusid))
     expect_true(detect_duplicated_by_group_f("treeid")(tree))
   })
+  
+  it("handles variable that is also a grouping variable", {
+    census <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
+    by_censusid <- group_by(census, CensusID)
+    detect_duplicated_by_group_f("CensusID")(by_censusid)
+  })
 })
 
 
@@ -40,6 +46,12 @@ describe("detect_multiple_by_group_f", {
     by_censusid <- group_by(tree, CensusID)
     expect_false(detect_multiple_by_group_f("treeid")(by_censusid))
     expect_true(detect_multiple_by_group_f("treeid")(tree))
+  })
+  
+  it("handles variable that is also a grouping variable", {
+    census <- tibble(CensusID = c(1, 1), treeID = c(1, 2))
+    by_censusid <- group_by(census, CensusID)
+    detect_multiple_by_group_f("CensusID")(by_censusid)
   })
 })
 
