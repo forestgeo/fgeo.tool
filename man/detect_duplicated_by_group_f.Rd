@@ -20,11 +20,6 @@ flag_multiple_by_group_f(name, cond = warn)
 
 \item{cond}{Symbol; the bare name of a function that outputs a condition:
 e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
-
-\item{.data}{(Argument to the resulting function) A dataframe.}
-
-\item{msg}{(Argument to the resulting function) String; an optional custom
-message.}
 }
 \value{
 A function.
@@ -33,6 +28,15 @@ A function.
 These funcions extend \code{\link[=detect_multiple_f]{detect_multiple_f()}} and friends to work by groups
 defined with \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
+\section{Arguments to the resulting function}{
+
+\itemize{
+\item .data (Argument to the resulting function) A dataframe.
+\item msg (Argument to the resulting function) String; an optional custom
+message.
+}
+}
+
 \examples{
 tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 2))
 detect_multiple_by_group_f("treeid")(tree)

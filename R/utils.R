@@ -22,7 +22,7 @@ groups_restore <- function(x, ref) {
 }
 
 stopifnot_single_plotname <- function(.x) {
-  if (hasName(.x, "plotname") && multiple_plotname(.x)) {
+  if (has_name(.x, "plotname") && multiple_plotname(.x)) {
     stop("`.x` must have a single plotname.", call. = FALSE)
   }
 }

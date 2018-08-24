@@ -72,7 +72,7 @@ pick_main_stem <- function(.x) {
 pick_by_groups_by_censusid <- function(.x, ...) {
   .x <- ungroup(.x)
   
-  if (hasName(.x, "censusid") && multiple_censusid(.x)) {
+  if (has_name(.x, "censusid") && multiple_censusid(.x)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")
     .x <- group_by(.x, .data$censusid)
   }

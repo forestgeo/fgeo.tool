@@ -1,4 +1,4 @@
-#' @importFrom rlang set_names abort warn inform %||%
+#' @importFrom rlang set_names abort warn inform %||% has_name
 #' @importFrom glue glue glue_collapse
 #' @importFrom fgeo.base check_crucial_names rename_matches
 #' @importFrom utils head tail

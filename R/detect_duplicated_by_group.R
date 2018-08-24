@@ -4,8 +4,10 @@
 #' defined with [dplyr::group_by()].
 #'
 #' @inheritParams fgeo.base::detect_multiple_f
-#' @param .data (Argument to the resulting function) A dataframe.
-#' @param msg (Argument to the resulting function) String; an optional custom
+#' 
+#' @section Arguments to the resulting function:
+#' * .data (Argument to the resulting function) A dataframe.
+#' * msg (Argument to the resulting function) String; an optional custom
 #'   message.
 #'
 #' @seealso [detect_multiple_f()], [flag_multiple_f()], [detect_duplicated_f()],
