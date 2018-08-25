@@ -96,7 +96,7 @@ detect_if_by_group <- function(.data, name, predicate) {
   any(t(by_group(.data, function(x) detect_if(x, name, is_duplicated))))
 }
 
-flag_if_by_group <- function(.data, 
+flag_if_group <- function(.data, 
                              name, 
                              predicate, 
                              condition = warn, 
