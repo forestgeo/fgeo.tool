@@ -8,9 +8,6 @@
 #' * `msg`: String; an optional custom
 #'   message.
 #'
-#' @seealso [detect_multiple_f()], [flag_multiple_f()], [detect_duplicated_f()],
-#' [flag_duplicated_f()].
-#'
 #' @family functions to check inputs.
 #' @family functions for developers.
 #' @family predicates.
@@ -46,7 +43,9 @@
 #' flag_duplicated_by_group_f("treeID")(by_censusid)
 detect_duplicated_by_group_f <- function(name) {
   force(name)
-  function(.data) any(t(by_group(.data, detect_duplicated_f(name))))
+  function(.data) {
+    any(t(by_group(.data, function(x) detect_if(x, name, is_duplicated))))
+  }
 }
 
 #' @rdname detect_duplicated_by_group_f
@@ -79,9 +78,7 @@ flag_duplicated_by_group_f <- function(name, cond = warn) {
 #' @rdname detect_duplicated_by_group_f
 #' @export
 flag_multiple_by_group_f <- function(name, cond = warn) {
-  flag_predicate_by_group_f(
-    name, cond, detect_multiple_f, "Multiple"
-  )
+  flag_predicate_by_group_f(name, cond, detect_multiple_f, "Multiple")
 }
 
 detect_multiple_f <- function(name) {
@@ -91,3 +88,20 @@ detect_multiple_f <- function(name) {
 detect_duplicated_f <- function(name) {
   function(.data) detect_if(.data, name, is_duplicated)
 }
+
+
+
+
+
+
+
+
+# 
+# flag_group_if <- function(.data, name, predicate, condition, msg = NULL) {
+#   stopifnot(length(cond) == 1)
+#     
+#   detected <- any(t(by_group(.data, predicate(name))))
+#   if (detected) cond(msg %||% glue("{name}: Flagged values were detected."))
+#     
+#   invisible(.data)
+# }

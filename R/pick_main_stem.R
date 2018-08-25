@@ -57,14 +57,14 @@ pick_main_stem <- function(.x) {
   .data <- groups_lower(.data)
   
   stopifnot_single_plotname(.data)
-  fgeo.base::check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
+  check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
   .data <- pick_by_groups_by_censusid(.data, .data$treeid, .data$stemid)
   .data <- pick_by_groups_by_censusid(.data, .data$treeid)
   
   # Restore rows order
   .data <- select(arrange(.data, .data$rowid), -.data$rowid)
   # Restore original names
-  out <- fgeo.base::rename_matches(.data , .x)
+  out <- rename_matches(.data , .x)
   # Restore original groups
   groups_restore(out, .x)
 }
@@ -72,7 +72,7 @@ pick_main_stem <- function(.x) {
 pick_by_groups_by_censusid <- function(.x, ...) {
   .x <- ungroup(.x)
   
-  if (has_name(.x, "censusid") && multiple_censusid(.x)) {
+  if (has_name(.x, "censusid") && detect_if(.x, "censusid", is_multiple)) {
     .x <- fgeo.base::drop_if_na(.x, "censusid")
     .x <- group_by(.x, .data$censusid)
   }

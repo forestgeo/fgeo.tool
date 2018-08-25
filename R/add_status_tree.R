@@ -41,9 +41,8 @@ add_status_tree <- function(x, status_a = "A", status_d = "D") {
       status_tree = ifelse(all(.data$status == status_d), status_d, status_a)
     ) %>% 
     ungroup() %>% 
-    fgeo.base::rename_matches(x)
+    rename_matches(x)
 }
-
 
 check_add_status_tree <- function(x, status_d, status_a) {
   stopifnot(is.data.frame(x))
@@ -51,12 +50,7 @@ check_add_status_tree <- function(x, status_d, status_a) {
   check_valid_status(x, .status = c(status_d, status_a), "status")
   if ("plotid" %in% names(x)) {
     msg <-  "\n  * Filter your data to keep a single plot and try again"
-    flag_multiple_f("plotid", abort)(x, msg = msg)
+    flag_if(x, "plotid", is_multiple, abort, msg = msg)
   }
   invisible(x)
-}
-
-# TODO: Remove?
-flag_multiple_f <- function(name, condition) {
-  function(.data, msg) flag_if(.data, name, is_multiple, msg)
 }
