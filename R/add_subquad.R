@@ -89,7 +89,7 @@ add_subquad <- function(df,
     )
   )
   
-  .df <- fgeo.base::rename_matches(.df, df)
+  .df <- rename_matches(.df, df)
   
   if (!is.null(subquad_offset)) {
     recode_subquad(.df, offset = subquad_offset)

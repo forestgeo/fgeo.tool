@@ -19,11 +19,11 @@ NULL
 extract_gridsize <- function(habitats) {
   stopifnot(is.data.frame(habitats))
   habitats <- tryCatch(
-    fgeo.base::check_crucial_names(habitats, c("x", "y")), 
+    check_crucial_names(habitats, c("x", "y")), 
     error = function(e) rename_to_xy(habitats)
   )
   fgeo.base::warn_na(habitats)
-  fgeo.base::check_crucial_names(habitats, c("x", "y"))
+  check_crucial_names(habitats, c("x", "y"))
 
   grid_x <- difference_among_grid_steps(habitats$x)
   grid_y <- difference_among_grid_steps(habitats$y)
@@ -35,7 +35,7 @@ extract_gridsize <- function(habitats) {
 #' @export
 extract_plotdim <- function(habitats) {
   habitats <- tryCatch(
-    fgeo.base::check_crucial_names(habitats, c("x", "y")), 
+    check_crucial_names(habitats, c("x", "y")), 
     error = function(e) rename_to_xy(habitats)
   )
   

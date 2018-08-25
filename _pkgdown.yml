@@ -118,11 +118,15 @@ reference:
     contents:
     - tool_example
     
+  - title: Detect and flag conditions
+    desc: Not specific to ForestGEO
+    contents:
+      - flag_if_group
+
   - title: Function factories
     desc: Not specific to ForestGEO
     contents:
-    - detect_duplicated_var
-    - flag_duplicated_var
+    - ends_with("_f")
 
   - title: "Generics"
     contents:
