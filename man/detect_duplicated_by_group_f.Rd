@@ -58,9 +58,6 @@ by_censusid <- group_by(tree, CensusID)
 flag_duplicated_by_group_f("treeID")(by_censusid)
 }
 \seealso{
-\code{\link[=detect_multiple_f]{detect_multiple_f()}}, \code{\link[=flag_multiple_f]{flag_multiple_f()}}, \code{\link[=detect_duplicated_f]{detect_duplicated_f()}},
-\code{\link[=flag_duplicated_f]{flag_duplicated_f()}}.
-
 Other functions for developers.: \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},

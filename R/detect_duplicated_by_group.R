@@ -96,12 +96,17 @@ detect_duplicated_f <- function(name) {
 
 
 
-# 
-# flag_group_if <- function(.data, name, predicate, condition, msg = NULL) {
-#   stopifnot(length(cond) == 1)
-#     
-#   detected <- any(t(by_group(.data, predicate(name))))
-#   if (detected) cond(msg %||% glue("{name}: Flagged values were detected."))
-#     
-#   invisible(.data)
-# }
+
+flag_if_by_group <- function(.data, 
+                             name, 
+                             predicate, 
+                             condition = warn, 
+                             msg = NULL) {
+  stopifnot(length(condition) == 1)
+  
+  result_by_groups <- by_group(.data, function(x) detect_if(x, name, predicate))
+  detected <- any(t(result_by_groups))
+  if (detected) condition(msg %||% glue("{name}: Flagged values were detected."))
+
+  invisible(.data)
+}
