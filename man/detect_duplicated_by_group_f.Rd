@@ -15,18 +15,12 @@ flag_duplicated_by_group_f(name, cond = warn)
 
 flag_multiple_by_group_f(name, cond = warn)
 }
-\arguments{
-\item{name}{String; the name of a variable of \code{.data}.}
-
-\item{cond}{Symbol; the bare name of a function that outputs a condition:
-e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
-}
 \value{
 A function.
 }
 \description{
-These funcions extend \code{\link[=detect_multiple_f]{detect_multiple_f()}} and friends to work by groups
-defined with \code{\link[dplyr:group_by]{dplyr::group_by()}}.
+These funcions extend \code{\link[=detect_f]{detect_f()}} to work by groups defined with
+\code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
 \section{Arguments to the resulting function}{
 

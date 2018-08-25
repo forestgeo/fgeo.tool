@@ -1,6 +1,7 @@
 #' @importFrom rlang set_names abort warn inform %||% has_name
 #' @importFrom glue glue glue_collapse
-#' @importFrom fgeo.base check_crucial_names rename_matches
+#' @importFrom fgeo.base check_crucial_names rename_matches 
+#' @importFrom fgeo.base is_multiple is_duplicated detect_if flag_if
 #' @importFrom utils head tail
 #' @importFrom measurements conv_unit
 NULL

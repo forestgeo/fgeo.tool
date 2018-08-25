@@ -1,10 +1,8 @@
 #' Factories to detect and flag conditions on a variable by groups.
 #' 
-#' These funcions extend [detect_multiple_f()] and friends to work by groups
-#' defined with [dplyr::group_by()].
+#' These funcions extend [detect_f()] to work by groups defined with
+#' [dplyr::group_by()].
 #'
-#' @inheritParams fgeo.base::detect_multiple_f
-#' 
 #' @section Arguments to the resulting function:
 #' * `.data`: A dataframe.
 #' * `msg`: String; an optional custom
@@ -48,14 +46,16 @@
 #' flag_duplicated_by_group_f("treeID")(by_censusid)
 detect_duplicated_by_group_f <- function(name) {
   force(name)
-  function(.data) any(t(by_group(.data, fgeo.base::detect_duplicated_f(name))))
+  function(.data) any(t(by_group(.data, detect_duplicated_f(name))))
 }
 
 #' @rdname detect_duplicated_by_group_f
 #' @export
 detect_multiple_by_group_f <- function(name) {
   force(name)
-  function(.data) any(t(by_group(.data, fgeo.base::detect_multiple_f(name))))
+  function(.data) {
+    any(t(by_group(.data, function(x) detect_if(x, name, is_multiple))))
+  }
 }
 
 flag_predicate_by_group_f <- function(name, cond, predicate, prefix) {
@@ -73,15 +73,21 @@ flag_predicate_by_group_f <- function(name, cond, predicate, prefix) {
 #' @rdname detect_duplicated_by_group_f
 #' @export
 flag_duplicated_by_group_f <- function(name, cond = warn) {
-  flag_predicate_by_group_f(
-    name, cond, fgeo.base::detect_duplicated_f, "Duplicated"
-  )
+  flag_predicate_by_group_f(name, cond, detect_duplicated_f, "Duplicated")
 }
 
 #' @rdname detect_duplicated_by_group_f
 #' @export
 flag_multiple_by_group_f <- function(name, cond = warn) {
   flag_predicate_by_group_f(
-    name, cond, fgeo.base::detect_multiple_f, "Multiple"
+    name, cond, detect_multiple_f, "Multiple"
   )
+}
+
+detect_multiple_f <- function(name) {
+  function(.data) detect_if(.data, name, is_multiple)
+}
+
+detect_duplicated_f <- function(name) {
+  function(.data) detect_if(.data, name, is_duplicated)
 }

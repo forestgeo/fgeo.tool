@@ -51,8 +51,12 @@ check_add_status_tree <- function(x, status_d, status_a) {
   check_valid_status(x, .status = c(status_d, status_a), "status")
   if ("plotid" %in% names(x)) {
     msg <-  "\n  * Filter your data to keep a single plot and try again"
-    fgeo.base::flag_multiple_f("plotid", abort)(x, msg = msg)
+    flag_multiple_f("plotid", abort)(x, msg = msg)
   }
   invisible(x)
 }
 
+# TODO: Remove?
+flag_multiple_f <- function(name, condition) {
+  function(.data, msg) flag_if(.data, name, is_multiple, msg)
+}
