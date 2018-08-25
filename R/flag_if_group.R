@@ -42,6 +42,8 @@ flag_if_group <- function(.data,
   invisible(.data)
 }
 
+#' @rdname flag_if_group
+#' @export
 detect_if_group <- function(.data, name, predicate) {
   result_by_groups <- by_group(.data, function(x) detect_if(x, name, predicate))
   any(t(result_by_groups))

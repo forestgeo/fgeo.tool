@@ -2,9 +2,12 @@
 % Please edit documentation in R/flag_if_group.R
 \name{flag_if_group}
 \alias{flag_if_group}
+\alias{detect_if_group}
 \title{Detect and flag based on a predicate applied to a variable by groups.}
 \usage{
 flag_if_group(.data, name, predicate, condition = warn, msg = NULL)
+
+detect_if_group(.data, name, predicate)
 }
 \arguments{
 \item{.data}{A dataframe.}
@@ -40,17 +43,12 @@ detect_if_group(by_censusid, "treeID", is_multiple)
 flag_if_group(by_censusid, "treeID", is_multiple)
 }
 \seealso{
-Other functions to check inputs.: \code{\link{detect_duplicated_by_group_f}}
-
-Other functions for developers.: \code{\link{detect_duplicated_by_group_f}},
-  \code{\link{find_data_of_class}},
+Other functions for developers.: \code{\link{find_data_of_class}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}},
   \code{\link{type_ensure}}
-
-Other predicates.: \code{\link{detect_duplicated_by_group_f}}
 }
 \concept{functions for developers.}
 \concept{functions to check inputs.}

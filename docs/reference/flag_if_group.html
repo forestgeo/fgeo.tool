@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Try to rename an object. — nms_try_rename • fgeo.tool</title>
+<title>Detect and flag based on a predicate applied to a variable by groups. — flag_if_group • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Try to rename an object. — nms_try_rename" />
+<meta property="og:title" content="Detect and flag based on a predicate applied to a variable by groups. — flag_if_group" />
 
-<meta property="og:description" content="Given a name you want and a possible alternative, this function renames an
-object as you want or errs with an informative message." />
+<meta property="og:description" content="These functions extend fgeo.base::flag_if() and fgeo.base::detect_if() to
+work by groups defined with dplyr::group_by()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -107,68 +107,82 @@ object as you want or errs with an informative message." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Try to rename an object.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/nms_manipulate_names.R'><code>R/nms_manipulate_names.R</code></a></small>
-    <div class="hidden name"><code>nms_try_rename.Rd</code></div>
+    <h1>Detect and flag based on a predicate applied to a variable by groups.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/flag_if_group.R'><code>R/flag_if_group.R</code></a></small>
+    <div class="hidden name"><code>flag_if_group.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Given a name you want and a possible alternative, this function renames an
-object as you want or errs with an informative message.</p>
+    <p>These functions extend <code><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/flag_if'>fgeo.base::flag_if()</a></code> and <code><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/detect_if'>fgeo.base::detect_if()</a></code> to
+work by groups defined with <code><a href='http://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nms_try_rename</span>(<span class='no'>x</span>, <span class='no'>want</span>, <span class='no'>try</span>)</pre>
+    <pre class="usage"><span class='fu'>flag_if_group</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warn</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>detect_if_group</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A named object.</p></td>
+      <th>.data</th>
+      <td><p>A dataframe.</p></td>
     </tr>
     <tr>
-      <th>want</th>
-      <td><p>String of length 1 giving the name you want the object to have.</p></td>
+      <th>name</th>
+      <td><p>String. The name of a column of the dataframe.</p></td>
     </tr>
     <tr>
-      <th>try</th>
-      <td><p>String of length 1 giving the name the object might have.</p></td>
+      <th>predicate</th>
+      <td><p>A predicate function, e.g. <code><a href='http://www.rdocumentation.org/packages/fgeo.base/topics/is_multiple'>fgeo.base::is_multiple()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>condition</th>
+      <td><p>A condition function, e.g. <code><a href='http://www.rdocumentation.org/packages/rlang/topics/abort'>rlang::inform()</a></code> or
+<code><a href='http://www.rdocumentation.org/packages/base/topics/stop'>base::stop()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>msg</th>
+      <td><p>String to customize the returned message.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    
+<ul>
+<li><p><code>flag_if_group()</code>: A condition and its first input, invisibly.</p></li>
+<li><p><code>detect_if_group()</code>: Logical of length 1.</p></li>
+</ul>
+
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>nms</p>
-<p>Other functions for developers.: <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
-  <code><a href='flag_if_group.html'>flag_if_group</a></code>,
+    <div class='dont-index'><p>Other functions for developers.: <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
   <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
   <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
   <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms_tidy.html'>nms_tidy</a></code>,
-  <code><a href='nms.html'>nms</a></code>, <code><a href='type_ensure.html'>type_ensure</a></code></p>
-<p>Other functions dealing with names.: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms_tidy.html'>nms_tidy</a></code>,
-  <code><a href='nms.html'>nms</a></code></p></div>
+  <code><a href='nms_try_rename.html'>nms_try_rename</a></code>, <code><a href='nms.html'>nms</a></code>,
+  <code><a href='type_ensure.html'>type_ensure</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nms_try_rename</span>(<span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; A 
-#&gt; 1 </div><div class='input'><span class='fu'>nms_try_rename</span>(<span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   A
-#&gt; 1 1</div><div class='input'>
-<span class='co'># Passes</span>
-<span class='fu'>nms_try_rename</span>(<span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; A   
-#&gt; 1 1 </div><div class='input'># Errs
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'>nms_try_rename</span>(<span class='fl'>1</span>, <span class='st'>"A"</span>, <span class='st'>"A"</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>fgeo.base</span>)
+
+<span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>treeID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
+<span class='fu'>detect_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>flag_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: treeID: Flagged values were detected.</span></div><div class='input'>
+<span class='no'>by_censusid</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>tree</span>, <span class='no'>CensusID</span>)
+<span class='fu'>detect_if_group</span>(<span class='no'>by_censusid</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>flag_if_group</span>(<span class='no'>by_censusid</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
