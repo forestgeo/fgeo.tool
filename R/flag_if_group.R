@@ -31,9 +31,8 @@ flag_if_group <- function(.data,
   condition = warn, 
   msg = NULL) {
   stopifnot(length(condition) == 1)
-  
-  result_by_groups <- by_group(.data, function(x) detect_if(x, name, predicate))
-  detected <- any(t(result_by_groups))
+
+  detected <- detect_if_group(.data, name, predicate)
   if (detected) condition(msg %||% glue("{name}: Flagged values were detected."))
   
   invisible(.data)
