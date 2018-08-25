@@ -58,12 +58,17 @@ by_censusid <- group_by(tree, CensusID)
 flag_duplicated_by_group_f("treeID")(by_censusid)
 }
 \seealso{
+Other functions to check inputs.: \code{\link{flag_if_group}}
+
 Other functions for developers.: \code{\link{find_data_of_class}},
+  \code{\link{flag_if_group}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}},
   \code{\link{type_ensure}}
+
+Other predicates.: \code{\link{flag_if_group}}
 }
 \concept{function factories.}
 \concept{functions for developers.}
