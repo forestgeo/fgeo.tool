@@ -2,7 +2,7 @@
 % Please edit documentation in R/flag_if_group.R
 \name{flag_if_group}
 \alias{flag_if_group}
-\title{Detect and flag based on a predicate applyed to a variable by groups.}
+\title{Detect and flag based on a predicate applied to a variable by groups.}
 \usage{
 flag_if_group(.data, name, predicate, condition = warn, msg = NULL)
 }
@@ -16,7 +16,7 @@ flag_if_group(.data, name, predicate, condition = warn, msg = NULL)
 \item{condition}{A condition function, e.g. \code{\link[rlang:inform]{rlang::inform()}} or
 \code{\link[base:stop]{base::stop()}}.}
 
-\item{msg}{String. An optional custom-messsage.}
+\item{msg}{String to customize the returned message.}
 }
 \value{
 \itemize{
@@ -29,11 +29,15 @@ These functions extend \code{\link[fgeo.base:flag_if]{fgeo.base::flag_if()}} and
 work by groups defined with \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
 \examples{
+library(fgeo.base)
+
 tree <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
-tree
+detect_if_group(tree, "treeID", is_multiple)
+flag_if_group(tree, "treeID", is_multiple)
+
 by_censusid <- group_by(tree, CensusID)
-expect_silent(flag_if_group(by_censusid, "treeID", is_multiple))
-expect_warning(flag_if_group(tree, "treeID", is_multiple), msg)
+detect_if_group(by_censusid, "treeID", is_multiple)
+flag_if_group(by_censusid, "treeID", is_multiple)
 }
 \seealso{
 Other functions to check inputs.: \code{\link{detect_duplicated_by_group_f}}
