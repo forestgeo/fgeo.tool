@@ -40,5 +40,6 @@ flag_if_group <- function(.data,
 }
 
 detect_if_group <- function(.data, name, predicate) {
-  any(t(by_group(.data, function(x) detect_if(x, name, is_duplicated))))
+  result_by_groups <- by_group(.data, function(x) detect_if(x, name, predicate))
+  any(t(result_by_groups))
 }

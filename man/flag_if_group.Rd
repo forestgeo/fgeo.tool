@@ -28,6 +28,13 @@ flag_if_group(.data, name, predicate, condition = warn, msg = NULL)
 These functions extend \code{\link[fgeo.base:flag_if]{fgeo.base::flag_if()}} and \code{\link[fgeo.base:detect_if]{fgeo.base::detect_if()}} to
 work by groups defined with \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
+\examples{
+tree <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
+tree
+by_censusid <- group_by(tree, CensusID)
+expect_silent(flag_if_group(by_censusid, "treeID", is_multiple))
+expect_warning(flag_if_group(tree, "treeID", is_multiple), msg)
+}
 \seealso{
 Other functions to check inputs.: \code{\link{detect_duplicated_by_group_f}}
 
