@@ -44,7 +44,7 @@ describe("to_df.tt_lst", {
   
     out <- expect_silent(to_df(tt_lst))
     expect_is(out, c("tt_df"))
-    vars <- c("habitat", "sp", "probability", "distribution", "stem_count")
+    vars <- c("habitat", "sp", "distribution", "stem_count")
     expect_true(all(vars %in% names(out)))
   })
 })

@@ -75,8 +75,9 @@ to_df.tt_lst <- function(.x, ...) {
   wide_df <- dplyr::rename(
     wide_df, distribution = .data$Rep.Agg.Neut, stem_count = .data$N.Hab
   )
-  with_probability <- calculate_probability(wide_df)
-  explained <- explain_distribution(with_probability)
+  
+  explained <- explain_distribution(wide_df)
+  
   out <- reorganize_columns(explained)
   out <- tibble::as.tibble(dplyr::arrange(out, .data$habitat, .data$sp))
   new_tt_df(out)
@@ -86,23 +87,6 @@ separate_habitat_metric <- function(x) {
   dplyr::mutate(x,
     habitat = stringr::str_replace(.data$metric, "^.*\\.([0-9]+$)", "\\1"),
     metric = stringr::str_replace(.data$metric, "(^.*)\\.[0-9]+$", "\\1")
-  )
-}
-
-#' Form the authors of tt_test().
-#' The probabilities associated with the test for whether these patterns are
-#' statistically significant are in the Obs.Quantile columns for each habitat.
-#' Note that to calculate the probability for repelled, it is the value given,
-#' but to calculate the probability for aggregated, it is 1- the value given.
-#' @noRd
-calculate_probability <- function(x) {
-  dplyr::mutate(x, 
-    probability = dplyr::case_when(
-      .data$distribution == 1 ~ (1 - Obs.Quantile),
-      .data$distribution == -1 ~ (Obs.Quantile),
-      .data$distribution == 0 ~ (Obs.Quantile),
-      TRUE ~ NA_real_
-    )
   )
 }
 
