@@ -10,7 +10,6 @@ hab <- luquillo_habitat
 tt_lst <- tt_test(cns, spp, hab)
 tt_df <- to_df(tt_lst)
 
-
 # Similar to Daniel's but includes counts
 tt_df %>% 
   select(habitat, sp, distribution, stem_count) %>% 
