@@ -1,3 +1,72 @@
+library(tidyverse)
+library(fgeo.habitat)
+library(fgeo.tool)
+
+
+cns <- luquillo_top3_sp
+spp <- unique(cns$sp)
+hab <- luquillo_habitat
+
+tt_lst <- tt_test(cns, spp, hab)
+tt_df <- to_df(tt_lst)
+
+# Similar to Daniel's but includes counts
+tt_df %>% 
+  select(habitat, sp, distribution, stem_count) %>% 
+  mutate(habitat  = glue::glue("habitat_{habitat}")) %>% 
+  spread(habitat, stem_count, fill = 0) %>% 
+  arrange(sp, distribution)
+
+# My favorite
+tt_df %>% 
+  select(habitat, distribution, sp, stem_count) %>% 
+  arrange(habitat, distribution, sp, stem_count)
+
+
+
+
+
+
+
+
+library(tidyverse)
+library(rlang)
+library(fgeo.habitat)
+library(fgeo.tool)
+
+cns <- luquillo_tree6_random
+spp <- unique(cns$sp)
+hab <- luquillo_habitat
+
+tt_lst <- tt_test(cns, spp, hab)
+tt_df <- to_df(tt_lst)
+
+species <- NULL
+# species <- c("SCHMOR", "ALCLAT", "FAROCC")
+
+# Defalut species to NULL to select all species.
+species <- species %||% unique(tt_df$sp)
+# If species is a character vector, then select only those species.
+selected <- tt_df %>% filter(sp %in% species)
+
+selected %>% 
+  select(habitat, sp, distribution, stem_count) %>% 
+  group_by(distribution, habitat) %>% 
+  arrange(habitat, distribution, desc(stem_count)) %>% 
+  mutate(rank = row_number()) %>% 
+  ggplot(aes(rank, stem_count)) +
+  geom_col(aes(fill = sp)) +
+  geom_text(aes(y = 0, label = sp), angle = 90, hjust = 0, size = 2) +
+  facet_grid(vars(habitat), vars(distribution)) +
+  guides(fill = "none")
+
+
+
+
+
+
+
+
 # TODO:
 # * Remove pick_woods()? Or simplify it to be filter(pick_main_stem(.data))
 # Check documentation of funs downstream of pick_large_hom_dbh() in fgeo.abundance
