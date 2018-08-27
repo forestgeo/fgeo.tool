@@ -226,7 +226,7 @@ to the main input (the elevation list or the elevation dataframe).</p>
 <span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.map"</span>)) {
   <span class='fu'>library</span>(<span class='no'>fgeo.map</span>)
   <span class='fu'>plot</span>(<span class='no'>hab1</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.map</span></div><div class='img'><img src='construct_habitats-1.png' alt='' width='700' height='433' /></div><div class='input'>
+}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.map</span></div><div class='output co'>#&gt; <span class='warning'>Warning: S3 method 'plot.tt_df' was declared in NAMESPACE but not found</span></div><div class='img'><img src='construct_habitats-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Compare</span>
 <span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.map"</span>)) {
   <span class='fu'>library</span>(<span class='no'>fgeo.map</span>)
@@ -243,22 +243,21 @@ to the main input (the elevation list or the elevation dataframe).</p>
   <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.habitat</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
   <span class='no'>species</span> <span class='kw'>&lt;-</span> <span class='fu'>unique</span>(<span class='no'>census</span>$<span class='no'>sp</span>)
   <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>tt_test</a></span>(<span class='no'>census</span>, <span class='no'>species</span>, <span class='no'>habitat</span>))
-}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.habitat</span></div><div class='output co'>#&gt; <span class='message'>Using `plotdim = c(320, 500)`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; <span class='message'>Using `gridsize = 20`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; # A tibble: 12 x 9
-#&gt;    habitat sp    probability distribution stem_count Eq.Hab Gr.Hab Ls.Hab
-#&gt;  * &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-#&gt;  1 1       CASA~      0.225  neutral              23      1    360   1239
-#&gt;  2 1       PREM~      0.879  neutral             109      1   1407    192
-#&gt;  3 1       SLOB~      0.423  neutral              27      4    677    919
-#&gt;  4 2       CASA~      0.965  neutral              24      7   1544     49
-#&gt;  5 2       PREM~      0.245  neutral              53      4    392   1204
-#&gt;  6 2       SLOB~      0.23   neutral              11     19    368   1213
-#&gt;  7 3       CASA~      0.095  neutral               6      7    152   1441
-#&gt;  8 3       PREM~      0.628  neutral              42      6   1005    589
-#&gt;  9 3       SLOB~      0.784  neutral              16     24   1254    322
-#&gt; 10 4       CASA~      0.779  neutral              13      2   1246    352
-#&gt; 11 4       PREM~      0.0869 neutral              30      4    139   1457
-#&gt; 12 4       SLOB~      0.679  neutral              12      7   1086    507
-#&gt; # ... with 1 more variable: Obs.Quantile &lt;dbl&gt;</div><div class='input'>
+}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.habitat</span></div><div class='output co'>#&gt; <span class='message'>Using `plotdim = c(320, 500)`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; <span class='message'>Using `gridsize = 20`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; # A tibble: 12 x 8
+#&gt;    habitat sp     distribution stem_count Eq.Hab Gr.Hab Ls.Hab Obs.Quantile
+#&gt;  * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;
+#&gt;  1 1       CASARB neutral              23      1    360   1239       0.225 
+#&gt;  2 1       PREMON neutral             109      1   1407    192       0.879 
+#&gt;  3 1       SLOBER neutral              27      4    677    919       0.423 
+#&gt;  4 2       CASARB neutral              24      7   1544     49       0.965 
+#&gt;  5 2       PREMON neutral              53      4    392   1204       0.245 
+#&gt;  6 2       SLOBER neutral              11     19    368   1213       0.23  
+#&gt;  7 3       CASARB neutral               6      7    152   1441       0.095 
+#&gt;  8 3       PREMON neutral              42      6   1005    589       0.628 
+#&gt;  9 3       SLOBER neutral              16     24   1254    322       0.784 
+#&gt; 10 4       CASARB neutral              13      2   1246    352       0.779 
+#&gt; 11 4       PREMON neutral              30      4    139   1457       0.0869
+#&gt; 12 4       SLOBER neutral              12      7   1086    507       0.679 </div><div class='input'>
 <span class='co'># If working with elevation dataframe you must provide xdim and ydim</span>
 <span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>$<span class='no'>col</span>
 <span class='no'>hab2</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)
