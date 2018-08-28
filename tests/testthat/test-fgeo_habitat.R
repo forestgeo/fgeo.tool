@@ -138,6 +138,21 @@ describe("measure_topography", {
 
 
 describe("cluster_elevation", {
+  it("outputs equal to a known reference if using kmeans clustering", {
+    elev_ls <- fgeo.data::luquillo_elevation
+    gridsize <- 20
+    out <- cluster_elevation(elev_ls, gridsize = gridsize, n = 4)
+    expect_known_output(out, "ref-cluster_elevation-kmeans", print = TRUE)
+  })
+  
+  # FIXME
+  # it("outputs equal to a known reference if using hclust clustering", {
+  #   elev_ls <- fgeo.data::luquillo_elevation
+  #   gridsize <- 20
+  #   out <- cluster_elevation(elev_ls, gridsize = gridsize, n = 4)
+  #   expect_known_output(out, "ref-cluster_elevation-hclust", print = TRUE)
+  # })
+  
   it("Outputs the expected data structure", {
     elev_ls <- fgeo.data::luquillo_elevation
     gridsize <- 20
