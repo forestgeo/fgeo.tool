@@ -1,3 +1,5 @@
+# FIXME: Separate cluster form fgeo_topography().
+
 #' Measure topography and apply hierarchical clustering.
 #' 
 #' These functions overlap, but -- depending on the context -- you may choose
@@ -89,45 +91,10 @@ new_fgeo_topography <- function(x) {
 
 
 
+
+# FIXME: Remove
+
 # Cluster -----------------------------------------------------------------
-
-
-#' @export
-cluster <- function(.data, ...) {
-  UseMethod("cluster")
-}
-
-#' @export
-cluster.default <- function(.data, ...) {
-  abort_bad_class(.data)
-}
-
-#' @export
-cluster.fgeo_topography <- function(.data, n) {
-  if (!is.numeric(n)) abort("`n` must be numeric")
-  
-  cluster_vars <- c("meanelev", "convex", "slope")
-  .data$cluster <- withr::with_seed(1, 
-    stats::cutree(stats::hclust(stats::dist(.data[cluster_vars])), n)
-  )
-  .data
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #' @export
 cluster_elevation <- function(elevation, ...) {
