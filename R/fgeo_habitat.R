@@ -153,6 +153,10 @@ elevation_to_habitat <- function(elevation,
 #' by applying [stats::kmeans()] on the topographic metrics calculated by
 #' `measure_topography()`. 
 #' 
+#' FIXME: NEW OPTION TO CLUSTER WITH 
+#' d <- dist(d, method = "euclidean")
+#' hclust(d, method = "complete")
+#' 
 #' @inheritParams construct_habitats
 #' @seealso [fgeo_habitat()].
 #' 
@@ -194,16 +198,21 @@ cluster_elevation.list <- function(elevation,
   force(n)
   
   hab <- measure_topography.list(elevation, gridsize, edgecorrect = edgecorrect)
-  
   cluster_vars <- c("meanelev", "convex", "slope")
-  if (only_elev) {
-    cluster_vars <- c("meanelev")
+  if (only_elev) cluster_vars <- c("meanelev")
+  x <- hab[cluster_vars]
+  
+  cluster <- function(x, n, use_kmeans = TRUE) {
+    if (use_kmeans) return(stats::kmeans(x, n)$cluster)
+    stats::cutree(stats::hclust(stats::dist(x)), n)
   }
   
-  cluster <- function() stats::kmeans(hab[cluster_vars], n)$cluster
-  hab$cluster <- withr::with_seed(1, cluster())
+  hab$cluster <- withr::with_seed(1, cluster(x, n, use_kmeans = TRUE))
   hab
 }
+
+
+
 
 #' @rdname topography_metrics
 #' @export
