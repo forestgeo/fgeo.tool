@@ -110,7 +110,7 @@ reference:
     contents:
     - fgeo_elevation
     - fgeo_habitat
-    - measure_topography
+    - fgeo_topography
     - cluster_elevation
 
   - title: Access data 

@@ -2,12 +2,12 @@
 % Please edit documentation in R/fgeo_habitat.R
 \name{topography_metrics}
 \alias{topography_metrics}
-\alias{measure_topography}
+\alias{fgeo_topography}
 \alias{cluster_elevation}
 \alias{cluster_elevation.list}
 \alias{cluster_elevation.data.frame}
-\alias{measure_topography.data.frame}
-\alias{measure_topography.list}
+\alias{fgeo_topography.data.frame}
+\alias{fgeo_topography.list}
 \title{Measure topography and apply hierarchical clustering.}
 \usage{
 \method{cluster_elevation}{list}(elevation, gridsize, n,
@@ -17,11 +17,11 @@
   xdim = NULL, ydim = NULL, only_elev = FALSE, edgecorrect = TRUE,
   ...)
 
-\method{measure_topography}{data.frame}(elevation, gridsize, xdim = NULL,
+\method{fgeo_topography}{data.frame}(elevation, gridsize, xdim = NULL,
   ydim = NULL, edgecorrect = TRUE, ...)
 
-\method{measure_topography}{list}(elevation, gridsize,
-  edgecorrect = TRUE, ...)
+\method{fgeo_topography}{list}(elevation, gridsize, edgecorrect = TRUE,
+  ...)
 }
 \arguments{
 \item{elevation}{One of these:
@@ -64,10 +64,10 @@ A dataframe.
 These functions overlap, but -- depending on the context -- you may choose
 one or the other to more clearly communicate your intention:
 \itemize{
-\item \code{measure_topography()} calculates mean elevation, convexity and slope.
+\item \code{fgeo_topography()} calculates mean elevation, convexity and slope.
 \item \code{cluster_elevation()} outputs one additional column, \code{cluster}, calculated
 by hierarchical clustering of the topographic metrics calculated by
-\code{measure_topography()}. \code{cluster_elevation()} first calculates a
+\code{fgeo_topography()}. \code{cluster_elevation()} first calculates a
 dissimilarities object (with \code{\link[stats:dist]{stats::dist()}} and all its defaults), then it
 calculates a tree (with \code{\link[stats:hclust]{stats::hclust()}} and all its defaults), and finally
 cuts the tree in \code{n} groups (with \code{\link[stats:cutree]{stats::cutree()}}).
@@ -81,15 +81,15 @@ to the main input (the elevation list or the elevation dataframe).
 }
 \examples{
 elev_ls <- fgeo.data::luquillo_elevation
-measure_topography(elev_ls, gridsize = 20)
+fgeo_topography(elev_ls, gridsize = 20)
 cluster_elevation(elev_ls, gridsize = 20, n = 4)
 
 elev_df <- elev_ls$col
-measure_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
+fgeo_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 cluster_elevation(elev_df, gridsize = 20, n = 4 , xdim = 320, ydim = 500)
 
 # To decide the value of `n` you may inspect the dendrogram of topography.
-topo <- measure_topography(elev_ls, gridsize = 20)
+topo <- fgeo_topography(elev_ls, gridsize = 20)
 topo
 topo_vars <- c("meanelev", "convex", "slope")
 plot(hclust(dist(topo[topo_vars])))

@@ -54,7 +54,7 @@ This function constructs habitat data based on elevation data. It calculates
 habitats in two steps:
 \enumerate{
 \item It calculates mean elevation, convexity and slope for each quadrat (via
-\code{\link[=measure_topography]{measure_topography()}})).
+\code{\link[=fgeo_topography]{fgeo_topography()}})).
 \item It calculates habitats based on the topographic metrics from step 1:
 \itemize{
 \item If \code{only_elev = FALSE} (default) habitats are calculated by applying
@@ -110,6 +110,6 @@ hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 str(hab2)
 }
 \seealso{
-\code{\link[fgeo.map:plot.fgeo_habitat]{fgeo.map::plot.fgeo_habitat()}}, \code{\link[=measure_topography]{measure_topography()}},
+\code{\link[fgeo.map:plot.fgeo_habitat]{fgeo.map::plot.fgeo_habitat()}}, \code{\link[=fgeo_topography]{fgeo_topography()}},
 \code{\link[=cluster_elevation]{cluster_elevation()}}.
 }
