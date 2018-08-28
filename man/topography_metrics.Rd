@@ -66,8 +66,11 @@ one or the other to more clearly communicate your intention:
 \itemize{
 \item \code{measure_topography()} calculates mean elevation, convexity and slope.
 \item \code{cluster_elevation()} outputs one additional column, \code{cluster}, calculated
-by applying \code{\link[stats:kmeans]{stats::kmeans()}} on the topographic metrics calculated by
-\code{measure_topography()}.
+by hierarchical clustering of the topographic metrics calculated by
+\code{measure_topography()}. \code{cluster_elevation()} first calculates a
+dissimilarities object (with \code{\link[stats:dist]{stats::dist()}} and all its defaults), then it
+calculates a tree (with \code{\link[stats:hclust]{stats::hclust()}} and all its defaults), and finally
+cuts the tree in \code{n} groups (with \code{\link[stats:cutree]{stats::cutree()}}).
 }
 }
 \details{

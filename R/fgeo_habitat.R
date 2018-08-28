@@ -150,12 +150,11 @@ elevation_to_habitat <- function(elevation,
 #' one or the other to more clearly communicate your intention:
 #' * `measure_topography()` calculates mean elevation, convexity and slope.
 #' * `cluster_elevation()` outputs one additional column, `cluster`, calculated
-#' by applying [stats::kmeans()] on the topographic metrics calculated by
-#' `measure_topography()`. 
-#' 
-#' FIXME: NEW OPTION TO CLUSTER WITH 
-#' d <- dist(d, method = "euclidean")
-#' hclust(d, method = "complete")
+#' by hierarchical clustering of the topographic metrics calculated by
+#' `measure_topography()`. `cluster_elevation()` first calculates a
+#' dissimilarities object (with [stats::dist()] and all its defaults), then it 
+#' calculates a tree (with [stats::hclust()] and all its defaults), and finally
+#' cuts the tree in `n` groups (with [stats::cutree()]).
 #' 
 #' @inheritParams construct_habitats
 #' @seealso [fgeo_habitat()].
@@ -200,17 +199,12 @@ cluster_elevation.list <- function(elevation,
   hab <- measure_topography.list(elevation, gridsize, edgecorrect = edgecorrect)
   cluster_vars <- c("meanelev", "convex", "slope")
   if (only_elev) cluster_vars <- c("meanelev")
-  x <- hab[cluster_vars]
-  hab$cluster <- withr::with_seed(1, cluster(x, n, use_kmeans = TRUE))
+  
+  hab$cluster <- withr::with_seed(1, 
+    stats::cutree(stats::hclust(stats::dist(hab[cluster_vars])), n)
+  )
   hab
 }
-
-cluster <- function(x, n, use_kmeans = TRUE) {
-  if (use_kmeans) return(stats::kmeans(x, n)$cluster)
-  stats::cutree(stats::hclust(stats::dist(x)), n)
-}
-
-
 
 #' @rdname topography_metrics
 #' @export
