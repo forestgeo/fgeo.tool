@@ -48,11 +48,11 @@ fgeo_topography.default <- function(elevation, gridsize, ...) {
 #' @rdname topography_metrics
 #' @export
 fgeo_topography.data.frame <- function(elevation, 
-  gridsize, 
-  xdim = NULL,
-  ydim = NULL,
-  edgecorrect = TRUE,
-  ...) {
+                                       gridsize, 
+                                       xdim = NULL,
+                                       ydim = NULL,
+                                       edgecorrect = TRUE,
+                                       ...) {
   force(gridsize)
   abort_if_xdim_ydim_is_null(xdim, ydim)
   
@@ -63,9 +63,9 @@ fgeo_topography.data.frame <- function(elevation,
 #' @rdname topography_metrics
 #' @export
 fgeo_topography.list <- function(elevation, 
-  gridsize, 
-  edgecorrect = TRUE, 
-  ...) {
+                                 gridsize, 
+                                 edgecorrect = TRUE, 
+                                 ...) {
   force(gridsize)
   plotdim <- c(elevation$xdim, elevation$ydim)
   
@@ -78,8 +78,51 @@ fgeo_topography.list <- function(elevation,
   
   quad_idx <- as.integer(rownames(topo))
   gxgy <- index_to_gxgy(quad_idx, gridsize, plotdim)
-  tibble::as.tibble(cbind(gxgy, topo))
+  out <- tibble::as.tibble(cbind(gxgy, topo))
+  new_fgeo_topography(out)
 }
+
+new_fgeo_topography <- function(x) {
+  structure(x, class = c("fgeo_topography", class(x)))
+}
+
+
+
+
+# Cluster -----------------------------------------------------------------
+
+
+#' @export
+cluster <- function(.data, ...) {
+  UseMethod("cluster")
+}
+
+#' @export
+cluster.default <- function(.data, ...) {
+  abort_bad_class(.data)
+}
+
+#' @export
+cluster.fgeo_topography <- function(.data, n) {
+  if (!is.numeric(n)) abort("`n` must be numeric")
+  
+  cluster_vars <- c("meanelev", "convex", "slope")
+  .data$cluster <- withr::with_seed(1, 
+    stats::cutree(stats::hclust(stats::dist(.data[cluster_vars])), n)
+  )
+  .data
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -99,11 +142,11 @@ cluster_elevation.default <- function(elevation, ...) {
 #' @rdname topography_metrics
 #' @export
 cluster_elevation.list <- function(elevation, 
-  gridsize, 
-  n, 
-  only_elev = FALSE,
-  edgecorrect = TRUE,
-  ...) {
+                                   gridsize, 
+                                   n, 
+                                   only_elev = FALSE,
+                                   edgecorrect = TRUE,
+                                   ...) {
   force(gridsize)
   force(n)
   

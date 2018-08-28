@@ -151,10 +151,6 @@ abort_if_xdim_ydim_is_null <- function(xdim, ydim) {
   ydim %||% abort(msg)
 }
 
-abort_bad_class <- function(x) {
-  abort(glue("Can't deal with data of class {class(x)}."))
-}
-
 new_fgeo_habitat <- function(x) {
   structure(x, class = c("fgeo_habitat", class(x)))
 }
