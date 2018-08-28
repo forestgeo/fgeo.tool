@@ -76,6 +76,7 @@ to the main input (the elevation list or the elevation dataframe).
 \examples{
 # Input: Object of class list
 elev_list <- fgeo.data::luquillo_elevation
+# To decide the value of `n` see ?cluster_elevation
 hab1 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
 str(hab1)
 

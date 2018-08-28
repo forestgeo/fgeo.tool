@@ -48,6 +48,7 @@
 #' @examples
 #' # Input: Object of class list
 #' elev_list <- fgeo.data::luquillo_elevation
+#' # To decide the value of `n` see ?cluster_elevation
 #' hab1 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
 #' str(hab1)
 #' 
@@ -144,7 +145,7 @@ elevation_to_habitat <- function(elevation,
   new_fgeo_habitat(out)
 }
 
-#' Measure topography and apply `kmeans()` clustering.
+#' Measure topography and apply hierarchical clustering.
 #' 
 #' These functions overlap, but -- depending on the context -- you may choose
 #' one or the other to more clearly communicate your intention:
@@ -171,6 +172,12 @@ elevation_to_habitat <- function(elevation,
 #' elev_df <- elev_ls$col
 #' measure_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 #' cluster_elevation(elev_df, gridsize = 20, n = 4 , xdim = 320, ydim = 500)
+#' 
+#' # To decide the value of `n` you may inspect the dendrogram of topography.
+#' topo <- measure_topography(elev_ls, gridsize = 20)
+#' topo
+#' topo_vars <- c("meanelev", "convex", "slope")
+#' plot(hclust(dist(topo[topo_vars])))
 #' @name topography_metrics
 #' @aliases measure_topography cluster_elevation
 NULL

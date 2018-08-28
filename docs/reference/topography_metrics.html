@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Measure topography and apply <code>kmeans()</code> clustering. — topography_metrics • fgeo.tool</title>
+<title>Measure topography and apply hierarchical clustering. — topography_metrics • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,14 +30,17 @@
 
 
 
-<meta property="og:title" content="Measure topography and apply <code>kmeans()</code> clustering. — topography_metrics" />
+<meta property="og:title" content="Measure topography and apply hierarchical clustering. — topography_metrics" />
 
 <meta property="og:description" content="These functions overlap, but -- depending on the context -- you may choose
 one or the other to more clearly communicate your intention:
 measure_topography() calculates mean elevation, convexity and slope.
 cluster_elevation() outputs one additional column, cluster, calculated
-by applying stats::kmeans() on the topographic metrics calculated by
-measure_topography().
+by hierarchical clustering of the topographic metrics calculated by
+measure_topography(). cluster_elevation() first calculates a
+dissimilarities object (with stats::dist() and all its defaults), then it
+calculates a tree (with stats::hclust() and all its defaults), and finally
+cuts the tree in n groups (with stats::cutree()).
 " />
 <meta name="twitter:card" content="summary" />
 
@@ -112,7 +115,7 @@ measure_topography().
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Measure topography and apply <code>kmeans()</code> clustering.</h1>
+    <h1>Measure topography and apply hierarchical clustering.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/fgeo_habitat.R'><code>R/fgeo_habitat.R</code></a></small>
     <div class="hidden name"><code>topography_metrics.Rd</code></div>
     </div>
@@ -123,19 +126,23 @@ measure_topography().
 one or the other to more clearly communicate your intention:</p><ul>
 <li><p><code>measure_topography()</code> calculates mean elevation, convexity and slope.</p></li>
 <li><p><code>cluster_elevation()</code> outputs one additional column, <code>cluster</code>, calculated
-by applying <code><a href='http://www.rdocumentation.org/packages/stats/topics/kmeans'>stats::kmeans()</a></code> on the topographic metrics calculated by
-<code>measure_topography()</code>.</p></li>
+by hierarchical clustering of the topographic metrics calculated by
+<code>measure_topography()</code>. <code>cluster_elevation()</code> first calculates a
+dissimilarities object (with <code><a href='http://www.rdocumentation.org/packages/stats/topics/dist'>stats::dist()</a></code> and all its defaults), then it
+calculates a tree (with <code><a href='http://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code> and all its defaults), and finally
+cuts the tree in <code>n</code> groups (with <code><a href='http://www.rdocumentation.org/packages/stats/topics/cutree'>stats::cutree()</a></code>).</p></li>
 </ul>
     
     </div>
 
     <pre class="usage"><span class='co'># S3 method for list</span>
 <span class='fu'>cluster_elevation</span>(<span class='no'>elevation</span>, <span class='no'>gridsize</span>, <span class='no'>n</span>,
-  <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+  <span class='kw'>only_elev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for data.frame</span>
 <span class='fu'>cluster_elevation</span>(<span class='no'>elevation</span>, <span class='no'>gridsize</span>, <span class='no'>n</span>,
-  <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
+  <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>only_elev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>)
 
 <span class='co'># S3 method for data.frame</span>
 <span class='fu'>measure_topography</span>(<span class='no'>elevation</span>, <span class='no'>gridsize</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
@@ -167,6 +174,15 @@ is calculated. Commonly, <code>gridsize = 20</code>.</p></td>
     <tr>
       <th>n</th>
       <td><p>Number of distinct habitat-categories to construct.</p></td>
+    </tr>
+    <tr>
+      <th>only_elev</th>
+      <td><p>Should the clusters be calculated using only elevation?</p><ul>
+<li><p>If <code>FALSE</code> (default) habitats are calculated by applying
+<code><a href='http://www.rdocumentation.org/packages/stats/topics/kmeans'>stats::kmeans()</a></code> clustering on all three topographic metrics from step 1.</p></li>
+<li><p>If <code>TRUE</code> habitats are calculated by applying <code><a href='http://www.rdocumentation.org/packages/base/topics/cut'>base::cut()</a></code> on the mean
+elevation from step 1 (ignoring convexity and slope).</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>edgecorrect</th>
@@ -226,12 +242,12 @@ to the main input (the elevation list or the elevation dataframe).</p>
 #&gt;  2     0    20     365. -0.285 13.7        1
 #&gt;  3     0    40     367.  0.210 14.4        1
 #&gt;  4     0    60     367.  0.34  15.9        1
-#&gt;  5     0    80     362. -0.255 20.8        2
-#&gt;  6     0   100     358. -0.510 12.4        2
-#&gt;  7     0   120     359. -0.28  17.1        2
-#&gt;  8     0   140     360. -0.265 22.1        2
-#&gt;  9     0   160     362.  0.055 24.3        2
-#&gt; 10     0   180     364.  0.415 15.2        2
+#&gt;  5     0    80     362. -0.255 20.8        1
+#&gt;  6     0   100     358. -0.510 12.4        1
+#&gt;  7     0   120     359. -0.28  17.1        1
+#&gt;  8     0   140     360. -0.265 22.1        1
+#&gt;  9     0   160     362.  0.055 24.3        1
+#&gt; 10     0   180     364.  0.415 15.2        1
 #&gt; # ... with 390 more rows</div><div class='input'>
 <span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='no'>elev_ls</span>$<span class='no'>col</span>
 <span class='fu'>measure_topography</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)</div><div class='output co'>#&gt; # A tibble: 400 x 5
@@ -254,13 +270,30 @@ to the main input (the elevation list or the elevation dataframe).</p>
 #&gt;  2     0    20     365. -0.285 13.7        1
 #&gt;  3     0    40     367.  0.210 14.4        1
 #&gt;  4     0    60     367.  0.34  15.9        1
-#&gt;  5     0    80     362. -0.255 20.8        2
-#&gt;  6     0   100     358. -0.510 12.4        2
-#&gt;  7     0   120     359. -0.28  17.1        2
-#&gt;  8     0   140     360. -0.265 22.1        2
-#&gt;  9     0   160     362.  0.055 24.3        2
-#&gt; 10     0   180     364.  0.415 15.2        2
-#&gt; # ... with 390 more rows</div></pre>
+#&gt;  5     0    80     362. -0.255 20.8        1
+#&gt;  6     0   100     358. -0.510 12.4        1
+#&gt;  7     0   120     359. -0.28  17.1        1
+#&gt;  8     0   140     360. -0.265 22.1        1
+#&gt;  9     0   160     362.  0.055 24.3        1
+#&gt; 10     0   180     364.  0.415 15.2        1
+#&gt; # ... with 390 more rows</div><div class='input'>
+<span class='co'># To decide the value of `n` you may inspect the dendrogram of topography.</span>
+<span class='no'>topo</span> <span class='kw'>&lt;-</span> <span class='fu'>measure_topography</span>(<span class='no'>elev_ls</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>)
+<span class='no'>topo</span></div><div class='output co'>#&gt; # A tibble: 400 x 5
+#&gt;       gx    gy meanelev convex slope
+#&gt;    &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+#&gt;  1     0     0     365. -0.390  8.87
+#&gt;  2     0    20     365. -0.285 13.7 
+#&gt;  3     0    40     367.  0.210 14.4 
+#&gt;  4     0    60     367.  0.34  15.9 
+#&gt;  5     0    80     362. -0.255 20.8 
+#&gt;  6     0   100     358. -0.510 12.4 
+#&gt;  7     0   120     359. -0.28  17.1 
+#&gt;  8     0   140     360. -0.265 22.1 
+#&gt;  9     0   160     362.  0.055 24.3 
+#&gt; 10     0   180     364.  0.415 15.2 
+#&gt; # ... with 390 more rows</div><div class='input'><span class='no'>topo_vars</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"meanelev"</span>, <span class='st'>"convex"</span>, <span class='st'>"slope"</span>)
+<span class='fu'>plot</span>(<span class='fu'>hclust</span>(<span class='fu'>dist</span>(<span class='no'>topo</span>[<span class='no'>topo_vars</span>])))</div><div class='img'><img src='topography_metrics-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

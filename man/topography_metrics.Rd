@@ -8,7 +8,7 @@
 \alias{cluster_elevation.data.frame}
 \alias{measure_topography.data.frame}
 \alias{measure_topography.list}
-\title{Measure topography and apply \code{kmeans()} clustering.}
+\title{Measure topography and apply hierarchical clustering.}
 \usage{
 \method{cluster_elevation}{list}(elevation, gridsize, n,
   only_elev = FALSE, edgecorrect = TRUE, ...)
@@ -87,6 +87,12 @@ cluster_elevation(elev_ls, gridsize = 20, n = 4)
 elev_df <- elev_ls$col
 measure_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 cluster_elevation(elev_df, gridsize = 20, n = 4 , xdim = 320, ydim = 500)
+
+# To decide the value of `n` you may inspect the dendrogram of topography.
+topo <- measure_topography(elev_ls, gridsize = 20)
+topo
+topo_vars <- c("meanelev", "convex", "slope")
+plot(hclust(dist(topo[topo_vars])))
 }
 \seealso{
 \code{\link[=fgeo_habitat]{fgeo_habitat()}}.

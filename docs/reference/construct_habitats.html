@@ -41,8 +41,9 @@ If only_elev = FALSE (default) habitats are calculated by applying
 stats::kmeans() clustering on all three topographic metrics from step 1.
 (For an output that shows all three topographic metrics plus the
 resulting cluster, use cluster_elevation()).
-If only_elev = TRUE habitats are calculated by applying base::cut()
-on the mean elevation from step 1 (ignoring convexity and slope).
+If only_elev = TRUE habitats are calculated by applying
+stats::kmeans() only to the mean elevation from step 1 (ignoring
+convexity and slope).
 
 " />
 <meta name="twitter:card" content="summary" />
@@ -134,8 +135,9 @@ habitats in two steps:</p><ol>
 <code><a href='http://www.rdocumentation.org/packages/stats/topics/kmeans'>stats::kmeans()</a></code> clustering on all three topographic metrics from step 1.
 (For an output that shows all three topographic metrics plus the
 resulting cluster, use <code><a href='topography_metrics.html'>cluster_elevation()</a></code>).</p></li>
-<li><p>If <code>only_elev = TRUE</code> habitats are calculated by applying <code><a href='http://www.rdocumentation.org/packages/base/topics/cut'>base::cut()</a></code>
-on the mean elevation from step 1 (ignoring convexity and slope).</p></li>
+<li><p>If <code>only_elev = TRUE</code> habitats are calculated by applying
+<code><a href='http://www.rdocumentation.org/packages/stats/topics/kmeans'>stats::kmeans()</a></code> only to the mean elevation from step 1 (ignoring
+convexity and slope).</p></li>
 </ul></li>
 </ol>
     
@@ -218,15 +220,16 @@ to the main input (the elevation list or the elevation dataframe).</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Input: Object of class list</span>
 <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>
+<span class='co'># To decide the value of `n` see ?cluster_elevation</span>
 <span class='no'>hab1</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)
 <span class='fu'>str</span>(<span class='no'>hab1</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	400 obs. of  3 variables:
 #&gt;  $ gx      : num  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy      : num  0 20 40 60 80 100 120 140 160 180 ...
-#&gt;  $ habitats: int  1 1 1 1 2 2 2 2 2 2 ...</div><div class='input'>
+#&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
 <span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.map"</span>)) {
   <span class='fu'>library</span>(<span class='no'>fgeo.map</span>)
   <span class='fu'>plot</span>(<span class='no'>hab1</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.map</span></div><div class='output co'>#&gt; <span class='warning'>Warning: S3 method 'plot.tt_df' was declared in NAMESPACE but not found</span></div><div class='img'><img src='construct_habitats-1.png' alt='' width='700' height='433' /></div><div class='input'>
+}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.map</span></div><div class='img'><img src='construct_habitats-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Compare</span>
 <span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.map"</span>)) {
   <span class='fu'>library</span>(<span class='no'>fgeo.map</span>)
@@ -246,25 +249,25 @@ to the main input (the elevation list or the elevation dataframe).</p>
 }</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.habitat</span></div><div class='output co'>#&gt; <span class='message'>Using `plotdim = c(320, 500)`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; <span class='message'>Using `gridsize = 20`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; # A tibble: 12 x 8
 #&gt;    habitat sp     distribution stem_count Eq.Hab Gr.Hab Ls.Hab Obs.Quantile
 #&gt;  * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;
-#&gt;  1 1       CASARB neutral              23      1    360   1239       0.225 
-#&gt;  2 1       PREMON neutral             109      1   1407    192       0.879 
-#&gt;  3 1       SLOBER neutral              27      4    677    919       0.423 
-#&gt;  4 2       CASARB neutral              24      7   1544     49       0.965 
-#&gt;  5 2       PREMON neutral              53      4    392   1204       0.245 
-#&gt;  6 2       SLOBER neutral              11     19    368   1213       0.23  
-#&gt;  7 3       CASARB neutral               6      7    152   1441       0.095 
-#&gt;  8 3       PREMON neutral              42      6   1005    589       0.628 
-#&gt;  9 3       SLOBER neutral              16     24   1254    322       0.784 
-#&gt; 10 4       CASARB neutral              13      2   1246    352       0.779 
-#&gt; 11 4       PREMON neutral              30      4    139   1457       0.0869
-#&gt; 12 4       SLOBER neutral              12      7   1086    507       0.679 </div><div class='input'>
+#&gt;  1 1       CASARB neutral              29      2   1242    356        0.776
+#&gt;  2 1       PREMON neutral              91      3   1093    504        0.683
+#&gt;  3 1       SLOBER neutral              18      3    273   1324        0.171
+#&gt;  4 2       CASARB neutral              20      4    390   1206        0.244
+#&gt;  5 2       PREMON neutral              89      2   1254    344        0.784
+#&gt;  6 2       SLOBER neutral              24      2    810    788        0.506
+#&gt;  7 3       CASARB neutral              12      5    778    817        0.486
+#&gt;  8 3       PREMON neutral              40      3    305   1292        0.191
+#&gt;  9 3       SLOBER neutral              17      5   1155    440        0.722
+#&gt; 10 4       CASARB neutral               5     10    932    658        0.582
+#&gt; 11 4       PREMON neutral              14      8    270   1322        0.169
+#&gt; 12 4       SLOBER neutral               7      5   1292    303        0.808</div><div class='input'>
 <span class='co'># If working with elevation dataframe you must provide xdim and ydim</span>
 <span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>$<span class='no'>col</span>
 <span class='no'>hab2</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)
 <span class='fu'>str</span>(<span class='no'>hab2</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	400 obs. of  3 variables:
 #&gt;  $ gx      : num  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy      : num  0 20 40 60 80 100 120 140 160 180 ...
-#&gt;  $ habitats: int  1 1 1 1 2 2 2 2 2 2 ...</div></pre>
+#&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
