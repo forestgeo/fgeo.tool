@@ -105,13 +105,11 @@ reference:
     - starts_with("nms_")
     - by_group
 
-  - title: Deal with elevation data and its products
     desc: Specific to ForestGEO
     contents:
     - fgeo_elevation
     - fgeo_habitat
     - fgeo_topography
-    - cluster_elevation
 
   - title: Access data 
     desc: Specific to ForestGEO
