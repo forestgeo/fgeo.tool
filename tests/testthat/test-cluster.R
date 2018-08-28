@@ -7,11 +7,6 @@ describe("cluster", {
   topo <- fgeo_topography(elev_ls, gridsize = gridsize)
   clustered <- cluster(topo, n = n)
   
-  it("outputs equal to cluster_elevation", {
-    old <- cluster_elevation(elev_ls, gridsize = gridsize, n = n)
-    expect_equal(clustered, old)
-  })
-  
   it("has the expected structure", {
     nms <- c("gx", "gy", "meanelev", "convex", "slope", "cluster")
     expect_named(clustered, nms)

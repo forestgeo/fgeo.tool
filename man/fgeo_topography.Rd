@@ -4,8 +4,6 @@
 \alias{fgeo_topography}
 \alias{fgeo_topography.data.frame}
 \alias{fgeo_topography.list}
-\alias{cluster_elevation.list}
-\alias{cluster_elevation.data.frame}
 \title{Calculate mean elevation, convexity and slope.}
 \usage{
 fgeo_topography(elevation, ...)
@@ -14,13 +12,6 @@ fgeo_topography(elevation, ...)
   ydim = NULL, edgecorrect = TRUE, ...)
 
 \method{fgeo_topography}{list}(elevation, gridsize, edgecorrect = TRUE,
-  ...)
-
-\method{cluster_elevation}{list}(elevation, gridsize, n,
-  only_elev = FALSE, edgecorrect = TRUE, ...)
-
-\method{cluster_elevation}{data.frame}(elevation, gridsize, n,
-  xdim = NULL, ydim = NULL, only_elev = FALSE, edgecorrect = TRUE,
   ...)
 }
 \arguments{
@@ -46,8 +37,6 @@ the plot.}
 the plot.}
 
 \item{edgecorrect}{Correct convexity in edge quadrats?}
-
-\item{n}{Number of distinct habitat-categories to construct.}
 }
 \value{
 A dataframe of subclass fgeo_topography.

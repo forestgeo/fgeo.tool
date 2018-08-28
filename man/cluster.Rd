@@ -2,31 +2,23 @@
 % Please edit documentation in R/cluster.R
 \name{cluster}
 \alias{cluster}
-\title{\itemize{
-\item \code{cluster_elevation()} outputs one additional column, \code{cluster}, calculated
-by hierarchical clustering of the topographic metrics calculated by
-\code{fgeo_topography()}. \code{cluster_elevation()} first calculates a
-dissimilarities object (with \code{\link[stats:dist]{stats::dist()}} and all its defaults), then it
-calculates a tree (with \code{\link[stats:hclust]{stats::hclust()}} and all its defaults), and finally
-cuts the tree in \code{n} groups (with \code{\link[stats:cutree]{stats::cutree()}}).
-}}
+\title{Hierarchical clustering of topography metrics.}
 \usage{
-cluster(.data, ...)
+cluster(.data, n)
 }
 \arguments{
-\item{.data}{A dataframe.}
+\item{.data}{A dataframe of subclass fgeo_topography.}
 
-\item{...}{Other arguments passed to methods.}
+\item{n}{Integer. Number of cluster-groups to construct (passed to the
+argument \code{k} to \code{\link[stats:cutree]{stats::cutree()}}).}
 }
 \description{
-\itemize{
-\item \code{cluster_elevation()} outputs one additional column, \code{cluster}, calculated
-by hierarchical clustering of the topographic metrics calculated by
-\code{fgeo_topography()}. \code{cluster_elevation()} first calculates a
-dissimilarities object (with \code{\link[stats:dist]{stats::dist()}} and all its defaults), then it
-calculates a tree (with \code{\link[stats:hclust]{stats::hclust()}} and all its defaults), and finally
-cuts the tree in \code{n} groups (with \code{\link[stats:cutree]{stats::cutree()}}).
-}
+This functoin adds the column \code{cluster} to objects of class fgeo_topography.
+Using the \strong{stats} package, \code{cluster()} calculates a hierarchical clustering
+of the columns \code{meanelev}, \code{slope} and \code{convexity}. First, it calculates a
+dissimilarities among those columns (with \code{\link[stats:dist]{stats::dist()}} and all its
+defaults), then it calculates a tree (with \code{\link[stats:hclust]{stats::hclust()}} and all its
+defaults), and finally cuts the tree in \code{n} groups (with \code{\link[stats:cutree]{stats::cutree()}}).
 }
 \examples{
 elev_ls <- fgeo.data::luquillo_elevation
