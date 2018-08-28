@@ -201,16 +201,14 @@ cluster_elevation.list <- function(elevation,
   cluster_vars <- c("meanelev", "convex", "slope")
   if (only_elev) cluster_vars <- c("meanelev")
   x <- hab[cluster_vars]
-  
-  cluster <- function(x, n, use_kmeans = TRUE) {
-    if (use_kmeans) return(stats::kmeans(x, n)$cluster)
-    stats::cutree(stats::hclust(stats::dist(x)), n)
-  }
-  
   hab$cluster <- withr::with_seed(1, cluster(x, n, use_kmeans = TRUE))
   hab
 }
 
+cluster <- function(x, n, use_kmeans = TRUE) {
+  if (use_kmeans) return(stats::kmeans(x, n)$cluster)
+  stats::cutree(stats::hclust(stats::dist(x)), n)
+}
 
 
 
