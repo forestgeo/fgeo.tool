@@ -5,14 +5,15 @@
 #' 1. It calculates mean elevation, convexity and slope for each quadrat (via
 #' [fgeo_topography()])).
 #' 2. It calculates habitats based on hierarchical clustering of the topographic
-#' metrics from step 1 (via [cluster()]).
+#' metrics from step 1 (via [add_cluster()]).
 #'
 #' The input can be either the elevation list that ForestGEO delivers, or the
 #' element `col` of such list -- which is a dataframe containing the elevation
 #' data. Notice that the required arguments to `fgeo_habitat()` vary according
 #' to the main input (the elevation list or the elevation dataframe).
 #' 
-#' @seealso [fgeo.map::plot.fgeo_habitat()], [fgeo_topography()], [cluster()].
+#' @seealso [fgeo.map::plot.fgeo_habitat()], [fgeo_topography()],
+#'   [add_cluster()].
 #' 
 #' @param elevation One of these:
 #'  * A list with at least three elements: `col` containing
@@ -120,7 +121,7 @@ elevation_to_habitat <- function(elevation,
                                  ydim,
                                  edgecorrect) {
   elev_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
-  out <- cluster(fgeo_topography(elev_ls, gridsize, edgecorrect), n)
+  out <- add_cluster(fgeo_topography(elev_ls, gridsize, edgecorrect), n)
   names(out) <- sub("cluster", "habitats", names(out))
   new_fgeo_habitat(out[c("gx", "gy", "habitats")])
 }

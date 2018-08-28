@@ -1,11 +1,11 @@
-context("cluster")
+context("add_cluster")
 
-describe("cluster", {
+describe("add_cluster", {
   elev_ls <- fgeo.data::luquillo_elevation
   gridsize <- 20
   n <- 4
   topo <- fgeo_topography(elev_ls, gridsize = gridsize)
-  clustered <- cluster(topo, n = n)
+  clustered <- add_cluster(topo, n = n)
   
   it("has the expected structure", {
     nms <- c("gx", "gy", "meanelev", "convex", "slope", "cluster")
@@ -19,9 +19,9 @@ describe("cluster", {
   })
   
   it("errs with informative error messages", {
-    expect_error(cluster(tibble(x = 1)), "Can't deal with data of class")
-    expect_error(cluster(1), "Can't deal with data of class")
-    expect_error(cluster(topo, "a"), "`n` must be numeric")
+    expect_error(add_cluster(tibble(x = 1)), "Can't deal with data of class")
+    expect_error(add_cluster(1), "Can't deal with data of class")
+    expect_error(add_cluster(topo, "a"), "`n` must be numeric")
     
   })
 })
