@@ -83,13 +83,6 @@ describe("fgeo_habitat", {
     expect_silent(fgeo_habitat(bci_elev_ls, gridsize = 20, n = 4))
   })
   
-  it("is sensitive to `only_elev`", {
-    elev <- fgeo.data::luquillo_elevation
-    out1 <- fgeo_habitat(elev, 20, 4, only_elev = FALSE)
-    out2 <- fgeo_habitat(elev, 20, 4, only_elev = TRUE)
-    expect_false(identical(out1, out2))
-  })
-  
   it("is sensitive to `edgecorrect`", {
     elev <- fgeo.data::luquillo_elevation
     out1 <- fgeo_habitat(elev, 20, 4, edgecorrect = FALSE)

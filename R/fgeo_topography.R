@@ -1,43 +1,21 @@
-# FIXME: Separate cluster form fgeo_topography().
-
-#' Measure topography and apply hierarchical clustering.
+#' Calculate mean elevation, convexity and slope.
 #' 
-#' These functions overlap, but -- depending on the context -- you may choose
-#' one or the other to more clearly communicate your intention:
-#' * `fgeo_topography()` calculates mean elevation, convexity and slope.
-#' * `cluster_elevation()` outputs one additional column, `cluster`, calculated
-#' by hierarchical clustering of the topographic metrics calculated by
-#' `fgeo_topography()`. `cluster_elevation()` first calculates a
-#' dissimilarities object (with [stats::dist()] and all its defaults), then it 
-#' calculates a tree (with [stats::hclust()] and all its defaults), and finally
-#' cuts the tree in `n` groups (with [stats::cutree()]).
+#' @inheritParams fgeo_habitat
 #' 
-#' @inheritParams construct_habitats
 #' @seealso [fgeo_habitat()].
 #' 
-#' @inherit construct_habitats details
+#' @inherit fgeo_habitat details
 #'
-#' @return A dataframe.
+#' @return A dataframe of subclass fgeo_topography.
 #'
-#' @examples
-#' elev_ls <- fgeo.data::luquillo_elevation
-#' fgeo_topography(elev_ls, gridsize = 20)
-#' cluster_elevation(elev_ls, gridsize = 20, n = 4)
-#' 
-#' elev_df <- elev_ls$col
-#' fgeo_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
-#' cluster_elevation(elev_df, gridsize = 20, n = 4 , xdim = 320, ydim = 500)
-#' 
-#' # To decide the value of `n` you may inspect the dendrogram of topography.
-#' topo <- fgeo_topography(elev_ls, gridsize = 20)
-#' topo
-#' topo_vars <- c("meanelev", "convex", "slope")
-#' plot(hclust(dist(topo[topo_vars])))
-#' @name topography_metrics
-#' @aliases fgeo_topography cluster_elevation
-NULL
-
 #' @export
+#' 
+#' @examples
+#' elev_list <- fgeo.data::luquillo_elevation
+#' fgeo_topography(elev_list, gridsize = 20)
+#' 
+#' elev_df <- elev_list$col
+#' fgeo_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 fgeo_topography <- function(elevation, ...) {
   UseMethod("fgeo_topography")
 }
@@ -47,7 +25,7 @@ fgeo_topography.default <- function(elevation, gridsize, ...) {
   abort_bad_class(elevation)
 }
 
-#' @rdname topography_metrics
+#' @rdname fgeo_topography
 #' @export
 fgeo_topography.data.frame <- function(elevation, 
                                        gridsize, 
@@ -62,7 +40,7 @@ fgeo_topography.data.frame <- function(elevation,
   fgeo_topography.list(elevation = elevation_ls, gridsize, edgecorrect)
 }
 
-#' @rdname topography_metrics
+#' @rdname fgeo_topography
 #' @export
 fgeo_topography.list <- function(elevation, 
                                  gridsize, 
@@ -106,7 +84,7 @@ cluster_elevation.default <- function(elevation, ...) {
   abort_bad_class(elevation)
 }
 
-#' @rdname topography_metrics
+#' @rdname fgeo_topography
 #' @export
 cluster_elevation.list <- function(elevation, 
                                    gridsize, 
@@ -127,7 +105,7 @@ cluster_elevation.list <- function(elevation,
   hab
 }
 
-#' @rdname topography_metrics
+#' @rdname fgeo_topography
 #' @export
 cluster_elevation.data.frame <- function(elevation,
   gridsize,

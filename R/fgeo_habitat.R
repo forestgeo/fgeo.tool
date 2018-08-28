@@ -4,22 +4,15 @@
 #' habitats in two steps:
 #' 1. It calculates mean elevation, convexity and slope for each quadrat (via
 #' [fgeo_topography()])).
-#' 2. It calculates habitats based on the topographic metrics from step 1:
-#'     * If `only_elev = FALSE` (default) habitats are calculated by applying 
-#'     [stats::kmeans()] clustering on all three topographic metrics from step 1.
-#'     (For an output that shows all three topographic metrics plus the 
-#'     resulting cluster, use [cluster_elevation()]).
-#'     * If `only_elev = TRUE` habitats are calculated by applying
-#'     [stats::kmeans()] only to the mean elevation from step 1 (ignoring
-#'     convexity and slope).
+#' 2. It calculates habitats based on hierarchical clustering of the topographic
+#' metrics from step 1 (via [cluster()]).
 #'
 #' The input can be either the elevation list that ForestGEO delivers, or the
 #' element `col` of such list -- which is a dataframe containing the elevation
 #' data. Notice that the required arguments to `fgeo_habitat()` vary according
 #' to the main input (the elevation list or the elevation dataframe).
 #' 
-#' @seealso [fgeo.map::plot.fgeo_habitat()], [fgeo_topography()],
-#'   [cluster_elevation()].
+#' @seealso [fgeo.map::plot.fgeo_habitat()], [fgeo_topography()], [cluster()].
 #' 
 #' @param elevation One of these:
 #'  * A list with at least three elements: `col` containing
@@ -33,22 +26,18 @@
 #' @param n Number of distinct habitat-categories to construct. 
 #' @param xdim,ydim (If `elevation` is a dataframe) `x` and `y` dimensions of
 #'   the plot.
-#' @param only_elev Should the clusters be calculated using only elevation?
-#' * If `FALSE` (default) habitats are calculated by applying
-#' [stats::kmeans()] clustering on all three topographic metrics from step 1.
-#' * If `TRUE` habitats are calculated by applying [base::cut()] on the mean
-#' elevation from step 1 (ignoring convexity and slope).
 #' @param edgecorrect Correct convexity in edge quadrats?
 #' @param ... Other arguments passed to methods.
 #'
-#' @return A dataframe of subclass fgeo_habitat, with columns `gx` and `gy`
+#' @return A dataframe of subclass fgeo_habitat, with columns `gx` and `gy`,
 #'   rounded with accuracy determined by `gridsize`, and column `habitats`, with
 #'   as many distinct integer values as determined by the argument `n`.
 #'
+#' @export
+#' 
 #' @examples
-#' # Input: Object of class list
+#' # Input a ForestGEO-like elevation list
 #' elev_list <- fgeo.data::luquillo_elevation
-#' # To decide the value of `n` see ?cluster_elevation
 #' hab1 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
 #' str(hab1)
 #' 
@@ -80,11 +69,6 @@
 #' elev_df <- fgeo.data::luquillo_elevation$col
 #' hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 #' str(hab2)
-#' @name construct_habitats
-#' @aliases fgeo_habitat
-NULL
-
-#' @export
 fgeo_habitat <- function(elevation, ...) {
   UseMethod("fgeo_habitat")
 }
@@ -94,7 +78,7 @@ fgeo_habitat.default <- function(elevation, ...) {
   abort_bad_class(elevation)
 }
 
-#' @rdname construct_habitats
+#' @rdname fgeo_habitat
 #' @export
 fgeo_habitat.list <- function(elevation,
                               gridsize,
@@ -109,25 +93,23 @@ fgeo_habitat.list <- function(elevation,
     n = n, 
     xdim = elevation$xdim, 
     ydim = elevation$ydim, 
-    only_elev = only_elev, 
     edgecorrect = edgecorrect
   )
 }
 
-#' @rdname construct_habitats
+#' @rdname fgeo_habitat
 #' @export
 fgeo_habitat.data.frame <- function(elevation,
                                     gridsize,
                                     n,
                                     xdim = NULL,
                                     ydim = NULL,
-                                    only_elev = FALSE,
                                     edgecorrect = TRUE,
                                     ...) {
   abort_if_xdim_ydim_is_null(xdim, ydim)
   
   elevation_to_habitat(
-    fgeo_elevation(elevation), gridsize, n, xdim, ydim, only_elev, edgecorrect
+    fgeo_elevation(elevation), gridsize, n, xdim, ydim, edgecorrect
   )
 }
 
@@ -136,13 +118,11 @@ elevation_to_habitat <- function(elevation,
                                  n,
                                  xdim,
                                  ydim,
-                                 only_elev = FALSE,
                                  edgecorrect) {
   elev_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
-  out <- cluster_elevation(elev_ls, gridsize, n, only_elev, edgecorrect)
+  out <- cluster(fgeo_topography(elev_ls, gridsize, edgecorrect), n)
   names(out) <- sub("cluster", "habitats", names(out))
-  out <- out[c("gx", "gy", "habitats")]
-  new_fgeo_habitat(out)
+  new_fgeo_habitat(out[c("gx", "gy", "habitats")])
 }
 
 abort_if_xdim_ydim_is_null <- function(xdim, ydim) {
