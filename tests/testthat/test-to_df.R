@@ -36,7 +36,7 @@ describe("to_df.tt_lst", {
   
   cns <- fgeo.habitat::luquillo_top3_sp
   spp <- unique(cns$sp)[1]
-  hab_luq <- fgeo.habitat::luquillo_habitat
+  hab_luq <- fgeo.data::luquillo_habitat
   tt_lst <- fgeo.habitat::tt_test(cns, spp, hab_luq)
 
   it("outputs the expected dataframe", {

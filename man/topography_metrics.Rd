@@ -11,10 +11,11 @@
 \title{Measure topography and apply \code{kmeans()} clustering.}
 \usage{
 \method{cluster_elevation}{list}(elevation, gridsize, n,
-  edgecorrect = TRUE, ...)
+  only_elev = FALSE, edgecorrect = TRUE, ...)
 
 \method{cluster_elevation}{data.frame}(elevation, gridsize, n,
-  xdim = NULL, ydim = NULL, edgecorrect = TRUE, ...)
+  xdim = NULL, ydim = NULL, only_elev = FALSE, edgecorrect = TRUE,
+  ...)
 
 \method{measure_topography}{data.frame}(elevation, gridsize, xdim = NULL,
   ydim = NULL, edgecorrect = TRUE, ...)
@@ -37,6 +38,14 @@ fgeo_elevation (see \code{\link[=fgeo_elevation]{fgeo_elevation()}}).
 is calculated. Commonly, \code{gridsize = 20}.}
 
 \item{n}{Number of distinct habitat-categories to construct.}
+
+\item{only_elev}{Should the clusters be calculated using only elevation?
+\itemize{
+\item If \code{FALSE} (default) habitats are calculated by applying
+\code{\link[stats:kmeans]{stats::kmeans()}} clustering on all three topographic metrics from step 1.
+\item If \code{TRUE} habitats are calculated by applying \code{\link[base:cut]{base::cut()}} on the mean
+elevation from step 1 (ignoring convexity and slope).
+}}
 
 \item{edgecorrect}{Correct convexity in edge quadrats?}
 

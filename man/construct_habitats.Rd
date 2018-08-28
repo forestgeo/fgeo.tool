@@ -61,8 +61,9 @@ habitats in two steps:
 \code{\link[stats:kmeans]{stats::kmeans()}} clustering on all three topographic metrics from step 1.
 (For an output that shows all three topographic metrics plus the
 resulting cluster, use \code{\link[=cluster_elevation]{cluster_elevation()}}).
-\item If \code{only_elev = TRUE} habitats are calculated by applying \code{\link[base:cut]{base::cut()}}
-on the mean elevation from step 1 (ignoring convexity and slope).
+\item If \code{only_elev = TRUE} habitats are calculated by applying
+\code{\link[stats:kmeans]{stats::kmeans()}} only to the mean elevation from step 1 (ignoring
+convexity and slope).
 }
 }
 }

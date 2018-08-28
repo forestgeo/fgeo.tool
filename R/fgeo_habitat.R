@@ -9,8 +9,9 @@
 #'     [stats::kmeans()] clustering on all three topographic metrics from step 1.
 #'     (For an output that shows all three topographic metrics plus the 
 #'     resulting cluster, use [cluster_elevation()]).
-#'     * If `only_elev = TRUE` habitats are calculated by applying [base::cut()]
-#'     on the mean elevation from step 1 (ignoring convexity and slope).
+#'     * If `only_elev = TRUE` habitats are calculated by applying
+#'     [stats::kmeans()] only to the mean elevation from step 1 (ignoring
+#'     convexity and slope).
 #'
 #' The input can be either the elevation list that ForestGEO delivers, or the
 #' element `col` of such list -- which is a dataframe containing the elevation
@@ -102,8 +103,13 @@ fgeo_habitat.list <- function(elevation,
                               ...) {
   check_crucial_names(elevation, c("col", "xdim", "ydim"))
   fgeo_habitat.data.frame(
-    elevation$col, gridsize, n, elevation$xdim, elevation$ydim, 
-    only_elev, edgecorrect
+    elevation = elevation$col, 
+    gridsize = gridsize, 
+    n = n, 
+    xdim = elevation$xdim, 
+    ydim = elevation$ydim, 
+    only_elev = only_elev, 
+    edgecorrect = edgecorrect
   )
 }
 
@@ -129,14 +135,10 @@ elevation_to_habitat <- function(elevation,
                                  n,
                                  xdim,
                                  ydim,
-                                 only_elev,
+                                 only_elev = FALSE,
                                  edgecorrect) {
   elev_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
-  out <- cluster_elevation(elev_ls, gridsize, n, edgecorrect)
-  if (only_elev) {
-    out$cluster <- as.integer(cut(out$meanelev, n, 1:n))
-  }
-  
+  out <- cluster_elevation(elev_ls, gridsize, n, only_elev, edgecorrect)
   names(out) <- sub("cluster", "habitats", names(out))
   out <- out[c("gx", "gy", "habitats")]
   new_fgeo_habitat(out)
@@ -185,13 +187,19 @@ cluster_elevation.default <- function(elevation, ...) {
 cluster_elevation.list <- function(elevation, 
                                    gridsize, 
                                    n, 
-                                   edgecorrect = TRUE, 
+                                   only_elev = FALSE,
+                                   edgecorrect = TRUE,
                                    ...) {
   force(gridsize)
   force(n)
   
   hab <- measure_topography.list(elevation, gridsize, edgecorrect = edgecorrect)
+  
   cluster_vars <- c("meanelev", "convex", "slope")
+  if (only_elev) {
+    cluster_vars <- c("meanelev")
+  }
+  
   hab$cluster <- withr::with_seed(1, stats::kmeans(hab[cluster_vars], n)$cluster)
   hab
 }
@@ -203,6 +211,7 @@ cluster_elevation.data.frame <- function(elevation,
                                          n,
                                          xdim = NULL,
                                          ydim = NULL,
+                                         only_elev = FALSE,
                                          edgecorrect = TRUE,
                                          ...) {
   force(gridsize)
@@ -210,7 +219,7 @@ cluster_elevation.data.frame <- function(elevation,
   abort_if_xdim_ydim_is_null(xdim, ydim)
   
   elevation_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
-  cluster_elevation.list(elevation_ls, gridsize, n, edgecorrect)
+  cluster_elevation.list(elevation_ls, gridsize, n, only_elev, edgecorrect)
 }
 #' @export
 measure_topography <- function(elevation, ...) {
