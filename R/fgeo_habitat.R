@@ -200,7 +200,8 @@ cluster_elevation.list <- function(elevation,
     cluster_vars <- c("meanelev")
   }
   
-  hab$cluster <- withr::with_seed(1, stats::kmeans(hab[cluster_vars], n)$cluster)
+  cluster <- function() stats::kmeans(hab[cluster_vars], n)$cluster
+  hab$cluster <- withr::with_seed(1, cluster())
   hab
 }
 
