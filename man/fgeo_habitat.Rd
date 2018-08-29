@@ -2,9 +2,9 @@
 % Please edit documentation in R/fgeo_habitat.R
 \name{fgeo_habitat}
 \alias{fgeo_habitat}
-\title{Construct habitats from measures of topography.}
+\title{Construct habitat data from measures of topography.}
 \usage{
-fgeo_habitat(elevation, n, ...)
+fgeo_habitat(elevation, gridsize, n, ...)
 }
 \arguments{
 \item{elevation}{One of these:
@@ -16,6 +16,9 @@ case the parameters \code{xdim} and \code{ydim} must be provided. It may be the
 element \code{col} of a ForestGEO elevation-list or an object of class
 fgeo_elevation (see \code{\link[=fgeo_elevation]{fgeo_elevation()}}).
 }}
+
+\item{gridsize}{Number giving the size of each quadrat for which a habitat
+is calculated. Commonly, \code{gridsize = 20}.}
 
 \item{n}{Integer. Number of cluster-groups to construct (passed to the
 argument \code{k} to \code{\link[stats:cutree]{stats::cutree()}}).}
@@ -50,12 +53,12 @@ or \code{x} and \code{y}.
 \examples{
 # Input a ForestGEO-like elevation list
 elev_list <- fgeo.data::luquillo_elevation
-hab1 <- fgeo_habitat(elev_list, n = 4, gridsize = 20)
-str(hab1)
+habs <- fgeo_habitat(elev_list, n = 4, gridsize = 20)
+str(habs)
 
 if (requireNamespace("fgeo.map")) {
   library(fgeo.map)
-  plot(hab1)
+  plot(habs)
 }
 
 # A good use of habitat data is for calculating species-habitat associations
