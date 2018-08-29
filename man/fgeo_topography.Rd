@@ -30,10 +30,7 @@ fgeo_elevation (see \code{\link[=fgeo_elevation]{fgeo_elevation()}}).
 \item{gridsize}{Number giving the size of each quadrat for which a habitat
 is calculated. Commonly, \code{gridsize = 20}.}
 
-\item{xdim}{(If \code{elevation} is a dataframe) \code{x} and \code{y} dimensions of
-the plot.}
-
-\item{ydim}{(If \code{elevation} is a dataframe) \code{x} and \code{y} dimensions of
+\item{xdim, ydim}{(If \code{elevation} is a dataframe) \code{x} and \code{y} dimensions of
 the plot.}
 
 \item{edgecorrect}{Correct convexity in edge quadrats?}
@@ -44,12 +41,16 @@ A dataframe of subclass fgeo_topography.
 \description{
 Calculate mean elevation, convexity and slope.
 }
-\details{
-The input can be either the elevation list that ForestGEO delivers, or the
-element \code{col} of such list -- which is a dataframe containing the elevation
-data. Notice that the required arguments to \code{fgeo_habitat()} vary according
-to the main input (the elevation list or the elevation dataframe).
+\section{Input}{
+
+The main input can be either the elevation list that ForestGEO delivers, or
+the element \code{col} of such list -- which is a dataframe containing the
+elevation data. Notice that the required arguments vary according to the main
+input (the elevation list or the elevation dataframe). Whatever the input,
+the dataframe containing the elevation data must have columns \code{gx} and \code{gy}
+or \code{x} and \code{y}.
 }
+
 \examples{
 elev_list <- fgeo.data::luquillo_elevation
 fgeo_topography(elev_list, gridsize = 20)

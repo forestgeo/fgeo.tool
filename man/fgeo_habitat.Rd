@@ -2,7 +2,7 @@
 % Please edit documentation in R/fgeo_habitat.R
 \name{fgeo_habitat}
 \alias{fgeo_habitat}
-\title{Construct habitats from measures of topography (or only elevation).}
+\title{Construct habitats from measures of topography.}
 \usage{
 fgeo_habitat(elevation, n, ...)
 }
@@ -17,17 +17,10 @@ element \code{col} of a ForestGEO elevation-list or an object of class
 fgeo_elevation (see \code{\link[=fgeo_elevation]{fgeo_elevation()}}).
 }}
 
-\item{n}{Number of distinct habitat-categories to construct.}
+\item{n}{Integer. Number of cluster-groups to construct (passed to the
+argument \code{k} to \code{\link[stats:cutree]{stats::cutree()}}).}
 
-\item{...}{Other arguments passed to methods.}
-
-\item{gridsize}{Number giving the size of each quadrat for which a habitat
-is calculated. Commonly, \code{gridsize = 20}.}
-
-\item{xdim, ydim}{(If \code{elevation} is a dataframe) \code{x} and \code{y} dimensions of
-the plot.}
-
-\item{edgecorrect}{Correct convexity in edge quadrats?}
+\item{...}{Arguments passed to \code{\link[=fgeo_topography]{fgeo_topography()}}.}
 }
 \value{
 A dataframe of subclass fgeo_habitat, with columns \code{gx} and \code{gy},
@@ -44,29 +37,25 @@ habitats in two steps:
 metrics from step 1 (via \code{\link[=add_cluster]{add_cluster()}}).
 }
 }
-\details{
-The input can be either the elevation list that ForestGEO delivers, or the
-element \code{col} of such list -- which is a dataframe containing the elevation
-data. Notice that the required arguments to \code{fgeo_habitat()} vary according
-to the main input (the elevation list or the elevation dataframe).
+\section{Input}{
+
+The main input can be either the elevation list that ForestGEO delivers, or
+the element \code{col} of such list -- which is a dataframe containing the
+elevation data. Notice that the required arguments vary according to the main
+input (the elevation list or the elevation dataframe). Whatever the input,
+the dataframe containing the elevation data must have columns \code{gx} and \code{gy}
+or \code{x} and \code{y}.
 }
+
 \examples{
 # Input a ForestGEO-like elevation list
 elev_list <- fgeo.data::luquillo_elevation
-hab1 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
+hab1 <- fgeo_habitat(elev_list, n = 4, gridsize = 20)
 str(hab1)
 
 if (requireNamespace("fgeo.map")) {
   library(fgeo.map)
   plot(hab1)
-}
-
-# Compare
-if (requireNamespace("fgeo.map")) {
-  library(fgeo.map)
-  
-  hab2 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
-  plot(hab2)
 }
 
 # A good use of habitat data is for calculating species-habitat associations

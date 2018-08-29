@@ -1,6 +1,6 @@
 #' Hierarchical clustering of topography metrics.
 #' 
-#' This functoin adds the column `cluster` to objects of class fgeo_topography.
+#' This function adds the column `cluster` to objects of class fgeo_topography.
 #' Using the __stats__ package, `add_cluster()` calculates a hierarchical
 #' clustering of the columns `meanelev`, `slope` and `convexity`. First, it
 #' calculates a dissimilarities among those columns (with [stats::dist()] and
@@ -21,8 +21,6 @@
 add_cluster <- function(.data, n) {
   invalid_class <- !any(grepl("fgeo_topography", class(.data)))
   if (invalid_class) abort_bad_class(.data)
-  
-  
   if (!is.numeric(n)) abort("`n` must be numeric")
   
   cluster_vars <- c("meanelev", "convex", "slope")

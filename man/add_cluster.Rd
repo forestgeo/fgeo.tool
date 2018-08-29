@@ -13,7 +13,7 @@ add_cluster(.data, n)
 argument \code{k} to \code{\link[stats:cutree]{stats::cutree()}}).}
 }
 \description{
-This functoin adds the column \code{cluster} to objects of class fgeo_topography.
+This function adds the column \code{cluster} to objects of class fgeo_topography.
 Using the \strong{stats} package, \code{add_cluster()} calculates a hierarchical
 clustering of the columns \code{meanelev}, \code{slope} and \code{convexity}. First, it
 calculates a dissimilarities among those columns (with \code{\link[stats:dist]{stats::dist()}} and

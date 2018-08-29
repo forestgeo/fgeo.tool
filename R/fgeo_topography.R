@@ -1,6 +1,20 @@
 #' Calculate mean elevation, convexity and slope.
 #' 
-#' @inheritParams fgeo_habitat
+#' @inheritSection fgeo_elevation Input
+#' 
+#' @param elevation One of these:
+#'  * A list with at least three elements: `col` containing
+#'  elevation data; and `xdim` and `ydim` giving plot dimensions; OR
+#'  * A dataframe containing elevation data, in which
+#'  case the parameters `xdim` and `ydim` must be provided. It may be the 
+#'  element `col` of a ForestGEO elevation-list or an object of class 
+#'  fgeo_elevation (see [fgeo_elevation()]).
+#' @param gridsize Number giving the size of each quadrat for which a habitat
+#'   is calculated. Commonly, `gridsize = 20`.
+#' @param xdim,ydim (If `elevation` is a dataframe) `x` and `y` dimensions of
+#'   the plot.
+#' @param edgecorrect Correct convexity in edge quadrats?
+#' @param ... Other arguments passed to methods.
 #' 
 #' @seealso [fgeo_habitat()].
 #' 
