@@ -37,7 +37,7 @@ habitats in two steps:
 \item It calculates mean elevation, convexity and slope for each quadrat (via
 \code{\link[=fgeo_topography]{fgeo_topography()}})).
 \item It calculates habitats based on hierarchical clustering of the topographic
-metrics from step 1 (via \code{\link[=add_cluster]{add_cluster()}}).
+metrics from step 1 (via \code{\link[stats:hclust]{stats::hclust()}}).
 }
 }
 \section{Input}{
@@ -78,6 +78,9 @@ hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 str(hab2)
 }
 \seealso{
-\code{\link[fgeo.map:plot.fgeo_habitat]{fgeo.map::plot.fgeo_habitat()}}, \code{\link[=fgeo_topography]{fgeo_topography()}},
-\code{\link[=add_cluster]{add_cluster()}}.
+\code{\link[fgeo.map:plot.fgeo_habitat]{fgeo.map::plot.fgeo_habitat()}}, \code{\link[=fgeo_topography]{fgeo_topography()}}.
+
+Other functions to construct fgeo classes.: \code{\link{fgeo_elevation}},
+  \code{\link{fgeo_topography}}
 }
+\concept{functions to construct fgeo classes.}

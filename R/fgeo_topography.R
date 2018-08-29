@@ -17,10 +17,12 @@
 #' @param ... Other arguments passed to methods.
 #' 
 #' @seealso [fgeo_habitat()].
+#' @family functions to construct fgeo classes.
 #' 
 #' @inherit fgeo_habitat details
 #'
 #' @return A dataframe of subclass fgeo_topography.
+#' 
 #'
 #' @export
 #' 

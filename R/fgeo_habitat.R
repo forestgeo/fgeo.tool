@@ -5,20 +5,23 @@
 #' 1. It calculates mean elevation, convexity and slope for each quadrat (via
 #' [fgeo_topography()])).
 #' 2. It calculates habitats based on hierarchical clustering of the topographic
-#' metrics from step 1 (via [add_cluster()]).
+#' metrics from step 1 (via [stats::hclust()]).
 #' 
 #' @inheritSection fgeo_elevation Input
 #' 
 #' @inheritParams fgeo_topography
-#' @inheritParams add_cluster
+#' 
+#' @param n Integer. Number of cluster-groups to construct (passed to the
+#'   argument `k` to [stats::cutree()]).
 #' @param ... Arguments passed to [fgeo_topography()].
 #' 
-#' @seealso [fgeo.map::plot.fgeo_habitat()], [fgeo_topography()],
-#'   [add_cluster()].
+#' @seealso [fgeo.map::plot.fgeo_habitat()], [fgeo_topography()].
+#' @family functions to construct fgeo classes.
 #'
 #' @return A dataframe of subclass fgeo_habitat, with columns `gx` and `gy`,
 #'   rounded with accuracy determined by `gridsize`, and column `habitats`, with
 #'   as many distinct integer values as determined by the argument `n`.
+#'   
 #'
 #' @export
 #' 
