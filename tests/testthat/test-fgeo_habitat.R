@@ -28,14 +28,15 @@ context("fgeo_habitat")
 describe("fgeo_habitat", {
   skip_if_not_installed("fgeo.habitat")
   library(fgeo.habitat)
+  
   elev_ls <- fgeo.data::luquillo_elevation
+  gridsize <- 20
+  plotdim <- c(320, 500)
   
   it("errs with informative messages", {
     expect_error(fgeo_habitat2(1), "Can't deal with.*numeric")
-    
     expect_error(fgeo_habitat2(elev_ls), "gridsize.*is missing")
     expect_error(fgeo_habitat2(elev_ls, 20), "n.*is missing")
-    
     elev_ls_missing_xdim <- elev_ls
     elev_ls_missing_xdim$xdim <- NULL
     expect_error(fgeo_habitat2(elev_ls_missing_xdim), "gridsize.*is missing")
@@ -44,62 +45,46 @@ describe("fgeo_habitat", {
     )
   })
   
+  habitat <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
+  it("plots with plot.fgeo_habitat()", {
+    skip_if_not_installed("fgeo.map")
+    library(fgeo.map)
 
+    p <- plot(habitat)
+    expect_is(p, "ggplot")
+  })
+  it("results in gx and gy that are multiple of gridsize", {
+    expect_true(all(habitat$gx %% gridsize == 0))
+  })
   
-  
-  
+  it("is sensitive to `edgecorrect`", {
+    out1 <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4, edgecorrect = FALSE)
+    expect_false(identical(out1, habitat))
+  })
   
   census <- luquillo_top3_sp
   census <- census[census$status == "A" & census$dbh >= 10, ]
   species <- c("CASARB", "PREMON", "SLOBER")
   
   it("outputs object that throws no warning with tt_test()", {
-    habitat_ls <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
-    expect_silent(expect_message(tt_test(census, species, habitat_ls)))
+    expect_silent(expect_message(tt_test(census, species, habitat)))
   })
   
   it("outputs identical with elevation list or dataframe", {
-    habitat_ls <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
     elev_df <- fgeo.data::luquillo_elevation$col
     habitat_df <- fgeo_habitat2(
       elev_df, gridsize = 20, n = 4, xdim = elev_ls$xdim, ydim = elev_ls$ydim
     )
-    expect_identical(habitat_df, habitat_ls)
+    expect_identical(habitat_df, habitat)
     expect_silent(expect_message(tt_test(census, species, habitat_df)))
   })
-  
-  
-  
-  
-  
-  
-  
-  
-  it("plots with plot.fgeo_habitat()", {
-    skip_if_not_installed("fgeo.map")
-    library(fgeo.map)
-    
-    habitat <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
-    p <- plot(habitat)
-    expect_is(p, "ggplot")
-  })
-  
-  it("results in gx and gy that are multiple of gridsize", {
-    gridsize <- 20
-    habitat <- fgeo_habitat2(elev_ls, gridsize = gridsize, n = 4)
-    expect_true(all(habitat$gx %% gridsize == 0))
-  })
-  
-  it("outputs object with number of rows equal to number of quadrats", {
+
+  it("with data from pasoh, it outputs rows equal to number of quadrats", {
     skip_if_not_installed("pasoh")
-    elev_luq <- fgeo.data::luquillo_elevation
-    hab <- fgeo_habitat2(elev_luq, gridsize = 20, n = 4)
     
-    plotdim <- c(320, 500)
-    gridsize <- 20
     rows <- plotdim[[1]] / gridsize
     cols <- plotdim[[2]] / gridsize
-    expect_equal(nrow(hab), rows * cols)
+    expect_equal(nrow(habitat), rows * cols)
     
     # Reference: This habitat dataset was created by the authors of tt_test()
     habitat_pasoh <- pasoh::pasoh_hab_index20
@@ -108,23 +93,5 @@ describe("fgeo_habitat", {
     rw <- pd[[1]] / gs
     cl <- pd[[2]] / gs
     expect_equal(nrow(habitat_pasoh), rw * cl)
-  })
-  
-  it("works with data from bci", {
-    skip_if_not_installed("bciex")
-    elev <- bciex::bci_elevation
-    expect_error(
-      fgeo_habitat2(elev, gridsize = 20, n = 2), "xdim.*ydim.*can't be `NULL`"
-    )
-    expect_silent(fgeo_habitat2(elev, gridsize = 20, 2, xdim = 1000, ydim = 500))
-    bci_elev_ls <- list(col = elev, xdim = 1000, ydim = 500)
-    expect_silent(fgeo_habitat2(bci_elev_ls, gridsize = 20, n = 4))
-  })
-  
-  it("is sensitive to `edgecorrect`", {
-    elev <- fgeo.data::luquillo_elevation
-    out1 <- fgeo_habitat2(elev, gridsize = 20, n = 4, edgecorrect = FALSE)
-    out2 <- fgeo_habitat2(elev, gridsize = 20, n = 4, edgecorrect = TRUE)
-    expect_false(identical(out1, out2))
   })
 })
