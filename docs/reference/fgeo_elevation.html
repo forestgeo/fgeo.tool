@@ -109,7 +109,7 @@ gy and elev -- or it dies trying." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Construct elevation data.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/fgeo_elev.R'><code>R/fgeo_elev.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/fgeo_elevation.R'><code>R/fgeo_elevation.R</code></a></small>
     <div class="hidden name"><code>fgeo_elevation.Rd</code></div>
     </div>
 
@@ -137,10 +137,15 @@ list.</p></td>
 
     <p>A dataframe with names <code>x/gx</code>, <code>y/gy</code> and <code>elev</code>.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="input"><a class="anchor" href="#input"></a>Input</h2>
 
-    <p>The input may be a dataframe or a dataframe stored in the element <code>col</code> of a
-list; the column names of the dataframe may be <code>gx</code> and <code>gy</code> or <code>x</code> and <code>y</code>.</p>
+    
+    <p>The main input can be either the elevation list that ForestGEO delivers, or
+the element <code>col</code> of such list -- which is a dataframe containing the
+elevation data. Notice that the required arguments vary according to the main
+input (the elevation list or the elevation dataframe). Whatever the input,
+the dataframe containing the elevation data must have columns <code>gx</code> and <code>gy</code>
+or <code>x</code> and <code>y</code>.</p>
     
     <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
 
@@ -181,7 +186,7 @@ list; the column names of the dataframe may be <code>gx</code> and <code>gy</cod
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#input">Input</a></li>
 
       <li><a href="#acknowledgments">Acknowledgments</a></li>
       

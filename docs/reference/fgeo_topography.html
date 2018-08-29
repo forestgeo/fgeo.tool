@@ -151,12 +151,7 @@ fgeo_elevation (see <code><a href='fgeo_elevation.html'>fgeo_elevation()</a></co
 is calculated. Commonly, <code>gridsize = 20</code>.</p></td>
     </tr>
     <tr>
-      <th>xdim</th>
-      <td><p>(If <code>elevation</code> is a dataframe) <code>x</code> and <code>y</code> dimensions of
-the plot.</p></td>
-    </tr>
-    <tr>
-      <th>ydim</th>
+      <th>xdim, ydim</th>
       <td><p>(If <code>elevation</code> is a dataframe) <code>x</code> and <code>y</code> dimensions of
 the plot.</p></td>
     </tr>
@@ -170,12 +165,15 @@ the plot.</p></td>
 
     <p>A dataframe of subclass fgeo_topography.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="input"><a class="anchor" href="#input"></a>Input</h2>
 
-    <p>The input can be either the elevation list that ForestGEO delivers, or the
-element <code>col</code> of such list -- which is a dataframe containing the elevation
-data. Notice that the required arguments to <code><a href='fgeo_habitat.html'>fgeo_habitat()</a></code> vary according
-to the main input (the elevation list or the elevation dataframe).</p>
+    
+    <p>The main input can be either the elevation list that ForestGEO delivers, or
+the element <code>col</code> of such list -- which is a dataframe containing the
+elevation data. Notice that the required arguments vary according to the main
+input (the elevation list or the elevation dataframe). Whatever the input,
+the dataframe containing the elevation data must have columns <code>gx</code> and <code>gy</code>
+or <code>x</code> and <code>y</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -221,7 +219,7 @@ to the main input (the elevation list or the elevation dataframe).</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#input">Input</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

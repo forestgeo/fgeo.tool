@@ -1,4 +1,4 @@
-#' Construct habitats from measures of topography.
+#' Construct habitat data from measures of topography.
 #' 
 #' This function constructs habitat data based on elevation data. It calculates
 #' habitats in two steps:
@@ -25,12 +25,12 @@
 #' @examples
 #' # Input a ForestGEO-like elevation list
 #' elev_list <- fgeo.data::luquillo_elevation
-#' hab1 <- fgeo_habitat(elev_list, n = 4, gridsize = 20)
-#' str(hab1)
+#' habs <- fgeo_habitat(elev_list, n = 4, gridsize = 20)
+#' str(habs)
 #' 
 #' if (requireNamespace("fgeo.map")) {
 #'   library(fgeo.map)
-#'   plot(hab1)
+#'   plot(habs)
 #' }
 #' 
 #' # A good use of habitat data is for calculating species-habitat associations
@@ -48,8 +48,8 @@
 #' elev_df <- fgeo.data::luquillo_elevation$col
 #' hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 #' str(hab2)
-fgeo_habitat <- function(elevation, n, ...) {
-  out <- add_cluster(fgeo_topography(elevation, ...), n)
+fgeo_habitat <- function(elevation, gridsize, n, ...) {
+  out <- add_cluster(fgeo_topography(elevation, gridsize, ...), n)
   names(out) <- sub("cluster", "habitats", names(out))
   new_fgeo_habitat(out[c("gx", "gy", "habitats")])
 }
