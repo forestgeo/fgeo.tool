@@ -79,4 +79,8 @@ str(hab2)
 }
 \seealso{
 \code{\link[fgeo.map:plot.fgeo_habitat]{fgeo.map::plot.fgeo_habitat()}}, \code{\link[=fgeo_topography]{fgeo_topography()}}.
+
+Other functions to construct fgeo classes.: \code{\link{fgeo_elevation}},
+  \code{\link{fgeo_topography}}
 }
+\concept{functions to construct fgeo classes.}
