@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Construct habitats from measures of topography (or only elevation). — fgeo_habitat • fgeo.tool</title>
+<title>Construct habitats from measures of topography. — fgeo_habitat • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Construct habitats from measures of topography (or only elevation). — fgeo_habitat" />
+<meta property="og:title" content="Construct habitats from measures of topography. — fgeo_habitat" />
 
 <meta property="og:description" content="This function constructs habitat data based on elevation data. It calculates
 habitats in two steps:
@@ -112,7 +112,7 @@ metrics from step 1 (via add_cluster()).
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Construct habitats from measures of topography (or only elevation).</h1>
+    <h1>Construct habitats from measures of topography.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/fgeo_habitat.R'><code>R/fgeo_habitat.R</code></a></small>
     <div class="hidden name"><code>fgeo_habitat.Rd</code></div>
     </div>
@@ -129,15 +129,7 @@ metrics from step 1 (via <code><a href='add_cluster.html'>add_cluster()</a></cod
     
     </div>
 
-    <pre class="usage"><span class='fu'>fgeo_habitat</span>(<span class='no'>elevation</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for list</span>
-<span class='fu'>fgeo_habitat</span>(<span class='no'>elevation</span>, <span class='no'>gridsize</span>, <span class='no'>n</span>, <span class='kw'>only_elev</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for data.frame</span>
-<span class='fu'>fgeo_habitat</span>(<span class='no'>elevation</span>, <span class='no'>gridsize</span>, <span class='no'>n</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>fgeo_habitat</span>(<span class='no'>elevation</span>, <span class='no'>n</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -154,26 +146,13 @@ fgeo_elevation (see <code><a href='fgeo_elevation.html'>fgeo_elevation()</a></co
 </ul></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Other arguments passed to methods.</p></td>
-    </tr>
-    <tr>
-      <th>gridsize</th>
-      <td><p>Number giving the size of each quadrat for which a habitat
-is calculated. Commonly, <code>gridsize = 20</code>.</p></td>
-    </tr>
-    <tr>
       <th>n</th>
-      <td><p>Number of distinct habitat-categories to construct.</p></td>
+      <td><p>Integer. Number of cluster-groups to construct (passed to the
+argument <code>k</code> to <code><a href='http://www.rdocumentation.org/packages/stats/topics/cutree'>stats::cutree()</a></code>).</p></td>
     </tr>
     <tr>
-      <th>edgecorrect</th>
-      <td><p>Correct convexity in edge quadrats?</p></td>
-    </tr>
-    <tr>
-      <th>xdim, ydim</th>
-      <td><p>(If <code>elevation</code> is a dataframe) <code>x</code> and <code>y</code> dimensions of
-the plot.</p></td>
+      <th>...</th>
+      <td><p>Arguments passed to <code><a href='fgeo_topography.html'>fgeo_topography()</a></code>.</p></td>
     </tr>
     </table>
     
@@ -183,12 +162,15 @@ the plot.</p></td>
 rounded with accuracy determined by <code>gridsize</code>, and column <code>habitats</code>, with
 as many distinct integer values as determined by the argument <code>n</code>.</p>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="input"><a class="anchor" href="#input"></a>Input</h2>
 
-    <p>The input can be either the elevation list that ForestGEO delivers, or the
-element <code>col</code> of such list -- which is a dataframe containing the elevation
-data. Notice that the required arguments to <code>fgeo_habitat()</code> vary according
-to the main input (the elevation list or the elevation dataframe).</p>
+    
+    <p>The main input can be either the elevation list that ForestGEO delivers, or
+the element <code>col</code> of such list -- which is a dataframe containing the
+elevation data. Notice that the required arguments vary according to the main
+input (the elevation list or the elevation dataframe). Whatever the input,
+the dataframe containing the elevation data must have columns <code>gx</code> and <code>gy</code>
+or <code>x</code> and <code>y</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -199,7 +181,7 @@ to the main input (the elevation list or the elevation dataframe).</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Input a ForestGEO-like elevation list</span>
 <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>
-<span class='no'>hab1</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+<span class='no'>hab1</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>)
 <span class='fu'>str</span>(<span class='no'>hab1</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	400 obs. of  3 variables:
 #&gt;  $ gx      : num  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy      : num  0 20 40 60 80 100 120 140 160 180 ...
@@ -208,13 +190,6 @@ to the main input (the elevation list or the elevation dataframe).</p>
   <span class='fu'>library</span>(<span class='no'>fgeo.map</span>)
   <span class='fu'>plot</span>(<span class='no'>hab1</span>)
 }</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.map</span></div><div class='img'><img src='fgeo_habitat-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Compare</span>
-<span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.map"</span>)) {
-  <span class='fu'>library</span>(<span class='no'>fgeo.map</span>)
-
-  <span class='no'>hab2</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>only_elev</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-  <span class='fu'>plot</span>(<span class='no'>hab2</span>)
-}</div><div class='img'><img src='fgeo_habitat-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># A good use of habitat data is for calculating species-habitat associations</span>
 <span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.habitat"</span>)) {
   <span class='fu'>library</span>(<span class='no'>fgeo.habitat</span>)
@@ -224,7 +199,7 @@ to the main input (the elevation list or the elevation dataframe).</p>
   <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.habitat</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
   <span class='no'>species</span> <span class='kw'>&lt;-</span> <span class='fu'>unique</span>(<span class='no'>census</span>$<span class='no'>sp</span>)
   <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>tt_test</a></span>(<span class='no'>census</span>, <span class='no'>species</span>, <span class='no'>habitat</span>))
-}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.habitat</span></div><div class='output co'>#&gt; <span class='message'>Using `plotdim = c(320, 500)`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; <span class='message'>Using `gridsize = 20`. To change this value see argument of `tt_test().</span></div><div class='output co'>#&gt; # A tibble: 12 x 8
+}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.habitat</span></div><div class='output co'>#&gt; <span class='message'>Using `plotdim = c(320, 500)`. To change this value see `?tt_test()`.</span></div><div class='output co'>#&gt; <span class='message'>Using `gridsize = 20`. To change this value see `?tt_test()`.</span></div><div class='output co'>#&gt; # A tibble: 12 x 8
 #&gt;    habitat sp     distribution stem_count Eq.Hab Gr.Hab Ls.Hab Obs.Quantile
 #&gt;  * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;
 #&gt;  1 1       CASARB neutral              29      2   1242    356        0.776
@@ -254,7 +229,7 @@ to the main input (the elevation list or the elevation dataframe).</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#details">Details</a></li>
+      <li><a href="#input">Input</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
