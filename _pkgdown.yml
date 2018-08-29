@@ -105,6 +105,7 @@ reference:
     - starts_with("nms_")
     - by_group
 
+  - title: Construct S3 classes
     desc: Specific to ForestGEO
     contents:
     - fgeo_elevation

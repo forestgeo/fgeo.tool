@@ -8,8 +8,8 @@
 \usage{
 fgeo_habitat(elevation, ...)
 
-\method{fgeo_habitat}{list}(elevation, gridsize, n, only_elev = FALSE,
-  edgecorrect = TRUE, ...)
+\method{fgeo_habitat}{list}(elevation, gridsize, n, edgecorrect = TRUE,
+  ...)
 
 \method{fgeo_habitat}{data.frame}(elevation, gridsize, n, xdim = NULL,
   ydim = NULL, edgecorrect = TRUE, ...)
@@ -73,7 +73,7 @@ if (requireNamespace("fgeo.map")) {
 if (requireNamespace("fgeo.map")) {
   library(fgeo.map)
   
-  hab2 <- fgeo_habitat(elev_list, gridsize = 20, n = 4, only_elev = TRUE)
+  hab2 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
   plot(hab2)
 }
 

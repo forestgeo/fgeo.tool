@@ -51,7 +51,7 @@
 #' if (requireNamespace("fgeo.map")) {
 #'   library(fgeo.map)
 #'   
-#'   hab2 <- fgeo_habitat(elev_list, gridsize = 20, n = 4, only_elev = TRUE)
+#'   hab2 <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
 #'   plot(hab2)
 #' }
 #' 
@@ -84,7 +84,6 @@ fgeo_habitat.default <- function(elevation, ...) {
 fgeo_habitat.list <- function(elevation,
                               gridsize,
                               n,
-                              only_elev = FALSE,
                               edgecorrect = TRUE,
                               ...) {
   check_crucial_names(elevation, c("col", "xdim", "ydim"))
