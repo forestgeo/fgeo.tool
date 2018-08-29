@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract plot dimensions from habitat data. — extract_from_habitat • fgeo.tool</title>
+<title>Hierarchical clustering of topography metrics. — add_cluster • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,15 @@
 
 
 
-<meta property="og:title" content="Extract plot dimensions from habitat data. — extract_from_habitat" />
+<meta property="og:title" content="Hierarchical clustering of topography metrics. — add_cluster" />
 
-<meta property="og:description" content="Extract plot dimensions from habitat data." />
+<meta property="og:description" content="This functoin adds the column cluster to objects of class fgeo_topography.
+Using the stats package, add_cluster() calculates a hierarchical
+clustering of the columns meanelev, slope and convexity. First, it
+calculates a dissimilarities among those columns (with stats::dist() and
+all its defaults), then it calculates a tree (with stats::hclust() and all
+its defaults), and finally cuts the tree in n groups (with
+stats::cutree())." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,52 +112,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract plot dimensions from habitat data.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/extract_from_habitat.R'><code>R/extract_from_habitat.R</code></a></small>
-    <div class="hidden name"><code>extract_from_habitat.Rd</code></div>
+    <h1>Hierarchical clustering of topography metrics.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/add_cluster.R'><code>R/add_cluster.R</code></a></small>
+    <div class="hidden name"><code>add_cluster.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Extract plot dimensions from habitat data.</p>
+    <p>This functoin adds the column <code>cluster</code> to objects of class fgeo_topography.
+Using the <strong>stats</strong> package, <code>add_cluster()</code> calculates a hierarchical
+clustering of the columns <code>meanelev</code>, <code>slope</code> and <code>convexity</code>. First, it
+calculates a dissimilarities among those columns (with <code><a href='http://www.rdocumentation.org/packages/stats/topics/dist'>stats::dist()</a></code> and
+all its defaults), then it calculates a tree (with <code><a href='http://www.rdocumentation.org/packages/stats/topics/hclust'>stats::hclust()</a></code> and all
+its defaults), and finally cuts the tree in <code>n</code> groups (with
+<code><a href='http://www.rdocumentation.org/packages/stats/topics/cutree'>stats::cutree()</a></code>).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>extract_gridsize</span>(<span class='no'>habitats</span>)
-
-<span class='fu'>extract_plotdim</span>(<span class='no'>habitats</span>)</pre>
+    <pre class="usage"><span class='fu'>add_cluster</span>(<span class='no'>.data</span>, <span class='no'>n</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>habitats</th>
-      <td><p>Data frame giving the habitat designation for each 20x20
-quadrat.</p></td>
+      <th>.data</th>
+      <td><p>A dataframe of subclass fgeo_topography.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>Integer. Number of cluster-groups to construct (passed to the
+argument <code>k</code> to <code><a href='http://www.rdocumentation.org/packages/stats/topics/cutree'>stats::cutree()</a></code>).</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    
-<ul>
-<li><p><code>extract_plotdim()</code>: <code>plotdim</code> (vector of length 2);</p></li>
-<li><p><code>extract_gridsize()</code>: <code>gridsize</code> (scalar).</p></li>
-</ul>
-
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>fgeo.data</span>)
-<span class='fu'>extract_plotdim</span>(<span class='no'>luquillo_habitat</span>)</div><div class='output co'>#&gt; [1] 320 500</div><div class='input'><span class='fu'>extract_gridsize</span>(<span class='no'>luquillo_habitat</span>)</div><div class='output co'>#&gt; [1] 20</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>elev_ls</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>
+<span class='no'>topo</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fgeo_topography.html'>fgeo_topography</a></span>(<span class='no'>elev_ls</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>)
+<span class='fu'>add_cluster</span>(<span class='no'>topo</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; # A tibble: 400 x 6
+#&gt;       gx    gy meanelev convex slope cluster
+#&gt;  * &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;int&gt;
+#&gt;  1     0     0     365. -0.390  8.87       1
+#&gt;  2     0    20     365. -0.285 13.7        1
+#&gt;  3     0    40     367.  0.210 14.4        1
+#&gt;  4     0    60     367.  0.34  15.9        1
+#&gt;  5     0    80     362. -0.255 20.8        1
+#&gt;  6     0   100     358. -0.510 12.4        1
+#&gt;  7     0   120     359. -0.28  17.1        1
+#&gt;  8     0   140     360. -0.265 22.1        1
+#&gt;  9     0   160     362.  0.055 24.3        1
+#&gt; 10     0   180     364.  0.415 15.2        1
+#&gt; # ... with 390 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

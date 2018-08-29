@@ -4,8 +4,13 @@
 #' the structure of elevation data to always output a dataframe with names `gx`,
 #' `gy` and `elev` -- or it dies trying.
 #' 
-#' The input may be a dataframe or a dataframe stored in the element `col` of a
-#' list; the column names of the dataframe may be `gx` and `gy` or `x` and `y`.
+#' @section Input:
+#' The main input can be either the elevation list that ForestGEO delivers, or
+#' the element `col` of such list -- which is a dataframe containing the
+#' elevation data. Notice that the required arguments vary according to the main
+#' input (the elevation list or the elevation dataframe). Whatever the input,
+#' the dataframe containing the elevation data must have columns `gx` and `gy`
+#' or `x` and `y`.
 #' 
 #' @param x Either a dataframe or a dataframe stored in the element `col` of a
 #'   list.

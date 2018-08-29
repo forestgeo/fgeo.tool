@@ -105,13 +105,12 @@ reference:
     - starts_with("nms_")
     - by_group
 
-  - title: Deal with elevation data and its products
+  - title: Construct S3 classes
     desc: Specific to ForestGEO
     contents:
     - fgeo_elevation
     - fgeo_habitat
-    - measure_topography
-    - cluster_elevation
+    - fgeo_topography
 
   - title: Access data 
     desc: Specific to ForestGEO
