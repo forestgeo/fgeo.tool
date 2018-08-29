@@ -65,3 +65,9 @@ fgeo_topography.list <- function(elevation,
 new_fgeo_topography <- function(x) {
   structure(x, class = c("fgeo_topography", class(x)))
 }
+
+abort_if_xdim_ydim_is_null <- function(xdim, ydim) {
+  msg <- "`xdim` and `ydim` can't be `NULL` if `elevation` is a data.frame."
+  xdim %||% abort(msg)
+  ydim %||% abort(msg)
+}

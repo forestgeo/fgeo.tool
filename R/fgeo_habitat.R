@@ -125,12 +125,12 @@ elevation_to_habitat <- function(elevation,
   new_fgeo_habitat(out[c("gx", "gy", "habitats")])
 }
 
-abort_if_xdim_ydim_is_null <- function(xdim, ydim) {
-  msg <- "`xdim` and `ydim` can't be `NULL` if `elevation` is a data.frame."
-  xdim %||% abort(msg)
-  ydim %||% abort(msg)
-}
-
 new_fgeo_habitat <- function(x) {
   structure(x, class = c("fgeo_habitat", class(x)))
+}
+
+fgeo_habitat2 <- function(elevation, n, ...) {
+  out <- add_cluster(fgeo_topography(elevation, ...), n)
+  names(out) <- sub("cluster", "habitats", names(out))
+  new_fgeo_habitat(out[c("gx", "gy", "habitats")])
 }
