@@ -70,67 +70,14 @@
 #' elev_df <- fgeo.data::luquillo_elevation$col
 #' hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 #' str(hab2)
-fgeo_habitat <- function(elevation, ...) {
-  UseMethod("fgeo_habitat")
-}
-
-#' @export
-fgeo_habitat.default <- function(elevation, ...) {
-  abort_bad_class(elevation)
-}
-
-#' @rdname fgeo_habitat
-#' @export
-fgeo_habitat.list <- function(elevation,
-                              gridsize,
-                              n,
-                              edgecorrect = TRUE,
-                              ...) {
-  check_crucial_names(elevation, c("col", "xdim", "ydim"))
-  fgeo_habitat.data.frame(
-    elevation = elevation$col, 
-    gridsize = gridsize, 
-    n = n, 
-    xdim = elevation$xdim, 
-    ydim = elevation$ydim, 
-    edgecorrect = edgecorrect
-  )
-}
-
-#' @rdname fgeo_habitat
-#' @export
-fgeo_habitat.data.frame <- function(elevation,
-                                    gridsize,
-                                    n,
-                                    xdim = NULL,
-                                    ydim = NULL,
-                                    edgecorrect = TRUE,
-                                    ...) {
-  abort_if_xdim_ydim_is_null(xdim, ydim)
-  
-  elevation_to_habitat(
-    fgeo_elevation(elevation), gridsize, n, xdim, ydim, edgecorrect
-  )
-}
-
-elevation_to_habitat <- function(elevation,
-                                 gridsize,
-                                 n,
-                                 xdim,
-                                 ydim,
-                                 edgecorrect) {
-  elev_ls <- list(col = elevation, xdim = xdim, ydim = ydim)
-  out <- add_cluster(fgeo_topography(elev_ls, gridsize, edgecorrect), n)
+fgeo_habitat <- function(elevation, n, ...) {
+  out <- add_cluster(fgeo_topography(elevation, ...), n)
   names(out) <- sub("cluster", "habitats", names(out))
   new_fgeo_habitat(out[c("gx", "gy", "habitats")])
 }
+
 
 new_fgeo_habitat <- function(x) {
   structure(x, class = c("fgeo_habitat", class(x)))
 }
 
-fgeo_habitat2 <- function(elevation, n, ...) {
-  out <- add_cluster(fgeo_topography(elevation, ...), n)
-  names(out) <- sub("cluster", "habitats", names(out))
-  new_fgeo_habitat(out[c("gx", "gy", "habitats")])
-}

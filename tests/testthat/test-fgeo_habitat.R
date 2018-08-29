@@ -1,28 +1,3 @@
-library(fgeo.tool)
-
-context("fgeo_habitat2")
-
-describe("ouputs the same as fgeo_habitat", {
-  skip_if_not_installed("fgeo.habitat")
-  library(fgeo.habitat)
-  
-  elev_ls <- fgeo.data::luquillo_elevation
-  out <- fgeo_habitat(elev_ls, gridsize = 20, n = 4)
-  out2 <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
-  expect_equal(out2, out)
-  
-  elev_df <- fgeo.data::luquillo_elevation$col
-  out <- fgeo_habitat(
-    elev_df, gridsize = 20, n = 4, xdim = elev_ls$xdim, ydim = elev_ls$ydim
-  )
-  out2 <- fgeo_habitat2(
-    elev_df, gridsize = 20, n = 4, xdim = elev_ls$xdim, ydim = elev_ls$ydim
-  )
-  expect_equal(out2, out)
-})  
-
-
-
 context("fgeo_habitat")
 
 describe("fgeo_habitat", {
@@ -34,18 +9,18 @@ describe("fgeo_habitat", {
   plotdim <- c(320, 500)
   
   it("errs with informative messages", {
-    expect_error(fgeo_habitat2(1), "Can't deal with.*numeric")
-    expect_error(fgeo_habitat2(elev_ls), "gridsize.*is missing")
-    expect_error(fgeo_habitat2(elev_ls, 20), "n.*is missing")
+    expect_error(fgeo_habitat(1), "Can't deal with.*numeric")
+    expect_error(fgeo_habitat(elev_ls), "gridsize.*is missing")
+    expect_error(fgeo_habitat(elev_ls, 20), "n.*is missing")
     elev_ls_missing_xdim <- elev_ls
     elev_ls_missing_xdim$xdim <- NULL
-    expect_error(fgeo_habitat2(elev_ls_missing_xdim), "gridsize.*is missing")
+    expect_error(fgeo_habitat(elev_ls_missing_xdim), "gridsize.*is missing")
     expect_error(
-      fgeo_habitat2(elev_ls$col, gridsize = 20), "xdim.*ydim.*can't be `NULL`"
+      fgeo_habitat(elev_ls$col, gridsize = 20), "xdim.*ydim.*can't be `NULL`"
     )
   })
   
-  habitat <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4)
+  habitat <- fgeo_habitat(elev_ls, gridsize = 20, n = 4)
   it("plots with plot.fgeo_habitat()", {
     skip_if_not_installed("fgeo.map")
     library(fgeo.map)
@@ -58,7 +33,7 @@ describe("fgeo_habitat", {
   })
   
   it("is sensitive to `edgecorrect`", {
-    out1 <- fgeo_habitat2(elev_ls, gridsize = 20, n = 4, edgecorrect = FALSE)
+    out1 <- fgeo_habitat(elev_ls, gridsize = 20, n = 4, edgecorrect = FALSE)
     expect_false(identical(out1, habitat))
   })
   
@@ -72,7 +47,7 @@ describe("fgeo_habitat", {
   
   it("outputs identical with elevation list or dataframe", {
     elev_df <- fgeo.data::luquillo_elevation$col
-    habitat_df <- fgeo_habitat2(
+    habitat_df <- fgeo_habitat(
       elev_df, gridsize = 20, n = 4, xdim = elev_ls$xdim, ydim = elev_ls$ydim
     )
     expect_identical(habitat_df, habitat)

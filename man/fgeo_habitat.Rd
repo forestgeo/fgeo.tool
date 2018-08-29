@@ -2,17 +2,9 @@
 % Please edit documentation in R/fgeo_habitat.R
 \name{fgeo_habitat}
 \alias{fgeo_habitat}
-\alias{fgeo_habitat.list}
-\alias{fgeo_habitat.data.frame}
 \title{Construct habitats from measures of topography (or only elevation).}
 \usage{
-fgeo_habitat(elevation, ...)
-
-\method{fgeo_habitat}{list}(elevation, gridsize, n, edgecorrect = TRUE,
-  ...)
-
-\method{fgeo_habitat}{data.frame}(elevation, gridsize, n, xdim = NULL,
-  ydim = NULL, edgecorrect = TRUE, ...)
+fgeo_habitat(elevation, n, ...)
 }
 \arguments{
 \item{elevation}{One of these:
@@ -25,17 +17,17 @@ element \code{col} of a ForestGEO elevation-list or an object of class
 fgeo_elevation (see \code{\link[=fgeo_elevation]{fgeo_elevation()}}).
 }}
 
+\item{n}{Number of distinct habitat-categories to construct.}
+
 \item{...}{Other arguments passed to methods.}
 
 \item{gridsize}{Number giving the size of each quadrat for which a habitat
 is calculated. Commonly, \code{gridsize = 20}.}
 
-\item{n}{Number of distinct habitat-categories to construct.}
-
-\item{edgecorrect}{Correct convexity in edge quadrats?}
-
 \item{xdim, ydim}{(If \code{elevation} is a dataframe) \code{x} and \code{y} dimensions of
 the plot.}
+
+\item{edgecorrect}{Correct convexity in edge quadrats?}
 }
 \value{
 A dataframe of subclass fgeo_habitat, with columns \code{gx} and \code{gy},
