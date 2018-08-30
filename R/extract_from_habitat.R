@@ -12,6 +12,7 @@
 #' library(fgeo.data)
 #' extract_plotdim(luquillo_habitat)
 #' extract_gridsize(luquillo_habitat)
+#' @name extract_from_habitat
 NULL
 
 #' @rdname extract_from_habitat
