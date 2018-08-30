@@ -105,6 +105,11 @@ reference:
     - starts_with("nms_")
     - by_group
 
+  - title: Guess
+    desc: Specific to ForestGEO
+    contents:
+    - extract_from_habitat
+
   - title: Construct S3 classes
     desc: Specific to ForestGEO
     contents:

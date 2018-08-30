@@ -19,8 +19,8 @@ Many of its functions are used in multiple other **fgeo** packages.
 [Install all **fgeo** packages in one
 step](https://forestgeo.github.io/fgeo/index.html#installation)
 
-    # install.packages("remotes")
-    remotes::install_github("forestgeo/fgeo.tool")
+    # install.packages("devtools")
+    devtools::install_github("forestgeo/fgeo.tool")
 
 For details on how to install packages from GitHub, see [this
 article](https://goo.gl/dQKEeg).
