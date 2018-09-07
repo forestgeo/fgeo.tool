@@ -179,3 +179,17 @@ describe("pick_main_stem()", {
     )
   })
 })
+
+test_that("pick_main_stemid() leaves no duplicated stemid", {
+  cns <- tibble::tribble(
+    ~hom, ~dbh,   ~sp, ~treeID, ~stemID,
+       1,    1, "sp1",     "1",   "1.1",
+       2,    1, "sp1",     "1",   "1.1",  # Main stemid because hom is highest
+       1,    1, "sp1",     "1",   "1.2"
+  )
+  out <- pick_main_stemid(cns)
+  expect_false(is_duplicated(out$stemID))
+  expect_length(out$stemID, 2)
+  expect_equal(out$stemID, c("1.1", "1.2"))
+  expect_equal(out$hom, c(2, 1))
+})
