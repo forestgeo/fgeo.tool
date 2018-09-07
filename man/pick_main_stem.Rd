@@ -2,9 +2,12 @@
 % Please edit documentation in R/pick_main_stem.R
 \name{pick_main_stem}
 \alias{pick_main_stem}
-\title{Pick the main stem of each tree in each census.}
+\alias{pick_main_stemid}
+\title{Pick the main stem or main stemid(s) of each tree in each census.}
 \usage{
 pick_main_stem(.x)
+
+pick_main_stemid(.x)
 }
 \arguments{
 \item{.x}{A ForestGEO-like dataframe, census or ViewFullTable.}
@@ -14,30 +17,34 @@ A dataframe with one row per per treeid per censusid and a single
 plotname.
 }
 \description{
-This function picks the main stem of each tree in each census.
-}
-\details{
-This function picks the main stem of each tree in each census. It collapses
-data of multi-stem trees by picking a single stem per \code{treeid} per
+\itemize{
+\item \code{pick_main_stem()}picks the main stem of each tree in each census. It
+collapses data of multi-stem trees by picking a single stem per \code{treeid} per
 \code{censusid}: Within this groups it picks the stem at the top of a list sorted
 first by descending order of \code{hom}, and then by descending order of \code{dbh} --
-this corrects the effect of buttresses and picks the main stem. It
-ignores groups of grouped data. And rejects data with multiple plots (to
-work with data with multiple \code{plotnames} you may use \code{split()} or
-\code{dplyr::nest()}).
+this corrects the effect of buttresses and picks the main stem. It ignores
+groups of grouped data. And rejects data with multiple plots (to work with
+data with multiple \code{plotnames} you may use \code{split()} or \code{dplyr::nest()}).
+\item \code{pick_main_stemid()} does one step less than `pick_main_stem(). It only
+picks the main stemid(s) of each each tree in each census, and keeps all
+stems per treeid. This is useful when calculating the total basal area of a
+tree because you need to sum the basal area of each individual stem but need
+to sum only one of the potentially multiple measurements of each buttressed
+stem per census.
+}
 }
 \section{Warning}{
 
-This function may be considerably slow. It is fastest if the data already has
-a single stem per treeid. It is slower if it detects multiple stems per
-\code{treeid} (per \code{censusid}) -- which is the main reason for using this
-function. It is slowest if it also duplicated values of \code{stemid} per \code{treeid}
-(per \code{censusid}) -- which may happen if trees have buttresses -- in which
-case, this function will check every stem for potential duplicates and pick
-the one with the largest \code{hom} value. In my computer, for example, a dataset
-of 2 million rows with multiple stems and buttresses took about 3 minutes
-to run, whereas a dataset with 2 million rows made up entirely of main stems
-took about ten seconds to run.
+These functions may be considerably slow. They are fastest if the data
+already has a single stem per treeid. They are slower with data containing
+multiple stems per \code{treeid} (per \code{censusid}) -- which is the main reason for
+using this function. The slowest scenario is when data also contains
+duplicated values of \code{stemid} per \code{treeid} (per \code{censusid}) -- which may
+happen if trees have buttresses -- in which case, these functions will check
+every stem for potential duplicates and pick the one with the largest \code{hom}
+value. In my computer, for example, a dataset of 2 million rows with multiple
+stems and buttresses took about 3 minutes to run, whereas a dataset with 2
+million rows made up entirely of main stems took about ten seconds to run.
 }
 
 \examples{
@@ -52,8 +59,11 @@ census <- tribble(
   "sp2",     "2",   "2.1",   130,    5,         1   # main stem
 )
 
-# Piks largest hom first (to correct effect of batreesses) then largest dbh
+# Picks largest hom first (to correct effect of batreesses) then largest dbh
 pick_main_stem(census)
+
+# Picks the main stemid of each stem and keeps all stems of each tree.
+pick_main_stemid(census)
 }
 \seealso{
 Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
