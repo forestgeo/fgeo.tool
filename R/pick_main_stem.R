@@ -44,29 +44,43 @@
 #'   "sp2",     "2",   "2.1",   130,    5,         1   # main stem
 #' )
 #' 
-#' # Piks largest hom first (to correct effect of batreesses) then largest dbh
+#' # Picks largest hom first (to correct effect of batreesses) then largest dbh
 #' pick_main_stem(census)
-pick_main_stem <- function(.x) {
-  stopifnot(is.data.frame(.x))
-  
-  # Store original row order to restore it at the end
-  .x <- tibble::rowid_to_column(.x)
-  # Lowercase names and groups to work with both census and ViewFullTable
-  .data <- rlang::set_names(.x, tolower)
-  # The net effect is to ignore groups: Store them now and restore them on exit.
-  .data <- groups_lower(.data)
-  
-  stopifnot_single_plotname(.data)
-  check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
-  .data <- pick_by_groups_by_censusid(.data, .data$treeid, .data$stemid)
-  .data <- pick_by_groups_by_censusid(.data, .data$treeid)
-  
-  # Restore rows order
-  .data <- select(arrange(.data, .data$rowid), -.data$rowid)
-  # Restore original names
-  out <- rename_matches(.data , .x)
-  # Restore original groups
-  groups_restore(out, .x)
+pick_main_f <- function(stemid = TRUE, treeid = TRUE) {
+  function(.x) {
+    stopifnot(is.data.frame(.x))
+    
+    # Store original row order to restore it at the end
+    .x <- tibble::rowid_to_column(.x)
+    # Lowercase names and groups to work with both census and ViewFullTable
+    .data <- rlang::set_names(.x, tolower)
+    # The net effect is to ignore groups: Store them now and restore them on exit.
+    .data <- groups_lower(.data)
+    
+    stopifnot_single_plotname(.data)
+    check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
+    
+    .data <- pick_stemid_treeid(.data, stemid = stemid, treeid = treeid)
+    
+    # Restore rows order
+    .data <- select(arrange(.data, .data$rowid), -.data$rowid)
+    # Restore original names
+    out <- rename_matches(.data , .x)
+    # Restore original groups
+    groups_restore(out, .x)
+  }
+}
+pick_main_stemid <- pick_main_f(stemid = TRUE, treeid = FALSE)
+pick_main_stem <- pick_main_f(stemid = TRUE, treeid = TRUE)
+
+pick_stemid_treeid <- function(.data, stemid = TRUE, treeid = TRUE) {
+  if (stemid) {
+    .data <- pick_by_groups_by_censusid(.data, .data$treeid, .data$stemid)
+  }
+  if (treeid) {
+    .data <- pick_by_groups_by_censusid(.data, .data$treeid)
+  }
+  .data
 }
 
 pick_by_groups_by_censusid <- function(.x, ...) {
