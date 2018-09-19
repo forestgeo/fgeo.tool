@@ -63,8 +63,6 @@ reference:
     - drop_dead_stem
     - drop_dead_tree
     - pick_main_stem
-    - pick_woods
-    - -pick_woods_f
 
   - title: Pick/drop rows with matching conditions
     desc: General (not specific to ForestGEO)
