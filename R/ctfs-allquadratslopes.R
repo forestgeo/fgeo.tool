@@ -43,6 +43,15 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
     }
   }
   
+  
+  
+  warn_if_no_data_falls_on_half_gridsize(elev, gridsize, edgecorrect)
+  # I'm conserving the flow of legacy code. I let the function continue past the
+  # warning. The warning should be informative enought to let the user know what
+  # to do.
+  
+  
+  
   if (edgecorrect) {
     for (c in 1:(columns - 1)) for (r in 1:(rows - 1)) {
       first_or_prevlast_col <- (c == 1) || (c == (columns - 1)) 
@@ -55,22 +64,31 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
           midx <- xy$gx + gridsize / 2
           midy <- xy$gy + gridsize / 2
           
-          # FIXME: It's possible that no point meets this condition
-          cond_1 <- elev$col$x == midx & elev$col$y == midy
-          elevcol <- elev$col[cond_1, , drop = FALSE]
+          xy_on_midpoint <- elev$col$x == midx & elev$col$y == midy
+          elevcol <- elev$col[xy_on_midpoint, , drop = FALSE]
           midelev <- elevcol$elev
-          # FIXME: If midelev is numeric(0), then:
-          # * convex[quad_idx] <- meanelev[quad_idx]
-          # or break()? so that convex[quad_idx] <- convex[quad_idx] 
-          # Or maybe catch this from the very top of the loop and enter the loop
-          # only if any(cond_1) is TRUE
-
           convex[quad_idx] <- midelev - meanelev[quad_idx]
         }
       }
   }
+  
   data.frame(meanelev = meanelev, convex = convex, slope = slope)
 }
+
+warn_if_no_data_falls_on_half_gridsize <- function(elev, gridsize, edgecorrect) {
+  midpoint <- gridsize / 2
+  data_on_half_gridsize <- elev$col$x == midpoint & elev$col$y == midpoint
+  if (edgecorrect && !any(data_on_half_gridsize)) {
+    msg <- glue::glue("
+      No elevation data found at `gridsize / 2`. 
+      * Is your elevation data too coarse?
+      * Do you need to use `edgecorrect = FALSE`?
+      ")
+    warn(msg)
+  } 
+}
+
+
 
 #' Internal.
 #'

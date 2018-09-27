@@ -68,11 +68,34 @@ describe("fgeo_topography()", {
 })
 
 describe("fgeo_topography()", {
-  it("Works with data from Tian Tong delivered by Jian Zhang (#59)", {
+  it("`edgecorrect` works with elevaiton data finer than gridsize / 2 (#59)", {
+    # Degrade elevation data to make it coarser
+    degrade_elev <- function(elev_ls, gridsize) {
+      elev_ls$col <- elev_ls$col %>% 
+        dplyr::filter(x %% gridsize == 0) %>% 
+        dplyr::filter(y %% gridsize == 0)
+      elev_ls
+    }
+    
+    luq_elev <- fgeo.data::luquillo_elevation
+    
+    msg <- "No elevation data found at `gridsize / 2`"
+    expect_warning(
+      expect_error(fgeo_topography(degrade_elev(luq_elev, 20), gridsize = 20)),
+      msg
+    )
+    
+    no_warning <- NA
+    expect_warning(
+      fgeo_topography(degrade_elev(luq_elev, 10), gridsize = 20), no_warning
+    )
+    
     tian_tong_elev <- readr::read_csv(test_path("test-data-tian_tong_elev.csv"))
-    expect_error(
-      fgeo_topography(tian_tong_elev, gridsize = 20, xdim = 500, ydim = 400),
-      NA
+    expect_warning(
+      expect_error(
+        fgeo_topography(tian_tong_elev, gridsize = 20, xdim = 500, ydim = 400)
+      ),
+      msg
     )
   })
 })
