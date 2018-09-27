@@ -47,3 +47,32 @@ describe("fgeo_topography", {
     expect_identical(topo2, out_df)
   })
 })
+
+describe("fgeo_topography()", {
+  it("returns known output", {
+    # Helper to keep code DRY and update references in only one place
+    expect_known <- function(object, file, update = FALSE) {
+      testthat::expect_known_output(object, file, update = update, print = TRUE)
+    }
+    
+    elev_luq <- fgeo.data::luquillo_elevation
+    luq <- fgeo_topography(elev_luq, gridsize = 20)
+    expect_known(head(luq), "ref-fgeo_topography_luq_head")
+    expect_known(tail(luq), "ref-fgeo_topography_luq_tail")
+    
+    elev_bci <- bciex::bci_elevation
+    bci <- fgeo_topography(elev_bci, gridsize = 20, xdim = 1000, ydim = 500)
+    expect_known(head(bci), "ref-fgeo_topography_bci_head")
+    expect_known(tail(bci), "ref-fgeo_topography_bci_tail")
+  })
+})
+
+describe("fgeo_topography()", {
+  it("Works with data from Tian Tong delivered by Jian Zhang (#59)", {
+    tian_tong_elev <- readr::read_csv(test_path("test-data-tian_tong_elev.csv"))
+    expect_error(
+      fgeo_topography(tian_tong_elev, gridsize = 20, xdim = 500, ydim = 400),
+      NA
+    )
+  })
+})

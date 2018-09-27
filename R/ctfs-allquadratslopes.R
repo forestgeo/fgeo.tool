@@ -8,10 +8,12 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
   }
   rw <- cl <- 0
   on.exit(message(rw, " ", cl, "\n"))
+  
   columns <- 1 + max(elev$col$x) / gridsize
   rows <- 1 + max(elev$col$y) / gridsize
   totalquads <- (columns - 1) * (rows - 1)
   message("Calculating topographic indices for ", totalquads, " quadrats\n")
+  
   elevdata <- 
     elev$col[elev$col$x %% gridsize == 0 & elev$col$y %% gridsize == 0, ]
   elevmat <- matrix(elevdata$elev, nrow = rows, ncol = columns, byrow = F)
@@ -28,7 +30,8 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
       if (c %% 33 == 0 && r %% 33 == 0) {
         message("Finding elevation and slope of quadrat ", quad_idx, "\n")
       }
-    }
+  }
+  
   for (i in 1:totalquads) {
     neighbor.quads <- findborderquads(
       i, dist = gridsize, gridsize = gridsize, plotdim = plotdim
@@ -39,6 +42,7 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
       message("Finding convexity of quadrat ", i, "\n")
     }
   }
+  
   if (edgecorrect) {
     for (c in 1:(columns - 1)) for (r in 1:(rows - 1)) {
       first_or_prevlast_col <- (c == 1) || (c == (columns - 1)) 
@@ -50,9 +54,17 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
           xy <- index_to_gxgy(quad_idx, gridsize = gridsize, plotdim = plotdim)
           midx <- xy$gx + gridsize / 2
           midy <- xy$gy + gridsize / 2
+          
+          # FIXME: It's possible that no point meets this condition
           cond_1 <- elev$col$x == midx & elev$col$y == midy
           elevcol <- elev$col[cond_1, , drop = FALSE]
           midelev <- elevcol$elev
+          # FIXME: If midelev is numeric(0), then:
+          # * convex[quad_idx] <- meanelev[quad_idx]
+          # or break()? so that convex[quad_idx] <- convex[quad_idx] 
+          # Or maybe catch this from the very top of the loop and enter the loop
+          # only if any(cond_1) is TRUE
+
           convex[quad_idx] <- midelev - meanelev[quad_idx]
         }
       }
