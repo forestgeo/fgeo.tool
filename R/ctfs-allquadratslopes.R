@@ -25,7 +25,7 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
       corner[4] <- elevmat[r, c + 1]
       meanelev[quad_idx] <- mean(corner)
       slope[quad_idx] <- quadslope(corner, gridsize = gridsize)[1]
-      if (c %% 33 == 0 & r %% 33 == 0) {
+      if (c %% 33 == 0 && r %% 33 == 0) {
         message("Finding elevation and slope of quadrat ", quad_idx, "\n")
       }
     }
@@ -41,9 +41,9 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
   }
   if (edgecorrect) {
     for (c in 1:(columns - 1)) for (r in 1:(rows - 1)) {
-      first_or_prevlast_col <- (c == 1) | (c == (columns - 1)) 
-      first_or_prevlast_row <-  (r == 1) | (r == (rows - 1))
-        if (first_or_prevlast_col | first_or_prevlast_row) {
+      first_or_prevlast_col <- (c == 1) || (c == (columns - 1)) 
+      first_or_prevlast_row <-  (r == 1) || (r == (rows - 1))
+        if (first_or_prevlast_col || first_or_prevlast_row) {
           quad_idx <- rowcol_to_index(
             r, c, gridsize = gridsize, plotdim = plotdim
           )
