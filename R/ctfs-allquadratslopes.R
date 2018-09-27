@@ -18,15 +18,15 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
   meanelev <- convex <- convex2 <- slope <- numeric()
   corner <- sideht <- numeric()
   for (c in 1:(columns - 1)) for (r in 1:(rows - 1)) {
-      quad.index <- rowcol_to_index(r, c, gridsize = gridsize, plotdim = plotdim)
+      quad_idx <- rowcol_to_index(r, c, gridsize = gridsize, plotdim = plotdim)
       corner[1] <- elevmat[r, c]
       corner[2] <- elevmat[r + 1, c]
       corner[3] <- elevmat[r + 1, c + 1]
       corner[4] <- elevmat[r, c + 1]
-      meanelev[quad.index] <- mean(corner)
-      slope[quad.index] <- quadslope(corner, gridsize = gridsize)[1]
+      meanelev[quad_idx] <- mean(corner)
+      slope[quad_idx] <- quadslope(corner, gridsize = gridsize)[1]
       if (c %% 33 == 0 & r %% 33 == 0) {
-        message("Finding elevation and slope of quadrat ", quad.index, "\n")
+        message("Finding elevation and slope of quadrat ", quad_idx, "\n")
       }
     }
   for (i in 1:totalquads) {
@@ -41,23 +41,19 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
   }
   if (edgecorrect) {
     for (c in 1:(columns - 1)) for (r in 1:(rows - 1)) {
-        if ((c == 1) | (c == (columns - 1)) | (r == 1) |
-          (r == (rows - 1))) {
-          quad.index <- rowcol_to_index(r, c,
-            gridsize = gridsize,
-            plotdim = plotdim
+      first_or_prevlast_col <- (c == 1) | (c == (columns - 1)) 
+      first_or_prevlast_row <-  (r == 1) | (r == (rows - 1))
+        if (first_or_prevlast_col | first_or_prevlast_row) {
+          quad_idx <- rowcol_to_index(
+            r, c, gridsize = gridsize, plotdim = plotdim
           )
-          xy <- index_to_gxgy(quad.index,
-            gridsize = gridsize,
-            plotdim = plotdim
-          )
+          xy <- index_to_gxgy(quad_idx, gridsize = gridsize, plotdim = plotdim)
           midx <- xy$gx + gridsize / 2
           midy <- xy$gy + gridsize / 2
-          cond_1 <- elev$col$x == midx & elev$col$y ==
-            midy
+          cond_1 <- elev$col$x == midx & elev$col$y == midy
           elevcol <- elev$col[cond_1, , drop = FALSE]
           midelev <- elevcol$elev
-          convex[quad.index] <- midelev - meanelev[quad.index]
+          convex[quad_idx] <- midelev - meanelev[quad_idx]
         }
       }
   }
