@@ -12,11 +12,11 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
   rows <- 1 + max(elev$col$y) / gridsize
   totalquads <- (columns - 1) * (rows - 1)
   message("Calculating topographic indices for ", totalquads, " quadrats\n")
-  elevdata <- elev$col[elev$col$x %% gridsize == 0 & elev$col$y %% gridsize ==
-    0, ]
+  elevdata <- 
+    elev$col[elev$col$x %% gridsize == 0 & elev$col$y %% gridsize == 0, ]
   elevmat <- matrix(elevdata$elev, nrow = rows, ncol = columns, byrow = F)
-  meanelev <- convex <- convex2 <- slope <- numeric()
-  corner <- sideht <- numeric()
+  meanelev <- convex <- slope <- numeric()
+  corner <- numeric()
   for (c in 1:(columns - 1)) for (r in 1:(rows - 1)) {
       quad_idx <- rowcol_to_index(r, c, gridsize = gridsize, plotdim = plotdim)
       corner[1] <- elevmat[r, c]
@@ -57,7 +57,7 @@ allquadratslopes <- function(elev, gridsize, plotdim, edgecorrect = TRUE) {
         }
       }
   }
-  return(data.frame(meanelev = meanelev, convex = convex, slope = slope))
+  data.frame(meanelev = meanelev, convex = convex, slope = slope)
 }
 
 #' Internal.
