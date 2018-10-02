@@ -129,10 +129,9 @@ literal string "NULL".</p></li>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sanitize_vft</span>(<span class='no'>x</span>, <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'><a href='type_fgeo.html'>type_vft</a></span>(), <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>sanitize_vft</span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
 
-<span class='fu'>sanitize_taxa</span>(<span class='no'>x</span>, <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'><a href='type_fgeo.html'>type_taxa</a></span>(), <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>),
-  <span class='no'>...</span>)</pre>
+<span class='fu'>sanitize_taxa</span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -141,19 +140,6 @@ literal string "NULL".</p></li>
       <th>x</th>
       <td><p>A dataframe; either a ForestGEO ViewFullTable (<code>sanitize_vft()</code>) or
 ViewTaxonomy (<code>sanitize_vft()</code>).</p></td>
-    </tr>
-    <tr>
-      <th>col_types</th>
-      <td><p>One of <code>NULL</code>, a <code>cols()</code> specification, or
-a string. See <code>vignette("column-types")</code> for more details.</p>
-<p>If <code>NULL</code>, all column types will be imputed from the first 1000 rows
-on the input. This is convenient (and fast), but not robust. If the
-imputation fails, you'll need to supply the correct types yourself.</p>
-<p>If a column specification created by <code>cols()</code>, it must contain
-one column specification for each column. If you only want to read a
-subset of the columns, use <code>cols_only()</code>.</p>
-<p>Unlike other functions <code>type_convert()</code> does not allow character
-specifications of <code>col_types</code>.</p></td>
     </tr>
     <tr>
       <th>na</th>
