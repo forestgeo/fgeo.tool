@@ -18,6 +18,10 @@ test_that("fixes NULL and column types", {
   expect_equal(unique(vft_sane$PlotName), NA_character_)
 })
 
+test_that("produces no warning", {
+  expect_warning(sanitize_vft(fgeo.data::luquillo_vft_4quad), NA)
+})
+
 
 
 context("sanitize_taxa")
@@ -35,4 +39,8 @@ test_that("fixes NULL and column types", {
   # Sanitized
   expect_is(taxa_sane$ViewID, "integer")
   expect_equal(unique(taxa_sane$SubspeciesID), NA_character_)
+})
+
+test_that("clarifies missleading message", {
+  expect_warning(sanitize_taxa(taxa), NA)
 })

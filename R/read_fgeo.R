@@ -23,9 +23,11 @@ NULL
 
 read_fgeo <- function(col_types) {
   function(file, delim = "\t", na = c("", "NA", "NULL"), ...) {
-    readr::read_delim(
-      file = file, delim = delim, col_types = col_types, na = na, ...
+    fgeo <- readr::read_delim(
+      file = file, delim = delim, col_types = readr::cols(.default = "c"), 
+      na = na, ...
     )
+    readr::type_convert(fgeo, col_types = col_types)
   }
 }
 

@@ -23,6 +23,8 @@
 #'
 #' @return A dataframe of subclass fgeo_topography.
 #' 
+#' @section Acknowledgment:
+#' Thanks to Jian Zhang for reporting a bug (issue 59).
 #'
 #' @export
 #' 

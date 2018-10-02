@@ -52,20 +52,30 @@
 #' @name sanitize
 NULL
 
-#' @rdname sanitize
-#' @export
-sanitize_vft <- function(x, 
-                         col_types = type_vft(), 
-                         na = c("", "NA", "NULL"), 
-                         ...) {
-  readr::type_convert(x, col_types = col_types, na = na, ...) 
+sanitize_view <- function(col_types) {
+  function(x, na = c("", "NA", "NULL"), ...) {
+    check_crucial_names(x, names(col_types))
+    x <- purrr:::modify(x, as.character)
+    readr::type_convert(x, col_types = col_types, na = na, ...)
+  }
 }
 
 #' @rdname sanitize
 #' @export
-sanitize_taxa <- function(x,
-                          col_types = type_taxa(), 
-                          na = c("", "NA", "NULL"), 
-                          ...) {
-  readr::type_convert(x, col_types = col_types, na = na, ...) 
+sanitize_vft <- sanitize_view(col_types = type_vft())
+
+#' @rdname sanitize
+#' @export
+sanitize_taxa <- sanitize_view(col_types = type_taxa())
+
+clarify_missleading_warning <- function(e) {
+  missleading_msg <- "named parsers don't match the column names"
+  missleading_warning <- grepl(missleading_msg, conditionMessage(e))
+  if (missleading_warning) {
+    rlang::warn(glue::glue("
+      Names are as expected and you may disregard the following message. \\
+      Likely it is due to invisible characters.
+      Misleading message: {conditionMessage(e)}"
+    ))
+  }
 }

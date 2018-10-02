@@ -6,28 +6,13 @@
 \alias{sanitize_taxa}
 \title{Sanitize ViewFullTable and ViewTaxonomy.}
 \usage{
-sanitize_vft(x, col_types = type_vft(), na = c("", "NA", "NULL"), ...)
+sanitize_vft(x, na = c("", "NA", "NULL"), ...)
 
-sanitize_taxa(x, col_types = type_taxa(), na = c("", "NA", "NULL"),
-  ...)
+sanitize_taxa(x, na = c("", "NA", "NULL"), ...)
 }
 \arguments{
 \item{x}{A dataframe; either a ForestGEO ViewFullTable (\code{sanitize_vft()}) or
 ViewTaxonomy (\code{sanitize_vft()}).}
-
-\item{col_types}{One of \code{NULL}, a \code{\link[=cols]{cols()}} specification, or
-a string. See \code{vignette("column-types")} for more details.
-
-If \code{NULL}, all column types will be imputed from the first 1000 rows
-on the input. This is convenient (and fast), but not robust. If the
-imputation fails, you'll need to supply the correct types yourself.
-
-If a column specification created by \code{\link[=cols]{cols()}}, it must contain
-one column specification for each column. If you only want to read a
-subset of the columns, use \code{\link[=cols_only]{cols_only()}}.
-
-Unlike other functions \code{type_convert()} does not allow character
-specifications of \code{col_types}.}
 
 \item{na}{Character vector of strings to use for missing values. Set this
 option to \code{character()} to indicate no missing values.}

@@ -1,5 +1,10 @@
 context("replace_null.R")
 
+test_that("leaves dates unchanged", {
+  dfm <- tibble::tibble(x = lubridate::as_date("1993-08-12"))
+  expect_is(fgeo.tool::replace_null(dfm)$x, "date")
+})
+
 test_that("works well with logical, integer, double, character", {
   before <- c("a", "NULL")
   expect_equal(replace_null(before),  c("a", NA))

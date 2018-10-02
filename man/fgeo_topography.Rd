@@ -41,6 +41,11 @@ A dataframe of subclass fgeo_topography.
 \description{
 Calculate mean elevation, convexity and slope.
 }
+\section{Acknowledgment}{
+
+Thanks to Jian Zhang for reporting a bug (issue 59).
+}
+
 \section{Input}{
 
 The main input can be either the elevation list that ForestGEO delivers, or
