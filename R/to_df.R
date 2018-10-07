@@ -20,6 +20,10 @@ to_df.default <- function(.x, ...) {
   rlang::abort(paste0("Can't deal with data of class ", class(.x)))
 }
 
+
+
+# Class krig_lst ----------------------------------------------------------
+
 #' Restructure the output of `fgeo.habitat::krig()` as a dataframe.
 #'
 #' @param .x The output of [fgeo.habitat::krig()].
@@ -45,6 +49,10 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
   out <- Reduce(rbind, fgeo.base::name_dfs(dfs, name = name))
   out[c(name, setdiff(names(out), name))]
 }
+
+
+
+# Class tt_lst ------------------------------------------------------------
 
 #' Restructure  the output of `tt_test()` as a dataframe.
 #'
@@ -94,6 +102,7 @@ separate_habitat_metric <- function(x) {
 #' The Rep.Agg.Neut columns for each habitat indicate whether the sp is
 #' significantly repelled (-1), aggregated (1), or neutraly distributed (0) on
 #' the habitat in question.
+#' @keywords internal
 #' @noRd
 explain_distribution <- function(x) {
   dplyr::mutate(x, 
@@ -117,3 +126,44 @@ new_tt_df <- function(.x) {
   stopifnot(is.data.frame(.x))
   structure(.x, class = c("tt_df", class(.x)))
 }
+
+
+
+# demography_lst ----------------------------------------------------------
+
+#' Transform the output of demography functions into a (tibble) dataframe.
+#' 
+#' Restructure  the output of `mortality()`, `recruitment()`, and `growth()` as
+#' a dataframe:
+#' * `to_df.demography_lst()`: Restructures results calculated across the entire
+#'   census data.
+#' * `to_df.demography_lst_by()`: Restructures results calculated `by` groups.
+#'
+#' @param .x An object of class demography_lst.
+#' @param ... Other arguments passed to [demography_df()].
+#'
+#' @return A (tibble) dataframe.
+#'
+#' @export
+#' @examples
+#' \dontrun{
+#' library(fgeo.data)
+#' library(fgeo.demography)
+#' 
+#' censuses <- list(luquillo_tree5_random, luquillo_tree6_random)
+#' to_df(mortality(censuses))
+#' 
+#' to_df(mortality(censuses, "sp"))
+#' }
+to_df.demography_lst <- function(.x) {
+  tidyr::unnest(tibble::enframe(.x, name = "metric"))
+}
+
+#' @rdname to_df.demography_lst
+#' @export
+to_df.demography_lst_by <- function(.x) {
+  out <- purrr::map_dfr(.x, ~tibble::enframe(.x, name = "by"), .id = "metric")
+  out[c("by", "metric", "value")]
+}
+
+

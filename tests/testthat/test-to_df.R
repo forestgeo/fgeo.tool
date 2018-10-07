@@ -1,4 +1,4 @@
-context("to_df.krig_lst")
+context("to_df")
 
 describe("to_df.krig_lst", {
   skip_if_not_installed("fgeo.habitat")
@@ -29,8 +29,6 @@ describe("to_df.krig_lst", {
 
 
 
-context("to_df.tt_lst")
-
 describe("to_df.tt_lst", {
   skip_if_not_installed("fgeo.habitat")
   
@@ -51,4 +49,29 @@ describe("to_df.tt_lst", {
 
 
 
+pick10sp <- function(.data) dplyr::filter(.data, sp %in% unique(.data$sp)[1:10])
+tiny1 <- pick10sp(fgeo.data::luquillo_tree5_random)
+tiny2 <- pick10sp(fgeo.data::luquillo_tree6_random)
+censuses <- list(tiny1 = tiny1, tiny2 = tiny2)
 
+describe("to_df.demography_lst", {
+  skip_if_not_installed("fgeo.demography")
+  
+  it("with `by = NULL` outputs the expected dataframe", {
+    as_is <- to_df(fgeo.demography::mortality(censuses))
+    
+    expect_named(as_is, c("metric", "value"))
+    expect_is(as_is, c("tbl"))
+  })
+})
+
+
+
+describe("to_df.demography_lst_by", {
+  it("with `by = <not NULL>` outputs the expected dataframe", {
+    by_sp <- to_df(fgeo.demography::mortality(censuses, "sp"))
+    expect_named(by_sp, c("by", "metric", "value"))
+    expect_is(by_sp, c("tbl"))
+    expect_false(all(is.na(by_sp$by)))
+  })
+})

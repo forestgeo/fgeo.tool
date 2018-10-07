@@ -1,3 +1,25 @@
+# FIXME: to_df
+library(fgeo.demography)
+
+pick10sp <- function(.data) dplyr::filter(.data, sp %in% unique(.data$sp)[1:10])
+tiny1 <- pick10sp(fgeo.data::luquillo_tree5_random)
+tiny2 <- pick10sp(fgeo.data::luquillo_tree6_random)
+censuses <- list(tiny1 = tiny1, tiny2 = tiny2)
+
+# debugonce(to_df.demography_lst)
+# to_df.demography_lst
+to_df(fgeo.demography::mortality(censuses))
+tidyr::unnest(tibble::enframe(.x, name = "metric"))
+
+# debugonce(to_df.demography_lst_by)
+to_df(fgeo.demography::mortality(censuses, "sp"))
+# to_df.demography_lst_by
+
+out <- purrr::map_dfr(.x, ~tibble::enframe(.x, name = "by"), .id = "metric")
+out[c("by", "metric", "value")]
+
+
+
 # TODO:
 # * Remove pick_woods()? Or simplify it to be filter(pick_main_stem(.data))
 # Check documentation of funs downstream of pick_large_hom_dbh() in fgeo.abundance

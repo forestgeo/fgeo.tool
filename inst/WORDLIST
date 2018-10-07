@@ -6,7 +6,6 @@ csv
 ctfs
 CTFS
 CTFSRPackage
-dbh
 df
 dfs
 dplyr
@@ -31,6 +30,7 @@ hectindex
 http
 https
 Jafferjee
+Jian
 Kenfack
 Lepore
 Lowercases
@@ -49,7 +49,6 @@ quadrats
 quosures
 qx
 qy
-readr
 recensus
 recensused
 recode
@@ -77,3 +76,4 @@ ViewTaxonomy
 Visel
 xlsheets
 xlsx
+Zhang
