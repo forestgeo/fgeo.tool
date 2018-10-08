@@ -140,7 +140,7 @@ new_tt_df <- function(.x) {
 #' * `to_df.demography_lst_by()`: Restructures results calculated `by` groups.
 #'
 #' @param .x An object of class demography_lst.
-#' @param ... Other arguments passed to [demography_df()].
+#' @param ... Other arguments passed to `to_df()`.
 #'
 #' @return A (tibble) dataframe.
 #'
@@ -155,13 +155,13 @@ new_tt_df <- function(.x) {
 #' 
 #' to_df(mortality(censuses, "sp"))
 #' }
-to_df.demography_lst <- function(.x) {
+to_df.demography_lst <- function(.x, ...) {
   tidyr::unnest(tibble::enframe(.x, name = "metric"))
 }
 
 #' @rdname to_df.demography_lst
 #' @export
-to_df.demography_lst_by <- function(.x) {
+to_df.demography_lst_by <- function(.x, ...) {
   out <- purrr::map_dfr(.x, ~tibble::enframe(.x, name = "by"), .id = "metric")
   out[c("by", "metric", "value")]
 }

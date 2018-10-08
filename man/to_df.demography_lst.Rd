@@ -5,14 +5,14 @@
 \alias{to_df.demography_lst_by}
 \title{Transform the output of demography functions into a (tibble) dataframe.}
 \usage{
-\method{to_df}{demography_lst}(.x)
+\method{to_df}{demography_lst}(.x, ...)
 
-\method{to_df}{demography_lst_by}(.x)
+\method{to_df}{demography_lst_by}(.x, ...)
 }
 \arguments{
 \item{.x}{An object of class demography_lst.}
 
-\item{...}{Other arguments passed to \code{\link[=demography_df]{demography_df()}}.}
+\item{...}{Other arguments passed to \code{to_df()}.}
 }
 \value{
 A (tibble) dataframe.
