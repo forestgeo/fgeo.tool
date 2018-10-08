@@ -124,11 +124,6 @@ reference:
     contents:
       - flag_if_group
 
-  - title: Function factories
-    desc: Not specific to ForestGEO
-    contents:
-    - ends_with("_f")
-
   - title: "Generics"
     contents:
       - starts_with("to_df")
