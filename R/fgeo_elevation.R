@@ -49,7 +49,7 @@ fgeo_elevation.fgeo_elevation <- function(x) {
 
 #' @export
 fgeo_elevation.default <- function(x) {
-  abort(paste0("Can't deal with data of class ", class(x)))
+  abort(glue("Can't deal with data of class {class(x)}"))
 }
 
 #' @export

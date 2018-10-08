@@ -223,7 +223,7 @@ nms_extract1 <- function(x, ...) {
 nms_try_rename <- function(x, want, try) {
   nm <- fgeo.tool::nms_extract1(x = x, want = want, try = try)
   if (length(nm) == 0) {
-    abort(paste0("Data must have an element named `", want, "` or `", try, "`"))
+    abort(glue("Data must have an element named `{want}` or `{try}`"))
   }
   names(x)[grepl(nm, names(x))] <- want
   x

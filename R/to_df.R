@@ -17,7 +17,7 @@ to_df <- function(.x, ...) {
 
 #' @export
 to_df.default <- function(.x, ...) {
-  rlang::abort(paste0("Can't deal with data of class ", class(.x)))
+  rlang::abort(glue("Can't deal with data of class {class(.x)}"))
 }
 
 
