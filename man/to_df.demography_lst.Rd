@@ -3,7 +3,7 @@
 \name{to_df.demography_lst}
 \alias{to_df.demography_lst}
 \alias{to_df.demography_lst_by}
-\title{Transform the output of demography functions into a (tibble) dataframe.}
+\title{Dataframe objects of class "demography_lst" and "demography_lst_by".}
 \usage{
 \method{to_df}{demography_lst}(.x, ...)
 
@@ -18,8 +18,12 @@
 A (tibble) dataframe.
 }
 \description{
-Restructure  the output of \code{mortality()}, \code{recruitment()}, and \code{growth()} as
-a dataframe:
+This method creates a dataframe from the output of
+\code{fgeo.demography::mortality()}, \code{fgeo.demography::recruitment()}, and
+\code{fgeo.demography::growth()} (each one is a list of class "demography_lst" if
+\code{by} is \code{NULL}, or of class "demography_lst" if \code{by} is not \code{NULL}):
+}
+\details{
 \itemize{
 \item \code{to_df.demography_lst()}: Restructures results calculated across the entire
 census data.
@@ -37,3 +41,10 @@ to_df(mortality(censuses))
 to_df(mortality(censuses, "sp"))
 }
 }
+\seealso{
+\code{\link[=to_df]{to_df()}}.
+
+Other methods for fgeo generics: \code{\link{to_df.krig_lst}},
+  \code{\link{to_df.tt_lst}}
+}
+\concept{methods for fgeo generics}

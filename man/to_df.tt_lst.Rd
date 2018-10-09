@@ -2,7 +2,7 @@
 % Please edit documentation in R/to_df.R
 \name{to_df.tt_lst}
 \alias{to_df.tt_lst}
-\title{Restructure  the output of \code{tt_test()} as a dataframe.}
+\title{Dataframe objects of class "tt_lst".}
 \usage{
 \method{to_df}{tt_lst}(.x, ...)
 }
@@ -15,7 +15,8 @@
 A dataframe.
 }
 \description{
-Restructure  the output of \code{tt_test()} as a dataframe.
+This method creates a dataframe from the output of \code{fgeo.habitat::tt_test()}
+(which is a list of class "tt_lst").
 }
 \examples{
 \dontrun{
@@ -29,3 +30,10 @@ tt_df <- to_df(tt_lst)
 head(tt_df)
 }
 }
+\seealso{
+\code{\link[=to_df]{to_df()}}.
+
+Other methods for fgeo generics: \code{\link{to_df.demography_lst}},
+  \code{\link{to_df.krig_lst}}
+}
+\concept{methods for fgeo generics}

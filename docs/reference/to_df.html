@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Restructure data as a dataframe. — to_df • fgeo.tool</title>
+<title>Create objects of class "data.frame" from other fgeo classes. — to_df • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,14 @@
 
 
 
-<meta property="og:title" content="Restructure data as a dataframe. — to_df" />
+<meta property="og:title" content="Create objects of class "data.frame" from other fgeo classes. — to_df" />
 
-<meta property="og:description" content="The goal of this (generic) function (with methods for multiple fgeo classes)
-is to produce a dataframe that helps you to work fluently with other general
-purpose tools such as dplyr and ggplot2." />
+<meta property="og:description" content="Most of the popular, general-purpose tools for data-science input objects of
+class &quot;data.frame&quot; (https://www.tidyverse.org/). However, several fgeo
+functions -- either inherited from the original CTFS R Package or contributed
+by ForestGEO partners -- output data of different class. The goal of this
+generic function is to provide a simple, consistent way to transform the
+data-science workflows seamlessly." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,16 +111,19 @@ purpose tools such as dplyr and ggplot2." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Restructure data as a dataframe.</h1>
+    <h1>Create objects of class "data.frame" from other fgeo classes.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/to_df.R'><code>R/to_df.R</code></a></small>
     <div class="hidden name"><code>to_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>The goal of this (generic) function (with methods for multiple fgeo classes)
-is to produce a dataframe that helps you to work fluently with other general
-purpose tools such as <strong>dplyr</strong> and <strong>ggplot2</strong>.</p>
+    <p>Most of the popular, general-purpose tools for data-science input objects of
+class "data.frame" (<a href='https://www.tidyverse.org/'>https://www.tidyverse.org/</a>). However, several <strong>fgeo</strong>
+functions -- either inherited from the original CTFS R Package or contributed
+by ForestGEO partners -- output data of different class. The goal of this
+generic function is to provide a simple, consistent way to transform the
+data-science workflows seamlessly.</p>
     
     </div>
 

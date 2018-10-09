@@ -107,7 +107,18 @@ reference:
     contents:
     - extract_from_habitat
 
-  - title: Construct S3 classes
+  - title: Detect and flag conditions
+    desc: Not specific to ForestGEO
+    contents:
+      - flag_if_group
+
+  - title: fgeo generics and methods
+    desc: Specific to ForestGEO
+    contents:
+      - to_df
+      - starts_with("to_df")
+
+  - title: Construct fgeo classes
     desc: Specific to ForestGEO
     contents:
     - fgeo_elevation
@@ -118,12 +129,3 @@ reference:
     desc: Specific to ForestGEO
     contents:
     - tool_example
-    
-  - title: Detect and flag conditions
-    desc: Not specific to ForestGEO
-    contents:
-      - flag_if_group
-
-  - title: "Generics"
-    contents:
-      - starts_with("to_df")

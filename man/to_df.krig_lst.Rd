@@ -2,7 +2,7 @@
 % Please edit documentation in R/to_df.R
 \name{to_df.krig_lst}
 \alias{to_df.krig_lst}
-\title{Restructure the output of \code{fgeo.habitat::krig()} as a dataframe.}
+\title{Dataframe objects of class "krig_lst".}
 \usage{
 \method{to_df}{krig_lst}(.x, name = "var", item = "df", ...)
 }
@@ -22,7 +22,8 @@
 A dataframe.
 }
 \description{
-Restructure the output of \code{fgeo.habitat::krig()} as a dataframe.
+This method creates a dataframe from the output of \code{fgeo.habitat::krig()}
+(which is a list of class "krig_lst").
 }
 \examples{
 \dontrun{
@@ -32,3 +33,10 @@ krig <- krig(soil_fake, vars, quiet = TRUE)
 head(to_df(krig))
 }
 }
+\seealso{
+\code{\link[=to_df]{to_df()}}.
+
+Other methods for fgeo generics: \code{\link{to_df.demography_lst}},
+  \code{\link{to_df.tt_lst}}
+}
+\concept{methods for fgeo generics}

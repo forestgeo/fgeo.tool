@@ -2,7 +2,7 @@
 % Please edit documentation in R/to_df.R
 \name{to_df}
 \alias{to_df}
-\title{Restructure data as a dataframe.}
+\title{Create objects of class "data.frame" from other fgeo classes.}
 \usage{
 to_df(.x, ...)
 }
@@ -15,10 +15,14 @@ to_df(.x, ...)
 A dataframe.
 }
 \description{
-The goal of this (generic) function (with methods for multiple fgeo classes)
-is to produce a dataframe that helps you to work fluently with other general
-purpose tools such as \strong{dplyr} and \strong{ggplot2}.
+Most of the popular, general-purpose tools for data-science input objects of
+class "data.frame" (\url{https://www.tidyverse.org/}). However, several \strong{fgeo}
+functions -- either inherited from the original CTFS R Package or contributed
+by ForestGEO partners -- output data of different class. The goal of this
+generic function is to provide a simple, consistent way to transform the
+data-science workflows seamlessly.
 }
 \seealso{
 \code{\link[=to_df.krig_lst]{to_df.krig_lst()}}, \code{\link[=to_df.tt_lst]{to_df.tt_lst()}}.
 }
+\concept{fgeo generics}

@@ -1,13 +1,18 @@
-#' Restructure data as a dataframe.
-#'
-#' The goal of this (generic) function (with methods for multiple fgeo classes)
-#' is to produce a dataframe that helps you to work fluently with other general
-#' purpose tools such as __dplyr__ and __ggplot2__.
+#' Create objects of class "data.frame" from other fgeo classes.
+#' 
+#' Most of the popular, general-purpose tools for data-science input objects of
+#' class "data.frame" (<https://www.tidyverse.org/>). However, several __fgeo__
+#' functions -- either inherited from the original CTFS R Package or contributed
+#' by ForestGEO partners -- output data of different class. The goal of this
+#' generic function is to provide a simple, consistent way to transform the
+#' data-science workflows seamlessly.
 #'
 #' @param .x An fgeo object of supported class.
 #' @param ... Other arguments passed to methods.
 #'
 #' @seealso [to_df.krig_lst()], [to_df.tt_lst()].
+#' 
+#' @family fgeo generics
 #'
 #' @return A dataframe.
 #' @export
@@ -24,12 +29,19 @@ to_df.default <- function(.x, ...) {
 
 # Class krig_lst ----------------------------------------------------------
 
-#' Restructure the output of `fgeo.habitat::krig()` as a dataframe.
-#'
+#' Dataframe objects of class "krig_lst".
+#' 
+#' This method creates a dataframe from the output of `fgeo.habitat::krig()`
+#' (which is a list of class "krig_lst").
+#' 
 #' @param .x The output of [fgeo.habitat::krig()].
 #' @param name Name for the column to hold soil variable-names.
 #' @param item Character string; either "df" or "df.poly".
 #' @inheritDotParams to_df
+#' 
+#' @seealso [to_df()].
+#' 
+#' @family methods for fgeo generics
 #'
 #' @return A dataframe.
 #' @export
@@ -54,10 +66,17 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
 
 # Class tt_lst ------------------------------------------------------------
 
-#' Restructure  the output of `tt_test()` as a dataframe.
-#'
+#' Dataframe objects of class "tt_lst".
+#' 
+#' This method creates a dataframe from the output of `fgeo.habitat::tt_test()`
+#' (which is a list of class "tt_lst").
+#' 
 #' @param .x An object of class tt_lst.
 #' @param ... Other arguments passed to [to_df()].
+#' 
+#' @seealso [to_df()].
+#' 
+#' @family methods for fgeo generics
 #'
 #' @return A dataframe.
 #'
@@ -129,12 +148,15 @@ new_tt_df <- function(.x) {
 
 
 
-# demography_lst ----------------------------------------------------------
+# Class demography_lst ----------------------------------------------------
 
-#' Transform the output of demography functions into a (tibble) dataframe.
+#' Dataframe objects of class "demography_lst" and "demography_lst_by".
 #' 
-#' Restructure  the output of `mortality()`, `recruitment()`, and `growth()` as
-#' a dataframe:
+#' This method creates a dataframe from the output of
+#' `fgeo.demography::mortality()`, `fgeo.demography::recruitment()`, and
+#' `fgeo.demography::growth()` (each one is a list of class "demography_lst" if
+#' `by` is `NULL`, or of class "demography_lst" if `by` is not `NULL`):
+#' 
 #' * `to_df.demography_lst()`: Restructures results calculated across the entire
 #'   census data.
 #' * `to_df.demography_lst_by()`: Restructures results calculated `by` groups.
@@ -142,6 +164,10 @@ new_tt_df <- function(.x) {
 #' @param .x An object of class demography_lst.
 #' @param ... Other arguments passed to `to_df()`.
 #'
+#' @seealso [to_df()].
+#' 
+#' @family methods for fgeo generics
+#' 
 #' @return A (tibble) dataframe.
 #'
 #' @export
@@ -165,5 +191,4 @@ to_df.demography_lst_by <- function(.x, ...) {
   out <- purrr::map_dfr(.x, ~tibble::enframe(.x, name = "by"), .id = "metric")
   out[c("by", "metric", "value")]
 }
-
 

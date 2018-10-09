@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Transform the output of demography functions into a (tibble) dataframe. — to_df.demography_lst • fgeo.tool</title>
+<title>Dataframe objects of class "demography_lst" and "demography_lst_by". — to_df.demography_lst • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,14 +30,12 @@
 
 
 
-<meta property="og:title" content="Transform the output of demography functions into a (tibble) dataframe. — to_df.demography_lst" />
+<meta property="og:title" content="Dataframe objects of class "demography_lst" and "demography_lst_by". — to_df.demography_lst" />
 
-<meta property="og:description" content="Restructure  the output of mortality(), recruitment(), and growth() as
-a dataframe:
-to_df.demography_lst(): Restructures results calculated across the entire
-census data.
-to_df.demography_lst_by(): Restructures results calculated by groups.
-" />
+<meta property="og:description" content="This method creates a dataframe from the output of
+fgeo.demography::mortality(), fgeo.demography::recruitment(), and
+fgeo.demography::growth() (each one is a list of class &quot;demography_lst&quot; if
+by is NULL, or of class &quot;demography_lst&quot; if by is not NULL):" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,19 +109,17 @@ to_df.demography_lst_by(): Restructures results calculated by groups.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Transform the output of demography functions into a (tibble) dataframe.</h1>
+    <h1>Dataframe objects of class "demography_lst" and "demography_lst_by".</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/to_df.R'><code>R/to_df.R</code></a></small>
     <div class="hidden name"><code>to_df.demography_lst.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Restructure  the output of <code>mortality()</code>, <code>recruitment()</code>, and <code>growth()</code> as
-a dataframe:</p><ul>
-<li><p><code>to_df.demography_lst()</code>: Restructures results calculated across the entire
-census data.</p></li>
-<li><p><code>to_df.demography_lst_by()</code>: Restructures results calculated <code>by</code> groups.</p></li>
-</ul>
+    <p>This method creates a dataframe from the output of
+<code><a href='http://www.rdocumentation.org/packages/fgeo.demography/topics/demography'>fgeo.demography::mortality()</a></code>, <code><a href='http://www.rdocumentation.org/packages/fgeo.demography/topics/demography'>fgeo.demography::recruitment()</a></code>, and
+<code><a href='http://www.rdocumentation.org/packages/fgeo.demography/topics/demography'>fgeo.demography::growth()</a></code> (each one is a list of class "demography_lst" if
+<code>by</code> is <code>NULL</code>, or of class "demography_lst" if <code>by</code> is not <code>NULL</code>):</p>
     
     </div>
 
@@ -150,6 +146,20 @@ census data.</p></li>
 
     <p>A (tibble) dataframe.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <ul>
+<li><p><code>to_df.demography_lst()</code>: Restructures results calculated across the entire
+census data.</p></li>
+<li><p><code>to_df.demography_lst_by()</code>: Restructures results calculated <code>by</code> groups.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='to_df.html'>to_df()</a></code>.</p>
+<p>Other methods for fgeo generics: <code><a href='to_df.krig_lst.html'>to_df.krig_lst</a></code>,
+  <code><a href='to_df.tt_lst.html'>to_df.tt_lst</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
@@ -168,6 +178,10 @@ census data.</p></li>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

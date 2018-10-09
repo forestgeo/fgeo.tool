@@ -383,7 +383,53 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-construct-s-classes" class="hasAnchor"><a href="#section-construct-s-classes" class="anchor"></a>Construct S3 classes</h2>
+          <h2 id="section-detect-and-flag-conditions" class="hasAnchor"><a href="#section-detect-and-flag-conditions" class="anchor"></a>Detect and flag conditions</h2>
+          <p class="section-desc"><p>Not specific to ForestGEO</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="flag_if_group.html">flag_if_group()</a></code> <code><a href="flag_if_group.html">detect_if_group()</a></code> </p>
+        </td>
+        <td><p>Detect and flag based on a predicate applied to a variable by groups.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-fgeo-generics-and-methods" class="hasAnchor"><a href="#section-fgeo-generics-and-methods" class="anchor"></a>fgeo generics and methods</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="to_df.html">to_df()</a></code> </p>
+        </td>
+        <td><p>Create objects of class "data.frame" from other fgeo classes.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="to_df.demography_lst.html">to_df(<i>&lt;demography_lst&gt;</i>)</a></code> <code><a href="to_df.demography_lst.html">to_df(<i>&lt;demography_lst_by&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Dataframe objects of class "demography_lst" and "demography_lst_by".</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="to_df.krig_lst.html">to_df(<i>&lt;krig_lst&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Dataframe objects of class "krig_lst".</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="to_df.tt_lst.html">to_df(<i>&lt;tt_lst&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Dataframe objects of class "tt_lst".</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-construct-fgeo-classes" class="hasAnchor"><a href="#section-construct-fgeo-classes" class="anchor"></a>Construct fgeo classes</h2>
           <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
       </tr>
@@ -420,52 +466,6 @@
         </td>
         <td><p>Path to directory containing example data.</p></td>
       </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-detect-and-flag-conditions" class="hasAnchor"><a href="#section-detect-and-flag-conditions" class="anchor"></a>Detect and flag conditions</h2>
-          <p class="section-desc"><p>Not specific to ForestGEO</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="flag_if_group.html">flag_if_group()</a></code> <code><a href="flag_if_group.html">detect_if_group()</a></code> </p>
-        </td>
-        <td><p>Detect and flag based on a predicate applied to a variable by groups.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-generics" class="hasAnchor"><a href="#section-generics" class="anchor"></a>Generics</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="to_df.demography_lst.html">to_df(<i>&lt;demography_lst&gt;</i>)</a></code> <code><a href="to_df.demography_lst.html">to_df(<i>&lt;demography_lst_by&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Transform the output of demography functions into a (tibble) dataframe.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="to_df.krig_lst.html">to_df(<i>&lt;krig_lst&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Restructure the output of <code>fgeo.habitat::krig()</code> as a dataframe.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="to_df.html">to_df()</a></code> </p>
-        </td>
-        <td><p>Restructure data as a dataframe.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="to_df.tt_lst.html">to_df(<i>&lt;tt_lst&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Restructure  the output of <code>tt_test()</code> as a dataframe.</p></td>
-      </tr>
     </tbody>
     </table>
   </div>
@@ -483,10 +483,10 @@
       <li><a href="#section-deal-with-objects-type-or-class">Deal with objects' type or class</a></li>
       <li><a href="#section-deal-with-objects-structure">Deal with objects' structure</a></li>
       <li><a href="#section-guess">Guess</a></li>
-      <li><a href="#section-construct-s-classes">Construct S3 classes</a></li>
-      <li><a href="#section-access-data">Access data</a></li>
       <li><a href="#section-detect-and-flag-conditions">Detect and flag conditions</a></li>
-      <li><a href="#section-generics">Generics</a></li>
+      <li><a href="#section-fgeo-generics-and-methods">fgeo generics and methods</a></li>
+      <li><a href="#section-construct-fgeo-classes">Construct fgeo classes</a></li>
+      <li><a href="#section-access-data">Access data</a></li>
     </ul>
   </div>
 </div>
