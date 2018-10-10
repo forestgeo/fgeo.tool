@@ -15,14 +15,21 @@ to_df(.x, ...)
 A dataframe.
 }
 \description{
-Most of the popular, general-purpose tools for data-science input objects of
+Most of the popular, general-purpose tools for data science input objects of
 class "data.frame" (\url{https://www.tidyverse.org/}). However, several \strong{fgeo}
-functions -- either inherited from the original CTFS R Package or contributed
-by ForestGEO partners -- output data of different class. The goal of this
-generic function is to provide a simple, consistent way to transform the
-data-science workflows seamlessly.
+functions (either inherited from the original CTFS R Package or contributed
+by ForestGEO partners) output data of different class. Taking as input
+different classes of \strong{fgeo} objects, \code{to_df()} provides a simple,
+consistent way to create dataframes.
+}
+\details{
+This generic provides methods for classes that cannot be correctly coerced
+simply with \code{\link[stats:as.data.frame]{stats::as.data.frame()}} (or similar functions from the
+\strong{tibble} package).
 }
 \seealso{
-\code{\link[=to_df.krig_lst]{to_df.krig_lst()}}, \code{\link[=to_df.tt_lst]{to_df.tt_lst()}}.
+\code{\link[=to_df.krig_lst]{to_df.krig_lst()}},
+\code{\link[=to_df.tt_lst]{to_df.tt_lst()}},\code{\link[fgeo.tool:::to_df.demography_lst]{fgeo.tool::::to_df.demography_lst()}},
+\code{\link[fgeo.tool:::to_df.demography_lst_by]{fgeo.tool::::to_df.demography_lst_by()}}.
 }
 \concept{fgeo generics}

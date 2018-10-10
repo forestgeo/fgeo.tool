@@ -32,12 +32,12 @@
 
 <meta property="og:title" content="Create objects of class "data.frame" from other fgeo classes. — to_df" />
 
-<meta property="og:description" content="Most of the popular, general-purpose tools for data-science input objects of
+<meta property="og:description" content="Most of the popular, general-purpose tools for data science input objects of
 class &quot;data.frame&quot; (https://www.tidyverse.org/). However, several fgeo
-functions -- either inherited from the original CTFS R Package or contributed
-by ForestGEO partners -- output data of different class. The goal of this
-generic function is to provide a simple, consistent way to transform the
-data-science workflows seamlessly." />
+functions (either inherited from the original CTFS R Package or contributed
+by ForestGEO partners) output data of different class. Taking as input
+different classes of fgeo objects, to_df() provides a simple,
+consistent way to create dataframes." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,12 +118,12 @@ data-science workflows seamlessly." />
 
     <div class="ref-description">
     
-    <p>Most of the popular, general-purpose tools for data-science input objects of
+    <p>Most of the popular, general-purpose tools for data science input objects of
 class "data.frame" (<a href='https://www.tidyverse.org/'>https://www.tidyverse.org/</a>). However, several <strong>fgeo</strong>
-functions -- either inherited from the original CTFS R Package or contributed
-by ForestGEO partners -- output data of different class. The goal of this
-generic function is to provide a simple, consistent way to transform the
-data-science workflows seamlessly.</p>
+functions (either inherited from the original CTFS R Package or contributed
+by ForestGEO partners) output data of different class. Taking as input
+different classes of <strong>fgeo</strong> objects, <code>to_df()</code> provides a simple,
+consistent way to create dataframes.</p>
     
     </div>
 
@@ -146,9 +146,17 @@ data-science workflows seamlessly.</p>
 
     <p>A dataframe.</p>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This generic provides methods for classes that cannot be correctly coerced
+simply with <code>stats::as.data.frame()</code> (or similar functions from the
+<strong>tibble</strong> package).</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='to_df.krig_lst.html'>to_df.krig_lst()</a></code>, <code><a href='to_df.tt_lst.html'>to_df.tt_lst()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='to_df.krig_lst.html'>to_df.krig_lst()</a></code>,
+<code><a href='to_df.tt_lst.html'>to_df.tt_lst()</a></code>,<code>fgeo.tool::::to_df.demography_lst()</code>,
+<code>fgeo.tool::::to_df.demography_lst_by()</code>.</p></div>
     
 
   </div>
@@ -158,6 +166,8 @@ data-science workflows seamlessly.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
           </ul>

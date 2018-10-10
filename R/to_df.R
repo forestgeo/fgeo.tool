@@ -1,16 +1,22 @@
 #' Create objects of class "data.frame" from other fgeo classes.
 #' 
-#' Most of the popular, general-purpose tools for data-science input objects of
+#' Most of the popular, general-purpose tools for data science input objects of
 #' class "data.frame" (<https://www.tidyverse.org/>). However, several __fgeo__
-#' functions -- either inherited from the original CTFS R Package or contributed
-#' by ForestGEO partners -- output data of different class. The goal of this
-#' generic function is to provide a simple, consistent way to transform the
-#' data-science workflows seamlessly.
+#' functions (either inherited from the original CTFS R Package or contributed
+#' by ForestGEO partners) output data of different class. Taking as input
+#' different classes of __fgeo__ objects, `to_df()` provides a simple,
+#' consistent way to create dataframes.
+#' 
+#' This generic provides methods for classes that cannot be correctly coerced
+#' simply with [stats::as.data.frame()] (or similar functions from the
+#' __tibble__ package).
 #'
 #' @param .x An fgeo object of supported class.
 #' @param ... Other arguments passed to methods.
 #'
-#' @seealso [to_df.krig_lst()], [to_df.tt_lst()].
+#' @seealso [to_df.krig_lst()],
+#'   [to_df.tt_lst()],[fgeo.tool:::to_df.demography_lst()],
+#'   [fgeo.tool:::to_df.demography_lst_by()].
 #' 
 #' @family fgeo generics
 #'
