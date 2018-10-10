@@ -8,15 +8,15 @@
 #' consistent way to create dataframes.
 #' 
 #' This generic provides methods for classes that cannot be correctly coerced
-#' simply with [stats::as.data.frame()] (or similar functions from the
+#' simply with [base::as.data.frame()] (or similar functions from the
 #' __tibble__ package).
 #'
 #' @param .x An fgeo object of supported class.
 #' @param ... Other arguments passed to methods.
 #'
 #' @seealso [to_df.krig_lst()],
-#'   [to_df.tt_lst()],[fgeo.tool:::to_df.demography_lst()],
-#'   [fgeo.tool:::to_df.demography_lst_by()].
+#'   [to_df.tt_lst()],[fgeo.tool::to_df.demography_lst()],
+#'   [fgeo.tool::to_df.demography_lst_by()].
 #' 
 #' @family fgeo generics
 #'

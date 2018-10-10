@@ -4,11 +4,11 @@
 \alias{read_fgeo}
 \alias{read_vft}
 \alias{read_taxa}
-\title{Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.}
+\title{Read text files containing ViewFullTable and ViewTaxonomy tables.}
 \usage{
-read_vft(file, delim = "\\t", na = c("", "NA", "NULL"), ...)
+read_vft(file, delim = NULL, na = c("", "NA", "NULL"), ...)
 
-read_taxa(file, delim = "\\t", na = c("", "NA", "NULL"), ...)
+read_taxa(file, delim = NULL, na = c("", "NA", "NULL"), ...)
 }
 \arguments{
 \item{file}{Either a path to a file, a connection, or literal data
@@ -23,7 +23,8 @@ decompressed.
 Literal data is most useful for examples and tests. It must contain at
 least one new line to be recognised as data (instead of a path).}
 
-\item{delim}{Single character used to separate fields within a record.}
+\item{delim}{Single character used to separate fields within a record. The
+default (\code{delim = NULL}) is to guess between comma or tab (\code{","} or \code{"\t"}).}
 
 \item{na}{Character vector of strings to use for missing values. Set this
 option to \code{character()} to indicate no missing values.}
@@ -34,15 +35,16 @@ option to \code{character()} to indicate no missing values.}
 A dataframe (or tibble).
 }
 \description{
-These functions pre-fill arguments of \code{\link[readr:read_delim]{readr::read_delim()}} to avoid the most
-common causes of problems when reading ForestGEO data as delivered by the
-database. In most cases you should only need to provide the argument \code{file}.
+These functions help you read text files containing ViewFullTable and
+ViewTaxonomy tables. They avoid common problems related to column separators,
+missing values, column names, and column types. Although you can customize
+them, in most cases you should only need to provide the argument \code{file}.
 }
 \examples{
 \dontrun{
 # Needs internet connection.
 read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
-read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
+read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
 }
 }
 \seealso{

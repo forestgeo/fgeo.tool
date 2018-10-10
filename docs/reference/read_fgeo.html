@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database. — read_fgeo • fgeo.tool</title>
+<title>Read text files containing ViewFullTable and ViewTaxonomy tables. — read_fgeo • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,12 @@
 
 
 
-<meta property="og:title" content="Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database. — read_fgeo" />
+<meta property="og:title" content="Read text files containing ViewFullTable and ViewTaxonomy tables. — read_fgeo" />
 
-<meta property="og:description" content="These functions pre-fill arguments of readr::read_delim() to avoid the most
-common causes of problems when reading ForestGEO data as delivered by the
-database. In most cases you should only need to provide the argument file." />
+<meta property="og:description" content="These functions help you read text files containing ViewFullTable and
+ViewTaxonomy tables. They avoid common problems related to column separators,
+missing values, column names, and column types. Although you can customize
+them, in most cases you should only need to provide the argument file." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,22 +109,23 @@ database. In most cases you should only need to provide the argument file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.</h1>
+    <h1>Read text files containing ViewFullTable and ViewTaxonomy tables.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/read_fgeo.R'><code>R/read_fgeo.R</code></a></small>
     <div class="hidden name"><code>read_fgeo.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions pre-fill arguments of <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code> to avoid the most
-common causes of problems when reading ForestGEO data as delivered by the
-database. In most cases you should only need to provide the argument <code>file</code>.</p>
+    <p>These functions help you read text files containing ViewFullTable and
+ViewTaxonomy tables. They avoid common problems related to column separators,
+missing values, column names, and column types. Although you can customize
+them, in most cases you should only need to provide the argument <code>file</code>.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_vft</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>read_vft</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
 
-<span class='fu'>read_taxa</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>"\t"</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
+<span class='fu'>read_taxa</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,7 +144,8 @@ least one new line to be recognised as data (instead of a path).</p></td>
     </tr>
     <tr>
       <th>delim</th>
-      <td><p>Single character used to separate fields within a record.</p></td>
+      <td><p>Single character used to separate fields within a record. The
+default (<code>delim = NULL</code>) is to guess between comma or tab (<code>","</code> or <code>"\t"</code>).</p></td>
     </tr>
     <tr>
       <th>na</th>
@@ -169,7 +172,7 @@ option to <code>character()</code> to indicate no missing values.</p></td>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'># Needs internet connection.</span>
 <span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-vft-random"</span>)
-<span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-taxa"</span>)
+<span class='fu'>read_taxa</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-taxa"</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

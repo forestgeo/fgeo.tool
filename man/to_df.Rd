@@ -24,12 +24,12 @@ consistent way to create dataframes.
 }
 \details{
 This generic provides methods for classes that cannot be correctly coerced
-simply with \code{\link[stats:as.data.frame]{stats::as.data.frame()}} (or similar functions from the
+simply with \code{\link[base:as.data.frame]{base::as.data.frame()}} (or similar functions from the
 \strong{tibble} package).
 }
 \seealso{
 \code{\link[=to_df.krig_lst]{to_df.krig_lst()}},
-\code{\link[=to_df.tt_lst]{to_df.tt_lst()}},\code{\link[fgeo.tool:::to_df.demography_lst]{fgeo.tool::::to_df.demography_lst()}},
-\code{\link[fgeo.tool:::to_df.demography_lst_by]{fgeo.tool::::to_df.demography_lst_by()}}.
+\code{\link[=to_df.tt_lst]{to_df.tt_lst()}},\code{\link[fgeo.tool:to_df.demography_lst]{fgeo.tool::to_df.demography_lst()}},
+\code{\link[fgeo.tool:to_df.demography_lst_by]{fgeo.tool::to_df.demography_lst_by()}}.
 }
 \concept{fgeo generics}

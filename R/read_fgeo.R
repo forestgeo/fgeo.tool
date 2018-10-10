@@ -1,10 +1,13 @@
-#' Read ViewFullTable and ViewTaxonomy files delivered by ForestGEO's database.
+#' Read text files containing ViewFullTable and ViewTaxonomy tables.
 #' 
-#' These functions pre-fill arguments of [readr::read_delim()] to avoid the most
-#' common causes of problems when reading ForestGEO data as delivered by the
-#' database. In most cases you should only need to provide the argument `file`.
-#'
+#' These functions help you read text files containing ViewFullTable and
+#' ViewTaxonomy tables. They avoid common problems related to column separators,
+#' missing values, column names, and column types. Although you can customize
+#' them, in most cases you should only need to provide the argument `file`.
+#' 
 #' @inheritParams readr::read_delim
+#' @param delim Single character used to separate fields within a record. The
+#'   default (`delim = NULL`) is to guess between comma or tab (`","` or `"\t"`).
 #' @param ... Other arguments passed to [readr::read_delim()].
 #' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #' 
@@ -16,13 +19,14 @@
 #' \dontrun{
 #' # Needs internet connection.
 #' read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
-#' read_vft("http://bit.ly/fgeo-data-luquillo-taxa")
+#' read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
 #' }
 #' @name read_fgeo
 NULL
 
 read_fgeo <- function(col_types) {
-  function(file, delim = "\t", na = c("", "NA", "NULL"), ...) {
+  function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
+    delim <- delim %||% guess_comma_or_tab(file, names(col_types))
     fgeo <- readr::read_delim(
       file = file, delim = delim, col_types = readr::cols(.default = "c"), 
       na = na, ...
@@ -163,4 +167,11 @@ type_taxa <- function() {
     Specimens = 'c',
     Reference = 'c'
   )
+}
+
+guess_comma_or_tab <- function(file, nms) {
+  comma <- suppressWarnings(suppressMessages(readr::read_csv(file, n_max = 0)))
+  if (identical(names(comma), nms)) return(",")
+    
+  "\t"
 }
