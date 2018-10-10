@@ -5,6 +5,10 @@
 #' missing values, column names, and column types. Although you can customize
 #' them, in most cases you should only need to provide the argument `file`.
 #' 
+#' @section Acknowledgments:
+#' Thanks to Shameema Jafferjee Esufali for inspiring the feature that
+#' automatically detects `delim` (issue 65).
+#' 
 #' @inheritParams readr::read_delim
 #' @param delim Single character used to separate fields within a record. The
 #'   default (`delim = NULL`) is to guess between comma or tab (`","` or `"\t"`).

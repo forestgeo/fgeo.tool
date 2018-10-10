@@ -40,6 +40,12 @@ ViewTaxonomy tables. They avoid common problems related to column separators,
 missing values, column names, and column types. Although you can customize
 them, in most cases you should only need to provide the argument \code{file}.
 }
+\section{Acknowledgments}{
+
+Thanks to Shameema Jafferjee Esufali for inspiring the feature that
+automatically detects \code{delim} (issue 65).
+}
+
 \examples{
 \dontrun{
 # Needs internet connection.
