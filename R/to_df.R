@@ -87,16 +87,16 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
 #' @return A dataframe.
 #'
 #' @export
+#' 
 #' @examples
-#' \dontrun{
-#' library(fgeo.habitat)
-#' cns <- luquillo_top3_sp
-#' spp <- unique(cns$sp)
-#' hab <- luquillo_habitat
-#'
-#' tt_lst <- tt_test(cns, spp, hab)
-#' tt_df <- to_df(tt_lst)
-#' head(tt_df)
+#' if (requireNamespace("fgeo.habitat")) {
+#'   library(fgeo.habitat)
+#'   
+#'   cns <- fgeo.habitat::luquillo_top3_sp
+#'   hab <- fgeo.data::luquillo_habitat
+#'   
+#'   tt_lst <- tt_test(cns, unique(cns$sp), hab)
+#'   to_df(tt_lst)
 #' }
 to_df.tt_lst <- function(.x, ...) {
   flip <- t(Reduce(rbind, .x))
@@ -141,10 +141,8 @@ explain_distribution <- function(x) {
 }
 
 reorganize_columns <- function(x) {
-  dplyr::select(x, 
-    .data$habitat, .data$sp, .data$probability, .data$distribution,
-    .data$stem_count, dplyr::everything()
-  )
+  first <- c("habitat", "sp", "distribution", "stem_count")
+  x[c(first, setdiff(names(x), first))]
 }
 
 new_tt_df <- function(.x) {
