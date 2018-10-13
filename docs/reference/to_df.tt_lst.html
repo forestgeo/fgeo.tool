@@ -147,16 +147,29 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='fu'>library</span>(<span class='no'>fgeo.habitat</span>)
-<span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='no'>luquillo_top3_sp</span>
-<span class='no'>spp</span> <span class='kw'>&lt;-</span> <span class='fu'>unique</span>(<span class='no'>cns</span>$<span class='no'>sp</span>)
-<span class='no'>hab</span> <span class='kw'>&lt;-</span> <span class='no'>luquillo_habitat</span>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.habitat"</span>)) {
+  <span class='fu'>library</span>(<span class='no'>fgeo.habitat</span>)
 
-<span class='no'>tt_lst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>tt_test</a></span>(<span class='no'>cns</span>, <span class='no'>spp</span>, <span class='no'>hab</span>)
-<span class='no'>tt_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>tt_lst</span>)
-<span class='fu'>head</span>(<span class='no'>tt_df</span>)
-<span class='co'># }</span></pre>
+  <span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.habitat</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
+  <span class='no'>hab</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_habitat'>luquillo_habitat</a></span>
+
+  <span class='no'>tt_lst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>tt_test</a></span>(<span class='no'>cns</span>, <span class='fu'>unique</span>(<span class='no'>cns</span>$<span class='no'>sp</span>), <span class='no'>hab</span>)
+  <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>tt_lst</span>)
+}</div><div class='output co'>#&gt; <span class='message'>Using `plotdim = c(320, 500)`. To change this value see `?tt_test()`.</span></div><div class='output co'>#&gt; <span class='message'>Using `gridsize = 20`. To change this value see `?tt_test()`.</span></div><div class='output co'>#&gt; # A tibble: 12 x 8
+#&gt;    habitat sp     distribution stem_count Eq.Hab Gr.Hab Ls.Hab Obs.Quantile
+#&gt;  * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;
+#&gt;  1 1       CASARB neutral              29      2   1242    356        0.776
+#&gt;  2 1       PREMON neutral              91      3   1093    504        0.683
+#&gt;  3 1       SLOBER neutral              18      3    273   1324        0.171
+#&gt;  4 2       CASARB neutral              20      4    390   1206        0.244
+#&gt;  5 2       PREMON neutral              89      2   1254    344        0.784
+#&gt;  6 2       SLOBER neutral              24      2    810    788        0.506
+#&gt;  7 3       CASARB neutral              12      5    778    817        0.486
+#&gt;  8 3       PREMON neutral              40      3    305   1292        0.191
+#&gt;  9 3       SLOBER neutral              17      5   1155    440        0.722
+#&gt; 10 4       CASARB neutral               5     10    932    658        0.582
+#&gt; 11 4       PREMON neutral              14      8    270   1322        0.169
+#&gt; 12 4       SLOBER neutral               7      5   1292    303        0.808</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
