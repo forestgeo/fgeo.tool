@@ -1,3 +1,9 @@
+# Appveyor badge ----------------------------------------------------------
+
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/forestgeo/fgeo.tool?branch=master&svg=true)](https://ci.appveyor.com/project/forestgeo/fgeo.tool)
+
+
+
 # TODO:
 # * Remove pick_woods()? Or simplify it to be filter(pick_main_stem(.data))
 # Check documentation of funs downstream of pick_large_hom_dbh() in fgeo.abundance

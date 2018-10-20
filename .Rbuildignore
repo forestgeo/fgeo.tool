@@ -1,3 +1,4 @@
+^appveyor\.yml$
 ^inst/tutorials$
 ^.*\.Rproj$
 ^\.Rproj\.user$
