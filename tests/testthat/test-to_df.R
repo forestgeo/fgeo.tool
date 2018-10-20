@@ -22,9 +22,13 @@ describe("to_df.krig_lst", {
     expect_error(to_df(out_lst, item = c("df", "df.poly")))
   })
 
-  it("outputs object of no-longer class krig_lst", {
+  it("outputs an object of the expected class", {
+    # no-longer class krig_lst
     expect_false(any("krig_lst" %in% class(to_df(out_lst))))
+    expect_is(to_df(out_lst), "data.frame")
+    expect_is(to_df(out_lst), "tbl")
   })
+  
 })
 
 

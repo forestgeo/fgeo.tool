@@ -30,7 +30,7 @@ This method creates a dataframe from the output of \code{fgeo.habitat::krig()}
 library(fgeo.habitat)
 vars <- c("c", "p")
 krig <- krig(soil_fake, vars, quiet = TRUE)
-head(to_df(krig))
+to_df(krig)
 }
 }
 \seealso{

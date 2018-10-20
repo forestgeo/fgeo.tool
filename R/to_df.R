@@ -57,18 +57,15 @@ to_df.default <- function(.x, ...) {
 #' library(fgeo.habitat)
 #' vars <- c("c", "p")
 #' krig <- krig(soil_fake, vars, quiet = TRUE)
-#' head(to_df(krig))
+#' to_df(krig)
 #' }
 to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
   stopifnot(is.character(name), is.character(item))
   stopifnot(length(item) == 1, item == "df" || item == "df.poly")
-
-  dfs <- lapply(.x, "[[", item)
-  out <- Reduce(rbind, fgeo.base::name_dfs(dfs, name = name))
-  out[c(name, setdiff(names(out), name))]
+  
+  dfs <- purrr::map(.x, item)
+  purrr::map_dfr(dfs, tibble::as.tibble, .id = name)
 }
-
-
 
 # Class tt_lst ------------------------------------------------------------
 
