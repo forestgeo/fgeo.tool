@@ -2,8 +2,10 @@
 #'
 #' @param df A dataframe with quadrat coordinates `QX` and `QY` (e.g. a
 #'   ViewFullTable).
-#' @template x_q_y_q
-#' @template x_sq_y_sq
+#' @param x_q,y_q Size in meters of a quadrat's side. For ForestGEO sites, a
+#'   common value is 20.
+#' @param x_sq,y_sq Size in meters of a subquadrat's side. For ForestGEO-CTFS
+#'   sites, a common value is 5.
 #' @param subquad_offset A number; either `-1` or `1`, to rest or add one unit
 #'   to the number of column of each subquadrat.
 #'

@@ -1,4 +1,4 @@
-#' Add columns lx, ly; qx, qy; index; colrow; and hectindex to a ForestGEO dataframe.
+#' Add columns lx, ly; qx, qy; index; colrow; and hectindex to ForestGEO data.
 #' 
 #' These functions add columns to position trees/stems in a forest plot. They 
 #' work with ViewFull-tables and census-tables (tree and stem).
@@ -7,8 +7,7 @@
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
 #'
 #' @template x_fgeo
-#' @template gridsize
-#' @template plotdim
+#' @inheritParams fgeo.ctfs::from_var_to_var
 #' @param start `1` or `0`, indicating how to label the first plot-column.
 #' @param width Number; width to pad the labels of plot-columns and -rows
 #'   (passed to [stringr::str_pad()]).
@@ -24,15 +23,10 @@
 #'
 #' @examples
 #' x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
-#'
 #' add_lxly(x)
-#' 
 #' add_qxqy(x)
-#'
 #' add_index(x)
-#'
 #' add_hectindex(x)
-#'
 #' add_quad(x)
 #' add_quad(x, start = 0)
 #'
@@ -40,7 +34,6 @@
 #' # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with an
 #' # extra trhree zeros, resulting in a total of 6 zeros.
 #' add_quad(x, start = 0, width = 3)
-#'
 #' add_col_row(x)
 #' 
 #' # Column and row from QuadratName
@@ -166,7 +159,7 @@ sanitize_xy <- function(x) {
 }
 
 gxgy_to_var <- function(.x, var, gridsize, plotdim) {
-  .f <- utils::getFromNamespace(paste0("gxgy_to_", var), "fgeo.tool")
+  .f <- utils::getFromNamespace(paste0("gxgy_to_", var), "fgeo.ctfs")
   if (identical(var, "hectindex")) {
     # `gridsize` is unused
     return(.f(.x$gx, .x$gy, plotdim = plotdim))

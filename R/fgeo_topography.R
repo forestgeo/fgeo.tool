@@ -67,15 +67,15 @@ fgeo_topography.list <- function(elevation,
   force(gridsize)
   plotdim <- c(elevation$xdim, elevation$ydim)
   
-  # Match names-requirements of allquadratslopes()
+  # Match names-requirements of fgeo.ctfs::allquadratslopes()
   names(elevation$col) <- sub("gx", "x", names(elevation$col))
   names(elevation$col) <- sub("gy", "y", names(elevation$col))
   topo <- suppressMessages(
-    allquadratslopes(elevation, gridsize, plotdim, edgecorrect)
+    fgeo.ctfs::allquadratslopes(elevation, gridsize, plotdim, edgecorrect)
   )
   
   quad_idx <- as.integer(rownames(topo))
-  gxgy <- index_to_gxgy(quad_idx, gridsize, plotdim)
+  gxgy <- fgeo.ctfs::index_to_gxgy(quad_idx, gridsize, plotdim)
   out <- tibble::as.tibble(cbind(gxgy, topo))
   new_fgeo_topography(out)
 }

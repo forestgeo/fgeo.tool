@@ -9,7 +9,7 @@
 \alias{add_hectindex}
 \alias{add_quad}
 \alias{add_col_row2}
-\title{Add columns lx, ly; qx, qy; index; colrow; and hectindex to a ForestGEO dataframe.}
+\title{Add columns lx, ly; qx, qy; index; colrow; and hectindex to ForestGEO data.}
 \usage{
 add_lxly(x, gridsize = 20, plotdim = NULL)
 
@@ -51,15 +51,10 @@ These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public
 }
 \examples{
 x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
-
 add_lxly(x)
-
 add_qxqy(x)
-
 add_index(x)
-
 add_hectindex(x)
-
 add_quad(x)
 add_quad(x, start = 0)
 
@@ -67,7 +62,6 @@ add_quad(x, start = 0)
 # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with an
 # extra trhree zeros, resulting in a total of 6 zeros.
 add_quad(x, start = 0, width = 3)
-
 add_col_row(x)
 
 # Column and row from QuadratName
