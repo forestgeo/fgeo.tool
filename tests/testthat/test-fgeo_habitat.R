@@ -25,7 +25,7 @@ describe("fgeo_habitat", {
     skip_if_not_installed("fgeo.map")
     library(fgeo.map)
 
-    p <- plot(habitat)
+    p <- autoplot(habitat)
     expect_is(p, "ggplot")
   })
   it("results in gx and gy that are multiple of gridsize", {
