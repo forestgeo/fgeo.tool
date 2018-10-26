@@ -16,7 +16,7 @@
 #' @param ... Arguments passed to [fgeo_topography()].
 #' 
 #' @seealso [fgeo.map::autoplot.fgeo_habitat()], [fgeo_topography()].
-#' @family functions to construct fgeo classes.
+#' @family functions to construct fgeo classes
 #'
 #' @return A dataframe of subclass fgeo_habitat, with columns `gx` and `gy`,
 #'   rounded with accuracy determined by `gridsize`, and column `habitats`, with

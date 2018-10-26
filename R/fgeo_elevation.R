@@ -15,7 +15,7 @@
 #' @param x Either a dataframe or a dataframe stored in the element `col` of a
 #'   list.
 #'   
-#' @family functions to construct fgeo classes.
+#' @family functions to construct fgeo classes
 #'
 #' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
 #' 

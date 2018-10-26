@@ -17,7 +17,7 @@
 #' @param ... Other arguments passed to methods.
 #' 
 #' @seealso [fgeo_habitat()].
-#' @family functions to construct fgeo classes.
+#' @family functions to construct fgeo classes
 #' 
 #' @inherit fgeo_habitat details
 #'

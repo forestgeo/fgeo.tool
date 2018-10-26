@@ -49,7 +49,7 @@ elev <- fgeo_elevation(elev_list)
 str(elev) 
 }
 \seealso{
-Other functions to construct fgeo classes.: \code{\link{fgeo_habitat}},
+Other functions to construct fgeo classes: \code{\link{fgeo_habitat}},
   \code{\link{fgeo_topography}}
 }
-\concept{functions to construct fgeo classes.}
+\concept{functions to construct fgeo classes}

@@ -121,9 +121,7 @@ reference:
   - title: Construct fgeo classes
     desc: Specific to ForestGEO
     contents:
-    - fgeo_elevation
-    - fgeo_habitat
-    - fgeo_topography
+    - has_concept("functions to construct fgeo classes")
 
   - title: Access data 
     desc: Specific to ForestGEO

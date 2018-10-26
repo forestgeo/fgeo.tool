@@ -66,7 +66,7 @@ fgeo_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 \seealso{
 \code{\link[=fgeo_habitat]{fgeo_habitat()}}.
 
-Other functions to construct fgeo classes.: \code{\link{fgeo_elevation}},
+Other functions to construct fgeo classes: \code{\link{fgeo_elevation}},
   \code{\link{fgeo_habitat}}
 }
-\concept{functions to construct fgeo classes.}
+\concept{functions to construct fgeo classes}
