@@ -1,0 +1,56 @@
+---
+title: "Compare rio and io"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, error=TRUE}
+library(rio)
+library(io)
+
+directory <- "input/"
+files <- fs::dir_ls(directory)
+one_file <- files[[1]]
+excel_file <- "input/excel/excel_file.xlsx"
+a_df_list <- io::qread(directory)
+
+# + io can deal with directories
+io::qread(directory)
+# - rio can't deal with directories
+
+# + rio can read files
+import_list(files)
+# - io can't read files 
+
+# + io can read a single file
+io::qread(one_file)
+# + rio can read a single file
+rio::import(one_file)
+
+# + rio can read excel
+rio::import(excel_file)
+# - io can read excel
+
+# + rio can export lists to a single excell file
+export(a_df_list, "output/multi_cars.xlsx")
+# + io can't export lists to a single excel file
+
+# + io can export lists to a multiple rds files
+io::qwrite(a_df_list, "output/out.rds")
+# - rio can't export lists to a multiple rds files
+rio::export(a_df_list, "output/out.rds")
+
+# + rio can export lists to a multiple rds files
+rio::export(a_df_list, "output/out.rdata")
+# + io can export lists to a multiple rds files
+io::qwrite(a_df_list, "output/out.rdata")
+
+# - io can't read Rdata
+io::qread("output/out.rdata")
+# - rio can read Rdata
+head(rio::import("output/cars.RData"))
+```
+
