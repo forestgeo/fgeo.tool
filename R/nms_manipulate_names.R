@@ -274,9 +274,6 @@ nms_extract_anycase <- function(x, nm) {
 #' @return A modified version of `x` with tidy names or a string of tidy names.
 #'
 #' @examples
-#' # Use to_tidy_names()
-#' library(fgeo.base)
-#' 
 #' messy <- "Hi yOu"
 #' 
 #' # With unnamed strings, both functions do the same

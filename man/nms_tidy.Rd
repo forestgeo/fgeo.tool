@@ -19,9 +19,6 @@ also tidied via \code{to_tidy_names()}. \code{to_tidy_names()} tidies a string -
 its names.
 }
 \examples{
-# Use to_tidy_names()
-library(fgeo.base)
-
 messy <- "Hi yOu"
 
 # With unnamed strings, both functions do the same

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create tidy names that are lowercase and have no empty spaces. — nms_tidy • fgeo.tool</title>
+<title>Create a names-friendly version of a string (lowercase and with no spaces). — to_tidy_names • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,12 +30,9 @@
 
 
 
-<meta property="og:title" content="Create tidy names that are lowercase and have no empty spaces. — nms_tidy" />
+<meta property="og:title" content="Create a names-friendly version of a string (lowercase and with no spaces). — to_tidy_names" />
 
-<meta property="og:description" content="These functions create tidy names that are lowercase and have no empty
-spaces. nms_tidy() tidies the names of named objects. Unnamed strings are
-also tidied via to_tidy_names(). to_tidy_names() tidies a string -- not
-its names." />
+<meta property="og:description" content="Create a names-friendly version of a string (lowercase and with no spaces)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,76 +106,52 @@ its names." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create tidy names that are lowercase and have no empty spaces.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/nms_manipulate_names.R'><code>R/nms_manipulate_names.R</code></a></small>
-    <div class="hidden name"><code>nms_tidy.Rd</code></div>
+    <h1>Create a names-friendly version of a string (lowercase and with no spaces).</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/imports-reeports.R'><code>R/imports-reeports.R</code></a></small>
+    <div class="hidden name"><code>to_tidy_names.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions create tidy names that are lowercase and have no empty
-spaces. <code>nms_tidy()</code> tidies the names of named objects. Unnamed strings are
-also tidied via <code><a href='to_tidy_names.html'>to_tidy_names()</a></code>. <code><a href='to_tidy_names.html'>to_tidy_names()</a></code> tidies a string -- not
-its names.</p>
+    <p>Create a names-friendly version of a string (lowercase and with no spaces).</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nms_tidy</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>to_tidy_names</span>(<span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named object or a character string.</p></td>
+      <td><p>A character string.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified version of <code>x</code> with tidy names or a string of tidy names.</p>
+    <p>A modified version of <code>x</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions dealing with names.: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>,
-  <code><a href='nms_try_rename.html'>nms_try_rename</a></code>, <code><a href='nms.html'>nms</a></code></p>
-<p>Other functions for developers.: <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
-  <code><a href='flag_if_group.html'>flag_if_group</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>,
-  <code><a href='nms_try_rename.html'>nms_try_rename</a></code>, <code><a href='nms.html'>nms</a></code>,
-  <code><a href='type_ensure.html'>type_ensure</a></code></p></div>
+    <div class='dont-index'><p>Other general functions to edit data in place: <code><a href='convert_unit.html'>convert_unit</a></code>,
+  <code><a href='fill_na.html'>fill_na</a></code>, <code><a href='lookup.html'>lookup</a></code>,
+  <code><a href='standardize_at.html'>standardize_at</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>messy</span> <span class='kw'>&lt;-</span> <span class='st'>"Hi yOu"</span>
 
-<span class='co'># With unnamed strings, both functions do the same</span>
-<span class='no'>unnamed_string</span> <span class='kw'>&lt;-</span> <span class='no'>messy</span>
-<span class='fu'>names</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; NULL</div><div class='input'><span class='fu'>nms_tidy</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'><span class='co'># Same</span>
-<span class='fu'><a href='to_tidy_names.html'>to_tidy_names</a></span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'>
-<span class='co'># WHY TWO FUNCTIONS?</span>
-
+<span class='fu'>to_tidy_names</span>(<span class='no'>messy</span>)</div><div class='output co'>#&gt; [1] "hi_you"</div><div class='input'>
 <span class='no'>messy_named_string</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>`Messy Name`</span> <span class='kw'>=</span> <span class='no'>messy</span>)
-<span class='co'># Targets names</span>
-<span class='fu'>nms_tidy</span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; messy_name 
-#&gt;   "Hi yOu" </div><div class='input'><span class='co'># Targets strings -- not its names</span>
-<span class='fu'><a href='to_tidy_names.html'>to_tidy_names</a></span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; Messy Name 
+<span class='co'># Targets strings, not its names (Target names with `fgeo.tool::nms_tidy()`)</span>
+<span class='fu'>to_tidy_names</span>(<span class='no'>messy_named_string</span>)</div><div class='output co'>#&gt; Messy Name 
 #&gt;   "hi_you" </div><div class='input'>
-<span class='co'># Same output, but here `to_tidy_names()` better communicates intention.</span>
 <span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='fl'>1</span>)
-<span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'>nms_tidy</span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
-#&gt; 1      1</div><div class='input'><span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'><a href='to_tidy_names.html'>to_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
+<span class='fu'>setNames</span>(<span class='no'>dfm</span>, <span class='fu'>to_tidy_names</span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt;   hi_you
 #&gt; 1      1</div><div class='input'>
 <span class='co'># Makes more sense when operating on strings</span>
-<span class='fu'>setNames</span>(<span class='fu'>list</span>(<span class='fl'>1</span>), <span class='fu'><a href='to_tidy_names.html'>to_tidy_names</a></span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt; $hi_you
-#&gt; [1] 1
-#&gt; </div><div class='input'><span class='co'># Makes more sense when operating on named objects</span>
-<span class='no'>messy_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>`Hi yOu`</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>nms_tidy</span>(<span class='no'>messy_list</span>)</div><div class='output co'>#&gt; $hi_you
+<span class='fu'>setNames</span>(<span class='fu'>list</span>(<span class='fl'>1</span>), <span class='fu'>to_tidy_names</span>(<span class='no'>messy</span>))</div><div class='output co'>#&gt; $hi_you
 #&gt; [1] 1
 #&gt; </div></pre>
   </div>

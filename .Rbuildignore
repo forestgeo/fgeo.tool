@@ -1,3 +1,4 @@
+^tmp\.sh$
 ^tmp2\.R$
 ^ship\.sh$
 ^appveyor\.yml$

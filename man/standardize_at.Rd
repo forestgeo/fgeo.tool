@@ -28,6 +28,7 @@ standardize_at(dfm, names(dfm), denominator = 100)
 }
 \seealso{
 Other general functions to edit data in place: \code{\link{convert_unit}},
-  \code{\link{lookup}}
+  \code{\link{fill_na}}, \code{\link{lookup}},
+  \code{\link{to_tidy_names}}
 }
 \concept{general functions to edit data in place}

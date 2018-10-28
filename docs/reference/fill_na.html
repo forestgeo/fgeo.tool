@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert units of a vector or columns of a dataframe. — convert_unit • fgeo.tool</title>
+<title>Fill NA's with a single filler. — fill_na • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Convert units of a vector or columns of a dataframe. — convert_unit" />
+<meta property="og:title" content="Fill NA's with a single filler. — fill_na" />
 
-<meta property="og:description" content="convert_unit() of a vector or convert_unit_at() specific columns of a
-dataframe." />
+<meta property="og:description" content="This is a wrapper of base::replace() with a simplified interface and a name
+that target the specific job of filling NA's." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -107,70 +107,86 @@ dataframe." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert units of a vector or columns of a dataframe.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/at.R'><code>R/at.R</code></a></small>
-    <div class="hidden name"><code>convert_unit.Rd</code></div>
+    <h1>Fill NA's with a single filler.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/imports-reeports.R'><code>R/imports-reeports.R</code></a></small>
+    <div class="hidden name"><code>fill_na.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p><code>convert_unit()</code> of a vector or <code>convert_unit_at()</code> specific columns of a
-dataframe.</p>
+    <p>This is a wrapper of <code><a href='http://www.rdocumentation.org/packages/base/topics/replace'>base::replace()</a></code> with a simplified interface and a name
+that target the specific job of filling NA's.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>convert_unit</span>(<span class='no'>x</span>, <span class='no'>from</span>, <span class='no'>to</span>)
-
-<span class='fu'>convert_unit_at</span>(<span class='no'>x</span>, <span class='no'>.at</span>, <span class='no'>from</span>, <span class='no'>to</span>)</pre>
+    <pre class="usage"><span class='fu'>fill_na</span>(<span class='no'>x</span>, <span class='kw'>filler</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A vector or dataframe.</p></td>
+      <td><p>A dataframe.</p></td>
     </tr>
     <tr>
-      <th>from</th>
-      <td><p>the unit in which the measurement was made.</p></td>
-    </tr>
-    <tr>
-      <th>to</th>
-      <td><p>the unit to which the measurement is to be converted.</p></td>
-    </tr>
-    <tr>
-      <th>.at</th>
-      <td><p>A character vector of names or a numeric vector of
-positions. Only those elements corresponding to <code>.at</code> will be
-modified.</p></td>
+      <th>filler</th>
+      <td><p>A filler; whatever you want to replace NA's with.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>An object with the same structure as <code>x</code> (vector or dataframe).</p>
+    <p>A modified version of <code>x</code>.</p>
+    
+    <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
+
+    
+    <p>This function was inspired by conversations with David Kenfack and by a
+<a href='{https://goo.gl/aMTQck}{blog post by Rick Pack}'>. Also tanks to Edgar Ruiz
+</a>(@edgararuiz) for discussing alternatives
+(via <a href='{https://goo.gl/4uME2U}{this blog post}'> on RStudio community).
+</a></p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/measurements/topics/conv_unit'>measurements::conv_unit()</a></code>, <code><a href='http://www.rdocumentation.org/packages/purrr/topics/map'>purrr::map_at()</a></code>.</p>
-<p>Other general functions to edit data in place: <code><a href='fill_na.html'>fill_na</a></code>,
+    <div class='dont-index'><p>Other general functions to edit data in place: <code><a href='convert_unit.html'>convert_unit</a></code>,
   <code><a href='lookup.html'>lookup</a></code>, <code><a href='standardize_at.html'>standardize_at</a></code>,
   <code><a href='to_tidy_names.html'>to_tidy_names</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># For all units see ?measurements::conv_unit()</span>
-<span class='fu'>convert_unit</span>(<span class='fl'>10</span>, <span class='st'>"mm2"</span>, <span class='st'>"hectare"</span>)</div><div class='output co'>#&gt; [1] 1e-09</div><div class='input'><span class='fu'>convert_unit</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"m"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='st'>"mm"</span>)</div><div class='output co'>#&gt; [1] 1000 2000 3000</div><div class='input'><span class='fu'>convert_unit</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='st'>"mph"</span>, <span class='st'>"kph"</span>)</div><div class='output co'>#&gt; [1] 1.609344 3.218688 4.828032</div><div class='input'>
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>10</span>, <span class='fl'>100</span>), <span class='kw'>name</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>10</span>, <span class='fl'>100</span>))
-<span class='fu'>convert_unit_at</span>(<span class='no'>dfm</span>, <span class='kw'>.at</span> <span class='kw'>=</span> <span class='st'>"dbh"</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"mm2"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='st'>"hectare"</span>)</div><div class='output co'>#&gt;     dbh name
-#&gt; 1 1e-09   10
-#&gt; 2 1e-08  100</div><div class='input'><span class='co'># All columns</span>
-<span class='fu'>convert_unit_at</span>(<span class='no'>dfm</span>, <span class='kw'>.at</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"dbh"</span>, <span class='st'>"name"</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"mm2"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='st'>"hectare"</span>)</div><div class='output co'>#&gt;     dbh  name
-#&gt; 1 1e-09 1e-09
-#&gt; 2 1e-08 1e-08</div><div class='input'><span class='co'># Same</span>
-<span class='fu'>convert_unit_at</span>(<span class='no'>dfm</span>, <span class='kw'>.at</span> <span class='kw'>=</span> <span class='fu'>names</span>(<span class='no'>dfm</span>), <span class='kw'>from</span> <span class='kw'>=</span> <span class='st'>"mm2"</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='st'>"hectare"</span>)</div><div class='output co'>#&gt;     dbh  name
-#&gt; 1 1e-09 1e-09
-#&gt; 2 1e-08 1e-08</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>1</span>), <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='fl'>NA</span>), <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='no'>a_dataframe</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
+<span class='fu'>fill_na</span>(<span class='no'>a_dataframe</span>)</div><div class='output co'>#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0</div><div class='input'><span class='fu'>fill_na</span>(<span class='no'>a_dataframe</span>, <span class='st'>""</span>)</div><div class='output co'>#&gt;   x y
+#&gt; 1   a
+#&gt; 2 1  </div><div class='input'><span class='fu'>fill_na</span>(<span class='no'>a_dataframe</span>, <span class='st'>"missing"</span>)</div><div class='output co'>#&gt;         x       y
+#&gt; 1 missing       a
+#&gt; 2       1 missing</div><div class='input'>
+<span class='no'>a_matrix</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>x</span>)
+<span class='fu'>fill_na</span>(<span class='no'>a_matrix</span>)</div><div class='output co'>#&gt;      x    y  
+#&gt; [1,] "0"  "a"
+#&gt; [2,] " 1" "0"</div><div class='input'>
+<span class='no'>a_vector</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>$<span class='no'>x</span>
+<span class='fu'>fill_na</span>(<span class='no'>a_vector</span>)</div><div class='output co'>#&gt; [1] 0 1</div><div class='input'>
+<span class='no'>a_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='no'>x</span>, <span class='no'>x</span>, <span class='no'>x</span>)
+<span class='fu'>lapply</span>(<span class='no'>a_list</span>, <span class='no'>fill_na</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0
+#&gt; 
+#&gt; [[2]]
+#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0
+#&gt; 
+#&gt; [[3]]
+#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -178,6 +194,8 @@ modified.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#acknowledgments">Acknowledgments</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
