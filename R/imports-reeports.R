@@ -101,22 +101,3 @@ tibble::tribble
 #' @export
 tibble::as_tibble
 
-# Reexport from fgeo.base -------------------------------------------------
-
-#' @importFrom fgeo.base check_crucial_names rename_matches 
-#' @importFrom fgeo.base is_multiple is_duplicated detect_if flag_if
-#' @importFrom fgeo.base fill_na
-NULL
-
-#' @inherit fgeo.base::fill_na
-#' @family general functions to edit data in place
-#' @inherit fgeo.base::fill_na seealso
-#' @export
-fill_na <- fgeo.base::fill_na
-
-#' @inherit fgeo.base::to_tidy_names
-#' @family general functions to edit data in place
-#' @export
-to_tidy_names <- fgeo.base::to_tidy_names
-
-

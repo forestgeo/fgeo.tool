@@ -35,7 +35,8 @@ Imports:
     tidyr,
     tidyselect,
     withr,
-    writexl
+    writexl,
+    cli
 Suggests: 
     bciex,
     covr,

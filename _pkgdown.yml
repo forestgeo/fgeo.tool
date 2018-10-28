@@ -54,10 +54,6 @@ reference:
     contents:
     - starts_with("add_")
 
-  - title: Guess grid size and plot dimensions
-    contents:
-    - extract_from_habitat
-
   - title: Transform lists to dataframes
     contents:
     - starts_with("to_df")
@@ -65,6 +61,10 @@ reference:
   - title: Create different classes of ForestGEO data
     contents:
     - has_concept("functions to construct fgeo classes")
+    
+  - title: Create different classes of ForestGEO data
+    contents:
+    - has_concept("general miscellaneous functions")
   
   - title: Objects exported from other packages
     contents:

@@ -1,6 +1,7 @@
 #' Print all rows and/or columns of a tibble.
 #'
 #' @inheritParams tibble::format.tbl
+#' @param ... Other arguments passed to `format()`.
 #'
 #' @family general miscellaneous functions
 #'

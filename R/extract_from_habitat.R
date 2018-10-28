@@ -3,6 +3,8 @@
 #' @param habitats Data frame giving the habitat designation for each 20x20
 #'   quadrat.
 #' @name extract_from_habitat
+#' 
+#' @keywords internal
 #'
 #' @return
 #' * [extract_plotdim()]: `plotdim` (vector of length 2);
