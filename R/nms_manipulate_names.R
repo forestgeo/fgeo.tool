@@ -13,8 +13,9 @@
 #'
 #' @param x A named object.
 #'
-#' @family functions for developers.
 #' @family functions dealing with names.
+#' @family functions for developers.
+#' @keywords internal
 #'
 #' @return
 #' * `nms_lowercase()` Returns the object `x` with lowercase names
@@ -76,8 +77,9 @@ nms_restore <- function(x) {
 #' @param new_var The name of a single new variable added to `x`.
 #' @param old_nms A vector containing the old names of `x`.
 #'
-#' @family functions for developers.
 #' @family functions dealing with names.
+#' @family functions for developers.
+#' @keywords internal
 #'
 #' @return Returns the input with the names changed accordingly.
 #' @export
@@ -204,8 +206,9 @@ nms_extract1 <- function(x, ...) {
 #' @param want String of length 1 giving the name you want the object to have.
 #' @param try String of length 1 giving the name the object might have.
 #' 
-#' @family functions for developers.
 #' @family functions dealing with names.
+#' @family functions for developers.
+#' @keywords internal
 #' 
 #' @seealso nms
 #' 
@@ -264,8 +267,9 @@ nms_extract_anycase <- function(x, nm) {
 #'
 #' @param x A named object or a character string.
 #' 
-#' @family functions for developers.
 #' @family functions dealing with names.
+#' @family functions for developers.
+#' @keywords internal
 #'
 #' @return A modified version of `x` with tidy names or a string of tidy names.
 #'
@@ -331,8 +335,9 @@ nms_tidy <- function(x) {
 #' @param table1 A dataframe.
 #' @param table2 A dataframe.
 #' 
-#' @family functions for developers.
 #' @family functions dealing with names.
+#' @family functions for developers.
+#' @keywords internal
 #'
 #' @return An number indicating how many names are different only in their case.
 #' 

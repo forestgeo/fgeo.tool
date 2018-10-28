@@ -53,3 +53,4 @@ Other functions for developers.: \code{\link{find_data_of_class}},
 \concept{functions for developers.}
 \concept{functions to check inputs.}
 \concept{predicates.}
+\keyword{internal}

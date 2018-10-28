@@ -1,3 +1,4 @@
+^tmp2\.R$
 ^ship\.sh$
 ^appveyor\.yml$
 ^inst/tutorials$

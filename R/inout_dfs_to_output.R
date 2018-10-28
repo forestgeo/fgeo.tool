@@ -11,6 +11,9 @@
 #'
 #' @seealso xlsheets_to_dfs
 #' @family functions to handle multiple spreadsheets of an excel workbook.
+#' 
+#' @family general functions to import/export data
+#' 
 #' @export
 #' @examples
 #' dfs <- xlsheets_to_dfs(tool_example("multiple_sheets.xlsx"))

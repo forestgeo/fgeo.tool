@@ -67,7 +67,6 @@ pick_main_stemid(census)
 }
 \seealso{
 Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
-  \code{\link{filter_status}}, \code{\link{pick_recensus}},
-  \code{\link{pick_top}}
+  \code{\link{filter_status}}
 }
 \concept{functions to pick or drop rows of a dataframe.}

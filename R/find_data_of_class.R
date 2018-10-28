@@ -4,6 +4,7 @@
 #' @param .class Class of data to find or hide.
 #' 
 #' @family functions for developers.
+#' @keywords internal
 #' 
 #' @examples
 #' show_data_of_class("fgeo.tool", "tbl")

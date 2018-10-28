@@ -11,8 +11,9 @@
 #' @param msg String to customize the returned message.
 #'
 #' @family functions to check inputs.
-#' @family functions for developers.
 #' @family predicates.
+#' @family functions for developers.
+#' @keywords internal
 #'
 #' @return
 #' * `flag_if_group()`: A condition and its first input, invisibly.

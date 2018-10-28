@@ -15,6 +15,8 @@
 #' 
 #' @seealso [readr::read_csv()], [readxl::read_excel()].
 #' 
+#' @family general functions to import/export data
+#' 
 #' @section Acknowledgment:
 #' Thanks to Jessica Shue for inspiring this functions.
 #'

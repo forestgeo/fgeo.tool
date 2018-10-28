@@ -31,3 +31,4 @@ Other functions for developers.: \code{\link{flag_if_group}},
   \code{\link{type_ensure}}
 }
 \concept{functions for developers.}
+\keyword{internal}

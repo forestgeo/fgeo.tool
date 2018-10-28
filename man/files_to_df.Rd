@@ -58,4 +58,7 @@ csv_to_dfs(tool_example("multiple_csv"), n_max = 2)
 }
 \seealso{
 \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[readxl:read_excel]{readxl::read_excel()}}.
+
+Other general functions to import/export data: \code{\link{dfs_to_csv}}
 }
+\concept{general functions to import/export data}

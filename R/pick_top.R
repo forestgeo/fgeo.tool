@@ -13,7 +13,7 @@
 #'
 #' @return A filtered version of the input dataset.
 #' @export
-#' @family functions to pick or drop rows of a dataframe.
+#' @family general functions to pick or drop rows of a dataframe
 #'
 #' @examples
 #' df <- data.frame(x = 1:9, y = letters[1:3], stringsAsFactors = FALSE)

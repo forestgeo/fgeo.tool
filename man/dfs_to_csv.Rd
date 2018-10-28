@@ -33,5 +33,8 @@ dir(output, pattern = "myfile")
 xlsheets_to_dfs
 
 Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{xlsheets_to_dfs}}
+
+Other general functions to import/export data: \code{\link{files_to_df}}
 }
 \concept{functions to handle multiple spreadsheets of an excel workbook.}
+\concept{general functions to import/export data}

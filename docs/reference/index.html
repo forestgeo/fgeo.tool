@@ -133,44 +133,26 @@
           <p><code><a href="type_fgeo.html">type_vft()</a></code> <code><a href="type_fgeo.html">type_taxa()</a></code> </p>
         </td>
         <td><p>Help to read ForestGEO data safely, with consistent column type.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="xlff_to_output.html">xlff_to_csv()</a></code> <code><a href="xlff_to_output.html">xlff_to_xl()</a></code> <code><a href="xlff_to_output.html">xlff_to_dfs()</a></code> </p>
-        </td>
-        <td><p>Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-move-data-from-an-input-to-an-output" class="hasAnchor"><a href="#section-move-data-from-an-input-to-an-output" class="anchor"></a>Move data from an input to an output</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
+          <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
+          <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_dfs()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_dfs()</a></code> </p>
+          <p><code><a href="sanitize.html">sanitize_vft()</a></code> <code><a href="sanitize.html">sanitize_taxa()</a></code> </p>
         </td>
-        <td><p>Read all .csv or flat excel files from a directory into dataframes.</p></td>
+        <td><p>Sanitize ViewFullTable and ViewTaxonomy.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="dfs_to_csv.html">dfs_to_csv()</a></code> </p>
+          <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
         </td>
-        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dfs_to_df.html">dfs_to_df()</a></code> </p>
-        </td>
-        <td><p>Reduce a list of dataframes into a single dataframe via dplyr::full_join()</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="xlsheets_to_dfs.html">xlsheets_to_dfs()</a></code> </p>
-        </td>
-        <td><p>Read one excel workbook and map each spreadsheet to a dataframe in a list.</p></td>
+        <td><p>Recode subquadrat.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -197,72 +179,6 @@
           <p><code><a href="pick_main_stem.html">pick_main_stem()</a></code> <code><a href="pick_main_stem.html">pick_main_stemid()</a></code> </p>
         </td>
         <td><p>Pick the main stem or main stemid(s) of each tree in each census.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-pick-drop-rows-with-matching-conditions" class="hasAnchor"><a href="#section-pick-drop-rows-with-matching-conditions" class="anchor"></a>Pick/drop rows with matching conditions</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
-        </td>
-        <td><p>Identify stems to recensus.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
-        </td>
-        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
-        </td>
-        <td><p>Recode subquadrat.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sanitize.html">sanitize_vft()</a></code> <code><a href="sanitize.html">sanitize_taxa()</a></code> </p>
-        </td>
-        <td><p>Sanitize ViewFullTable and ViewTaxonomy.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="convert_unit.html">convert_unit()</a></code> <code><a href="convert_unit.html">convert_unit_at()</a></code> </p>
-        </td>
-        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lookup.html">lookup()</a></code> </p>
-        </td>
-        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
-        </td>
-        <td><p>Divide (standardize) columns of a dataframe by a constant denominator.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -299,76 +215,6 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-deal-with-objects-type-or-class" class="hasAnchor"><a href="#section-deal-with-objects-type-or-class" class="anchor"></a>Deal with objects' type or class</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="find_data_of_class.html">show_data_of_class()</a></code> <code><a href="find_data_of_class.html">hide_data_of_class()</a></code> </p>
-        </td>
-        <td><p>Find and hide dataset names in a package that match a class.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="type_ensure.html">type_ensure()</a></code> </p>
-        </td>
-        <td><p>Ensure the specific columns of a dataframe have a particular type.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-deal-with-objects-structure" class="hasAnchor"><a href="#section-deal-with-objects-structure" class="anchor"></a>Deal with objects' structure</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="nms.html">nms_has_any()</a></code> <code><a href="nms.html">nms_detect()</a></code> <code><a href="nms.html">nms_extract_all()</a></code> <code><a href="nms.html">nms_extract1()</a></code> </p>
-        </td>
-        <td><p>Functions to detect and extract names.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nms_extract_anycase.html">nms_extract_anycase()</a></code> </p>
-        </td>
-        <td><p>Find a name exactly matching a string but regardless of case.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nms_lowercase.html">nms_lowercase()</a></code> <code><a href="nms_lowercase.html">nms_restore()</a></code> </p>
-        </td>
-        <td><p>Lower and restore names.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nms_restore_newvar.html">nms_restore_newvar()</a></code> </p>
-        </td>
-        <td><p>Restore the names of a dataframe to which a new variable has been added.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nms_tidy.html">nms_tidy()</a></code> </p>
-        </td>
-        <td><p>Create tidy names that are lowercase and have no empty spaces.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="nms_try_rename.html">nms_try_rename()</a></code> </p>
-        </td>
-        <td><p>Try to rename an object.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="by_group.html">by_group()</a></code> </p>
-        </td>
-        <td><p>Make any function work with grouped data.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
           <h2 id="section-guess" class="hasAnchor"><a href="#section-guess" class="anchor"></a>Guess</h2>
           <p class="section-desc"><p>Specific to ForestGEO</p></p>
         </th>
@@ -379,20 +225,6 @@
           <p><code><a href="extract_from_habitat.html">extract_gridsize()</a></code> <code><a href="extract_from_habitat.html">extract_plotdim()</a></code> </p>
         </td>
         <td><p>Extract plot dimensions from habitat data.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-detect-and-flag-conditions" class="hasAnchor"><a href="#section-detect-and-flag-conditions" class="anchor"></a>Detect and flag conditions</h2>
-          <p class="section-desc"><p>Not specific to ForestGEO</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="flag_if_group.html">flag_if_group()</a></code> <code><a href="flag_if_group.html">detect_if_group()</a></code> </p>
-        </td>
-        <td><p>Detect and flag based on a predicate applied to a variable by groups.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -466,6 +298,84 @@
         </td>
         <td><p>Path to directory containing example data.</p></td>
       </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-todo-extract-move-data-from-an-input-to-an-output" class="hasAnchor"><a href="#section-todo-extract-move-data-from-an-input-to-an-output" class="anchor"></a>TODO EXTRACT Move data from an input to an output</h2>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="dfs_to_csv.html">dfs_to_csv()</a></code> </p>
+        </td>
+        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_dfs()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_dfs()</a></code> </p>
+        </td>
+        <td><p>Read all .csv or flat excel files from a directory into dataframes.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="dfs_to_df.html">dfs_to_df()</a></code> </p>
+        </td>
+        <td><p>Reduce a list of dataframes into a single dataframe via dplyr::full_join()</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="xlsheets_to_dfs.html">xlsheets_to_dfs()</a></code> </p>
+        </td>
+        <td><p>Read one excel workbook and map each spreadsheet to a dataframe in a list.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-pick-drop-rows-with-matching-conditions" class="hasAnchor"><a href="#section-pick-drop-rows-with-matching-conditions" class="anchor"></a>Pick/drop rows with matching conditions</h2>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
+        </td>
+        <td><p>Identify stems to recensus.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
+        </td>
+        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
+          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="convert_unit.html">convert_unit()</a></code> <code><a href="convert_unit.html">convert_unit_at()</a></code> </p>
+        </td>
+        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lookup.html">lookup()</a></code> </p>
+        </td>
+        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
+        </td>
+        <td><p>Divide (standardize) columns of a dataframe by a constant denominator.</p></td>
+      </tr>
     </tbody>
     </table>
   </div>
@@ -474,19 +384,16 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-read">Read</a></li>
-      <li><a href="#section-move-data-from-an-input-to-an-output">Move data from an input to an output</a></li>
-      <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
-      <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
       <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
-      <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
+      <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
       <li><a href="#section-add-new-columns">Add new columns</a></li>
-      <li><a href="#section-deal-with-objects-type-or-class">Deal with objects' type or class</a></li>
-      <li><a href="#section-deal-with-objects-structure">Deal with objects' structure</a></li>
       <li><a href="#section-guess">Guess</a></li>
-      <li><a href="#section-detect-and-flag-conditions">Detect and flag conditions</a></li>
       <li><a href="#section-fgeo-generics-and-methods">fgeo generics and methods</a></li>
       <li><a href="#section-construct-fgeo-classes">Construct fgeo classes</a></li>
       <li><a href="#section-access-data">Access data</a></li>
+      <li><a href="#section-todo-extract-move-data-from-an-input-to-an-output">TODO EXTRACT Move data from an input to an output</a></li>
+      <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
+      <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
     </ul>
   </div>
 </div>

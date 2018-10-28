@@ -84,8 +84,6 @@ pick_recensus(x, y2, by = c("unique_stem" = "unq_stem"))
 dplyr::anti_join(x, y2, by = c("unique_stem" = "unq_stem"))
 }
 \seealso{
-Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
-  \code{\link{filter_status}},
-  \code{\link{pick_main_stem}}, \code{\link{pick_top}}
+Other general functions to pick or drop rows of a dataframe: \code{\link{pick_top}}
 }
-\concept{functions to pick or drop rows of a dataframe.}
+\concept{general functions to pick or drop rows of a dataframe}
