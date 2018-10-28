@@ -2,7 +2,7 @@
 % Please edit documentation in R/at.R
 \name{standardize_at}
 \alias{standardize_at}
-\title{Divide (standardize) columns of a dataframe by a constant denominator.}
+\title{Modify dataframe-columns to standardize them by a constant denominator.}
 \usage{
 standardize_at(x, .at, denominator)
 }
@@ -19,7 +19,7 @@ modified.}
 A data.frame.
 }
 \description{
-Divide (standardize) columns of a dataframe by a constant denominator.
+Modify dataframe-columns to standardize them by a constant denominator.
 }
 \examples{
 dfm <- data.frame(a = 1:3, b = 11:13)
@@ -27,8 +27,6 @@ standardize_at(dfm, "a", denominator = 100)
 standardize_at(dfm, names(dfm), denominator = 100)
 }
 \seealso{
-Other general functions to edit data in place: \code{\link{convert_unit}},
-  \code{\link{fill_na}}, \code{\link{lookup}},
-  \code{\link{to_tidy_names}}
+Other general functions to perform common transforms: \code{\link{convert_unit}}
 }
-\concept{general functions to edit data in place}
+\concept{general functions to perform common transforms}

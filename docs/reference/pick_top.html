@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Filter a data set by matching n values from the head (or tail) of a variable. — pick_top • fgeo.tool</title>
+<title>Pick dataframe rows by matching n values from the head (or tail) of column. — pick_top • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,12 @@
 
 
 
-<meta property="og:title" content="Filter a data set by matching n values from the head (or tail) of a variable. — pick_top" />
+<meta property="og:title" content="Pick dataframe rows by matching n values from the head (or tail) of column. — pick_top" />
 
-<meta property="og:description" content="Filters a data frame by matching n values from the head (or tail) of the
-unique values of a variable." />
+<meta property="og:description" content="This function picks rows from a dataframe by matching n unique values from
+the head (or tail) of column. Similar to dplyr::top_n(), but instead of
+using min_rank() or max_rank(), it uses utils::head() or
+utils::tail(); and var is flexible as in dplyr::pull()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -107,15 +109,17 @@ unique values of a variable." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Filter a data set by matching n values from the head (or tail) of a variable.</h1>
+    <h1>Pick dataframe rows by matching n values from the head (or tail) of column.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_top.R'><code>R/pick_top.R</code></a></small>
     <div class="hidden name"><code>pick_top.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Filters a data frame by matching <code>n</code> values from the head (or tail) of the
-unique values of a variable.</p>
+    <p>This function picks rows from a dataframe by matching n unique values from
+the head (or tail) of column. Similar to <code><a href='http://dplyr.tidyverse.org/reference/top_n.html'>dplyr::top_n()</a></code>, but instead of
+using <code>min_rank()</code> or <code>max_rank()</code>, it uses <code><a href='http://www.rdocumentation.org/packages/utils/topics/head'>utils::head()</a></code> or
+<code><a href='http://www.rdocumentation.org/packages/utils/topics/head'>utils::tail()</a></code>; and <code>var</code> is flexible as in <code><a href='http://dplyr.tidyverse.org/reference/pull.html'>dplyr::pull()</a></code>.</p>
     
     </div>
 
@@ -151,12 +155,6 @@ names and column positions).</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A filtered version of the input dataset.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Similar to <code><a href='http://dplyr.tidyverse.org/reference/top_n.html'>dplyr::top_n()</a></code>, but instead of using <code>min_rank()</code> or
-<code>max_rank()</code>, it uses <code><a href='http://www.rdocumentation.org/packages/utils/topics/head'>utils::head()</a></code> or <code><a href='http://www.rdocumentation.org/packages/utils/topics/head'>utils::tail()</a></code>; and <code>var</code> is
-flexible as in <code><a href='http://dplyr.tidyverse.org/reference/pull.html'>dplyr::pull()</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -196,8 +194,6 @@ flexible as in <code><a href='http://dplyr.tidyverse.org/reference/pull.html'>dp
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

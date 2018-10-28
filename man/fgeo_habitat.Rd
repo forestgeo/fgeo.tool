@@ -2,7 +2,7 @@
 % Please edit documentation in R/fgeo_habitat.R
 \name{fgeo_habitat}
 \alias{fgeo_habitat}
-\title{Construct habitat data from measures of topography.}
+\title{Structure habitat data from measures of topography.}
 \usage{
 fgeo_habitat(elevation, gridsize, n, ...)
 }

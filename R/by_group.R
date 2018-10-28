@@ -5,6 +5,7 @@
 #' @param ... Additional arguments passed to `.f`.
 #'
 #' @return The value of `.f` applied to groups.
+#' @keywords internal
 #' 
 #' @section Acknowledgments:
 #' [Tristan Mahr](https://www.tjmahr.com/) and [Edward

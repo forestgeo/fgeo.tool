@@ -2,7 +2,7 @@
 % Please edit documentation in R/pick_recensus.R
 \name{pick_recensus}
 \alias{pick_recensus}
-\title{Identify stems to recensus.}
+\title{Pick rows from table x with no-match in table y (e.g. find recensused trees).}
 \usage{
 pick_recensus(x, y, by = NULL, ...)
 }

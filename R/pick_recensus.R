@@ -1,4 +1,4 @@
-#' Identify stems to recensus.
+#' Pick rows from table x with no-match in table y (e.g. find recensused trees).
 #'
 #' Based on a reference dataset `x`, this function helps you
 #' to identify stems that remain to be recensused in a dataset `y`. This

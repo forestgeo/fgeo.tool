@@ -61,17 +61,16 @@ stem <- fgeo.data::luquillo_stem6_1ha
 nms_extract_all(stem, "gx", "gy", "PX", "PY")
 }
 \seealso{
-Other functions for developers.: \code{\link{find_data_of_class}},
-  \code{\link{flag_if_group}},
-  \code{\link{nms_extract_anycase}},
+Other functions for developers: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms_try_rename}}, \code{\link{type_ensure}}
+  \code{\link{nms_try_rename}}
 
-Other functions dealing with names.: \code{\link{nms_extract_anycase}},
+Other functions dealing with names: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}
 }
-\concept{functions dealing with names.}
-\concept{functions for developers.}
+\concept{functions dealing with names}
+\concept{functions for developers}
+\keyword{internal}

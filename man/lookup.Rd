@@ -2,7 +2,7 @@
 % Please edit documentation in R/lookup.R
 \name{lookup}
 \alias{lookup}
-\title{\code{recode()} by looking up \code{old} and \code{new} values (from a lookup table).}
+\title{Modify a vector to replace old with new values from a lookup table.}
 \usage{
 lookup(old, new)
 }
@@ -44,8 +44,7 @@ mutate(census, sp = recode(sp, lookup(look$old, look$new)))
 \seealso{
 \code{dplyr::recode()}
 
-Other general functions to edit data in place: \code{\link{convert_unit}},
-  \code{\link{fill_na}}, \code{\link{standardize_at}},
+Other general functions to edit data in place: \code{\link{fill_na}},
   \code{\link{to_tidy_names}}
 }
 \concept{general functions to edit data in place}

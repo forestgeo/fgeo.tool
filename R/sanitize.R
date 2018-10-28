@@ -1,4 +1,4 @@
-#' Sanitize ViewFullTable and ViewTaxonomy.
+#' Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.
 #' 
 #' These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to 
 #' achieve the same effect as reading with `read_vft()` and `read_taxa()`. The

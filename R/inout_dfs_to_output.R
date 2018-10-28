@@ -1,9 +1,8 @@
-#' Save each dataframe in a list to a different .csv file.
+#' Export mapping each dataframe in a list to a single .csv file.
 #'
 #' A useful complement of this function is [xlsheets_to_dfs()].
 #'
 #' @source Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
-#'
 #'
 #' @param dfs A list of dataframes.
 #' @param dir Character; the directory where the files will be saved.
@@ -11,8 +10,7 @@
 #'
 #' @seealso xlsheets_to_dfs
 #' @family functions to handle multiple spreadsheets of an excel workbook.
-#' 
-#' @family general functions to import/export data
+#' @family general functions to export data
 #' 
 #' @export
 #' @examples
@@ -56,7 +54,7 @@ dfs_to_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 
 
 
-#' Reduce a list of dataframes into a single dataframe via dplyr::full_join()
+#' Help export a single file by reducing a list of dataframes to a single one.
 #'
 #' This function wraps [purrr::reduce()] and [dplyr::full_join()] to reduce 
 #' all or some dataframes in a list into a single dataframe.
@@ -71,6 +69,8 @@ dfs_to_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 #'   to [dplyr::full_join()]
 #'
 #' @seealso [purrr::reduce()] and [dplyr::full_join()].
+#' 
+#' @family general functions to export data
 #'
 #' @return A dataframe.
 #' @export

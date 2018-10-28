@@ -4,7 +4,7 @@
 \alias{filter_status}
 \alias{drop_dead_stem}
 \alias{drop_dead_tree}
-\title{Filter a (fgeo) dataframe by the status of each stem or tree.}
+\title{Pick rows of a ForestGEO dataframe by the status of each stem or tree.}
 \usage{
 filter_status(x, wood, .status, exclude = FALSE)
 

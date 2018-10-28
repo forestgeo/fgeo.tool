@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_subquad.R
 \name{add_subquad}
 \alias{add_subquad}
-\title{Add a quadrat variable to a dataframe based based on qx and qy coordinates.}
+\title{Add column \code{subquadrat} based on \code{qx} and \code{qy} coordinates.}
 \usage{
 add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq,
   subquad_offset = NULL)
@@ -24,7 +24,7 @@ to the number of column of each subquadrat.}
 Returns \code{df} with the additional variable \code{subquadrat}.
 }
 \description{
-Add a quadrat variable to a dataframe based based on qx and qy coordinates.
+Add column \code{subquadrat} based on \code{qx} and \code{qy} coordinates.
 }
 \examples{
 library(tibble)

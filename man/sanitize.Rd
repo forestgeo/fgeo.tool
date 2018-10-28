@@ -4,7 +4,7 @@
 \alias{sanitize}
 \alias{sanitize_vft}
 \alias{sanitize_taxa}
-\title{Sanitize ViewFullTable and ViewTaxonomy.}
+\title{Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.}
 \usage{
 sanitize_vft(x, na = c("", "NA", "NULL"), ...)
 

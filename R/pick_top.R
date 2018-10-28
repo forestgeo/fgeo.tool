@@ -1,11 +1,9 @@
-#' Filter a data set by matching n values from the head (or tail) of a variable.
+#' Pick dataframe rows by matching n values from the head (or tail) of column.
 #'
-#' Filters a data frame by matching `n` values from the head (or tail) of the
-#' unique values of a variable.
-#'
-#' Similar to [dplyr::top_n()], but instead of using `min_rank()` or
-#' `max_rank()`, it uses [utils::head()] or [utils::tail()]; and `var` is
-#' flexible as in [dplyr::pull()].
+#' This function picks rows from a dataframe by matching n unique values from
+#' the head (or tail) of column. Similar to [dplyr::top_n()], but instead of
+#' using `min_rank()` or `max_rank()`, it uses [utils::head()] or
+#' [utils::tail()]; and `var` is flexible as in [dplyr::pull()].
 #'
 #' @inheritParams dplyr::pull
 #' @param n Number of values used for matching, from the head (or tail) of `var`.

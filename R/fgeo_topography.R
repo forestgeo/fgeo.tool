@@ -1,4 +1,4 @@
-#' Calculate mean elevation, convexity and slope.
+#' Structure topography data with mean elevation, convexity, and slope.
 #' 
 #' @inheritSection fgeo_elevation Input
 #' 

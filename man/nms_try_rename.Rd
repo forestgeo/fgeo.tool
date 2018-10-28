@@ -31,18 +31,16 @@ nms_try_rename(1, "A", "A")
 \seealso{
 nms
 
-Other functions dealing with names.: \code{\link{nms_extract_anycase}},
+Other functions dealing with names: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms}}
 
-Other functions for developers.: \code{\link{find_data_of_class}},
-  \code{\link{flag_if_group}},
-  \code{\link{nms_extract_anycase}},
+Other functions for developers: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms}}, \code{\link{type_ensure}}
+  \code{\link{nms}}
 }
-\concept{functions dealing with names.}
-\concept{functions for developers.}
+\concept{functions dealing with names}
+\concept{functions for developers}
 \keyword{internal}

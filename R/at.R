@@ -1,4 +1,4 @@
-#' Convert units of a vector or columns of a dataframe.
+#' Modify a vector or dataframe-columns by converting units.
 #' 
 #' `convert_unit()` of a vector or `convert_unit_at()` specific columns of a
 #' dataframe.
@@ -9,7 +9,7 @@
 #' 
 #' @seealso [measurements::conv_unit()], [purrr::map_at()].
 #' 
-#' @family general functions to edit data in place
+#' @family general functions to perform common transforms
 #'
 #' @return An object with the same structure as `x` (vector or dataframe).
 #'
@@ -42,14 +42,13 @@ convert_unit_at <- function(x, .at, from, to) {
 }
 
 
-
-#' Divide (standardize) columns of a dataframe by a constant denominator.
+#' Modify dataframe-columns to standardize them by a constant denominator.
 #' 
 #' @param x Dataframe.
 #' @param denominator A numeric vector of length 1.
 #' @inheritParams purrr::map_at
 #' 
-#' @family general functions to edit data in place
+#' @family general functions to perform common transforms
 #'
 #' @return A data.frame.
 #' @export

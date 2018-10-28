@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_status_tree.R
 \name{add_status_tree}
 \alias{add_status_tree}
-\title{Define the status of a tree based on the status of its stems.}
+\title{Add column \code{status_tree} based on the status of all stems of each tree.}
 \usage{
 add_status_tree(x, status_a = "A", status_d = "D")
 }
@@ -17,7 +17,7 @@ capital "S" in ViewFull tables).}
 The input data set with the additional variable \code{status_tree}.
 }
 \description{
-Define the status of a tree based on the status of its stems.
+Add column \code{status_tree} based on the status of all stems of each tree.
 }
 \examples{
 library(fgeo.tool)

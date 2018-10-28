@@ -2,7 +2,7 @@
 % Please edit documentation in R/imports-reexports-fgeo-base.R
 \name{fill_na}
 \alias{fill_na}
-\title{Fill NA's with a single filler.}
+\title{Modify vectors, dataframes, or matrices to fill missing values.}
 \usage{
 fill_na(x, filler = 0)
 }
@@ -19,16 +19,6 @@ This is a wrapper of \code{\link[base:replace]{base::replace()}} with a simplifi
 that target the specific job of filling NA's. See also \code{tidyr::replace_na}
 and \code{dplyr::coalesce}.
 }
-\section{Acknowledgments}{
-
-
-This function was inspired by conversations with David Kenfack and by a
-\href{{https://goo.gl/aMTQck}{blog post by Rick Pack}}. Also tanks to Edgar Ruiz
-(@edgararuiz) for discussing alternatives
-(via \href{{https://goo.gl/4uME2U}{this blog post}} on RStudio community).
-
-}
-
 \examples{
 x <- data.frame(x = c(NA, 1), y = c("a", NA), stringsAsFactors = FALSE)
 
@@ -47,8 +37,7 @@ a_list <- list(x, x, x)
 lapply(a_list, fill_na)
 }
 \seealso{
-Other general functions to edit data in place: \code{\link{convert_unit}},
-  \code{\link{lookup}}, \code{\link{standardize_at}},
+Other general functions to edit data in place: \code{\link{lookup}},
   \code{\link{to_tidy_names}}
 }
 \concept{general functions to edit data in place}

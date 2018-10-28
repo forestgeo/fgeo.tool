@@ -2,12 +2,15 @@
 #' @importFrom fgeo.base is_multiple is_duplicated detect_if flag_if
 NULL
 
+#' Modify vectors, dataframes, or matrices to fill missing values.
+#' 
 #' @family general functions to edit data in place
 #' @inherit fgeo.base::fill_na
-#' @inherit fgeo.base::fill_na seealso
 #' @export
 fill_na <- fgeo.base::fill_na
 
+#' Modify a string to make it names-friendly (lowercase and without spaces).
+#' 
 #' @family general functions to edit data in place
 #' @inherit fgeo.base::to_tidy_names
 #' @export

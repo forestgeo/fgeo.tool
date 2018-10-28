@@ -25,15 +25,14 @@ dfm <- data.frame(a = 1, B = 1)
 nms_extract_anycase(dfm, "b")
 }
 \seealso{
-Other functions for developers.: \code{\link{find_data_of_class}},
-  \code{\link{flag_if_group}}, \code{\link{nms_lowercase}},
+Other functions for developers: \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms_try_rename}}, \code{\link{nms}},
-  \code{\link{type_ensure}}
+  \code{\link{nms_try_rename}}, \code{\link{nms}}
 
-Other functions dealing with names.: \code{\link{nms_lowercase}},
+Other functions dealing with names: \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
 }
-\concept{functions dealing with names.}
-\concept{functions for developers.}
+\concept{functions dealing with names}
+\concept{functions for developers}
+\keyword{internal}

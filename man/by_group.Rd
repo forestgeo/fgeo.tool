@@ -55,3 +55,4 @@ dfm \%>\% group_by(x) \%>\% by_group(first_row)
 
 dfm \%>\% group_by(x) \%>\% by_group(first_row, to_chr = TRUE)
 }
+\keyword{internal}

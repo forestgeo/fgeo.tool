@@ -3,7 +3,7 @@
 \name{convert_unit}
 \alias{convert_unit}
 \alias{convert_unit_at}
-\title{Convert units of a vector or columns of a dataframe.}
+\title{Modify a vector or dataframe-columns by converting units.}
 \usage{
 convert_unit(x, from, to)
 
@@ -43,8 +43,6 @@ convert_unit_at(dfm, .at = names(dfm), from = "mm2", to = "hectare")
 \seealso{
 \code{\link[measurements:conv_unit]{measurements::conv_unit()}}, \code{\link[purrr:map_at]{purrr::map_at()}}.
 
-Other general functions to edit data in place: \code{\link{fill_na}},
-  \code{\link{lookup}}, \code{\link{standardize_at}},
-  \code{\link{to_tidy_names}}
+Other general functions to perform common transforms: \code{\link{standardize_at}}
 }
-\concept{general functions to edit data in place}
+\concept{general functions to perform common transforms}

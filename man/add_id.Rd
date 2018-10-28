@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_id.R
 \name{add_id}
 \alias{add_id}
-\title{Add a new id column to a dataframe by pasting values of preexisting columns.}
+\title{Add column \code{id} to a dataframe by pasting values from other columns.}
 \usage{
 add_id(.data, vars, name = "id", sep = "_")
 }
@@ -20,7 +20,7 @@ column.}
 A dataframe with an additional column.
 }
 \description{
-Add a new id column to a dataframe by pasting values of preexisting columns.
+Add column \code{id} to a dataframe by pasting values from other columns.
 }
 \examples{
 .data <- tibble::tibble(x = 1:2, y = c("a", "b"), z = c(TRUE, FALSE))

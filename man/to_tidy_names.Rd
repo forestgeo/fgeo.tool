@@ -2,7 +2,7 @@
 % Please edit documentation in R/imports-reexports-fgeo-base.R
 \name{to_tidy_names}
 \alias{to_tidy_names}
-\title{Create a names-friendly version of a string (lowercase and with no spaces).}
+\title{Modify a string to make it names-friendly (lowercase and without spaces).}
 \usage{
 to_tidy_names(x)
 }
@@ -31,8 +31,7 @@ setNames(dfm, to_tidy_names(messy))
 setNames(list(1), to_tidy_names(messy))
 }
 \seealso{
-Other general functions to edit data in place: \code{\link{convert_unit}},
-  \code{\link{fill_na}}, \code{\link{lookup}},
-  \code{\link{standardize_at}}
+Other general functions to edit data in place: \code{\link{fill_na}},
+  \code{\link{lookup}}
 }
 \concept{general functions to edit data in place}

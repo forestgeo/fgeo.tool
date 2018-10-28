@@ -2,7 +2,7 @@
 % Please edit documentation in R/pick_top.R
 \name{pick_top}
 \alias{pick_top}
-\title{Filter a data set by matching n values from the head (or tail) of a variable.}
+\title{Pick dataframe rows by matching n values from the head (or tail) of column.}
 \usage{
 pick_top(.data, var, n = 1)
 }
@@ -29,13 +29,10 @@ names and column positions).}
 A filtered version of the input dataset.
 }
 \description{
-Filters a data frame by matching \code{n} values from the head (or tail) of the
-unique values of a variable.
-}
-\details{
-Similar to \code{\link[dplyr:top_n]{dplyr::top_n()}}, but instead of using \code{min_rank()} or
-\code{max_rank()}, it uses \code{\link[utils:head]{utils::head()}} or \code{\link[utils:tail]{utils::tail()}}; and \code{var} is
-flexible as in \code{\link[dplyr:pull]{dplyr::pull()}}.
+This function picks rows from a dataframe by matching n unique values from
+the head (or tail) of column. Similar to \code{\link[dplyr:top_n]{dplyr::top_n()}}, but instead of
+using \code{min_rank()} or \code{max_rank()}, it uses \code{\link[utils:head]{utils::head()}} or
+\code{\link[utils:tail]{utils::tail()}}; and \code{var} is flexible as in \code{\link[dplyr:pull]{dplyr::pull()}}.
 }
 \examples{
 df <- data.frame(x = 1:9, y = letters[1:3], stringsAsFactors = FALSE)

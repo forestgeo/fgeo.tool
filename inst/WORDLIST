@@ -3,14 +3,11 @@ censusid
 centric
 colrow
 csv
-ctfs
 CTFS
-CTFSRPackage
 df
 dfs
 dplyr
 dplyr's
-edu
 Esufali
 eval
 extdata
@@ -21,13 +18,11 @@ ForestGEO
 ForestGEO's
 ForestgGEO's
 funder
-ggplot
 github
 gl
 gridsize
 gz
 hectindex
-http
 https
 Jafferjee
 Jian
@@ -39,10 +34,10 @@ lst
 lx
 ly
 Mahr
+NA's
 nms
 Orwig
 plotname
-pre
 qkX
 quadrat
 quadrat's
@@ -58,7 +53,6 @@ recognised
 rlang
 Shameema
 Shue
-si
 spreadsheeets
 stemid
 subquadrat
@@ -66,6 +60,7 @@ subquadrat's
 tibble
 tidyverse
 treeid
+tsv
 tt
 vft
 viewfull

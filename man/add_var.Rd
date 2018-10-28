@@ -9,7 +9,7 @@
 \alias{add_hectindex}
 \alias{add_quad}
 \alias{add_col_row2}
-\title{Add columns lx, ly; qx, qy; index; colrow; and hectindex to ForestGEO data.}
+\title{Add columns \code{lx/ly}; \code{QX/QY}; \code{index}; \code{col/row}; and \code{hectindex}, \code{quad}.}
 \usage{
 add_lxly(x, gridsize = 20, plotdim = NULL)
 

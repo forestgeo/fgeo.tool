@@ -1,4 +1,4 @@
-#' Construct habitat data from measures of topography.
+#' Structure habitat data from measures of topography.
 #' 
 #' This function constructs habitat data based on elevation data. It calculates
 #' habitats in two steps:

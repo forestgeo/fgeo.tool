@@ -2,7 +2,7 @@
 % Please edit documentation in R/inout_files_to_df.R
 \name{xlsheets_to_dfs}
 \alias{xlsheets_to_dfs}
-\title{Read one excel workbook and map each spreadsheet to a dataframe in a list.}
+\title{Import mapping each spreadsheet of an excel file to a dataframe in a list.}
 \source{
 Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 }
@@ -10,7 +10,7 @@ Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 xlsheets_to_dfs(path)
 }
 \arguments{
-\item{path}{A path to an excel file.}
+\item{path}{A path to a single excel file.}
 }
 \value{
 A list of dataframes.
@@ -25,5 +25,9 @@ xlsheets_to_dfs(tool_example("multiple_sheets.xlsx"))
 \code{\link[=dfs_to_csv]{dfs_to_csv()}}.
 
 Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{dfs_to_csv}}
+
+Other general functions to import data: \code{\link{files_to_dfs}},
+  \code{\link{files_to_df}}
 }
 \concept{functions to handle multiple spreadsheets of an excel workbook.}
+\concept{general functions to import data}

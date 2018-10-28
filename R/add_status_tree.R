@@ -1,4 +1,4 @@
-#' Define the status of a tree based on the status of its stems.
+#' Add column `status_tree` based on the status of all stems of each tree.
 #'
 #' @template x_fgeo
 #' @param status_a,status_d Sting to match alive and dead stems; it corresponds

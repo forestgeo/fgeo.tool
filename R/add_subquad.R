@@ -1,4 +1,4 @@
-#' Add a quadrat variable to a dataframe based based on qx and qy coordinates.
+#' Add column `subquadrat` based on `qx` and `qy` coordinates.
 #'
 #' @param df A dataframe with quadrat coordinates `QX` and `QY` (e.g. a
 #'   ViewFullTable).

@@ -1,4 +1,4 @@
-#' Add a new id column to a dataframe by pasting values of preexisting columns.
+#' Add column `id` to a dataframe by pasting values from other columns.
 #'
 #' @param .data A dataframe.
 #' @param vars Vector of names of columns to paste for creating the new id

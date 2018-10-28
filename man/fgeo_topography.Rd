@@ -4,7 +4,7 @@
 \alias{fgeo_topography}
 \alias{fgeo_topography.data.frame}
 \alias{fgeo_topography.list}
-\title{Calculate mean elevation, convexity and slope.}
+\title{Structure topography data with mean elevation, convexity, and slope.}
 \usage{
 fgeo_topography(elevation, ...)
 
@@ -39,7 +39,7 @@ the plot.}
 A dataframe of subclass fgeo_topography.
 }
 \description{
-Calculate mean elevation, convexity and slope.
+Structure topography data with mean elevation, convexity, and slope.
 }
 \section{Acknowledgment}{
 

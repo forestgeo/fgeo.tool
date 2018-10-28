@@ -2,7 +2,7 @@
 % Please edit documentation in R/fgeo_elevation.R
 \name{fgeo_elevation}
 \alias{fgeo_elevation}
-\title{Construct elevation data.}
+\title{Structure elevation data.}
 \usage{
 fgeo_elevation(x)
 }

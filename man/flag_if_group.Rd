@@ -44,10 +44,6 @@ flag_if_group(by_censusid, "treeID", is_multiple)
 }
 \seealso{
 Other functions for developers.: \code{\link{find_data_of_class}},
-  \code{\link{nms_extract_anycase}},
-  \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms_try_rename}}, \code{\link{nms}},
   \code{\link{type_ensure}}
 }
 \concept{functions for developers.}

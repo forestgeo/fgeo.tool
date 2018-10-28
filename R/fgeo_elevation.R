@@ -1,4 +1,4 @@
-#' Construct elevation data.
+#' Structure elevation data.
 #' 
 #' This function constructs an object of class fgeo_elevation. It standardizes
 #' the structure of elevation data to always output a dataframe with names `gx`,

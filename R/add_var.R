@@ -1,4 +1,4 @@
-#' Add columns lx, ly; qx, qy; index; colrow; and hectindex to ForestGEO data.
+#' Add columns `lx/ly`; `QX/QY`; `index`; `col/row`; and `hectindex`, `quad`.
 #' 
 #' These functions add columns to position trees/stems in a forest plot. They 
 #' work with ViewFull-tables and census-tables (tree and stem).

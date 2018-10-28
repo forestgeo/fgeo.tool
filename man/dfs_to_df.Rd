@@ -2,7 +2,7 @@
 % Please edit documentation in R/inout_dfs_to_output.R
 \name{dfs_to_df}
 \alias{dfs_to_df}
-\title{Reduce a list of dataframes into a single dataframe via dplyr::full_join()}
+\title{Help export a single file by reducing a list of dataframes to a single one.}
 \usage{
 dfs_to_df(dfs, df_names = NULL, by = NULL)
 }
@@ -45,4 +45,7 @@ dfs_to_df(
 }
 \seealso{
 \code{\link[purrr:reduce]{purrr::reduce()}} and \code{\link[dplyr:full_join]{dplyr::full_join()}}.
+
+Other general functions to export data: \code{\link{dfs_to_csv}}
 }
+\concept{general functions to export data}

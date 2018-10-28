@@ -1,4 +1,4 @@
-#' Filter a (fgeo) dataframe by the status of each stem or tree.
+#' Pick rows of a ForestGEO dataframe by the status of each stem or tree.
 #'
 #' In stem- and ViewFull-tables `status` and `Status` refer to each stem. In
 #' tree-tables `status` refers to tree. To get the status of each tree based

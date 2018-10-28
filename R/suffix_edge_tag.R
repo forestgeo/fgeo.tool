@@ -6,10 +6,12 @@
 #' @param suffix A character string to suffix tree tags with.
 #' @param x_q,y_q Integer; the x and y size in meters of a quadrat.
 #' 
+#' 
 #'
 #' @return A modified version of `x`.
+#' 
+#' @keywords internal
 #' @export
-#'
 #' @examples
 #' vft <- data.frame(
 #'   QX = 21:22,

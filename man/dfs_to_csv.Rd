@@ -2,7 +2,7 @@
 % Please edit documentation in R/inout_dfs_to_output.R
 \name{dfs_to_csv}
 \alias{dfs_to_csv}
-\title{Save each dataframe in a list to a different .csv file.}
+\title{Export mapping each dataframe in a list to a single .csv file.}
 \source{
 Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 }
@@ -34,7 +34,7 @@ xlsheets_to_dfs
 
 Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{xlsheets_to_dfs}}
 
-Other general functions to import/export data: \code{\link{files_to_df}}
+Other general functions to export data: \code{\link{dfs_to_df}}
 }
 \concept{functions to handle multiple spreadsheets of an excel workbook.}
-\concept{general functions to import/export data}
+\concept{general functions to export data}

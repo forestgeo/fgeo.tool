@@ -126,19 +126,37 @@
         <td>
           <p><code><a href="read_fgeo.html">read_vft()</a></code> <code><a href="read_fgeo.html">read_taxa()</a></code> </p>
         </td>
-        <td><p>Read text files containing ViewFullTable and ViewTaxonomy tables.</p></td>
+        <td><p>Import ViewFullTable and ViewTaxonomy from .tsv (or .csv) files.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> </p>
+        </td>
+        <td><p>Import reducing multiple .csv or flat .xlsx files into a single dataframe.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="files_to_dfs.html">csv_to_dfs()</a></code> <code><a href="files_to_dfs.html">xl_to_dfs()</a></code> </p>
+        </td>
+        <td><p>Import mapping each .csv or flat .xlsx file to a dataframe in a list.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="xlsheets_to_dfs.html">xlsheets_to_dfs()</a></code> </p>
+        </td>
+        <td><p>Import mapping each spreadsheet of an excel file to a dataframe in a list.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="dfs_to_csv.html">dfs_to_csv()</a></code> </p>
         </td>
-        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
+        <td><p>Export mapping each dataframe in a list to a single .csv file.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_dfs()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_dfs()</a></code> </p>
+          <p><code><a href="dfs_to_df.html">dfs_to_df()</a></code> </p>
         </td>
-        <td><p>Read all .csv or flat excel files from a directory into dataframes.</p></td>
+        <td><p>Help export a single file by reducing a list of dataframes to a single one.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -152,37 +170,37 @@
         <td>
           <p><code><a href="sanitize.html">sanitize_vft()</a></code> <code><a href="sanitize.html">sanitize_taxa()</a></code> </p>
         </td>
-        <td><p>Sanitize ViewFullTable and ViewTaxonomy.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="convert_unit.html">convert_unit()</a></code> <code><a href="convert_unit.html">convert_unit_at()</a></code> </p>
-        </td>
-        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
+        <td><p>Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="fill_na.html">fill_na()</a></code> </p>
         </td>
-        <td><p>Fill NA's with a single filler.</p></td>
+        <td><p>Modify vectors, dataframes, or matrices to fill missing values.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="lookup.html">lookup()</a></code> </p>
         </td>
-        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
-        </td>
-        <td><p>Divide (standardize) columns of a dataframe by a constant denominator.</p></td>
+        <td><p>Modify a vector to replace old with new values from a lookup table.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="to_tidy_names.html">to_tidy_names()</a></code> </p>
         </td>
-        <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
+        <td><p>Modify a string to make it names-friendly (lowercase and without spaces).</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="convert_unit.html">convert_unit()</a></code> <code><a href="convert_unit.html">convert_unit_at()</a></code> </p>
+        </td>
+        <td><p>Modify a vector or dataframe-columns by converting units.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
+        </td>
+        <td><p>Modify dataframe-columns to standardize them by a constant denominator.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -196,7 +214,7 @@
         <td>
           <p><code><a href="filter_status.html">filter_status()</a></code> <code><a href="filter_status.html">drop_dead_stem()</a></code> <code><a href="filter_status.html">drop_dead_tree()</a></code> </p>
         </td>
-        <td><p>Filter a (fgeo) dataframe by the status of each stem or tree.</p></td>
+        <td><p>Pick rows of a ForestGEO dataframe by the status of each stem or tree.</p></td>
       </tr><tr>
         
         <td>
@@ -214,18 +232,18 @@
         <td>
           <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
         </td>
-        <td><p>Identify stems to recensus.</p></td>
+        <td><p>Pick rows from table x with no-match in table y (e.g. find recensused trees).</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="pick_top.html">pick_top()</a></code> </p>
         </td>
-        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
+        <td><p>Pick dataframe rows by matching n values from the head (or tail) of column.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-add-new-columns" class="hasAnchor"><a href="#section-add-new-columns" class="anchor"></a>Add new columns</h2>
+          <h2 id="section-add-new-columns-to-a-dataframe" class="hasAnchor"><a href="#section-add-new-columns-to-a-dataframe" class="anchor"></a>Add new columns to a dataframe</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -234,25 +252,25 @@
         <td>
           <p><code><a href="add_id.html">add_id()</a></code> </p>
         </td>
-        <td><p>Add a new id column to a dataframe by pasting values of preexisting columns.</p></td>
+        <td><p>Add column <code>id</code> to a dataframe by pasting values from other columns.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="add_status_tree.html">add_status_tree()</a></code> </p>
         </td>
-        <td><p>Define the status of a tree based on the status of its stems.</p></td>
+        <td><p>Add column <code>status_tree</code> based on the status of all stems of each tree.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="add_subquad.html">add_subquad()</a></code> </p>
         </td>
-        <td><p>Add a quadrat variable to a dataframe based based on qx and qy coordinates.</p></td>
+        <td><p>Add column <code>subquadrat</code> based on <code>qx</code> and <code>qy</code> coordinates.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="add_var.html">add_lxly()</a></code> <code><a href="add_var.html">add_qxqy()</a></code> <code><a href="add_var.html">add_index()</a></code> <code><a href="add_var.html">add_col_row()</a></code> <code><a href="add_var.html">add_hectindex()</a></code> <code><a href="add_var.html">add_quad()</a></code> <code><a href="add_var.html">add_col_row2()</a></code> </p>
         </td>
-        <td><p>Add columns lx, ly; qx, qy; index; colrow; and hectindex to ForestGEO data.</p></td>
+        <td><p>Add columns <code>lx/ly</code>; <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; and <code>hectindex</code>, <code>quad</code>.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -292,19 +310,19 @@
         <td>
           <p><code><a href="fgeo_elevation.html">fgeo_elevation()</a></code> </p>
         </td>
-        <td><p>Construct elevation data.</p></td>
+        <td><p>Structure elevation data.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="fgeo_habitat.html">fgeo_habitat()</a></code> </p>
         </td>
-        <td><p>Construct habitat data from measures of topography.</p></td>
+        <td><p>Structure habitat data from measures of topography.</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="fgeo_topography.html">fgeo_topography()</a></code> </p>
         </td>
-        <td><p>Calculate mean elevation, convexity and slope.</p></td>
+        <td><p>Structure topography data with mean elevation, convexity, and slope.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -344,7 +362,7 @@
       <li><a href="#section-functions-to-import-export-data">Functions to import/export data</a></li>
       <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
       <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
-      <li><a href="#section-add-new-columns">Add new columns</a></li>
+      <li><a href="#section-add-new-columns-to-a-dataframe">Add new columns to a dataframe</a></li>
       <li><a href="#section-transform-lists-to-dataframes">Transform lists to dataframes</a></li>
       <li><a href="#section-create-different-classes-of-forestgeo-data">Create different classes of ForestGEO data</a></li>
       <li><a href="#section-create-different-classes-of-forestgeo-data">Create different classes of ForestGEO data</a></li>

@@ -1,4 +1,4 @@
-#' `recode()` by looking up `old` and `new` values (from a lookup table).
+#' Modify a vector to replace old with new values from a lookup table.
 #'
 #' Use this function inside `dplyr::recode()` to recode a vector based on values
 #' from two other vectors, where `old` and `new` codes are looked up. These
