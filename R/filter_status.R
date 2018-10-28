@@ -15,7 +15,7 @@
 #'
 #' @seealso [add_status_tree()], [fgeo.base::drop_status()].
 #'
-#' @family functions to pick or drop rows of a dataframe.
+#' @family functions to pick or drop rows of a ForestGEO dataframe
 #'
 #' @return A filtered version of the dataframe `x`.
 #' @export
@@ -24,7 +24,7 @@
 #' library(dplyr)
 #' library(fgeo.tool)
 #' 
-#' #' # Filter by the status of each stem (wood = "stem") -----------------------
+#' # Filter by the status of each stem (wood = "stem") ----------------------
 #' 
 #' # CENSUS TABLE: STEM TABLE
 #' 

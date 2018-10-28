@@ -66,7 +66,7 @@ pick_main_stem(census)
 pick_main_stemid(census)
 }
 \seealso{
-Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{drop_twice_dead}},
   \code{\link{filter_status}}
 }
-\concept{functions to pick or drop rows of a dataframe.}
+\concept{functions to pick or drop rows of a ForestGEO dataframe}

@@ -8,6 +8,8 @@
 #' @inheritParams purrr::map_at
 #' 
 #' @seealso [measurements::conv_unit()], [purrr::map_at()].
+#' 
+#' @family general functions to edit data in place
 #'
 #' @return An object with the same structure as `x` (vector or dataframe).
 #'
@@ -46,6 +48,8 @@ convert_unit_at <- function(x, .at, from, to) {
 #' @param x Dataframe.
 #' @param denominator A numeric vector of length 1.
 #' @inheritParams purrr::map_at
+#' 
+#' @family general functions to edit data in place
 #'
 #' @return A data.frame.
 #' @export

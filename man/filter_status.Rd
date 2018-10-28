@@ -37,7 +37,7 @@ on the status of its stems see \code{\link[=add_status_tree]{add_status_tree()}}
 library(dplyr)
 library(fgeo.tool)
 
-#' # Filter by the status of each stem (wood = "stem") -----------------------
+# Filter by the status of each stem (wood = "stem") ----------------------
 
 # CENSUS TABLE: STEM TABLE
 
@@ -154,7 +154,7 @@ table(result$status_tree)
 \seealso{
 \code{\link[=add_status_tree]{add_status_tree()}}, \code{\link[fgeo.base:drop_status]{fgeo.base::drop_status()}}.
 
-Other functions to pick or drop rows of a dataframe.: \code{\link{drop_twice_dead}},
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{drop_twice_dead}},
   \code{\link{pick_main_stem}}
 }
-\concept{functions to pick or drop rows of a dataframe.}
+\concept{functions to pick or drop rows of a ForestGEO dataframe}

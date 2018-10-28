@@ -43,4 +43,8 @@ mutate(census, sp = recode(sp, lookup(look$old, look$new)))
 }
 \seealso{
 \code{dplyr::recode()}
+
+Other general functions to edit data in place: \code{\link{convert_unit}},
+  \code{\link{standardize_at}}
 }
+\concept{general functions to edit data in place}

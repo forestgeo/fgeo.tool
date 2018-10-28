@@ -33,3 +33,4 @@ simply with \code{\link[base:as.data.frame]{base::as.data.frame()}} (or similar 
 \code{\link[fgeo.tool:to_df.demography_lst_by]{fgeo.tool::to_df.demography_lst_by()}}.
 }
 \concept{fgeo generics}
+\keyword{internal}

@@ -12,6 +12,8 @@
 #' @section Acknowledgment:
 #' Thanks to David Kenfack for inspiring this function.
 #'
+#' @family general functions to edit data in place
+#'
 #' @return A "spliced" list with names from `old` and values from `new`. The
 #' kind of data structure that you can feed to `...` in dplyr::recode()`.
 #'

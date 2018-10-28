@@ -1,12 +1,12 @@
 #' Path to directory containing example data.
 #' 
 #' @param path Path to a file (with extension) from inst/extdata/.
+#' 
+#' @keywords internal
 #'
 #' @return Path to directory containing example data.
-#' @export
-#'
-#' @export
 #' 
+#' @export
 #' @examples
 #' tool_example("multiple_workbooks")
 #' dir(tool_example("multiple_workbooks"))

@@ -114,9 +114,12 @@ add_subquad <- function(df,
 #'      02 12 22 32          12 22 32 42
 #'      01 11 21 31          11 21 31 41
 #'   ```
-#' @return A modified version of the input.
-#' @export
 #'
+#'
+#' @return A modified version of the input.
+#' 
+#' @keywords internal
+#' @export
 #' @examples
 #' first_subquad_11 <- tibble::tibble(subquadrat = c("11", "12", "22"))
 #' first_subquad_11

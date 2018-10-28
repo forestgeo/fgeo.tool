@@ -31,7 +31,7 @@
 #' @return A dataframe with one row per per treeid per censusid and a single 
 #'   plotname.
 #' 
-#' @family functions to pick or drop rows of a dataframe.
+#' @family functions to pick or drop rows of a ForestGEO dataframe
 #'
 #' @name pick_main_stem
 #'

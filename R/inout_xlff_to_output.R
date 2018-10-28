@@ -27,6 +27,8 @@
 #' @param dir_out String giving the directory where to write .csv files to.
 #' @param first_census Use `TRUE` if this is your first census. Use `FALSE`
 #'   (default) if this is not your first census but a recensus.
+#'   
+#' @keywords internal
 #' 
 #' @return `xlff_to_csv()` and `xlff_to_xl()` write a .csv or excel (.xlsx) file
 #'   per workbook -- combining all spreadsheets. `xlff_to_dfs` outputs a list

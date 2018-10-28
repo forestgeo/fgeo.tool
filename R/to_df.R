@@ -19,6 +19,7 @@
 #'   [fgeo.tool::to_df.demography_lst_by()].
 #' 
 #' @family fgeo generics
+#' @keywords internal
 #'
 #' @return A dataframe.
 #' @export

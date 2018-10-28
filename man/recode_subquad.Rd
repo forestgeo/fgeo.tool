@@ -34,3 +34,4 @@ first_subquad_01
 first_subquad_11 <- recode_subquad(first_subquad_01, offset = 1)
 first_subquad_11
 }
+\keyword{internal}

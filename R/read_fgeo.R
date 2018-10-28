@@ -16,6 +16,7 @@
 #' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #' 
 #' @family functions to read text files delivered by ForestgGEO's database.
+#' @family functions to import/export ForestGEO data
 #'
 #' @return A dataframe (or tibble).
 #'
@@ -86,6 +87,9 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' 
 #' @family functions to operate on column types.
 #' @family functions to read text files delivered by ForestgGEO's database.
+#' @family functions to import/export ForestGEO data
+#' 
+#' @keywords internal
 #'
 #' @return A list.
 #' @export

@@ -117,8 +117,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-read" class="hasAnchor"><a href="#section-read" class="anchor"></a>Read</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+          <h2 id="section-functions-to-import-export-data" class="hasAnchor"><a href="#section-functions-to-import-export-data" class="anchor"></a>Functions to import/export data</h2>
+          <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
@@ -130,15 +130,21 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="type_fgeo.html">type_vft()</a></code> <code><a href="type_fgeo.html">type_taxa()</a></code> </p>
+          <p><code><a href="dfs_to_csv.html">dfs_to_csv()</a></code> </p>
         </td>
-        <td><p>Help to read ForestGEO data safely, with consistent column type.</p></td>
+        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_dfs()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_dfs()</a></code> </p>
+        </td>
+        <td><p>Read all .csv or flat excel files from a directory into dataframes.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
           <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+          <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
@@ -150,24 +156,30 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="recode_subquad.html">recode_subquad()</a></code> </p>
+          <p><code><a href="convert_unit.html">convert_unit()</a></code> <code><a href="convert_unit.html">convert_unit_at()</a></code> </p>
         </td>
-        <td><p>Recode subquadrat.</p></td>
+        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lookup.html">lookup()</a></code> </p>
+        </td>
+        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
+        </td>
+        <td><p>Divide (standardize) columns of a dataframe by a constant denominator.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
           <h2 id="section-pick-drop-rows-with-matching-conditions" class="hasAnchor"><a href="#section-pick-drop-rows-with-matching-conditions" class="anchor"></a>Pick/drop rows with matching conditions</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+          <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="drop_twice_dead.html">drop_twice_dead()</a></code> </p>
-        </td>
-        <td><p>Remove trees found dead in both the last and previous last censuses.</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="filter_status.html">filter_status()</a></code> <code><a href="filter_status.html">drop_dead_stem()</a></code> <code><a href="filter_status.html">drop_dead_tree()</a></code> </p>
@@ -179,12 +191,24 @@
           <p><code><a href="pick_main_stem.html">pick_main_stem()</a></code> <code><a href="pick_main_stem.html">pick_main_stemid()</a></code> </p>
         </td>
         <td><p>Pick the main stem or main stemid(s) of each tree in each census.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
+        </td>
+        <td><p>Identify stems to recensus.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
+        </td>
+        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
           <h2 id="section-add-new-columns" class="hasAnchor"><a href="#section-add-new-columns" class="anchor"></a>Add new columns</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+          <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
@@ -215,8 +239,8 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-guess" class="hasAnchor"><a href="#section-guess" class="anchor"></a>Guess</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+          <h2 id="section-guess-grid-size-and-plot-dimensions" class="hasAnchor"><a href="#section-guess-grid-size-and-plot-dimensions" class="anchor"></a>Guess grid size and plot dimensions</h2>
+          <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
@@ -229,17 +253,11 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-fgeo-generics-and-methods" class="hasAnchor"><a href="#section-fgeo-generics-and-methods" class="anchor"></a>fgeo generics and methods</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+          <h2 id="section-transform-lists-to-dataframes" class="hasAnchor"><a href="#section-transform-lists-to-dataframes" class="anchor"></a>Transform lists to dataframes</h2>
+          <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
-        
-        <td>
-          <p><code><a href="to_df.html">to_df()</a></code> </p>
-        </td>
-        <td><p>Create objects of class "data.frame" from other fgeo classes.</p></td>
-      </tr><tr>
         
         <td>
           <p><code><a href="to_df.demography_lst.html">to_df(<i>&lt;demography_lst&gt;</i>)</a></code> <code><a href="to_df.demography_lst.html">to_df(<i>&lt;demography_lst_by&gt;</i>)</a></code> </p>
@@ -261,8 +279,8 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-construct-fgeo-classes" class="hasAnchor"><a href="#section-construct-fgeo-classes" class="anchor"></a>Construct fgeo classes</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
+          <h2 id="section-create-different-classes-of-forestgeo-data" class="hasAnchor"><a href="#section-create-different-classes-of-forestgeo-data" class="anchor"></a>Create different classes of ForestGEO data</h2>
+          <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
@@ -284,98 +302,6 @@
         </td>
         <td><p>Calculate mean elevation, convexity and slope.</p></td>
       </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-access-data" class="hasAnchor"><a href="#section-access-data" class="anchor"></a>Access data</h2>
-          <p class="section-desc"><p>Specific to ForestGEO</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="tool_example.html">tool_example()</a></code> </p>
-        </td>
-        <td><p>Path to directory containing example data.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-todo-extract-move-data-from-an-input-to-an-output" class="hasAnchor"><a href="#section-todo-extract-move-data-from-an-input-to-an-output" class="anchor"></a>TODO EXTRACT Move data from an input to an output</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="dfs_to_csv.html">dfs_to_csv()</a></code> </p>
-        </td>
-        <td><p>Save each dataframe in a list to a different .csv file.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="files_to_df.html">csv_to_df()</a></code> <code><a href="files_to_df.html">csv_to_dfs()</a></code> <code><a href="files_to_df.html">xl_to_df()</a></code> <code><a href="files_to_df.html">xl_to_dfs()</a></code> </p>
-        </td>
-        <td><p>Read all .csv or flat excel files from a directory into dataframes.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="dfs_to_df.html">dfs_to_df()</a></code> </p>
-        </td>
-        <td><p>Reduce a list of dataframes into a single dataframe via dplyr::full_join()</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="xlsheets_to_dfs.html">xlsheets_to_dfs()</a></code> </p>
-        </td>
-        <td><p>Read one excel workbook and map each spreadsheet to a dataframe in a list.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-pick-drop-rows-with-matching-conditions" class="hasAnchor"><a href="#section-pick-drop-rows-with-matching-conditions" class="anchor"></a>Pick/drop rows with matching conditions</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="pick_recensus.html">pick_recensus()</a></code> </p>
-        </td>
-        <td><p>Identify stems to recensus.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pick_top.html">pick_top()</a></code> </p>
-        </td>
-        <td><p>Filter a data set by matching n values from the head (or tail) of a variable.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-edit-data-in-place" class="hasAnchor"><a href="#section-edit-data-in-place" class="anchor"></a>Edit data in place</h2>
-          <p class="section-desc"><p>General (not specific to ForestGEO)</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="convert_unit.html">convert_unit()</a></code> <code><a href="convert_unit.html">convert_unit_at()</a></code> </p>
-        </td>
-        <td><p>Convert units of a vector or columns of a dataframe.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lookup.html">lookup()</a></code> </p>
-        </td>
-        <td><p><code>recode()</code> by looking up <code>old</code> and <code>new</code> values (from a lookup table).</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="standardize_at.html">standardize_at()</a></code> </p>
-        </td>
-        <td><p>Divide (standardize) columns of a dataframe by a constant denominator.</p></td>
-      </tr>
     </tbody>
     </table>
   </div>
@@ -383,17 +309,13 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-read">Read</a></li>
+      <li><a href="#section-functions-to-import-export-data">Functions to import/export data</a></li>
       <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
       <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
       <li><a href="#section-add-new-columns">Add new columns</a></li>
-      <li><a href="#section-guess">Guess</a></li>
-      <li><a href="#section-fgeo-generics-and-methods">fgeo generics and methods</a></li>
-      <li><a href="#section-construct-fgeo-classes">Construct fgeo classes</a></li>
-      <li><a href="#section-access-data">Access data</a></li>
-      <li><a href="#section-todo-extract-move-data-from-an-input-to-an-output">TODO EXTRACT Move data from an input to an output</a></li>
-      <li><a href="#section-pick-drop-rows-with-matching-conditions">Pick/drop rows with matching conditions</a></li>
-      <li><a href="#section-edit-data-in-place">Edit data in place</a></li>
+      <li><a href="#section-guess-grid-size-and-plot-dimensions">Guess grid size and plot dimensions</a></li>
+      <li><a href="#section-transform-lists-to-dataframes">Transform lists to dataframes</a></li>
+      <li><a href="#section-create-different-classes-of-forestgeo-data">Create different classes of ForestGEO data</a></li>
     </ul>
   </div>
 </div>

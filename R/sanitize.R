@@ -14,6 +14,8 @@
 #' 
 #' @seealso [read_fgeo()].
 #' 
+#' @family functions to edit ForestGEO data in place
+#' 
 #' @section Acknowledgments:
 #' Thanks to Shameema Jafferjee Esufali for motivating this functions.
 #'

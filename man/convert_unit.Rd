@@ -42,4 +42,8 @@ convert_unit_at(dfm, .at = names(dfm), from = "mm2", to = "hectare")
 }
 \seealso{
 \code{\link[measurements:conv_unit]{measurements::conv_unit()}}, \code{\link[purrr:map_at]{purrr::map_at()}}.
+
+Other general functions to edit data in place: \code{\link{lookup}},
+  \code{\link{standardize_at}}
 }
+\concept{general functions to edit data in place}

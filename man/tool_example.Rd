@@ -20,3 +20,4 @@ tool_example("multiple_workbooks")
 dir(tool_example("multiple_workbooks"))
 xl_to_df(tool_example("multiple_workbooks"))
 }
+\keyword{internal}

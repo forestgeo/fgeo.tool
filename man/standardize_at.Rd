@@ -26,3 +26,8 @@ dfm <- data.frame(a = 1:3, b = 11:13)
 standardize_at(dfm, "a", denominator = 100)
 standardize_at(dfm, names(dfm), denominator = 100)
 }
+\seealso{
+Other general functions to edit data in place: \code{\link{convert_unit}},
+  \code{\link{lookup}}
+}
+\concept{general functions to edit data in place}
