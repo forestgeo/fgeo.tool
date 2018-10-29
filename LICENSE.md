@@ -566,7 +566,7 @@ where the full notice is found.
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    along with this program.  If not, see **<http://www.gnu.org/licenses/>.**
 
 Also add information on how to contact you by electronic and paper mail.
 
@@ -585,7 +585,7 @@ for a GUI interface, you would use an â€œabout boxâ€.
 You should also get your employer (if you work as a programmer) or school, if any, to
 sign a â€œcopyright disclaimerâ€ for the program, if necessary. For more
 information on this, and how to apply and follow the GNU GPL, see
-&lt;<http://www.gnu.org/licenses/>&gt;.
+&lt;**<http://www.gnu.org/licenses/>&gt;.**
 
 The GNU General Public License does not permit incorporating your program into
 proprietary programs. If your program is a subroutine library, you may consider it
