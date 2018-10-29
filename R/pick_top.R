@@ -1,7 +1,7 @@
 #' Pick dataframe rows by matching n values from the head (or tail) of column.
 #'
 #' This function picks rows from a dataframe by matching n unique values from
-#' the head (or tail) of column. Similar to [dplyr::top_n()], but instead of
+#' the head (or tail) of a column. It is similar to [dplyr::top_n()], but instead of
 #' using `min_rank()` or `max_rank()`, it uses [utils::head()] or
 #' [utils::tail()]; and `var` is flexible as in [dplyr::pull()].
 #'
