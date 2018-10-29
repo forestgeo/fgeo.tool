@@ -33,10 +33,9 @@ read_with(readr::read_rds)(path_rds)
 if (!requireNamespace("rio"))
   stop("Please install rio with install.packges('rio') to run this example")
 
-guess_list <- read_with(rio::import)
 path_mixed_files <- tool_example("mixed_files")
 dir(path_mixed_files)
-guess_list(path_mixed_files)
+read_with(rio::import)(path_mixed_files)
 }
 }
 \seealso{
