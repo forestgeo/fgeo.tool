@@ -16,11 +16,18 @@ Many of its functions are used in multiple other **fgeo** packages.
 
 ## Installation
 
-[Install all **fgeo** packages in one
-step](https://forestgeo.github.io/fgeo/index.html#installation)
+Install the pre-release version of **fgeo.tool**:
+
+    # install.packages("devtools")
+    devtools::install_github("forestgeo/fgeo.tool@pre-release")
+
+Or install the development version of **fgeo.tool**:
 
     # install.packages("devtools")
     devtools::install_github("forestgeo/fgeo.tool")
+
+Or [install all **fgeo** packages in one
+step](https://forestgeo.github.io/fgeo/index.html#installation).
 
 For details on how to install packages from GitHub, see [this
 article](https://goo.gl/dQKEeg).
