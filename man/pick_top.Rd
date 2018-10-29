@@ -7,23 +7,20 @@
 pick_top(.data, var, n = 1)
 }
 \arguments{
-\item{.data}{A table of data}
+\item{.data}{A table of data.}
 
 \item{var}{A variable specified as:
 \itemize{
 \item a literal variable name
 \item a positive integer, giving the position counting from the left
 \item a negative integer, giving the position counting from the right.
-}
+The default returns the last column (on the assumption that is the column you
+have created most recently). This argument is taken by expression and
+supports quasiquotation (you can unquote column names and column positions).
+}}
 
-The default returns the last column (on the assumption that's the
-column you've created most recently).
-
-This argument is taken by expression and supports
-\link[rlang:quasiquotation]{quasiquotation} (you can unquote column
-names and column positions).}
-
-\item{n}{Number of values used for matching, from the head (or tail) of \code{var}.}
+\item{n}{Number of values used for matching, from the head (or tail) of
+\code{var}.}
 }
 \value{
 A filtered version of the input dataset.

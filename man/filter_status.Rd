@@ -31,7 +31,7 @@ A filtered version of the dataframe \code{x}.
 \description{
 In stem- and ViewFull-tables \code{status} and \code{Status} refer to each stem. In
 tree-tables \code{status} refers to tree. To get the status of each tree based
-on the status of its stems see \code{\link[=add_status_tree]{add_status_tree()}}.
+on the status of its stems, see \code{\link[=add_status_tree]{add_status_tree()}}.
 }
 \examples{
 library(dplyr)

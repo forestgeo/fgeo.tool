@@ -5,8 +5,17 @@
 #' using `min_rank()` or `max_rank()`, it uses [utils::head()] or
 #' [utils::tail()]; and `var` is flexible as in [dplyr::pull()].
 #'
-#' @inheritParams dplyr::pull
-#' @param n Number of values used for matching, from the head (or tail) of `var`.
+#' @param .data A table of data.
+#' @param var A variable specified as:
+#'   * a literal variable name
+#'   * a positive integer, giving the position counting from the left
+#'   * a negative integer, giving the position counting from the right.
+#' The default returns the last column (on the assumption that is the column you
+#' have created most recently). This argument is taken by expression and
+#' supports quasiquotation (you can unquote column names and column positions).
+#' @param n Number of values used for matching, from the head (or tail) of
+#'   `var`.
+#' 
 #' @seealso [dplyr::pull], [dplyr::top_n], [utils::head()], [utils::tail()].
 #'
 #' @return A filtered version of the input dataset.

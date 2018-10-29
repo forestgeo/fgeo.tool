@@ -35,8 +35,8 @@ xlbooks_list(path_dir, ...)
 A list of dataframes.
 }
 \description{
-These functions read from a directory all files of a specific extension,
-indicated by each function's name. Notice that function names have the format
+These functions read from a specific directory where every file has its own extension
+as indicated by each function's name. Notice that function names have the format
 input_output, i.e. file-extension_list. If none of these functions do what
 you want, create your own with \code{\link[=read_with]{read_with()}}.
 }

@@ -65,7 +65,7 @@ Thanks to Shameema Jafferjee Esufali for motivating this functions.
 \examples{
 vft <- fgeo.data::luquillo_vft_4quad
 
-# Introdue problems to show how to fix them
+# Introduce problems to show how to fix them
 # Bad column types
 vft[] <- lapply(vft, as.character)
 # Bad representation of missing values
