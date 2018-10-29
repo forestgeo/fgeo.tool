@@ -35,15 +35,17 @@ navbar:
 
 reference:
 
-  - title: Functions to import a single file of ForestGEO data
+  - title: Import a single file of ForestGEO data
     contents:
     - has_concept("functions to import a single file of ForestGEO data")
     
-  - title: Functions to import multiple files from a directory
+  - title: Import multiple files from a directory into a list
+    desc: Notice that function names have the format input_output
     contents:
     - has_concept("general functions to import data")
     
-  - title: Functions to export multiple files in a directory
+  - title: Export a list as multiple files in a directory
+    desc: Notice that function names have the format input_output
     contents:
     - has_concept("general functions to export data")
 
