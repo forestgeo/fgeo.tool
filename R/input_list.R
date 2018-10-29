@@ -27,9 +27,9 @@
 #'   stop("Please install rio with install.packges('rio') to run this example")
 #' 
 #' guess_list <- read_with(rio::import)
-#' path_mixed_ext <- tool_example("mixed_files")
-#' dir(path_mixed_ext)
-#' guess_list(path_mixed_ext)
+#' path_mixed_files <- tool_example("mixed_files")
+#' dir(path_mixed_files)
+#' guess_list(path_mixed_files)
 #' }
 read_with <- function(.f, regexp = NULL) {
   function(path_dir, ...) {
