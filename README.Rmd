@@ -46,24 +46,45 @@ For details on how to install packages from GitHub, see [this article](https://g
 
 ```{r}
 library(fgeo.tool)
+```
 
-stem <- tibble::tribble(
-  ~CensusID, ~treeID, ~stemID, ~status,
-          1,       1,       1,     "A",
-          1,       1,       2,     "D",
-          # -- -- -- -- -- -- -- -- -- 
-          1,       2,       3,     "D",
-          1,       2,       4,     "D",
-          # == == == == == == == == ==
-          2,       1,       1,     "A",
-          2,       1,       2,     "G",
-          # -- -- -- -- -- -- -- -- -- 
-          2,       2,       3,     "D",
-          2,       2,       4,     "G"
-)
+Read multiple censuses from a directory into a list of dataframes.
 
-# Determine the status of each tree based on the status of its stems
-add_status_tree(stem)
+```{r}
+dir_multi_rdata <- tool_example("rdata")
+dir(dir_multi_rdata)
+
+census56_list <- rdata_list(dir_multi_rdata)
+census56_list
+```
+
+Collapse all censuses into a single dataframe.
+
+```{r}
+census56_df <- list_df(census56_list)
+census56_df
+```
+
+Summarize by groups.
+
+```{r}
+by_census <- group_by(census56_df, CensusID)
+summarize(by_census, n = n_distinct(treeID))
+
+# Same
+census56_df %>% 
+  group_by(CensusID) %>% 
+  summarize(n = n_distinct(treeID))
+```
+
+Pick rows and reorganize columns.
+
+```{r}
+census56_df %>% 
+  pick_dbh_over(250) %>% 
+  pick_status("A") %>%
+  add_status_tree() %>% 
+  select(dbh, contains("status"), everything())
 ```
 
 [Get started with __fgeo__](https://forestgeo.github.io/fgeo/articles/fgeo.html)

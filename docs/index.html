@@ -102,36 +102,118 @@ devtools::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; Attaching package: 'fgeo.tool'</span></a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; The following object is masked from 'package:stats':</span></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;     filter</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8">stem &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(</a>
-<a class="sourceLine" id="cb3-9" data-line-number="9">  <span class="op">~</span>CensusID, <span class="op">~</span>treeID, <span class="op">~</span>stemID, <span class="op">~</span>status,</a>
-<a class="sourceLine" id="cb3-10" data-line-number="10">          <span class="dv">1</span>,       <span class="dv">1</span>,       <span class="dv">1</span>,     <span class="st">"A"</span>,</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">          <span class="dv">1</span>,       <span class="dv">1</span>,       <span class="dv">2</span>,     <span class="st">"D"</span>,</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">          <span class="co"># -- -- -- -- -- -- -- -- -- </span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">          <span class="dv">1</span>,       <span class="dv">2</span>,       <span class="dv">3</span>,     <span class="st">"D"</span>,</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">          <span class="dv">1</span>,       <span class="dv">2</span>,       <span class="dv">4</span>,     <span class="st">"D"</span>,</a>
-<a class="sourceLine" id="cb3-15" data-line-number="15">          <span class="co"># == == == == == == == == ==</span></a>
-<a class="sourceLine" id="cb3-16" data-line-number="16">          <span class="dv">2</span>,       <span class="dv">1</span>,       <span class="dv">1</span>,     <span class="st">"A"</span>,</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">          <span class="dv">2</span>,       <span class="dv">1</span>,       <span class="dv">2</span>,     <span class="st">"G"</span>,</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">          <span class="co"># -- -- -- -- -- -- -- -- -- </span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">          <span class="dv">2</span>,       <span class="dv">2</span>,       <span class="dv">3</span>,     <span class="st">"D"</span>,</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">          <span class="dv">2</span>,       <span class="dv">2</span>,       <span class="dv">4</span>,     <span class="st">"G"</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">)</a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="co"># Determine the status of each tree based on the status of its stems</span></a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>(stem)</a>
-<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="co">#&gt; # A tibble: 8 x 5</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26"><span class="co">#&gt;   CensusID treeID stemID status status_tree</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27"><span class="co">#&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      </span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="co">#&gt; 1        1      1      1 A      A          </span></a>
-<a class="sourceLine" id="cb3-29" data-line-number="29"><span class="co">#&gt; 2        1      1      2 D      A          </span></a>
-<a class="sourceLine" id="cb3-30" data-line-number="30"><span class="co">#&gt; 3        1      2      3 D      D          </span></a>
-<a class="sourceLine" id="cb3-31" data-line-number="31"><span class="co">#&gt; 4        1      2      4 D      D          </span></a>
-<a class="sourceLine" id="cb3-32" data-line-number="32"><span class="co">#&gt; 5        2      1      1 A      A          </span></a>
-<a class="sourceLine" id="cb3-33" data-line-number="33"><span class="co">#&gt; 6        2      1      2 G      A          </span></a>
-<a class="sourceLine" id="cb3-34" data-line-number="34"><span class="co">#&gt; 7        2      2      3 D      A          </span></a>
-<a class="sourceLine" id="cb3-35" data-line-number="35"><span class="co">#&gt; 8        2      2      4 G      A</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;     filter</span></a></code></pre></div>
+<p>Read multiple censuses from a directory into a list of dataframes.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">dir_multi_rdata &lt;-<span class="st"> </span><span class="kw"><a href="reference/tool_example.html">tool_example</a></span>(<span class="st">"rdata"</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="kw">dir</span>(dir_multi_rdata)</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt; [1] "tree5.RData" "tree6.RData"</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">census56_list &lt;-<span class="st"> </span><span class="kw"><a href="reference/dir_list.html">rdata_list</a></span>(dir_multi_rdata)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">census56_list</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; $tree5</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; # A tibble: 1,000 x 19</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    466727        5</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    439989        5</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co">#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    466743        5</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co">#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    440021        5</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"><span class="co">#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889        5</span></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co">#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    440031        5</span></a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; 10   1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957        5</span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co">#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co">#&gt; #   nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"><span class="co">#&gt; $tree6</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co">#&gt; # A tibble: 1,000 x 19</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co">#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID</span></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28"><span class="co">#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb4-29" data-line-number="29"><span class="co">#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6</span></a>
+<a class="sourceLine" id="cb4-30" data-line-number="30"><span class="co">#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6</span></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"><span class="co">#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"><span class="co">#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    614253        6</span></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33"><span class="co">#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    598429        6</span></a>
+<a class="sourceLine" id="cb4-34" data-line-number="34"><span class="co">#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    614211        6</span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"><span class="co">#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    603131        6</span></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36"><span class="co">#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    616923        6</span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"><span class="co">#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    603151        6</span></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38"><span class="co">#&gt; 10   1380   1702 1015~ 101560  CASA~ 820     142.   386.    614023        6</span></a>
+<a class="sourceLine" id="cb4-39" data-line-number="39"><span class="co">#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co">#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co">#&gt; #   nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</span></a></code></pre></div>
+<p>Collapse all censuses into a single dataframe.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">census56_df &lt;-<span class="st"> </span><span class="kw"><a href="reference/list_df.html">list_df</a></span>(census56_list)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">census56_df</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt; # A tibble: 2,000 x 19</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    466727        5</span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="co">#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    439989        5</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co">#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    466743        5</span></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co">#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    440021        5</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co">#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889        5</span></a>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="co">#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    440031        5</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15"><span class="co">#&gt; 10   1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957        5</span></a>
+<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="co">#&gt; # ... with 1,990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="co">#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;,</span></a>
+<a class="sourceLine" id="cb5-18" data-line-number="18"><span class="co">#&gt; #   nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</span></a></code></pre></div>
+<p>Summarize by groups.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">by_census &lt;-<span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(census56_df, CensusID)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(by_census, <span class="dt">n =</span> <span class="kw">n_distinct</span>(treeID))</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt; Warning in summarise_impl(.data, dots): hybrid evaluation forced for</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; `n_distinct`. Please use dplyr::n_distinct() or library(dplyr) to remove</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; this warning.</span></a>
+<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="co">#&gt;   CensusID     n</span></a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="co">#&gt;      &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="co">#&gt; 1        5   957</span></a>
+<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="co">#&gt; 2        6  1000</span></a>
+<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="co">#&gt; 3       NA    43</span></a>
+<a class="sourceLine" id="cb6-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb6-13" data-line-number="13"><span class="co"># Same</span></a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">census56_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(CensusID) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb6-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="dt">n =</span> <span class="kw">n_distinct</span>(treeID))</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="co">#&gt; Warning in summarise_impl(.data, dots): hybrid evaluation forced for</span></a>
+<a class="sourceLine" id="cb6-18" data-line-number="18"><span class="co">#&gt; `n_distinct`. Please use dplyr::n_distinct() or library(dplyr) to remove</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19"><span class="co">#&gt; this warning.</span></a>
+<a class="sourceLine" id="cb6-20" data-line-number="20"><span class="co">#&gt; # A tibble: 3 x 2</span></a>
+<a class="sourceLine" id="cb6-21" data-line-number="21"><span class="co">#&gt;   CensusID     n</span></a>
+<a class="sourceLine" id="cb6-22" data-line-number="22"><span class="co">#&gt;      &lt;int&gt; &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb6-23" data-line-number="23"><span class="co">#&gt; 1        5   957</span></a>
+<a class="sourceLine" id="cb6-24" data-line-number="24"><span class="co">#&gt; 2        6  1000</span></a>
+<a class="sourceLine" id="cb6-25" data-line-number="25"><span class="co">#&gt; 3       NA    43</span></a></code></pre></div>
+<p>Pick rows and reorganize columns.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">census56_df <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="reference/pick_drop.html">pick_dbh_over</a></span>(<span class="dv">250</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="reference/pick_drop.html">pick_status</a></span>(<span class="st">"A"</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="reference/add_status_tree.html">add_status_tree</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(dbh, <span class="kw"><a href="http://www.rdocumentation.org/packages/tidyselect/topics/select_helpers">contains</a></span>(<span class="st">"status"</span>), <span class="kw"><a href="http://www.rdocumentation.org/packages/tidyselect/topics/select_helpers">everything</a></span>())</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; Warning: No observation has .status = D</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt;   * Detected values: A</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; # A tibble: 210 x 20</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt;      dbh DFstatus status status_tree treeID stemID tag   StemTag sp   </span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;        &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt;  1   604 alive    A      A             1168   1438 10131 10131   DACE~</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="co">#&gt;  2    NA broken ~ A      A             1380 114352 1015~ 149529  CASA~</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13"><span class="co">#&gt;  3   370 alive    A      A             1564   1910 10176 10176   HOMR~</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14"><span class="co">#&gt;  4    NA broken ~ A      A             1652   2026 1018~ 101867  OCOL~</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15"><span class="co">#&gt;  5   296 alive    A      A             3645   4426 1041~ 104113  SCHM~</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16"><span class="co">#&gt;  6   359 alive    A      A             4329   5283 1049  1049    INGL~</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17"><span class="co">#&gt;  7    NA broken ~ A      A             6677   8147 1077~ 107760  CECS~</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"><span class="co">#&gt;  8   319 alive    A      A             7832   9768 1092~ 109231  TETB~</span></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19"><span class="co">#&gt;  9    NA stem de~ A      A             9689  12178 1115~ 111528  CORB~</span></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20"><span class="co">#&gt; 10    NA broken ~ A      A             9873 116236 1117~ 129228  MICP~</span></a>
+<a class="sourceLine" id="cb7-21" data-line-number="21"><span class="co">#&gt; # ... with 200 more rows, and 11 more variables: quadrat &lt;chr&gt;, gx &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="co">#&gt; #   gy &lt;dbl&gt;, MeasureID &lt;int&gt;, CensusID &lt;int&gt;, pom &lt;chr&gt;, hom &lt;dbl&gt;,</span></a>
+<a class="sourceLine" id="cb7-23" data-line-number="23"><span class="co">#&gt; #   ExactDate &lt;date&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, date &lt;dbl&gt;</span></a></code></pre></div>
 <p><a href="https://forestgeo.github.io/fgeo/articles/fgeo.html">Get started with <strong>fgeo</strong></a></p>
 </div>
 <div id="information" class="section level2">
