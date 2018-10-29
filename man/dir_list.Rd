@@ -5,16 +5,19 @@
 \alias{rdata_list}
 \alias{rds_list}
 \alias{csv_list}
+\alias{delim_list}
 \alias{tsv_list}
 \alias{xl_list}
 \alias{xlbooks_list}
-\title{Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list.}
+\title{Import multiple files (.csv, excel, .Rdata, ...) from a directory into a list.}
 \usage{
 rdata_list(path_dir, ...)
 
 rds_list(path_dir, ...)
 
 csv_list(path_dir, ...)
+
+delim_list(path_dir, ...)
 
 tsv_list(path_dir, ...)
 
@@ -32,7 +35,10 @@ xlbooks_list(path_dir, ...)
 A list of dataframes.
 }
 \description{
-Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list.
+These functions read from a directory all files of a specific extension,
+indicated by each function's name. Notice that function names have the format
+input_output, i.e. file-extension_list. If none of these functions do what
+you want, create your own with \code{\link[=read_with]{read_with()}}.
 }
 \examples{
 path_rdata <- tool_example("rdata")
@@ -49,6 +55,19 @@ path_csv <- tool_example("csv")
 path_csv
 dir(path_csv)
 csv_list(path_csv)
+
+path_tsv <- tool_example("tsv")
+path_tsv
+dir(path_tsv)
+tsv_list(path_tsv)
+
+# Weird: Tab separated columns in a file with .csv extension
+path_weird <- tool_example("weird")
+dir(path_weird)
+# Extension is .csv, but this is not what you want
+csv_list(path_weird)
+# Use this instead
+delim_list(path_weird, delim = "\\t")
 
 path_xl <- tool_example("xl")
 path_xl

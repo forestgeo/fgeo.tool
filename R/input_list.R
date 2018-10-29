@@ -26,10 +26,9 @@
 #' if (!requireNamespace("rio"))
 #'   stop("Please install rio with install.packges('rio') to run this example")
 #' 
-#' guess_list <- read_with(rio::import)
 #' path_mixed_files <- tool_example("mixed_files")
 #' dir(path_mixed_files)
-#' guess_list(path_mixed_files)
+#' read_with(rio::import)(path_mixed_files)
 #' }
 read_with <- function(.f, regexp = NULL) {
   function(path_dir, ...) {
@@ -40,7 +39,12 @@ read_with <- function(.f, regexp = NULL) {
   }
 }
 
-#' Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list.
+#' Import multiple files (.csv, excel, .Rdata, ...) from a directory into a list.
+#' 
+#' These functions read from a directory all files of a specific extension,
+#' indicated by each function's name. Notice that function names have the format
+#' input_output, i.e. file-extension_list. If none of these functions do what
+#' you want, create your own with [read_with()].
 #' 
 #' @param path_dir String; the path to a directory containing the files to read
 #'   (all must be of appropriate format; see examples).
@@ -67,6 +71,19 @@ read_with <- function(.f, regexp = NULL) {
 #' dir(path_csv)
 #' csv_list(path_csv)
 #' 
+#' path_tsv <- tool_example("tsv")
+#' path_tsv
+#' dir(path_tsv)
+#' tsv_list(path_tsv)
+#' 
+#' # Weird: Tab separated columns in a file with .csv extension
+#' path_weird <- tool_example("weird")
+#' dir(path_weird)
+#' # Extension is .csv, but this is not what you want
+#' csv_list(path_weird)
+#' # Use this instead
+#' delim_list(path_weird, delim = "\t")
+#' 
 #' path_xl <- tool_example("xl")
 #' path_xl
 #' dir(path_xl)
@@ -89,6 +106,10 @@ rds_list <- read_with(readr::read_rds, regexp = "[.]rds$")
 #' @rdname dir_list
 #' @export
 csv_list <- read_with(readr::read_csv, regexp = "[.]csv$")
+
+#' @rdname dir_list
+#' @export
+delim_list <- read_with(readr::read_delim, regexp = NULL)
 
 #' @rdname dir_list
 #' @export

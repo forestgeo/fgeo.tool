@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list. — dir_list • fgeo.tool</title>
+<title>Import multiple files (.csv, excel, .Rdata, ...) from a directory into a list. — dir_list • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,12 @@
 
 
 
-<meta property="og:title" content="Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list. — dir_list" />
+<meta property="og:title" content="Import multiple files (.csv, excel, .Rdata, ...) from a directory into a list. — dir_list" />
 
-<meta property="og:description" content="Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list." />
+<meta property="og:description" content="These functions read from a directory all files of a specific extension,
+indicated by each function's name. Notice that function names have the format
+input_output, i.e. file-extension_list. If none of these functions do what
+you want, create your own with read_with()." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,14 +109,17 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list.</h1>
+    <h1>Import multiple files (.csv, excel, .Rdata, ...) from a directory into a list.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/input_list.R'><code>R/input_list.R</code></a></small>
     <div class="hidden name"><code>dir_list.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import files (.csv, .tsv, excel sheets/workbooks, .Rdata, .rds) into a list.</p>
+    <p>These functions read from a directory all files of a specific extension,
+indicated by each function's name. Notice that function names have the format
+input_output, i.e. file-extension_list. If none of these functions do what
+you want, create your own with <code><a href='read_with.html'>read_with()</a></code>.</p>
     
     </div>
 
@@ -122,6 +128,8 @@
 <span class='fu'>rds_list</span>(<span class='no'>path_dir</span>, <span class='no'>...</span>)
 
 <span class='fu'>csv_list</span>(<span class='no'>path_dir</span>, <span class='no'>...</span>)
+
+<span class='fu'>delim_list</span>(<span class='no'>path_dir</span>, <span class='no'>...</span>)
 
 <span class='fu'>tsv_list</span>(<span class='no'>path_dir</span>, <span class='no'>...</span>)
 
@@ -246,6 +254,80 @@
 #&gt; 3       3 c      
 #&gt; 
 #&gt; $csv2
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       4 a      
+#&gt; 2       5 b      
+#&gt; 3       6 c      
+#&gt; </div><div class='input'>
+<span class='no'>path_tsv</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"tsv"</span>)
+<span class='no'>path_tsv</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Documents/Dropbox/git/fgeo.tool/inst/extdata/tsv"</div><div class='input'><span class='fu'>dir</span>(<span class='no'>path_tsv</span>)</div><div class='output co'>#&gt; [1] "tsv1.tsv" "tsv2.tsv"</div><div class='input'><span class='fu'>tsv_list</span>(<span class='no'>path_tsv</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $tsv1
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 3       3 c      
+#&gt; 
+#&gt; $tsv2
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       4 a      
+#&gt; 2       5 b      
+#&gt; 3       6 c      
+#&gt; </div><div class='input'>
+<span class='co'># Weird: Tab separated columns in a file with .csv extension</span>
+<span class='no'>path_weird</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"weird"</span>)
+<span class='fu'>dir</span>(<span class='no'>path_weird</span>)</div><div class='output co'>#&gt; [1] "tsv1.csv" "tsv2.csv"</div><div class='input'><span class='co'># Extension is .csv, but this is not what you want</span>
+<span class='fu'>csv_list</span>(<span class='no'>path_weird</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  `numbers	letters` = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  `numbers	letters` = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $tsv1
+#&gt; # A tibble: 3 x 1
+#&gt;   `numbers\tletters`
+#&gt;   &lt;chr&gt;             
+#&gt; 1 "1\ta"            
+#&gt; 2 "2\tb"            
+#&gt; 3 "3\tc"            
+#&gt; 
+#&gt; $tsv2
+#&gt; # A tibble: 3 x 1
+#&gt;   `numbers\tletters`
+#&gt;   &lt;chr&gt;             
+#&gt; 1 "4\ta"            
+#&gt; 2 "5\tb"            
+#&gt; 3 "6\tc"            
+#&gt; </div><div class='input'><span class='co'># Use this instead</span>
+<span class='fu'>delim_list</span>(<span class='no'>path_weird</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='st'>"\t"</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+#&gt; <span class='message'>cols(</span>
+#&gt; <span class='message'>  numbers = col_integer(),</span>
+#&gt; <span class='message'>  letters = col_character()</span>
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $tsv1
+#&gt; # A tibble: 3 x 2
+#&gt;   numbers letters
+#&gt;     &lt;int&gt; &lt;chr&gt;  
+#&gt; 1       1 a      
+#&gt; 2       2 b      
+#&gt; 3       3 c      
+#&gt; 
+#&gt; $tsv2
 #&gt; # A tibble: 3 x 2
 #&gt;   numbers letters
 #&gt;     &lt;int&gt; &lt;chr&gt;  
