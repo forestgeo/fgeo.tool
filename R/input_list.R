@@ -41,8 +41,8 @@ read_with <- function(.f, regexp = NULL) {
 
 #' Import multiple files (.csv, excel, .Rdata, ...) from a directory into a list.
 #' 
-#' These functions read from a directory of all files of a specific extension as
-#' indicated by each function's name. Notice that function names have the format
+#' These functions read from a specific directory where every file has its own extension
+#' as indicated by each function's name. Notice that function names have the format
 #' input_output, i.e. file-extension_list. If none of these functions do what
 #' you want, create your own with [read_with()].
 #' 
