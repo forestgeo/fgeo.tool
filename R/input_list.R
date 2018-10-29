@@ -1,7 +1,7 @@
-#' Import multiple files into a list using any given reader function.
+#' Import multiple files into a list using any given reading function.
 #'
 #' @param .f A function able to read the desired file format.
-#' @param ... Arguments passed to [fs::dir_ls()].
+#' @inheritParams fs::dir_ls 
 #' 
 #' @family general functions to import data
 #'
@@ -30,9 +30,9 @@
 #' dir(path_mixed_ext)
 #' guess_list(path_mixed_ext)
 #' }
-read_with <- function(.f, ...) {
+read_with <- function(.f, regexp = NULL) {
   function(path_dir, ...) {
-    files <- fs::dir_ls(path_dir, ...)
+    files <- fs::dir_ls(path_dir, regexp = regexp, ignore.case = TRUE)
     file_names <- fs::path_ext_remove(fs::path_file(files))
     out <- purrr::map(files, .f, ...)
     rlang::set_names(out, file_names)
@@ -79,24 +79,24 @@ NULL
 
 #' @rdname dir_list
 #' @export
-rdata_list <- read_with(function(.x) get(load(.x)), regexp = "rdata$|Rdata$")
+rdata_list <- read_with(function(.x) get(load(.x)), regexp = "[.]rdata$")
 
 #' @rdname dir_list
 #' @export
-rds_list <- read_with(readr::read_rds, regexp = "rds$")
+rds_list <- read_with(readr::read_rds, regexp = "[.]rds$")
 
 #' @rdname dir_list
 #' @export
-csv_list <- read_with(readr::read_csv, regexp = "csv$")
+csv_list <- read_with(readr::read_csv, regexp = "[.]csv$")
 
 #' @rdname dir_list
 #' @export
-tsv_list <- read_with(readr::read_tsv, regexp = "tsv$")
+tsv_list <- read_with(readr::read_tsv, regexp = "[.]tsv$")
 
 #' @rdname dir_list
 #' @export
-xl_list <- read_with(readxl::read_excel, regexp = "xls$|xlsx$")
+xl_list <- read_with(readxl::read_excel, regexp = "[.]xls$|[.]xlsx$")
 
 #' @rdname dir_list
 #' @export
-xlbooks_list <- read_with(xlsheets_list, regexp = "xls$|xlsx$")
+xlbooks_list <- read_with(xlsheets_list, regexp = "[.]xls$|[.]xlsx$")

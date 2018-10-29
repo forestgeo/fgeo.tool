@@ -2,7 +2,7 @@
 % Please edit documentation in R/list_output.R
 \name{list_csv}
 \alias{list_csv}
-\title{Export mapping each dataframe in a list to a single .csv file.}
+\title{Export mapping each dataframe in a list to a corresponding .csv file.}
 \source{
 Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 }

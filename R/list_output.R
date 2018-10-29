@@ -1,4 +1,4 @@
-#' Export mapping each dataframe in a list to a single .csv file.
+#' Export mapping each dataframe in a list to a corresponding .csv file.
 #'
 #' A useful complement of this function is [xlsheets_list()].
 #'

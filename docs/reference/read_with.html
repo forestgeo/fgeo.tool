@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import multiple files into a list using any given reader function. — read_with • fgeo.tool</title>
+<title>Import multiple files into a list using any given reading function. — read_with • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Import multiple files into a list using any given reader function. — read_with" />
+<meta property="og:title" content="Import multiple files into a list using any given reading function. — read_with" />
 
-<meta property="og:description" content="Import multiple files into a list using any given reader function." />
+<meta property="og:description" content="Import multiple files into a list using any given reading function." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,18 +106,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import multiple files into a list using any given reader function.</h1>
+    <h1>Import multiple files into a list using any given reading function.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/input_list.R'><code>R/input_list.R</code></a></small>
     <div class="hidden name"><code>read_with.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import multiple files into a list using any given reader function.</p>
+    <p>Import multiple files into a list using any given reading function.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_with</span>(<span class='no'>.f</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>read_with</span>(<span class='no'>.f</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -127,8 +127,8 @@
       <td><p>A function able to read the desired file format.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Arguments passed to <code><a href='http://fs.r-lib.org/reference/dir_ls.html'>fs::dir_ls()</a></code>.</p></td>
+      <th>regexp</th>
+      <td><p>A regular expression (e.g. <code>[.]csv$</code>) passed on to <code>grep()</code> to filter paths.</p></td>
     </tr>
     </table>
     

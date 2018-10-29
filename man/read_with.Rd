@@ -2,21 +2,21 @@
 % Please edit documentation in R/input_list.R
 \name{read_with}
 \alias{read_with}
-\title{Import multiple files into a list using any given reader function.}
+\title{Import multiple files into a list using any given reading function.}
 \usage{
-read_with(.f, ...)
+read_with(.f, regexp = NULL)
 }
 \arguments{
 \item{.f}{A function able to read the desired file format.}
 
-\item{...}{Arguments passed to \code{\link[fs:dir_ls]{fs::dir_ls()}}.}
+\item{regexp}{A regular expression (e.g. \code{[.]csv$}) passed on to \code{\link[=grep]{grep()}} to filter paths.}
 }
 \value{
 A modified version of the input function, able to read all files
 from a directory (provided they all are of the suitable format).
 }
 \description{
-Import multiple files into a list using any given reader function.
+Import multiple files into a list using any given reading function.
 }
 \examples{
 path_rds <- tool_example("rds")

@@ -40,8 +40,6 @@ reference:
     - has_concept("functions to import a single file of ForestGEO data")
     
   - title: Functions to import multiple files from a directory
-    desc: read_with() creates functions to read all files in a directory (e.g. 
-          csv_list(), rdata_list(), xl_list()).
     contents:
     - read_with
     - has_concept("general functions to import data")
