@@ -22,6 +22,9 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/convert_unit.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/dir_list.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_twice_dead.html</loc>
   </url>
   <url>
@@ -38,12 +41,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fgeo_topography.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_df.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_list.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fill_na.html</loc>
@@ -104,6 +101,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/read_fgeo.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/read_with.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/recode_subquad.html</loc>

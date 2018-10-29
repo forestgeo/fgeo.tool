@@ -18,6 +18,6 @@ Path to directory containing example data.
 \examples{
 tool_example("multiple_workbooks")
 dir(tool_example("multiple_workbooks"))
-xl_df(tool_example("multiple_workbooks"))
+xl_list(tool_example("multiple_workbooks"))
 }
 \keyword{internal}

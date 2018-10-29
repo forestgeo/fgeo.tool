@@ -129,9 +129,9 @@ single file see <code><a href='xlsheets_list.html'>xlsheets_list()</a></code>.</
     
     </div>
 
-    <pre class="usage"><span class='fu'>csv_list</span>(<span class='no'>dir</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>csv_list</span>(<span class='no'>path_dir</span>)
 
-<span class='fu'>xl_list</span>(<span class='no'>dir</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>xl_list</span>(<span class='no'>path_dir</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,12 +160,13 @@ import.</p></td>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_csv()</a></code>, <code><a href='http://www.rdocumentation.org/packages/readxl/topics/read_excel'>readxl::read_excel()</a></code>.</p>
-<p>Other general functions to import data: <code><a href='files_to_df.html'>files_to_df</a></code>,
+<p>Other general functions to import data: <code><a href='dir_list.html'>dir_list</a></code>,
+  <code><a href='files_to_df.html'>files_to_df</a></code>, <code><a href='read_with.html'>read_with</a></code>,
   <code><a href='xlsheets_list.html'>xlsheets_list</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>xl_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>))</div><div class='output co'>#&gt; $workbook1.xlsx
+    <pre class="examples"><div class='input'><span class='fu'>xl_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>))</div><div class='output co'>#&gt; $workbook1
 #&gt; # A tibble: 3 x 2
 #&gt;   numbers letters
 #&gt;     &lt;dbl&gt; &lt;chr&gt;  
@@ -173,7 +174,7 @@ import.</p></td>
 #&gt; 2       2 b      
 #&gt; 3       3 c      
 #&gt; 
-#&gt; $workbook2.xlsx
+#&gt; $workbook2
 #&gt; # A tibble: 3 x 2
 #&gt;   numbers letters
 #&gt;     &lt;dbl&gt; &lt;chr&gt;  
@@ -182,22 +183,7 @@ import.</p></td>
 #&gt; 3       3 c      
 #&gt; </div><div class='input'>
 <span class='co'># Pass an argument to `read_excel()` via `...`</span>
-<span class='fu'>xl_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>), <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; $workbook1.xlsx
-#&gt; # A tibble: 3 x 2
-#&gt;   colors LETTERS
-#&gt;   &lt;chr&gt;  &lt;chr&gt;  
-#&gt; 1 red    A      
-#&gt; 2 yellow B      
-#&gt; 3 blue   C      
-#&gt; 
-#&gt; $workbook2.xlsx
-#&gt; # A tibble: 3 x 2
-#&gt;   colors LETTERS
-#&gt;   &lt;chr&gt;  &lt;chr&gt;  
-#&gt; 1 red    A      
-#&gt; 2 yellow B      
-#&gt; 3 blue   C      
-#&gt; </div><div class='input'>
+<span class='fu'>xl_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>), <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='error'>Error in xl_list(tool_example("multiple_workbooks"), sheet = 2): unused argument (sheet = 2)</span></div><div class='input'>
 <span class='fu'>csv_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  numbers = col_integer(),</span>
@@ -206,7 +192,7 @@ import.</p></td>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  numbers = col_integer(),</span>
 #&gt; <span class='message'>  letters = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $csv1.csv
+#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $csv1
 #&gt; # A tibble: 3 x 2
 #&gt;   numbers letters
 #&gt;     &lt;int&gt; &lt;chr&gt;  
@@ -214,7 +200,7 @@ import.</p></td>
 #&gt; 2       2 b      
 #&gt; 3       3 c      
 #&gt; 
-#&gt; $csv2.csv
+#&gt; $csv2
 #&gt; # A tibble: 3 x 2
 #&gt;   numbers letters
 #&gt;     &lt;int&gt; &lt;chr&gt;  
@@ -223,28 +209,7 @@ import.</p></td>
 #&gt; 3       6 c      
 #&gt; </div><div class='input'>
 <span class='co'># Pass an argument to `read_csv()` via `...`</span>
-<span class='fu'>csv_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>), <span class='kw'>n_max</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  numbers = col_integer(),</span>
-#&gt; <span class='message'>  letters = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
-#&gt; <span class='message'>cols(</span>
-#&gt; <span class='message'>  numbers = col_integer(),</span>
-#&gt; <span class='message'>  letters = col_character()</span>
-#&gt; <span class='message'>)</span></div><div class='output co'>#&gt; $csv1.csv
-#&gt; # A tibble: 2 x 2
-#&gt;   numbers letters
-#&gt;     &lt;int&gt; &lt;chr&gt;  
-#&gt; 1       1 a      
-#&gt; 2       2 b      
-#&gt; 
-#&gt; $csv2.csv
-#&gt; # A tibble: 2 x 2
-#&gt;   numbers letters
-#&gt;     &lt;int&gt; &lt;chr&gt;  
-#&gt; 1       4 a      
-#&gt; 2       5 b      
-#&gt; </div></pre>
+<span class='fu'>csv_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>), <span class='kw'>n_max</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='error'>Error in csv_list(tool_example("multiple_csv"), n_max = 2): unused argument (n_max = 2)</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
