@@ -2,7 +2,7 @@
 #'
 #' In stem- and ViewFull-tables `status` and `Status` refer to each stem. In
 #' tree-tables `status` refers to tree. To get the status of each tree based
-#' on the status of its stems see [add_status_tree()].
+#' on the status of its stems, see [add_status_tree()].
 #'
 #' @template x_fgeo
 #' @param wood Either "stem" or "tree", to indicate if the data should be
