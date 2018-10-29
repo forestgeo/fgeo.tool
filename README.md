@@ -179,6 +179,6 @@ census56_df %>%
   - [Contributing](CONTRIBUTING.md).
   - [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Acknowledgements
+## Acknowledgement
 
 Thanks to all partners of ForestGEO, for sharing their ideas and code.
