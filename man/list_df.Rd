@@ -4,10 +4,10 @@
 \alias{list_df}
 \title{Help export a single file by reducing a list of dataframes to a single one.}
 \usage{
-list_df(dfs, df_names = NULL, by = NULL)
+list_df(lst, df_names = NULL, by = NULL)
 }
 \arguments{
-\item{dfs}{A list of dataframes.}
+\item{lst}{A list of dataframes.}
 
 \item{df_names}{Names of the list elements to join. \code{NULL} defaults to use
 all list elements.}
@@ -26,15 +26,15 @@ This function wraps \code{\link[purrr:reduce]{purrr::reduce()}} and \code{\link[
 all or some dataframes in a list into a single dataframe.
 }
 \examples{
-dfs <- list(
+lst <- list(
   a = data.frame(x = 1),
   b = data.frame(x = 2, y = 2),
   c = data.frame(x = 1, z = 3)
 )
 
-list_df(dfs, df_names = c("a", "c"))
+list_df(lst, df_names = c("a", "c"))
 
-list_df(dfs, df_names = c("b", "c"))
+list_df(lst, df_names = c("b", "c"))
 
 list_df(list(data.frame(1)))
 # Use argument `by` if dataframes have no matching variable,

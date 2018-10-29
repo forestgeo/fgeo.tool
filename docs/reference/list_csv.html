@@ -117,13 +117,13 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>list_csv</span>(<span class='no'>dfs</span>, <span class='no'>dir</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>list_csv</span>(<span class='no'>lst</span>, <span class='no'>dir</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dfs</th>
+      <th>lst</th>
       <td><p>A list of dataframes.</p></td>
     </tr>
     <tr>
@@ -148,11 +148,11 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='xlsheets_list.html'>xlsheets_list</a></span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_sheets.xlsx"</span>))
+    <pre class="examples"><div class='input'><span class='no'>lst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='xlsheets_list.html'>xlsheets_list</a></span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_sheets.xlsx"</span>))
 
 <span class='co'># Saving the output to a temporary file</span>
 <span class='no'>output</span> <span class='kw'>&lt;-</span> <span class='fu'>tempdir</span>()
-<span class='fu'>list_csv</span>(<span class='no'>dfs</span>, <span class='no'>output</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"myfile-"</span>)
+<span class='fu'>list_csv</span>(<span class='no'>lst</span>, <span class='no'>output</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"myfile-"</span>)
 
 <span class='co'># Look inside the output directory to confirm it worked</span>
 <span class='fu'>dir</span>(<span class='no'>output</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"myfile"</span>)</div><div class='output co'>#&gt; [1] "myfile-Sheet1.csv" "myfile-Sheet2.csv"</div></pre>

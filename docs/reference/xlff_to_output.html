@@ -211,8 +211,8 @@ and (4) "single_stems".</p></li>
 <span class='no'>dir_in</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"first_census/census.xlsx"</span>))
 <span class='co'># As a reminder you will get a warning of missing sheets</span>
 <span class='co'># Output list of dataframes (one per input workbook -- here only one)</span>
-<span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'>xlff_to_list</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'>str</span>(<span class='no'>dfs</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; List of 1
+<span class='no'>lst</span> <span class='kw'>&lt;-</span> <span class='fu'>xlff_to_list</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>str</span>(<span class='no'>lst</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; List of 1
 #&gt;  $ census.xlsx:'data.frame':	54 obs. of  17 variables:
 #&gt;   ..$ submission_id        : chr [1:54] "c01b37d5-2c30-4086-b4a1-78327dfa0a9a" "efd8e991-2e34-40c8-b503-44def6e542d9" "7997596a-c94e-47b6-ab28-4b0e6a94e9df" "a4e952e6-dcad-4410-aba9-36918fa1fa62" ...
 #&gt;   ..$ start_form_time_stamp: chr [1:54] "2018.05.14 11:55:32 AM" "2018.05.14 01:10:33 PM" "2018.05.14 04:14:23 PM" "2018.05.14 04:38:45 PM" ...

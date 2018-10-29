@@ -4,7 +4,7 @@
 #'
 #' @source Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 #'
-#' @param dfs A list of dataframes.
+#' @param lst A list of dataframes.
 #' @param dir Character; the directory where the files will be saved.
 #' @param prefix Character; a prefix to add to the file names.
 #'
@@ -14,22 +14,22 @@
 #' 
 #' @export
 #' @examples
-#' dfs <- xlsheets_list(tool_example("multiple_sheets.xlsx"))
+#' lst <- xlsheets_list(tool_example("multiple_sheets.xlsx"))
 #' 
 #' # Saving the output to a temporary file
 #' output <- tempdir()
-#' list_csv(dfs, output, prefix = "myfile-")
+#' list_csv(lst, output, prefix = "myfile-")
 #'
 #' # Look inside the output directory to confirm it worked
 #' dir(output, pattern = "myfile")
-list_csv <- function(dfs, dir, prefix = NULL) {
-  stopifnot(is.list(dfs), each_list_item_is_df(dfs), is.character(dir))
+list_csv <- function(lst, dir, prefix = NULL) {
+  stopifnot(is.list(lst), each_list_item_is_df(lst), is.character(dir))
   if (!is.null(prefix)) {
     stopifnot(is.character(prefix))
   }
   validate_dir(dir = dir, dir_name = "`dir`")
 
-  purrr::walk2(dfs, names(dfs), list_csv_, prefix = prefix, dir = dir)
+  purrr::walk2(lst, names(lst), list_csv_, prefix = prefix, dir = dir)
 }
 
 validate_dir <- function(dir, dir_name) {
@@ -59,7 +59,7 @@ list_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 #' This function wraps [purrr::reduce()] and [dplyr::full_join()] to reduce 
 #' all or some dataframes in a list into a single dataframe.
 #'
-#' @param dfs A list of dataframes.
+#' @param lst A list of dataframes.
 #' @param df_names Names of the list elements to join. `NULL` defaults to use
 #'   all list elements.
 #' @param by A character vector of variables to join by. If NULL, the default,
@@ -76,15 +76,15 @@ list_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 #' @export
 #'
 #' @examples
-#' dfs <- list(
+#' lst <- list(
 #'   a = data.frame(x = 1),
 #'   b = data.frame(x = 2, y = 2),
 #'   c = data.frame(x = 1, z = 3)
 #' )
 #'
-#' list_df(dfs, df_names = c("a", "c"))
+#' list_df(lst, df_names = c("a", "c"))
 #'
-#' list_df(dfs, df_names = c("b", "c"))
+#' list_df(lst, df_names = c("b", "c"))
 #'
 #' list_df(list(data.frame(1)))
 #' # Use argument `by` if dataframes have no matching variable,
@@ -92,29 +92,29 @@ list_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 #'   list(data.frame(x = 1), data.frame(z = 2)),
 #'   by = c("x" = "z")
 #' )
-list_df <- function(dfs, df_names = NULL, by = NULL) {
-  stopifnot(is.list(dfs), each_list_item_is_df(dfs))
+list_df <- function(lst, df_names = NULL, by = NULL) {
+  stopifnot(is.list(lst), each_list_item_is_df(lst))
 
-  if (is.null(names(dfs))) {
-    names(dfs) <- paste0("df", seq_along(dfs))
+  if (is.null(names(lst))) {
+    names(lst) <- paste0("df", seq_along(lst))
   }
 
   if (is.null(df_names)) {
-    df_names <- names(dfs)
+    df_names <- names(lst)
   } else {
     stopifnot(is.character(df_names))
 
-    all_valid_nms <- all(purrr::map_lgl(df_names, ~rlang::has_name(dfs, .)))
+    all_valid_nms <- all(purrr::map_lgl(df_names, ~rlang::has_name(lst, .)))
     if (!all_valid_nms) {
       msg <- paste0(
         "Each value of `which` must be a valid name of `.df`\n",
         "* Values of `which` :", commas(df_names), "\n",
-        "* Valid names of `.df` :", commas(names(dfs))
+        "* Valid names of `.df` :", commas(names(lst))
       )
       abort(msg)
     }
   }
 
-  want <- purrr::keep(dfs, names(dfs) %in% df_names)
+  want <- purrr::keep(lst, names(lst) %in% df_names)
   suppressMessages(purrr::reduce(want, dplyr::full_join, by = by))
 }

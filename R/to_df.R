@@ -64,8 +64,8 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
   stopifnot(is.character(name), is.character(item))
   stopifnot(length(item) == 1, item == "df" || item == "df.poly")
   
-  dfs <- purrr::map(.x, item)
-  purrr::map_dfr(dfs, tibble::as.tibble, .id = name)
+  lst <- purrr::map(.x, item)
+  purrr::map_dfr(lst, tibble::as.tibble, .id = name)
 }
 
 # Class tt_lst ------------------------------------------------------------

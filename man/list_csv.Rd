@@ -7,10 +7,10 @@
 Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 }
 \usage{
-list_csv(dfs, dir, prefix = NULL)
+list_csv(lst, dir, prefix = NULL)
 }
 \arguments{
-\item{dfs}{A list of dataframes.}
+\item{lst}{A list of dataframes.}
 
 \item{dir}{Character; the directory where the files will be saved.}
 
@@ -20,11 +20,11 @@ list_csv(dfs, dir, prefix = NULL)
 A useful complement of this function is \code{\link[=xlsheets_list]{xlsheets_list()}}.
 }
 \examples{
-dfs <- xlsheets_list(tool_example("multiple_sheets.xlsx"))
+lst <- xlsheets_list(tool_example("multiple_sheets.xlsx"))
 
 # Saving the output to a temporary file
 output <- tempdir()
-list_csv(dfs, output, prefix = "myfile-")
+list_csv(lst, output, prefix = "myfile-")
 
 # Look inside the output directory to confirm it worked
 dir(output, pattern = "myfile")

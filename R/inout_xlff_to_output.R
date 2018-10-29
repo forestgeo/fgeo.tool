@@ -68,8 +68,8 @@
 #' dir_in <- dirname(tool_example("first_census/census.xlsx"))
 #' # As a reminder you will get a warning of missing sheets
 #' # Output list of dataframes (one per input workbook -- here only one)
-#' dfs <- xlff_to_list(dir_in, first_census = TRUE)
-#' str(dfs, give.attr = FALSE)
+#' lst <- xlff_to_list(dir_in, first_census = TRUE)
+#' str(lst, give.attr = FALSE)
 #' 
 #' # Output excel
 #' xlff_to_xl(dir_in, dir_out, first_census = TRUE)
@@ -83,10 +83,10 @@ NULL
 xlff_to_file <- function(ext, fun_write) {
     function(dir_in, dir_out = "./", first_census = FALSE) {
     check_dir_out(dir_out = dir_out, print_as = "`dir_out`")
-    dfs <- xlff_to_list(dir_in = dir_in, first_census = first_census)
-    files <- fs::path_ext_remove(names(dfs))
+    lst <- xlff_to_list(dir_in = dir_in, first_census = first_census)
+    files <- fs::path_ext_remove(names(lst))
     paths <- fs::path(dir_out, fs::path_ext_set(files, ext))
-    purrr::walk2(dfs, paths, fun_write)
+    purrr::walk2(lst, paths, fun_write)
   }
 }
 
@@ -193,8 +193,8 @@ warn_if_empty <- function(.x, dfm_nm) {
   invisible(.x)
 }
 
-warn_if_filling_cero_row_dataframe <- function(dfs) {
-  cero_row_dfs <- purrr::keep(dfs, ~nrow(.x) == 0)
+warn_if_filling_cero_row_dataframe <- function(lst) {
+  cero_row_dfs <- purrr::keep(lst, ~nrow(.x) == 0)
   if (length(cero_row_dfs) != 0) {
     warning(
       "Filling every cero-row dataframe with NAs (", 
@@ -202,7 +202,7 @@ warn_if_filling_cero_row_dataframe <- function(dfs) {
       call. = FALSE
     )
   }
-  invisible(dfs)
+  invisible(lst)
 }
 
 coerce_as_character <- function(.x, ...) {

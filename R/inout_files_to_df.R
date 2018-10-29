@@ -1,8 +1,8 @@
 files_to_df <- function(.map, .read, ext) {
   function(dir, ...) {
     files <- fs::dir_ls(dir, regexp = ext)
-    dfs <- .map(files, .read, ...)
-    set_names(dfs, fs::path_file(names(dfs)))
+    lst <- .map(files, .read, ...)
+    set_names(lst, fs::path_file(names(lst)))
   }
 }
 
