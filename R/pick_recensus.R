@@ -1,16 +1,16 @@
 #' Pick rows from table x with no-match in table y (e.g. find recensused trees).
 #'
 #' Based on a reference dataset `x`, this function helps you
-#' to identify stems that remain to be recensused in a dataset `y`. This
-#' function does the same work as [dplyr::anti_join()]. The difference is only
+#' identify stems that remain to be recensused in a dataset `y`. This
+#' function does the same work as [dplyr::anti_join()]. The only difference is
 #' that the signature of `pick_recensus()` is a little simpler (irrelevant
-#' arguments hidden via `...`) to focus your attention to the arguments that are
+#' arguments hidden via `...`) to focus your attention on the arguments that are
 #' most useful in helping you identify stems to recensus. This function also
 #' exists to help you discover the `*join()` functions of __dplyr__, which will
-#' help you to solve more general problems.
+#' help you solve more general problems.
 #' 
 #' This function preserves __dplyr__'s style and thus non-standard evaluation.
-#' If you want to use it inside your own functions you should learn about tidy
+#' If you want to use it inside your own functions, you should learn about tidy
 #' eval (implemented via the __rlang__ package). A good place to start is at
 #' __dplyr__'s website.
 #'
