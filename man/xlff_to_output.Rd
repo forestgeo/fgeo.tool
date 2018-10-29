@@ -4,14 +4,14 @@
 \alias{xlff_to_output}
 \alias{xlff_to_csv}
 \alias{xlff_to_xl}
-\alias{xlff_to_dfs}
+\alias{xlff_to_list}
 \title{Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.}
 \usage{
 xlff_to_csv(dir_in, dir_out = "./", first_census = FALSE)
 
 xlff_to_xl(dir_in, dir_out = "./", first_census = FALSE)
 
-xlff_to_dfs(dir_in, first_census = FALSE)
+xlff_to_list(dir_in, first_census = FALSE)
 }
 \arguments{
 \item{dir_in}{String giving the directory containing the excel workbooks
@@ -24,12 +24,12 @@ to read from.}
 }
 \value{
 \code{xlff_to_csv()} and \code{xlff_to_xl()} write a .csv or excel (.xlsx) file
-per workbook -- combining all spreadsheets. \code{xlff_to_dfs} outputs a list
+per workbook -- combining all spreadsheets. \code{xlff_to_list} outputs a list
 where each dataframes combines all spreadsheeets of a workbook.
 }
 \description{
 These functions read and wrangle excel workbooks produced by the FastField
-app and output dataframes (\code{xlff_to_dfs()} and \code{xlff_to_df()}), .csv files
+app and output dataframes (\code{xlff_to_list()} and \code{xlff_to_df()}), .csv files
 (\code{xlff_to_csv()}) or .xlsx files (\code{xlff_to_xl()}). Each dataframe or file
 combines all spreadsheets from a single excel workbook in the input
 directory. If the input directory has multiple workbooks, the output will be
@@ -91,7 +91,7 @@ path_file(dir_ls(dir_out, regexp = "new_stem.*csv$"))
 dir_in <- dirname(tool_example("first_census/census.xlsx"))
 # As a reminder you will get a warning of missing sheets
 # Output list of dataframes (one per input workbook -- here only one)
-dfs <- xlff_to_dfs(dir_in, first_census = TRUE)
+dfs <- xlff_to_list(dir_in, first_census = TRUE)
 str(dfs, give.attr = FALSE)
 
 # Output excel

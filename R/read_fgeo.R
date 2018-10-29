@@ -1,4 +1,4 @@
-#' Import ViewFullTable and ViewTaxonomy from .tsv (or .csv) files.
+#' Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.
 #' 
 #' These functions help you read text files containing ViewFullTable and
 #' ViewTaxonomy tables. They avoid common problems related to column separators,

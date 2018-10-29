@@ -36,12 +36,12 @@
 # * xlbook
 # * xlbooks
 # * df
-# * dfs
+# * list
 # from/to:
 # * file
 # * directory
 # * df
-# * dfs
+# * list
 
 
 
@@ -103,17 +103,17 @@ type_vft
 
 # Read or write
 files_to_df
-csv_to_df
-csv_to_dfs
-xl_to_df
-xl_to_dfs
-dfs_to_csv
-dfs_to_df
-xlsheets_to_dfs
+csv_df
+csv_list
+xl_df
+xl_list
+list_csv
+list_df
+xlsheets_list
 
 xlff_to_output
 xlff_to_csv
-xlff_to_dfs
+xlff_to_list
 xlff_to_xl
 
 # Filter dataframes

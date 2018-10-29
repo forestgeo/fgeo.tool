@@ -129,9 +129,9 @@ single file see <code><a href='xlsheets_to_dfs.html'>xlsheets_to_dfs()</a></code
     
     </div>
 
-    <pre class="usage"><span class='fu'>csv_to_dfs</span>(<span class='no'>dir</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>csv_to_list</span>(<span class='no'>dir</span>, <span class='no'>...</span>)
 
-<span class='fu'>xl_to_dfs</span>(<span class='no'>dir</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>xl_to_list</span>(<span class='no'>dir</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,7 +165,7 @@ import.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>xl_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>))</div><div class='output co'>#&gt; $workbook1.xlsx
+    <pre class="examples"><div class='input'><span class='fu'>xl_to_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>))</div><div class='output co'>#&gt; $workbook1.xlsx
 #&gt; # A tibble: 3 x 2
 #&gt;   numbers letters
 #&gt;     &lt;dbl&gt; &lt;chr&gt;  
@@ -182,7 +182,7 @@ import.</p></td>
 #&gt; 3       3 c      
 #&gt; </div><div class='input'>
 <span class='co'># Pass an argument to `read_excel()` via `...`</span>
-<span class='fu'>xl_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>), <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; $workbook1.xlsx
+<span class='fu'>xl_to_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_workbooks"</span>), <span class='kw'>sheet</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; $workbook1.xlsx
 #&gt; # A tibble: 3 x 2
 #&gt;   colors LETTERS
 #&gt;   &lt;chr&gt;  &lt;chr&gt;  
@@ -198,7 +198,7 @@ import.</p></td>
 #&gt; 2 yellow B      
 #&gt; 3 blue   C      
 #&gt; </div><div class='input'>
-<span class='fu'>csv_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='fu'>csv_to_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>))</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  numbers = col_integer(),</span>
 #&gt; <span class='message'>  letters = col_character()</span>
@@ -223,7 +223,7 @@ import.</p></td>
 #&gt; 3       6 c      
 #&gt; </div><div class='input'>
 <span class='co'># Pass an argument to `read_csv()` via `...`</span>
-<span class='fu'>csv_to_dfs</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>), <span class='kw'>n_max</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
+<span class='fu'>csv_to_list</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"multiple_csv"</span>), <span class='kw'>n_max</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
 #&gt; <span class='message'>cols(</span>
 #&gt; <span class='message'>  numbers = col_integer(),</span>
 #&gt; <span class='message'>  letters = col_character()</span>

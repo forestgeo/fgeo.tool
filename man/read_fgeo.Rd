@@ -4,7 +4,7 @@
 \alias{read_fgeo}
 \alias{read_vft}
 \alias{read_taxa}
-\title{Import ViewFullTable and ViewTaxonomy from .tsv (or .csv) files.}
+\title{Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.}
 \usage{
 read_vft(file, delim = NULL, na = c("", "NA", "NULL"), ...)
 

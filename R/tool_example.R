@@ -10,7 +10,7 @@
 #' @examples
 #' tool_example("multiple_workbooks")
 #' dir(tool_example("multiple_workbooks"))
-#' xl_to_df(tool_example("multiple_workbooks"))
+#' xl_df(tool_example("multiple_workbooks"))
 tool_example <- function(path) {
   system.file("extdata", path, package = "fgeo.tool")
 }

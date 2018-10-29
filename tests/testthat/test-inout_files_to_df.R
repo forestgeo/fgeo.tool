@@ -1,8 +1,8 @@
 input <- tool_example("example.xlsx")
 
-context("xlsheets_to_dfs")
+context("xlsheets_list")
 
-x <- xlsheets_to_dfs(input)
+x <- xlsheets_list(input)
 
 test_that("input is a list of data frames", {
   expect_type(x, "list")
@@ -18,9 +18,9 @@ library(fs)
 test_that("outputs expected object", {
   dir <- tool_example("files")
 
-  expect_is(csv_to_df(dir), "data.frame")
-  expect_is(csv_to_dfs(dir), "list")
+  expect_is(csv_df(dir), "data.frame")
+  expect_is(csv_list(dir), "list")
 
-  expect_is(xl_to_df(dir), "data.frame")
-  expect_is(xl_to_dfs(dir), "list")
+  expect_is(xl_df(dir), "data.frame")
+  expect_is(xl_list(dir), "list")
 })

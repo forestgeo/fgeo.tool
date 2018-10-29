@@ -1,7 +1,7 @@
 #' Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files.
 #' 
 #' These functions read and wrangle excel workbooks produced by the FastField
-#' app and output dataframes (`xlff_to_dfs()` and `xlff_to_df()`), .csv files
+#' app and output dataframes (`xlff_to_list()` and `xlff_to_df()`), .csv files
 #' (`xlff_to_csv()`) or .xlsx files (`xlff_to_xl()`). Each dataframe or file
 #' combines all spreadsheets from a single excel workbook in the input
 #' directory. If the input directory has multiple workbooks, the output will be
@@ -31,7 +31,7 @@
 #' @keywords internal
 #' 
 #' @return `xlff_to_csv()` and `xlff_to_xl()` write a .csv or excel (.xlsx) file
-#'   per workbook -- combining all spreadsheets. `xlff_to_dfs` outputs a list
+#'   per workbook -- combining all spreadsheets. `xlff_to_list` outputs a list
 #'   where each dataframes combines all spreadsheeets of a workbook.
 #' 
 #' @author Mauro Lepore and Jessica Shue.
@@ -68,7 +68,7 @@
 #' dir_in <- dirname(tool_example("first_census/census.xlsx"))
 #' # As a reminder you will get a warning of missing sheets
 #' # Output list of dataframes (one per input workbook -- here only one)
-#' dfs <- xlff_to_dfs(dir_in, first_census = TRUE)
+#' dfs <- xlff_to_list(dir_in, first_census = TRUE)
 #' str(dfs, give.attr = FALSE)
 #' 
 #' # Output excel
@@ -83,7 +83,7 @@ NULL
 xlff_to_file <- function(ext, fun_write) {
     function(dir_in, dir_out = "./", first_census = FALSE) {
     check_dir_out(dir_out = dir_out, print_as = "`dir_out`")
-    dfs <- xlff_to_dfs(dir_in = dir_in, first_census = first_census)
+    dfs <- xlff_to_list(dir_in = dir_in, first_census = first_census)
     files <- fs::path_ext_remove(names(dfs))
     paths <- fs::path(dir_out, fs::path_ext_set(files, ext))
     purrr::walk2(dfs, paths, fun_write)
@@ -100,19 +100,19 @@ xlff_to_xl <- xlff_to_file("xlsx", writexl::write_xlsx)
 
 #' @export
 #' @rdname xlff_to_output
-xlff_to_dfs <- function(dir_in, first_census = FALSE) {
+xlff_to_list <- function(dir_in, first_census = FALSE) {
   check_dir_in(dir_in = dir_in, print_as = "`dir_in`")
   out <- purrr::map(
     xl_workbooks_to_chr(dir_in), 
-    xlff_to_dfs_, first_census = first_census
+    xlff_to_list_, first_census = first_census
   )
   purrr::set_names(out, basename(names(out)))
 }
 
-#' Do xlff_to_dfs() for each excel file.
+#' Do xlff_to_list() for each excel file.
 #' @noRd
-xlff_to_dfs_ <- function(file, first_census = FALSE) {
-  dfm_list <- fgeo.tool::nms_tidy(fgeo.tool::xlsheets_to_dfs(file))
+xlff_to_list_ <- function(file, first_census = FALSE) {
+  dfm_list <- fgeo.tool::nms_tidy(fgeo.tool::xlsheets_list(file))
   
   if (first_census) {
     key <- key_first_census()
@@ -219,7 +219,7 @@ join_and_date <- function(.x) {
   
   # Collapse into a single dataframe, add variable, and join with date
   not_root_dfm %>% 
-    dfs_to_df() %>% 
+    list_df() %>% 
     dplyr::mutate(unique_stem = paste0(.data$tag, "_", .data$stem_tag)) %>% 
     dplyr::left_join(date, by = "submission_id")
 }

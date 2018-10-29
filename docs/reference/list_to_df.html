@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import ViewFullTable and ViewTaxonomy from .tsv or .csv files. — read_fgeo • fgeo.tool</title>
+<title>Help export a single file by reducing a list of dataframes to a single one. — list_to_df • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,12 +30,10 @@
 
 
 
-<meta property="og:title" content="Import ViewFullTable and ViewTaxonomy from .tsv or .csv files. — read_fgeo" />
+<meta property="og:title" content="Help export a single file by reducing a list of dataframes to a single one. — list_to_df" />
 
-<meta property="og:description" content="These functions help you read text files containing ViewFullTable and
-ViewTaxonomy tables. They avoid common problems related to column separators,
-missing values, column names, and column types. Although you can customize
-them, in most cases you should only need to provide the argument file." />
+<meta property="og:description" content="This function wraps purrr::reduce() and dplyr::full_join() to reduce
+all or some dataframes in a list into a single dataframe." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,78 +107,72 @@ them, in most cases you should only need to provide the argument file." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/read_fgeo.R'><code>R/read_fgeo.R</code></a></small>
-    <div class="hidden name"><code>read_fgeo.Rd</code></div>
+    <h1>Help export a single file by reducing a list of dataframes to a single one.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/inout_dfs_to_output.R'><code>R/inout_dfs_to_output.R</code></a></small>
+    <div class="hidden name"><code>list_to_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions help you read text files containing ViewFullTable and
-ViewTaxonomy tables. They avoid common problems related to column separators,
-missing values, column names, and column types. Although you can customize
-them, in most cases you should only need to provide the argument <code>file</code>.</p>
+    <p>This function wraps <code><a href='http://www.rdocumentation.org/packages/purrr/topics/reduce'>purrr::reduce()</a></code> and <code><a href='http://dplyr.tidyverse.org/reference/join.html'>dplyr::full_join()</a></code> to reduce
+all or some dataframes in a list into a single dataframe.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_vft</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
-
-<span class='fu'>read_taxa</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>list_to_df</span>(<span class='no'>dfs</span>, <span class='kw'>df_names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>file</th>
-      <td><p>Either a path to a file, a connection, or literal data
-(either a single string or a raw vector).</p>
-<p>Files ending in <code>.gz</code>, <code>.bz2</code>, <code>.xz</code>, or <code>.zip</code> will
-be automatically uncompressed. Files starting with <code>http://</code>,
-<code>https://</code>, <code>ftp://</code>, or <code>ftps://</code> will be automatically
-downloaded. Remote gz files can also be automatically downloaded and
-decompressed.</p>
-<p>Literal data is most useful for examples and tests. It must contain at
-least one new line to be recognised as data (instead of a path).</p></td>
+      <th>dfs</th>
+      <td><p>A list of dataframes.</p></td>
     </tr>
     <tr>
-      <th>delim</th>
-      <td><p>Single character used to separate fields within a record. The
-default (<code>delim = NULL</code>) is to guess between comma or tab (<code>","</code> or <code>"\t"</code>).</p></td>
+      <th>df_names</th>
+      <td><p>Names of the list elements to join. <code>NULL</code> defaults to use
+all list elements.</p></td>
     </tr>
     <tr>
-      <th>na</th>
-      <td><p>Character vector of strings to use for missing values. Set this
-option to <code>character()</code> to indicate no missing values.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Other arguments passed to <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>.</p></td>
+      <th>by</th>
+      <td><p>A character vector of variables to join by. If NULL, the default,
+*_join() will do a natural join, using all variables with common names
+across the two tables. To join by different variables on x and y use a
+named vector. For example, by = c("a" = "b") will match x.a to y.b. Passed
+to <code><a href='http://dplyr.tidyverse.org/reference/join.html'>dplyr::full_join()</a></code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe (or tibble).</p>
-    
-    <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
-
-    
-    <p>Thanks to Shameema Jafferjee Esufali for inspiring the feature that
-automatically detects <code>delim</code> (issue 65).</p>
+    <p>A dataframe.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>readr::read_delim()</a></code>, <code><a href='type_fgeo.html'>type_vft()</a></code>, <code><a href='type_fgeo.html'>type_taxa()</a></code>.</p>
-<p>Other functions to read text files delivered by ForestgGEO's database.: <code><a href='type_fgeo.html'>type_fgeo</a></code></p>
-<p>Other functions to import/export ForestGEO data: <code><a href='type_fgeo.html'>type_fgeo</a></code></p></div>
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/purrr/topics/reduce'>purrr::reduce()</a></code> and <code><a href='http://dplyr.tidyverse.org/reference/join.html'>dplyr::full_join()</a></code>.</p>
+<p>Other general functions to export data: <code><a href='list_to_csv.html'>list_to_csv</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># Needs internet connection.</span>
-<span class='fu'>read_vft</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-vft-random"</span>)
-<span class='fu'>read_taxa</span>(<span class='st'>"http://bit.ly/fgeo-data-luquillo-taxa"</span>)
-<span class='co'># }</span></pre>
+    <pre class="examples"><div class='input'><span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(
+  <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>),
+  <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>2</span>),
+  <span class='kw'>c</span> <span class='kw'>=</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>z</span> <span class='kw'>=</span> <span class='fl'>3</span>)
+)
+
+<span class='fu'>list_to_df</span>(<span class='no'>dfs</span>, <span class='kw'>df_names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='st'>"c"</span>))</div><div class='output co'>#&gt;   x z
+#&gt; 1 1 3</div><div class='input'>
+<span class='fu'>list_to_df</span>(<span class='no'>dfs</span>, <span class='kw'>df_names</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"b"</span>, <span class='st'>"c"</span>))</div><div class='output co'>#&gt;   x  y  z
+#&gt; 1 2  2 NA
+#&gt; 2 1 NA  3</div><div class='input'>
+<span class='fu'>list_to_df</span>(<span class='fu'>list</span>(<span class='fu'>data.frame</span>(<span class='fl'>1</span>)))</div><div class='output co'>#&gt;   X1
+#&gt; 1  1</div><div class='input'><span class='co'># Use argument `by` if dataframes have no matching variable,</span>
+<span class='fu'>list_to_df</span>(
+  <span class='fu'>list</span>(<span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='fu'>data.frame</span>(<span class='kw'>z</span> <span class='kw'>=</span> <span class='fl'>2</span>)),
+  <span class='kw'>by</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"x"</span> <span class='kw'>=</span> <span class='st'>"z"</span>)
+)</div><div class='output co'>#&gt;   x
+#&gt; 1 1
+#&gt; 2 2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -188,8 +180,6 @@ automatically detects <code>delim</code> (issue 65).</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#acknowledgments">Acknowledgments</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

@@ -1,6 +1,6 @@
 #' Export mapping each dataframe in a list to a single .csv file.
 #'
-#' A useful complement of this function is [xlsheets_to_dfs()].
+#' A useful complement of this function is [xlsheets_list()].
 #'
 #' @source Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 #'
@@ -8,28 +8,28 @@
 #' @param dir Character; the directory where the files will be saved.
 #' @param prefix Character; a prefix to add to the file names.
 #'
-#' @seealso xlsheets_to_dfs
+#' @seealso xlsheets_list
 #' @family functions to handle multiple spreadsheets of an excel workbook.
 #' @family general functions to export data
 #' 
 #' @export
 #' @examples
-#' dfs <- xlsheets_to_dfs(tool_example("multiple_sheets.xlsx"))
+#' dfs <- xlsheets_list(tool_example("multiple_sheets.xlsx"))
 #' 
 #' # Saving the output to a temporary file
 #' output <- tempdir()
-#' dfs_to_csv(dfs, output, prefix = "myfile-")
+#' list_csv(dfs, output, prefix = "myfile-")
 #'
 #' # Look inside the output directory to confirm it worked
 #' dir(output, pattern = "myfile")
-dfs_to_csv <- function(dfs, dir, prefix = NULL) {
+list_csv <- function(dfs, dir, prefix = NULL) {
   stopifnot(is.list(dfs), each_list_item_is_df(dfs), is.character(dir))
   if (!is.null(prefix)) {
     stopifnot(is.character(prefix))
   }
   validate_dir(dir = dir, dir_name = "`dir`")
 
-  purrr::walk2(dfs, names(dfs), dfs_to_csv_, prefix = prefix, dir = dir)
+  purrr::walk2(dfs, names(dfs), list_csv_, prefix = prefix, dir = dir)
 }
 
 validate_dir <- function(dir, dir_name) {
@@ -45,9 +45,9 @@ validate_dir <- function(dir, dir_name) {
   }
 }
 
-#' Do dfs_to_csv() for each df.
+#' Do list_csv() for each df.
 #' @noRd
-dfs_to_csv_ <- function(df, df_name,  prefix = NULL, dir) {
+list_csv_ <- function(df, df_name,  prefix = NULL, dir) {
   path <- file.path(paste0(dir, "/", prefix, df_name, ".csv"))
   readr::write_csv(df, path)
 }
@@ -82,17 +82,17 @@ dfs_to_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 #'   c = data.frame(x = 1, z = 3)
 #' )
 #'
-#' dfs_to_df(dfs, df_names = c("a", "c"))
+#' list_df(dfs, df_names = c("a", "c"))
 #'
-#' dfs_to_df(dfs, df_names = c("b", "c"))
+#' list_df(dfs, df_names = c("b", "c"))
 #'
-#' dfs_to_df(list(data.frame(1)))
+#' list_df(list(data.frame(1)))
 #' # Use argument `by` if dataframes have no matching variable,
-#' dfs_to_df(
+#' list_df(
 #'   list(data.frame(x = 1), data.frame(z = 2)),
 #'   by = c("x" = "z")
 #' )
-dfs_to_df <- function(dfs, df_names = NULL, by = NULL) {
+list_df <- function(dfs, df_names = NULL, by = NULL) {
   stopifnot(is.list(dfs), each_list_item_is_df(dfs))
 
   if (is.null(names(dfs))) {

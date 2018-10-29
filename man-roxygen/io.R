@@ -2,7 +2,7 @@
 #' Excel files are treated as if they were flat: This function can read only a
 #' single sheet (specified via the argument `sheet` passed to
 #' [readxl::read_excel()] via `...`). For reading multiple all sheets in a
-#' single file see [xlsheets_to_dfs()].
+#' single file see [xlsheets_list()].
 #' 
 #' @param dir String giving the directory containing the .csv or excel files to
 #'   import.

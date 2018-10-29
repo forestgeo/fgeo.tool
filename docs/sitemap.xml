@@ -22,12 +22,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/convert_unit.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/dfs_to_csv.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/dfs_to_df.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_twice_dead.html</loc>
   </url>
   <url>
@@ -49,7 +43,7 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_df.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_dfs.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/files_to_list.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fill_na.html</loc>
@@ -62,6 +56,12 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/flag_if_group.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/list_csv.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/list_df.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/lookup.html</loc>
@@ -151,6 +151,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/xlff_to_output.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/xlsheets_to_dfs.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/xlsheets_list.html</loc>
   </url>
 </urlset>

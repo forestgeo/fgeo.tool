@@ -15,10 +15,10 @@ sheets_directory <- path_to_extdata
 
 
 
-context("xlff_to_dfs")
+context("xlff_to_list")
 
 test_that("outputs expected dataframe", {
-  out <- xlff_to_dfs(sheets_directory)
+  out <- xlff_to_list(sheets_directory)
   expect_is(out, "list")
   
   nms <- c(
@@ -168,7 +168,7 @@ test_that("outputs column codes with commas replaced by semicolon (#13)", {
 test_that("allows first_census", {
   `dir` <- dirname(tool_example("first_census/census.xlsx"))
   output_dir <- tempdir()
-  out <- xlff_to_dfs(`dir`, first_census = TRUE)[[1]]
+  out <- xlff_to_list(`dir`, first_census = TRUE)[[1]]
 
   nms <- c(
     "submission_id", "quadrat", "tag", "stem_tag", "species", 
@@ -182,7 +182,7 @@ test_that("allows first_census", {
 test_that("passes with input missing key sheets (#33)", {
   `dir` <- dirname(tool_example("missing_key/recensus.xlsx"))
   expect_warning(
-    xlff_to_dfs(`dir`),
+    xlff_to_list(`dir`),
     "Adding missing sheets: original_stems, new_secondary_stems, recruits, root"
   )
 })

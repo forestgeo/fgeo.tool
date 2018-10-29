@@ -19,19 +19,19 @@ files_to_df <- function(.map, .read, ext) {
 #' @return A single dataframe.
 #'
 #' @examples
-#' xl_to_df(tool_example("multiple_workbooks"))
+#' xl_df(tool_example("multiple_workbooks"))
 #' 
-#' csv_to_df(tool_example("multiple_csv"))
+#' csv_df(tool_example("multiple_csv"))
 #' @name files_to_df
 NULL
 
 #' @export
 #' @rdname files_to_df
-csv_to_df <- files_to_df(purrr::map_df, readr::read_csv, "csv$")
+csv_df <- files_to_df(purrr::map_df, readr::read_csv, "csv$")
 
 #' @export
 #' @rdname files_to_df
-xl_to_df <- files_to_df(purrr::map_df,  readxl::read_excel, "xls|xlsx")
+xl_df <- files_to_df(purrr::map_df,  readxl::read_excel, "xls|xlsx")
 
 
 
@@ -46,36 +46,36 @@ xl_to_df <- files_to_df(purrr::map_df,  readxl::read_excel, "xls|xlsx")
 #' 
 #' @return A list of dataframes.
 #' @examples
-#' xl_to_dfs(tool_example("multiple_workbooks"))
+#' xl_list(tool_example("multiple_workbooks"))
 #' 
 #' # Pass an argument to `read_excel()` via `...`
-#' xl_to_dfs(tool_example("multiple_workbooks"), sheet = 2)
+#' xl_list(tool_example("multiple_workbooks"), sheet = 2)
 #' 
-#' csv_to_dfs(tool_example("multiple_csv"))
+#' csv_list(tool_example("multiple_csv"))
 #' 
 #' # Pass an argument to `read_csv()` via `...`
-#' csv_to_dfs(tool_example("multiple_csv"), n_max = 2)
-#' @name files_to_dfs
+#' csv_list(tool_example("multiple_csv"), n_max = 2)
+#' @name files_to_list
 NULL
 
 #' @export
-#' @rdname files_to_dfs
-csv_to_dfs <- files_to_df(purrr::map, readr::read_csv, "csv$")
+#' @rdname files_to_list
+csv_list <- files_to_df(purrr::map, readr::read_csv, "csv$")
 
 #' @export
-#' @rdname files_to_dfs
-xl_to_dfs <- files_to_df(purrr::map, readxl::read_excel, "xls|xlsx")
+#' @rdname files_to_list
+xl_list <- files_to_df(purrr::map, readxl::read_excel, "xls|xlsx")
 
 
 
 
 #' Import mapping each spreadsheet of an excel file to a dataframe in a list.
 #' 
-#' A useful complement of this function is [dfs_to_csv()].
+#' A useful complement of this function is [list_csv()].
 #'
 #' @param path A path to a single excel file.
 #' 
-#' @seealso [dfs_to_csv()].
+#' @seealso [list_csv()].
 #' @family functions to handle multiple spreadsheets of an excel workbook.
 #' @family general functions to import data
 #'
@@ -84,8 +84,8 @@ xl_to_dfs <- files_to_df(purrr::map, readxl::read_excel, "xls|xlsx")
 #'
 #' @export
 #' @examples
-#' xlsheets_to_dfs(tool_example("multiple_sheets.xlsx"))
-xlsheets_to_dfs <- function(path) {
+#' xlsheets_list(tool_example("multiple_sheets.xlsx"))
+xlsheets_list <- function(path) {
   # Piping to avoid useless intermediate variables
   path %>%
     readxl::excel_sheets() %>%

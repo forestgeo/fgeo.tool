@@ -2,13 +2,13 @@
 % Please edit documentation in R/inout_files_to_df.R
 \name{files_to_df}
 \alias{files_to_df}
-\alias{csv_to_df}
-\alias{xl_to_df}
+\alias{csv_df}
+\alias{xl_df}
 \title{Import reducing multiple .csv or flat .xlsx files into a single dataframe.}
 \usage{
-csv_to_df(dir, ...)
+csv_df(dir, ...)
 
-xl_to_df(dir, ...)
+xl_df(dir, ...)
 }
 \arguments{
 \item{dir}{String giving the directory containing the .csv or excel files to
@@ -27,7 +27,7 @@ single dataframe.
 Excel files are treated as if they were flat: This function can read only a
 single sheet (specified via the argument \code{sheet} passed to
 \code{\link[readxl:read_excel]{readxl::read_excel()}} via \code{...}). For reading multiple all sheets in a
-single file see \code{\link[=xlsheets_to_dfs]{xlsheets_to_dfs()}}.
+single file see \code{\link[=xlsheets_list]{xlsheets_list()}}.
 }
 \section{Acknowledgment}{
 
@@ -35,14 +35,14 @@ Thanks to Jessica Shue for inspiring this functions.
 }
 
 \examples{
-xl_to_df(tool_example("multiple_workbooks"))
+xl_df(tool_example("multiple_workbooks"))
 
-csv_to_df(tool_example("multiple_csv"))
+csv_df(tool_example("multiple_csv"))
 }
 \seealso{
 \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[readxl:read_excel]{readxl::read_excel()}}.
 
-Other general functions to import data: \code{\link{files_to_dfs}},
-  \code{\link{xlsheets_to_dfs}}
+Other general functions to import data: \code{\link{files_to_list}},
+  \code{\link{xlsheets_list}}
 }
 \concept{general functions to import data}

@@ -33,7 +33,7 @@
 <meta property="og:title" content="Read and wrangle excel-FastField and output dataframes or .csv/.xlsx files. — xlff_to_output" />
 
 <meta property="og:description" content="These functions read and wrangle excel workbooks produced by the FastField
-app and output dataframes (xlff_to_dfs() and xlff_to_df()), .csv files
+app and output dataframes (xlff_to_list() and xlff_to_df()), .csv files
 (xlff_to_csv()) or .xlsx files (xlff_to_xl()). Each dataframe or file
 combines all spreadsheets from a single excel workbook in the input
 directory. If the input directory has multiple workbooks, the output will be
@@ -119,7 +119,7 @@ multiple dataframes, multiple .csv files, or multiple .excel files." />
     <div class="ref-description">
     
     <p>These functions read and wrangle excel workbooks produced by the FastField
-app and output dataframes (<code>xlff_to_dfs()</code> and <code>xlff_to_df()</code>), .csv files
+app and output dataframes (<code>xlff_to_list()</code> and <code>xlff_to_df()</code>), .csv files
 (<code>xlff_to_csv()</code>) or .xlsx files (<code>xlff_to_xl()</code>). Each dataframe or file
 combines all spreadsheets from a single excel workbook in the input
 directory. If the input directory has multiple workbooks, the output will be
@@ -131,7 +131,7 @@ multiple dataframes, multiple .csv files, or multiple .excel files.</p>
 
 <span class='fu'>xlff_to_xl</span>(<span class='no'>dir_in</span>, <span class='kw'>dir_out</span> <span class='kw'>=</span> <span class='st'>"./"</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>xlff_to_dfs</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>xlff_to_list</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -155,7 +155,7 @@ to read from.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>xlff_to_csv()</code> and <code>xlff_to_xl()</code> write a .csv or excel (.xlsx) file
-per workbook -- combining all spreadsheets. <code>xlff_to_dfs</code> outputs a list
+per workbook -- combining all spreadsheets. <code>xlff_to_list</code> outputs a list
 where each dataframes combines all spreadsheeets of a workbook.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -211,7 +211,7 @@ and (4) "single_stems".</p></li>
 <span class='no'>dir_in</span> <span class='kw'>&lt;-</span> <span class='fu'>dirname</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"first_census/census.xlsx"</span>))
 <span class='co'># As a reminder you will get a warning of missing sheets</span>
 <span class='co'># Output list of dataframes (one per input workbook -- here only one)</span>
-<span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'>xlff_to_dfs</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>dfs</span> <span class='kw'>&lt;-</span> <span class='fu'>xlff_to_list</span>(<span class='no'>dir_in</span>, <span class='kw'>first_census</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'>str</span>(<span class='no'>dfs</span>, <span class='kw'>give.attr</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; List of 1
 #&gt;  $ census.xlsx:'data.frame':	54 obs. of  17 variables:
 #&gt;   ..$ submission_id        : chr [1:54] "c01b37d5-2c30-4086-b4a1-78327dfa0a9a" "efd8e991-2e34-40c8-b503-44def6e542d9" "7997596a-c94e-47b6-ab28-4b0e6a94e9df" "a4e952e6-dcad-4410-aba9-36918fa1fa62" ...
