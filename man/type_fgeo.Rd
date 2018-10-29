@@ -68,8 +68,6 @@ readr::read_delim("ViewTaxonomy.csv", col_types = type_taxa())
 Other functions to operate on column types.: \code{\link{type_ensure}}
 
 Other functions to read text files delivered by ForestgGEO's database.: \code{\link{read_fgeo}}
-
-Other functions to import/export ForestGEO data: \code{\link{read_fgeo}}
 }
 \concept{functions to import/export ForestGEO data}
 \concept{functions to operate on column types.}

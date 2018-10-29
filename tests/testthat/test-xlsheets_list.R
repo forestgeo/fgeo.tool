@@ -7,15 +7,3 @@ test_that("input is a list of data frames", {
   expect_type(x, "list")
   expect_true(each_list_item_is_df(x))
 })
-
-
-
-context("files_to_df")
-
-library(fs)
-
-test_that("outputs expected object", {
-  dir <- tool_example("files")
-  expect_is(csv_list(dir), "list")
-  expect_is(xl_list(dir), "list")
-})

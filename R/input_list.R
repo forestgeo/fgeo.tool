@@ -1,7 +1,7 @@
 #' Import multiple files into a list using any given reader function.
 #'
 #' @param .f A function able to read the desired file format.
-#' @param regexp A regular expression to match files of appropriate format.
+#' @param ... Arguments passed to [fs::dir_ls()].
 #' 
 #' @family general functions to import data
 #'
@@ -20,9 +20,19 @@
 #' 
 #' # Same
 #' read_with(readr::read_rds)(path_rds)
-read_with <- function(.f, regexp = NULL) {
+#' 
+#' \dontrun{
+#' if (!requireNamespace("rio"))
+#'   stop("Please install rio with install.packges('rio') to run this example")
+#' 
+#' guess_list <- read_with(rio::import)
+#' path_mixed_ext <- tool_example("mixed_files")
+#' dir(path_mixed_ext)
+#' guess_list(path_mixed_ext)
+#' }
+read_with <- function(.f, ...) {
   function(path_dir, ...) {
-    files <- fs::dir_ls(path_dir, regexp = regexp)
+    files <- fs::dir_ls(path_dir, ...)
     file_names <- fs::path_ext_remove(fs::path_file(files))
     out <- purrr::map(files, .f, ...)
     rlang::set_names(out, file_names)
@@ -69,24 +79,24 @@ NULL
 
 #' @rdname dir_list
 #' @export
-rdata_list <- read_with(function(.x) get(load(.x)), "rdata$|Rdata$")
+rdata_list <- read_with(function(.x) get(load(.x)), regexp = "rdata$|Rdata$")
 
 #' @rdname dir_list
 #' @export
-rds_list <- read_with(readr::read_rds, "rds$")
+rds_list <- read_with(readr::read_rds, regexp = "rds$")
 
 #' @rdname dir_list
 #' @export
-csv_list <- read_with(readr::read_csv, "csv$")
+csv_list <- read_with(readr::read_csv, regexp = "csv$")
 
 #' @rdname dir_list
 #' @export
-tsv_list <- read_with(readr::read_tsv, "tsv$")
+tsv_list <- read_with(readr::read_tsv, regexp = "tsv$")
 
 #' @rdname dir_list
 #' @export
-xl_list <- read_with(readxl::read_excel, "xls$|xlsx$")
+xl_list <- read_with(readxl::read_excel, regexp = "xls$|xlsx$")
 
 #' @rdname dir_list
 #' @export
-xlbooks_list <- read_with(xlsheets_list, "xls$|xlsx$")
+xlbooks_list <- read_with(xlsheets_list, regexp = "xls$|xlsx$")

@@ -16,7 +16,7 @@
 #' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #' 
 #' @family functions to read text files delivered by ForestgGEO's database.
-#' @family functions to import/export ForestGEO data
+#' @family functions to import a single file of ForestGEO data
 #'
 #' @return A dataframe (or tibble).
 #'
