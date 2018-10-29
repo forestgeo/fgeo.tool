@@ -43,7 +43,7 @@ library(fgeo.tool)
 #>     filter
 ```
 
-Read multiple censuses from a directory into a list of dataframes.
+**Read multiple censuses from a directory into a list of dataframes.**
 
 ``` r
 dir_multi_rdata <- tool_example("rdata")
@@ -89,7 +89,7 @@ census56_list
 #> #   nostems <dbl>, status <chr>, date <dbl>
 ```
 
-Collapse all censuses into a single dataframe.
+**Collapse all censuses into a single dataframe.**
 
 ``` r
 census56_df <- list_df(census56_list)
@@ -112,7 +112,7 @@ census56_df
 #> #   nostems <dbl>, status <chr>, date <dbl>
 ```
 
-Summarize by groups.
+**Summarize by groups.**
 
 ``` r
 by_census <- group_by(census56_df, CensusID)
@@ -142,7 +142,7 @@ census56_df %>%
 #> 3       NA    43
 ```
 
-Pick rows and reorganize columns.
+**Pick rows and reorganize columns.**
 
 ``` r
 census56_df %>% 
