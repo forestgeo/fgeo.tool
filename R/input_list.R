@@ -4,6 +4,7 @@
 #' @inheritParams fs::dir_ls 
 #' 
 #' @family general functions to import data
+#' @keywords internal
 #'
 #' @return A modified version of the input function, able to read all files
 #'   from a directory (provided they all are of the suitable format).
@@ -34,8 +35,8 @@ read_with <- function(.f, regexp = NULL) {
   function(path_dir, ...) {
     files <- fs::dir_ls(path_dir, regexp = regexp, ignore.case = TRUE)
     file_names <- fs::path_ext_remove(fs::path_file(files))
-    out <- purrr::map(files, .f, ...)
-    rlang::set_names(out, file_names)
+    out <- lapply(files, .f, ...)
+    stats::setNames(out, file_names)
   }
 }
 

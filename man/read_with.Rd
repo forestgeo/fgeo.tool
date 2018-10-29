@@ -44,3 +44,4 @@ Other general functions to import data: \code{\link{dir_list}},
   \code{\link{xlsheets_list}}
 }
 \concept{general functions to import data}
+\keyword{internal}

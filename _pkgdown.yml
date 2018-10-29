@@ -41,7 +41,6 @@ reference:
     
   - title: Functions to import multiple files from a directory
     contents:
-    - read_with
     - has_concept("general functions to import data")
     
   - title: Functions to export multiple files in a directory
