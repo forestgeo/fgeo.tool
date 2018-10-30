@@ -1,7 +1,6 @@
 context("lookup")
 
 library(dplyr)
-library(rlang)
 
 test_that("returns expected spliced list", {
   set.seed(1)
