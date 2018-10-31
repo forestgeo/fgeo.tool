@@ -24,7 +24,7 @@ globalVariables(c(".data", "."))
 #' @importFrom rlang UQ UQS .data :=
 NULL
 
-# Reexport most commonly used funcitons from the tidyverse ----------------
+# Reexport most commonly used functions from the tidyverse ----------------
 
 #' Pipe operator
 #'

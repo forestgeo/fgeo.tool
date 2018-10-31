@@ -22,7 +22,7 @@
 #'   13, 23,  33
 #' )
 #' 
-#' # Say you want to make this funciton work with grouped data
+#' # Say you want to make this function work with grouped data
 #' first_row <- function(.x, to_chr = FALSE) {
 #'   first <- .x[1, ]
 #'   if (to_chr) {

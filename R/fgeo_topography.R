@@ -21,7 +21,7 @@
 #' 
 #' @author Rick Condit.
 #' @section Source code:
-#' The main code of this funciton comes from [fgeo.ctfs::allquadratslopes()]
+#' The main code of this function comes from [fgeo.ctfs::allquadratslopes()]
 #' ([source](http://bit.ly/2zikb3V)).
 #' 
 #' @inherit fgeo_habitat details

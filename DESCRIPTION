@@ -24,6 +24,7 @@ BugReports: https://github.com/forestgeo/fgeo.tool/issues
 Depends: 
     R (>= 3.3)
 Imports: 
+    cli,
     dplyr,
     fgeo.base,
     fgeo.ctfs,
@@ -43,8 +44,7 @@ Imports:
     tidyr,
     tidyselect,
     withr,
-    writexl,
-    cli
+    writexl
 Suggests: 
     bciex,
     covr,
