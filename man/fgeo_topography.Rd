@@ -76,6 +76,6 @@ Other functions to construct fgeo classes: \code{\link{fgeo_elevation}},
   \code{\link{fgeo_habitat}}
 }
 \author{
-Rick Condit, Suzanne Lao.
+Rick Condit.
 }
 \concept{functions to construct fgeo classes}

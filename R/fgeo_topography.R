@@ -19,7 +19,7 @@
 #' @seealso [fgeo_habitat()].
 #' @family functions to construct fgeo classes
 #' 
-#' @author Rick Condit, Suzanne Lao.
+#' @author Rick Condit.
 #' @section Source code:
 #' The main code of this funciton comes from [fgeo.ctfs::allquadratslopes()]
 #' ([source](http://bit.ly/2zikb3V)).

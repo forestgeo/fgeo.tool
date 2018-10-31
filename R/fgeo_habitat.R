@@ -9,7 +9,7 @@
 #' 
 #' @inheritSection fgeo_elevation Input
 #' 
-#' @author Rick Condit, Suzanne Lao.
+#' @author Rick Condit.
 #' 
 #' @inheritParams fgeo_topography
 #' 
