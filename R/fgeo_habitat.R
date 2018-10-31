@@ -9,6 +9,8 @@
 #' 
 #' @inheritSection fgeo_elevation Input
 #' 
+#' @author Rick Condit.
+#' 
 #' @inheritParams fgeo_topography
 #' 
 #' @param n Integer. Number of cluster-groups to construct (passed to the
@@ -33,7 +35,7 @@
 #' 
 #' if (requireNamespace("fgeo.map")) {
 #'   library(fgeo.map)
-#'   plot(habs)
+#'   autoplot(habs)
 #' }
 #' 
 #' # A good use of habitat data is for calculating species-habitat associations

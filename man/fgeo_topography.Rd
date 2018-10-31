@@ -41,6 +41,12 @@ A dataframe of subclass fgeo_topography.
 \description{
 Structure topography data with mean elevation, convexity, and slope.
 }
+\section{Source code}{
+
+The main code of this funciton comes from \code{\link[fgeo.ctfs:allquadratslopes]{fgeo.ctfs::allquadratslopes()}}
+(\href{http://bit.ly/2zikb3V}{source}).
+}
+
 \section{Acknowledgment}{
 
 Thanks to Jian Zhang for reporting a bug (issue 59).
@@ -68,5 +74,8 @@ fgeo_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 
 Other functions to construct fgeo classes: \code{\link{fgeo_elevation}},
   \code{\link{fgeo_habitat}}
+}
+\author{
+Rick Condit.
 }
 \concept{functions to construct fgeo classes}
