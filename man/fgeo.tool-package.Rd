@@ -19,6 +19,12 @@ Useful links:
 \author{
 \strong{Maintainer}: Mauro Lepore \email{leporem@si.edu} [contractor]
 
+Authors:
+\itemize{
+  \item  Richard  Condit \email{richardcondit@gmail.com}
+  \item Suzanne Lao \email{laoz@si.edu}
+}
+
 Other contributors:
 \itemize{
   \item CTFS-ForestGEO \email{ForestGEO@si.edu} [copyright holder, funder]

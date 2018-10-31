@@ -58,7 +58,7 @@ str(habs)
 
 if (requireNamespace("fgeo.map")) {
   library(fgeo.map)
-  plot(habs)
+  autoplot(habs)
 }
 
 # A good use of habitat data is for calculating species-habitat associations
@@ -82,5 +82,8 @@ str(hab2)
 
 Other functions to construct fgeo classes: \code{\link{fgeo_elevation}},
   \code{\link{fgeo_topography}}
+}
+\author{
+Rick Condit, Suzanne Lao.
 }
 \concept{functions to construct fgeo classes}
