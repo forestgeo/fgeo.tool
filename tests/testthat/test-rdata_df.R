@@ -1,8 +1,5 @@
 context("rdata_df")
 
-library(glue)
-library(fs)
-
 test_that("warns if directory has no .rdata file", {
   zero <- tool_example("csv")
   expect_warning(rdata_df(zero), "Can't find.*rdata")
