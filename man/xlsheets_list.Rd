@@ -27,7 +27,7 @@ xlsheets_list(tool_example("multiple_sheets.xlsx"))
 Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{list_csv}}
 
 Other general functions to import data: \code{\link{dir_list}},
-  \code{\link{read_with}}
+  \code{\link{rdata_df}}, \code{\link{read_with}}
 }
 \concept{functions to handle multiple spreadsheets of an excel workbook.}
 \concept{general functions to import data}

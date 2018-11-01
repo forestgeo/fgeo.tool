@@ -33,6 +33,10 @@
 read_with <- function(.f, regexp = NULL) {
   function(path_dir, ...) {
     files <- fs::dir_ls(path_dir, regexp = regexp, ignore.case = TRUE)
+    if (length(files) == 0) {
+      warn(glue("Can't find in '{path_dir}' any file matching '{regexp}'."))
+    }
+    
     file_names <- fs::path_ext_remove(fs::path_file(files))
     out <- lapply(files, .f, ...)
     stats::setNames(out, file_names)
