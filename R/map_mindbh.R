@@ -26,7 +26,8 @@ pick_in_sync <- function(.data, ...) {
 
 #' @export
 pick_in_sync.default <- function(.data, ...) {
-  abort(glue("Can't deal with data of class {glue_collapse(class(.data))}."))
+  .class <- glue_collapse(class(.data), sep = ", ", last = " or ")
+  abort(glue("Can't deal with data of class {.class}."))
 }
 
 # TODO: pick.censuses
@@ -40,6 +41,14 @@ pick_in_sync.list <- function(.data, ..., key = 1) {
   purrr::map(.data, ~.x[.rowid, ])
 }
 
-
-
-
+#' @export
+pick_in_sync.tbl <- function(.data, ..., key = 1) {
+  .dots <- enquos(...)
+  
+  key_group <- .data[[1]] %in% key
+  key_df <- .data[key_group, ]$data[[1]]
+  key_df <- tibble::rowid_to_column(key_df)
+  
+  .rowid <- dplyr::filter(key_df, !!! .dots)$rowid
+  dplyr::mutate(.data, data = purrr::map(data, ~.x[.rowid, ]))
+}
