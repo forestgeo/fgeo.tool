@@ -3,40 +3,30 @@ context("rdata_df")
 library(glue)
 library(fs)
 
-#' dir(path_dir)
-#' 
-#' rdata_df(path_dir)
-#' 
-#' rdata_df(path_dir, match = "tree6")
-#' 
-#' dfm <- rdata_df(path_dir, match = "tree5|6", .id = "source")
-#' dfm
-#' tail(dfm)
-NULL
-
-path_dir <- tool_example("rdata")
-
-test_that("read_rdata() can read a single .rdata file", {
-  input <- read_rdata(fs::dir_ls(path_dir)[[1]])
-  expect_is(input, "data.frame")
-  # expect_error(
-  #   read_rdata(empty_dir), 
-  #   glue("Can't find any .rdata to read in {empty_dir}")
-  # )
-  
-})
-
-test_that("rdata_df() can handle cero, and two .rdata files", {
+test_that("warns if directory has no .rdata file", {
   zero <- tool_example("csv")
-  expect_warning(rdata_df(zero), "Can't find in.*any file")
+  expect_warning(rdata_df(zero), "Can't find.*rdata")
   
   empty <- tool_example("empty")
-  expect_warning(rdata_df(empty), "Can't find in.*any file")
-  
+  expect_warning(rdata_df(empty), "Can't find.*rdata")
+})
+
+test_that("can handle and two .rdata files", {
   one <- tool_example("rdata_one")
   expect_silent(rdata_df(one))
   
-  two <- rdata_df(path_dir)
+  two <- rdata_df(tool_example("rdata"))
   expect_is(two, "data.frame")
 })
 
+test_that("with non-null `.id` adds new column", {
+  dfm <- rdata_df(tool_example("rdata"), .id = "id")
+  expect_equal(names(dfm)[[1]], "id")
+})
+
+test_that("is sensitive to `match`", {
+  dfm <- rdata_df(tool_example("rdata"), match = 6, .id = "id")
+  expect_equal(unique(dfm$id), "tree6")
+  dfm <- rdata_df(tool_example("rdata"), match = "5|6", .id = "id")
+  expect_equal(unique(dfm$id), c("tree5", "tree6"))
+})

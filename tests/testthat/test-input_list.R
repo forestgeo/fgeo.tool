@@ -27,10 +27,10 @@ context("read_with")
 
 test_that("read_with() can handle cero, and two .rdata files", {
   empty <- tool_example("empty")
-  expect_warning(rdata_list(empty), "Can't find in.*any.*rdata")
+  expect_warning(rdata_list(empty), "Can't find.*rdata")
   expect_warning(
     read_with(readr::read_csv, "[.]csv")(empty), 
-    "Can't find in.*any.*csv"
+    "Can't find.*csv"
   )
 })
 

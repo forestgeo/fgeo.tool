@@ -34,7 +34,12 @@ read_with <- function(.f, regexp = NULL) {
   function(path_dir, ...) {
     files <- fs::dir_ls(path_dir, regexp = regexp, ignore.case = TRUE)
     if (length(files) == 0) {
-      warn(glue("Can't find in '{path_dir}' any file matching '{regexp}'."))
+      msg <- glue("
+        Can't find any file with the desired extension:
+          * Searching in: '{path_dir}'.
+          * Searching for: '{regexp}'.
+      ")
+      warn(msg)
     }
     
     file_names <- fs::path_ext_remove(fs::path_file(files))
