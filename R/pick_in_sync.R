@@ -48,30 +48,22 @@
 #' censuses
 #' 
 #' pick(censuses, dbh > 30, key = 1)
-pick <- function(.data, ...) {
-  UseMethod("pick")
-}
-
-#' @export
-pick.default <- function(.data, ...) {
-  abort_bad_class(.data)
-}
-
-# TODO: pick.censuses
-# TODO: rename pick.censuses
-#' @export
-pick.censuses_lst <- function(.data, ..., key = NULL) {
+pick <- function(.data, ..., key = NULL) {
   .rowid <- pick_key_rows(.data = .data, ..., key = key)
-  out <- purrr::map(.data, ~.x[.rowid, ])
+  out <- pick_all_rows(.data, .rowid)
   as_censuses(out)
 }
 
-#' @export
-pick.censuses_tbl <- function(.data, ..., key = NULL) {
-  .rowid <- pick_key_rows(.data = .data, ..., key = key)
-  out <- dplyr::mutate(.data, data = purrr::map(data, ~.x[.rowid, ]))
-  as_censuses(out)
-}
+pick_all_rows <- function(.data, ...) UseMethod("pick_all_rows")
+
+pick_all_rows.censuses_lst <- function(.data, .rowid) {
+  purrr::map(.data, ~.x[.rowid, ])
+} 
+
+pick_all_rows.censuses_tbl <- function(.data, .rowid) {
+  dplyr::mutate(.data, data = purrr::map(data, ~.x[.rowid, ]))
+} 
+
 
 pick_key_rows <- function(.data, ..., key) {
   key_df <- tibble::rowid_to_column(pull_key_df(.data, key))

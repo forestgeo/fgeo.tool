@@ -4,7 +4,7 @@
 \alias{pick}
 \title{Pick a list of datframes or a nested dataframe in sync.}
 \usage{
-pick(.data, ...)
+pick(.data, ..., key = NULL)
 }
 \arguments{
 \item{.data}{A list or nested dataframe.}
