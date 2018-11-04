@@ -21,8 +21,6 @@
 #' pick(lst, dbh >= 2)
 #' pick(lst, dbh <= 8 , key = 2)
 #' 
-#' 
-#' 
 #' dfm <- tibble::tribble(
 #'   ~dbh, ~census,
 #'     1L,       1,
@@ -56,22 +54,23 @@ pick <- function(.data, ...) {
 
 #' @export
 pick.default <- function(.data, ...) {
-  .class <- glue_collapse(class(.data), sep = ", ", last = " or ")
-  abort(glue("Can't deal with data of class {.class}."))
+  abort_bad_class(.data)
 }
 
 # TODO: pick.censuses
 # TODO: rename pick.censuses
 #' @export
-pick.list <- function(.data, ..., key = NULL) {
+pick.censuses_lst <- function(.data, ..., key = NULL) {
   .rowid <- pick_key_rows(.data = .data, ..., key = key)
-  purrr::map(.data, ~.x[.rowid, ])
+  out <- purrr::map(.data, ~.x[.rowid, ])
+  as_censuses(out)
 }
 
 #' @export
-pick.tbl <- function(.data, ..., key = NULL) {
+pick.censuses_tbl <- function(.data, ..., key = NULL) {
   .rowid <- pick_key_rows(.data = .data, ..., key = key)
-  dplyr::mutate(.data, data = purrr::map(data, ~.x[.rowid, ]))
+  out <- dplyr::mutate(.data, data = purrr::map(data, ~.x[.rowid, ]))
+  as_censuses(out)
 }
 
 pick_key_rows <- function(.data, ..., key) {
@@ -81,7 +80,7 @@ pick_key_rows <- function(.data, ..., key) {
 
 pull_key_df <- function(.data, ...) UseMethod("pull_key_df")
 
-pull_key_df.list <- function(.data, key) {
+pull_key_df.censuses_lst <- function(.data, key) {
   if (!is.null(key)) {
     return(.data[[key]])
   } 
@@ -89,7 +88,7 @@ pull_key_df.list <- function(.data, key) {
   .data[[1]]
 }
 
-pull_key_df.data.frame <- function(.data, key) {
+pull_key_df.censuses_tbl <- function(.data, key) {
   key <- key %||% .data[[1]][[1]]
   key_group <- .data[[1]] %in% key
   

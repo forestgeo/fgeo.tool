@@ -29,8 +29,6 @@ pick(lst, dbh == 1)
 pick(lst, dbh >= 2)
 pick(lst, dbh <= 8 , key = 2)
 
-
-
 dfm <- tibble::tribble(
   ~dbh, ~census,
     1L,       1,
