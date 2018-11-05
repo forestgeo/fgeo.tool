@@ -37,7 +37,7 @@ reference:
 
   - title: Import a single file of ForestGEO data
     contents:
-    - has_concept("functions to import a single file of ForestGEO data")
+    - has_concept("functions to import ForestGEO data")
     
   - title: Import multiple files from a directory into a list
     desc: Notice that function names have the format input_output

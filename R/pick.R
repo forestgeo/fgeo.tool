@@ -1,12 +1,12 @@
-#' Pick a list of datframes or a nested dataframe with a list-column.
+#' Pick rows from ForestGEO censuses in a list of nested dataframe.
 #' 
-#' This function allows you to pick rows from a key dataframe in a list or 
-#' list-column and pick the exact same rows in all other non-key dataframes
-#' of the list (or list-column).
+#' This function allows you to pick rows from a key census (dataframe) in a list
+#' or list-column and pick the exact same rows in all other non-key censuses.
 #'
-#' @param .data A list or nested dataframe.
-#' @param key Key dataframe to pick rows from and use the same row indices to
-#'   pick rows from all other dataframes in the list (or list-column).
+#' @param .data A ForestGEO dataset of class 'censuses_lst' (a list) or 
+#'   'censuses_df' (a nested dataframe).
+#' @param key Key dataframe to pick rows from and and recycle in all other
+#'   censuses
 #' @param ... Other arguments passed to methods.
 #' 
 #' @family functions to pick or drop rows of a ForestGEO dataframe
@@ -14,14 +14,18 @@
 #' @export
 #'
 #' @examples
-#' lst <- list(
+#' library(tidyr)
+#' 
+#' censuses_lst <- as_censuses(list(
 #'   c1 = tibble::tibble(dbh = 1:2),
 #'   c2 = tibble::tibble(dbh = 8:9)
-#' )
+#' ))
+#' censuses_lst
+#' class(censuses_lst)
 #' 
-#' pick(lst, dbh == 1)
-#' pick(lst, dbh >= 2)
-#' pick(lst, dbh <= 8 , key = 2)
+#' pick(censuses_lst, dbh == 1)
+#' pick(censuses_lst, dbh >= 2)
+#' pick(censuses_lst, dbh <= 8 , key = "c2")
 #' 
 #' dfm <- tibble::tribble(
 #'   ~dbh, ~census,
@@ -30,19 +34,22 @@
 #'     8L,       2,
 #'     9L,       2
 #' )
+#' censuses_df <- as_censuses(nest(dfm, -census))
+#' censuses_df
+#' class(censuses_df)
 #' 
-#' nested_df <- dfm %>% dplyr::group_by(census) %>% nest()
-#' 
-#' out <- pick(nested_df, dbh == 1)
-#' out
-#' # Same but ackward
+#' out <- pick(censuses_df, dbh == 1)
 #' out$data
+#' # Same
+#' censuses_df %>% pick(dbh == 1) %>% pull()
 #' 
-#' out <- pick(nested_df, dbh >= 1)
-#' out
-#' # Same but ackward
-#' out$data
-#' 
+#' censuses_df %>% 
+#'   pick(dbh <= 8) %>% 
+#'   pull(data)
+#'
+#' censuses_df %>% 
+#'   pick(dbh <= 8, key = 2) %>% 
+#'   pull(data)
 #' 
 #' censuses <- rdata_df(tool_example("rdata"), .id = "census") %>% 
 #'   group_by(census) %>% 
@@ -84,7 +91,7 @@ pull_key_df.censuses_lst <- function(.data, key) {
   .data[[1]]
 }
 
-pull_key_df.censuses_tbl <- function(.data, key) {
+pull_key_df.censuses_df <- function(.data, key) {
   
   key <- key %||% .data[[1]][[1]]
   stopifnot(length(key) == 1)
@@ -107,6 +114,6 @@ pick_all_rows.censuses_lst <- function(.data, .rowid) {
   purrr::map(.data, ~.x[.rowid, ])
 } 
 
-pick_all_rows.censuses_tbl <- function(.data, .rowid) {
+pick_all_rows.censuses_df <- function(.data, .rowid) {
   dplyr::mutate(.data, data = purrr::map(data, ~.x[.rowid, ]))
 } 

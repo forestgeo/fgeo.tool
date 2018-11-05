@@ -17,6 +17,7 @@
 #' 
 #' @family functions to read text files delivered by ForestgGEO's database.
 #' @family functions to import a single file of ForestGEO data
+#' @family functions to import ForestGEO data
 #'
 #' @return A dataframe (or tibble).
 #'

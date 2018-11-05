@@ -57,6 +57,9 @@ read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[=type_vft]{type_vft()}}, \code{\link[=type_taxa]{type_taxa()}}.
 
 Other functions to read text files delivered by ForestgGEO's database.: \code{\link{type_fgeo}}
+
+Other functions to import ForestGEO data: \code{\link{read_censuses}}
 }
+\concept{functions to import ForestGEO data}
 \concept{functions to import a single file of ForestGEO data}
 \concept{functions to read text files delivered by ForestgGEO's database.}

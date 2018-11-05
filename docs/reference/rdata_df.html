@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import multiple files into a list using any given reading function. — read_with • fgeo.tool</title>
+<title>Import multiple .rdata files from a directory into a dataframe. — rdata_df • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,13 @@
 
 
 
-<meta property="og:title" content="Import multiple files into a list using any given reading function. — read_with" />
+<meta property="og:title" content="Import multiple .rdata files from a directory into a dataframe. — rdata_df" />
 
-<meta property="og:description" content="Import multiple files into a list using any given reading function." />
+<meta property="og:description" content="This is shortcut for list_df(rdata_list(x)) with the additional ability to
+read exclusively .rdata files containing a specific string. It is designed to
+expect that all .rdata files contain dataframes with the same names -- as is
+the case for multiple ForestGEO censuses delivered by the database. Notice
+that function name have the format input_output, i.e. rdata_df." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,49 +110,57 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Import multiple files into a list using any given reading function.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/input_list.R'><code>R/input_list.R</code></a></small>
-    <div class="hidden name"><code>read_with.Rd</code></div>
+    <h1>Import multiple .rdata files from a directory into a dataframe.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/rdata_df.R'><code>R/rdata_df.R</code></a></small>
+    <div class="hidden name"><code>rdata_df.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import multiple files into a list using any given reading function.</p>
+    <p>This is shortcut for <code><a href='list_df.html'>list_df(rdata_list(x))</a></code> with the additional ability to
+read exclusively .rdata files containing a specific string. It is designed to
+expect that all .rdata files contain dataframes with the same names -- as is
+the case for multiple ForestGEO censuses delivered by the database. Notice
+that function name have the format input_output, i.e. rdata_df.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_with</span>(<span class='no'>.f</span>, <span class='kw'>regexp</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>match</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.f</th>
-      <td><p>A function able to read the desired file format.</p></td>
+      <th>path_dir</th>
+      <td><p>String; the path to a directory containing the files to read
+(all must be of appropriate format; see examples).</p></td>
     </tr>
     <tr>
-      <th>regexp</th>
-      <td><p>A regular expression (e.g. <code>[.]csv$</code>) passed on to <code>grep()</code> to filter paths.</p></td>
+      <th>match</th>
+      <td><p>If not <code>NULL</code> a sting to match specific .rdata file-names
+(excluding the extension).</p></td>
+    </tr>
+    <tr>
+      <th>.id</th>
+      <td><p>If not NULL a variable with this name will be created to inform
+the source file.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified version of the input function, able to read all files
-from a directory (provided they all are of the suitable format).</p>
+    <p>A dataframe.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other general functions to import data: <code><a href='dir_list.html'>dir_list</a></code>,
-  <code><a href='rdata_df.html'>rdata_df</a></code>, <code><a href='xlsheets_list.html'>xlsheets_list</a></code></p></div>
+  <code><a href='read_with.html'>read_with</a></code>, <code><a href='xlsheets_list.html'>xlsheets_list</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>path_rds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rds"</span>)
-<span class='no'>path_rds</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Documents/Dropbox/git/fgeo.tool/inst/extdata/rds"</div><div class='input'><span class='fu'>dir</span>(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; [1] "tree5.rds" "tree6.rds"</div><div class='input'>
-<span class='no'>rds_list</span> <span class='kw'>&lt;-</span> <span class='fu'>read_with</span>(<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/readr/topics/read_rds'>read_rds</a></span>)
-<span class='fu'><a href='dir_list.html'>rds_list</a></span>(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; $tree5
-#&gt; # A tibble: 1,000 x 19
+    <pre class="examples"><div class='input'><span class='no'>path_dir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>)
+<span class='fu'>dir</span>(<span class='no'>path_dir</span>)</div><div class='output co'>#&gt; [1] "tree5.RData" "tree6.RData"</div><div class='input'>
+<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>)</div><div class='output co'>#&gt; # A tibble: 2,000 x 19
 #&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
 #&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
 #&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5
@@ -161,12 +173,10 @@ from a directory (provided they all are of the suitable format).</p>
 #&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889        5
 #&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    440031        5
 #&gt; 10   1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957        5
-#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
+#&gt; # ... with 1,990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
 #&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;
-#&gt; 
-#&gt; $tree6
-#&gt; # A tibble: 1,000 x 19
+#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
+<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>match</span> <span class='kw'>=</span> <span class='st'>"tree6"</span>)</div><div class='output co'>#&gt; # A tibble: 1,000 x 19
 #&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
 #&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
 #&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6
@@ -181,53 +191,35 @@ from a directory (provided they all are of the suitable format).</p>
 #&gt; 10   1380   1702 1015~ 101560  CASA~ 820     142.   386.    614023        6
 #&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
 #&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;
-#&gt; </div><div class='input'>
-<span class='co'># Same</span>
-<span class='fu'>read_with</span>(<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/readr/topics/read_rds'>read_rds</a></span>)(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; $tree5
-#&gt; # A tibble: 1,000 x 19
-#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
-#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
-#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5
-#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5
-#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5
-#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    466727        5
-#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    439989        5
-#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    466743        5
-#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    440021        5
-#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889        5
-#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    440031        5
-#&gt; 10   1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957        5
-#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
-#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;
-#&gt; 
-#&gt; $tree6
-#&gt; # A tibble: 1,000 x 19
-#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
-#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
-#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6
-#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6
-#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6
-#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    614253        6
-#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    598429        6
-#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    614211        6
-#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    603131        6
-#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    616923        6
-#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    603151        6
-#&gt; 10   1380   1702 1015~ 101560  CASA~ 820     142.   386.    614023        6
-#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
-#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;
-#&gt; </div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (!<span class='fu'>requireNamespace</span>(<span class='st'>"rio"</span>))
-  <span class='fu'>stop</span>(<span class='st'>"Please install rio with install.packges('rio') to run this example"</span>)
-
-<span class='no'>path_mixed_files</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"mixed_files"</span>)
-<span class='fu'>dir</span>(<span class='no'>path_mixed_files</span>)
-<span class='fu'>read_with</span>(<span class='kw pkg'>rio</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/rio/topics/import'>import</a></span>)(<span class='no'>path_mixed_files</span>)
-<span class='co'># }</span></pre>
+#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
+<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>match</span> <span class='kw'>=</span> <span class='st'>"tree5|6"</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"source"</span>)
+<span class='no'>dfm</span></div><div class='output co'>#&gt; # A tibble: 2,000 x 20
+#&gt;    source treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID
+#&gt;    &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
+#&gt;  1 tree5     104    143 10009 10009   DACE~ 113      10.3  245.    439947
+#&gt;  2 tree5     119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597
+#&gt;  3 tree5     180    225 1001~ 100174  CASA~ 921     165.   410.    466623
+#&gt;  4 tree5     602    736 1006~ 100649  GUAG~ 821     149.   414.    466727
+#&gt;  5 tree5     631    775 10069 10069   PREM~ 213      38.3  245.    439989
+#&gt;  6 tree5     647    793 1007~ 100708  SCHM~ 821     143.   411.    466743
+#&gt;  7 tree5    1086   1339 10122 10122   DRYG~ 413      68.9  253.    440021
+#&gt;  8 tree5    1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889
+#&gt;  9 tree5    1168   1438 10131 10131   DACE~ 413      70.6  252.    440031
+#&gt; 10 tree5    1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957
+#&gt; # ... with 1,990 more rows, and 10 more variables: CensusID &lt;int&gt;, dbh &lt;dbl&gt;,
+#&gt; #   pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;,
+#&gt; #   nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'><span class='fu'>tail</span>(<span class='no'>dfm</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 20
+#&gt;   source treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID
+#&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
+#&gt; 1 tree6  126869 166460 1786~ 178613  CASA~ 1122     211.  420.    619723
+#&gt; 2 tree6  126934 166531 1787~ 178763  MICR~ 324       47   480.    619794
+#&gt; 3 tree6  127015 166617 1793~ 179345  CLUR~ 1025     186.  485.    619880
+#&gt; 4 tree6  127017 166619 1793~ 179361  PSYB~ 1025     185.  494.    619882
+#&gt; 5 tree6  127025 166627 1794~ 179417  TETB~ 623      112.  447.    619890
+#&gt; 6 tree6  127033 166635 1794~ 179463  TETB~ 1023     184.  454.    619898
+#&gt; # ... with 10 more variables: CensusID &lt;int&gt;, dbh &lt;dbl&gt;, pom &lt;chr&gt;, hom &lt;dbl&gt;,
+#&gt; #   ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;,
+#&gt; #   date &lt;dbl&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

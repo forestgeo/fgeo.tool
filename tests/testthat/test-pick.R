@@ -66,7 +66,7 @@ test_that("picking a row in key census picks the same row in other censuses", {
 
 test_that("with the simplest call returns the expected data structure", {
   out <- pick(ndf, dbh == 1)
-  expect_is(out, "censuses_tbl")
+  expect_is(out, "censuses_df")
 })
 
 test_that("works with nested dataframe and numeric nesting-group", {
@@ -91,7 +91,7 @@ test_that("works with nested data and character nesting-group", {
     as_censuses()
   
   expect_error(out <- pick(censuses, dbh > 30), NA)
-  expect_is(out, "censuses_tbl")
+  expect_is(out, "censuses_df")
   
   expect_true(nrow(censuses$data[[1]]) > nrow(out$data[[1]]))
   expect_error(pick(censuses, dbh > 30, key = "tree6"), NA)
