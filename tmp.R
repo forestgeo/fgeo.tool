@@ -1,3 +1,17 @@
+# TODO:
+# Address TODO and FIXME.
+# Integrate with fgeo.demography
+
+# In read_censuses():
+# TODO: Add checks
+# * stop if not all dataframes have same structure.
+# * warn if not all dataframes have names that match tree or stem tables
+#   (see fgeo.base::has_table_names()).
+
+
+
+
+
 # Appveyor badge ----------------------------------------------------------
 
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/forestgeo/fgeo.tool?branch=master&svg=true)](https://ci.appveyor.com/project/forestgeo/fgeo.tool)

@@ -4,13 +4,13 @@
 \alias{rdata_df}
 \title{Import multiple .rdata files from a directory into a dataframe.}
 \usage{
-rdata_df(path_dir, match = NULL, .id = NULL)
+rdata_df(path_dir, .match = NULL, .id = NULL)
 }
 \arguments{
 \item{path_dir}{String; the path to a directory containing the files to read
 (all must be of appropriate format; see examples).}
 
-\item{match}{If not \code{NULL} a sting to match specific .rdata file-names
+\item{.match}{If not \code{NULL} a string to match specific .rdata file-names
 (excluding the extension).}
 
 \item{.id}{If not NULL a variable with this name will be created to inform
@@ -32,9 +32,9 @@ dir(path_dir)
 
 rdata_df(path_dir)
 
-rdata_df(path_dir, match = "tree6")
+rdata_df(path_dir, .match = "6")
 
-dfm <- rdata_df(path_dir, match = "tree5|6", .id = "source")
+dfm <- rdata_df(path_dir, .match = "tree5|6", .id = "source")
 dfm
 tail(dfm)
 }

@@ -125,7 +125,7 @@ that function name have the format input_output, i.e. rdata_df.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>match</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>.match</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,8 +136,8 @@ that function name have the format input_output, i.e. rdata_df.</p>
 (all must be of appropriate format; see examples).</p></td>
     </tr>
     <tr>
-      <th>match</th>
-      <td><p>If not <code>NULL</code> a sting to match specific .rdata file-names
+      <th>.match</th>
+      <td><p>If not <code>NULL</code> a string to match specific .rdata file-names
 (excluding the extension).</p></td>
     </tr>
     <tr>
@@ -176,7 +176,7 @@ the source file.</p></td>
 #&gt; # ... with 1,990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
 #&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
 #&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
-<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>match</span> <span class='kw'>=</span> <span class='st'>"tree6"</span>)</div><div class='output co'>#&gt; # A tibble: 1,000 x 19
+<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>.match</span> <span class='kw'>=</span> <span class='st'>"6"</span>)</div><div class='output co'>#&gt; # A tibble: 1,000 x 19
 #&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
 #&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
 #&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6
@@ -192,7 +192,7 @@ the source file.</p></td>
 #&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
 #&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
 #&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>match</span> <span class='kw'>=</span> <span class='st'>"tree5|6"</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"source"</span>)
+<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>.match</span> <span class='kw'>=</span> <span class='st'>"tree5|6"</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"source"</span>)
 <span class='no'>dfm</span></div><div class='output co'>#&gt; # A tibble: 2,000 x 20
 #&gt;    source treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID
 #&gt;    &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;

@@ -14,11 +14,11 @@
 #' @export
 #'
 #' @examples
-#' library(tidyr)
+#' library(dplyr)
 #' 
 #' censuses_lst <- as_censuses(list(
-#'   c1 = tibble::tibble(dbh = 1:2),
-#'   c2 = tibble::tibble(dbh = 8:9)
+#'   c1 = tibble(dbh = 1:2),
+#'   c2 = tibble(dbh = 8:9)
 #' ))
 #' censuses_lst
 #' class(censuses_lst)
@@ -27,36 +27,12 @@
 #' pick(censuses_lst, dbh >= 2)
 #' pick(censuses_lst, dbh <= 8 , key = "c2")
 #' 
-#' dfm <- tibble::tribble(
-#'   ~dbh, ~census,
-#'     1L,       1,
-#'     2L,       1,
-#'     8L,       2,
-#'     9L,       2
-#' )
-#' censuses_df <- as_censuses(nest(dfm, -census))
-#' censuses_df
-#' class(censuses_df)
-#' 
-#' out <- pick(censuses_df, dbh == 1)
-#' out$data
-#' # Same
-#' censuses_df %>% pick(dbh == 1) %>% pull()
-#' 
-#' censuses_df %>% 
-#'   pick(dbh <= 8) %>% 
+#' path <- tool_example("rdata")
+#' dir(path)
+#' censuses <- read_censuses(path)
+#' censuses %>% 
+#'   pick(dbh > 600) %>% 
 #'   pull(data)
-#'
-#' censuses_df %>% 
-#'   pick(dbh <= 8, key = 2) %>% 
-#'   pull(data)
-#' 
-#' censuses <- rdata_df(tool_example("rdata"), .id = "census") %>% 
-#'   group_by(census) %>% 
-#'   nest()
-#' censuses
-#' 
-#' pick(censuses, dbh > 30, key = 1)
 pick <- function(.data, ..., key = NULL) {
   .rowid <- pick_key_rows(.data = .data, ..., key = key)
   out <- pick_all_rows(.data, .rowid)
@@ -115,5 +91,5 @@ pick_all_rows.censuses_lst <- function(.data, .rowid) {
 } 
 
 pick_all_rows.censuses_df <- function(.data, .rowid) {
-  dplyr::mutate(.data, data = purrr::map(data, ~.x[.rowid, ]))
+  dplyr::mutate(.data, data = purrr::map(.data$data, ~.x[.rowid, ]))
 } 

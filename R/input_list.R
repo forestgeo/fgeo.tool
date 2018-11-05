@@ -39,7 +39,7 @@ read_with <- function(.f, regexp = NULL) {
           * Searching in: '{path_dir}'.
           * Searching for: '{regexp}'.
       ")
-      warn(msg)
+      abort(msg)
     }
     
     file_names <- fs::path_ext_remove(fs::path_file(files))

@@ -148,11 +148,11 @@ censuses</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>tidyr</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 
-<span class='no'>censuses_lst</span> <span class='kw'>&lt;-</span> <span class='fu'>as_censuses</span>(<span class='fu'>list</span>(
-  <span class='kw'>c1</span> <span class='kw'>=</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>),
-  <span class='kw'>c2</span> <span class='kw'>=</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>8</span>:<span class='fl'>9</span>)
+<span class='no'>censuses_lst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_censuses.html'>as_censuses</a></span>(<span class='fu'>list</span>(
+  <span class='kw'>c1</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>),
+  <span class='kw'>c2</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>8</span>:<span class='fl'>9</span>)
 ))
 <span class='no'>censuses_lst</span></div><div class='output co'>#&gt; $c1
 #&gt; # A tibble: 2 x 1
@@ -202,83 +202,32 @@ censuses</p></td>
 #&gt;   &lt;int&gt;
 #&gt; 1     8
 #&gt; </div><div class='input'>
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
-  ~<span class='no'>dbh</span>, ~<span class='no'>census</span>,
-    <span class='fl'>1L</span>,       <span class='fl'>1</span>,
-    <span class='fl'>2L</span>,       <span class='fl'>1</span>,
-    <span class='fl'>8L</span>,       <span class='fl'>2</span>,
-    <span class='fl'>9L</span>,       <span class='fl'>2</span>
-)
-<span class='no'>censuses_df</span> <span class='kw'>&lt;-</span> <span class='fu'>as_censuses</span>(<span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>nest</a></span>(<span class='no'>dfm</span>, -<span class='no'>census</span>))
-<span class='no'>censuses_df</span></div><div class='output co'>#&gt; # A tibble: 2 x 2
-#&gt;   census data            
-#&gt; *  &lt;dbl&gt; &lt;list&gt;          
-#&gt; 1      1 &lt;tibble [2 x 1]&gt;
-#&gt; 2      2 &lt;tibble [2 x 1]&gt;</div><div class='input'><span class='fu'>class</span>(<span class='no'>censuses_df</span>)</div><div class='output co'>#&gt; [1] "censuses_df" "tbl_df"      "tbl"         "data.frame" </div><div class='input'>
-<span class='no'>out</span> <span class='kw'>&lt;-</span> <span class='fu'>pick</span>(<span class='no'>censuses_df</span>, <span class='no'>dbh</span> <span class='kw'>==</span> <span class='fl'>1</span>)
-<span class='no'>out</span>$<span class='no'>data</span></div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 1 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     1
+<span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>)
+<span class='fu'>dir</span>(<span class='no'>path</span>)</div><div class='output co'>#&gt; [1] "tree5.RData" "tree6.RData"</div><div class='input'><span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='read_censuses.html'>read_censuses</a></span>(<span class='no'>path</span>)
+<span class='no'>censuses</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>pick</span>(<span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>600</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/pull.html'>pull</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt; # A tibble: 4 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1   1168   1438 10131 10131   DACE~ 413      70.6  252.    440031        5   604
+#&gt; 2  24399  30562 15172 15172   MANB~ 618     118.   343.    443041        5   777
+#&gt; 3  25821  32585 16675 16675   BUCT~ 1220    225.   397.    444015        5   955
+#&gt; 4  27376  34692 18275 18275   BUCT~ 1223    221.   445.    445060        5   661
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; 
 #&gt; [[2]]
-#&gt; # A tibble: 1 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     8
-#&gt; </div><div class='input'><span class='co'># Same</span>
-<span class='no'>censuses_df</span> <span class='kw'>%&gt;%</span> <span class='fu'>pick</span>(<span class='no'>dbh</span> <span class='kw'>==</span> <span class='fl'>1</span>) <span class='kw'>%&gt;%</span> <span class='fu'>pull</span>()</div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 1 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     1
-#&gt; 
-#&gt; [[2]]
-#&gt; # A tibble: 1 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     8
-#&gt; </div><div class='input'>
-<span class='no'>censuses_df</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>pick</span>(<span class='no'>dbh</span> <span class='kw'>&lt;=</span> <span class='fl'>8</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>pull</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 2 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     1
-#&gt; 2     2
-#&gt; 
-#&gt; [[2]]
-#&gt; # A tibble: 2 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     8
-#&gt; 2     9
-#&gt; </div><div class='input'>
-<span class='no'>censuses_df</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>pick</span>(<span class='no'>dbh</span> <span class='kw'>&lt;=</span> <span class='fl'>8</span>, <span class='kw'>key</span> <span class='kw'>=</span> <span class='fl'>2</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>pull</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 1 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     1
-#&gt; 
-#&gt; [[2]]
-#&gt; # A tibble: 1 x 1
-#&gt;     dbh
-#&gt;   &lt;int&gt;
-#&gt; 1     8
-#&gt; </div><div class='input'>
-<span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='rdata_df.html'>rdata_df</a></span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>), <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"census"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>census</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/nest.html'>nest</a></span>()
-<span class='no'>censuses</span></div><div class='output co'>#&gt; # A tibble: 2 x 2
-#&gt;   census data                 
-#&gt;   &lt;chr&gt;  &lt;list&gt;               
-#&gt; 1 tree5  &lt;tibble [1,000 x 19]&gt;
-#&gt; 2 tree6  &lt;tibble [1,000 x 19]&gt;</div><div class='input'>
-<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>30</span>, <span class='kw'>key</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='error'>Error in is.data.frame(df): Can't deal with data of class: tbl_df, tbl, or data.frame.</span></div></pre>
+#&gt; # A tibble: 4 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1   1168   1438 10131 10131   DACE~ 413      70.6  252.    603151        6   613
+#&gt; 2  24399  30562 15172 15172   MANB~ 618     118.   343.    608417        6   812
+#&gt; 3  25821  32585 16675 16675   BUCT~ 1220    225.   397.    585671        6   992
+#&gt; 4  27376  34692 18275 18275   BUCT~ 1223    221.   445.    586086        6   676
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

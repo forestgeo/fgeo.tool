@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Structure elevation data. — fgeo_elevation • fgeo.tool</title>
+<title>Create objects of class <code>censuses_*</code>, where <code>*</code> depends on the input. — as_censuses • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Structure elevation data. — fgeo_elevation" />
+<meta property="og:title" content="Create objects of class <code>censuses_*</code>, where <code>*</code> depends on the input. — as_censuses" />
 
-<meta property="og:description" content="This function constructs an object of class fgeo_elevation. It standardizes
-the structure of elevation data to always output a dataframe with names gx,
-gy and elev -- or it dies trying." />
+<meta property="og:description" content="Create objects of class censuses_*, where * depends on the input." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,81 +106,57 @@ gy and elev -- or it dies trying." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Structure elevation data.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/fgeo_elevation.R'><code>R/fgeo_elevation.R</code></a></small>
-    <div class="hidden name"><code>fgeo_elevation.Rd</code></div>
+    <h1>Create objects of class <code>censuses_*</code>, where <code>*</code> depends on the input.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/censuses.R'><code>R/censuses.R</code></a></small>
+    <div class="hidden name"><code>as_censuses.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function constructs an object of class fgeo_elevation. It standardizes
-the structure of elevation data to always output a dataframe with names <code>gx</code>,
-<code>gy</code> and <code>elev</code> -- or it dies trying.</p>
+    <p>Create objects of class <code>censuses_*</code>, where <code>*</code> depends on the input.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fgeo_elevation</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>as_censuses</span>(<span class='no'>.data</span>)
+
+<span class='co'># S3 method for default</span>
+<span class='fu'>as_censuses</span>(<span class='no'>.data</span>)
+
+<span class='co'># S3 method for list</span>
+<span class='fu'>as_censuses</span>(<span class='no'>.data</span>)
+
+<span class='co'># S3 method for tbl_df</span>
+<span class='fu'>as_censuses</span>(<span class='no'>.data</span>)
+
+<span class='fu'>censuses_lst</span>(<span class='no'>.data</span>)
+
+<span class='fu'>censuses_df</span>(<span class='no'>.data</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Either a dataframe or a dataframe stored in the element <code>col</code> of a
-list.</p></td>
+      <th>.data</th>
+      <td><p>A ForestGEO-like dataset.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe with names <code>x/gx</code>, <code>y/gy</code> and <code>elev</code>.</p>
-    
-    <h2 class="hasAnchor" id="input"><a class="anchor" href="#input"></a>Input</h2>
-
-    
-    <p>The main input can be either the elevation list that ForestGEO delivers, or
-the element <code>col</code> of such list -- which is a dataframe containing the
-elevation data. Notice that the required arguments vary according to the main
-input (the elevation list or the elevation dataframe). Whatever the input,
-the dataframe containing the elevation data must have columns <code>gx</code> and <code>gy</code>
-or <code>x</code> and <code>y</code>.</p>
-    
-    <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
-
-    
-    <p>This function was inspired by David Kenfack.</p>
+    <p>An object of class <code>census_*</code>, where <code>*</code> depends on the input.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to construct fgeo classes: <code><a href='as_censuses.html'>as_censuses</a></code>,
+    <div class='dont-index'><p>Other functions to construct fgeo classes: <code><a href='fgeo_elevation.html'>fgeo_elevation</a></code>,
   <code><a href='fgeo_habitat.html'>fgeo_habitat</a></code>, <code><a href='fgeo_topography.html'>fgeo_topography</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Dataframe input</span>
-<span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>bciex</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/bciex/topics/bci_elevation'>bci_elevation</a></span>
-<span class='fu'>str</span>(<span class='no'>elev_df</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	20301 obs. of  3 variables:
-#&gt;  $ x   : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ y   : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  121 121 121 121 121 ...</div><div class='input'>
-<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_df</span>)
-<span class='fu'>str</span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes 'fgeo_elevation', 'tbl_df', 'tbl' and 'data.frame':	20301 obs. of  3 variables:
-#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  121 121 121 121 121 ...</div><div class='input'>
-<span class='co'># List input</span>
-<span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>elev_df</span>, <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"stuff"</span>)
-<span class='fu'>str</span>(<span class='no'>elev_list</span>)</div><div class='output co'>#&gt; List of 2
-#&gt;  $ col  :Classes 'tbl_df', 'tbl' and 'data.frame':	20301 obs. of  3 variables:
-#&gt;   ..$ x   : int [1:20301] 0 0 0 0 0 0 0 0 0 0 ...
-#&gt;   ..$ y   : int [1:20301] 0 5 10 15 20 25 30 35 40 45 ...
-#&gt;   ..$ elev: num [1:20301] 121 121 121 121 121 ...
-#&gt;  $ other: chr "stuff"</div><div class='input'>
-<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_list</span>)
-<span class='fu'>str</span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes 'fgeo_elevation', 'tbl_df', 'tbl' and 'data.frame':	20301 obs. of  3 variables:
-#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  121 121 121 121 121 ...</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>censuses_lst</span> <span class='kw'>&lt;-</span> <span class='fu'>as_censuses</span>(<span class='fu'>list</span>(
+  <span class='kw'>c1</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>),
+  <span class='kw'>c2</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>8</span>:<span class='fl'>9</span>)
+))
+<span class='fu'>class</span>(<span class='no'>censuses_lst</span>)</div><div class='output co'>#&gt; [1] "censuses_lst" "list"        </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -190,10 +164,6 @@ or <code>x</code> and <code>y</code>.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#input">Input</a></li>
-
-      <li><a href="#acknowledgments">Acknowledgments</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

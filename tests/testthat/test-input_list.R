@@ -1,7 +1,5 @@
 context("input_list")
 
-library(fs)
-
 test_that("outputs expected object", {
   dir <- tool_example("csv")
   expect_is(csv_list(dir), "list")
@@ -25,12 +23,11 @@ test_that("can read specific files in a mixed directory", {
 
 context("read_with")
 
-test_that("read_with() can handle cero, and two .rdata files", {
-  empty <- tool_example("empty")
-  expect_warning(rdata_list(empty), "Can't find.*rdata")
-  expect_warning(
-    read_with(readr::read_csv, "[.]csv")(empty), 
-    "Can't find.*csv"
-  )
+test_that("read_with() can handle cero .rdata files", {
+  zero <- tool_example("csv")
+  expect_error(rdata_list(zero), "Can't find.*rdata")
+  
+  zero <- tool_example("rdata")
+  expect_error(read_with(readr::read_csv, "[.]csv")(zero), "Can't find.*csv")
 })
 

@@ -7,7 +7,7 @@
 #' that function name have the format input_output, i.e. rdata_df.
 #' 
 #' @inheritParams dir_list
-#' @param match If not `NULL` a sting to match specific .rdata file-names
+#' @param .match If not `NULL` a string to match specific .rdata file-names
 #'   (excluding the extension).
 #' @param .id If not NULL a variable with this name will be created to inform
 #'   the source file.
@@ -24,13 +24,13 @@
 #' 
 #' rdata_df(path_dir)
 #' 
-#' rdata_df(path_dir, match = "tree6")
+#' rdata_df(path_dir, .match = "6")
 #' 
-#' dfm <- rdata_df(path_dir, match = "tree5|6", .id = "source")
+#' dfm <- rdata_df(path_dir, .match = "tree5|6", .id = "source")
 #' dfm
 #' tail(dfm)
-rdata_df <- function(path_dir, match = NULL, .id = NULL) {
-  read_specific_rdata <- read_with(read_rdata, rdata_match(match))
+rdata_df <- function(path_dir, .match = NULL, .id = NULL) {
+  read_specific_rdata <- read_with(read_rdata, rdata_match(.match))
   lst <- read_specific_rdata(path_dir)
   if (!all(purrr::map_lgl(lst, is.data.frame))) {
     abort("Can't read non-dataframe datasets.")
@@ -50,9 +50,13 @@ rdata_df <- function(path_dir, match = NULL, .id = NULL) {
   purrr::map_dfr(lst, identity, .id = .id)
 }
 
-rdata_match <- function(match) {
-  match <- match %||% ""
-  glue(".*{match}.*[.]rdata$")
+rdata_match <- function(.match) {
+  .match <- .match %||% ""
+  if (!is.character(.match)) {
+    abort("`.match` must be a character string.")
+  }
+  
+  glue(".*{.match}.*[.]rdata$")
 }
 
 read_rdata <- function(.x) get(load(.x))

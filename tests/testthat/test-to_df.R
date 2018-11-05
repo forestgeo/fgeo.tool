@@ -56,7 +56,7 @@ describe("to_df.tt_lst", {
 pick10sp <- function(.data) dplyr::filter(.data, sp %in% unique(.data$sp)[1:10])
 tiny1 <- pick10sp(fgeo.data::luquillo_tree5_random)
 tiny2 <- pick10sp(fgeo.data::luquillo_tree6_random)
-censuses <- list(tiny1 = tiny1, tiny2 = tiny2)
+censuses <- as_censuses(list(tiny1 = tiny1, tiny2 = tiny2))
 
 describe("to_df.demography_lst", {
   skip_if_not_installed("fgeo.demography")

@@ -4,13 +4,13 @@
 \alias{read_censuses}
 \title{Read ForestGEO censuses.}
 \usage{
-read_censuses(path_dir, match = NULL, .id = "censuses")
+read_censuses(path_dir, .match = NULL, .id = "censuses")
 }
 \arguments{
 \item{path_dir}{String; the path to a directory containing the files to read
 (all must be of appropriate format; see examples).}
 
-\item{match}{If not \code{NULL} a sting to match specific .rdata file-names
+\item{.match}{If not \code{NULL} a string to match specific .rdata file-names
 (excluding the extension).}
 
 \item{.id}{If not NULL a variable with this name will be created to inform
@@ -26,6 +26,8 @@ convenient print method and enables using specific methods for working with
 ForestGEO data.
 }
 \examples{
+library(dplyr)
+
 censuses <- read_censuses(tool_example("rdata"))
 class(censuses)
 censuses$data

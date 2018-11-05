@@ -20,11 +20,11 @@ This function allows you to pick rows from a key census (dataframe) in a list
 or list-column and pick the exact same rows in all other non-key censuses.
 }
 \examples{
-library(tidyr)
+library(dplyr)
 
 censuses_lst <- as_censuses(list(
-  c1 = tibble::tibble(dbh = 1:2),
-  c2 = tibble::tibble(dbh = 8:9)
+  c1 = tibble(dbh = 1:2),
+  c2 = tibble(dbh = 8:9)
 ))
 censuses_lst
 class(censuses_lst)
@@ -33,36 +33,12 @@ pick(censuses_lst, dbh == 1)
 pick(censuses_lst, dbh >= 2)
 pick(censuses_lst, dbh <= 8 , key = "c2")
 
-dfm <- tibble::tribble(
-  ~dbh, ~census,
-    1L,       1,
-    2L,       1,
-    8L,       2,
-    9L,       2
-)
-censuses_df <- as_censuses(nest(dfm, -census))
-censuses_df
-class(censuses_df)
-
-out <- pick(censuses_df, dbh == 1)
-out$data
-# Same
-censuses_df \%>\% pick(dbh == 1) \%>\% pull()
-
-censuses_df \%>\% 
-  pick(dbh <= 8) \%>\% 
+path <- tool_example("rdata")
+dir(path)
+censuses <- read_censuses(path)
+censuses \%>\% 
+  pick(dbh > 600) \%>\% 
   pull(data)
-
-censuses_df \%>\% 
-  pick(dbh <= 8, key = 2) \%>\% 
-  pull(data)
-
-censuses <- rdata_df(tool_example("rdata"), .id = "census") \%>\% 
-  group_by(census) \%>\% 
-  nest()
-censuses
-
-pick(censuses, dbh > 30, key = 1)
 }
 \seealso{
 Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{drop_twice_dead}},

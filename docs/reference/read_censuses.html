@@ -123,7 +123,7 @@ ForestGEO data.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>read_censuses</span>(<span class='no'>path_dir</span>, <span class='kw'>match</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"censuses"</span>)</pre>
+    <pre class="usage"><span class='fu'>read_censuses</span>(<span class='no'>path_dir</span>, <span class='kw'>.match</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"censuses"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -134,8 +134,8 @@ ForestGEO data.</p>
 (all must be of appropriate format; see examples).</p></td>
     </tr>
     <tr>
-      <th>match</th>
-      <td><p>If not <code>NULL</code> a sting to match specific .rdata file-names
+      <th>.match</th>
+      <td><p>If not <code>NULL</code> a string to match specific .rdata file-names
 (excluding the extension).</p></td>
     </tr>
     <tr>
@@ -151,12 +151,14 @@ the source file.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='rdata_df.html'>rdata_df()</a></code>, <code>as_censuses()</code>.</p>
+    <div class='dont-index'><p><code><a href='rdata_df.html'>rdata_df()</a></code>, <code><a href='as_censuses.html'>as_censuses()</a></code>.</p>
 <p>Other functions to import ForestGEO data: <code><a href='read_fgeo.html'>read_fgeo</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'>read_censuses</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>))
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+
+<span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'>read_censuses</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>))
 <span class='fu'>class</span>(<span class='no'>censuses</span>)</div><div class='output co'>#&gt; [1] "censuses_df" "tbl_df"      "tbl"         "data.frame" </div><div class='input'><span class='no'>censuses</span>$<span class='no'>data</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 1,000 x 19
 #&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
@@ -195,7 +197,7 @@ the source file.</p></td>
 #&gt; </div><div class='input'>
 <span class='no'>censuses</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='pick.html'>pick</a></span>(<span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>600</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>pull</span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [[1]]
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/pull.html'>pull</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 4 x 19
 #&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
 #&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;

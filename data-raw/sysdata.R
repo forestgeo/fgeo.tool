@@ -3,6 +3,8 @@
 # file creates all internal data objects
 
 library(readr)
+library(dplyr)
+library(forcats)
 
 
 
@@ -21,10 +23,6 @@ library(readr)
 # his work accordingly.
 # The data were downloaded on the same day, about 30 minutes after the
 # discussion finished.
-
-library(tidyverse)
-
-
 
 pull_decision <- function(value) {
   priority <- readr::read_delim("./data-raw/iss32_grouped_priority.csv", delim = "\t")
