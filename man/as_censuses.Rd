@@ -5,8 +5,6 @@
 \alias{as_censuses.default}
 \alias{as_censuses.list}
 \alias{as_censuses.tbl_df}
-\alias{censuses_lst}
-\alias{censuses_df}
 \title{Create objects of class \code{censuses_*}, where \code{*} depends on the input.}
 \usage{
 as_censuses(.data)
@@ -16,10 +14,6 @@ as_censuses(.data)
 \method{as_censuses}{list}(.data)
 
 \method{as_censuses}{tbl_df}(.data)
-
-censuses_lst(.data)
-
-censuses_df(.data)
 }
 \arguments{
 \item{.data}{A ForestGEO-like dataset.}
@@ -42,4 +36,3 @@ Other functions to construct fgeo classes: \code{\link{fgeo_elevation}},
   \code{\link{fgeo_habitat}}, \code{\link{fgeo_topography}}
 }
 \concept{functions to construct fgeo classes}
-\keyword{internal}

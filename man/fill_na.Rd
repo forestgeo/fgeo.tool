@@ -19,6 +19,16 @@ This is a wrapper of \code{\link[base:replace]{base::replace()}} with a simplifi
 that target the specific job of filling NA's. See also \code{tidyr::replace_na}
 and \code{dplyr::coalesce}.
 }
+\section{Acknowledgments}{
+
+
+This function was inspired by conversations with David Kenfack and by a
+\href{{https://goo.gl/aMTQck}{blog post by Rick Pack}}. Also tanks to Edgar Ruiz
+for discussing alternatives
+(via \href{{https://goo.gl/4uME2U}{this blog post}} on RStudio community).
+
+}
+
 \examples{
 x <- data.frame(x = c(NA, 1), y = c("a", NA), stringsAsFactors = FALSE)
 

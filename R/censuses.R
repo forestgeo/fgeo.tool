@@ -39,7 +39,6 @@ read_censuses <- function(path_dir, .match = NULL, .id = "censuses") {
 #'
 #' @return An object of class `census_*`, where `*` depends on the input.
 #' @export
-#' @keywords internal
 #'
 #' @examples
 #' censuses_lst <- as_censuses(list(
@@ -69,14 +68,10 @@ as_censuses.tbl_df <- function(.data) {
   new_censuses_df(.data)
 }
 
-#' @export
-#' @rdname as_censuses
 censuses_lst <- function(.data) {
   UseMethod("censuses_lst")
 }
 
-#' @export
-#' @rdname as_censuses
 censuses_df <- function(.data) {
   UseMethod("censuses_df")
 }
