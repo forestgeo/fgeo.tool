@@ -201,40 +201,20 @@ you want, create your own with <code><a href='read_with.html'>read_with()</a></c
 #&gt; </div><div class='input'>
 <span class='no'>path_rds</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rds"</span>)
 <span class='no'>path_rds</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Documents/Dropbox/git/fgeo.tool/inst/extdata/rds"</div><div class='input'><span class='fu'>dir</span>(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; [1] "tree5.rds" "tree6.rds"</div><div class='input'><span class='fu'>rds_list</span>(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; $tree5
-#&gt; # A tibble: 1,000 x 19
-#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
-#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
-#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5
-#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5
-#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5
-#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    466727        5
-#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    439989        5
-#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    466743        5
-#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    440021        5
-#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889        5
-#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    440031        5
-#&gt; 10   1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957        5
-#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
-#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;
+#&gt; # A tibble: 3 x 3
+#&gt;   treeID stemID tag   
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; 
+#&gt; 1    104    143 10009 
+#&gt; 2    119    158 100104
+#&gt; 3    180    225 100171
 #&gt; 
 #&gt; $tree6
-#&gt; # A tibble: 1,000 x 19
-#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
-#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
-#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6
-#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6
-#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6
-#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    614253        6
-#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    598429        6
-#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    614211        6
-#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    603131        6
-#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    616923        6
-#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    603151        6
-#&gt; 10   1380   1702 1015~ 101560  CASA~ 820     142.   386.    614023        6
-#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
-#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;
+#&gt; # A tibble: 3 x 3
+#&gt;   treeID stemID tag   
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; 
+#&gt; 1    104    143 10009 
+#&gt; 2    119    158 100104
+#&gt; 3    180    225 100171
 #&gt; </div><div class='input'>
 <span class='no'>path_csv</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"csv"</span>)
 <span class='no'>path_csv</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Documents/Dropbox/git/fgeo.tool/inst/extdata/csv"</div><div class='input'><span class='fu'>dir</span>(<span class='no'>path_csv</span>)</div><div class='output co'>#&gt; [1] "csv1.csv" "csv2.csv"</div><div class='input'><span class='fu'>csv_list</span>(<span class='no'>path_csv</span>)</div><div class='output co'>#&gt; <span class='message'>Parsed with column specification:</span>
