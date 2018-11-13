@@ -24,14 +24,14 @@ describe("by_group()", {
     out <- dfm %>% by_group(first_row)
     expect_equal(out, tibble::tibble(x = 11, y = 21, z = 31)) 
     expect_is(out, "tbl")
-    expect_false(is_grouped_df(out))
+    expect_false(dplyr::is_grouped_df(out))
   })
   
   it("works with grouped data", {
     out <- dfm %>% group_by(x) %>% by_group(first_row)
     expect_equal(out, dfm)
     expect_is(out, "tbl")
-    expect_true(is_grouped_df(out))
+    expect_true(dplyr::is_grouped_df(out))
     expect_named(out, c("x", "y", "z"))
   })
   
