@@ -39,7 +39,7 @@ These functions provide an expressive and convenient way to filter
 ForestGEO's data. They let you remove missing values (with \code{na.rm = TRUE})
 but conservatively default to keeping NAs. This behavior is similar to base
 subsetting and unlike \code{dplyr::filter()}; this conservative default matters
-because the difference is important between missing trees and dead trees --
+since the difference between missing trees and dead trees is important --
 and you may want to include missing trees in your analysis.
 }
 \examples{
