@@ -90,9 +90,11 @@ test_that("works with nested data and character nesting-group", {
     nest() %>% 
     as_censuses()
   
-  expect_error(out <- pick(censuses, dbh > 30), NA)
+  # Pick rows over the mean
+  mean_dbh <- mean(censuses$data[[1]]$dbh, na.rm = TRUE)
+    expect_error(out <- pick(censuses, dbh > mean_dbh), NA)
   expect_is(out, "censuses_df")
   
   expect_true(nrow(censuses$data[[1]]) > nrow(out$data[[1]]))
-  expect_error(pick(censuses, dbh > 30, key = "tree6"), NA)
+  expect_error(pick(censuses, dbh > mean_dbh, key = "tree6"), NA)
 })
