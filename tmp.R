@@ -1,3 +1,28 @@
+by_group <- function(.data, .f, ...) {
+  if (!dplyr::is_grouped_df(.data)) {
+    return(.f(.data, ...))
+  }
+  
+  g <- dplyr::group_vars(.data)
+  .name <- rlang::parse_quo(g, .data)
+  
+  grp <- tibble::add_column(.data, group = !! .name)
+  .grp <- dplyr::grouped_df(grp, vars = "group")
+  nst <- tidyr::nest(.grp, -group)
+  nst$data %>% 
+    purrr::map(.f, ...)
+}
+
+dup_treeid <- function(x) is_duplicated(x$treeid)
+.data %>% 
+  dup_treeid()
+
+.data %>% 
+  group_by(treeid) %>% 
+  by_group(dup_treeid)
+
+
+
 # TODO:
 # Address TODO and FIXME.
 # Integrate with fgeo.demography

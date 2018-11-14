@@ -45,17 +45,17 @@
 #' dfm %>% group_by(x) %>% by_group(first_row, to_chr = TRUE)
 by_group <- function(.x, .f, ...) {
   stopifnot(is.data.frame(.x), is.function(.f))
-  
+
   if (!dplyr::is_grouped_df(.x)) {
-    return(.f(.x))
+    return(.f(.x, ...))
   }
-  
+
   g <- dplyr::group_vars(.x)
-  
+
   split <- split(.x, dplyr::group_indices(.x))
   .split <- purrr::map(split, ungroup)
   out <- purrr::map_df(set_names(.split, names(.x)), .f, ...)
-  
+
   dplyr::grouped_df(out, vars = g)
 }
 

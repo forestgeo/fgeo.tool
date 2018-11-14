@@ -17,7 +17,9 @@ describe("detect_if_group() and flag_if_group()", {
     
     tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 1))
     by_censusid <- group_by(tree, CensusID)
-    expect_false(detect_if_group(by_censusid, "treeID", is_duplicated))
+    expect_false(
+      detect_if_group(by_censusid, "treeID", is_duplicated)
+    )
     expect_silent(flag_if_group(by_censusid, "treeID", is_duplicated))
     expect_true(detect_if_group(tree, "treeID", is_duplicated))
     expect_warning(flag_if_group(tree, "treeID", is_duplicated), msg)
@@ -52,24 +54,3 @@ describe("detect_if_group() and flag_if_group()", {
   })
 })
 
-# FIXME: REMOVE Because it adds not value 
-# test_that("works with data that produced and error in fgeo.abundance", {
-#   .data <- tibble::tribble(
-#     ~treeid, ~dbh, ~status, ~date, ~sp,
-#         "1",    1,     "A",   800, "a",
-#         "2",    1,     "A",   800, "b",
-#   )
-#   .msg <- 
-#     "`treeid`: Duplicated values were detected. Do you need to pick main stems?"
-#   
-#   expect_warning(
-#     flag_if_group(
-#       .data,
-#       name = "treeid",
-#       predicate = fgeo.base::is_duplicated,
-#       msg = .msg
-#     ), 
-#     NA
-#   )
-# })
-# 

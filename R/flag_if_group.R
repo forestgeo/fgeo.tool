@@ -46,6 +46,32 @@ flag_if_group <- function(.data,
 #' @rdname flag_if_group
 #' @export
 detect_if_group <- function(.data, name, predicate) {
-  result_by_groups <- by_group(.data, function(x) detect_if(x, name, predicate))
-  any(t(result_by_groups))
+  if (!dplyr::is_grouped_df(.data)) {
+    return(detect_if(.data, name, predicate))
+  }
+  
+  g <- dplyr::group_vars(.data)
+  lst <- split(.data, .data[g])
+  out <- purrr::map(lst, ~detect_if(.x, name, predicate))
+  
+  any(unlist(out))
 }
+
+# # FIXME: Check if by_group can be removed completely
+# # Version that always returns a list
+# by_group2 <- function(.data, .f, ...) {
+#   stopifnot(is.data.frame(.data), is.function(.f))
+# 
+#   if (!dplyr::is_grouped_df(.data)) {
+#     return(.f(.data, ...))
+#   }
+# 
+#   g <- dplyr::group_vars(.data)
+#   .name <- rlang::parse_quo(g, .data)
+# 
+#   grp <- tibble::add_column(.data, group = !! .name)
+#   .grp <- dplyr::grouped_df(grp, vars = "group")
+#   nst <- tidyr::nest(.grp, -group)
+#   nst$data %>%
+#     purrr::map(.f, ...)
+# }
