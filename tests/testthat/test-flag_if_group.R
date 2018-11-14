@@ -51,3 +51,25 @@ describe("detect_if_group() and flag_if_group()", {
     expect_warning(flag_if_group(vft, "treeid", is_multiple))
   })
 })
+
+# FIXME: REMOVE Because it adds not value 
+# test_that("works with data that produced and error in fgeo.abundance", {
+#   .data <- tibble::tribble(
+#     ~treeid, ~dbh, ~status, ~date, ~sp,
+#         "1",    1,     "A",   800, "a",
+#         "2",    1,     "A",   800, "b",
+#   )
+#   .msg <- 
+#     "`treeid`: Duplicated values were detected. Do you need to pick main stems?"
+#   
+#   expect_warning(
+#     flag_if_group(
+#       .data,
+#       name = "treeid",
+#       predicate = fgeo.base::is_duplicated,
+#       msg = .msg
+#     ), 
+#     NA
+#   )
+# })
+# 
