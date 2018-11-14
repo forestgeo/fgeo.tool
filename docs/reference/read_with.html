@@ -148,37 +148,45 @@ from a directory (provided they all are of the suitable format).</p>
 <span class='no'>path_rds</span></div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Documents/Dropbox/git/fgeo.tool/inst/extdata/rds"</div><div class='input'><span class='fu'>dir</span>(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; [1] "tree5.rds" "tree6.rds"</div><div class='input'>
 <span class='no'>rds_list</span> <span class='kw'>&lt;-</span> <span class='fu'>read_with</span>(<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/readr/topics/read_rds'>read_rds</a></span>)
 <span class='fu'><a href='dir_list.html'>rds_list</a></span>(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; $tree5
-#&gt; # A tibble: 3 x 3
-#&gt;   treeID stemID tag   
-#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; 
-#&gt; 1    104    143 10009 
-#&gt; 2    119    158 100104
-#&gt; 3    180    225 100171
+#&gt; # A tibble: 3 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5 193  
+#&gt; 2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5  40.4
+#&gt; 3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5  45  
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; 
 #&gt; $tree6
-#&gt; # A tibble: 3 x 3
-#&gt;   treeID stemID tag   
-#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; 
-#&gt; 1    104    143 10009 
-#&gt; 2    119    158 100104
-#&gt; 3    180    225 100171
+#&gt; # A tibble: 3 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6 195  
+#&gt; 2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6  44.9
+#&gt; 3    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6  46.1
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; </div><div class='input'>
 <span class='co'># Same</span>
 <span class='fu'>read_with</span>(<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/readr/topics/read_rds'>read_rds</a></span>)(<span class='no'>path_rds</span>)</div><div class='output co'>#&gt; $tree5
-#&gt; # A tibble: 3 x 3
-#&gt;   treeID stemID tag   
-#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; 
-#&gt; 1    104    143 10009 
-#&gt; 2    119    158 100104
-#&gt; 3    180    225 100171
+#&gt; # A tibble: 3 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5 193  
+#&gt; 2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5  40.4
+#&gt; 3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5  45  
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; 
 #&gt; $tree6
-#&gt; # A tibble: 3 x 3
-#&gt;   treeID stemID tag   
-#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; 
-#&gt; 1    104    143 10009 
-#&gt; 2    119    158 100104
-#&gt; 3    180    225 100171
+#&gt; # A tibble: 3 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6 195  
+#&gt; 2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6  44.9
+#&gt; 3    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6  46.1
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; </div><div class='input'>
 </div><span class='co'># NOT RUN {</span>
 <span class='kw'>if</span> (!<span class='fu'>requireNamespace</span>(<span class='st'>"rio"</span>))

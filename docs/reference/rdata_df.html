@@ -160,63 +160,46 @@ the source file.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>path_dir</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>)
 <span class='fu'>dir</span>(<span class='no'>path_dir</span>)</div><div class='output co'>#&gt; [1] "tree5.RData" "tree6.RData"</div><div class='input'>
-<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>)</div><div class='output co'>#&gt; # A tibble: 2,000 x 19
-#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
-#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
-#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5
-#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5
-#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5
-#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    466727        5
-#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    439989        5
-#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    466743        5
-#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    440021        5
-#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889        5
-#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    440031        5
-#&gt; 10   1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957        5
-#&gt; # ... with 1,990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
-#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
-<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>.match</span> <span class='kw'>=</span> <span class='st'>"6"</span>)</div><div class='output co'>#&gt; # A tibble: 1,000 x 19
-#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
-#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;
-#&gt;  1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6
-#&gt;  2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6
-#&gt;  3    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6
-#&gt;  4    602    736 1006~ 100649  GUAG~ 821     149.   414.    614253        6
-#&gt;  5    631    775 10069 10069   PREM~ 213      38.3  245.    598429        6
-#&gt;  6    647    793 1007~ 100708  SCHM~ 821     143.   411.    614211        6
-#&gt;  7   1086   1339 10122 10122   DRYG~ 413      68.9  253.    603131        6
-#&gt;  8   1144   1410 1012~ 101285  SCHM~ 920     161.   395.    616923        6
-#&gt;  9   1168   1438 10131 10131   DACE~ 413      70.6  252.    603151        6
-#&gt; 10   1380   1702 1015~ 101560  CASA~ 820     142.   386.    614023        6
-#&gt; # ... with 990 more rows, and 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;,
-#&gt; #   hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;,
-#&gt; #   status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
+<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5 193  
+#&gt; 2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597        5  40.4
+#&gt; 3    180    225 1001~ 100174  CASA~ 921     165.   410.    466623        5  45  
+#&gt; 4    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6 195  
+#&gt; 5    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6  44.9
+#&gt; 6    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6  46.1
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
+<span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>.match</span> <span class='kw'>=</span> <span class='st'>"6"</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6 195  
+#&gt; 2    119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696        6  44.9
+#&gt; 3    180    225 1001~ 100174  CASA~ 921     165.   410.    617049        6  46.1
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'>
 <span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>rdata_df</span>(<span class='no'>path_dir</span>, <span class='kw'>.match</span> <span class='kw'>=</span> <span class='st'>"tree5|6"</span>, <span class='kw'>.id</span> <span class='kw'>=</span> <span class='st'>"source"</span>)
-<span class='no'>dfm</span></div><div class='output co'>#&gt; # A tibble: 2,000 x 20
-#&gt;    source treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID
-#&gt;    &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
-#&gt;  1 tree5     104    143 10009 10009   DACE~ 113      10.3  245.    439947
-#&gt;  2 tree5     119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597
-#&gt;  3 tree5     180    225 1001~ 100174  CASA~ 921     165.   410.    466623
-#&gt;  4 tree5     602    736 1006~ 100649  GUAG~ 821     149.   414.    466727
-#&gt;  5 tree5     631    775 10069 10069   PREM~ 213      38.3  245.    439989
-#&gt;  6 tree5     647    793 1007~ 100708  SCHM~ 821     143.   411.    466743
-#&gt;  7 tree5    1086   1339 10122 10122   DRYG~ 413      68.9  253.    440021
-#&gt;  8 tree5    1144   1410 1012~ 101285  SCHM~ 920     161.   395.    466889
-#&gt;  9 tree5    1168   1438 10131 10131   DACE~ 413      70.6  252.    440031
-#&gt; 10 tree5    1380 114352 1015~ 149529  CASA~ 820     142.   386.    466957
-#&gt; # ... with 1,990 more rows, and 10 more variables: CensusID &lt;int&gt;, dbh &lt;dbl&gt;,
-#&gt; #   pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;,
-#&gt; #   nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</div><div class='input'><span class='fu'>tail</span>(<span class='no'>dfm</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 20
+<span class='no'>dfm</span></div><div class='output co'>#&gt; # A tibble: 6 x 20
 #&gt;   source treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID
 #&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
-#&gt; 1 tree6  126869 166460 1786~ 178613  CASA~ 1122     211.  420.    619723
-#&gt; 2 tree6  126934 166531 1787~ 178763  MICR~ 324       47   480.    619794
-#&gt; 3 tree6  127015 166617 1793~ 179345  CLUR~ 1025     186.  485.    619880
-#&gt; 4 tree6  127017 166619 1793~ 179361  PSYB~ 1025     185.  494.    619882
-#&gt; 5 tree6  127025 166627 1794~ 179417  TETB~ 623      112.  447.    619890
-#&gt; 6 tree6  127033 166635 1794~ 179463  TETB~ 1023     184.  454.    619898
+#&gt; 1 tree5     104    143 10009 10009   DACE~ 113      10.3  245.    439947
+#&gt; 2 tree5     119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597
+#&gt; 3 tree5     180    225 1001~ 100174  CASA~ 921     165.   410.    466623
+#&gt; 4 tree6     104    143 10009 10009   DACE~ 113      10.3  245.    582850
+#&gt; 5 tree6     119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696
+#&gt; 6 tree6     180    225 1001~ 100174  CASA~ 921     165.   410.    617049
+#&gt; # ... with 10 more variables: CensusID &lt;int&gt;, dbh &lt;dbl&gt;, pom &lt;chr&gt;, hom &lt;dbl&gt;,
+#&gt; #   ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;,
+#&gt; #   date &lt;dbl&gt;</div><div class='input'><span class='fu'>tail</span>(<span class='no'>dfm</span>)</div><div class='output co'>#&gt; # A tibble: 6 x 20
+#&gt;   source treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID
+#&gt;   &lt;chr&gt;   &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
+#&gt; 1 tree5     104    143 10009 10009   DACE~ 113      10.3  245.    439947
+#&gt; 2 tree5     119    158 1001~ 100104  MYRS~ 1021    183.   410.    466597
+#&gt; 3 tree5     180    225 1001~ 100174  CASA~ 921     165.   410.    466623
+#&gt; 4 tree6     104    143 10009 10009   DACE~ 113      10.3  245.    582850
+#&gt; 5 tree6     119    158 1001~ 100104  MYRS~ 1021    183.   410.    578696
+#&gt; 6 tree6     180    225 1001~ 100174  CASA~ 921     165.   410.    617049
 #&gt; # ... with 10 more variables: CensusID &lt;int&gt;, dbh &lt;dbl&gt;, pom &lt;chr&gt;, hom &lt;dbl&gt;,
 #&gt; #   ExactDate &lt;date&gt;, DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;,
 #&gt; #   date &lt;dbl&gt;</div></pre>

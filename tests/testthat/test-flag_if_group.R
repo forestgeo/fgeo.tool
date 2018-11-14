@@ -17,7 +17,9 @@ describe("detect_if_group() and flag_if_group()", {
     
     tree <- tibble::tibble(CensusID = c(1, 2), treeID = c(1, 1))
     by_censusid <- group_by(tree, CensusID)
-    expect_false(detect_if_group(by_censusid, "treeID", is_duplicated))
+    expect_false(
+      detect_if_group(by_censusid, "treeID", is_duplicated)
+    )
     expect_silent(flag_if_group(by_censusid, "treeID", is_duplicated))
     expect_true(detect_if_group(tree, "treeID", is_duplicated))
     expect_warning(flag_if_group(tree, "treeID", is_duplicated), msg)
@@ -51,3 +53,4 @@ describe("detect_if_group() and flag_if_group()", {
     expect_warning(flag_if_group(vft, "treeid", is_multiple))
   })
 })
+

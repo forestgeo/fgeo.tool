@@ -46,6 +46,13 @@ flag_if_group <- function(.data,
 #' @rdname flag_if_group
 #' @export
 detect_if_group <- function(.data, name, predicate) {
-  result_by_groups <- by_group(.data, function(x) detect_if(x, name, predicate))
-  any(t(result_by_groups))
+  if (!dplyr::is_grouped_df(.data)) {
+    return(detect_if(.data, name, predicate))
+  }
+  
+  g <- dplyr::group_vars(.data)
+  lst <- split(.data, .data[g])
+  out <- purrr::map(lst, ~detect_if(.x, name, predicate))
+  
+  any(unlist(out))
 }
