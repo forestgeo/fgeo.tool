@@ -56,22 +56,3 @@ detect_if_group <- function(.data, name, predicate) {
   
   any(unlist(out))
 }
-
-# # FIXME: Check if by_group can be removed completely
-# # Version that always returns a list
-# by_group2 <- function(.data, .f, ...) {
-#   stopifnot(is.data.frame(.data), is.function(.f))
-# 
-#   if (!dplyr::is_grouped_df(.data)) {
-#     return(.f(.data, ...))
-#   }
-# 
-#   g <- dplyr::group_vars(.data)
-#   .name <- rlang::parse_quo(g, .data)
-# 
-#   grp <- tibble::add_column(.data, group = !! .name)
-#   .grp <- dplyr::grouped_df(grp, vars = "group")
-#   nst <- tidyr::nest(.grp, -group)
-#   nst$data %>%
-#     purrr::map(.f, ...)
-# }
