@@ -35,22 +35,22 @@ test_that("guess_comma_or_tab() guesses tab or comma separated file", {
   expect_equal(guess_comma_or_tab("a\tb\n1\t1", nms = c("a", "b")), "\t")
   
   comma <- tempfile()
-  readr::write_csv(fgeo.data::luquillo_vft_4quad, comma)
+  readr::write_csv(fgeo.x::vft_4quad, comma)
   expect_equal(guess_comma_or_tab(comma, nms = names(type_vft())), ",")
   expect_silent(guess_comma_or_tab(comma, nms = names(type_vft())))
   
   tab <- tempfile()
-  readr::write_tsv(fgeo.data::luquillo_vft_4quad, tab)
+  readr::write_tsv(fgeo.x::vft_4quad, tab)
   expect_equal(guess_comma_or_tab(tab, nms = names(type_vft())), "\t")
   
   expect_silent(read_vft(tab))
   expect_silent(read_vft(comma))
   
   taxa_tab <- tempfile()
-  readr::write_tsv(fgeo.data::luquillo_taxa, taxa_tab)
+  readr::write_tsv(fgeo.x::taxa, taxa_tab)
   expect_silent(read_taxa(taxa_tab))
   
   taxa_comma <- tempfile()
-  readr::write_csv(fgeo.data::luquillo_taxa, taxa_comma)
+  readr::write_csv(fgeo.x::taxa, taxa_comma)
   expect_silent(read_taxa(taxa_comma))
 })

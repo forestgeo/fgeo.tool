@@ -38,7 +38,7 @@ describe("to_df.tt_lst", {
   
   cns <- fgeo.habitat::luquillo_top3_sp
   spp <- unique(cns$sp)[1]
-  hab_luq <- fgeo.data::luquillo_habitat
+  hab_luq <- fgeo.x::habitat
   tt_lst <- fgeo.habitat::tt_test(cns, spp, hab_luq)
 
   it("outputs the expected dataframe", {
@@ -54,8 +54,8 @@ describe("to_df.tt_lst", {
 
 
 pick10sp <- function(.data) dplyr::filter(.data, sp %in% unique(.data$sp)[1:10])
-tiny1 <- pick10sp(fgeo.data::luquillo_tree5_random)
-tiny2 <- pick10sp(fgeo.data::luquillo_tree6_random)
+tiny1 <- pick10sp(fgeo.x::tree5)
+tiny2 <- pick10sp(fgeo.x::tree6)
 censuses <- as_censuses(list(tiny1 = tiny1, tiny2 = tiny2))
 
 describe("to_df.demography_lst", {

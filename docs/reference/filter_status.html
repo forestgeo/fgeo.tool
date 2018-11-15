@@ -165,121 +165,112 @@ to <code>.status</code>.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from 'package:testthat':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>fgeo.tool</span>)
-
-<span class='co'># Filter by the status of each stem (wood = "stem") ----------------------</span>
+    <pre class="examples"><div class='input'><span class='co'># Filter by the status of each stem (wood = "stem") ----------------------</span>
 
 <span class='co'># CENSUS TABLE: STEM TABLE</span>
 
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/census_luquillo'>luquillo_stem_random_tiny</a></span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>stem6</span>
 <span class='fu'>table</span>(<span class='no'>x</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
-#&gt;  A  D  G  P 
-#&gt; 60  2  6 16 </div><div class='input'>
+#&gt;  A  D  G 
+#&gt; 17  6  7 </div><div class='input'>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"stem"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
 #&gt; D 
-#&gt; 2 </div><div class='input'>
+#&gt; 6 </div><div class='input'>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"stem"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>, <span class='kw'>exclude</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
-#&gt;  A  G  P 
-#&gt; 60  6 16 </div><div class='input'><span class='co'># Shortcut</span>
+#&gt;  A  G 
+#&gt; 17  7 </div><div class='input'><span class='co'># Shortcut</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
-#&gt;  A  G  P 
-#&gt; 60  6 16 </div><div class='input'>
+#&gt;  A  G 
+#&gt; 17  7 </div><div class='input'>
 <span class='co'># Warns</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"stem"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"A"</span>, <span class='st'>"wrong-status"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = wrong-status</span>
-#&gt; <span class='warning'>  * Detected values: A, P, G, D</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
+#&gt; <span class='warning'>  * Detected values: A, D, G</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
 #&gt;  A 
-#&gt; 60 </div><div class='input'>
+#&gt; 17 </div><div class='input'>
 <span class='co'># CENSUS TABLE: TREE TABLE</span>
 
 <span class='co'># Works exactly in the same way</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/census_luquillo'>luquillo_tree6_random</a></span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>tree6</span>
 <span class='fu'>table</span>(<span class='no'>x</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
-#&gt;   A   D 
-#&gt; 834 166 </div><div class='input'>
+#&gt;  A  D 
+#&gt; 25  5 </div><div class='input'>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"stem"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
-#&gt;   D 
-#&gt; 166 </div><div class='input'>
+#&gt; D 
+#&gt; 5 </div><div class='input'>
 <span class='co'># Shortcut</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; 
-#&gt;   A 
-#&gt; 834 </div><div class='input'>
+#&gt;  A 
+#&gt; 25 </div><div class='input'>
 <span class='co'># VIEWFULL TABLE</span>
 
 <span class='co'># Works exactly in the same way, but notice the following:</span>
 <span class='co'># * The variable Status starts with capital S;</span>
 <span class='co'># * The values of Status are not, say "A" or "D", but "alive" or "dead".</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_vft_4quad'>luquillo_vft_4quad</a></span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>vft_4quad</span>
 <span class='fu'>table</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; 
 #&gt;        alive broken below         dead    stem dead 
-#&gt;         1745          298          808          451 </div><div class='input'>
+#&gt;          269           48          120           63 </div><div class='input'>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"stem"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"alive"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; 
 #&gt; alive 
-#&gt;  1745 </div><div class='input'>
+#&gt;   269 </div><div class='input'>
 <span class='co'># Warns because `.status` defaults to "D" -- not to "dead".</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D</span>
-#&gt; <span class='warning'>  * Detected values: dead, alive, broken below, stem dead</span></div><div class='input'><span class='co'># Fix and repeat</span>
+#&gt; <span class='warning'>  * Detected values: dead, stem dead, alive, broken below</span></div><div class='input'><span class='co'># Fix and repeat</span>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_stem</span>(<span class='no'>x</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"dead"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; 
 #&gt;        alive broken below    stem dead 
-#&gt;         1745          298          451 </div><div class='input'>
+#&gt;          269           48           63 </div><div class='input'>
 
 
 <span class='co'># Filter by the status of each tree (wood = "tree") -----------------------</span>
 
 <span class='co'># CENSUS TABLE: STEM TABLE</span>
 
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/census_luquillo'>luquillo_stem_random_tiny</a></span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>stem5</span>
 
 <span class='co'># Add the variable status_tree, which gives the status of each tree, not stem</span>
-<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; [1] "A" "P" "G" "D"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_status_tree.html'>add_status_tree</a></span>(<span class='no'>x</span>, <span class='kw'>status_d</span> <span class='kw'>=</span> <span class='st'>"D"</span>, <span class='kw'>status_a</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
-<span class='fu'>table</span>(<span class='no'>x</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
-#&gt;  A  D 
-#&gt; 83  1 </div><div class='input'>
+<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>status</span>)</div><div class='output co'>#&gt; [1] "A" "G" "P"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_status_tree.html'>add_status_tree</a></span>(<span class='no'>x</span>, <span class='kw'>status_d</span> <span class='kw'>=</span> <span class='st'>"D"</span>, <span class='kw'>status_a</span> <span class='kw'>=</span> <span class='st'>"A"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D</span>
+#&gt; <span class='warning'>  * Detected values: A, G, P</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>x</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
+#&gt;  A 
+#&gt; 30 </div><div class='input'>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"tree"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"A"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt;  A 
-#&gt; 83 </div><div class='input'>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"tree"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>, <span class='kw'>exclude</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
+#&gt; 30 </div><div class='input'>
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"tree"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"D"</span>, <span class='kw'>exclude</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D</span>
+#&gt; <span class='warning'>  * Detected values: A</span></div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt;  A 
-#&gt; 83 </div><div class='input'>
+#&gt; 30 </div><div class='input'>
 <span class='co'># Shortcut</span>
-<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>)
-<span class='no'>result</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>treeID</span>, <span class='no'>stemID</span>, <span class='no'>status</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>treeID</span>, <span class='no'>stemID</span>, <span class='no'>status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 83 x 4
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: No observation has .status = D</span>
+#&gt; <span class='warning'>  * Detected values: A</span></div><div class='input'><span class='no'>result</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>treeID</span>, <span class='no'>stemID</span>, <span class='no'>status</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>treeID</span>, <span class='no'>stemID</span>, <span class='no'>status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 30 x 4
 #&gt;    treeID stemID status status_tree
 #&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;      
-#&gt;  1  10775  13496 A      A          
-#&gt;  2  10775  13496 A      A          
-#&gt;  3  10775  13496 A      A          
-#&gt;  4  10775  13496 A      A          
-#&gt;  5  10775  13496 A      A          
-#&gt;  6  10775  13496 A      A          
-#&gt;  7  10863  13603 A      A          
-#&gt;  8  10863  13603 A      A          
-#&gt;  9  10863  13603 A      A          
-#&gt; 10  10863  13603 A      A          
-#&gt; # ... with 73 more rows</div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
+#&gt;  1  18455  22746 A      A          
+#&gt;  2  18680  23015 A      A          
+#&gt;  3  20421  25373 A      A          
+#&gt;  4  25472  32096 A      A          
+#&gt;  5  26651  33706 A      A          
+#&gt;  6  27376  34692 A      A          
+#&gt;  7  28543  36176 G      A          
+#&gt;  8  29422 120173 A      A          
+#&gt;  9  32644  40902 A      A          
+#&gt; 10  42015  51620 A      A          
+#&gt; # ... with 20 more rows</div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt;  A 
-#&gt; 83 </div><div class='input'>
+#&gt; 30 </div><div class='input'>
 
 
 <span class='co'># CENSUS TABLE: TREE TABLE</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/census_luquillo'>luquillo_tree6_random</a></span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>tree6</span>
 <span class='co'># For a tree census-table, each stem maps to a tree, so the value of the</span>
 <span class='co'># variable `status` gives, at the same time, the status of the stem and tree.</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_status_tree.html'>add_status_tree</a></span>(<span class='no'>x</span>, <span class='st'>"D"</span>, <span class='st'>"A"</span>)
@@ -293,37 +284,37 @@ to <code>.status</code>.</p></td>
 
 <span class='co'># VIEWFULL TABLE</span>
 
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_vft_4quad'>luquillo_vft_4quad</a></span>
+<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>vft_4quad</span>
 
 <span class='co'># Add the variable status_tree, which gives the status of each tree, not stem</span>
-<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "dead"         "alive"        "broken below" "stem dead"   </div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_status_tree.html'>add_status_tree</a></span>(<span class='no'>x</span>, <span class='kw'>status_d</span> <span class='kw'>=</span> <span class='st'>"dead"</span>, <span class='kw'>status_a</span> <span class='kw'>=</span> <span class='st'>"alive"</span>)
+<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "dead"         "stem dead"    "alive"        "broken below"</div><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='add_status_tree.html'>add_status_tree</a></span>(<span class='no'>x</span>, <span class='kw'>status_d</span> <span class='kw'>=</span> <span class='st'>"dead"</span>, <span class='kw'>status_a</span> <span class='kw'>=</span> <span class='st'>"alive"</span>)
 <span class='fu'>table</span>(<span class='no'>x</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt; alive  dead 
-#&gt;  2659   643 </div><div class='input'>
+#&gt;   389   111 </div><div class='input'>
 <span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>filter_status</span>(<span class='no'>x</span>, <span class='kw'>wood</span> <span class='kw'>=</span> <span class='st'>"tree"</span>, <span class='kw'>.status</span> <span class='kw'>=</span> <span class='st'>"alive"</span>)
 <span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt; alive 
-#&gt;  2659 </div><div class='input'>
+#&gt;   389 </div><div class='input'>
 <span class='co'># Shortcut</span>
-<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "dead"         "alive"        "broken below" "stem dead"   </div><div class='input'><span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>, <span class='st'>"dead"</span>)
+<span class='fu'>unique</span>(<span class='no'>x</span>$<span class='no'>Status</span>)</div><div class='output co'>#&gt; [1] "dead"         "stem dead"    "alive"        "broken below"</div><div class='input'><span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>drop_dead_tree</span>(<span class='no'>x</span>, <span class='st'>"dead"</span>)
 <span class='no'>result</span> <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>TreeID</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>) <span class='kw'>%&gt;%</span>
-  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>TreeID</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 2,659 x 4
-#&gt;    TreeID StemID Status    status_tree
-#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt;     &lt;chr&gt;      
-#&gt;  1    692    851 dead      alive      
-#&gt;  2    692 114171 stem dead alive      
-#&gt;  3    692 114172 stem dead alive      
-#&gt;  4    698    858 alive     alive      
-#&gt;  5    706    866 alive     alive      
-#&gt;  6    706    866 alive     alive      
-#&gt;  7    706    866 alive     alive      
-#&gt;  8    711    871 alive     alive      
-#&gt;  9    711    871 alive     alive      
-#&gt; 10    711    871 alive     alive      
-#&gt; # ... with 2,649 more rows</div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>TreeID</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>TreeID</span>, <span class='no'>StemID</span>, <span class='no'>Status</span>, <span class='no'>status_tree</span>)</div><div class='output co'>#&gt; # A tibble: 389 x 4
+#&gt;    TreeID StemID Status       status_tree
+#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;      
+#&gt;  1    734    895 broken below alive      
+#&gt;  2    741    902 stem dead    alive      
+#&gt;  3    743 114181 alive        alive      
+#&gt;  4    770 156134 stem dead    alive      
+#&gt;  5    780    955 alive        alive      
+#&gt;  6    797    981 stem dead    alive      
+#&gt;  7    797    982 broken below alive      
+#&gt;  8    797    983 stem dead    alive      
+#&gt;  9    797 114192 broken below alive      
+#&gt; 10    797 114193 alive        alive      
+#&gt; # ... with 379 more rows</div><div class='input'><span class='fu'>table</span>(<span class='no'>result</span>$<span class='no'>status_tree</span>)</div><div class='output co'>#&gt; 
 #&gt; alive 
-#&gt;  2659 </div></pre>
+#&gt;   389 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

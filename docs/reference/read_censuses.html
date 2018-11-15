@@ -156,9 +156,7 @@ the source file.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-
-<span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'>read_censuses</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>))
+    <pre class="examples"><div class='input'><span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'>read_censuses</span>(<span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>))
 <span class='fu'>class</span>(<span class='no'>censuses</span>)</div><div class='output co'>#&gt; [1] "censuses_df" "tbl_df"      "tbl"         "data.frame" </div><div class='input'><span class='no'>censuses</span>$<span class='no'>data</span></div><div class='output co'>#&gt; [[1]]
 #&gt; # A tibble: 3 x 19
 #&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
@@ -179,20 +177,20 @@ the source file.</p></td>
 #&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
 #&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; </div><div class='input'>
-<span class='no'>censuses</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='pick.html'>pick</a></span>(<span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>600</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/pull.html'>pull</a></span>(<span class='no'>data</span>)</div><div class='output co'>#&gt; [[1]]
-#&gt; # A tibble: 0 x 19
-#&gt; # ... with 19 variables: treeID &lt;int&gt;, stemID &lt;int&gt;, tag &lt;chr&gt;, StemTag &lt;chr&gt;,
-#&gt; #   sp &lt;chr&gt;, quadrat &lt;chr&gt;, gx &lt;dbl&gt;, gy &lt;dbl&gt;, MeasureID &lt;int&gt;,
-#&gt; #   CensusID &lt;int&gt;, dbh &lt;dbl&gt;, pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+<span class='fu'><a href='pick.html'>pick</a></span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>50</span>)$<span class='no'>data</span></div><div class='output co'>#&gt; [[1]]
+#&gt; # A tibble: 1 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    439947        5   193
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
 #&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; 
 #&gt; [[2]]
-#&gt; # A tibble: 0 x 19
-#&gt; # ... with 19 variables: treeID &lt;int&gt;, stemID &lt;int&gt;, tag &lt;chr&gt;, StemTag &lt;chr&gt;,
-#&gt; #   sp &lt;chr&gt;, quadrat &lt;chr&gt;, gx &lt;dbl&gt;, gy &lt;dbl&gt;, MeasureID &lt;int&gt;,
-#&gt; #   CensusID &lt;int&gt;, dbh &lt;dbl&gt;, pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
+#&gt; # A tibble: 1 x 19
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt; &lt;dbl&gt;
+#&gt; 1    104    143 10009 10009   DACE~ 113      10.3  245.    582850        6   195
+#&gt; # ... with 8 more variables: pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,
 #&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;
 #&gt; </div></pre>
   </div>

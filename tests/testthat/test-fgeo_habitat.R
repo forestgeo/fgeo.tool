@@ -4,7 +4,7 @@ describe("fgeo_habitat", {
   skip_if_not_installed("fgeo.habitat")
   library(fgeo.habitat)
   
-  elev_ls <- fgeo.data::luquillo_elevation
+  elev_ls <- fgeo.x::elevation
   gridsize <- 20
   plotdim <- c(320, 500)
   
@@ -46,7 +46,7 @@ describe("fgeo_habitat", {
   })
   
   it("outputs identical with elevation list or dataframe", {
-    elev_df <- fgeo.data::luquillo_elevation$col
+    elev_df <- fgeo.x::elevation$col
     habitat_df <- fgeo_habitat(
       elev_df, gridsize = 20, n = 4, xdim = elev_ls$xdim, ydim = elev_ls$ydim
     )

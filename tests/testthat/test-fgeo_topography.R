@@ -1,7 +1,7 @@
 context("fgeo_topography")
 
 describe("fgeo_topography", {
-  elev_ls <- fgeo.data::luquillo_elevation
+  elev_ls <- fgeo.x::elevation
   gridsize <- 20
   topo <- fgeo_topography(elev_ls, gridsize = gridsize)
   
@@ -55,7 +55,7 @@ describe("fgeo_topography()", {
       testthat::expect_known_output(object, file, update = update, print = TRUE)
     }
     
-    elev_luq <- fgeo.data::luquillo_elevation
+    elev_luq <- fgeo.x::elevation
     luq <- fgeo_topography(elev_luq, gridsize = 20)
     expect_known(head(luq), "ref-fgeo_topography_luq_head")
     expect_known(tail(luq), "ref-fgeo_topography_luq_tail")
@@ -77,7 +77,7 @@ describe("fgeo_topography()", {
       elev_ls
     }
     
-    luq_elev <- fgeo.data::luquillo_elevation
+    luq_elev <- fgeo.x::elevation
     
     msg <- "No elevation data found at `gridsize / 2`"
     expect_warning(

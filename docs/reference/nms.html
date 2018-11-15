@@ -176,9 +176,9 @@ nms_extract1(): Finds the first name that matches the provided names.</p></li>
 <span class='fu'>nms_extract1</span>(<span class='no'>v</span>, <span class='st'>"a"</span>, <span class='st'>"a"</span>, <span class='st'>"b"</span>)</div><div class='output co'>#&gt; [1] "a"</div><div class='input'>
 <span class='co'># Usage with ForestGEO data</span>
 
-<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_vft_4quad'>luquillo_vft_4quad</a></span>
+<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>vft_4quad</span>
 <span class='fu'>nms_extract_all</span>(<span class='no'>vft</span>, <span class='st'>"gx"</span>, <span class='st'>"gy"</span>, <span class='st'>"PX"</span>, <span class='st'>"PY"</span>)</div><div class='output co'>#&gt; [1] "PX" "PY"</div><div class='input'>
-<span class='no'>stem</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/census_luquillo'>luquillo_stem6_1ha</a></span>
+<span class='no'>stem</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>stem6</span>
 <span class='fu'>nms_extract_all</span>(<span class='no'>stem</span>, <span class='st'>"gx"</span>, <span class='st'>"gy"</span>, <span class='st'>"PX"</span>, <span class='st'>"PY"</span>)</div><div class='output co'>#&gt; [1] "gx" "gy"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -1,6 +1,6 @@
 context("sanitize_vft")
 
-vft <- dplyr::sample_n(fgeo.data::luquillo_vft_4quad, 2)
+vft <- dplyr::sample_n(fgeo.x::vft_4quad, 2)
 
 # Introdue problems to show how to fix them
 vft[] <- lapply(vft, as.character)
@@ -19,14 +19,14 @@ test_that("fixes NULL and column types", {
 })
 
 test_that("produces no warning", {
-  expect_warning(sanitize_vft(fgeo.data::luquillo_vft_4quad), NA)
+  expect_warning(sanitize_vft(fgeo.x::vft_4quad), NA)
 })
 
 
 
 context("sanitize_taxa")
 
-taxa <- dplyr::sample_n(fgeo.data::luquillo_taxa, 2)
+taxa <- dplyr::sample_n(fgeo.x::taxa, 2)
 taxa[] <- lapply(taxa, as.character)
 taxa$SubspeciesID <- "NULL"
 
