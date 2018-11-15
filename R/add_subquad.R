@@ -26,7 +26,6 @@
 #' @export
 #'
 #' @examples
-#' library(tibble)
 #' vft <- tribble(
 #'    ~QX,  ~QY,
 #'   17.9,    0,

@@ -87,14 +87,16 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
 #' @export
 #' 
 #' @examples
+#' \dontrun{
 #' if (requireNamespace("fgeo.habitat")) {
 #'   library(fgeo.habitat)
 #'   
 #'   cns <- fgeo.habitat::luquillo_top3_sp
-#'   hab <- fgeo.data::luquillo_habitat
+#'   hab <- fgeo.x::habitat
 #'   
 #'   tt_lst <- tt_test(cns, unique(cns$sp), hab)
 #'   to_df(tt_lst)
+#' }
 #' }
 to_df.tt_lst <- function(.x, ...) {
   flip <- t(Reduce(rbind, .x))
@@ -175,10 +177,9 @@ new_tt_df <- function(.x) {
 #' @export
 #' @examples
 #' \dontrun{
-#' library(fgeo.data)
 #' library(fgeo.demography)
 #' 
-#' censuses <- list(luquillo_tree5_random, luquillo_tree6_random)
+#' censuses <- read_censuses(tool_example("rdata"))
 #' to_df(mortality(censuses))
 #' 
 #' to_df(mortality(censuses, "sp"))

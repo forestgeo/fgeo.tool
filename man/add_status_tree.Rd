@@ -20,9 +20,7 @@ The input data set with the additional variable \code{status_tree}.
 Add column \code{status_tree} based on the status of all stems of each tree.
 }
 \examples{
-library(fgeo.tool)
-
-stem <- tibble::tribble(
+stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,
   1,       1,       1,     "A",
   1,       1,       2,     "D",

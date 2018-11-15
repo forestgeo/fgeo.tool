@@ -1,7 +1,7 @@
 context("add_cluster")
 
 describe("add_cluster", {
-  elev_ls <- fgeo.data::luquillo_elevation
+  elev_ls <- fgeo.x::elevation
   gridsize <- 20
   n <- 4
   topo <- fgeo_topography(elev_ls, gridsize = gridsize)

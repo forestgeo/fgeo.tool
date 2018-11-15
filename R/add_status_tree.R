@@ -14,9 +14,7 @@
 #' @export
 #'
 #' @examples
-#' library(fgeo.tool)
-#' 
-#' stem <- tibble::tribble(
+#' stem <- tribble(
 #'   ~CensusID, ~treeID, ~stemID, ~status,
 #'   1,       1,       1,     "A",
 #'   1,       1,       2,     "D",

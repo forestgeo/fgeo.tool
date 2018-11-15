@@ -19,14 +19,16 @@ This method creates a dataframe from the output of \code{fgeo.habitat::tt_test()
 (which is a list of class "tt_lst").
 }
 \examples{
+\dontrun{
 if (requireNamespace("fgeo.habitat")) {
   library(fgeo.habitat)
   
   cns <- fgeo.habitat::luquillo_top3_sp
-  hab <- fgeo.data::luquillo_habitat
+  hab <- fgeo.x::habitat
   
   tt_lst <- tt_test(cns, unique(cns$sp), hab)
   to_df(tt_lst)
+}
 }
 }
 \seealso{

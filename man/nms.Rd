@@ -54,10 +54,10 @@ nms_extract1(v, "a", "a", "b")
 
 # Usage with ForestGEO data
 
-vft <- fgeo.data::luquillo_vft_4quad
+vft <- fgeo.x::vft_4quad
 nms_extract_all(vft, "gx", "gy", "PX", "PY")
 
-stem <- fgeo.data::luquillo_stem6_1ha
+stem <- fgeo.x::stem6
 nms_extract_all(stem, "gx", "gy", "PX", "PY")
 }
 \seealso{

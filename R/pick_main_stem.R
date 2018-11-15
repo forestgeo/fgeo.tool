@@ -36,8 +36,6 @@
 #' @name pick_main_stem
 #'
 #' @examples
-#' library(tibble)
-#' 
 #' # Trees with buttresses may have more than one measurements per stem.
 #' census <- tribble(
 #'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,

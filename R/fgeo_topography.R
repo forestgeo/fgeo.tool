@@ -34,7 +34,7 @@
 #' @export
 #' 
 #' @examples
-#' elev_list <- fgeo.data::luquillo_elevation
+#' elev_list <- fgeo.x::elevation
 #' fgeo_topography(elev_list, gridsize = 20)
 #' 
 #' elev_df <- elev_list$col

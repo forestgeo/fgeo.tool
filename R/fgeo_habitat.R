@@ -29,10 +29,11 @@
 #' 
 #' @examples
 #' # Input a ForestGEO-like elevation list
-#' elev_list <- fgeo.data::luquillo_elevation
+#' elev_list <- fgeo.x::elevation
 #' habs <- fgeo_habitat(elev_list, n = 4, gridsize = 20)
 #' str(habs)
 #' 
+#' \dontrun{
 #' if (requireNamespace("fgeo.map")) {
 #'   library(fgeo.map)
 #'   autoplot(habs)
@@ -42,7 +43,7 @@
 #' if (requireNamespace("fgeo.habitat")) {
 #'   library(fgeo.habitat)
 #'   
-#'   elev_list <- fgeo.data::luquillo_elevation
+#'   elev_list <- fgeo.x::elevation
 #'   habitat <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
 #'   census <- fgeo.habitat::luquillo_top3_sp
 #'   species <- unique(census$sp)
@@ -50,9 +51,10 @@
 #' }
 #' 
 #' # If working with elevation dataframe you must provide xdim and ydim
-#' elev_df <- fgeo.data::luquillo_elevation$col
+#' elev_df <- fgeo.x::elevation$col
 #' hab2 <- fgeo_habitat(elev_df, gridsize = 20, n = 4, xdim = 320, ydim = 500)
 #' str(hab2)
+#' }
 fgeo_habitat <- function(elevation, gridsize, n, ...) {
   out <- add_cluster(fgeo_topography(elevation, gridsize, ...), n)
   names(out) <- sub("cluster", "habitats", names(out))

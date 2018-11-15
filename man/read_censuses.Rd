@@ -26,15 +26,11 @@ convenient print method and enables using specific methods for working with
 ForestGEO data.
 }
 \examples{
-library(dplyr)
-
 censuses <- read_censuses(tool_example("rdata"))
 class(censuses)
 censuses$data
 
-censuses \%>\% 
-  pick(dbh > 600) \%>\% 
-  pull(data)
+pick(censuses, dbh > 50)$data
 }
 \seealso{
 \code{\link[=rdata_df]{rdata_df()}}, \code{\link[=as_censuses]{as_censuses()}}.

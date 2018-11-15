@@ -27,7 +27,6 @@ Returns \code{df} with the additional variable \code{subquadrat}.
 Add column \code{subquadrat} based on \code{qx} and \code{qy} coordinates.
 }
 \examples{
-library(tibble)
 vft <- tribble(
    ~QX,  ~QY,
   17.9,    0,

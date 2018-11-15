@@ -32,10 +32,9 @@ census data.
 }
 \examples{
 \dontrun{
-library(fgeo.data)
 library(fgeo.demography)
 
-censuses <- list(luquillo_tree5_random, luquillo_tree6_random)
+censuses <- read_censuses(tool_example("rdata"))
 to_df(mortality(censuses))
 
 to_df(mortality(censuses, "sp"))

@@ -21,14 +21,11 @@
 #' @export
 #'
 #' @examples
-#' library(dplyr)
-#' library(fgeo.tool)
-#' 
 #' # Filter by the status of each stem (wood = "stem") ----------------------
 #' 
 #' # CENSUS TABLE: STEM TABLE
 #' 
-#' x <- fgeo.data::luquillo_stem_random_tiny
+#' x <- fgeo.x::stem6
 #' table(x$status)
 #' 
 #' result <- filter_status(x, wood = "stem", .status = "D")
@@ -47,7 +44,7 @@
 #' # CENSUS TABLE: TREE TABLE
 #' 
 #' # Works exactly in the same way
-#' x <- fgeo.data::luquillo_tree6_random
+#' x <- fgeo.x::tree6
 #' table(x$status)
 #' 
 #' result <- filter_status(x, wood = "stem", .status = "D")
@@ -62,7 +59,7 @@
 #' # Works exactly in the same way, but notice the following:
 #' # * The variable Status starts with capital S;
 #' # * The values of Status are not, say "A" or "D", but "alive" or "dead".
-#' x <- fgeo.data::luquillo_vft_4quad
+#' x <- fgeo.x::vft_4quad
 #' table(x$Status)
 #' 
 #' result <- filter_status(x, wood = "stem", .status = "alive")
@@ -80,7 +77,7 @@
 #' 
 #' # CENSUS TABLE: STEM TABLE
 #' 
-#' x <- fgeo.data::luquillo_stem_random_tiny
+#' x <- fgeo.x::stem5
 #' 
 #' # Add the variable status_tree, which gives the status of each tree, not stem
 #' unique(x$status)
@@ -96,14 +93,14 @@
 #' # Shortcut
 #' result <- drop_dead_tree(x)
 #' result %>%
-#'   dplyr::arrange(treeID, stemID, status) %>%
-#'   dplyr::select(treeID, stemID, status, status_tree)
+#'   arrange(treeID, stemID, status) %>%
+#'   select(treeID, stemID, status, status_tree)
 #' table(result$status_tree)
 #' 
 #' 
 #' 
 #' # CENSUS TABLE: TREE TABLE
-#' x <- fgeo.data::luquillo_tree6_random
+#' x <- fgeo.x::tree6
 #' # For a tree census-table, each stem maps to a tree, so the value of the
 #' # variable `status` gives, at the same time, the status of the stem and tree.
 #' x <- add_status_tree(x, "D", "A")
@@ -120,7 +117,7 @@
 #' 
 #' # VIEWFULL TABLE
 #' 
-#' x <- fgeo.data::luquillo_vft_4quad
+#' x <- fgeo.x::vft_4quad
 #' 
 #' # Add the variable status_tree, which gives the status of each tree, not stem
 #' unique(x$Status)
@@ -134,8 +131,8 @@
 #' unique(x$Status)
 #' result <- drop_dead_tree(x, "dead")
 #' result %>%
-#'   dplyr::arrange(TreeID, StemID, Status) %>%
-#'   dplyr::select(TreeID, StemID, Status, status_tree)
+#'   arrange(TreeID, StemID, Status) %>%
+#'   select(TreeID, StemID, Status, status_tree)
 #' table(result$status_tree)
 filter_status <- function(x, wood, .status, exclude = FALSE) {
   old_nms <- names(x)
