@@ -30,10 +30,7 @@
 #' @export
 #'
 #' @examples
-#' library(fgeo.tool)
-#' library(dplyr)
-#' 
-#' x <- dplyr::tribble(
+#' x <- tribble(
 #'   ~unique_stem, ~quadrat,
 #'         "01_1",    "001",
 #'         "02_1",    "001",
@@ -42,7 +39,7 @@
 #'         "04_2",    "002",
 #'         "05_1",    "002"
 #' )
-#' y <- dplyr::tribble(
+#' y <- tribble(
 #'   ~unique_stem,
 #'         "01_1",
 #'         "02_2",

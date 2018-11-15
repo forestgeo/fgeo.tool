@@ -13,7 +13,7 @@
 #'   argument `k` to [stats::cutree()]).
 #'   
 #' @examples 
-#' elev_ls <- fgeo.data::luquillo_elevation
+#' elev_ls <- fgeo.x::elevation
 #' topo <- fgeo_topography(elev_ls, gridsize = 20)
 #' add_cluster(topo, n = 4)
 #' @noRd

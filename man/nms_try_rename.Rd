@@ -23,9 +23,9 @@ nms_try_rename(data.frame(a = 1), "A", "a")
 
 # Passes
 nms_try_rename(c(a = 1, 1), "A", "a")
-# Errs
 \dontrun{
-nms_try_rename(1, "A", "A")
+# Errs
+# nms_try_rename(1, "A", "A")
 }
 }
 \seealso{

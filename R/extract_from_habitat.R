@@ -11,9 +11,9 @@
 #' * [extract_gridsize()]: `gridsize` (scalar).
 #'
 #' @examples
-#' library(fgeo.data)
-#' extract_plotdim(luquillo_habitat)
-#' extract_gridsize(luquillo_habitat)
+#' habitat <- fgeo.x::habitat
+#' extract_plotdim(habitat)
+#' extract_gridsize(habitat)
 #' @name extract_from_habitat
 NULL
 

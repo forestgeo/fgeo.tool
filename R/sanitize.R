@@ -22,7 +22,7 @@
 #' @return A dataframe.
 #'
 #' @examples
-#' vft <- fgeo.data::luquillo_vft_4quad
+#' vft <- fgeo.x::vft_4quad
 #' 
 #' # Introduce problems to show how to fix them
 #' # Bad column types
@@ -39,7 +39,7 @@
 #' 
 #' 
 #' 
-#' taxa <- fgeo.data::luquillo_taxa
+#' taxa <- fgeo.x::taxa
 #' # Bad column types
 #' taxa[] <- lapply(taxa, as.character)
 #' # Bad representation of missing values

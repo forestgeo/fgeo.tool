@@ -155,7 +155,7 @@ known datasets. These functions output the specification for the argument
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Types reference (for more details see <code>read_delim()</code>):</p><ul>
+    <p>Types reference (for more details see <code><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>read_delim()</a></code>):</p><ul>
 <li><p>c = character,</p></li>
 <li><p>i = integer,</p></li>
 <li><p>n = number,</p></li>
@@ -176,7 +176,10 @@ known datasets. These functions output the specification for the argument
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>str</span>(<span class='fu'>type_vft</span>())</div><div class='output co'>#&gt; List of 32
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>fgeo.x</span>)
+<span class='fu'>library</span>(<span class='no'>readr</span>)
+
+<span class='fu'>str</span>(<span class='fu'>type_vft</span>())</div><div class='output co'>#&gt; List of 32
 #&gt;  $ DBHID           : chr "i"
 #&gt;  $ PlotName        : chr "c"
 #&gt;  $ PlotID          : chr "i"
@@ -208,11 +211,25 @@ known datasets. These functions output the specification for the argument
 #&gt;  $ ListOfTSM       : chr "c"
 #&gt;  $ HighHOM         : chr "i"
 #&gt;  $ LargeStem       : chr "c"
-#&gt;  $ Status          : chr "c"</div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='co'># Run this with your own ViewFullTable</span>
-<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>read_csv</a></span>(<span class='st'>"ViewFullTable.csv"</span>, <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'>type_vft</span>())
-<span class='co'># }</span><div class='input'>
+#&gt;  $ Status          : chr "c"</div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>read_csv</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.x/topics/x_example'>x_example</a></span>(<span class='st'>"vft_4quad.csv"</span>), <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'>type_vft</span>())</div><div class='output co'>#&gt; # A tibble: 500 x 32
+#&gt;     DBHID PlotName PlotID Family Genus SpeciesName Mnemonic Subspecies SpeciesID
+#&gt;     &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;
+#&gt;  1 385164 luquillo      1 Rubia~ Psyc~ brachiata   PSYBRA   &lt;NA&gt;             185
+#&gt;  2 385261 luquillo      1 Urtic~ Cecr~ schreberia~ CECSCH   &lt;NA&gt;              74
+#&gt;  3 384600 luquillo      1 Rubia~ Psyc~ brachiata   PSYBRA   &lt;NA&gt;             185
+#&gt;  4 608789 luquillo      1 Rubia~ Psyc~ berteroana  PSYBER   &lt;NA&gt;             184
+#&gt;  5 388579 luquillo      1 Areca~ Pres~ acuminata   PREMON   &lt;NA&gt;             182
+#&gt;  6 384626 luquillo      1 Arali~ Sche~ morototoni  SCHMOR   &lt;NA&gt;             196
+#&gt;  7 410958 luquillo      1 Rubia~ Psyc~ brachiata   PSYBRA   &lt;NA&gt;             185
+#&gt;  8 385102 luquillo      1 Piper~ Piper glabrescens PIPGLA   &lt;NA&gt;             174
+#&gt;  9 353163 luquillo      1 Areca~ Pres~ acuminata   PREMON   &lt;NA&gt;             182
+#&gt; 10 481018 luquillo      1 Salic~ Case~ arborea     CASARB   &lt;NA&gt;              70
+#&gt; # ... with 490 more rows, and 23 more variables: SubspeciesID &lt;chr&gt;,
+#&gt; #   QuadratName &lt;chr&gt;, QuadratID &lt;int&gt;, PX &lt;dbl&gt;, PY &lt;dbl&gt;, QX &lt;dbl&gt;, QY &lt;dbl&gt;,
+#&gt; #   TreeID &lt;int&gt;, Tag &lt;chr&gt;, StemID &lt;int&gt;, StemNumber &lt;int&gt;, StemTag &lt;int&gt;,
+#&gt; #   PrimaryStem &lt;chr&gt;, CensusID &lt;int&gt;, PlotCensusNumber &lt;int&gt;, DBH &lt;dbl&gt;,
+#&gt; #   HOM &lt;dbl&gt;, ExactDate &lt;date&gt;, Date &lt;int&gt;, ListOfTSM &lt;chr&gt;, HighHOM &lt;int&gt;,
+#&gt; #   LargeStem &lt;chr&gt;, Status &lt;chr&gt;</div><div class='input'>
 <span class='fu'>str</span>(<span class='fu'>type_taxa</span>())</div><div class='output co'>#&gt; List of 21
 #&gt;  $ ViewID        : chr "i"
 #&gt;  $ SpeciesID     : chr "i"
@@ -234,11 +251,23 @@ known datasets. These functions output the specification for the argument
 #&gt;  $ wsglevel      : chr "c"
 #&gt;  $ ListOfOldNames: chr "c"
 #&gt;  $ Specimens     : chr "c"
-#&gt;  $ Reference     : chr "c"</div><div class='input'>
-</div><span class='co'># NOT RUN {</span>
-<span class='co'># Run this with your own ViewTaxonomy</span>
-<span class='kw pkg'>readr</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>read_delim</a></span>(<span class='st'>"ViewTaxonomy.csv"</span>, <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'>type_taxa</span>())
-<span class='co'># }</span></pre>
+#&gt;  $ Reference     : chr "c"</div><div class='input'><span class='fu'><a href='http://www.rdocumentation.org/packages/readr/topics/read_delim'>read_csv</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.x/topics/x_example'>x_example</a></span>(<span class='st'>"taxa.csv"</span>), <span class='kw'>col_types</span> <span class='kw'>=</span> <span class='fu'>type_taxa</span>())</div><div class='output co'>#&gt; # A tibble: 163 x 21
+#&gt;    ViewID SpeciesID SubspeciesID Family Mnemonic Genus SpeciesName Rank 
+#&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;
+#&gt;  1      1        56 &lt;NA&gt;         Fabac~ AESAME   Aesc~ americana   &lt;NA&gt; 
+#&gt;  2      2        57 &lt;NA&gt;         Eupho~ ALCFLO   Alch~ floribunda  &lt;NA&gt; 
+#&gt;  3      3        58 &lt;NA&gt;         Eupho~ ALCLAT   Alch~ latifolia   &lt;NA&gt; 
+#&gt;  4      4        59 &lt;NA&gt;         Fabac~ ANDINE   Andi~ inermis     &lt;NA&gt; 
+#&gt;  5      5        60 &lt;NA&gt;         Rubia~ ANTOBT   Sten~ obtusifoli~ &lt;NA&gt; 
+#&gt;  6      6        61 &lt;NA&gt;         Myrsi~ ARDGLA   Ardi~ glauciflora &lt;NA&gt; 
+#&gt;  7      7        62 &lt;NA&gt;         Morac~ ARTALT   Arto~ altilis     &lt;NA&gt; 
+#&gt;  8      8        63 &lt;NA&gt;         Laura~ BEIPEN   Beil~ pendula     &lt;NA&gt; 
+#&gt;  9      9        64 &lt;NA&gt;         Solan~ BRUPOR   Brun~ portoricen~ &lt;NA&gt; 
+#&gt; 10     10        65 &lt;NA&gt;         Combr~ BUCTET   Buch~ tetraphylla &lt;NA&gt; 
+#&gt; # ... with 153 more rows, and 13 more variables: Subspecies &lt;chr&gt;,
+#&gt; #   Authority &lt;chr&gt;, IDLevel &lt;chr&gt;, subspMnemonic &lt;chr&gt;, subspAuthority &lt;chr&gt;,
+#&gt; #   FieldFamily &lt;chr&gt;, Lifeform &lt;chr&gt;, Description &lt;chr&gt;, wsg &lt;dbl&gt;,
+#&gt; #   wsglevel &lt;chr&gt;, ListOfOldNames &lt;chr&gt;, Specimens &lt;chr&gt;, Reference &lt;chr&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

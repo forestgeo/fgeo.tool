@@ -71,11 +71,7 @@ reference:
   - title: Create different classes of ForestGEO data
     contents:
     - has_concept("functions to construct fgeo classes")
-    
-  - title: Create different classes of ForestGEO data
-    contents:
-    - has_concept("general miscellaneous functions")
-  
+
   - title: Objects exported from other packages
     contents:
     - filter

@@ -17,15 +17,11 @@
 #' @export
 #'
 #' @examples
-#' library(dplyr)
-#' 
 #' censuses <- read_censuses(tool_example("rdata"))
 #' class(censuses)
 #' censuses$data
 #' 
-#' censuses %>% 
-#'   pick(dbh > 600) %>% 
-#'   pull(data)
+#' pick(censuses, dbh > 50)$data
 read_censuses <- function(path_dir, .match = NULL, .id = "censuses") {
   dfm <- rdata_df(path_dir = path_dir, .match = .match, .id = .id)
   as_censuses(tidyr::nest(dfm, -.id))

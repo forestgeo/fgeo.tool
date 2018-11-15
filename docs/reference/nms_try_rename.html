@@ -157,10 +157,11 @@ object as you want or errs with an informative message.</p>
 #&gt; 1 1</div><div class='input'>
 <span class='co'># Passes</span>
 <span class='fu'>nms_try_rename</span>(<span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; A   
-#&gt; 1 1 </div><div class='input'># Errs
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'>nms_try_rename</span>(<span class='fl'>1</span>, <span class='st'>"A"</span>, <span class='st'>"A"</span>)
-<span class='co'># }</span></pre>
+#&gt; 1 1 </div># NOT RUN {
+# Errs
+# nms_try_rename(1, "A", "A")
+# }
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

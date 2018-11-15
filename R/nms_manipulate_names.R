@@ -158,10 +158,10 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' 
 #' # Usage with ForestGEO data
 #' 
-#' vft <- fgeo.data::luquillo_vft_4quad
+#' vft <- fgeo.x::vft_4quad
 #' nms_extract_all(vft, "gx", "gy", "PX", "PY")
 #' 
-#' stem <- fgeo.data::luquillo_stem6_1ha
+#' stem <- fgeo.x::stem6
 #' nms_extract_all(stem, "gx", "gy", "PX", "PY")
 #' @name nms
 NULL
@@ -221,9 +221,9 @@ nms_extract1 <- function(x, ...) {
 #' 
 #' # Passes
 #' nms_try_rename(c(a = 1, 1), "A", "a")
-#' # Errs
 #' \dontrun{
-#' nms_try_rename(1, "A", "A")
+#' # Errs
+#' # nms_try_rename(1, "A", "A")
 #' }
 nms_try_rename <- function(x, want, try) {
   nm <- fgeo.tool::nms_extract1(x = x, want = want, try = try)

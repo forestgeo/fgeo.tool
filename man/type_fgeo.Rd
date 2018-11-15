@@ -48,19 +48,14 @@ Types reference (for more details see \code{\link[=read_delim]{read_delim()}}):
 }
 }
 \examples{
-str(type_vft())
+library(fgeo.x)
+library(readr)
 
-\dontrun{
-# Run this with your own ViewFullTable
-readr::read_csv("ViewFullTable.csv", col_types = type_vft())
-}
+str(type_vft())
+read_csv(x_example("vft_4quad.csv"), col_types = type_vft())
 
 str(type_taxa())
-
-\dontrun{
-# Run this with your own ViewTaxonomy
-readr::read_delim("ViewTaxonomy.csv", col_types = type_taxa())
-}
+read_csv(x_example("taxa.csv"), col_types = type_taxa())
 }
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[=read_fgeo]{read_fgeo()}}.

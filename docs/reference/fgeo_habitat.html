@@ -187,47 +187,34 @@ or <code>x</code> and <code>y</code>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Input a ForestGEO-like elevation list</span>
-<span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>
+<span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>elevation</span>
 <span class='no'>habs</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>)
 <span class='fu'>str</span>(<span class='no'>habs</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	400 obs. of  3 variables:
 #&gt;  $ gx      : num  0 0 0 0 0 0 0 0 0 0 ...
 #&gt;  $ gy      : num  0 20 40 60 80 100 120 140 160 180 ...
 #&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
+</div><span class='co'># NOT RUN {</span>
 <span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.map"</span>)) {
   <span class='fu'>library</span>(<span class='no'>fgeo.map</span>)
   <span class='fu'><a href='https://forestgeo.github.io/fgeo.map//reference/reexports.html'>autoplot</a></span>(<span class='no'>habs</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.map</span></div><div class='img'><img src='fgeo_habitat-1.png' alt='' width='700' height='433' /></div><div class='input'>
+}
+
 <span class='co'># A good use of habitat data is for calculating species-habitat associations</span>
 <span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.habitat"</span>)) {
   <span class='fu'>library</span>(<span class='no'>fgeo.habitat</span>)
 
-  <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>
+  <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>elevation</span>
   <span class='no'>habitat</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)
   <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.habitat</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
   <span class='no'>species</span> <span class='kw'>&lt;-</span> <span class='fu'>unique</span>(<span class='no'>census</span>$<span class='no'>sp</span>)
   <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>tt_test</a></span>(<span class='no'>census</span>, <span class='no'>species</span>, <span class='no'>habitat</span>))
-}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.habitat</span></div><div class='output co'>#&gt; <span class='message'>Using `plotdim = c(320, 500)`. To change this value see `?tt_test()`.</span></div><div class='output co'>#&gt; <span class='message'>Using `gridsize = 20`. To change this value see `?tt_test()`.</span></div><div class='output co'>#&gt; # A tibble: 12 x 8
-#&gt;    habitat sp     distribution stem_count Eq.Hab Gr.Hab Ls.Hab Obs.Quantile
-#&gt;  * &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;
-#&gt;  1 1       CASARB neutral              29      2   1242    356        0.776
-#&gt;  2 1       PREMON neutral              91      3   1093    504        0.683
-#&gt;  3 1       SLOBER neutral              18      3    273   1324        0.171
-#&gt;  4 2       CASARB neutral              20      4    390   1206        0.244
-#&gt;  5 2       PREMON neutral              89      2   1254    344        0.784
-#&gt;  6 2       SLOBER neutral              24      2    810    788        0.506
-#&gt;  7 3       CASARB neutral              12      5    778    817        0.486
-#&gt;  8 3       PREMON neutral              40      3    305   1292        0.191
-#&gt;  9 3       SLOBER neutral              17      5   1155    440        0.722
-#&gt; 10 4       CASARB neutral               5     10    932    658        0.582
-#&gt; 11 4       PREMON neutral              14      8    270   1322        0.169
-#&gt; 12 4       SLOBER neutral               7      5   1292    303        0.808</div><div class='input'>
+}
+
 <span class='co'># If working with elevation dataframe you must provide xdim and ydim</span>
-<span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_elevation'>luquillo_elevation</a></span>$<span class='no'>col</span>
+<span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>elevation</span>$<span class='no'>col</span>
 <span class='no'>hab2</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_df</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>xdim</span> <span class='kw'>=</span> <span class='fl'>320</span>, <span class='kw'>ydim</span> <span class='kw'>=</span> <span class='fl'>500</span>)
-<span class='fu'>str</span>(<span class='no'>hab2</span>)</div><div class='output co'>#&gt; Classes 'fgeo_habitat', 'tbl_df', 'tbl' and 'data.frame':	400 obs. of  3 variables:
-#&gt;  $ gx      : num  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy      : num  0 20 40 60 80 100 120 140 160 180 ...
-#&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div></pre>
+<span class='fu'>str</span>(<span class='no'>hab2</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

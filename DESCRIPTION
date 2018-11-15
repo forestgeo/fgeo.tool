@@ -28,7 +28,7 @@ Imports:
     dplyr,
     fgeo.base,
     fgeo.ctfs,
-    fgeo.data,
+    fgeo.x (>= 0.0.0.9000),
     fs,
     glue,
     magrittr,
@@ -59,9 +59,9 @@ Remotes:
     forestgeo/bciex,
     forestgeo/fgeo.base,
     forestgeo/fgeo.ctfs,
-    forestgeo/fgeo.data,
     forestgeo/fgeo.habitat,
-    forestgeo/fgeo.map
+    forestgeo/fgeo.map,
+    forestgeo/fgeo.x
 Encoding: UTF-8
 Language: en-US
 LazyData: true

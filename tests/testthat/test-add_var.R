@@ -4,7 +4,7 @@ library(fgeo.ctfs)
 context("add_var")
 
 test_that("with ViewFullTable, it outputs the original names plus lx/ly", {
-  x <- fgeo.data::luquillo_vft_4quad
+  x <- fgeo.x::vft_4quad
 
   expect_named(add_var(x, "lxly"), c(names(x), c("lx", "ly")))
   # Other top level functions

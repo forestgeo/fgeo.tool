@@ -191,7 +191,7 @@ names.</p></dd>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_vft_4quad'>luquillo_vft_4quad</a></span>
+    <pre class="examples"><div class='input'><span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>vft_4quad</span>
 
 <span class='co'># Introduce problems to show how to fix them</span>
 <span class='co'># Bad column types</span>
@@ -200,17 +200,17 @@ names.</p></dd>
 <span class='no'>vft</span>$<span class='no'>PlotName</span> <span class='kw'>&lt;-</span> <span class='st'>"NULL"</span>
 
 <span class='co'># "NULL" should be replaced by `NA` and `DBH` should be numeric</span>
-<span class='fu'>str</span>(<span class='no'>vft</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	3302 obs. of  2 variables:
+<span class='fu'>str</span>(<span class='no'>vft</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	500 obs. of  2 variables:
 #&gt;  $ PlotName: chr  "NULL" "NULL" "NULL" "NULL" ...
-#&gt;  $ DBH     : chr  NA "185" NA "341" ...</div><div class='input'>
+#&gt;  $ DBH     : chr  NA NA NA "34.6" ...</div><div class='input'>
 <span class='co'># Fix</span>
 <span class='no'>vft_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_vft</span>(<span class='no'>vft</span>)
-<span class='fu'>str</span>(<span class='no'>vft_sane</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	3302 obs. of  2 variables:
+<span class='fu'>str</span>(<span class='no'>vft_sane</span>[<span class='fu'>c</span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	500 obs. of  2 variables:
 #&gt;  $ PlotName: chr  NA NA NA NA ...
-#&gt;  $ DBH     : num  NA 185 NA 341 370 375 167 172 187 141 ...</div><div class='input'>
+#&gt;  $ DBH     : num  NA NA NA 34.6 171 NA NA NA 163 36.2 ...</div><div class='input'>
 
 
-<span class='no'>taxa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/luquillo_taxa'>luquillo_taxa</a></span>
+<span class='no'>taxa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>taxa</span>
 <span class='co'># Bad column types</span>
 <span class='no'>taxa</span>[] <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='no'>taxa</span>, <span class='no'>as.character</span>)
 <span class='co'># Bad representation of missing values</span>

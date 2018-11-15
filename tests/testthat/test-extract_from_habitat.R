@@ -1,29 +1,27 @@
 context("extract_from_habitat")
 
-library(fgeo.data)
-
-test_that("with habitats = luquillo_habitat gridsize value is 20", {
-  expect_equal(extract_gridsize(luquillo_habitat), 20)
-  expect_equal(extract_gridsize(luquillo_habitat), 20)
+test_that("with habitats = fgeo.x::habitat gridsize value is 20", {
+  expect_equal(extract_gridsize(fgeo.x::habitat), 20)
+  expect_equal(extract_gridsize(fgeo.x::habitat), 20)
 })
 
-test_that("with habitats = luquillo_habitat plotdim value is c(320,  500)", {
-  expect_equal(extract_plotdim(luquillo_habitat)[[1]], 320)
-  expect_equal(extract_plotdim(luquillo_habitat)[[2]], 500)
+test_that("with habitats = fgeo.x::habitat plotdim value is c(320,  500)", {
+  expect_equal(extract_plotdim(fgeo.x::habitat)[[1]], 320)
+  expect_equal(extract_plotdim(fgeo.x::habitat)[[2]], 500)
 })
 
 test_that("value are of correct type", {
-  expect_type(extract_gridsize(luquillo_habitat), "integer")
-  expect_type(extract_plotdim(luquillo_habitat), "integer")
+  expect_type(extract_gridsize(fgeo.x::habitat), "integer")
+  expect_type(extract_plotdim(fgeo.x::habitat), "integer")
 })
 
 test_that("Output of extract_plotdim is unnamed", {
-  expect_null(names(extract_plotdim(luquillo_habitat)))
+  expect_null(names(extract_plotdim(fgeo.x::habitat)))
 })
 
 test_that("output is of correct lengh", {
-  expect_length(extract_gridsize(luquillo_habitat), 1)
-  expect_length(extract_plotdim(luquillo_habitat), 2)
+  expect_length(extract_gridsize(fgeo.x::habitat), 1)
+  expect_length(extract_plotdim(fgeo.x::habitat), 2)
 })
 
 test_that("fails with wrong names", {
@@ -38,8 +36,8 @@ test_that("fails with wrong names", {
 })
 
 test_that("passes with names either x,y or gx,gy", {
-  gxgy <- luquillo_habitat
-  xy <- setNames(luquillo_habitat, c("x", "y", "habitats"))
+  gxgy <- fgeo.x::habitat
+  xy <- setNames(fgeo.x::habitat, c("x", "y", "habitats"))
   expect_error(out_gxgy <- extract_plotdim(gxgy), NA)
   expect_error(out_xy <- extract_plotdim(xy), NA)
   expect_identical(out_gxgy, out_xy)
