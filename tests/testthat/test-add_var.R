@@ -71,7 +71,7 @@ test_that("outputs equal to ctfs::gxgy.to.quad()", {
   ctfs <- ctfs::gxgy.to.quad(x$gx, x$gy, start = "zero", digits = 2)
   expect_equal(now, ctfs)
 
-  x <- bciex::bci12t7mini
+  x <- fgeo.x::tree5
   now <- add_quad(x, start = 0, width = 2)$quad
   ctfs <- ctfs::gxgy.to.quad(x$gx, x$gy, start = "zero", digits = 2)
   expect_equal(now, ctfs)

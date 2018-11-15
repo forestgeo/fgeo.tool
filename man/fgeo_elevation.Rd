@@ -35,7 +35,7 @@ This function was inspired by David Kenfack.
 
 \examples{
 # Dataframe input
-elev_df <- bciex::bci_elevation
+elev_df <- fgeo.x::elevation$col
 str(elev_df)
 
 elev <- fgeo_elevation(elev_df)
