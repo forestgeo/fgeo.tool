@@ -50,6 +50,8 @@ describe("fgeo_topography", {
 
 describe("fgeo_topography()", {
   it("returns known output", {
+    skip_if_not_installed("bciex")
+    
     # Helper to keep code DRY and update references in only one place
     expect_known <- function(object, file, update = FALSE) {
       testthat::expect_known_output(object, file, update = update, print = TRUE)

@@ -1,6 +1,6 @@
 context("fgeo_elevation")
 
-elev_df <- bciex::bci_elevation
+elev_df <- fgeo.x::elevation$col
 .elev <- fgeo_elevation(elev_df)
 
 test_that("has class elev", {

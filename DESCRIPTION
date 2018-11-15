@@ -46,7 +46,6 @@ Imports:
     withr,
     writexl
 Suggests: 
-    bciex,
     covr,
     fgeo.habitat,
     fgeo.map,
@@ -56,7 +55,6 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    forestgeo/bciex,
     forestgeo/fgeo.base,
     forestgeo/fgeo.ctfs,
     forestgeo/fgeo.habitat,
