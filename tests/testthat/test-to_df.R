@@ -1,10 +1,10 @@
 context("to_df")
 
 describe("to_df.krig_lst", {
-  skip_if_not_installed("fgeo.habitat")
+  skip_if_not_installed("fgeo.krig")
   
   vars <- c("c", "p")
-  out_lst <- fgeo.habitat::krig(fgeo.habitat::soil_fake, vars, quiet = TRUE)
+  out_lst <- fgeo.krig::krig(fgeo.krig::soil_fake, vars, quiet = TRUE)
   out_df <- to_df(out_lst)
   
   it("passes silently with data of correct class", {
