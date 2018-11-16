@@ -1,9 +1,5 @@
-^inst/buildignore$
-^tmp\.sh$
-^tmp2\.R$
-^ship\.sh$
+^\.buildignore$
 ^appveyor\.yml$
-^inst/tutorials$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^data-raw$
@@ -13,7 +9,4 @@
 ^_pkgdown\.yml$
 ^docs$
 ^man-roxygen$
-^tmp\.R$
-^inst/useless$
 ^\.github$
-^inst/issues$

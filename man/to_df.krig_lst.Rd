@@ -7,7 +7,7 @@
 \method{to_df}{krig_lst}(.x, name = "var", item = "df", ...)
 }
 \arguments{
-\item{.x}{The output of \code{\link[fgeo.habitat:krig]{fgeo.habitat::krig()}}.}
+\item{.x}{The output of \code{fgeo.krig::krig()}.`}
 
 \item{name}{Name for the column to hold soil variable-names.}
 
@@ -22,14 +22,17 @@
 A dataframe.
 }
 \description{
-This method creates a dataframe from the output of \code{fgeo.habitat::krig()}
+This method creates a dataframe from the output of \code{fgeo.krig::krig()}
 (which is a list of class "krig_lst").
 }
 \examples{
 \dontrun{
-library(fgeo.habitat)
+if (!requireNamespace("fgeo.krig")) {
+  stop("This example requires fgeo.krig. Please install it")
+}
+
 vars <- c("c", "p")
-krig <- krig(soil_fake, vars, quiet = TRUE)
+krig <- fgeo.krig::krig(soil_fake, vars, quiet = TRUE)
 to_df(krig)
 }
 }

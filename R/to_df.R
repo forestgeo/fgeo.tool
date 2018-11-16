@@ -38,10 +38,10 @@ to_df.default <- function(.x, ...) {
 
 #' Dataframe objects of class "krig_lst".
 #' 
-#' This method creates a dataframe from the output of `fgeo.habitat::krig()`
+#' This method creates a dataframe from the output of `fgeo.krig::krig()`
 #' (which is a list of class "krig_lst").
 #' 
-#' @param .x The output of [fgeo.habitat::krig()].
+#' @param .x The output of `fgeo.krig::krig()`.`
 #' @param name Name for the column to hold soil variable-names.
 #' @param item Character string; either "df" or "df.poly".
 #' @inheritDotParams to_df
@@ -55,9 +55,12 @@ to_df.default <- function(.x, ...) {
 #'
 #' @examples
 #' \dontrun{
-#' library(fgeo.habitat)
+#' if (!requireNamespace("fgeo.krig")) {
+#'   stop("This example requires fgeo.krig. Please install it")
+#' }
+#' 
 #' vars <- c("c", "p")
-#' krig <- krig(soil_fake, vars, quiet = TRUE)
+#' krig <- fgeo.krig::krig(soil_fake, vars, quiet = TRUE)
 #' to_df(krig)
 #' }
 to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
