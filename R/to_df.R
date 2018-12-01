@@ -14,9 +14,8 @@
 #' @param .x An fgeo object of supported class.
 #' @param ... Other arguments passed to methods.
 #'
-#' @seealso [to_df.krig_lst()],
-#'   [to_df.tt_lst()],[fgeo.tool::to_df.demography_lst()],
-#'   [fgeo.tool::to_df.demography_lst_by()].
+#' @seealso [to_df.krig_lst()], [to_df.tt_lst()],
+#'   [fgeo.tool::to_df.demography_impl()].
 #' 
 #' @family fgeo generics
 #' @keywords internal
@@ -58,9 +57,10 @@ to_df.default <- function(.x, ...) {
 #' if (!requireNamespace("fgeo.krig")) {
 #'   stop("This example requires fgeo.krig. Please install it")
 #' }
+#' libray(fgeo.krig)
 #' 
 #' vars <- c("c", "p")
-#' krig <- fgeo.krig::krig(soil_fake, vars, quiet = TRUE)
+#' krig <- krig(soil_fake, vars, quiet = TRUE)
 #' to_df(krig)
 #' }
 to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
@@ -153,22 +153,11 @@ new_tt_df <- function(.x) {
   structure(.x, class = c("tt_df", class(.x)))
 }
 
+# Class demography_impl ---------------------------------------------------
 
-
-# Class demography_lst ----------------------------------------------------
-
-#' Dataframe objects of class "demography_lst" and "demography_lst_by".
-#' 
-#' This method creates a dataframe from the output of
-#' `fgeo.demography::mortality()`, `fgeo.demography::recruitment()`, and
-#' `fgeo.demography::growth()` (each one is a list of class "demography_lst" if
-#' `by` is `NULL`, or of class "demography_lst" if `by` is not `NULL`):
-#' 
-#' * `to_df.demography_lst()`: Restructures results calculated across the entire
-#'   census data.
-#' * `to_df.demography_lst_by()`: Restructures results calculated `by` groups.
+#' Dataframe objects of class "demography_impl".
 #'
-#' @param .x An object of class demography_lst.
+#' @param .x An object of class demography_impl.
 #' @param ... Other arguments passed to `to_df()`.
 #'
 #' @seealso [to_df()].
@@ -176,25 +165,43 @@ new_tt_df <- function(.x) {
 #' @family methods for fgeo generics
 #' 
 #' @return A (tibble) dataframe.
-#'
 #' @export
+#'
 #' @examples
-#' \dontrun{
-#' library(fgeo.demography)
+#' library(fgeo.ctfs)
 #' 
-#' censuses <- read_censuses(tool_example("rdata"))
-#' to_df(mortality(censuses))
-#' 
-#' to_df(mortality(censuses, "sp"))
-#' }
-to_df.demography_lst <- function(.x, ...) {
-  tidyr::unnest(tibble::enframe(.x, name = "metric"))
+#' census1 <- fgeo.x::tree5
+#' census2 <- fgeo.x::tree6
+#'
+#' by <- interaction(census1$sp, census1$quadrat, sep = "__")
+#' .x <- recruitment_impl(census1, census2, split1 = by)
+#' head(to_df(.x))
+to_df.demography_impl <- function(.x, ...) {
+  malformed <- !is.null(attr(.x, "split2"))
+  if (malformed) {
+    abort(glue("
+      Can't deal with data created with `split2` (deprecated).
+      * Bad: `split1 = x1, split2 = x2`
+      * Good: `split1 = interaction(x1, x2)`
+    "))
+  }
+  
+  out <- as.data.frame(Reduce(cbind, .x), stringsAsFactors = FALSE)
+  out <- stats::setNames(out, names(.x))
+  
+  has_groups <- nrow(out) > 1
+  if (has_groups) {
+    out$groups <- rownames(out)
+    out <- out[c("groups", setdiff(names(out), "groups"))]
+  }
+  
+  rownames(out) <- NULL
+  
+  as_tibble(out)
 }
 
-#' @rdname to_df.demography_lst
-#' @export
-to_df.demography_lst_by <- function(.x, ...) {
-  out <- purrr::map_dfr(.x, ~tibble::enframe(.x, name = "by"), .id = "metric")
-  out[c("by", "metric", "value")]
+to_df.default <- function(.x, ...) {
+  .class <- paste0(class(.x), collapse = ", ")
+  stop("Can't deal with data of class ", .class, call. = FALSE)
 }
 

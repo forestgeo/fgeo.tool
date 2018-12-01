@@ -30,16 +30,17 @@ This method creates a dataframe from the output of \code{fgeo.krig::krig()}
 if (!requireNamespace("fgeo.krig")) {
   stop("This example requires fgeo.krig. Please install it")
 }
+libray(fgeo.krig)
 
 vars <- c("c", "p")
-krig <- fgeo.krig::krig(soil_fake, vars, quiet = TRUE)
+krig <- krig(soil_fake, vars, quiet = TRUE)
 to_df(krig)
 }
 }
 \seealso{
 \code{\link[=to_df]{to_df()}}.
 
-Other methods for fgeo generics: \code{\link{to_df.demography_lst}},
+Other methods for fgeo generics: \code{\link{to_df.demography_impl}},
   \code{\link{to_df.tt_lst}}
 }
 \concept{methods for fgeo generics}

@@ -21,12 +21,15 @@ downloaded. Remote gz files can also be automatically downloaded and
 decompressed.
 
 Literal data is most useful for examples and tests. It must contain at
-least one new line to be recognised as data (instead of a path).}
+least one new line to be recognised as data (instead of a path) or be a
+vector of greater than length 1.
+
+Using a value of \code{\link[=clipboard]{clipboard()}} will read from the system clipboard.}
 
 \item{delim}{Single character used to separate fields within a record. The
 default (\code{delim = NULL}) is to guess between comma or tab (\code{","} or \code{"\t"}).}
 
-\item{na}{Character vector of strings to use for missing values. Set this
+\item{na}{Character vector of strings to interpret as missing values. Set this
 option to \code{character()} to indicate no missing values.}
 
 \item{...}{Other arguments passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
