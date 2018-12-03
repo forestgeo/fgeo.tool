@@ -34,7 +34,7 @@ if (requireNamespace("fgeo.habitat")) {
 \seealso{
 \code{\link[=to_df]{to_df()}}.
 
-Other methods for fgeo generics: \code{\link{to_df.demography_lst}},
+Other methods for fgeo generics: \code{\link{to_df.demography_impl}},
   \code{\link{to_df.krig_lst}}
 }
 \concept{methods for fgeo generics}

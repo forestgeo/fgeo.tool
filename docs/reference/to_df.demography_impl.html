@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dataframe objects of class "krig_lst". — to_df.krig_lst • fgeo.tool</title>
+<title>Dataframe objects of class "demography_impl". — to_df.demography_impl • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Dataframe objects of class "krig_lst". — to_df.krig_lst" />
+<meta property="og:title" content="Dataframe objects of class "demography_impl". — to_df.demography_impl" />
 
-<meta property="og:description" content="This method creates a dataframe from the output of fgeo.krig::krig()
-(which is a list of class &quot;krig_lst&quot;)." />
+<meta property="og:description" content="Dataframe objects of class &quot;demography_impl&quot;." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,66 +108,63 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Dataframe objects of class "krig_lst".</h1>
+    <h1>Dataframe objects of class "demography_impl".</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/to_df.R'><code>R/to_df.R</code></a></small>
-    <div class="hidden name"><code>to_df.krig_lst.Rd</code></div>
+    <div class="hidden name"><code>to_df.demography_impl.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This method creates a dataframe from the output of <code><a href='https://www.rdocumentation.org/packages/fgeo.krig/topics/krig'>fgeo.krig::krig()</a></code>
-(which is a list of class "krig_lst").</p>
+    <p>Dataframe objects of class "demography_impl".</p>
     
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for krig_lst</span>
-<span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>.x</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"var"</span>, <span class='kw'>item</span> <span class='kw'>=</span> <span class='st'>"df"</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for demography_impl</span>
+<span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>.x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.x</th>
-      <td><p>The output of <code><a href='https://www.rdocumentation.org/packages/fgeo.krig/topics/krig'>fgeo.krig::krig()</a></code>.`</p></td>
-    </tr>
-    <tr>
-      <th>name</th>
-      <td><p>Name for the column to hold soil variable-names.</p></td>
-    </tr>
-    <tr>
-      <th>item</th>
-      <td><p>Character string; either "df" or "df.poly".</p></td>
+      <td><p>An object of class demography_impl.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code>to_df</code></p><dl class='dl-horizontal'>
-  <dt>.x</dt><dd><p>An fgeo object of supported class.</p></dd>
-</dl></td>
+      <td><p>Other arguments passed to <code><a href='to_df.html'>to_df()</a></code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe.</p>
+    <p>A (tibble) dataframe.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='to_df.html'>to_df()</a></code>.</p>
-<p>Other methods for fgeo generics: <code><a href='to_df.demography_impl.html'>to_df.demography_impl</a></code>,
+<p>Other methods for fgeo generics: <code><a href='to_df.krig_lst.html'>to_df.krig_lst</a></code>,
   <code><a href='to_df.tt_lst.html'>to_df.tt_lst</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (!<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.krig"</span>)) {
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/stop'>stop</a></span>(<span class='st'>"This example requires fgeo.krig. Please install it"</span>)
-}
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.krig</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.ctfs</span>)
 
-<span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"c"</span>, <span class='st'>"p"</span>)
-<span class='no'>krig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.krig/topics/krig'>krig</a></span>(<span class='no'>soil_fake</span>, <span class='no'>vars</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>krig</span>)
-<span class='co'># }</span></pre>
+<span class='no'>census1</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>tree5</a></span>
+<span class='no'>census2</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>tree6</a></span>
+
+<span class='no'>by</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/interaction'>interaction</a></span>(<span class='no'>census1</span>$<span class='no'>sp</span>, <span class='no'>census1</span>$<span class='no'>quadrat</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"__"</span>)
+<span class='no'>.x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.ctfs/topics/demography_impl'>recruitment_impl</a></span>(<span class='no'>census1</span>, <span class='no'>census2</span>, <span class='kw'>split1</span> <span class='kw'>=</span> <span class='no'>by</span>)</div><div class='output co'>#&gt; <span class='message'>Detected dbh ranges:</span>
+#&gt; <span class='message'>  * `census1` = 14-661.</span>
+#&gt; <span class='message'>  * `census2` = 14.5-676.</span>
+#&gt; <span class='message'>Using dbh `mindbh = 0` and above.</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>.x</span>))</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 9</span><span>
+#&gt;   groups          N2     R  rate lower  upper  time date1 date2
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> MIRGAR__102      0     0    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='text-decoration: underline;'>18</span><span>792    </span><span style='color: #BB0000;'>NA</span><span>
+#&gt; </span><span style='color: #555555;'>2</span><span> PREMON__1110     1     0     0     0  0.411  4.48 </span><span style='text-decoration: underline;'>18</span><span>918 </span><span style='text-decoration: underline;'>20</span><span>556
+#&gt; </span><span style='color: #555555;'>3</span><span> INGLAU__115      1     0     0     0  0.413  4.46 </span><span style='text-decoration: underline;'>18</span><span>934 </span><span style='text-decoration: underline;'>20</span><span>564
+#&gt; </span><span style='color: #555555;'>4</span><span> IXOFER__117      1     0     0     0  0.404  4.56 </span><span style='text-decoration: underline;'>18</span><span>961 </span><span style='text-decoration: underline;'>20</span><span>627
+#&gt; </span><span style='color: #555555;'>5</span><span> BUCTET__1223     1     0     0     0  0.410  4.50 </span><span style='text-decoration: underline;'>19</span><span>058 </span><span style='text-decoration: underline;'>20</span><span>703
+#&gt; </span><span style='color: #555555;'>6</span><span> PSYBRA__1318     1     0     0     0  0.412  4.48 </span><span style='text-decoration: underline;'>19</span><span>011 </span><span style='text-decoration: underline;'>20</span><span>646</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

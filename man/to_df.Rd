@@ -28,9 +28,8 @@ simply with \code{\link[base:as.data.frame]{base::as.data.frame()}} (or similar 
 \strong{tibble} package).
 }
 \seealso{
-\code{\link[=to_df.krig_lst]{to_df.krig_lst()}},
-\code{\link[=to_df.tt_lst]{to_df.tt_lst()}},\code{\link[fgeo.tool:to_df.demography_lst]{fgeo.tool::to_df.demography_lst()}},
-\code{\link[fgeo.tool:to_df.demography_lst_by]{fgeo.tool::to_df.demography_lst_by()}}.
+\code{\link[=to_df.krig_lst]{to_df.krig_lst()}}, \code{\link[=to_df.tt_lst]{to_df.tt_lst()}},
+\code{\link[fgeo.tool:to_df.demography_impl]{fgeo.tool::to_df.demography_impl()}}.
 }
 \concept{fgeo generics}
 \keyword{internal}
