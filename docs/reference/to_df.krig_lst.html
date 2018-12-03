@@ -163,10 +163,10 @@
 <span class='kw'>if</span> (!<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.krig"</span>)) {
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/stop'>stop</a></span>(<span class='st'>"This example requires fgeo.krig. Please install it"</span>)
 }
-<span class='fu'>libray</span>(<span class='no'>fgeo.krig</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.krig</span>)
 
 <span class='no'>vars</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"c"</span>, <span class='st'>"p"</span>)
-<span class='no'>krig</span> <span class='kw'>&lt;-</span> <span class='fu'>krig</span>(<span class='no'>soil_fake</span>, <span class='no'>vars</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='no'>krig</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.krig/topics/krig'>krig</a></span>(<span class='no'>soil_fake</span>, <span class='no'>vars</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>krig</span>)
 <span class='co'># }</span></pre>
   </div>
