@@ -57,7 +57,7 @@ to_df.default <- function(.x, ...) {
 #' if (!requireNamespace("fgeo.krig")) {
 #'   stop("This example requires fgeo.krig. Please install it")
 #' }
-#' libray(fgeo.krig)
+#' library(fgeo.krig)
 #' 
 #' vars <- c("c", "p")
 #' krig <- krig(soil_fake, vars, quiet = TRUE)
