@@ -31,8 +31,8 @@
 #' add_quad(x, start = 0)
 #'
 #' # `width` gives the nuber of digits to pad the label of plot-rows and
-#' # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with an
-#' # extra trhree zeros, resulting in a total of 6 zeros.
+#' # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with
+#' # an extra trhree zeros, resulting in a total of 6 zeros.
 #' add_quad(x, start = 0, width = 3)
 #' add_col_row(x)
 #' 
