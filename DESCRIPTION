@@ -26,7 +26,6 @@ Depends:
 Imports: 
     cli,
     dplyr,
-    fgeo.base,
     fgeo.ctfs,
     fgeo.x,
     fs,
@@ -55,7 +54,6 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    forestgeo/fgeo.base,
     forestgeo/fgeo.ctfs,
     forestgeo/fgeo.habitat,
     forestgeo/fgeo.map,

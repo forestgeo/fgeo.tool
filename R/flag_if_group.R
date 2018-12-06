@@ -1,6 +1,6 @@
 #' Detect and flag based on a predicate applied to a variable by groups.
 #' 
-#' These functions extend [flag_if()] and [detect_if()] to
+#' These functions extend `flag_if()`] and `detect_if()` to
 #' work by groups defined with [dplyr::group_by()].
 #'
 #' @param .data A dataframe.
@@ -21,8 +21,6 @@
 #' @export
 #'
 #' @examples
-#' library(fgeo.base)
-#' 
 #' tree <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
 #' detect_if_group(tree, "treeID", is_multiple)
 #' flag_if_group(tree, "treeID", is_multiple)
