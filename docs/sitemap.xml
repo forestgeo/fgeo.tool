@@ -19,9 +19,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/as_censuses.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/check_crucial_names.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/convert_unit.html</loc>
   </url>
   <url>
@@ -61,13 +58,7 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/flag_if_group.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/guess_plotdim.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/is_multiple.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/is_named.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/list_csv.html</loc>

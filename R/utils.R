@@ -1,5 +1,12 @@
-commas <- function(...) {
-  paste0(..., collapse = ", ")
+anchor <- function(x) paste0("^", x, "$")
+
+commas <- function(...) paste0(..., collapse = ", ")
+glue_comma <- commas
+
+#' Round to multiple of any number. Copied from `plyr:::round_any.numeric()`.
+#' @noRd
+round_any <- function(x, accuracy, f = round) {
+  f(x / accuracy) * accuracy
 }
 
 has_class_df <- function(x) {

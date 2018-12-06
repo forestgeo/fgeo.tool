@@ -29,8 +29,7 @@ name_dfs(dfs2)
 }
 \seealso{
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{guess_plotdim}}, \code{\link{is_multiple}},
-  \code{\link{is_named}}, \code{\link{suffix_match}}
+  \code{\link{is_multiple}}, \code{\link{suffix_match}}
 }
 \concept{functions for internal use in other fgeo packages}
 \concept{general functions to deal with names}
