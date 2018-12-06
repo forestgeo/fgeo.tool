@@ -29,19 +29,14 @@ is_duplicated(c(1, 1))
 is_duplicated(c(1, NA))
 }
 \seealso{
-Other functions to check inputs.: \code{\link{check_crucial_names}},
-  \code{\link{flag_if_group}}
+Other functions to check inputs.: \code{\link{flag_if_group}}
 
-Other functions for developers: \code{\link{check_crucial_names}},
-  \code{\link{nms_extract_anycase}},
+Other functions for developers: \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
 
-Other general predicates: \code{\link{is_named}}
-
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{guess_plotdim}}, \code{\link{is_named}},
   \code{\link{name_dfs}}, \code{\link{suffix_match}}
 }
 \concept{functions for developers}

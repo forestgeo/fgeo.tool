@@ -11,12 +11,16 @@
 #' @name condition_na
 #' @noRd
 warn_na <- function(x) {
-  stopifnot(is.data.frame(x) || is.vector(x), !is.null(names(x)), is_named(x))
+  stopifnot(
+    is.data.frame(x) || is.vector(x), 
+    !is.null(names(x)), rlang::is_named(x)
+  )
 
   out <- vapply(x, function(x) any(is.na(x)), logical(1))
   has_na <- out
   if (any(has_na)) {
     warning("Detected missing values in: ", glue_comma(names(x)[has_na]))
   }
+  
   invisible(x)
 }

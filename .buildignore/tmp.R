@@ -1,24 +1,8 @@
 # TODO:
 
+Package by package, disconnect fgeo.base from DESCRIPTION  and all code
+
 # Remove useless roxygen complexity?
-#' @rdname flag_if
-#' @keywords internal
-#' @noRd
-
-
-
-# https://github.com/forestgeo/fgeo.tool/issues/96
-# * Export functions that are used more than once
-# check_crucial_names
-# flag_if
-# guess_plotdim
-# name_dfs
-# suffix_match
-
-# * Move functions that are used exactly once.
-all other
-
-
 
 # Stuff -------------------------------------------------------------------
 

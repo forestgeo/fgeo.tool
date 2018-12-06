@@ -1,8 +1,12 @@
 #' @importFrom glue glue glue_collapse
 #' @importFrom utils head tail
 #' @importFrom measurements conv_unit
+#' 
+#' @importFrom fgeo.ctfs check_crucial_names
 #' @importFrom rlang set_names abort warn inform has_name %||%
 NULL
+#' @export
+fgeo.ctfs::check_crucial_names
 #' @export
 rlang::`%||%`
 
