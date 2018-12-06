@@ -35,8 +35,8 @@ Other functions for fgeo vft.: \code{\link{add_status_tree}},
   \code{\link{add_var}}, \code{\link{pick_drop}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{is_named}}, \code{\link{name_dfs}},
-  \code{\link{suffix_match}}
+  \code{\link{is_multiple}}, \code{\link{is_named}},
+  \code{\link{name_dfs}}, \code{\link{suffix_match}}
 }
 \concept{functions for fgeo census and vft.}
 \concept{functions for fgeo census.}

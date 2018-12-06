@@ -25,9 +25,11 @@ dfm <- data.frame(x = 1)
 check_crucial_names(dfm, "x")
 }
 \seealso{
-Other functions to check inputs.: \code{\link{flag_if_group}}
+Other functions to check inputs.: \code{\link{flag_if_group}},
+  \code{\link{is_multiple}}
 
-Other functions for developers: \code{\link{nms_extract_anycase}},
+Other functions for developers: \code{\link{is_multiple}},
+  \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}

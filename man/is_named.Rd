@@ -27,9 +27,11 @@ is_named(dfm)
 dfm
 }
 \seealso{
+Other general predicates: \code{\link{is_multiple}}
+
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{guess_plotdim}}, \code{\link{name_dfs}},
-  \code{\link{suffix_match}}
+  \code{\link{guess_plotdim}}, \code{\link{is_multiple}},
+  \code{\link{name_dfs}}, \code{\link{suffix_match}}
 }
 \concept{functions for internal use in other fgeo packages}
 \concept{general predicates}
