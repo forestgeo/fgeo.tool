@@ -3,6 +3,7 @@
 \docType{import}
 \name{reexports}
 \alias{reexports}
+\alias{\%||\%}
 \alias{filter}
 \alias{mutate}
 \alias{select}
@@ -32,6 +33,8 @@ below to see their documentation.
 
 \describe{
   \item{dplyr}{\code{\link[dplyr]{filter}}, \code{\link[dplyr]{mutate}}, \code{\link[dplyr]{select}}, \code{\link[dplyr]{arrange}}, \code{\link[dplyr]{summarize}}, \code{\link[dplyr]{summarise}}, \code{\link[dplyr]{group_by}}, \code{\link[dplyr]{ungroup}}, \code{\link[dplyr]{count}}, \code{\link[dplyr]{add_count}}}
+
+  \item{rlang}{\code{\link[rlang]{\%||\%}}}
 
   \item{tibble}{\code{\link[tibble]{tibble}}, \code{\link[tibble]{tribble}}, \code{\link[tibble]{as_tibble}}}
 
