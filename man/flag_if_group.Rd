@@ -28,12 +28,10 @@ detect_if_group(.data, name, predicate)
 }
 }
 \description{
-These functions extend \code{\link[=flag_if]{flag_if()}} and \code{\link[=detect_if]{detect_if()}} to
+These functions extend \code{flag_if()}] and \code{detect_if()} to
 work by groups defined with \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
 \examples{
-library(fgeo.base)
-
 tree <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
 detect_if_group(tree, "treeID", is_multiple)
 flag_if_group(tree, "treeID", is_multiple)

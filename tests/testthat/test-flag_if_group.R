@@ -1,7 +1,6 @@
 context("flag_if_group")
 
 library(dplyr)
-library(fgeo.base)
 
 describe("detect_if_group() and flag_if_group()", {
   msg <- "Flagged values were detected"
