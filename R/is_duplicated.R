@@ -12,8 +12,9 @@
 #'
 #' @return Logical.
 #'
+#' @family functions for internal use in other fgeo packages
 #' @keywords internal
-#' @noRd
+#' @export
 #'
 #' @examples
 #' is_multiple(c(1, 2))
@@ -28,8 +29,7 @@ is_multiple <- function(.data) {
 }
 
 #' @rdname is_multiple
-#' @keywords internal
-#' @noRd
+#' @export
 is_duplicated <- function(.data) {
   any(duplicated(.data))
 }

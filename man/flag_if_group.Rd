@@ -43,7 +43,8 @@ detect_if_group(by_censusid, "treeID", is_multiple)
 flag_if_group(by_censusid, "treeID", is_multiple)
 }
 \seealso{
-Other functions to check inputs.: \code{\link{check_crucial_names}}
+Other functions to check inputs.: \code{\link{check_crucial_names}},
+  \code{\link{is_multiple}}
 
 Other functions for developers.: \code{\link{find_data_of_class}},
   \code{\link{type_ensure}}

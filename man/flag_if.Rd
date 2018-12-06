@@ -2,16 +2,22 @@
 % Please edit documentation in R/flag_if.R
 \name{flag_if}
 \alias{flag_if}
+\alias{flag_if.default}
+\alias{flag_if.data.frame}
 \title{Flag if a vector or dataframe-column meets a condition.}
 \usage{
 flag_if(.data, ...)
+
+\method{flag_if}{default}(.data, predicate, condition = warning,
+  msg = NULL, ...)
+
+\method{flag_if}{data.frame}(.data, name, predicate, condition = warning,
+  msg = NULL, ...)
 }
 \arguments{
 \item{.data}{Vector.}
 
 \item{...}{Other arguments passed to methods.}
-
-\item{name}{String. The name of a column of a dataframe.}
 
 \item{predicate}{A predicate function.}
 
@@ -19,6 +25,8 @@ flag_if(.data, ...)
 \code{rlang::inform()}).}
 
 \item{msg}{String. An optional custom message.}
+
+\item{name}{String. The name of a column of a dataframe.}
 }
 \value{
 A condition (and \code{.data} invisibly).
@@ -52,8 +60,8 @@ flag_if(.df, "a", is_multiple, message, "Custom")
 }
 \seealso{
 Other functions for internal use in other fgeo packages: \code{\link{guess_plotdim}},
-  \code{\link{is_named}}, \code{\link{name_dfs}},
-  \code{\link{suffix_match}}
+  \code{\link{is_multiple}}, \code{\link{is_named}},
+  \code{\link{name_dfs}}, \code{\link{suffix_match}}
 }
 \concept{functions for internal use in other fgeo packages}
 \concept{functions to throw conditions}

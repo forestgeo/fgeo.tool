@@ -45,8 +45,7 @@ flag_if <- function(.data, ...) {
 }
 
 #' @rdname flag_if
-#' @keywords internal
-#' @noRd
+#' @export
 flag_if.default <- function(.data,
                             predicate,
                             condition = warning,
@@ -58,8 +57,7 @@ flag_if.default <- function(.data,
 }
 
 #' @rdname flag_if
-#' @keywords internal
-#' @noRd
+#' @export
 flag_if.data.frame <- function(.data,
                                name,
                                predicate,
