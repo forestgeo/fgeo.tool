@@ -53,11 +53,13 @@ Other functions dealing with names: \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
 
-Other functions for developers: \code{\link{is_multiple}},
+Other functions for developers: \code{\link{extract_insensitive}},
+  \code{\link{is_multiple}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}},
-  \code{\link{nms_try_rename}}, \code{\link{nms}}
+  \code{\link{nms_try_rename}}, \code{\link{nms}},
+  \code{\link{rename_matches}}
 }
 \concept{functions dealing with names}
 \concept{functions for developers}

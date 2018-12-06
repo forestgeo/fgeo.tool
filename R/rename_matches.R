@@ -9,7 +9,7 @@
 #' @return The output is `x` with as many names changed as case-insensitive
 #'   matches there are with the reference.
 #' @keywords internal
-#' @noRd
+#' @export
 #'
 #' @examples
 #' ref <- data.frame(COL1 = 1, COL2 = 1)
@@ -31,7 +31,7 @@ rename_matches <- function(x, y) {
 #'
 #' @return `detect_*` and `extract_*` return a logical vector and a string.
 #' @keywords internal
-#' @noRd
+#' @export
 #'
 #' @examples
 #' x <- c("stemid", "n")
@@ -70,7 +70,7 @@ extract_insensitive <- function(x, y) {
 #' @family general functions to assert
 #'
 #' @keywords internal
-#' @noRd
+#' @export
 #' @rdname extract_insensitive
 detect_insensitive <- function(x, y) {
   stopifnot(is.character(x), is.character(y))

@@ -11,7 +11,7 @@
 #'
 #' @return A dataframe.
 #' @keywords internal
-#' @noRd
+#' @export
 #'
 #' @examples
 #' dfm <- data.frame(a = 1, b = NA)
