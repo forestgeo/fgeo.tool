@@ -28,6 +28,9 @@ dfs2 <- list(data.frame(x = 1), data.frame(x = 1))
 name_dfs(dfs2)
 }
 \seealso{
+Other general functions to deal with names: \code{\link{extract_insensitive}},
+  \code{\link{rename_matches}}
+
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
   \code{\link{is_multiple}}, \code{\link{suffix_match}}
 }

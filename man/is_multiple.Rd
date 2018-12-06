@@ -31,10 +31,12 @@ is_duplicated(c(1, NA))
 \seealso{
 Other functions to check inputs.: \code{\link{flag_if_group}}
 
-Other functions for developers: \code{\link{nms_extract_anycase}},
+Other functions for developers: \code{\link{extract_insensitive}},
+  \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms_try_rename}}, \code{\link{nms}}
+  \code{\link{nms_try_rename}}, \code{\link{nms}},
+  \code{\link{rename_matches}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
   \code{\link{name_dfs}}, \code{\link{suffix_match}}

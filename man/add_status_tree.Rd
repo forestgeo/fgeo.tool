@@ -49,7 +49,7 @@ Other functions for fgeo census.: \code{\link{add_var}},
   \code{\link{pick_drop}}
 
 Other functions for fgeo vft.: \code{\link{add_var}},
-  \code{\link{pick_drop}}
+  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
 }
 \concept{functions for ForestGEO data.}
 \concept{functions for fgeo census.}
