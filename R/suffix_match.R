@@ -5,11 +5,12 @@
 #' @param .match A string to match the vector `to_match` with.
 #' @param suffix A suffix to add at the end of each element of `string`.
 #'
-#' @family general functions to edit data in place
-#'
 #' @return A modified version of `x`.
+#' 
+#' @family general functions to edit data in place
+#' @family functions for internal use in other fgeo packages
 #' @keywords internal
-#' @noRd
+#' @export
 #'
 #' @examples
 #' suffix_match(

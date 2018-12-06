@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Try to rename an object. — nms_try_rename • fgeo.tool</title>
+<title>Guess plot dimensions. — guess_plotdim • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Try to rename an object. — nms_try_rename" />
+<meta property="og:title" content="Guess plot dimensions. — guess_plotdim" />
 
-<meta property="og:description" content="Given a name you want and a possible alternative, this function renames an
-object as you want or errs with an informative message." />
+<meta property="og:description" content="Guess plot dimensions." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,68 +108,63 @@ object as you want or errs with an informative message." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Try to rename an object.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/nms_manipulate_names.R'><code>R/nms_manipulate_names.R</code></a></small>
-    <div class="hidden name"><code>nms_try_rename.Rd</code></div>
+    <h1>Guess plot dimensions.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/guess_plotdim.R'><code>R/guess_plotdim.R</code></a></small>
+    <div class="hidden name"><code>guess_plotdim.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Given a name you want and a possible alternative, this function renames an
-object as you want or errs with an informative message.</p>
+    <p>Guess plot dimensions.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nms_try_rename</span>(<span class='no'>x</span>, <span class='no'>want</span>, <span class='no'>try</span>)</pre>
+    <pre class="usage"><span class='fu'>guess_plotdim</span>(<span class='no'>x</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>20</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named object.</p></td>
+      <td><p>A dataframe; a ForestGEO dataset (census or ViewFullTable).</p></td>
     </tr>
     <tr>
-      <th>want</th>
-      <td><p>String of length 1 giving the name you want the object to have.</p></td>
-    </tr>
-    <tr>
-      <th>try</th>
-      <td><p>String of length 1 giving the name the object might have.</p></td>
+      <th>accuracy</th>
+      <td><p>A number giving the accuracy with which to round <code>gx</code> and
+<code>gy</code>.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A numeric vector of length 2.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>nms</p>
-<p>Other functions dealing with names: <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms_tidy.html'>nms_tidy</a></code>,
-  <code><a href='nms.html'>nms</a></code></p>
-<p>Other functions for developers: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
-  <code><a href='nms_extract_anycase.html'>nms_extract_anycase</a></code>,
-  <code><a href='nms_lowercase.html'>nms_lowercase</a></code>,
-  <code><a href='nms_restore_newvar.html'>nms_restore_newvar</a></code>, <code><a href='nms_tidy.html'>nms_tidy</a></code>,
-  <code><a href='nms.html'>nms</a></code></p></div>
+    <div class='dont-index'><p>Other functions for fgeo census and vft.: <code><a href='pick_drop.html'>pick_drop</a></code></p>
+<p>Other functions for fgeo census.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
+  <code><a href='add_var.html'>add_var</a></code>, <code><a href='pick_drop.html'>pick_drop</a></code></p>
+<p>Other functions for fgeo vft.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
+  <code><a href='add_var.html'>add_var</a></code>, <code><a href='pick_drop.html'>pick_drop</a></code></p>
+<p>Other functions for internal use in other fgeo packages: <code><a href='flag_if.html'>flag_if</a></code>,
+  <code><a href='is_named.html'>is_named</a></code>, <code><a href='name_dfs.html'>name_dfs</a></code>,
+  <code><a href='suffix_match.html'>suffix_match</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nms_try_rename</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; A 
-#&gt; 1 </div><div class='input'><span class='fu'>nms_try_rename</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   A
-#&gt; 1 1</div><div class='input'>
-<span class='co'># Passes</span>
-<span class='fu'>nms_try_rename</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='fl'>1</span>), <span class='st'>"A"</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; A   
-#&gt; 1 1 </div># NOT RUN {
-# Errs
-# nms_try_rename(1, "A", "A")
-# }
-</pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(
+  <span class='kw'>gx</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>300</span>, <span class='fl'>979</span>),
+  <span class='kw'>gy</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>300</span>, <span class='fl'>481</span>)
+)
+<span class='fu'>guess_plotdim</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(980, 500)</span></div><div class='output co'>#&gt; [1] 980 500</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

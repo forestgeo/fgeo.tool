@@ -34,6 +34,6 @@ setNames(list(1), to_tidy_names(messy))
 \code{fgeo.tool::nms_tidy()}.
 
 Other general functions to edit data in place: \code{\link{fill_na}},
-  \code{\link{lookup}}
+  \code{\link{lookup}}, \code{\link{suffix_match}}
 }
 \concept{general functions to edit data in place}

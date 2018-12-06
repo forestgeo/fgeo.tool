@@ -53,7 +53,8 @@ Other functions dealing with names: \code{\link{nms_extract_anycase}},
   \code{\link{nms_restore_newvar}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}
 
-Other functions for developers: \code{\link{nms_extract_anycase}},
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}},
   \code{\link{nms_try_rename}}, \code{\link{nms}}

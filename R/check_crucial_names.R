@@ -9,8 +9,10 @@
 #'
 #'
 #' @return Invisible `x`, or an error with informative message.
+#' 
+#' @family exported functions for internal use
+#' @export
 #' @keywords internal
-#' @noRd
 #'
 #' @examples
 #' v <- c(x = 1)
@@ -40,8 +42,10 @@ check_crucial_names <- function(x, nms) {
 #' @family general predicates
 #'
 #' @return The scalar `TRUE` or `FALSE`.
+#' 
+#' @family functions for internal use in other fgeo packages
 #' @keywords internal
-#' @noRd
+#' @export
 #'
 #' @examples
 #' is_named(c(x = 1))

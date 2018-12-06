@@ -1,26 +1,26 @@
-operators.R
-check_crucial_names.R
-guess_plotdim.R
-has_table_names.R
-suffix_match.R
-flag_if.R
-collapse_censusid.R
-name_dfs.R
-rename_matches.R
-warn_na.R
-detect_if.R
-to_tidy_names.R
-gather_mat.R
-drop_if_na.R
-round_any.R
+# TODO:
+
+# Remove useless roxygen complexity?
+#' @rdname flag_if
+#' @keywords internal
+#' @noRd
 
 
 
+# https://github.com/forestgeo/fgeo.tool/issues/96
+# * Export functions that are used more than once
+# check_crucial_names
+# flag_if
+# guess_plotdim
+# name_dfs
+# suffix_match
+
+# * Move functions that are used exactly once.
+all other
 
 
 
-
-
+# Stuff -------------------------------------------------------------------
 
 
 
