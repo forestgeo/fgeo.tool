@@ -100,7 +100,7 @@ pick_by_groups_by_censusid <- function(.x, ...) {
   .x <- ungroup(.x)
   
   if (has_name(.x, "censusid") && detect_if(.x, "censusid", is_multiple)) {
-    .x <- fgeo.base::drop_if_na(.x, "censusid")
+    .x <- drop_if_na(.x, "censusid")
     .x <- group_by(.x, .data$censusid)
   }
   

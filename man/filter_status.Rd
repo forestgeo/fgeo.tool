@@ -149,7 +149,7 @@ result \%>\%
 table(result$status_tree)
 }
 \seealso{
-\code{\link[=add_status_tree]{add_status_tree()}}, \code{\link[fgeo.base:drop_status]{fgeo.base::drop_status()}}.
+\code{\link[=add_status_tree]{add_status_tree()}}, \code{\link[=drop_status]{drop_status()}}.
 
 Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{drop_twice_dead}},
   \code{\link{pick_drop}}, \code{\link{pick_main_stem}},

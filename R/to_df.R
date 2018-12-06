@@ -104,7 +104,7 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
 to_df.tt_lst <- function(.x, ...) {
   flip <- t(Reduce(rbind, .x))
   long_df <- tibble::as.tibble(
-    fgeo.base::gather_mat(flip, "metric", "sp", "value")
+    gather_mat(flip, "metric", "sp", "value")
   )
   with_habitat <- separate_habitat_metric(long_df)
   wide_df <- tidyr::spread(with_habitat, "metric", "value")

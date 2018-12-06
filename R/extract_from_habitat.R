@@ -25,7 +25,7 @@ extract_gridsize <- function(habitats) {
     check_crucial_names(habitats, c("x", "y")), 
     error = function(e) rename_to_xy(habitats)
   )
-  fgeo.base::warn_na(habitats)
+  warn_na(habitats)
   check_crucial_names(habitats, c("x", "y"))
 
   grid_x <- difference_among_grid_steps(habitats$x)

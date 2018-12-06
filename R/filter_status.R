@@ -13,7 +13,7 @@
 #' @param exclude Logical; `TRUE` filters the data to exclude the values passed
 #'   to `.status`.
 #'
-#' @seealso [add_status_tree()], [fgeo.base::drop_status()].
+#' @seealso [add_status_tree()], [drop_status()].
 #'
 #' @family functions to pick or drop rows of a ForestGEO dataframe
 #'

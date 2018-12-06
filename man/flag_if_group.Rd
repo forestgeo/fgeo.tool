@@ -14,7 +14,7 @@ detect_if_group(.data, name, predicate)
 
 \item{name}{String. The name of a column of the dataframe.}
 
-\item{predicate}{A predicate function, e.g. \code{\link[fgeo.base:is_multiple]{fgeo.base::is_multiple()}}.}
+\item{predicate}{A predicate function, e.g. \code{\link[=is_multiple]{is_multiple()}}.}
 
 \item{condition}{A condition function, e.g. \code{\link[rlang:inform]{rlang::inform()}} or
 \code{\link[base:stop]{base::stop()}}.}
@@ -28,7 +28,7 @@ detect_if_group(.data, name, predicate)
 }
 }
 \description{
-These functions extend \code{\link[fgeo.base:flag_if]{fgeo.base::flag_if()}} and \code{\link[fgeo.base:detect_if]{fgeo.base::detect_if()}} to
+These functions extend \code{\link[=flag_if]{flag_if()}} and \code{\link[=detect_if]{detect_if()}} to
 work by groups defined with \code{\link[dplyr:group_by]{dplyr::group_by()}}.
 }
 \examples{
