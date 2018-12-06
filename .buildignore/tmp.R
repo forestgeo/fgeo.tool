@@ -1,3 +1,29 @@
+operators.R
+check_crucial_names.R
+guess_plotdim.R
+has_table_names.R
+suffix_match.R
+flag_if.R
+collapse_censusid.R
+name_dfs.R
+rename_matches.R
+warn_na.R
+detect_if.R
+to_tidy_names.R
+gather_mat.R
+drop_if_na.R
+round_any.R
+
+
+
+
+
+
+
+
+
+
+
 # TODO:
 # Address TODO and FIXME.
 # Integrate with fgeo.demography
@@ -6,9 +32,6 @@
 # TODO: Add checks
 # * stop if not all dataframes have same structure.
 # * warn if not all dataframes have names that match tree or stem tables
-#   (see fgeo.base::has_table_names()).
-
-
 
 
 

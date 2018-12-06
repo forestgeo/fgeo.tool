@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Detect and flag based on a predicate applied to a variable by groups. — flag_if_group" />
 
-<meta property="og:description" content="These functions extend fgeo.base::flag_if() and fgeo.base::detect_if() to
+<meta property="og:description" content="These functions extend flag_if() and detect_if() to
 work by groups defined with dplyr::group_by()." />
 <meta name="twitter:card" content="summary" />
 
@@ -116,7 +116,7 @@ work by groups defined with dplyr::group_by()." />
 
     <div class="ref-description">
     
-    <p>These functions extend <code><a href='https://www.rdocumentation.org/packages/fgeo.base/topics/flag_if'>fgeo.base::flag_if()</a></code> and <code><a href='https://www.rdocumentation.org/packages/fgeo.base/topics/detect_if'>fgeo.base::detect_if()</a></code> to
+    <p>These functions extend <code>flag_if()</code> and <code>detect_if()</code> to
 work by groups defined with <code><a href='http://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>.</p>
     
     </div>
@@ -138,7 +138,7 @@ work by groups defined with <code><a href='http://dplyr.tidyverse.org/reference/
     </tr>
     <tr>
       <th>predicate</th>
-      <td><p>A predicate function, e.g. <code><a href='https://www.rdocumentation.org/packages/fgeo.base/topics/is_multiple'>fgeo.base::is_multiple()</a></code>.</p></td>
+      <td><p>A predicate function, e.g. <code>is_multiple()</code>.</p></td>
     </tr>
     <tr>
       <th>condition</th>
@@ -167,8 +167,11 @@ work by groups defined with <code><a href='http://dplyr.tidyverse.org/reference/
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.base</span>)
-
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.base</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: 'fgeo.base'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:fgeo.tool':</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    drop_status, fill_na, pick_dbh_max, pick_dbh_min, pick_dbh_over,</span>
+#&gt; <span class='message'>    pick_dbh_under, pick_status, to_tidy_names</span></div><div class='input'>
 <span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>treeID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
 <span class='fu'>detect_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>flag_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: treeID: Flagged values were detected.</span></div><div class='input'>
 <span class='no'>by_censusid</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>tree</span>, <span class='no'>CensusID</span>)

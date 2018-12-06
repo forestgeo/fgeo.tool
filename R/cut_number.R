@@ -52,8 +52,8 @@ fullseq <- function (range, size, ..., pad = FALSE) {
   if (zero_range(range)) 
     return(range + size * c(-1, 1)/2)
   x <- seq(
-    fgeo.base::round_any(range[1], size, floor),
-    fgeo.base::round_any(range[2], size, ceiling), 
+    round_any(range[1], size, floor),
+    round_any(range[2], size, ceiling), 
     by = size
   )
   if (pad) {

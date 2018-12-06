@@ -315,7 +315,7 @@ nms_tidy <- function(x) {
     names(x) <- gsub(" ", "_", tolower(names(x)))
     return(x)
   } else {
-    fgeo.base::to_tidy_names(x)
+    to_tidy_names(x)
   }
 }
 
