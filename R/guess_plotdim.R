@@ -10,9 +10,10 @@
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
 #' @family general functions to find or approximate
-#'
+#' @family functions for internal use in other fgeo packages
 #' @keywords internal
-#' @noRd
+#' @export
+#' 
 #' @examples
 #' x <- data.frame(
 #'   gx = c(0, 300, 979),

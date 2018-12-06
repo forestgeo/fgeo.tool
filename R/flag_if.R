@@ -12,12 +12,13 @@
 #' @param msg String. An optional custom message.
 #' @param ... Other arguments passed to methods.
 #'
-#' @family functions to throw conditions
-#'
 #' @return A condition (and `.data` invisibly).
+#' 
+#' @family functions to throw conditions
+#' @family functions for internal use in other fgeo packages
 #' @keywords internal
-#' @noRd
-#'
+#' @export
+#' 
 #' @examples
 #' # WITH VECTORS
 #' dupl <- c(1, 1)

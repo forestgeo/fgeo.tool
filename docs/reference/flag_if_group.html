@@ -116,7 +116,7 @@ work by groups defined with dplyr::group_by()." />
 
     <div class="ref-description">
     
-    <p>These functions extend <code>flag_if()</code> and <code>detect_if()</code> to
+    <p>These functions extend <code><a href='flag_if.html'>flag_if()</a></code> and <code>detect_if()</code> to
 work by groups defined with <code><a href='http://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>.</p>
     
     </div>
@@ -162,7 +162,8 @@ work by groups defined with <code><a href='http://dplyr.tidyverse.org/reference/
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions for developers.: <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
+    <div class='dont-index'><p>Other functions to check inputs.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code></p>
+<p>Other functions for developers.: <code><a href='find_data_of_class.html'>find_data_of_class</a></code>,
   <code><a href='type_ensure.html'>type_ensure</a></code></p></div>
     
 
@@ -170,8 +171,9 @@ work by groups defined with <code><a href='http://dplyr.tidyverse.org/reference/
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.base</span>)</div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: 'fgeo.base'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:fgeo.tool':</span>
 #&gt; <span class='message'></span>
-#&gt; <span class='message'>    drop_status, fill_na, pick_dbh_max, pick_dbh_min, pick_dbh_over,</span>
-#&gt; <span class='message'>    pick_dbh_under, pick_status, to_tidy_names</span></div><div class='input'>
+#&gt; <span class='message'>    check_crucial_names, drop_status, fill_na, flag_if, guess_plotdim,</span>
+#&gt; <span class='message'>    is_named, name_dfs, pick_dbh_max, pick_dbh_min, pick_dbh_over,</span>
+#&gt; <span class='message'>    pick_dbh_under, pick_status, suffix_match, to_tidy_names</span></div><div class='input'>
 <span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>treeID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
 <span class='fu'>detect_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>flag_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: treeID: Flagged values were detected.</span></div><div class='input'>
 <span class='no'>by_censusid</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>tree</span>, <span class='no'>CensusID</span>)

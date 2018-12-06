@@ -38,6 +38,6 @@ lapply(a_list, fill_na)
 }
 \seealso{
 Other general functions to edit data in place: \code{\link{lookup}},
-  \code{\link{to_tidy_names}}
+  \code{\link{suffix_match}}, \code{\link{to_tidy_names}}
 }
 \concept{general functions to edit data in place}
