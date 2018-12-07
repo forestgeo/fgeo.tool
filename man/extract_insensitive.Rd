@@ -34,7 +34,8 @@ extract_insensitive(tolower(names(vft)), names(vft))
 extract_insensitive(names(vft), tolower(names(vft)))
 }
 \seealso{
-Other functions for developers: \code{\link{is_multiple}},
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{is_multiple}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
@@ -43,6 +44,8 @@ Other functions for developers: \code{\link{is_multiple}},
 
 Other general functions to deal with names: \code{\link{name_dfs}},
   \code{\link{rename_matches}}
+
+Other general functions to assert: \code{\link{check_crucial_names}}
 }
 \concept{functions for developers}
 \concept{general functions to assert}

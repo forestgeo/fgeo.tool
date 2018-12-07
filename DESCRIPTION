@@ -26,7 +26,6 @@ Depends:
 Imports: 
     cli,
     dplyr,
-    fgeo.ctfs,
     fgeo.x,
     fs,
     glue,
@@ -46,15 +45,12 @@ Imports:
     writexl
 Suggests: 
     covr,
-    fgeo.map,
     knitr,
     spelling,
     testthat
 VignetteBuilder: 
     knitr
 Remotes: 
-    forestgeo/fgeo.ctfs,
-    forestgeo/fgeo.map,
     forestgeo/fgeo.x
 Encoding: UTF-8
 Language: en-US

@@ -18,6 +18,8 @@ A (tibble) dataframe.
 Dataframe objects of class "demography_impl".
 }
 \examples{
+\dontrun{
+if (!requireNamespace("fgeo.ctfs")) {
 library(fgeo.ctfs)
 
 census1 <- fgeo.x::tree5
@@ -26,6 +28,8 @@ census2 <- fgeo.x::tree6
 by <- interaction(census1$sp, census1$quadrat, sep = "__")
 .x <- recruitment_impl(census1, census2, split1 = by)
 head(to_df(.x))
+}
+}
 }
 \seealso{
 \code{\link[=to_df]{to_df()}}.

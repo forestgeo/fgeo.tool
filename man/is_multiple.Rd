@@ -29,9 +29,11 @@ is_duplicated(c(1, 1))
 is_duplicated(c(1, NA))
 }
 \seealso{
-Other functions to check inputs.: \code{\link{flag_if_group}}
+Other functions to check inputs.: \code{\link{check_crucial_names}},
+  \code{\link{flag_if_group}}
 
-Other functions for developers: \code{\link{extract_insensitive}},
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{extract_insensitive}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
   \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},

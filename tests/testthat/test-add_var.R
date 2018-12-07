@@ -1,5 +1,4 @@
 library(dplyr)
-library(fgeo.ctfs)
 
 context("add_var")
 
