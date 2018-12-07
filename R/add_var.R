@@ -56,7 +56,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
 
   if (is.null(plotdim)) {
     plotdim <- plotdim
-    plotdim <- fgeo.ctfs::guess_plotdim(.x)
+    plotdim <- guess_plotdim(.x)
     message("* If guess is wrong, provide the correct argument `plotdim`")
   }
 

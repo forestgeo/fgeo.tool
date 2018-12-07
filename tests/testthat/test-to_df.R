@@ -61,8 +61,9 @@ census1 <- fgeo.x::tree5
 census2 <- fgeo.x::tree6
 
 test_that("with split2 errs with informative message", {
+  skip_if_not_installed("fgeo.ctfs")
   expect_warning(
-    out <- recruitment_impl(
+    out <- fgeo.ctfs::recruitment_impl(
       census1, census2, split1 = census1$sp, 
       split2 = census1$quadrat
     ), "split2.*deprecated"
@@ -71,27 +72,29 @@ test_that("with split2 errs with informative message", {
 })
 
 test_that("With no split, or `split1`, outputs consistent dataframe", {
+  skip_if_not_installed("fgeo.ctfs")
+  
   nms <- c("N2", "R", "rate", "lower", "upper", "time", "date1", "date2")
   
-  .x <- recruitment_impl(census1, census2)
+  .x <- fgeo.ctfs::recruitment_impl(census1, census2)
   expect_error(to_df(unclass(.x)), "Can't deal with data")
   
-  .x <- recruitment_impl(census1, census2)
+  .x <- fgeo.ctfs::recruitment_impl(census1, census2)
   expect_is(to_df(.x), "data.frame")
   expect_named(to_df(.x), nms)
   
   by <- census1$sp
-  .x <- recruitment_impl(census1, census2, split1 = by)
+  .x <- fgeo.ctfs::recruitment_impl(census1, census2, split1 = by)
   expect_is(to_df(.x), "data.frame")
   expect_named(to_df(.x), c("groups", nms))
   # Same
   by <- interaction(census1$sp)
-  .x <- recruitment_impl(census1, census2, split1 = by)
+  .x <- fgeo.ctfs::recruitment_impl(census1, census2, split1 = by)
   expect_is(to_df(.x), "data.frame")
   expect_named(to_df(.x), c("groups", nms))
   
   by <- interaction(census1$sp, census1$quadrat)
-  .x <- recruitment_impl(census1, census2, split1 = by)
+  .x <- fgeo.ctfs::recruitment_impl(census1, census2, split1 = by)
   expect_is(to_df(.x), "data.frame")
   expect_named(to_df(.x), c("groups", nms))
 })

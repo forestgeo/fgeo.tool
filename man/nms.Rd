@@ -61,7 +61,8 @@ stem <- fgeo.x::stem6
 nms_extract_all(stem, "gx", "gy", "PX", "PY")
 }
 \seealso{
-Other functions for developers: \code{\link{extract_insensitive}},
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{extract_insensitive}},
   \code{\link{is_multiple}},
   \code{\link{nms_extract_anycase}},
   \code{\link{nms_lowercase}},
