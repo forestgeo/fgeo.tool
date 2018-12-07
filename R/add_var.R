@@ -7,7 +7,7 @@
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
 #'
 #' @template x_fgeo
-#' @inheritParams fgeo.ctfs::from_var_to_var
+#' @inheritParams from_var_to_var
 #' @param start `1` or `0`, indicating how to label the first plot-column.
 #' @param width Number; width to pad the labels of plot-columns and -rows
 #'   (passed to [stringr::str_pad()]).
@@ -159,7 +159,7 @@ sanitize_xy <- function(x) {
 }
 
 gxgy_to_var <- function(.x, var, gridsize, plotdim) {
-  .f <- utils::getFromNamespace(paste0("gxgy_to_", var), "fgeo.ctfs")
+  .f <- utils::getFromNamespace(paste0("gxgy_to_", var), "fgeo.tool")
   if (identical(var, "hectindex")) {
     # `gridsize` is unused
     return(.f(.x$gx, .x$gy, plotdim = plotdim))

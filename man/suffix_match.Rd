@@ -48,7 +48,8 @@ Other general functions to edit data in place: \code{\link{fill_na}},
   \code{\link{lookup}}, \code{\link{to_tidy_names}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{is_multiple}}, \code{\link{name_dfs}}
+  \code{\link{guess_plotdim}}, \code{\link{is_multiple}},
+  \code{\link{name_dfs}}
 }
 \concept{functions for internal use in other fgeo packages}
 \concept{general functions to edit data in place}

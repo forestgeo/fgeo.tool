@@ -39,7 +39,8 @@ Other functions for developers: \code{\link{extract_insensitive}},
   \code{\link{rename_matches}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{name_dfs}}, \code{\link{suffix_match}}
+  \code{\link{guess_plotdim}}, \code{\link{name_dfs}},
+  \code{\link{suffix_match}}
 }
 \concept{functions for developers}
 \concept{functions for internal use in other fgeo packages}

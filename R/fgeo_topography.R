@@ -21,7 +21,7 @@
 #' 
 #' @author Rick Condit.
 #' @section Source code:
-#' The main code of this function comes from [fgeo.ctfs::allquadratslopes()]
+#' The main code of this function comes from [allquadratslopes()]
 #' ([source](http://bit.ly/2zikb3V)).
 #' 
 #' @inherit fgeo_habitat details
@@ -72,15 +72,15 @@ fgeo_topography.list <- function(elevation,
   force(gridsize)
   plotdim <- c(elevation$xdim, elevation$ydim)
   
-  # Match names-requirements of fgeo.ctfs::allquadratslopes()
+  # Match names-requirements of allquadratslopes()
   names(elevation$col) <- sub("gx", "x", names(elevation$col))
   names(elevation$col) <- sub("gy", "y", names(elevation$col))
   topo <- suppressMessages(
-    fgeo.ctfs::allquadratslopes(elevation, gridsize, plotdim, edgecorrect)
+    allquadratslopes(elevation, gridsize, plotdim, edgecorrect)
   )
   
   quad_idx <- as.integer(rownames(topo))
-  gxgy <- fgeo.ctfs::index_to_gxgy(quad_idx, gridsize, plotdim)
+  gxgy <- index_to_gxgy(quad_idx, gridsize, plotdim)
   out <- tibble::as.tibble(cbind(gxgy, topo))
   new_fgeo_topography(out)
 }

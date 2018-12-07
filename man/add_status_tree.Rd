@@ -46,10 +46,11 @@ Other functions for ForestGEO data.: \code{\link{add_subquad}},
   \code{\link{add_var}}
 
 Other functions for fgeo census.: \code{\link{add_var}},
-  \code{\link{pick_drop}}
+  \code{\link{guess_plotdim}}, \code{\link{pick_drop}}
 
 Other functions for fgeo vft.: \code{\link{add_var}},
-  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
+  \code{\link{guess_plotdim}}, \code{\link{pick_drop}},
+  \code{\link{pick_plotname}}
 }
 \concept{functions for ForestGEO data.}
 \concept{functions for fgeo census.}
