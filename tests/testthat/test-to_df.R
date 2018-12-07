@@ -1,7 +1,5 @@
 context("to_df")
 
-library(fgeo.ctfs)
-
 describe("to_df.krig_lst", {
   skip_if_not_installed("fgeo.krig")
   

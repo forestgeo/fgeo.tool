@@ -43,7 +43,7 @@ Structure topography data with mean elevation, convexity, and slope.
 }
 \section{Source code}{
 
-The main code of this function comes from \code{\link[fgeo.ctfs:allquadratslopes]{fgeo.ctfs::allquadratslopes()}}
+The main code of this function comes from \code{\link[=allquadratslopes]{allquadratslopes()}}
 (\href{http://bit.ly/2zikb3V}{source}).
 }
 

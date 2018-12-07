@@ -59,8 +59,9 @@ flag_if(.df, "a", is_multiple)
 flag_if(.df, "a", is_multiple, message, "Custom")
 }
 \seealso{
-Other functions for internal use in other fgeo packages: \code{\link{is_multiple}},
-  \code{\link{name_dfs}}, \code{\link{suffix_match}}
+Other functions for internal use in other fgeo packages: \code{\link{guess_plotdim}},
+  \code{\link{is_multiple}}, \code{\link{name_dfs}},
+  \code{\link{suffix_match}}
 }
 \concept{functions for internal use in other fgeo packages}
 \concept{functions to throw conditions}
