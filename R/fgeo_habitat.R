@@ -34,18 +34,20 @@
 #' str(habs)
 #' 
 #' \dontrun{
-#' if (requireNamespace("fgeo.map")) {
+#' installed <- requireNamespace("fgeo.map", quietly = TRUE)
+#' if (installed) {
 #'   library(fgeo.map)
 #'   autoplot(habs)
 #' }
 #' 
 #' # A good use of habitat data is for calculating species-habitat associations
-#' if (requireNamespace("fgeo.habitat")) {
-#'   library(fgeo.habitat)
+#' installed <- requireNamespace("fgeo.analyze", quietly = TRUE)
+#' if (installed) {
+#'   library(fgeo.analyze)
 #'   
 #'   elev_list <- fgeo.x::elevation
 #'   habitat <- fgeo_habitat(elev_list, gridsize = 20, n = 4)
-#'   census <- fgeo.habitat::luquillo_top3_sp
+#'   census <- fgeo.analyze::luquillo_top3_sp
 #'   species <- unique(census$sp)
 #'   to_df(tt_test(census, species, habitat))
 #' }

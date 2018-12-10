@@ -1,8 +1,8 @@
 context("fgeo_habitat")
 
 describe("fgeo_habitat", {
-  skip_if_not_installed("fgeo.habitat")
-  library(fgeo.habitat)
+  skip_if_not_installed("fgeo.analyze")
+  library(fgeo.analyze)
   
   elev_ls <- fgeo.x::elevation
   gridsize <- 20
@@ -22,6 +22,7 @@ describe("fgeo_habitat", {
   
   habitat <- fgeo_habitat(elev_ls, gridsize = 20, n = 4)
   it("plots with plot.fgeo_habitat()", {
+    skip_if_not_installed("fgeo.analyze")
     skip_if_not_installed("fgeo.map")
     library(fgeo.map)
 
@@ -37,15 +38,21 @@ describe("fgeo_habitat", {
     expect_false(identical(out1, habitat))
   })
   
-  census <- luquillo_top3_sp
-  census <- census[census$status == "A" & census$dbh >= 10, ]
-  species <- c("CASARB", "PREMON", "SLOBER")
   
+
   it("outputs object that throws no warning with tt_test()", {
+    census <- luquillo_top3_sp
+    census <- census[census$status == "A" & census$dbh >= 10, ]
+    species <- c("CASARB", "PREMON", "SLOBER")
+    
     expect_silent(expect_message(tt_test(census, species, habitat)))
   })
   
   it("outputs identical with elevation list or dataframe", {
+    census <- luquillo_top3_sp
+    census <- census[census$status == "A" & census$dbh >= 10, ]
+    species <- c("CASARB", "PREMON", "SLOBER")
+    
     elev_df <- fgeo.x::elevation$col
     habitat_df <- fgeo_habitat(
       elev_df, gridsize = 20, n = 4, xdim = elev_ls$xdim, ydim = elev_ls$ydim

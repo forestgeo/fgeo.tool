@@ -75,7 +75,7 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
 
 #' Dataframe objects of class "tt_lst".
 #' 
-#' This method creates a dataframe from the output of `fgeo.habitat::tt_test()`
+#' This method creates a dataframe from the output of `fgeo.analyze::tt_test()`
 #' (which is a list of class "tt_lst").
 #' 
 #' @param .x An object of class tt_lst.
@@ -91,10 +91,10 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
 #' 
 #' @examples
 #' \dontrun{
-#' if (requireNamespace("fgeo.habitat")) {
-#'   library(fgeo.habitat)
+#' if (requireNamespace("fgeo.analyze")) {
+#'   library(fgeo.analyze)
 #'   
-#'   cns <- fgeo.habitat::luquillo_top3_sp
+#'   cns <- fgeo.analyze::luquillo_top3_sp
 #'   hab <- fgeo.x::habitat
 #'   
 #'   tt_lst <- tt_test(cns, unique(cns$sp), hab)
