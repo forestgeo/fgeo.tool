@@ -29,10 +29,19 @@ rds_list(path_rds)
 # Same
 read_with(readr::read_rds)(path_rds)
 
+# Read excel files --------------------------------------------------------
+\dontrun{
+if (!requireNamespace("readxl"))
+  stop("Please install readxl with `install.packges('readxl')`")
+path_xl <- tool_example("xl")
+dir(path_xl)
+read_with(readxl::read_excel)(path_xl)
+}
+
+# Read mixed files --------------------------------------------------------
 \dontrun{
 if (!requireNamespace("rio"))
-  stop("Please install rio with install.packges('rio') to run this example")
-
+  stop("Please install rio with `install.packges('rio')`")
 path_mixed_files <- tool_example("mixed_files")
 dir(path_mixed_files)
 read_with(rio::import)(path_mixed_files)
@@ -43,4 +52,3 @@ Other general functions to import data: \code{\link{dir_list}},
   \code{\link{rdata_df}}, \code{\link{xlsheets_list}}
 }
 \concept{general functions to import data}
-\keyword{internal}

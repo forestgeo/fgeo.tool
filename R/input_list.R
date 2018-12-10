@@ -4,7 +4,6 @@
 #' @inheritParams fs::dir_ls 
 #' 
 #' @family general functions to import data
-#' @keywords internal
 #'
 #' @return A modified version of the input function, able to read all files
 #'   from a directory (provided they all are of the suitable format).
@@ -22,10 +21,19 @@
 #' # Same
 #' read_with(readr::read_rds)(path_rds)
 #' 
+#' # Read excel files --------------------------------------------------------
+#' \dontrun{
+#' if (!requireNamespace("readxl"))
+#'   stop("Please install readxl with `install.packges('readxl')`")
+#' path_xl <- tool_example("xl")
+#' dir(path_xl)
+#' read_with(readxl::read_excel)(path_xl)
+#' }
+#' 
+#' # Read mixed files --------------------------------------------------------
 #' \dontrun{
 #' if (!requireNamespace("rio"))
-#'   stop("Please install rio with install.packges('rio') to run this example")
-#' 
+#'   stop("Please install rio with `install.packges('rio')`")
 #' path_mixed_files <- tool_example("mixed_files")
 #' dir(path_mixed_files)
 #' read_with(rio::import)(path_mixed_files)
@@ -128,10 +136,3 @@ delim_list <- read_with(readr::read_delim, regexp = NULL)
 #' @export
 tsv_list <- read_with(readr::read_tsv, regexp = "[.]tsv$")
 
-#' @rdname dir_list
-#' @export
-xl_list <- read_with(readxl::read_excel, regexp = "[.]xls$|[.]xlsx$")
-
-#' @rdname dir_list
-#' @export
-xlbooks_list <- read_with(xlsheets_list, regexp = "[.]xls$|[.]xlsx$")

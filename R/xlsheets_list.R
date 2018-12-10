@@ -1,4 +1,3 @@
-
 #' Import mapping each spreadsheet of an excel file to a dataframe in a list.
 #' 
 #' A useful complement of this function is [list_csv()].
@@ -22,3 +21,11 @@ xlsheets_list <- function(path) {
     set_names() %>%
     purrr::map(readxl::read_excel, path = path)
 }
+
+#' @rdname dir_list
+#' @export
+xl_list <- read_with(readxl::read_excel, regexp = "[.]xls$|[.]xlsx$")
+
+#' @rdname dir_list
+#' @export
+xlbooks_list <- read_with(xlsheets_list, regexp = "[.]xls$|[.]xlsx$")
