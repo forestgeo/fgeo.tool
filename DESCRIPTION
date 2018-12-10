@@ -32,7 +32,6 @@ Imports:
     magrittr,
     purrr,
     readr,
-    readxl,
     remotes,
     rlang (>= 0.1.2),
     stringr,
