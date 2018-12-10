@@ -6,7 +6,6 @@ test_that("errs with wrong input", {
   expect_error(list_csv(list(1), output))
 })
 
-
 test_that("works as expected", {
   lst <- list(df1 = data.frame(x = 1), df2 = data.frame(x = 2))
   output <- tempdir()
