@@ -20,7 +20,7 @@ list_csv(lst, dir, prefix = NULL)
 A useful complement of this function is \code{\link[=xlsheets_list]{xlsheets_list()}}.
 }
 \examples{
-lst <- xlsheets_list(tool_example("multiple_sheets.xlsx"))
+lst <- list(df1 = data.frame(x = 1), df2 = data.frame(x = 2))
 
 # Saving the output to a temporary file
 output <- tempdir()
