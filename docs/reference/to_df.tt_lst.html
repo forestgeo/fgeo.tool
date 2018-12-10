@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Dataframe objects of class "tt_lst". — to_df.tt_lst" />
 
-<meta property="og:description" content="This method creates a dataframe from the output of fgeo.habitat::tt_test()
+<meta property="og:description" content="This method creates a dataframe from the output of fgeo.analyze::tt_test()
 (which is a list of class &quot;tt_lst&quot;)." />
 <meta name="twitter:card" content="summary" />
 
@@ -64,7 +64,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9005</span>
       </span>
     </div>
 
@@ -116,7 +116,7 @@
 
     <div class="ref-description">
     
-    <p>This method creates a dataframe from the output of <code><a href='https://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>fgeo.habitat::tt_test()</a></code>
+    <p>This method creates a dataframe from the output of <code><a href='https://www.rdocumentation.org/packages/fgeo.analyze/topics/tt_test'>fgeo.analyze::tt_test()</a></code>
 (which is a list of class "tt_lst").</p>
     
     </div>
@@ -150,13 +150,13 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.habitat"</span>)) {
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.habitat</span>)
+<span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.analyze"</span>)) {
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.analyze</span>)
 
-  <span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.habitat</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.habitat/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
+  <span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.analyze</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.analyze/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
   <span class='no'>hab</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>habitat</a></span>
 
-  <span class='no'>tt_lst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>tt_test</a></span>(<span class='no'>cns</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='no'>cns</span>$<span class='no'>sp</span>), <span class='no'>hab</span>)
+  <span class='no'>tt_lst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.analyze/topics/tt_test'>tt_test</a></span>(<span class='no'>cns</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='no'>cns</span>$<span class='no'>sp</span>), <span class='no'>hab</span>)
   <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='no'>tt_lst</span>)
 }
 <span class='co'># }</span></pre>
@@ -182,7 +182,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>

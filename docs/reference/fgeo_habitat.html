@@ -69,7 +69,7 @@ metrics from step 1 (via stats::hclust()).
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9004</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9005</span>
       </span>
     </div>
 
@@ -196,20 +196,22 @@ or <code>x</code> and <code>y</code>.</p>
 #&gt;  $ gy      : num  0 20 40 60 80 100 120 140 160 180 ...
 #&gt;  $ habitats: int  1 1 1 1 1 1 1 1 1 1 ...</div><div class='input'>
 </div><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.map"</span>)) {
+<span class='no'>installed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.map"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='kw'>if</span> (<span class='no'>installed</span>) {
   <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.map</span>)
   <span class='fu'><a href='https://forestgeo.github.io/fgeo.map//reference/reexports.html'>autoplot</a></span>(<span class='no'>habs</span>)
 }
 
 <span class='co'># A good use of habitat data is for calculating species-habitat associations</span>
-<span class='kw'>if</span> (<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.habitat"</span>)) {
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.habitat</span>)
+<span class='no'>installed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"fgeo.analyze"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='kw'>if</span> (<span class='no'>installed</span>) {
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>fgeo.analyze</span>)
 
   <span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>elevation</a></span>
   <span class='no'>habitat</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_habitat</span>(<span class='no'>elev_list</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-  <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.habitat</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.habitat/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
+  <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.analyze</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.analyze/topics/luquillo_top3_sp'>luquillo_top3_sp</a></span>
   <span class='no'>species</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/unique'>unique</a></span>(<span class='no'>census</span>$<span class='no'>sp</span>)
-  <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.habitat/topics/tt_test'>tt_test</a></span>(<span class='no'>census</span>, <span class='no'>species</span>, <span class='no'>habitat</span>))
+  <span class='fu'><a href='to_df.html'>to_df</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.analyze/topics/tt_test'>tt_test</a></span>(<span class='no'>census</span>, <span class='no'>species</span>, <span class='no'>habitat</span>))
 }
 
 <span class='co'># If working with elevation dataframe you must provide xdim and ydim</span>
@@ -243,7 +245,7 @@ or <code>x</code> and <code>y</code>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>
