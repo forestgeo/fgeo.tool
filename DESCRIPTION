@@ -30,19 +30,15 @@ Imports:
     fs,
     glue,
     magrittr,
-    measurements,
     purrr,
     readr,
-    readxl,
     remotes,
     rlang (>= 0.1.2),
-    rmarkdown,
     stringr,
     tibble,
     tidyr,
     tidyselect,
-    withr,
-    writexl
+    withr
 Suggests: 
     covr,
     knitr,

@@ -16,8 +16,8 @@ Path to directory containing example data.
 Path to directory containing example data.
 }
 \examples{
-tool_example("multiple_workbooks")
-dir(tool_example("multiple_workbooks"))
-xl_list(tool_example("multiple_workbooks"))
+tool_example("csv")
+dir(tool_example("csv"))
+csv_list(tool_example("csv"))
 }
 \keyword{internal}

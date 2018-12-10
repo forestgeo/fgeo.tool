@@ -1,7 +1,5 @@
 #' @importFrom glue glue glue_collapse
 #' @importFrom utils head tail
-#' @importFrom measurements conv_unit
-#' 
 #' @importFrom rlang set_names abort warn inform has_name %||%
 NULL
 #' @export

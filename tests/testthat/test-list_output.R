@@ -1,19 +1,16 @@
-input <- tool_example("example.xlsx")
-
 context("list_csv")
 
-lst <- xlsheets_list(input)
 output <- tempdir()
 test_that("errs with wrong input", {
   expect_error(list_csv(1, output))
   expect_error(list_csv(list(1), output))
-  expect_error(list_csv(lst, 1))
-  expect_error(list_csv(lst, output, prefix = 1))
 })
 
 test_that("works as expected", {
+  lst <- list(df1 = data.frame(x = 1), df2 = data.frame(x = 2))
+  output <- tempdir()
   list_csv(lst, output, prefix = "myfile-")
-  files <- dir(output)
+  files <- dir(output, pattern = "myfile")
   expect_true(length(files[grepl("^myfile.*csv$", files)]) > 0)
 })
 
@@ -30,7 +27,6 @@ lst <- list(
 test_that("errs with wrong input", {
   expect_error(list_df(1))
   expect_error(list_df(data.frame(1)))
-  expect_error(list_df(lst, 1))
 })
 
 test_that("works as expected", {

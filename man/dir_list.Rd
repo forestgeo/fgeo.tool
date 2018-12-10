@@ -3,15 +3,16 @@
 \name{dir_list}
 \alias{dir_list}
 \alias{rdata_list}
+\alias{rda_list}
 \alias{rds_list}
 \alias{csv_list}
 \alias{delim_list}
 \alias{tsv_list}
-\alias{xl_list}
-\alias{xlbooks_list}
 \title{Import multiple files (.csv, excel, .Rdata, ...) from a directory into a list.}
 \usage{
 rdata_list(path_dir, ...)
+
+rda_list(path_dir, ...)
 
 rds_list(path_dir, ...)
 
@@ -20,10 +21,6 @@ csv_list(path_dir, ...)
 delim_list(path_dir, ...)
 
 tsv_list(path_dir, ...)
-
-xl_list(path_dir, ...)
-
-xlbooks_list(path_dir, ...)
 }
 \arguments{
 \item{path_dir}{String; the path to a directory containing the files to read
@@ -68,18 +65,9 @@ dir(path_weird)
 csv_list(path_weird)
 # Use this instead
 delim_list(path_weird, delim = "\\t")
-
-path_xl <- tool_example("xl")
-path_xl
-dir(path_xl)
-xl_list(path_xl)
-
-path_books <- tool_example("multiple_workbooks")
-dir(path_books)
-xlbooks_list(path_books)
 }
 \seealso{
 Other general functions to import data: \code{\link{rdata_df}},
-  \code{\link{read_with}}, \code{\link{xlsheets_list}}
+  \code{\link{read_with}}
 }
 \concept{general functions to import data}

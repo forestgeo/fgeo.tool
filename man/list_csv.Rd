@@ -17,10 +17,10 @@ list_csv(lst, dir, prefix = NULL)
 \item{prefix}{Character; a prefix to add to the file names.}
 }
 \description{
-A useful complement of this function is \code{\link[=xlsheets_list]{xlsheets_list()}}.
+Export mapping each dataframe in a list to a corresponding .csv file.
 }
 \examples{
-lst <- xlsheets_list(tool_example("multiple_sheets.xlsx"))
+lst <- list(df1 = data.frame(x = 1), df2 = data.frame(x = 2))
 
 # Saving the output to a temporary file
 output <- tempdir()
@@ -30,10 +30,6 @@ list_csv(lst, output, prefix = "myfile-")
 dir(output, pattern = "myfile")
 }
 \seealso{
-xlsheets_list
-
-Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{xlsheets_list}}
-
 Other general functions to export data: \code{\link{list_df}}
 }
 \concept{functions to handle multiple spreadsheets of an excel workbook.}
