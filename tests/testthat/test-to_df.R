@@ -36,12 +36,12 @@ describe("to_df.krig_lst", {
 context("to_df.tt_lst")
 
 describe("to_df.tt_lst", {
-  skip_if_not_installed("fgeo.habitat")
+  skip_if_not_installed("fgeo.analyze")
   
-  cns <- fgeo.habitat::luquillo_top3_sp
+  cns <- fgeo.analyze::luquillo_top3_sp
   spp <- unique(cns$sp)[1]
   hab_luq <- fgeo.x::habitat
-  tt_lst <- fgeo.habitat::tt_test(cns, spp, hab_luq)
+  tt_lst <- fgeo.analyze::tt_test(cns, spp, hab_luq)
 
   it("outputs the expected dataframe", {
     expect_equal(class(tt_lst), c("tt_lst", "list"))

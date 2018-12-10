@@ -15,15 +15,15 @@
 A dataframe.
 }
 \description{
-This method creates a dataframe from the output of \code{fgeo.habitat::tt_test()}
+This method creates a dataframe from the output of \code{fgeo.analyze::tt_test()}
 (which is a list of class "tt_lst").
 }
 \examples{
 \dontrun{
-if (requireNamespace("fgeo.habitat")) {
-  library(fgeo.habitat)
+if (requireNamespace("fgeo.analyze")) {
+  library(fgeo.analyze)
   
-  cns <- fgeo.habitat::luquillo_top3_sp
+  cns <- fgeo.analyze::luquillo_top3_sp
   hab <- fgeo.x::habitat
   
   tt_lst <- tt_test(cns, unique(cns$sp), hab)
