@@ -32,8 +32,6 @@ dir(output, pattern = "myfile")
 \seealso{
 xlsheets_list
 
-Other functions to handle multiple spreadsheets of an excel workbook.: \code{\link{xlsheets_list}}
-
 Other general functions to export data: \code{\link{list_df}}
 }
 \concept{functions to handle multiple spreadsheets of an excel workbook.}

@@ -52,6 +52,6 @@ read_with(rio::import)(path_mixed_files)
 }
 \seealso{
 Other general functions to import data: \code{\link{dir_list}},
-  \code{\link{rdata_df}}, \code{\link{xlsheets_list}}
+  \code{\link{rdata_df}}
 }
 \concept{general functions to import data}

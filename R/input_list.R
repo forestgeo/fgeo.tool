@@ -103,15 +103,6 @@ read_with <- function(.f, regexp = NULL) {
 #' csv_list(path_weird)
 #' # Use this instead
 #' delim_list(path_weird, delim = "\t")
-#' 
-#' path_xl <- tool_example("xl")
-#' path_xl
-#' dir(path_xl)
-#' xl_list(path_xl)
-#' 
-#' path_books <- tool_example("multiple_workbooks")
-#' dir(path_books)
-#' xlbooks_list(path_books)
 #' @name dir_list
 NULL
 
