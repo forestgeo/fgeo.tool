@@ -8,9 +8,9 @@
 #' 
 #' @export
 #' @examples
-#' tool_example("multiple_workbooks")
-#' dir(tool_example("multiple_workbooks"))
-#' xl_list(tool_example("multiple_workbooks"))
+#' tool_example("csv")
+#' dir(tool_example("csv"))
+#' csv_list(tool_example("csv"))
 tool_example <- function(path) {
   system.file("extdata", path, package = "fgeo.tool")
 }
