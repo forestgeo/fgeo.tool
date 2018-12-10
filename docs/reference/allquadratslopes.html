@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create objects of class "data.frame" from other fgeo classes. — to_df • fgeo.tool</title>
+<title>Calculates the slope of all quadrats in a plot. — allquadratslopes • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,14 +30,9 @@
 
 
 
-<meta property="og:title" content="Create objects of class "data.frame" from other fgeo classes. — to_df" />
+<meta property="og:title" content="Calculates the slope of all quadrats in a plot. — allquadratslopes" />
 
-<meta property="og:description" content="Most of the popular, general-purpose tools for data science input objects of
-class &quot;data.frame&quot; (https://www.tidyverse.org/). However, several fgeo
-functions (either inherited from the original CTFS R Package or contributed
-by ForestGEO partners) output data of different class. Taking as input
-different classes of fgeo objects, to_df() provides a simple,
-consistent way to create dataframes." />
+<meta property="og:description" content="Calculates the slope of all quadrats in a plot." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -113,66 +108,89 @@ consistent way to create dataframes." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create objects of class "data.frame" from other fgeo classes.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/to_df.R'><code>R/to_df.R</code></a></small>
-    <div class="hidden name"><code>to_df.Rd</code></div>
+    <h1>Calculates the slope of all quadrats in a plot.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/allquadratslopes.R'><code>R/allquadratslopes.R</code></a></small>
+    <div class="hidden name"><code>allquadratslopes.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Most of the popular, general-purpose tools for data science input objects of
-class "data.frame" (<a href='https://www.tidyverse.org/'>https://www.tidyverse.org/</a>). However, several <strong>fgeo</strong>
-functions (either inherited from the original CTFS R Package or contributed
-by ForestGEO partners) output data of different class. Taking as input
-different classes of <strong>fgeo</strong> objects, <code>to_df()</code> provides a simple,
-consistent way to create dataframes.</p>
+    <p>Calculates the slope of all quadrats in a plot.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>to_df</span>(<span class='no'>.x</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>allquadratslopes</span>(<span class='no'>elev</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>, <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.x</th>
-      <td><p>An fgeo object of supported class.</p></td>
+      <th>elev</th>
+      <td><p>A list named <code>col</code> containing a data.frame with variables <code>x</code>,
+<code>y</code> and <code>elev</code>. This object is very specific; See example.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Other arguments passed to methods.</p></td>
+      <th>gridsize</th>
+      <td><p>Side of the square quadrat.</p></td>
+    </tr>
+    <tr>
+      <th>plotdim</th>
+      <td><p>The x and y dimensions of the plot.</p></td>
+    </tr>
+    <tr>
+      <th>edgecorrect</th>
+      <td><p>Correct convexity in edge quadrats?</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>A dataframe.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This generic provides methods for classes that cannot be correctly coerced
-simply with <code><a href='https://www.rdocumentation.org/packages/base/topics/as.data.frame'>base::as.data.frame()</a></code> (or similar functions from the
-<strong>tibble</strong> package).</p>
+    <p><code>allquadratslopes()</code> goes through all 20x20 m quadrats in a plot and finds
+the slope, mean elevation, and convexity of each. Convexity is the mean
+elevation of one 20x20 m quadrat relative (minus) the mean of its immediate
+neighbors.</p>
+<p>Helene Muller-Landau added a section to correct convexity in edge quadrats.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='to_df.krig_lst.html'>to_df.krig_lst()</a></code>, <code><a href='to_df.tt_lst.html'>to_df.tt_lst()</a></code>,
-<code><a href='to_df.demography_impl.html'>fgeo.tool::to_df.demography_impl()</a></code>.</p></div>
+    <div class='dont-index'><p><code><a href='calcslope.html'>calcslope()</a></code>, <code><a href='quadslope.html'>quadslope()</a></code></p>
+<p>Other functions from http://ctfs.si.edu/Public/CTFSRPackage/: <code><a href='calcslope.html'>calcslope</a></code>,
+  <code><a href='findborderquads.html'>findborderquads</a></code>, <code><a href='quadslope.html'>quadslope</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># The input to elev is very specific; you may need to tweak it.</span>
+<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>elevation</a></span>
+<span class='no'>result</span> <span class='kw'>&lt;-</span> <span class='fu'>allquadratslopes</span>(
+  <span class='kw'>elev</span> <span class='kw'>=</span> <span class='no'>elev</span>,
+  <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>,
+  <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1000</span>, <span class='fl'>500</span>),
+  <span class='kw'>edgecorrect</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
+)</div><div class='output co'>#&gt; <span class='message'>Calculating topographic indices for 400 quadrats</span></div><div class='output co'>#&gt; <span class='message'>0 0</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>result</span>)</div><div class='output co'>#&gt;   meanelev convex     slope
+#&gt; 1  364.800 -0.390  8.874306
+#&gt; 2  364.975 -0.285 13.710118
+#&gt; 3  367.350  0.210 14.443824
+#&gt; 4  366.850  0.340 15.888964
+#&gt; 5  361.725 -0.255 20.805667
+#&gt; 6  358.500 -0.510 12.359976</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>result</span>)</div><div class='output co'>#&gt; 'data.frame':	400 obs. of  3 variables:
+#&gt;  $ meanelev: num  365 365 367 367 362 ...
+#&gt;  $ convex  : num  -0.39 -0.285 0.21 0.34 -0.255 ...
+#&gt;  $ slope   : num  8.87 13.71 14.44 15.89 20.81 ...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
+    <h2>Author</h2>
+    <p>Rick Condit, Suzanne Lao.</p>
   </div>
 </div>
 

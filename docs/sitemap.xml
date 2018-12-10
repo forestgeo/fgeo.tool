@@ -16,19 +16,31 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/add_var.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/allquadratslopes.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/as_censuses.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/convert_unit.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/calcslope.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/check_crucial_names.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/dir_list.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_if_na.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_twice_dead.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/extract_from_habitat.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/extract_insensitive.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fgeo.tool-package.html</loc>
@@ -49,6 +61,9 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/filter_status.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/findborderquads.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/find_data_of_class.html</loc>
   </url>
   <url>
@@ -56,6 +71,12 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/flag_if_group.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/from_var_to_var.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/guess_plotdim.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/is_multiple.html</loc>
@@ -112,6 +133,9 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/quadslope.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/rdata_df.html</loc>
   </url>
   <url>
@@ -134,9 +158,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/sanitize.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/standardize_at.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/suffix_match.html</loc>
@@ -170,11 +191,5 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/type_fgeo.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/xlff_to_output.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/xlsheets_list.html</loc>
   </url>
 </urlset>

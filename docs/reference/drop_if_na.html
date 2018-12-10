@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Structure elevation data. — fgeo_elevation • fgeo.tool</title>
+<title>Drop if missing values. — drop_if_na • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,9 @@
 
 
 
-<meta property="og:title" content="Structure elevation data. — fgeo_elevation" />
+<meta property="og:title" content="Drop if missing values. — drop_if_na" />
 
-<meta property="og:description" content="This function constructs an object of class fgeo_elevation. It standardizes
-the structure of elevation data to always output a dataframe with names gx,
-gy and elev -- or it dies trying." />
+<meta property="og:description" content="Valuable mostly for its warning." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -110,81 +108,48 @@ gy and elev -- or it dies trying." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Structure elevation data.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/fgeo_elevation.R'><code>R/fgeo_elevation.R</code></a></small>
-    <div class="hidden name"><code>fgeo_elevation.Rd</code></div>
+    <h1>Drop if missing values.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/drop_if_na.R'><code>R/drop_if_na.R</code></a></small>
+    <div class="hidden name"><code>drop_if_na.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function constructs an object of class fgeo_elevation. It standardizes
-the structure of elevation data to always output a dataframe with names <code>gx</code>,
-<code>gy</code> and <code>elev</code> -- or it dies trying.</p>
+    <p>Valuable mostly for its warning.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>fgeo_elevation</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>dfm</th>
+      <td><p>A dataframe.</p></td>
+    </tr>
+    <tr>
       <th>x</th>
-      <td><p>Either a dataframe or a dataframe stored in the element <code>col</code> of a
-list.</p></td>
+      <td><p>String giving a column name of <code>dfm</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe with names <code>x/gx</code>, <code>y/gy</code> and <code>elev</code>.</p>
-    
-    <h2 class="hasAnchor" id="input"><a class="anchor" href="#input"></a>Input</h2>
-
-    
-    <p>The main input can be either the elevation list that ForestGEO delivers, or
-the element <code>col</code> of such list -- which is a dataframe containing the
-elevation data. Notice that the required arguments vary according to the main
-input (the elevation list or the elevation dataframe). Whatever the input,
-the dataframe containing the elevation data must have columns <code>gx</code> and <code>gy</code>
-or <code>x</code> and <code>y</code>.</p>
-    
-    <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
-
-    
-    <p>This function was inspired by David Kenfack.</p>
+    <p>A dataframe.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to construct fgeo classes: <code><a href='as_censuses.html'>as_censuses</a></code>,
-  <code><a href='fgeo_habitat.html'>fgeo_habitat</a></code>, <code><a href='fgeo_topography.html'>fgeo_topography</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>tidyr::drop_na()</a></code>.</p>
+<p>Other general functions to pick or drop rows of a dataframe: <code><a href='pick_recensus.html'>pick_recensus</a></code>,
+  <code><a href='pick_top.html'>pick_top</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Dataframe input</span>
-<span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>elevation</a></span>$<span class='no'>col</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev_df</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;  $ x   : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ y   : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  364 364 363 363 363 ...</div><div class='input'>
-<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_df</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes 'fgeo_elevation', 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  364 364 363 363 363 ...</div><div class='input'>
-<span class='co'># List input</span>
-<span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>elev_df</span>, <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"stuff"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev_list</span>)</div><div class='output co'>#&gt; List of 2
-#&gt;  $ col  :Classes 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;   ..$ x   : int [1:6565] 0 0 0 0 0 0 0 0 0 0 ...
-#&gt;   ..$ y   : int [1:6565] 0 5 10 15 20 25 30 35 40 45 ...
-#&gt;   ..$ elev: num [1:6565] 364 364 363 363 363 ...
-#&gt;  $ other: chr "stuff"</div><div class='input'>
-<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_list</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes 'fgeo_elevation', 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  364 364 363 363 363 ...</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+<span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='st'>"b"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Dropping 1 rows with missing `b` values.</span></div><div class='output co'>#&gt; [1] a b
+#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   a  b
+#&gt; 1 1 NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -192,10 +157,6 @@ or <code>x</code> and <code>y</code>.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#input">Input</a></li>
-
-      <li><a href="#acknowledgments">Acknowledgments</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
