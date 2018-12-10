@@ -110,6 +110,10 @@ rdata_list <- read_with(function(.x) get(load(.x)), regexp = "[.]rdata$")
 
 #' @rdname dir_list
 #' @export
+rda_list <- read_with(function(.x) get(load(.x)), regexp = "[.]rda$")
+
+#' @rdname dir_list
+#' @export
 rds_list <- read_with(readr::read_rds, regexp = "[.]rds$")
 
 #' @rdname dir_list
