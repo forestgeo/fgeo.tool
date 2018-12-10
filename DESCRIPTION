@@ -30,7 +30,6 @@ Imports:
     fs,
     glue,
     magrittr,
-    measurements,
     purrr,
     readr,
     readxl,
