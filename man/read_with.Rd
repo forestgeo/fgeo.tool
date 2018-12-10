@@ -42,6 +42,9 @@ read_with(readxl::read_excel)(path_xl)
 \dontrun{
 if (!requireNamespace("rio"))
   stop("Please install rio with `install.packges('rio')`")
+if (!requireNamespace("readxl"))
+  stop("Please install readxl with `install.packges('readxl')`")
+
 path_mixed_files <- tool_example("mixed_files")
 dir(path_mixed_files)
 read_with(rio::import)(path_mixed_files)
