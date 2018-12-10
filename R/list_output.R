@@ -1,14 +1,11 @@
 #' Export mapping each dataframe in a list to a corresponding .csv file.
 #'
-#' A useful complement of this function is [xlsheets_list()].
-#'
 #' @source Adapted from an article by Jenny Bryan (https://goo.gl/ah8qkX).
 #'
 #' @param lst A list of dataframes.
 #' @param dir Character; the directory where the files will be saved.
 #' @param prefix Character; a prefix to add to the file names.
 #'
-#' @seealso xlsheets_list
 #' @family functions to handle multiple spreadsheets of an excel workbook.
 #' @family general functions to export data
 #' 

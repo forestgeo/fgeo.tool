@@ -38,8 +38,7 @@ Imports:
     tibble,
     tidyr,
     tidyselect,
-    withr,
-    writexl
+    withr
 Suggests: 
     covr,
     knitr,
