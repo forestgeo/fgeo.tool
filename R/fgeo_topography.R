@@ -24,7 +24,7 @@
 #' The main code of this function comes from [allquadratslopes()]
 #' ([source](http://bit.ly/2zikb3V)).
 #' 
-#' @inherit fgeo_habitat details
+#' @inherit fgeo.analyze::fgeo_habitat details
 #'
 #' @return A dataframe of subclass fgeo_topography.
 #' 
