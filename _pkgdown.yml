@@ -53,7 +53,6 @@ reference:
     contents:
     - has_concept("functions to edit ForestGEO data in place")
     - has_concept("general functions to edit data in place")
-    - has_concept("general functions to perform common transforms")
 
   - title: Pick/drop rows with matching conditions 
     contents:
