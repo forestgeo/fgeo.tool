@@ -2,26 +2,23 @@
 % Please edit documentation in R/pick.R
 \name{pick}
 \alias{pick}
-\title{Pick rows from ForestGEO censuses in a list of nested dataframe.}
+\title{Pick rows from ForestGEO censuses in a list.}
 \usage{
 pick(.data, ..., key = NULL)
 }
 \arguments{
-\item{.data}{A ForestGEO dataset of class 'censuses_lst' (a list) or
-'censuses_df' (a nested dataframe).}
+\item{.data}{A ForestGEO dataset of class 'censuses_lst' (a list).}
 
 \item{...}{Other arguments passed to methods.}
 
-\item{key}{Key dataframe to pick rows from and and recycle in all other
-censuses}
+\item{key}{Key dataframe to pick rows from and recycle in all other
+censuses.}
 }
 \description{
 This function allows you to pick rows from a key census (dataframe) in a list
-or list-column and pick the exact same rows in all other non-key censuses.
+and pick the exact same rows in all other non-key censuses.
 }
 \examples{
-library(dplyr)
-
 censuses_lst <- as_censuses(list(
   c1 = tibble(dbh = 1:2),
   c2 = tibble(dbh = 8:9)
@@ -35,10 +32,8 @@ pick(censuses_lst, dbh <= 8 , key = "c2")
 
 path <- tool_example("rdata")
 dir(path)
-censuses <- read_censuses(path)
-censuses \%>\% 
-  pick(dbh > 600) \%>\% 
-  pull(data)
+censuses <- as_censuses(rdata_list(path))
+pick(censuses, dbh > 30)
 }
 \seealso{
 Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{drop_twice_dead}},

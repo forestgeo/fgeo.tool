@@ -157,8 +157,7 @@ maximum possible values of <code>gx</code> and <code>gy</code>).</p></td>
     </tr>
     <tr>
       <th>width</th>
-      <td><p>Number; width to pad the labels of plot-columns and -rows
-(passed to <code><a href='https://www.rdocumentation.org/packages/stringr/topics/str_pad'>stringr::str_pad()</a></code>).</p></td>
+      <td><p>Number; width to pad the labels of plot-columns and -rows.</p></td>
     </tr>
     </table>
     
@@ -173,8 +172,7 @@ variable(s) <code>var</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://www.rdocumentation.org/packages/stringr/topics/str_pad'>stringr::str_pad()</a></code>.</p>
-<p>Other functions to add columns to dataframes.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
+    <div class='dont-index'><p>Other functions to add columns to dataframes.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
   <code><a href='add_subquad.html'>add_subquad</a></code></p>
 <p>Other functions for ForestGEO data.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
   <code><a href='add_subquad.html'>add_subquad</a></code></p>
@@ -211,13 +209,13 @@ variable(s) <code>var</code>.</p>
 #&gt; </span><span style='color: #555555;'>1</span><span>    0     0  </span><span style='color: #555555;'>"</span><span>Some values of `gx` and/or `gy` lay at or beyond plot limits\n</span><span style='color: #555555;'>"</span><span>
 #&gt; </span><span style='color: #555555;'>2</span><span>   50    25  </span><span style='color: #555555;'>"</span><span>Some values of `gx` and/or `gy` lay at or beyond plot limits\n</span><span style='color: #555555;'>"</span><span>
 #&gt; </span><span style='color: #555555;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. </span><span style='color: #555555;'>"</span><span>Some values of `gx` and/or `gy` lay at or beyond plot limits\n</span><span style='color: #555555;'>"</span><span>
-#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #555555;'>"</span><span>Some values of `gx` and/or `gy` lay at or beyond plot limits\n</span><span style='color: #555555;'>"</span><span></div><div class='input'><span class='fu'>add_quad</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
+#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #555555;'>"</span><span>Some values of `gx` and/or `gy` lay at or beyond plot limits\n</span><span style='color: #555555;'>"</span><span></div><div class='input'><span class='fu'>add_quad</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
 #&gt;      gx    gy quad 
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>    0     0  0101 
 #&gt; </span><span style='color: #555555;'>2</span><span>   50    25  0302 
 #&gt; </span><span style='color: #555555;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 5025 
-#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  NANA </div><div class='input'><span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
+#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  NANA </div><div class='input'><span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
 #&gt;      gx    gy quad 
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>    0     0  0000 
@@ -227,19 +225,19 @@ variable(s) <code>var</code>.</p>
 <span class='co'># `width` gives the nuber of digits to pad the label of plot-rows and</span>
 <span class='co'># plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with</span>
 <span class='co'># an extra trhree zeros, resulting in a total of 6 zeros.</span>
-<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
-#&gt;      gx    gy quad  
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
-#&gt; </span><span style='color: #555555;'>1</span><span>    0     0  000000
-#&gt; </span><span style='color: #555555;'>2</span><span>   50    25  002001
-#&gt; </span><span style='color: #555555;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 049024
-#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  NANA  </div><div class='input'><span class='fu'>add_col_row</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
+<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; <span class='warning'>Warning: NAs introduced by coercion</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
+#&gt;      gx    gy quad    
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'>1</span><span>    0     0  000000  
+#&gt; </span><span style='color: #555555;'>2</span><span>   50    25  002001  
+#&gt; </span><span style='color: #555555;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 049024  
+#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #555555;'>"</span><span> NA NA</span><span style='color: #555555;'>"</span><span></div><div class='input'><span class='fu'>add_col_row</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 4</span><span>
 #&gt;      gx    gy col   row  
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>    0     0  01    01   
 #&gt; </span><span style='color: #555555;'>2</span><span>   50    25  03    02   
 #&gt; </span><span style='color: #555555;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 50    25   
-#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
+#&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  NA    NA   </div><div class='input'>
 <span class='co'># Column and row from QuadratName</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
   ~<span class='no'>QuadratName</span>,
