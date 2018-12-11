@@ -70,10 +70,10 @@ elev_df <- elev_list$col
 fgeo_topography(elev_df, gridsize = 20, xdim = 320, ydim = 500)
 }
 \seealso{
-\code{\link[=fgeo_habitat]{fgeo_habitat()}}.
+\code{\link[fgeo.analyze:fgeo_habitat]{fgeo.analyze::fgeo_habitat()}}.
 
 Other functions to construct fgeo classes: \code{\link{as_censuses}},
-  \code{\link{fgeo_elevation}}, \code{\link{fgeo_habitat}}
+  \code{\link{fgeo_elevation}}
 }
 \author{
 Rick Condit.

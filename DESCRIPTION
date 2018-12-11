@@ -32,17 +32,15 @@ Imports:
     magrittr,
     purrr,
     readr,
-    remotes,
     rlang (>= 0.1.2),
-    stringr,
     tibble,
     tidyr,
-    tidyselect,
-    withr
+    tidyselect
 Suggests: 
     covr,
     knitr,
     spelling,
+    stringr,
     testthat
 VignetteBuilder: 
     knitr

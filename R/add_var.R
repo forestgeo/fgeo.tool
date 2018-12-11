@@ -9,14 +9,12 @@
 #' @template x_fgeo
 #' @inheritParams from_var_to_var
 #' @param start `1` or `0`, indicating how to label the first plot-column.
-#' @param width Number; width to pad the labels of plot-columns and -rows
-#'   (passed to [stringr::str_pad()]).
+#' @param width Number; width to pad the labels of plot-columns and -rows.
 #'
 #' @family functions to add columns to dataframes.
 #' @family functions for ForestGEO data.
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
-#' @seealso [stringr::str_pad()].
 #'
 #' @return A modified version of the dataframe `x` with the additional
 #'   variable(s) `var`.
@@ -82,8 +80,8 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
     newcol <- gxgy_to_var(.x, var = "rowcol", gridsize, plotdim)
     .x <- tibble::add_column(
       .x, 
-      col = stringr::str_pad(newcol$col, width = 2, pad = 0), 
-      row = stringr::str_pad(newcol$row, width = 2, pad = 0)
+      col = pad_dbl(newcol$col, width = 2, pad = 0), 
+      row = pad_dbl(newcol$row, width = 2, pad = 0)
     )
     return(restore_add_var(.x, x))
   }
@@ -137,8 +135,8 @@ add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
   }
   w_rowcol <- dplyr::mutate(
     w_rowcol,
-    col = stringr::str_pad(col, width = width, pad = 0),
-    row = stringr::str_pad(row, width = width, pad = 0),
+    col = pad_dbl(col, width = width, pad = 0),
+    row = pad_dbl(row, width = width, pad = 0),
     quad = paste0(col, row),
     row = NULL,
     col = NULL

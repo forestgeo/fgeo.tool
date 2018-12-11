@@ -50,6 +50,6 @@ str(elev)
 }
 \seealso{
 Other functions to construct fgeo classes: \code{\link{as_censuses}},
-  \code{\link{fgeo_habitat}}, \code{\link{fgeo_topography}}
+  \code{\link{fgeo_topography}}
 }
 \concept{functions to construct fgeo classes}

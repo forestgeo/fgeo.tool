@@ -35,8 +35,7 @@ maximum possible values of \code{gx} and \code{gy}).}
 
 \item{start}{\code{1} or \code{0}, indicating how to label the first plot-column.}
 
-\item{width}{Number; width to pad the labels of plot-columns and -rows
-(passed to \code{\link[stringr:str_pad]{stringr::str_pad()}}).}
+\item{width}{Number; width to pad the labels of plot-columns and -rows.}
 }
 \value{
 A modified version of the dataframe \code{x} with the additional
@@ -75,8 +74,6 @@ x <- tibble::tribble(
 add_col_row2(x)
 }
 \seealso{
-\code{\link[stringr:str_pad]{stringr::str_pad()}}.
-
 Other functions to add columns to dataframes.: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}
 
