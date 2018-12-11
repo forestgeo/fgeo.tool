@@ -1,5 +1,3 @@
-# TODO: Test
-
 #' Create objects of class `censuses_*`, where `*` depends on the input.
 #'
 #' @param .data A ForestGEO-like dataset.
@@ -31,28 +29,13 @@ as_censuses.list <- function(.data) {
   new_censuses_lst(.data)
 }
 
-#' @export
-#' @rdname as_censuses
-as_censuses.tbl_df <- function(.data) {
-  new_censuses_df(.data)
-}
-
 censuses_lst <- function(.data) {
   UseMethod("censuses_lst")
-}
-
-censuses_df <- function(.data) {
-  UseMethod("censuses_df")
 }
 
 new_censuses_lst <- function(x) {
   stopifnot(is.list(x))
   structure(x, class = c("censuses_lst", class(x)))
-}
-
-new_censuses_df <- function(x) {
-  stopifnot(tibble::is.tibble(x))
-  structure(x, class = c("censuses_df", class(x)))
 }
 
 #' @export
@@ -61,3 +44,4 @@ print.censuses_lst <- function(x, ...) {
   print(unclass(x))
   invisible(x)
 }
+

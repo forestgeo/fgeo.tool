@@ -1,12 +1,11 @@
-#' Pick rows from ForestGEO censuses in a list of nested dataframe.
+#' Pick rows from ForestGEO censuses in a list.
 #' 
 #' This function allows you to pick rows from a key census (dataframe) in a list
-#' or list-column and pick the exact same rows in all other non-key censuses.
+#' and pick the exact same rows in all other non-key censuses.
 #'
-#' @param .data A ForestGEO dataset of class 'censuses_lst' (a list) or 
-#'   'censuses_df' (a nested dataframe).
-#' @param key Key dataframe to pick rows from and and recycle in all other
-#'   censuses
+#' @param .data A ForestGEO dataset of class 'censuses_lst' (a list).
+#' @param key Key dataframe to pick rows from and recycle in all other
+#'   censuses.
 #' @param ... Other arguments passed to methods.
 #' 
 #' @family functions to pick or drop rows of a ForestGEO dataframe
@@ -14,8 +13,6 @@
 #' @export
 #'
 #' @examples
-#' library(dplyr)
-#' 
 #' censuses_lst <- as_censuses(list(
 #'   c1 = tibble(dbh = 1:2),
 #'   c2 = tibble(dbh = 8:9)
@@ -29,10 +26,8 @@
 #' 
 #' path <- tool_example("rdata")
 #' dir(path)
-#' censuses <- read_censuses(path)
-#' censuses %>% 
-#'   pick(dbh > 600) %>% 
-#'   pull(data)
+#' censuses <- as_censuses(rdata_list(path))
+#' pick(censuses, dbh > 30)
 pick <- function(.data, ..., key = NULL) {
   .rowid <- pick_key_rows(.data = .data, ..., key = key)
   out <- pick_all_rows(.data, .rowid)
@@ -67,17 +62,6 @@ pull_key_df.censuses_lst <- function(.data, key) {
   .data[[1]]
 }
 
-pull_key_df.censuses_df <- function(.data, key) {
-  
-  key <- key %||% .data[[1]][[1]]
-  stopifnot(length(key) == 1)
-  
-  key_group <- .data[[1]] %in% key
-  if (!any(key_group)) abort_invalid_key(key)
-  
-  .data[key_group, ]$data[[1]]
-}
-
 abort_invalid_key <- function(key) {
   abort(glue("'{key}' not found."))
 }
@@ -88,8 +72,4 @@ pick_all_rows <- function(.data, ...) {
 
 pick_all_rows.censuses_lst <- function(.data, .rowid) {
   purrr::map(.data, ~.x[.rowid, ])
-} 
-
-pick_all_rows.censuses_df <- function(.data, .rowid) {
-  dplyr::mutate(.data, data = purrr::map(.data$data, ~.x[.rowid, ]))
-} 
+}
