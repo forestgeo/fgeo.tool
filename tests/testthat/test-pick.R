@@ -9,7 +9,7 @@ lst <- list(
   c1 = tibble::tibble(dbh = 1:2, census = 1),
   c2 = tibble::tibble(dbh = 8:9, census = 2)
 )
-dfm <- reduce(lst, bind_rows)
+dfm <- purrr::reduce(lst, bind_rows)
 
 test_that("errs with informative message", {
   expect_error(pick(1), "Can't deal with data")
