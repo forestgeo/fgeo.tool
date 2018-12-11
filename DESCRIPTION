@@ -34,7 +34,6 @@ Imports:
     readr,
     rlang (>= 0.1.2),
     tibble,
-    tidyr,
     tidyselect
 Suggests: 
     covr,
