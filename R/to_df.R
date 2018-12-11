@@ -102,13 +102,20 @@ to_df.krig_lst <- function(.x, name = "var", item = "df", ...) {
 #' }
 #' }
 to_df.tt_lst <- function(.x, ...) {
-  flip <- t(Reduce(rbind, .x))
-  long_df <- tibble::as.tibble(gather_mat(flip, "metric", "sp", "value"))
-  
-  with_habitat <- separate_habitat_metric(long_df)
-  metrics <- purrr::map(spread_tt(with_habitat), ~.x["metric", ])[1][[1]]
-  out <- tt_df(spread_tt(with_habitat), metrics)
+  long_df <- tt_gather(.x)
+  out <- tt_create_df(tt_restructure(long_df))
   new_tt_df(out)
+}
+
+tt_gather <- function(.x) {
+  flip <- t(Reduce(rbind, .x))
+  tibble::as.tibble(gather_mat(flip, "metric", "sp", "value"))
+}
+
+tt_restructure <- function(.x) {
+    with_habitat <- spread_metric_value(separate_habitat_metric(.x))
+    metrics <- purrr::map(with_habitat, ~.x["metric", ])[1][[1]]
+    list(with_habitat = with_habitat, metrics = metrics)
 }
 
 separate_habitat_metric <- function(x) {
@@ -126,24 +133,24 @@ separate_habitat_sp <- function(x) {
   )
 }
 
-spread_tt <- function(with_habitat){
+spread_metric_value <- function(with_habitat){
   with_habitat %>% 
     split(interaction(with_habitat$sp, with_habitat$habitat)) %>% 
     purrr::map(~.x[c("metric", "value")]) %>% 
     purrr::map(t)
 }
 
-tt_df <- function(wide_ls, metrics) {
-  out <- wide_ls %>% 
+tt_create_df <- function(tt_data) {
+  out <- tt_data$with_habitat %>% 
     purrr::map(~.x["value", ]) %>% 
     purrr::imap(~c(.y, .x)) %>% 
     purrr::reduce(rbind) %>% 
     tibble::as_tibble() %>% 
-    rlang::set_names(c("species_habitat", metrics)) %>% 
-    purrr::modify_at(.at = metrics, as.numeric) %>% 
+    rlang::set_names(c("species_habitat", tt_data$metrics)) %>% 
+    purrr::modify_at(.at = tt_data$metrics, as.numeric) %>% 
     dplyr::arrange(.data$species_habitat) 
   
-  separate_habitat_sp(out)[c("habitat", "sp", metrics)]
+  separate_habitat_sp(out)[c("habitat", "sp", tt_data$metrics)]
 }
 
 #' Form the authors of tt_test().
