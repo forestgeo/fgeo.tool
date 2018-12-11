@@ -16,7 +16,7 @@
 #' @param edgecorrect Correct convexity in edge quadrats?
 #' @param ... Other arguments passed to methods.
 #' 
-#' @seealso [fgeo_habitat()].
+#' @seealso [fgeo.analyze::fgeo_habitat()].
 #' @family functions to construct fgeo classes
 #' 
 #' @author Rick Condit.

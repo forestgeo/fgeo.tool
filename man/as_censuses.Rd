@@ -33,6 +33,6 @@ class(censuses_lst)
 }
 \seealso{
 Other functions to construct fgeo classes: \code{\link{fgeo_elevation}},
-  \code{\link{fgeo_habitat}}, \code{\link{fgeo_topography}}
+  \code{\link{fgeo_topography}}
 }
 \concept{functions to construct fgeo classes}
