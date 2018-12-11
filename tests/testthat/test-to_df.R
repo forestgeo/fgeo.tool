@@ -48,8 +48,11 @@ describe("to_df.tt_lst", {
   
     out <- expect_silent(to_df(tt_lst))
     expect_is(out, c("tt_df"))
-    vars <- c("habitat", "sp", "distribution", "stem_count")
-    expect_true(all(vars %in% names(out)))
+    metrics <- 
+      c("N.Hab", "Gr.Hab", "Ls.Hab", "Eq.Hab", "Rep.Agg.Neut", "Obs.Quantile")
+    expect_true(all(c("habitat", "sp", metrics) %in% names(out)))
+    
+    expect_true(all(vapply(out[metrics], is.numeric, logical(1))))
   })
 })
 
