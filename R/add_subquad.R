@@ -152,7 +152,7 @@ stop_if_invalid_subquad <- function(x, offset) {
   # What is the first column?
   column1 <- c(14, 24, 34, 44, 13, 23, 33, 43, 12, 22, 32, 42, 11, 21, 31, 41)
   column0 <- c(04, 14, 24, 34, 03, 13, 23, 33, 02, 12, 22, 32, 01, 11, 21, 31)
-  column0 <- stringr::str_pad(column0, 2, pad = 0)
+  column0 <- pad_dbl(column0, 2, pad = 0)
   if (offset == 1) {subquad <-  column0} else {subquad <- column1}
   # Check that the subquadrats in the data make sense with the offset provided
   if (!all(unique(x$subquadrat) %in% as.character(subquad))) {

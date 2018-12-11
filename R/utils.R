@@ -1,3 +1,8 @@
+pad_dbl <- function(string, width, pad) {
+  fmt <- paste0("%", pad, width, ".f")
+  sprintf(fmt, as.double(string))
+}
+
 anchor <- function(x) paste0("^", x, "$")
 
 commas <- function(...) paste0(..., collapse = ", ")

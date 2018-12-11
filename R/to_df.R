@@ -121,8 +121,8 @@ to_df.tt_lst <- function(.x, ...) {
 
 separate_habitat_metric <- function(x) {
   dplyr::mutate(x,
-    habitat = stringr::str_replace(.data$metric, "^.*\\.([0-9]+$)", "\\1"),
-    metric = stringr::str_replace(.data$metric, "(^.*)\\.[0-9]+$", "\\1")
+    habitat = gsub("^.*\\.([0-9]+$)", "\\1", .data$metric),
+    metric = gsub("(^.*)\\.[0-9]+$", "\\1", .data$metric)
   )
 }
 
