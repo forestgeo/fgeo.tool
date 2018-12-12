@@ -63,10 +63,6 @@ reference:
     contents:
     - starts_with("add_")
 
-  - title: Transform lists to dataframes
-    contents:
-    - starts_with("to_df")
-
   - title: Create different classes of ForestGEO data
     contents:
     - has_concept("functions to construct fgeo classes")
