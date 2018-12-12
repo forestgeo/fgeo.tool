@@ -29,7 +29,6 @@ censuses_lst <- as_censuses(list(
 class(censuses_lst)
 }
 \seealso{
-Other functions to construct fgeo classes: \code{\link{fgeo_elevation}},
-  \code{\link{fgeo_topography}}
+Other functions to construct fgeo classes: \code{\link{fgeo_elevation}}
 }
 \concept{functions to construct fgeo classes}
