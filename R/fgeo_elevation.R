@@ -16,6 +16,7 @@
 #'   list.
 #'   
 #' @family functions to construct fgeo classes
+#' @family habitat functions
 #'
 #' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
 #' 
