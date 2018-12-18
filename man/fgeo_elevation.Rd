@@ -52,3 +52,4 @@ str(elev)
 Other functions to construct fgeo classes: \code{\link{as_censuses}}
 }
 \concept{functions to construct fgeo classes}
+\concept{habitat functions}
