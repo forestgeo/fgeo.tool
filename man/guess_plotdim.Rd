@@ -32,8 +32,8 @@ Other functions for fgeo census.: \code{\link{add_status_tree}},
   \code{\link{add_var}}, \code{\link{pick_drop}}
 
 Other functions for fgeo vft.: \code{\link{add_status_tree}},
-  \code{\link{add_var}}, \code{\link{pick_drop}},
-  \code{\link{pick_plotname}}
+  \code{\link{add_subquad}}, \code{\link{add_var}},
+  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
   \code{\link{is_multiple}}, \code{\link{name_dfs}},

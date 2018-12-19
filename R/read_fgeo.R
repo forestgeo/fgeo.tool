@@ -13,11 +13,8 @@
 #' @param delim Single character used to separate fields within a record. The
 #'   default (`delim = NULL`) is to guess between comma or tab (`","` or `"\t"`).
 #' @param ... Other arguments passed to [readr::read_delim()].
-#' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #' 
-#' @family functions to read text files delivered by ForestgGEO's database.
-#' @family functions to import a single file of ForestGEO data
-#' @family functions to import ForestGEO data
+#' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #'
 #' @return A dataframe (or tibble).
 #'
@@ -28,6 +25,10 @@
 #' read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
 #' }
 #' @name read_fgeo
+#' 
+#' @family functions to read text files delivered by ForestgGEO's database.
+#' @family functions to import a single file of ForestGEO data
+#' @family functions to import ForestGEO data
 NULL
 
 read_fgeo <- function(col_types) {

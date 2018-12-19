@@ -143,7 +143,13 @@ sites, a common value is 5.</p></td>
     <tr>
       <th>subquad_offset</th>
       <td><p>A number; either <code>-1</code> or <code>1</code>, to rest or add one unit
-to the number of column of each subquadrat.</p></td>
+to the number of column of each subquadrat.</p><pre>First column is 0    First column is 1
+-----------------    -----------------
+   04 14 24 34          14 24 34 44
+   03 13 23 33          13 23 33 43
+   02 12 22 32          12 22 32 42
+   01 11 21 31          11 21 31 41
+</pre></td>
     </tr>
     </table>
     
@@ -153,10 +159,13 @@ to the number of column of each subquadrat.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to add columns to dataframes.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_var.html'>add_var</a></code></p>
+    <div class='dont-index'><p>Other functions to add columns to dataframes: <code><a href='add_id.html'>add_id</a></code>,
+  <code><a href='add_status_tree.html'>add_status_tree</a></code>, <code><a href='add_var.html'>add_var</a></code></p>
 <p>Other functions for ForestGEO data.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_var.html'>add_var</a></code></p></div>
+  <code><a href='add_var.html'>add_var</a></code></p>
+<p>Other functions for fgeo vft.: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
+  <code><a href='add_var.html'>add_var</a></code>, <code><a href='guess_plotdim.html'>guess_plotdim</a></code>,
+  <code><a href='pick_drop.html'>pick_drop</a></code>, <code><a href='pick_plotname.html'>pick_plotname</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -197,7 +206,8 @@ to the number of column of each subquadrat.</p></td>
 #&gt; </span><span style='color: #555555;'> 7</span><span>   9.8   3.2 11        
 #&gt; </span><span style='color: #555555;'> 8</span><span>  18.6   1.1 31        
 #&gt; </span><span style='color: #555555;'> 9</span><span>  17.3   4.1 31        
-#&gt; </span><span style='color: #555555;'>10</span><span>   1.5  16.3 04        </div></span></pre>
+#&gt; </span><span style='color: #555555;'>10</span><span>   1.5  16.3 04        </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

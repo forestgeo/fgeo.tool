@@ -9,10 +9,6 @@
 #' @param subquad_offset A number; either `-1` or `1`, to rest or add one unit
 #'   to the number of column of each subquadrat.
 #'
-#' @family functions to add columns to dataframes.
-#' @family functions for ForestGEO data.
-#' @family functions for fgeo vft.
-#'
 #'   ```R
 #'   First column is 0    First column is 1
 #'   -----------------    -----------------
@@ -23,7 +19,6 @@
 #'   ```
 #' @return Returns `df` with the additional variable `subquadrat`.
 #' @author Anudeep Singh and Mauro Lepore.
-#' @export
 #'
 #' @examples
 #' vft <- tribble(
@@ -41,6 +36,11 @@
 #' )
 #' add_subquad(vft, 20, 20, 5, 5)
 #' add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
+#' 
+#' @family functions to add columns to dataframes
+#' @family functions for ForestGEO data.
+#' @family functions for fgeo vft.
+#' @export
 add_subquad <- function(df,
                         x_q,
                         y_q = x_q,

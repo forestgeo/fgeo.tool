@@ -37,10 +37,11 @@ stem <- tribble(
 
 # Determine the status of each tree based on the status of its stems
 add_status_tree(stem)
+
 }
 \seealso{
-Other functions to add columns to dataframes.: \code{\link{add_subquad}},
-  \code{\link{add_var}}
+Other functions to add columns to dataframes: \code{\link{add_id}},
+  \code{\link{add_subquad}}, \code{\link{add_var}}
 
 Other functions for ForestGEO data.: \code{\link{add_subquad}},
   \code{\link{add_var}}
@@ -48,11 +49,11 @@ Other functions for ForestGEO data.: \code{\link{add_subquad}},
 Other functions for fgeo census.: \code{\link{add_var}},
   \code{\link{guess_plotdim}}, \code{\link{pick_drop}}
 
-Other functions for fgeo vft.: \code{\link{add_var}},
-  \code{\link{guess_plotdim}}, \code{\link{pick_drop}},
-  \code{\link{pick_plotname}}
+Other functions for fgeo vft.: \code{\link{add_subquad}},
+  \code{\link{add_var}}, \code{\link{guess_plotdim}},
+  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
 }
 \concept{functions for ForestGEO data.}
 \concept{functions for fgeo census.}
 \concept{functions for fgeo vft.}
-\concept{functions to add columns to dataframes.}
+\concept{functions to add columns to dataframes}

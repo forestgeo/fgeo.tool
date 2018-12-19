@@ -72,10 +72,11 @@ x <- tibble::tribble(
   "1001"
 )
 add_col_row2(x)
+
 }
 \seealso{
-Other functions to add columns to dataframes.: \code{\link{add_status_tree}},
-  \code{\link{add_subquad}}
+Other functions to add columns to dataframes: \code{\link{add_id}},
+  \code{\link{add_status_tree}}, \code{\link{add_subquad}}
 
 Other functions for ForestGEO data.: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}
@@ -84,10 +85,10 @@ Other functions for fgeo census.: \code{\link{add_status_tree}},
   \code{\link{guess_plotdim}}, \code{\link{pick_drop}}
 
 Other functions for fgeo vft.: \code{\link{add_status_tree}},
-  \code{\link{guess_plotdim}}, \code{\link{pick_drop}},
-  \code{\link{pick_plotname}}
+  \code{\link{add_subquad}}, \code{\link{guess_plotdim}},
+  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
 }
 \concept{functions for ForestGEO data.}
 \concept{functions for fgeo census.}
 \concept{functions for fgeo vft.}
-\concept{functions to add columns to dataframes.}
+\concept{functions to add columns to dataframes}

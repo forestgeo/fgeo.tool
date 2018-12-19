@@ -27,4 +27,10 @@ Add column \code{id} to a dataframe by pasting values from other columns.
 add_id(.data, c("x", "y", "z"))
 add_id(.data, c("x", "z"))
 add_id(.data, c("x", "z"), sep = 1)
+
 }
+\seealso{
+Other functions to add columns to dataframes: \code{\link{add_status_tree}},
+  \code{\link{add_subquad}}, \code{\link{add_var}}
+}
+\concept{functions to add columns to dataframes}

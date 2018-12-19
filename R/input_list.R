@@ -2,14 +2,10 @@
 #'
 #' @param .f A function able to read the desired file format.
 #' @inheritParams fs::dir_ls 
-#' 
-#' @family general functions to import data
 #'
 #' @return A modified version of the input function, able to read all files
 #'   from a directory (provided they all are of the suitable format).
 #'  
-#' @export
-#'
 #' @examples
 #' path_rds <- tool_example("rds")
 #' path_rds
@@ -41,6 +37,8 @@
 #' dir(path_mixed_files)
 #' read_with(rio::import)(path_mixed_files)
 #' }
+#' @family general functions to import data
+#' @export
 read_with <- function(.f, regexp = NULL) {
   function(path_dir, ...) {
     files <- fs::dir_ls(path_dir, regexp = regexp, ignore.case = TRUE)
@@ -69,9 +67,6 @@ read_with <- function(.f, regexp = NULL) {
 #' @param path_dir String; the path to a directory containing the files to read
 #'   (all must be of appropriate format; see examples).
 #' @param ... Arguments passed to the reader function.
-#'   
-#' 
-#' @family general functions to import data
 #' 
 #' @return A list of dataframes.
 #' 
@@ -103,6 +98,8 @@ read_with <- function(.f, regexp = NULL) {
 #' csv_list(path_weird)
 #' # Use this instead
 #' delim_list(path_weird, delim = "\t")
+#'   
+#' @family general functions to import data
 #' @name dir_list
 NULL
 
