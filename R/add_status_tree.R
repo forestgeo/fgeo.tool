@@ -5,13 +5,8 @@
 #'   to the values of the variable `status` (in census tables) or `Status` (with
 #'   capital "S" in ViewFull tables).
 #'   
-#' @family functions to add columns to dataframes.
-#' @family functions for ForestGEO data.
-#' @family functions for fgeo census.
-#' @family functions for fgeo vft.
 #'
 #' @return The input data set with the additional variable `status_tree`.
-#' @export
 #'
 #' @examples
 #' stem <- tribble(
@@ -31,6 +26,12 @@
 #' 
 #' # Determine the status of each tree based on the status of its stems
 #' add_status_tree(stem)
+#' 
+#' @family functions to add columns to dataframes
+#' @family functions for ForestGEO data.
+#' @family functions for fgeo census.
+#' @family functions for fgeo vft.
+#' @export
 add_status_tree <- function(x, status_a = "A", status_d = "D") {
   set_names(x, tolower) %>% 
     check_add_status_tree(status_a = status_a, status_d = status_d) %>% 

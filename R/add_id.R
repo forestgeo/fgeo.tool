@@ -7,13 +7,15 @@
 #' @param sep String to separate the pasted values of `vars`.
 #'
 #' @return A dataframe with an additional column.
-#' @export
 #'
 #' @examples
 #' .data <- tibble::tibble(x = 1:2, y = c("a", "b"), z = c(TRUE, FALSE))
 #' add_id(.data, c("x", "y", "z"))
 #' add_id(.data, c("x", "z"))
 #' add_id(.data, c("x", "z"), sep = 1)
+#' 
+#' @family functions to add columns to dataframes
+#' @export
 add_id <- function(.data, vars, name = "id", sep = "_") {
   stopifnot(is.data.frame(.data), is.character(vars), is.character(name))
   

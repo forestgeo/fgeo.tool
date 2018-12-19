@@ -11,11 +11,6 @@
 #' @param start `1` or `0`, indicating how to label the first plot-column.
 #' @param width Number; width to pad the labels of plot-columns and -rows.
 #'
-#' @family functions to add columns to dataframes.
-#' @family functions for ForestGEO data.
-#' @family functions for fgeo census.
-#' @family functions for fgeo vft.
-#'
 #' @return A modified version of the dataframe `x` with the additional
 #'   variable(s) `var`.
 #'
@@ -43,6 +38,11 @@
 #'   "1001"
 #' )
 #' add_col_row2(x)
+#'
+#' @family functions to add columns to dataframes
+#' @family functions for ForestGEO data.
+#' @family functions for fgeo census.
+#' @family functions for fgeo vft.
 #' @name add_var
 NULL
 

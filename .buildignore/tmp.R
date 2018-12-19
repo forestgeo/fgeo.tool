@@ -72,7 +72,7 @@ Package by package, disconnect fgeo.base from DESCRIPTION  and all code
 #' @family functions for ForestGEO data.
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
-#' @family functions to add columns to dataframes.
+#' @family functions to add columns to dataframes
 
 # SPECIFIC TO FGEO --------------------------------------------------------
 

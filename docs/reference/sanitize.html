@@ -195,12 +195,12 @@ names.</p></dd>
 <span class='co'># "NULL" should be replaced by `NA` and `DBH` should be numeric</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>vft</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	500 obs. of  2 variables:
 #&gt;  $ PlotName: chr  "NULL" "NULL" "NULL" "NULL" ...
-#&gt;  $ DBH     : chr  NA NA NA "34.6" ...</div><div class='input'>
+#&gt;  $ DBH     : chr  "30.8" "74" "22.3" NA ...</div><div class='input'>
 <span class='co'># Fix</span>
 <span class='no'>vft_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_vft</span>(<span class='no'>vft</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>vft_sane</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"PlotName"</span>, <span class='st'>"DBH"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	500 obs. of  2 variables:
 #&gt;  $ PlotName: chr  NA NA NA NA ...
-#&gt;  $ DBH     : num  NA NA NA 34.6 171 NA NA NA 163 36.2 ...</div><div class='input'>
+#&gt;  $ DBH     : num  30.8 74 22.3 NA 33.8 NA NA 16.5 NA 44.6 ...</div><div class='input'>
 
 
 <span class='no'>taxa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>taxa</a></span>

@@ -65,6 +65,7 @@ dir(path_weird)
 csv_list(path_weird)
 # Use this instead
 delim_list(path_weird, delim = "\\t")
+  
 }
 \seealso{
 Other general functions to import data: \code{\link{rdata_df}},

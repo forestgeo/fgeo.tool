@@ -37,6 +37,7 @@ rdata_df(path_dir, .match = "6")
 dfm <- rdata_df(path_dir, .match = "tree5|6", .id = "source")
 dfm
 tail(dfm)
+
 }
 \seealso{
 Other general functions to import data: \code{\link{dir_list}},

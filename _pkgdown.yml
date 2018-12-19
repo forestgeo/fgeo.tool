@@ -61,7 +61,7 @@ reference:
 
   - title: Add new columns to a dataframe
     contents:
-    - starts_with("add_")
+    - has_concept("functions to add columns to dataframes")
 
   - title: Create different classes of ForestGEO data
     contents:

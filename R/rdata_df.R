@@ -12,11 +12,7 @@
 #' @param .id If not NULL a variable with this name will be created to inform
 #'   the source file.
 #' 
-#' @family general functions to import data
-#' 
 #' @return A dataframe.
-#'
-#' @export
 #'
 #' @examples
 #' path_dir <- tool_example("rdata")
@@ -29,6 +25,9 @@
 #' dfm <- rdata_df(path_dir, .match = "tree5|6", .id = "source")
 #' dfm
 #' tail(dfm)
+#' 
+#' @family general functions to import data
+#' @export
 rdata_df <- function(path_dir, .match = NULL, .id = NULL) {
   read_specific_rdata <- read_with(read_rdata, rdata_match(.match))
   lst <- read_specific_rdata(path_dir)

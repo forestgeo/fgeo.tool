@@ -18,7 +18,13 @@ common value is 20.}
 sites, a common value is 5.}
 
 \item{subquad_offset}{A number; either \code{-1} or \code{1}, to rest or add one unit
-to the number of column of each subquadrat.}
+to the number of column of each subquadrat.\preformatted{First column is 0    First column is 1
+-----------------    -----------------
+   04 14 24 34          14 24 34 44
+   03 13 23 33          13 23 33 43
+   02 12 22 32          12 22 32 42
+   01 11 21 31          11 21 31 41
+}}
 }
 \value{
 Returns \code{df} with the additional variable \code{subquadrat}.
@@ -42,26 +48,22 @@ vft <- tribble(
 )
 add_subquad(vft, 20, 20, 5, 5)
 add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
+
 }
 \seealso{
-Other functions to add columns to dataframes.: \code{\link{add_status_tree}},
-  \code{\link{add_var}}
+Other functions to add columns to dataframes: \code{\link{add_id}},
+  \code{\link{add_status_tree}}, \code{\link{add_var}}
 
 Other functions for ForestGEO data.: \code{\link{add_status_tree}},
   \code{\link{add_var}}
+
+Other functions for fgeo vft.: \code{\link{add_status_tree}},
+  \code{\link{add_var}}, \code{\link{guess_plotdim}},
+  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
 }
 \author{
 Anudeep Singh and Mauro Lepore.
 }
 \concept{functions for ForestGEO data.}
-\concept{functions for fgeo vft.
-
-  ```R
-  First column is 0    First column is 1
-  -----------------    -----------------
-     04 14 24 34          14 24 34 44
-     03 13 23 33          13 23 33 43
-     02 12 22 32          12 22 32 42
-     01 11 21 31          11 21 31 41
-  ```}
-\concept{functions to add columns to dataframes.}
+\concept{functions for fgeo vft.}
+\concept{functions to add columns to dataframes}

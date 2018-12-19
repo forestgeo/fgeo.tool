@@ -4,7 +4,7 @@ git reset --hard upstream/master
 
 git remote prune origin
 
-message="Prune."
+message="Use @family miscellaneous tools."
 
 git add .
 git commit -m "$message"
