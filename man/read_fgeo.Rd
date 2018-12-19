@@ -64,3 +64,4 @@ Other functions to read text files delivered by ForestgGEO's database.: \code{\l
 \concept{functions to import ForestGEO data}
 \concept{functions to import a single file of ForestGEO data}
 \concept{functions to read text files delivered by ForestgGEO's database.}
+\concept{miscellaneous tools}
