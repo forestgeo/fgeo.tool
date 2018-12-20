@@ -49,6 +49,7 @@ vft <- add_status_tree(vft, status_a = "alive", status_d = "dead")
 # * Remove all censuses except the last two.
 # * Remove trees found dead on both the last and previous last censuses.
 drop_twice_dead(vft)
+
 }
 \seealso{
 Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}},

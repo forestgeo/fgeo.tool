@@ -6,16 +6,11 @@
 #'
 #' @param vft A dataframe -- specifically a ForestGEO ViewFullTable with
 #'   variables `status_tree` (see [add_status_tree()]).
-#'
-#' @family functions to pick or drop rows of a ForestGEO dataframe
 #' 
 #' @return A modified version of the input data set:
 #'     * With the rows removed of all censuses except the last two.
 #'     * With the rows removed of trees found dead on both the last and previous
 #'       last censuses.
-#' 
-#' @keywords internal
-#' @export
 #'
 #' @examples
 #' vft <- tibble::tribble(
@@ -45,6 +40,10 @@
 #' # * Remove all censuses except the last two.
 #' # * Remove trees found dead on both the last and previous last censuses.
 #' drop_twice_dead(vft)
+#' 
+#' @family functions to pick or drop rows of a ForestGEO dataframe
+#' @keywords internal
+#' @export
 drop_twice_dead <- function(vft) {
   old_nms <- names(vft)
   vft <- set_names(vft, tolower)

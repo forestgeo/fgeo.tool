@@ -52,12 +52,10 @@ reference:
   - title: Edit data in place
     contents:
     - has_concept("functions to edit ForestGEO data in place")
-    - has_concept("general functions to edit data in place")
 
   - title: Pick/drop rows with matching conditions 
     contents:
     - has_concept("functions to pick or drop rows of a ForestGEO dataframe")
-    - has_concept("general functions to pick or drop rows of a dataframe")
 
   - title: Add new columns to a dataframe
     contents:

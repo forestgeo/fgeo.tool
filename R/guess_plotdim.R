@@ -37,7 +37,7 @@ guess_plotdim <- function(x, accuracy = 20) {
     x[ , c("gx", "gy")], guess_max, double(1), accuracy = accuracy
   )
 
-  message("Guessing: plotdim = c(", glue_comma(guess), ")")
+  message("Guessing: plotdim = c(", commas(guess), ")")
   unname(guess)
 }
 
@@ -61,12 +61,10 @@ guess_plotdim <- function(x, accuracy = 20) {
 #' nms_pull_matches(luquillo_vft_4quad, c("PY", "PX", "gx", "gy"))
 nms_pull_matches <- function(x, .match) {
   stopifnot(rlang::is_named(x))
-  names(x)[grepl(glue_pipe(anchor(.match)), names(x))]
+  names(x)[grepl(pipes(anchor(.match)), names(x))]
 }
 
-anchor <- function(x) {
-  paste0("^", x, "$")
-}
+
 
 #' Guess maximum value of a vector with flexible accuracy.
 #'
@@ -86,4 +84,3 @@ guess_max <- function(x, accuracy) {
   round_any(max_x, f = ceiling, accuracy = accuracy)
 }
 
-glue_pipe <- function(...) paste0(..., collapse = "|")

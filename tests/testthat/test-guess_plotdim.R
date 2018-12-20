@@ -32,9 +32,9 @@ test_that("fails with unnamed input", {
 
 
 
-context("glue_comma")
+context("commas")
 
 test_that("output the expected string", {
-  expect_equal(glue_comma(1:3), "1, 2, 3")
-  expect_equal(glue_pipe(1:3), "1|2|3")
+  expect_equal(commas(1:3), "1, 2, 3")
+  expect_equal(pipes(1:3), "1|2|3")
 })

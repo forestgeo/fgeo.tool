@@ -1,13 +1,9 @@
 #' Apply a predicate function to a column of a dataframe.
 #'
-#' @param .data A dataframe.
 #' @inheritParams flag_if
-#'
-#' @family general predicates
+#' @param .data A dataframe.
 #'
 #' @return Logical of length 1.
-#' @keywords internal
-#' @noRd
 #'
 #' @examples
 #' dfm <- data.frame(CensusID = c(1, 2, NA))
@@ -21,6 +17,10 @@
 #' dfm <- data.frame(CensusID = c(1, 1, 2))
 #' detect_if(dfm, "censusid", is_duplicated)
 #' detect_if(dfm, "censusid", is_multiple)
+#' 
+#' @keywords internal
+#' @family general predicates
+#' @noRd
 detect_if <- function(.data, name, predicate) {
   name <- tolower(name)
   predicate(extract_column(.data, name))

@@ -147,7 +147,13 @@ you want, create your own with <code><a href='read_with.html'>read_with()</a></c
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed to the reader function.</p></td>
+      <td><p>Arguments passed to the reader function:</p><ul>
+<li><p><code>rdata_list()</code> and <code>rda_list()</code> read with <code><a href='https://www.rdocumentation.org/packages/base/topics/get'>get(load(x))</a></code> (<code>...</code> not unused).</p></li>
+<li><p><code>rds_list()</code> reads with <code><a href='https://readr.tidyverse.org/reference/read_rds.html'>readr::read_rds()</a></code>.</p></li>
+<li><p><code>csv_list()</code> reads with <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code>.</p></li>
+<li><p><code>delim_list()</code> reads with <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_delim()</a></code>.</p></li>
+<li><p><code>tsv_list()</code> reads with <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_tsv()</a></code>.</p></li>
+</ul></td>
     </tr>
     </table>
     

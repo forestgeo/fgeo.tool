@@ -19,7 +19,7 @@ warn_na <- function(x) {
   out <- vapply(x, function(x) any(is.na(x)), logical(1))
   has_na <- out
   if (any(has_na)) {
-    warning("Detected missing values in: ", glue_comma(names(x)[has_na]))
+    warning("Detected missing values in: ", commas(names(x)[has_na]))
   }
   
   invisible(x)

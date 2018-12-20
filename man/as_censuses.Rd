@@ -27,6 +27,7 @@ censuses_lst <- as_censuses(list(
   c2 = tibble(dbh = 8:9)
 ))
 class(censuses_lst)
+
 }
 \seealso{
 Other functions to construct fgeo classes: \code{\link{fgeo_elevation}}
