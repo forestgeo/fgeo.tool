@@ -42,6 +42,7 @@ vft <- data.frame(
   stringsAsFactors = FALSE
 )
 transform(vft, tagged = suffix_match(Tag, Status, "dead", ".d"))
+
 }
 \seealso{
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},

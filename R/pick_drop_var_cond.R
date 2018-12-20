@@ -14,10 +14,6 @@
 #'   variable encoded in the function name.
 #'
 #' @seealso `dplyr::filter()`, `Extract` (`[`).
-#' @family functions for fgeo census and vft
-#' @family functions for fgeo census
-#' @family functions for fgeo vft
-#' @family functions to pick or drop rows of a ForestGEO dataframe
 #'
 #' @return Dataframe rows with matching conditions.
 #'
@@ -53,6 +49,11 @@
 #'
 #' # Compose
 #' pick_dbh_over(drop_status(cns, "D", na.rm = TRUE), 100)
+#' 
+#' @family functions for fgeo census and vft
+#' @family functions for fgeo census
+#' @family functions for fgeo vft
+#' @family functions to pick or drop rows of a ForestGEO dataframe
 #' @name pick_drop
 NULL
 
@@ -82,18 +83,23 @@ var_cond_x <- function(var, cond) {
 #' @rdname pick_drop
 #' @export
 pick_dbh_min <- var_cond_x("dbh", `>=`)
+
 #' @rdname pick_drop
 #' @export
 pick_dbh_max <- var_cond_x("dbh", `<=`)
+
 #' @rdname pick_drop
 #' @export
 pick_dbh_under <- var_cond_x("dbh", `<`)
+
 #' @rdname pick_drop
 #' @export
 pick_dbh_over <- var_cond_x("dbh", `>`)
+
 #' @rdname pick_drop
 #' @export
 pick_status <- var_cond_x("status", `==`)
+
 #' @rdname pick_drop
 #' @export
 drop_status <- var_cond_x("status", `!=`)

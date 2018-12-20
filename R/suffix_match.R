@@ -6,11 +6,6 @@
 #' @param suffix A suffix to add at the end of each element of `string`.
 #'
 #' @return A modified version of `x`.
-#' 
-#' @family general functions to edit data in place
-#' @family functions for internal use in other fgeo packages
-#' @keywords internal
-#' @export
 #'
 #' @examples
 #' suffix_match(
@@ -33,18 +28,21 @@
 #'   stringsAsFactors = FALSE
 #' )
 #' transform(vft, tagged = suffix_match(Tag, Status, "dead", ".d"))
+#' 
+#' @family general functions to edit data in place
+#' @family functions for internal use in other fgeo packages
+#' @keywords internal
+#' @export
 suffix_match <- function(string, to_match, .match, suffix) {
-  check_suffix_match(
-    string = string, to_match = to_match, .match = .match, suffix = suffix
-  )
-
+  check_suffix_match(string, to_match, .match, suffix)
+  
   if (!.match %in% to_match) {
     warning(
       "No `string` matches `", .match, "`. Is this what you expect?",
       call. = FALSE
     )
   }
-
+  
   is_match <- to_match == .match
   string[is_match] <- paste0(string[is_match], suffix)
   string

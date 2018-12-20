@@ -22,6 +22,7 @@ Rename an object based on case-insensitive match of the names of a reference.
 ref <- data.frame(COL1 = 1, COL2 = 1)
 x <- data.frame(col1 = 5, col2 = 1, n = 5)
 rename_matches(x, ref)
+
 }
 \seealso{
 Other functions for developers: \code{\link{check_crucial_names}},

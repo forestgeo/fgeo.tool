@@ -1,3 +1,14 @@
+read_fgeo <- function(col_types) {
+  function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
+    delim <- delim %||% guess_comma_or_tab(file, names(col_types))
+    fgeo <- readr::read_delim(
+      file = file, delim = delim, col_types = readr::cols(.default = "c"), 
+      na = na, ...
+    )
+    readr::type_convert(fgeo, col_types = col_types)
+  }
+}
+
 #' Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.
 #' 
 #' These functions help you read text files containing ViewFullTable and
@@ -24,29 +35,14 @@
 #' read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
 #' read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
 #' }
-#' @name read_fgeo
 #' 
 #' @family functions to read text files delivered by ForestgGEO's database
 #' @family functions to import a single file of ForestGEO data
 #' @family functions to import ForestGEO data
-NULL
-
-read_fgeo <- function(col_types) {
-  function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
-    delim <- delim %||% guess_comma_or_tab(file, names(col_types))
-    fgeo <- readr::read_delim(
-      file = file, delim = delim, col_types = readr::cols(.default = "c"), 
-      na = na, ...
-    )
-    readr::type_convert(fgeo, col_types = col_types)
-  }
-}
-
-#' @rdname read_fgeo
 #' @export
 read_vft <- read_fgeo(col_types = type_vft())
 
-#' @rdname read_fgeo
+#' @rdname read_vft
 #' @export
 read_taxa <- read_fgeo(col_types = type_taxa())
 
@@ -85,16 +81,10 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' * ? = guess,
 #' * or _/- to skip the column.'.
 #'
-#' @seealso [readr::read_delim()], [readr::read_csv()], [read_fgeo()].
+#' @seealso [readr::read_delim()], [readr::read_csv()], [read_vft()].
 #' 
-#' @family functions to operate on column types
-#' @family functions to read text files delivered by ForestgGEO's database
-#' @family functions to import/export ForestGEO data
-#' 
-#' @keywords internal
 #'
 #' @return A list.
-#' @export
 #'
 #' @examples
 #' library(fgeo.x)
@@ -105,9 +95,11 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' 
 #' str(type_taxa())
 #' read_csv(x_example("taxa.csv"), col_types = type_taxa())
-#' @name type_fgeo
-
-#' @rdname type_fgeo
+#' 
+#' @family functions to operate on column types
+#' @family functions to read text files delivered by ForestgGEO's database
+#' @family functions to import/export ForestGEO data
+#' @keywords internal
 #' @export
 type_vft <- function() {
   list(
@@ -146,7 +138,7 @@ type_vft <- function() {
   )
 }
 
-#' @rdname type_fgeo
+#' @rdname type_vft
 #' @export
 type_taxa <- function() {
   list(

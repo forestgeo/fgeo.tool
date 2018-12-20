@@ -1,17 +1,13 @@
 #' Suffix tags of dead stems that map beyond the quadrat's edge.
 #'
 #' @param x A ViewFullTable.
-#' @param .match A character string indicating the matching value of the variable
-#'   status to suffix.
+#' @param .match A character string indicating the matching value of the
+#'   variable   status to suffix.
 #' @param suffix A character string to suffix tree tags with.
 #' @param x_q,y_q Integer; the x and y size in meters of a quadrat.
 #' 
-#' 
-#'
 #' @return A modified version of `x`.
 #' 
-#' @keywords internal
-#' @export
 #' @examples
 #' vft <- data.frame(
 #'   QX = 21:22,
@@ -34,6 +30,8 @@
 #'   suffix = "_a",
 #'   x_q = 20
 #' )
+#' @keywords internal
+#' @export
 suffix_tags_beyond_edge <- function(x, .match, suffix, x_q = 20, y_q = x_q) {
   stopifnot(
     is.data.frame(x), 
@@ -64,8 +62,8 @@ suffix_tags_beyond_edge <- function(x, .match, suffix, x_q = 20, y_q = x_q) {
 }
 
 detect_spillover <- function(x, x_q, y_q) {
-  x_max <- max0(x[["qx"]])
-  y_max <- max0(x[["qy"]])
+  x_max <- maximum(x[["qx"]])
+  y_max <- maximum(x[["qy"]])
   
   spillover_status <- !all(x_max <= x_q, y_max <= y_q)
   if (isTRUE(spillover_status)) {
@@ -82,6 +80,7 @@ detect_to_tag <- function(x, x_q, y_q) {
   (edgy_x + edgy_y) != 0
 }
 
-max0 <- function(...) {
+maximum <- function(...) {
   max(..., na.rm = TRUE)
 }
+

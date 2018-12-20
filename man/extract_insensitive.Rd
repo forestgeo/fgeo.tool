@@ -32,6 +32,7 @@ extract_insensitive(x, y)
 vft <- data.frame(TreeID = 1, Status = 1)
 extract_insensitive(tolower(names(vft)), names(vft))
 extract_insensitive(names(vft), tolower(names(vft)))
+
 }
 \seealso{
 Other functions for developers: \code{\link{check_crucial_names}},
@@ -40,10 +41,7 @@ Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{rename_matches}}, \code{\link{type_ensure}}
 
 Other general functions to deal with names: \code{\link{rename_matches}}
-
-Other general functions to assert: \code{\link{check_crucial_names}}
 }
 \concept{functions for developers}
-\concept{general functions to assert}
 \concept{general functions to deal with names}
 \keyword{internal}

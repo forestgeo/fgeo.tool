@@ -34,6 +34,7 @@ path <- tool_example("rdata")
 dir(path)
 censuses <- as_censuses(rdata_list(path))
 pick(censuses, dbh > 30)
+
 }
 \seealso{
 Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}},

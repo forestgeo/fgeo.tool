@@ -1,3 +1,28 @@
+pick_main_f <- function(stemid = TRUE, treeid = TRUE) {
+  function(.x) {
+    stopifnot(is.data.frame(.x))
+    
+    # Store original row order to restore it at the end
+    .x <- tibble::rowid_to_column(.x)
+    # Lowercase names and groups to work with both census and ViewFullTable
+    .data <- rlang::set_names(.x, tolower)
+    # The net effect is to ignore groups: Store them now and restore them on exit.
+    .data <- groups_lower(.data)
+    
+    stopifnot_single_plotname(.data)
+    check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
+    
+    .data <- pick_stemid_treeid(.data, stemid = stemid, treeid = treeid)
+    
+    # Restore rows order
+    .data <- select(arrange(.data, .data$rowid), -.data$rowid)
+    # Restore original names
+    out <- rename_matches(.data , .x)
+    # Restore original groups
+    groups_restore(out, .x)
+  }
+}
+
 #' Pick the main stem or main stemid(s) of each tree in each census.
 #' 
 #' * `pick_main_stem()`picks the main stem of each tree in each census. It
@@ -30,10 +55,6 @@
 #'
 #' @return A dataframe with one row per per treeid per censusid and a single 
 #'   plotname.
-#' 
-#' @family functions to pick or drop rows of a ForestGEO dataframe
-#'
-#' @name pick_main_stem
 #'
 #' @examples
 #' # Trees with buttresses may have more than one measurements per stem.
@@ -50,40 +71,13 @@
 #' 
 #' # Picks the main stemid of each stem and keeps all stems of each tree.
 #' pick_main_stemid(census)
-#' @name pick_main_stem
-NULL
-
-pick_main_f <- function(stemid = TRUE, treeid = TRUE) {
-  function(.x) {
-    stopifnot(is.data.frame(.x))
-    
-    # Store original row order to restore it at the end
-    .x <- tibble::rowid_to_column(.x)
-    # Lowercase names and groups to work with both census and ViewFullTable
-    .data <- rlang::set_names(.x, tolower)
-    # The net effect is to ignore groups: Store them now and restore them on exit.
-    .data <- groups_lower(.data)
-    
-    stopifnot_single_plotname(.data)
-    check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
-    
-    .data <- pick_stemid_treeid(.data, stemid = stemid, treeid = treeid)
-    
-    # Restore rows order
-    .data <- select(arrange(.data, .data$rowid), -.data$rowid)
-    # Restore original names
-    out <- rename_matches(.data , .x)
-    # Restore original groups
-    groups_restore(out, .x)
-  }
-}
-
+#'
+#' @family functions to pick or drop rows of a ForestGEO dataframe
 #' @export
-#' @rdname pick_main_stem
 pick_main_stem <- pick_main_f(stemid = TRUE, treeid = TRUE)
 
-#' @export
 #' @rdname pick_main_stem
+#' @export
 pick_main_stemid <- pick_main_f(stemid = TRUE, treeid = FALSE)
 
 pick_stemid_treeid <- function(.data, stemid = TRUE, treeid = TRUE) {

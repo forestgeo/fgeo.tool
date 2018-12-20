@@ -29,8 +29,6 @@ check_crucial_names(dfm, "x")
 Other functions to check inputs: \code{\link{flag_if_group}},
   \code{\link{is_multiple}}
 
-Other general functions to assert: \code{\link{extract_insensitive}}
-
 Other functions for developers: \code{\link{extract_insensitive}},
   \code{\link{flag_if_group}}, \code{\link{is_multiple}},
   \code{\link{nms_try_rename}},

@@ -22,6 +22,7 @@ Pick the given or first (alpha sorted) plot from a ViewFullTable.
 vft <- data.frame(PlotName = c("a", "b"), stringsAsFactors = FALSE)
 pick_plotname(vft)
 pick_plotname(vft, "b")
+
 }
 \seealso{
 Other functions for fgeo vft: \code{\link{add_status_tree}},

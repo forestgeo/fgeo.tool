@@ -34,7 +34,7 @@ type_ensure(dfm, c("w", "x", "y", "z"), "character")
 \seealso{
 \code{\link[purrr:modify_at]{purrr::modify_at()}}.
 
-Other functions to operate on column types: \code{\link{type_fgeo}}
+Other functions to operate on column types: \code{\link{type_vft}}
 
 Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{extract_insensitive}},

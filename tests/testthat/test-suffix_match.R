@@ -1,3 +1,4 @@
+
 context("suffix_match")
 
 test_that("tags a vector", {
@@ -22,7 +23,6 @@ test_that("with numeric `tag` does not abort -- only warns (#13)", {
   )
 })
 
-
 test_that("warns if no stem is dead", {
   expect_warning(
     suffix_match(
@@ -45,7 +45,7 @@ test_that("fails if x, status, and suffix are not character vectors", {
     ),
     c("tag1_suffix", "tag2")
   )
-
+  
   # Warn
   expect_warning(
     suffix_match(
@@ -71,7 +71,7 @@ test_that("fails if x, status, and suffix are not character vectors", {
       suffix = 1
     )
   )
-
+  
   expect_warning(
     suffix_match(
       c("tag1", "tag2"),

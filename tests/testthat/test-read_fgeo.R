@@ -54,3 +54,4 @@ test_that("guess_comma_or_tab() guesses tab or comma separated file", {
   readr::write_csv(fgeo.x::taxa, taxa_comma)
   expect_silent(read_taxa(taxa_comma))
 })
+
