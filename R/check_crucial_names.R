@@ -3,7 +3,7 @@
 #' @param x A named object.
 #' @param nms String; names expected to be found in `x`.
 #'
-#' @family functions to check inputs.
+#' @family functions to check inputs
 #' @family functions for developers
 #' @family general functions to assert
 #'

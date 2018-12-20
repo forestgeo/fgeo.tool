@@ -32,5 +32,5 @@ dir(output, pattern = "myfile")
 \seealso{
 Other general functions to export data: \code{\link{list_df}}
 }
-\concept{functions to handle multiple spreadsheets of an excel workbook.}
+\concept{functions to handle multiple spreadsheets of an excel workbook}
 \concept{general functions to export data}

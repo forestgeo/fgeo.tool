@@ -3,7 +3,7 @@
 #' @param package String; Package name to search datasets in.
 #' @param .class Class of data to find or hide.
 #' 
-#' @family functions for developers.
+#' @family functions for developers
 #' @keywords internal
 #' 
 #' @examples

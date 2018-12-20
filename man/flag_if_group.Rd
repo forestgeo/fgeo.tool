@@ -41,13 +41,20 @@ detect_if_group(by_censusid, "treeID", is_multiple)
 flag_if_group(by_censusid, "treeID", is_multiple)
 }
 \seealso{
-Other functions to check inputs.: \code{\link{check_crucial_names}},
+Other functions to check inputs: \code{\link{check_crucial_names}},
   \code{\link{is_multiple}}
 
-Other functions for developers.: \code{\link{find_data_of_class}},
-  \code{\link{type_ensure}}
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{extract_insensitive}},
+  \code{\link{find_data_of_class}},
+  \code{\link{is_multiple}},
+  \code{\link{nms_extract_anycase}},
+  \code{\link{nms_lowercase}},
+  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
+  \code{\link{nms_try_rename}}, \code{\link{nms}},
+  \code{\link{rename_matches}}, \code{\link{type_ensure}}
 }
-\concept{functions for developers.}
-\concept{functions to check inputs.}
-\concept{predicates.}
+\concept{functions for developers}
+\concept{functions to check inputs}
+\concept{predicates}
 \keyword{internal}

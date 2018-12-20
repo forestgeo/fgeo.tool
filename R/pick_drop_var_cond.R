@@ -14,9 +14,9 @@
 #'   variable encoded in the function name.
 #'
 #' @seealso `dplyr::filter()`, `Extract` (`[`).
-#' @family functions for fgeo census and vft.
-#' @family functions for fgeo census.
-#' @family functions for fgeo vft.
+#' @family functions for fgeo census and vft
+#' @family functions for fgeo census
+#' @family functions for fgeo vft
 #' @family functions to pick or drop rows of a ForestGEO dataframe
 #'
 #' @return Dataframe rows with matching conditions.

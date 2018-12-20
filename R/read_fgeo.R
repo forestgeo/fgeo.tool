@@ -26,7 +26,7 @@
 #' }
 #' @name read_fgeo
 #' 
-#' @family functions to read text files delivered by ForestgGEO's database.
+#' @family functions to read text files delivered by ForestgGEO's database
 #' @family functions to import a single file of ForestGEO data
 #' @family functions to import ForestGEO data
 NULL
@@ -87,8 +87,8 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #'
 #' @seealso [readr::read_delim()], [readr::read_csv()], [read_fgeo()].
 #' 
-#' @family functions to operate on column types.
-#' @family functions to read text files delivered by ForestgGEO's database.
+#' @family functions to operate on column types
+#' @family functions to read text files delivered by ForestgGEO's database
 #' @family functions to import/export ForestGEO data
 #' 
 #' @keywords internal

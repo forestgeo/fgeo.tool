@@ -6,9 +6,9 @@
 #'
 #' @return A numeric vector of length 2.
 #'
-#' @family functions for fgeo census and vft.
-#' @family functions for fgeo census.
-#' @family functions for fgeo vft.
+#' @family functions for fgeo census and vft
+#' @family functions for fgeo census
+#' @family functions for fgeo vft
 #' @family general functions to find or approximate
 #' @family functions for internal use in other fgeo packages
 #' @keywords internal

@@ -10,9 +10,9 @@
 #'   [base::stop()].
 #' @param msg String to customize the returned message.
 #'
-#' @family functions to check inputs.
-#' @family predicates.
-#' @family functions for developers.
+#' @family functions to check inputs
+#' @family predicates
+#' @family functions for developers
 #' @keywords internal
 #'
 #' @return

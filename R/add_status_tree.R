@@ -28,9 +28,9 @@
 #' add_status_tree(stem)
 #' 
 #' @family functions to add columns to dataframes
-#' @family functions for ForestGEO data.
-#' @family functions for fgeo census.
-#' @family functions for fgeo vft.
+#' @family functions for ForestGEO data
+#' @family functions for fgeo census
+#' @family functions for fgeo vft
 #' @export
 add_status_tree <- function(x, status_a = "A", status_d = "D") {
   set_names(x, tolower) %>% 

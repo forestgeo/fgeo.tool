@@ -26,12 +26,12 @@ x <- data.frame(
 guess_plotdim(x)
 }
 \seealso{
-Other functions for fgeo census and vft.: \code{\link{pick_drop}}
+Other functions for fgeo census and vft: \code{\link{pick_drop}}
 
-Other functions for fgeo census.: \code{\link{add_status_tree}},
+Other functions for fgeo census: \code{\link{add_status_tree}},
   \code{\link{add_var}}, \code{\link{pick_drop}}
 
-Other functions for fgeo vft.: \code{\link{add_status_tree}},
+Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}, \code{\link{add_var}},
   \code{\link{pick_drop}}, \code{\link{pick_plotname}}
 
@@ -39,9 +39,9 @@ Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
   \code{\link{is_multiple}}, \code{\link{name_dfs}},
   \code{\link{suffix_match}}
 }
-\concept{functions for fgeo census and vft.}
-\concept{functions for fgeo census.}
-\concept{functions for fgeo vft.}
+\concept{functions for fgeo census}
+\concept{functions for fgeo census and vft}
+\concept{functions for fgeo vft}
 \concept{functions for internal use in other fgeo packages}
 \concept{general functions to find or approximate}
 \keyword{internal}
