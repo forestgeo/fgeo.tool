@@ -46,9 +46,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fill_na.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/filter_status.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/find_data_of_class.html</loc>
   </url>
   <url>
@@ -116,9 +113,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pipe.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/rdata_df.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/read_fgeo.html</loc>

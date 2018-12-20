@@ -5,7 +5,7 @@
 #' convenient print method and enables using specific methods for working with
 #' ForestGEO data.
 #' 
-#' @seealso [rdata_df()], [as_censuses()].
+#' @seealso [as_censuses()].
 #'
 #' @inheritParams rdata_df
 #' 
