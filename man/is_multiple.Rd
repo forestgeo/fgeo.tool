@@ -29,16 +29,15 @@ is_duplicated(c(1, 1))
 is_duplicated(c(1, NA))
 }
 \seealso{
-Other functions to check inputs.: \code{\link{check_crucial_names}},
+Other functions to check inputs: \code{\link{check_crucial_names}},
   \code{\link{flag_if_group}}
 
 Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{extract_insensitive}},
-  \code{\link{nms_extract_anycase}},
-  \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms_try_rename}}, \code{\link{nms}},
-  \code{\link{rename_matches}}
+  \code{\link{find_data_of_class}},
+  \code{\link{flag_if_group}},
+  \code{\link{nms_try_rename}},
+  \code{\link{rename_matches}}, \code{\link{type_ensure}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
   \code{\link{guess_plotdim}}, \code{\link{name_dfs}},
@@ -46,6 +45,6 @@ Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
 }
 \concept{functions for developers}
 \concept{functions for internal use in other fgeo packages}
-\concept{functions to check inputs.}
+\concept{functions to check inputs}
 \concept{general predicates}
 \keyword{internal}

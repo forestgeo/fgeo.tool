@@ -51,8 +51,8 @@ vft <- add_status_tree(vft, status_a = "alive", status_d = "dead")
 drop_twice_dead(vft)
 }
 \seealso{
-Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{filter_status}},
-  \code{\link{pick_drop}}, \code{\link{pick_main_stem}},
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}},
+  \code{\link{pick_main_stem}},
   \code{\link{pick_plotname}}, \code{\link{pick}}
 }
 \concept{functions to pick or drop rows of a ForestGEO dataframe}

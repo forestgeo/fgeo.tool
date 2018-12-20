@@ -4,7 +4,7 @@
 #' @param plot_nm Length-1 character vector of the value of `PlotName` (or
 #'   `plotname`) to pick from `vft`.
 #'
-#' @family functions for fgeo vft.
+#' @family functions for fgeo vft
 #' @family functions to pick or drop rows of a ForestGEO dataframe
 #'
 #' @return A dataframe.

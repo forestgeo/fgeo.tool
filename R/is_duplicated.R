@@ -6,7 +6,7 @@
 #'
 #' @param .data A vector.
 #'
-#' @family functions to check inputs.
+#' @family functions to check inputs
 #' @family functions for developers
 #' @family general predicates
 #'

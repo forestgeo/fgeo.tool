@@ -34,11 +34,15 @@ type_ensure(dfm, c("w", "x", "y", "z"), "character")
 \seealso{
 \code{\link[purrr:modify_at]{purrr::modify_at()}}.
 
-Other functions to operate on column types.: \code{\link{type_fgeo}}
+Other functions to operate on column types: \code{\link{type_fgeo}}
 
-Other functions for developers.: \code{\link{find_data_of_class}},
-  \code{\link{flag_if_group}}
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{extract_insensitive}},
+  \code{\link{find_data_of_class}},
+  \code{\link{flag_if_group}}, \code{\link{is_multiple}},
+  \code{\link{nms_try_rename}},
+  \code{\link{rename_matches}}
 }
-\concept{functions for developers.}
-\concept{functions to operate on column types.}
+\concept{functions for developers}
+\concept{functions to operate on column types}
 \keyword{internal}

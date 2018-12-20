@@ -4,7 +4,7 @@ git reset --hard upstream/master
 
 git remote prune origin
 
-message="Use @family miscellaneous tools."
+message="Generalize rdata_df"
 
 git add .
 git commit -m "$message"

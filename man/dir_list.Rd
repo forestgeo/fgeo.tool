@@ -68,7 +68,6 @@ delim_list(path_weird, delim = "\\t")
   
 }
 \seealso{
-Other general functions to import data: \code{\link{rdata_df}},
-  \code{\link{read_with}}
+Other general functions to import data: \code{\link{read_with}}
 }
 \concept{general functions to import data}

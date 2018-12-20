@@ -29,6 +29,12 @@ rds_list(path_rds)
 # Same
 read_with(readr::read_rds)(path_rds)
 
+# Read specific files by matching file names via `regexp`
+dir(path_rds)
+read_with(readr::read_rds, regexp = "6")(path_rds)
+read_with(readr::read_rds, regexp = "5[.]rds")(path_rds)
+read_with(readr::read_rds, regexp = "tree.*[.]rds")(path_rds)
+
 # Read excel files --------------------------------------------------------
 \dontrun{
 if (!requireNamespace("readxl"))
@@ -51,7 +57,6 @@ read_with(rio::import)(path_mixed_files)
 }
 }
 \seealso{
-Other general functions to import data: \code{\link{dir_list}},
-  \code{\link{rdata_df}}
+Other general functions to import data: \code{\link{dir_list}}
 }
 \concept{general functions to import data}

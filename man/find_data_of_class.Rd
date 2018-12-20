@@ -23,8 +23,11 @@ show_data_of_class("fgeo.tool", "tbl")
 hide_data_of_class("fgeo.tool", "data.frame")
 }
 \seealso{
-Other functions for developers.: \code{\link{flag_if_group}},
-  \code{\link{type_ensure}}
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{extract_insensitive}},
+  \code{\link{flag_if_group}}, \code{\link{is_multiple}},
+  \code{\link{nms_try_rename}},
+  \code{\link{rename_matches}}, \code{\link{type_ensure}}
 }
-\concept{functions for developers.}
+\concept{functions for developers}
 \keyword{internal}

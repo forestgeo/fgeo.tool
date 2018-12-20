@@ -6,7 +6,7 @@
 #' @param dir Character; the directory where the files will be saved.
 #' @param prefix Character; a prefix to add to the file names.
 #'
-#' @family functions to handle multiple spreadsheets of an excel workbook.
+#' @family functions to handle multiple spreadsheets of an excel workbook
 #' @family general functions to export data
 #' 
 #' @export
@@ -101,7 +101,7 @@ list_df <- function(lst, df_names = NULL, by = NULL) {
   } else {
     stopifnot(is.character(df_names))
 
-    all_valid_nms <- all(purrr::map_lgl(df_names, ~rlang::has_name(lst, .)))
+    all_valid_nms <- all(purrr::map_lgl(df_names, ~has_name(lst, .)))
     if (!all_valid_nms) {
       msg <- paste0(
         "Each value of `which` must be a valid name of `.df`\n",

@@ -60,11 +60,11 @@ read_csv(x_example("taxa.csv"), col_types = type_taxa())
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[=read_fgeo]{read_fgeo()}}.
 
-Other functions to operate on column types.: \code{\link{type_ensure}}
+Other functions to operate on column types: \code{\link{type_ensure}}
 
-Other functions to read text files delivered by ForestgGEO's database.: \code{\link{read_fgeo}}
+Other functions to read text files delivered by ForestgGEO's database: \code{\link{read_fgeo}}
 }
 \concept{functions to import/export ForestGEO data}
-\concept{functions to operate on column types.}
-\concept{functions to read text files delivered by ForestgGEO's database.}
+\concept{functions to operate on column types}
+\concept{functions to read text files delivered by ForestgGEO's database}
 \keyword{internal}

@@ -38,8 +38,8 @@
 #' add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
 #' 
 #' @family functions to add columns to dataframes
-#' @family functions for ForestGEO data.
-#' @family functions for fgeo vft.
+#' @family functions for ForestGEO data
+#' @family functions for fgeo vft
 #' @export
 add_subquad <- function(df,
                         x_q,
