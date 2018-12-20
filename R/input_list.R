@@ -1,5 +1,5 @@
 #' Import multiple files into a list using any given reading function.
-#'
+#' 
 #' @param .f A function able to read the desired file format.
 #' @inheritParams fs::dir_ls 
 #'
@@ -72,7 +72,12 @@ read_with <- function(.f, regexp = NULL) {
 #' 
 #' @param path_dir String; the path to a directory containing the files to read
 #'   (all must be of appropriate format; see examples).
-#' @param ... Arguments passed to the reader function.
+#' @param ... Arguments passed to the reader function:
+#'   * `rdata_list()` and `rda_list()` read with `get(load(x))` (`...` not unused).
+#'   * `rds_list()` reads with [readr::read_rds()].
+#'   * `csv_list()` reads with [readr::read_csv()].
+#'   * `delim_list()` reads with [readr::read_delim()].
+#'   * `tsv_list()` reads with [readr::read_tsv()].
 #' 
 #' @return A list of dataframes.
 #' 
