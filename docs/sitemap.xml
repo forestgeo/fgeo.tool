@@ -43,9 +43,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fgeo_elevation.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/fill_na.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/find_data_of_class.html</loc>
   </url>
   <url>
@@ -70,9 +67,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/list_df.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/lookup.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/name_dfs.html</loc>
   </url>
   <url>
@@ -89,12 +83,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_plotname.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_recensus.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_top.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pipe.html</loc>

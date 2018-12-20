@@ -44,9 +44,6 @@ vft <- data.frame(
 transform(vft, tagged = suffix_match(Tag, Status, "dead", ".d"))
 }
 \seealso{
-Other general functions to edit data in place: \code{\link{fill_na}},
-  \code{\link{lookup}}
-
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
   \code{\link{guess_plotdim}}, \code{\link{is_multiple}},
   \code{\link{name_dfs}}
