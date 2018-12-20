@@ -101,7 +101,7 @@ list_df <- function(lst, df_names = NULL, by = NULL) {
   } else {
     stopifnot(is.character(df_names))
 
-    all_valid_nms <- all(purrr::map_lgl(df_names, ~rlang::has_name(lst, .)))
+    all_valid_nms <- all(purrr::map_lgl(df_names, ~has_name(lst, .)))
     if (!all_valid_nms) {
       msg <- paste0(
         "Each value of `which` must be a valid name of `.df`\n",

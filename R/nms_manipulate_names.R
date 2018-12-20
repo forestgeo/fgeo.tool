@@ -29,6 +29,7 @@ nms_try_rename <- function(x, want, try) {
   if (length(nm) == 0) {
     abort(glue("Data must have an element named `{want}` or `{try}`"))
   }
+  
   names(x)[grepl(nm, names(x))] <- want
   x
 }
@@ -74,8 +75,7 @@ nms_lowercase <- function(x) {
   if (is_not_named) {stop("`x` must be named")}
   
   attr(x, "names_old") <- names(x)
-  x <- set_names(x, tolower)
-  x
+  set_names(x, tolower)
 }
 nms_restore <- function(x) {
   x_has_attr_names_old <- !is.null(attr(x, "names_old"))
@@ -139,15 +139,17 @@ nms_restore <- function(x) {
 nms_restore_newvar <- function(x, new_var, old_nms) {
   if (!any(length(x) == length(old_nms), length(x) == length(old_nms) + 1)) {
     stop(
-      "The length of `x` must equal the number of names in old_nms, or that + 1"
+      "The length of `x` must equal the number of names in old_nms, ",
+      "or that + 1",
+      call. = FALSE
     )
   }
   
   if (any(grepl(new_var, old_nms))) {
-    set_names(x, old_nms)
-  } else {
-    set_names(x, c(old_nms, new_var))
+    return(set_names(x, old_nms))
   }
+  
+  set_names(x, c(old_nms, new_var))
 }
 
 
@@ -199,7 +201,7 @@ nms_has_any <- function(x, ...) {
   any(nms_detect(x, ...))
 }
 nms_detect <- function(x, ...) {
-  purrr::map_lgl(list(...), ~rlang::has_name(x, .))
+  purrr::map_lgl(list(...), ~has_name(x, .))
 }
 nms_extract_all <- function(x, ...) {
   is_detected <- nms_detect(x, ...)
@@ -209,10 +211,10 @@ nms_extract_all <- function(x, ...) {
 nms_extract1 <- function(x, ...) {
   extracted <- nms_extract_all(x, ...)
   if (length(extracted) == 0) {
-    extracted
-  } else {
-    extracted[[1]]
+    return(extracted)
   }
+
+  extracted[[1]]
 }
 
 

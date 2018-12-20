@@ -76,21 +76,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/name_dfs.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/nms.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_extract_anycase.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_lowercase.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_restore_newvar.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_tidy.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_try_rename.html</loc>
   </url>
   <url>
@@ -130,7 +115,7 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/rename_matches.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/sanitize.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/sanitize_vft.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/suffix_match.html</loc>
@@ -143,9 +128,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/tool_example.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/to_tidy_names.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/type_ensure.html</loc>
