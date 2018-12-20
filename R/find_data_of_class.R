@@ -3,12 +3,12 @@
 #' @param package String; Package name to search datasets in.
 #' @param .class Class of data to find or hide.
 #' 
-#' @family functions for developers
-#' @keywords internal
-#' 
 #' @examples
 #' show_data_of_class("fgeo.tool", "tbl")
 #' hide_data_of_class("fgeo.tool", "data.frame")
+#' 
+#' @family functions for developers
+#' @keywords internal
 #' @name find_data_of_class
 NULL
 
@@ -30,8 +30,8 @@ string_datasets_of_class <- function(.f = purrr::keep) {
 #' @rdname find_data_of_class
 show_data_of_class <- string_datasets_of_class(.f = purrr::keep)
 
-#' @export
 #' @rdname find_data_of_class
+#' @export
 hide_data_of_class <- string_datasets_of_class(.f = purrr::discard)
 
 #' String datasets in a package.
