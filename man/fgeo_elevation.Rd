@@ -47,6 +47,7 @@ str(elev_list)
 
 elev <- fgeo_elevation(elev_list)
 str(elev) 
+  
 }
 \seealso{
 Other functions to construct fgeo classes: \code{\link{as_censuses}}

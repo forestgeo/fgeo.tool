@@ -27,5 +27,6 @@ Extract plot dimensions from habitat data.
 habitat <- fgeo.x::habitat
 extract_plotdim(habitat)
 extract_gridsize(habitat)
+
 }
 \keyword{internal}

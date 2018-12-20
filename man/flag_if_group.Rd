@@ -39,6 +39,7 @@ flag_if_group(tree, "treeID", is_multiple)
 by_censusid <- group_by(tree, CensusID)
 detect_if_group(by_censusid, "treeID", is_multiple)
 flag_if_group(by_censusid, "treeID", is_multiple)
+
 }
 \seealso{
 Other functions to check inputs: \code{\link{check_crucial_names}},
@@ -46,7 +47,6 @@ Other functions to check inputs: \code{\link{check_crucial_names}},
 
 Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{extract_insensitive}},
-  \code{\link{find_data_of_class}},
   \code{\link{is_multiple}}, \code{\link{nms_try_rename}},
   \code{\link{rename_matches}}, \code{\link{type_ensure}}
 }

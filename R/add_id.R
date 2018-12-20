@@ -4,7 +4,7 @@
 #' @param vars Vector of names of columns to paste for creating the new id
 #'   column.
 #' @param name String giving the name of the new id column.
-#' @param sep String to separate the pasted values of `vars`.
+#' @param sep String to stick the pasted values of `vars`.
 #'
 #' @return A dataframe with an additional column.
 #'
@@ -20,11 +20,11 @@ add_id <- function(.data, vars, name = "id", sep = "_") {
   stopifnot(is.data.frame(.data), is.character(vars), is.character(name))
   
   .vars <- lapply(.data[vars], as.character)
-  id <- purrr::pmap_chr(.vars, sep_dots, sep = as.character(sep))
+  id <- purrr::pmap_chr(.vars, stick, sep = as.character(sep))
   out <- tibble::add_column(.data, id)
   set_names(out, c(names(.data), name))
 }
 
-sep_dots <- function(..., sep = "_") {
+stick <- function(..., sep = "_") {
   paste(unlist(list(...)), collapse = sep)
 }

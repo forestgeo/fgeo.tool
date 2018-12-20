@@ -28,9 +28,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_if_na.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_twice_dead.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/extract_from_habitat.html</loc>
   </url>
   <url>
@@ -41,12 +38,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/fgeo_elevation.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/fill_na.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/find_data_of_class.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/flag_if.html</loc>
@@ -70,12 +61,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/list_df.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/lookup.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/name_dfs.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_try_rename.html</loc>
   </url>
   <url>
@@ -91,16 +76,10 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_plotname.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_recensus.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/pick_top.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/read_fgeo.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/read_vft.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/read_with.html</loc>
@@ -118,12 +97,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/sanitize_vft.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/suffix_match.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/suffix_tags_beyond_edge.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/tidyeval.html</loc>
   </url>
   <url>
@@ -133,6 +106,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/type_ensure.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/type_fgeo.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.tool//reference/type_vft.html</loc>
   </url>
 </urlset>

@@ -21,12 +21,10 @@ Valuable mostly for its warning.
 dfm <- data.frame(a = 1, b = NA)
 drop_if_na(dfm, "b")
 drop_if_na(dfm, "a")
+
 }
 \seealso{
 \code{tidyr::drop_na()}.
-
-Other general functions to pick or drop rows of a dataframe: \code{\link{pick_recensus}},
-  \code{\link{pick_top}}
 }
 \concept{general functions to pick or drop rows of a dataframe}
 \keyword{internal}

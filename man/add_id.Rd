@@ -14,7 +14,7 @@ column.}
 
 \item{name}{String giving the name of the new id column.}
 
-\item{sep}{String to separate the pasted values of \code{vars}.}
+\item{sep}{String to stick the pasted values of \code{vars}.}
 }
 \value{
 A dataframe with an additional column.

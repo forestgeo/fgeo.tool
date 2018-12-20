@@ -85,6 +85,6 @@ str(taxa_sane[c("SubspeciesID", "ViewID")])
 
 }
 \seealso{
-\code{\link[=read_fgeo]{read_fgeo()}}.
+\code{\link[=read_vft]{read_vft()}}.
 }
 \concept{functions to edit ForestGEO data in place}

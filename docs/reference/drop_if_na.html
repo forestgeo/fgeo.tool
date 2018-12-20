@@ -140,16 +140,15 @@
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>tidyr::drop_na()</a></code>.</p>
-<p>Other general functions to pick or drop rows of a dataframe: <code><a href='pick_recensus.html'>pick_recensus</a></code>,
-  <code><a href='pick_top.html'>pick_top</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>tidyr::drop_na()</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
 <span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='st'>"b"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Dropping 1 rows with missing `b` values.</span></div><div class='output co'>#&gt; [1] a b
 #&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   a  b
-#&gt; 1 1 NA</div></pre>
+#&gt; 1 1 NA</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

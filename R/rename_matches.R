@@ -3,18 +3,18 @@
 #' @param y Named object to use as reference.
 #' @param x x object which names to restored if they match the reference.
 #'
-#' @family functions for developers
-#' @family general functions to deal with names
-#'
 #' @return The output is `x` with as many names changed as case-insensitive
 #'   matches there are with the reference.
-#' @keywords internal
-#' @export
 #'
 #' @examples
 #' ref <- data.frame(COL1 = 1, COL2 = 1)
 #' x <- data.frame(col1 = 5, col2 = 1, n = 5)
 #' rename_matches(x, ref)
+#' 
+#' @family functions for developers
+#' @family general functions to deal with names
+#' @keywords internal
+#' @export
 rename_matches <- function(x, y) {
   names(x) <- extract_insensitive(names(x), names(y))
   x
@@ -26,12 +26,7 @@ rename_matches <- function(x, y) {
 #'   found.
 #' @param y A string to use as a reference to match `x`.
 #'
-#' @family functions for developers
-#' @family general functions to deal with names
-#'
 #' @return `detect_*` and `extract_*` return a logical vector and a string.
-#' @keywords internal
-#' @export
 #'
 #' @examples
 #' x <- c("stemid", "n")
@@ -42,6 +37,11 @@ rename_matches <- function(x, y) {
 #' vft <- data.frame(TreeID = 1, Status = 1)
 #' extract_insensitive(tolower(names(vft)), names(vft))
 #' extract_insensitive(names(vft), tolower(names(vft)))
+#'
+#' @family functions for developers
+#' @family general functions to deal with names
+#' @keywords internal
+#' @export
 extract_insensitive <- function(x, y) {
   x <- as.character(x)
   y <- as.character(y)
@@ -67,11 +67,8 @@ extract_insensitive <- function(x, y) {
 
 #' Return TRUE in position where name of x is in y; FALSE otherwise.
 #'
-#' @family general functions to assert
-#'
-#' @keywords internal
-#' @export
 #' @rdname extract_insensitive
+#' @export
 detect_insensitive <- function(x, y) {
   stopifnot(is.character(x), is.character(y))
   matches <- lapply(anchor(x), grepl, y, ignore.case = TRUE)
