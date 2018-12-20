@@ -29,7 +29,10 @@
 #' @family general functions to import data
 #' @export
 rdata_df <- function(path_dir, .match = NULL, .id = NULL) {
-  read_specific_rdata <- read_with(read_rdata, rdata_match(.match))
+  read_specific_rdata <- read_with(
+    read_rdata, 
+    match_extension(.match, extension = "rdata")
+  )
   lst <- read_specific_rdata(path_dir)
   if (!all(purrr::map_lgl(lst, is.data.frame))) {
     abort("Can't read non-dataframe datasets.")
@@ -49,13 +52,13 @@ rdata_df <- function(path_dir, .match = NULL, .id = NULL) {
   purrr::map_dfr(lst, identity, .id = .id)
 }
 
-rdata_match <- function(.match) {
+match_extension <- function(.match, extension = "rdata") {
   .match <- .match %||% ""
   if (!is.character(.match)) {
     abort("`.match` must be a character string.")
   }
   
-  glue(".*{.match}.*[.]rdata$")
+  glue(".*{.match}.*[.]{extension}$")
 }
 
 read_rdata <- function(.x) get(load(.x))

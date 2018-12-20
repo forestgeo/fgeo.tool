@@ -7,11 +7,13 @@ CTFS
 df
 dplyr
 dplyr's
+edu
 Esufali
 eval
 extdata
 fgeo
 fgeo's
+forestgeo
 ForestGEO
 ForestGEO's
 ForestgGEO's
@@ -20,6 +22,7 @@ github
 gl
 gridsize
 gz
+http
 https
 Jafferjee
 Kenfack
@@ -42,6 +45,7 @@ Recode
 recognised
 rlang
 Shameema
+si
 stemid
 subquadrat
 subquadrat's
@@ -56,3 +60,4 @@ ViewFullTable
 ViewFullTables
 ViewFullTaxonomy
 ViewTaxonomy
+www
