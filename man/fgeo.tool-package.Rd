@@ -4,9 +4,9 @@
 \name{fgeo.tool-package}
 \alias{fgeo.tool}
 \alias{fgeo.tool-package}
-\title{fgeo.tool: Functions for General Purposes}
+\title{fgeo.tool: Manipulate ForestGEO Data}
 \description{
-Functions for general purposes.
+Manipulate ForestGEO data (\url{http://www.forestgeo.si.edu/}).
 }
 \seealso{
 Useful links:
