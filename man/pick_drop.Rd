@@ -88,7 +88,6 @@ Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{guess_plotdim}}, \code{\link{pick_plotname}}
 
 Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{drop_twice_dead}},
-  \code{\link{filter_status}},
   \code{\link{pick_main_stem}},
   \code{\link{pick_plotname}}, \code{\link{pick}}
 }

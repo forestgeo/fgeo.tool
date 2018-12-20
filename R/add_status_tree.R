@@ -53,3 +53,17 @@ check_add_status_tree <- function(x, status_d, status_a) {
   }
   invisible(x)
 }
+
+check_valid_status <- function(x, .status, status_var) {
+  .status_var <- x[[status_var]]
+  check_crucial_names(x, status_var)
+  valid_status <- unique(.status_var)
+  invalid_status <- setdiff(.status, valid_status)
+  if (length(invalid_status) != 0) {
+    warning(
+      "No observation has .status = ", commas(invalid_status), "\n",
+      "  * Detected values: ", commas(valid_status),
+      call. = FALSE
+    )
+  }
+}
