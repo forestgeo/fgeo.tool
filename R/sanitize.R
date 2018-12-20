@@ -1,3 +1,11 @@
+sanitize_view <- function(col_types) {
+  function(x, na = c("", "NA", "NULL"), ...) {
+    check_crucial_names(x, names(col_types))
+    x <- purrr::modify(x, as.character)
+    readr::type_convert(x, col_types = col_types, na = na, ...)
+  }
+}
+
 #' Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.
 #' 
 #' These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to 
@@ -13,8 +21,6 @@
 #' @inheritDotParams readr::type_convert
 #' 
 #' @seealso [read_fgeo()].
-#' 
-#' @family functions to edit ForestGEO data in place
 #' 
 #' @section Acknowledgments:
 #' Thanks to Shameema Jafferjee Esufali for motivating this functions.
@@ -51,21 +57,11 @@
 #' # Fix
 #' taxa_sane <- sanitize_taxa(taxa)
 #' str(taxa_sane[c("SubspeciesID", "ViewID")])
-#' @name sanitize
-NULL
-
-sanitize_view <- function(col_types) {
-  function(x, na = c("", "NA", "NULL"), ...) {
-    check_crucial_names(x, names(col_types))
-    x <- purrr::modify(x, as.character)
-    readr::type_convert(x, col_types = col_types, na = na, ...)
-  }
-}
-
-#' @rdname sanitize
+#' 
+#' @family functions to edit ForestGEO data in place
 #' @export
 sanitize_vft <- sanitize_view(col_types = type_vft())
 
-#' @rdname sanitize
+#' @rdname sanitize_vft
 #' @export
 sanitize_taxa <- sanitize_view(col_types = type_taxa())

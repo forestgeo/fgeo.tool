@@ -36,10 +36,7 @@ Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{extract_insensitive}},
   \code{\link{find_data_of_class}},
   \code{\link{flag_if_group}},
-  \code{\link{nms_extract_anycase}},
-  \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms_try_rename}}, \code{\link{nms}},
+  \code{\link{nms_try_rename}},
   \code{\link{rename_matches}}, \code{\link{type_ensure}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},

@@ -42,7 +42,7 @@ suffix_tags_beyond_edge <- function(x, .match, suffix, x_q = 20, y_q = x_q) {
     is.numeric(x_q),
     is.numeric(y_q)
   )
-  x <- fgeo.tool::nms_lowercase(x)
+  x <- nms_lowercase(x)
   check_crucial_names(x, c("status", "tag", "qx", "qy"))
 
   spillover_status <- detect_spillover(x = x, x_q = x_q, y_q = y_q)
@@ -59,7 +59,7 @@ suffix_tags_beyond_edge <- function(x, .match, suffix, x_q = 20, y_q = x_q) {
       .match = .match,
       suffix = suffix
     )
-    fgeo.tool::nms_restore(x)
+    nms_restore(x)
   }
 }
 

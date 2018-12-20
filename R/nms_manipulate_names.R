@@ -1,3 +1,40 @@
+#' Try to rename an object.
+#' 
+#' Given a name you want and a possible alternative, this function renames an 
+#' object as you want or errs with an informative message.
+#'
+#' @param x A named object.
+#' @param want String of length 1 giving the name you want the object to have.
+#' @param try String of length 1 giving the name the object might have.
+#' 
+#' @seealso nms
+#' 
+#' @examples 
+#' nms_try_rename(c(a = 1), "A", "a")
+#' nms_try_rename(data.frame(a = 1), "A", "a")
+#' 
+#' # Passes
+#' nms_try_rename(c(a = 1, 1), "A", "a")
+#' \dontrun{
+#' # Errs
+#' # nms_try_rename(1, "A", "A")
+#' }
+#' 
+#' @family functions dealing with names
+#' @family functions for developers
+#' @keywords internal
+#' @export
+nms_try_rename <- function(x, want, try) {
+  nm <- nms_extract1(x = x, want = want, try = try)
+  if (length(nm) == 0) {
+    abort(glue("Data must have an element named `{want}` or `{try}`"))
+  }
+  names(x)[grepl(nm, names(x))] <- want
+  x
+}
+
+
+
 #' Lower and restore names.
 #'
 #' These functions are useful together, to lowercase names, then to do something
@@ -13,14 +50,9 @@
 #'
 #' @param x A named object.
 #'
-#' @family functions dealing with names
-#' @family functions for developers
-#' @keywords internal
-#'
 #' @return
 #' * `nms_lowercase()` Returns the object `x` with lowercase names
 #' * `nms_restore()` Returns the object `x` with original (restored) names.
-#' @export
 #'
 #' @examples
 #' cns <- tibble::tibble(CensusID = 1, status = "A")
@@ -33,6 +65,10 @@
 #'
 #' back_to_original <- nms_restore(lowered)
 #' back_to_original
+#'
+#' @family functions dealing with names
+#' @family functions for developers
+#' @noRd
 nms_lowercase <- function(x) {
   is_not_named <- is.null(attr(x, "names"))
   if (is_not_named) {stop("`x` must be named")}
@@ -41,9 +77,6 @@ nms_lowercase <- function(x) {
   x <- set_names(x, tolower)
   x
 }
-
-#' @name nms_lowercase
-#' @export
 nms_restore <- function(x) {
   x_has_attr_names_old <- !is.null(attr(x, "names_old"))
   stopifnot(x_has_attr_names_old)
@@ -77,12 +110,7 @@ nms_restore <- function(x) {
 #' @param new_var The name of a single new variable added to `x`.
 #' @param old_nms A vector containing the old names of `x`.
 #'
-#' @family functions dealing with names
-#' @family functions for developers
-#' @keywords internal
-#'
 #' @return Returns the input with the names changed accordingly.
-#' @export
 #'
 #' @examples
 #' # Data does not contain the variable that will be added
@@ -104,6 +132,10 @@ nms_restore <- function(x) {
 #' mutated <- dplyr::mutate(dfm, newvar = x + 1)
 #' # Restore
 #' nms_restore_newvar(mutated, "newvar", old)
+#' 
+#' @family functions dealing with names
+#' @family functions for developers
+#' @noRd
 nms_restore_newvar <- function(x, new_var, old_nms) {
   if (!any(length(x) == length(old_nms), length(x) == length(old_nms) + 1)) {
     stop(
@@ -139,10 +171,6 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' @param x A named object.
 #' @param ... Strings; each of the names that need to be checked.
 #' 
-#' @family functions for developers
-#' @family functions dealing with names
-#' @keywords internal
-#' 
 #' @examples
 #' v <- c(a = 1, b = 1)
 #' nms_has_any(v, "a", "B")
@@ -163,31 +191,21 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' 
 #' stem <- fgeo.x::stem6
 #' nms_extract_all(stem, "gx", "gy", "PX", "PY")
-#' @name nms
-NULL
-
-#' @rdname nms
-#' @export
+#' 
+#' @family functions for developers
+#' @family functions dealing with names
+#' @noRd
 nms_has_any <- function(x, ...) {
   any(nms_detect(x, ...))
 }
-
-#' @rdname nms
-#' @export
 nms_detect <- function(x, ...) {
   purrr::map_lgl(list(...), ~rlang::has_name(x, .))
 }
-
-#' @rdname nms
-#' @export
 nms_extract_all <- function(x, ...) {
   is_detected <- nms_detect(x, ...)
   nms <- unlist(list(...))
   unique(nms[is_detected])
 }
-
-#' @rdname nms
-#' @export
 nms_extract1 <- function(x, ...) {
   extracted <- nms_extract_all(x, ...)
   if (length(extracted) == 0) {
@@ -199,61 +217,23 @@ nms_extract1 <- function(x, ...) {
 
 
 
-#' Try to rename an object.
-#' 
-#' Given a name you want and a possible alternative, this function renames an 
-#' object as you want or errs with an informative message.
-#'
-#' @param x A named object.
-#' @param want String of length 1 giving the name you want the object to have.
-#' @param try String of length 1 giving the name the object might have.
-#' 
-#' @family functions dealing with names
-#' @family functions for developers
-#' @keywords internal
-#' 
-#' @seealso nms
-#' 
-#' @export
-#' @examples 
-#' nms_try_rename(c(a = 1), "A", "a")
-#' nms_try_rename(data.frame(a = 1), "A", "a")
-#' 
-#' # Passes
-#' nms_try_rename(c(a = 1, 1), "A", "a")
-#' \dontrun{
-#' # Errs
-#' # nms_try_rename(1, "A", "A")
-#' }
-nms_try_rename <- function(x, want, try) {
-  nm <- fgeo.tool::nms_extract1(x = x, want = want, try = try)
-  if (length(nm) == 0) {
-    abort(glue("Data must have an element named `{want}` or `{try}`"))
-  }
-  names(x)[grepl(nm, names(x))] <- want
-  x
-}
-
-
-
 #' Find a name exactly matching a string but regardless of case.
 #'
 #' @param x A named object.
 #' @param nm A string to match names exactly but regardless of case.
-#'
-#' @family functions for developers
-#' @family functions dealing with names
-#' @keywords internal
 #' 
 #' @return A string of the name that was found in `names(x)`.
 #' 
-#' @export
 #' @examples
 #' v <- c(a = 1, B = 1)
 #' nms_extract_anycase(v, "b")
 #' 
 #' dfm <- data.frame(a = 1, B = 1)
 #' nms_extract_anycase(dfm, "b")
+#' 
+#' @family functions for developers
+#' @family functions dealing with names
+#' @noRd
 nms_extract_anycase <- function(x, nm) {
   has_nms <- !is.null(attr(x, "names"))
   stopifnot(has_nms, is.character(nm))
@@ -270,10 +250,6 @@ nms_extract_anycase <- function(x, nm) {
 #' its names.
 #'
 #' @param x A named object or a character string.
-#' 
-#' @family functions dealing with names
-#' @family functions for developers
-#' @keywords internal
 #'
 #' @return A modified version of `x` with tidy names or a string of tidy names.
 #'
@@ -305,43 +281,39 @@ nms_extract_anycase <- function(x, nm) {
 #' # Makes more sense when operating on named objects
 #' messy_list <- list(`Hi yOu` = 1)
 #' nms_tidy(messy_list)
+#' 
+#' @family functions dealing with names
+#' @family functions for developers
+#' @noRd
 #' @name nms_tidy
-NULL
-
-#' @rdname nms_tidy
-#' @export
 nms_tidy <- function(x) {
-  if (rlang::is_named(x)) {
+  if (is_named(x)) {
     names(x) <- gsub(" ", "_", tolower(names(x)))
     return(x)
-  } else {
-    to_tidy_names(x)
   }
+  
+  gsub(" ", "_", tolower(x))
 }
 
 
 
-# Not exported ------------------------------------------------------------
-
-# # Examples
-# vft <- yosemite::ViewFullTable_yosemite
-# stem <- yosemite::yosemite_s1_lao
-# tree <- yosemite::yosemite_f1_lao
-# nms_minus_lower_nms(stem, vft)
-# nms_minus_lower_nms(vft, stem)
-# nms_minus_lower_nms(stem, tree)
-#
 #' Comparing two dataframes, How many names differ only in case?
 #'
 #' @param table1 A dataframe.
 #' @param table2 A dataframe.
-#' 
-#' @family functions dealing with names
-#' @family functions for developers
-#' @keywords internal
 #'
 #' @return An number indicating how many names are different only in their case.
 #' 
+#' @examples 
+#' vft <- yosemite::ViewFullTable_yosemite
+#' stem <- yosemite::yosemite_s1_lao
+#' tree <- yosemite::yosemite_f1_lao
+#' nms_minus_lower_nms(stem, vft)
+#' nms_minus_lower_nms(vft, stem)
+#' nms_minus_lower_nms(stem, tree)
+#' 
+#' @family functions dealing with names
+#' @family functions for developers
 #' @noRd
 nms_minus_lower_nms <- function(table1, table2) {
   stopifnot(is.data.frame(table1), is.data.frame(table2))

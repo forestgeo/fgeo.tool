@@ -31,10 +31,7 @@ Other functions to check inputs: \code{\link{flag_if_group}},
 Other functions for developers: \code{\link{extract_insensitive}},
   \code{\link{find_data_of_class}},
   \code{\link{flag_if_group}}, \code{\link{is_multiple}},
-  \code{\link{nms_extract_anycase}},
-  \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms_try_rename}}, \code{\link{nms}},
+  \code{\link{nms_try_rename}},
   \code{\link{rename_matches}}, \code{\link{type_ensure}}
 
 Other general functions to assert: \code{\link{extract_insensitive}}

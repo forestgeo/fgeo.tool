@@ -45,6 +45,6 @@ mutate(census, sp = recode(sp, lookup(look$old, look$new)))
 \code{dplyr::recode()}
 
 Other general functions to edit data in place: \code{\link{fill_na}},
-  \code{\link{suffix_match}}, \code{\link{to_tidy_names}}
+  \code{\link{suffix_match}}
 }
 \concept{general functions to edit data in place}

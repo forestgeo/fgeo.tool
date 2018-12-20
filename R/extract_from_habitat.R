@@ -53,8 +53,8 @@ extract_plotdim <- function(habitats) {
 
 rename_to_xy <- function(x) {
   .x <- x
-  .x <- fgeo.tool::nms_try_rename(.x, want = "x", try = "gx")
-  .x <- fgeo.tool::nms_try_rename(.x, want = "y", try = "gy")
+  .x <- nms_try_rename(.x, want = "x", try = "gx")
+  .x <- nms_try_rename(.x, want = "y", try = "gy")
   .x
 }
 

@@ -27,24 +27,16 @@ nms_try_rename(c(a = 1, 1), "A", "a")
 # Errs
 # nms_try_rename(1, "A", "A")
 }
+
 }
 \seealso{
 nms
-
-Other functions dealing with names: \code{\link{nms_extract_anycase}},
-  \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms}}
 
 Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{extract_insensitive}},
   \code{\link{find_data_of_class}},
   \code{\link{flag_if_group}}, \code{\link{is_multiple}},
-  \code{\link{nms_extract_anycase}},
-  \code{\link{nms_lowercase}},
-  \code{\link{nms_restore_newvar}}, \code{\link{nms_tidy}},
-  \code{\link{nms}}, \code{\link{rename_matches}},
-  \code{\link{type_ensure}}
+  \code{\link{rename_matches}}, \code{\link{type_ensure}}
 }
 \concept{functions dealing with names}
 \concept{functions for developers}

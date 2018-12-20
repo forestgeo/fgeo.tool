@@ -178,8 +178,8 @@ restore_add_var <- function(.x, x) {
 }
 
 rename_pxpy <- function(x) {
-  missing_names_gxgy <- !fgeo.tool::nms_has_any(x, "gx", "gy")
-  has_names_pxpy <- fgeo.tool::nms_has_any(x, "px", "py")
+  missing_names_gxgy <- !nms_has_any(x, "gx", "gy")
+  has_names_pxpy <- nms_has_any(x, "px", "py")
   missing_names_gxgy && has_names_pxpy
 }
 
