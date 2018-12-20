@@ -7,11 +7,6 @@
 #' @param name Names of the columns that store the names and values.
 #'
 #' @return A list of dataframes.
-#' 
-#' @family general functions to deal with names
-#' @family functions for internal use in other fgeo packages
-#' @keywords internal
-#' @export
 #'
 #' @examples
 #' dfs <- list(a = data.frame(x = 1), b = data.frame(x = 1))
@@ -21,6 +16,11 @@
 #'
 #' dfs2 <- list(data.frame(x = 1), data.frame(x = 1))
 #' name_dfs(dfs2)
+#' 
+#' @family general functions to deal with names
+#' @family functions for internal use in other fgeo packages
+#' @keywords internal
+#' @export
 name_dfs <- function(dfs, name = "name") {
   check_name_dfs(dfs, name)
 

@@ -12,5 +12,5 @@ git commit -m "$message"
 git add .
 git commit --amend -m "$message"
 
-mv ./R/drop_twice_dead.R ../fgeo.misc/R/drop_twice_dead.R
-mv ./tests/testthat/test-drop_twice_dead.R ../fgeo.misc/tests/testthat/test-drop_twice_dead.R
+# mv ./R/flag_if_group.R ../fgeo.analyze/R/flag_if_group.R
+# mv ./tests/testthat/test-flag_if_group.R ../fgeo.analyze/tests/testthat/test-flag_if_group.R

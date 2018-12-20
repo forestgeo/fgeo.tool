@@ -14,11 +14,6 @@
 #'
 #' @return A condition (and `.data` invisibly).
 #' 
-#' @family functions to throw conditions
-#' @family functions for internal use in other fgeo packages
-#' @keywords internal
-#' @export
-#' 
 #' @examples
 #' # WITH VECTORS
 #' dupl <- c(1, 1)
@@ -40,6 +35,11 @@
 #' flag_if(.df, "b", is_multiple)
 #' flag_if(.df, "a", is_multiple)
 #' flag_if(.df, "a", is_multiple, message, "Custom")
+#' 
+#' @family functions to throw conditions
+#' @family functions for internal use in other fgeo packages
+#' @keywords internal
+#' @export
 flag_if <- function(.data, ...) {
   UseMethod("flag_if")
 }

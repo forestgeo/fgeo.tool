@@ -35,7 +35,6 @@ extract_insensitive(names(vft), tolower(names(vft)))
 }
 \seealso{
 Other functions for developers: \code{\link{check_crucial_names}},
-  \code{\link{find_data_of_class}},
   \code{\link{flag_if_group}}, \code{\link{is_multiple}},
   \code{\link{nms_try_rename}},
   \code{\link{rename_matches}}, \code{\link{type_ensure}}

@@ -24,6 +24,7 @@ x <- data.frame(
   gy = c(0, 300, 481)
 )
 guess_plotdim(x)
+
 }
 \seealso{
 Other functions for fgeo census and vft: \code{\link{pick_drop}}

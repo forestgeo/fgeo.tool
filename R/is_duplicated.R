@@ -6,15 +6,7 @@
 #'
 #' @param .data A vector.
 #'
-#' @family functions to check inputs
-#' @family functions for developers
-#' @family general predicates
-#'
 #' @return Logical.
-#'
-#' @family functions for internal use in other fgeo packages
-#' @keywords internal
-#' @export
 #'
 #' @examples
 #' is_multiple(c(1, 2))
@@ -24,6 +16,13 @@
 #' is_duplicated(c(1, 2))
 #' is_duplicated(c(1, 1))
 #' is_duplicated(c(1, NA))
+#'
+#' @family functions for internal use in other fgeo packages
+#' @family functions to check inputs
+#' @family functions for developers
+#' @family general predicates
+#' @keywords internal
+#' @export
 is_multiple <- function(.data) {
   length(unique(stats::na.omit(.data))) > 1
 }

@@ -1,7 +1,7 @@
 #' Import multiple files into a list using any given reading function.
 #' 
-#' @param .f A function able to read the desired file format.
 #' @inheritParams fs::dir_ls 
+#' @param .f A function able to read the desired file format.
 #'
 #' @return A modified version of the input function, able to read all files
 #'   from a directory (provided they all are of the suitable format).

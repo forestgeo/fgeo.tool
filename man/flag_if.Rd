@@ -57,6 +57,7 @@ flag_if(c(1, NA), is_duplicated)
 flag_if(.df, "b", is_multiple)
 flag_if(.df, "a", is_multiple)
 flag_if(.df, "a", is_multiple, message, "Custom")
+
 }
 \seealso{
 Other functions for internal use in other fgeo packages: \code{\link{guess_plotdim}},
