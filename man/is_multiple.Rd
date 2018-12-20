@@ -31,8 +31,7 @@ is_duplicated(c(1, NA))
 }
 \seealso{
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{guess_plotdim}}, \code{\link{name_dfs}},
-  \code{\link{suffix_match}}
+  \code{\link{guess_plotdim}}, \code{\link{suffix_match}}
 
 Other functions to check inputs: \code{\link{check_crucial_names}},
   \code{\link{flag_if_group}}

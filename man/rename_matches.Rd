@@ -29,8 +29,7 @@ Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{flag_if_group}}, \code{\link{is_multiple}},
   \code{\link{nms_try_rename}}, \code{\link{type_ensure}}
 
-Other general functions to deal with names: \code{\link{extract_insensitive}},
-  \code{\link{name_dfs}}
+Other general functions to deal with names: \code{\link{extract_insensitive}}
 }
 \concept{functions for developers}
 \concept{general functions to deal with names}

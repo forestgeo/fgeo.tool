@@ -39,8 +39,7 @@ Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{nms_try_rename}},
   \code{\link{rename_matches}}, \code{\link{type_ensure}}
 
-Other general functions to deal with names: \code{\link{name_dfs}},
-  \code{\link{rename_matches}}
+Other general functions to deal with names: \code{\link{rename_matches}}
 
 Other general functions to assert: \code{\link{check_crucial_names}}
 }
