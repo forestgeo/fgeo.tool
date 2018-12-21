@@ -2,13 +2,12 @@
 #'
 #' @param x A vector or dataframe.
 #'
-#' @family functions to throw conditions
-#'
 #' @return A warning message and invisible `x`.
 #'
 #' @examples
 #' warn_na(c(x = 1, y = NA))
-#' @name condition_na
+#' 
+#' @family functions to throw conditions
 #' @noRd
 warn_na <- function(x) {
   stopifnot(

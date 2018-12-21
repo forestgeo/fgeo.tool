@@ -15,8 +15,7 @@ anchor <- function(x) {
   paste0("^", x, "$")
 }
 
-#' Round to multiple of any number. Copied from `plyr:::round_any.numeric()`.
-#' @noRd
+# Copied from `plyr:::round_any.numeric()`
 round_any <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
 }
