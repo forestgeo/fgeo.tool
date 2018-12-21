@@ -170,8 +170,7 @@ evaluates it directly; if it is is a dataframe, it evaluates a given column.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other functions for internal use in other fgeo packages: <code><a href='guess_plotdim.html'>guess_plotdim</a></code>,
-  <code><a href='is_multiple.html'>is_multiple</a></code>, <code><a href='name_dfs.html'>name_dfs</a></code>,
-  <code><a href='suffix_match.html'>suffix_match</a></code></p></div>
+  <code><a href='is_multiple.html'>is_multiple</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -191,7 +190,8 @@ evaluates it directly; if it is is a dataframe, it evaluates a given column.</p>
 <span class='co'># WITH DATAFRAMES</span>
 <span class='no'>.df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"b"</span>, <span class='no'>is_multiple</span>)
-<span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: a: Flagged values were detected.</span></div><div class='input'><span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>, <span class='no'>message</span>, <span class='st'>"Custom"</span>)</div><div class='output co'>#&gt; <span class='message'>Custom</span></div></pre>
+<span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: a: Flagged values were detected.</span></div><div class='input'><span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>, <span class='no'>message</span>, <span class='st'>"Custom"</span>)</div><div class='output co'>#&gt; <span class='message'>Custom</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

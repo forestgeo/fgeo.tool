@@ -37,7 +37,7 @@ Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{pick_drop}}, \code{\link{pick_plotname}}
 
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
-  \code{\link{is_multiple}}, \code{\link{suffix_match}}
+  \code{\link{is_multiple}}
 }
 \concept{functions for fgeo census}
 \concept{functions for fgeo census and vft}

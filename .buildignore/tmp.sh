@@ -12,5 +12,5 @@ git commit -m "$message"
 git add .
 git commit --amend -m "$message"
 
-mv ./R/suffix_edge_tag.R ../fgeo.misc/R/suffix_edge_tag.R
-mv ./tests/testthat/test-suffix_edge_tag.R ../fgeo.misc/tests/testthat/test-suffix_edge_tag.R
+mv ./R/suffix_match.R ../fgeo.map/R/suffix_match.R
+mv ./tests/testthat/test-suffix_match.R ../fgeo.map/tests/testthat/test-suffix_match.R
