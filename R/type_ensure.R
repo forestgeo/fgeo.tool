@@ -4,15 +4,10 @@
 #' @param ensure_nms Character vector giving names of `df` to ensure `type`
 #' @param type A string giving the type to ensure in columns `ensure_nms`
 #' 
-#' @family functions to operate on column types
-#' @family functions for developers
-#' @keywords internal
-#' 
 #' @seealso [purrr::modify_at()].
 #'
 #' @return A modified version of `df`, with columns (specified in `ensure_nms`)
 #'   of type `type`.
-#' @export
 #'
 #' @examples
 #' dfm <- tibble::tibble(
@@ -24,6 +19,11 @@
 #' dfm
 #' type_ensure(dfm, c("w", "x", "y"), "numeric")
 #' type_ensure(dfm, c("w", "x", "y", "z"), "character")
+#' 
+#' @family functions to operate on column types
+#' @family functions for developers
+#' @keywords internal
+#' @export
 type_ensure <- function(df, ensure_nms, type = "numeric") {
   ensure <- df[ensure_nms]
   is_type <- paste0("is.", type)

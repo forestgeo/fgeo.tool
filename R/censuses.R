@@ -1,11 +1,8 @@
 #' Create objects of class `censuses_*`, where `*` depends on the input.
 #'
 #' @param .data A ForestGEO-like dataset.
-#' 
-#' @family functions to construct fgeo classes
 #'
 #' @return An object of class `census_*`, where `*` depends on the input.
-#' @export
 #'
 #' @examples
 #' censuses_lst <- as_censuses(list(
@@ -13,18 +10,21 @@
 #'   c2 = tibble(dbh = 8:9)
 #' ))
 #' class(censuses_lst)
+#' 
+#' @family functions to construct fgeo classes
+#' @export
 as_censuses <- function(.data) {
   UseMethod("as_censuses")
 }
 
-#' @export
 #' @rdname as_censuses
+#' @export
 as_censuses.default <- function(.data) {
   abort_bad_class(.data)
 }
 
-#' @export
 #' @rdname as_censuses
+#' @export
 as_censuses.list <- function(.data) {
   new_censuses_lst(.data)
 }

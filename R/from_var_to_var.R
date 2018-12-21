@@ -20,7 +20,6 @@
 #' @return A vector or dataframe (see examples).
 #'
 #' @author Rick Condit, Suzanne Lao.
-#' @keywords internal
 #' @examples
 #' gxgy_to_index(c(0, 400, 990), c(0, 200, 490), gridsize = 20)
 #'
@@ -64,6 +63,8 @@
 #' is.vector(x)
 #'
 #' index_to_gxgy(1:3, gridsize, plotdim)
+#' 
+#' @keywords internal
 #' @name from_var_to_var
 NULL
 

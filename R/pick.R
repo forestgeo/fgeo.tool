@@ -8,9 +8,6 @@
 #'   censuses.
 #' @param ... Other arguments passed to methods.
 #' 
-#' @family functions to pick or drop rows of a ForestGEO dataframe
-#'
-#' @export
 #'
 #' @examples
 #' censuses_lst <- as_censuses(list(
@@ -28,6 +25,9 @@
 #' dir(path)
 #' censuses <- as_censuses(rdata_list(path))
 #' pick(censuses, dbh > 30)
+#'
+#' @family functions to pick or drop rows of a ForestGEO dataframe
+#' @export
 pick <- function(.data, ..., key = NULL) {
   .rowid <- pick_key_rows(.data = .data, ..., key = key)
   out <- pick_all_rows(.data, .rowid)

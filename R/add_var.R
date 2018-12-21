@@ -144,6 +144,23 @@ add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
   w_rowcol
 }
 
+#' @rdname add_var
+#' @export
+add_col_row2 <- function(x) {
+  x <- add_var_from_quadratname(x, "^(..)..$", "col")
+  x <- add_var_from_quadratname(x, "^..(..)$", "row")
+  x
+}
+
+add_var_from_quadratname <- function(x, pattern, new_var) {
+  if (!is.data.frame(x)) {
+    abort("`x` must be a data.frame")
+  }
+  .x <- check_crucial_names(set_names(x, tolower), "quadratname")
+  new_col <- set_names(data.frame(.x$quadratname), new_var)
+  cbind(x, new_col)
+}
+
 #' Rename px/py to gx/gy if x lacks gx/gy but has px/py.
 #' 
 #' @param x fgeo dataframe.
@@ -171,6 +188,7 @@ gxgy_to_var <- function(.x, var, gridsize, plotdim) {
 #' @param .x A dataframe; a modified version of `x` where px/py is renamed to
 #'   gx/gy.
 #' @param x A dataframe.
+#' 
 #' @noRd
 restore_add_var <- function(.x, x) {
   .x <- restore_pxpy_if_necessary(.x, set_names(x, tolower))
@@ -209,21 +227,3 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
   
   invisible(x)
 }
-
-#' @rdname add_var
-#' @export
-add_col_row2 <- function(x) {
-  x <- add_var_from_quadratname(x, "^(..)..$", "col")
-  x <- add_var_from_quadratname(x, "^..(..)$", "row")
-  x
-}
-
-add_var_from_quadratname <- function(x, pattern, new_var) {
-  if (!is.data.frame(x)) {
-    abort("`x` must be a data.frame")
-  }
-  .x <- check_crucial_names(set_names(x, tolower), "quadratname")
-  new_col <- set_names(data.frame(.x$quadratname), new_var)
-  cbind(x, new_col)
-}
-

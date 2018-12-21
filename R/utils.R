@@ -3,13 +3,19 @@ pad_dbl <- function(string, width, pad) {
   sprintf(fmt, as.double(string))
 }
 
-anchor <- function(x) paste0("^", x, "$")
+commas <- function(...) {
+  paste0(..., collapse = ", ")
+}
 
-commas <- function(...) paste0(..., collapse = ", ")
-glue_comma <- commas
+pipes <- function(...) {
+  paste0(..., collapse = "|")
+}
 
-#' Round to multiple of any number. Copied from `plyr:::round_any.numeric()`.
-#' @noRd
+anchor <- function(x) {
+  paste0("^", x, "$")
+}
+
+# Copied from `plyr:::round_any.numeric()`
 round_any <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
 }

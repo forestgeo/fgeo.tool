@@ -74,6 +74,7 @@ drop_status(cns, "D", na.rm = TRUE)
 
 # Compose
 pick_dbh_over(drop_status(cns, "D", na.rm = TRUE), 100)
+
 }
 \seealso{
 \code{dplyr::filter()}, \code{Extract} (\code{[}).
@@ -87,8 +88,7 @@ Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}, \code{\link{add_var}},
   \code{\link{guess_plotdim}}, \code{\link{pick_plotname}}
 
-Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{drop_twice_dead}},
-  \code{\link{pick_main_stem}},
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_main_stem}},
   \code{\link{pick_plotname}}, \code{\link{pick}}
 }
 \concept{functions for fgeo census}

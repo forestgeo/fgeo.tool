@@ -15,12 +15,12 @@ sanitize_view <- function(col_types) {
 #' * Ensure that missing values are represented with `NA`s -- not with the 
 #' literal string "NULL".
 #' 
+#' @inheritParams readr::type_convert
 #' @param x A dataframe; either a ForestGEO ViewFullTable (`sanitize_vft()`) or
 #'   ViewTaxonomy (`sanitize_vft()`).
-#' @inheritParams readr::type_convert
 #' @inheritDotParams readr::type_convert
 #' 
-#' @seealso [read_fgeo()].
+#' @seealso [read_vft()].
 #' 
 #' @section Acknowledgments:
 #' Thanks to Shameema Jafferjee Esufali for motivating this functions.

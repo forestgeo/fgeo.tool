@@ -7,16 +7,16 @@
 #'
 #' @seealso `tidyr::drop_na()`.
 #'
-#' @family general functions to pick or drop rows of a dataframe
-#'
 #' @return A dataframe.
-#' @keywords internal
-#' @export
 #'
 #' @examples
 #' dfm <- data.frame(a = 1, b = NA)
 #' drop_if_na(dfm, "b")
 #' drop_if_na(dfm, "a")
+#' 
+#' @family general functions to pick or drop rows of a dataframe
+#' @keywords internal
+#' @export
 drop_if_na <- function(dfm, x) {
   if (!is.data.frame(dfm)) {
     stop("`dfm` must be a dataframe.", call. = FALSE)
