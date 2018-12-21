@@ -21,6 +21,7 @@ Valuable mostly for its warning.
 dfm <- data.frame(a = 1, b = NA)
 drop_if_na(dfm, "b")
 drop_if_na(dfm, "a")
+
 }
 \seealso{
 \code{tidyr::drop_na()}.

@@ -4,7 +4,7 @@
 \alias{tool_example}
 \title{Path to directory containing example data.}
 \usage{
-tool_example(path)
+tool_example(path = NULL)
 }
 \arguments{
 \item{path}{Path to a file (with extension) from inst/extdata/.}

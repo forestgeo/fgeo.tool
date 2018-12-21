@@ -4,16 +4,16 @@
 #' @param plot_nm Length-1 character vector of the value of `PlotName` (or
 #'   `plotname`) to pick from `vft`.
 #'
-#' @family functions for fgeo vft
-#' @family functions to pick or drop rows of a ForestGEO dataframe
-#'
 #' @return A dataframe.
-#' @export
 #'
 #' @examples
 #' vft <- data.frame(PlotName = c("a", "b"), stringsAsFactors = FALSE)
 #' pick_plotname(vft)
 #' pick_plotname(vft, "b")
+#'
+#' @family functions for fgeo vft
+#' @family functions to pick or drop rows of a ForestGEO dataframe
+#' @export
 pick_plotname <- function(vft, plot_nm = NULL) {
   stopifnot(is.data.frame(vft))
 

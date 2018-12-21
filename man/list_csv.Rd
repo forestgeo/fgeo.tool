@@ -28,6 +28,7 @@ list_csv(lst, output, prefix = "myfile-")
 
 # Look inside the output directory to confirm it worked
 dir(output, pattern = "myfile")
+
 }
 \seealso{
 Other general functions to export data: \code{\link{list_df}}

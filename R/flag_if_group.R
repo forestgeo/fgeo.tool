@@ -10,15 +10,9 @@
 #'   [base::stop()].
 #' @param msg String to customize the returned message.
 #'
-#' @family functions to check inputs
-#' @family predicates
-#' @family functions for developers
-#' @keywords internal
-#'
 #' @return
 #' * `flag_if_group()`: A condition and its first input, invisibly.
 #' * `detect_if_group()`: Logical of length 1.
-#' @export
 #'
 #' @examples
 #' tree <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
@@ -28,6 +22,12 @@
 #' by_censusid <- group_by(tree, CensusID)
 #' detect_if_group(by_censusid, "treeID", is_multiple)
 #' flag_if_group(by_censusid, "treeID", is_multiple)
+#'
+#' @family functions to check inputs
+#' @family predicates
+#' @family functions for developers
+#' @keywords internal
+#' @export
 flag_if_group <- function(.data, 
                           name, 
                           predicate, 

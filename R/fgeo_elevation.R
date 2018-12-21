@@ -14,16 +14,11 @@
 #' 
 #' @param x Either a dataframe or a dataframe stored in the element `col` of a
 #'   list.
-#'   
-#' @family functions to construct fgeo classes
-#' @family habitat functions
 #'
 #' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
 #' 
 #' @section Acknowledgments:
 #'   This function was inspired by David Kenfack.
-#' 
-#' @export
 #'
 #' @examples
 #' # Dataframe input
@@ -39,6 +34,10 @@
 #' 
 #' elev <- fgeo_elevation(elev_list)
 #' str(elev) 
+#'   
+#' @family functions to construct fgeo classes
+#' @family habitat functions
+#' @export
 fgeo_elevation <- function(x) {
   UseMethod("fgeo_elevation")
 }

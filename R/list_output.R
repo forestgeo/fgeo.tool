@@ -5,11 +5,7 @@
 #' @param lst A list of dataframes.
 #' @param dir Character; the directory where the files will be saved.
 #' @param prefix Character; a prefix to add to the file names.
-#'
-#' @family functions to handle multiple spreadsheets of an excel workbook
-#' @family general functions to export data
 #' 
-#' @export
 #' @examples
 #' lst <- list(df1 = data.frame(x = 1), df2 = data.frame(x = 2))
 #' 
@@ -19,6 +15,10 @@
 #'
 #' # Look inside the output directory to confirm it worked
 #' dir(output, pattern = "myfile")
+#'
+#' @family functions to handle multiple spreadsheets of an excel workbook
+#' @family general functions to export data
+#' @export
 list_csv <- function(lst, dir, prefix = NULL) {
   stopifnot(is.list(lst), each_list_item_is_df(lst), is.character(dir))
   if (!is.null(prefix)) {
@@ -67,10 +67,7 @@ list_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 #'
 #' @seealso [purrr::reduce()] and [dplyr::full_join()].
 #' 
-#' @family general functions to export data
-#'
 #' @return A dataframe.
-#' @export
 #'
 #' @examples
 #' lst <- list(
@@ -89,6 +86,8 @@ list_csv_ <- function(df, df_name,  prefix = NULL, dir) {
 #'   list(data.frame(x = 1), data.frame(z = 2)),
 #'   by = c("x" = "z")
 #' )
+#' @family general functions to export data
+#' @export
 list_df <- function(lst, df_names = NULL, by = NULL) {
   stopifnot(is.list(lst), each_list_item_is_df(lst))
 
