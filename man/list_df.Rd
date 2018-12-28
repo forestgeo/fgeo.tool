@@ -26,17 +26,18 @@ This function wraps \code{\link[purrr:reduce]{purrr::reduce()}} and \code{\link[
 all or some dataframes in a list into a single dataframe.
 }
 \examples{
-lst <- list(
+dfs <- list(
   a = data.frame(x = 1),
   b = data.frame(x = 2, y = 2),
   c = data.frame(x = 1, z = 3)
 )
 
-list_df(lst, df_names = c("a", "c"))
+list_df(dfs)
 
-list_df(lst, df_names = c("b", "c"))
+list_df(dfs, df_names = c("a", "c"))
 
-list_df(list(data.frame(1)))
+list_df(dfs, df_names = c("b", "c"))
+
 # Use argument `by` if dataframes have no matching variable,
 list_df(
   list(data.frame(x = 1), data.frame(z = 2)),
