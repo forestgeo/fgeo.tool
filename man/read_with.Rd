@@ -19,41 +19,45 @@ from a directory (provided they all are of the suitable format).
 Import multiple files into a list using any given reading function.
 }
 \examples{
-path_rds <- tool_example("rds")
-path_rds
-dir(path_rds)
+rds_file <- tool_example("rds")
+dir(rds_file)
 
 rds_list <- read_with(readr::read_rds)
-rds_list(path_rds)
+rds_list(rds_file)
 
 # Same
-read_with(readr::read_rds)(path_rds)
+read_with(readr::read_rds)(rds_file)
 
 # Read specific files by matching file names via `regexp`
-dir(path_rds)
-read_with(readr::read_rds, regexp = "6")(path_rds)
-read_with(readr::read_rds, regexp = "5[.]rds")(path_rds)
-read_with(readr::read_rds, regexp = "tree.*[.]rds")(path_rds)
+dir(rds_file)
+read_with(readr::read_rds, regexp = "6")(rds_file)
+read_with(readr::read_rds, regexp = "5[.]rds")(rds_file)
+read_with(readr::read_rds, regexp = "tree.*[.]rds")(rds_file)
 
 # Read excel files --------------------------------------------------------
+excel_file <- tool_example("xl")
+dir(excel_file)
 \dontrun{
-if (!requireNamespace("readxl"))
-  stop("Please install readxl with `install.packges('readxl')`")
-path_xl <- tool_example("xl")
-dir(path_xl)
-read_with(readxl::read_excel)(path_xl)
+readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)
+if (readxl_is_installed) {
+  library(readxl)
+  
+  read_with(readxl::read_excel)(excel_file)
+}
 }
 
 # Read mixed files --------------------------------------------------------
+mixed_files <- tool_example("mixed_files")
+dir(mixed_files)
 \dontrun{
-if (!requireNamespace("rio"))
-  stop("Please install rio with `install.packges('rio')`")
-if (!requireNamespace("readxl"))
-  stop("Please install readxl with `install.packges('readxl')`")
-
-path_mixed_files <- tool_example("mixed_files")
-dir(path_mixed_files)
-read_with(rio::import)(path_mixed_files)
+readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)
+rio_is_installed <- requireNamespace("rio", quietly = TRUE)
+if (rio_is_installed && readxl_is_installed) {
+  library(rio)
+  library(readxl)
+  
+  read_with(rio::import)(mixed_files)
+}
 }
 }
 \seealso{

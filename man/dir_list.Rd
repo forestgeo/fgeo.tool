@@ -45,34 +45,29 @@ input_output, i.e. file-extension_list. If none of these functions do what
 you want, create your own with \code{\link[=read_with]{read_with()}}.
 }
 \examples{
-path_rdata <- tool_example("rdata")
-path_rdata
-dir(path_rdata)
-rdata_list(path_rdata)
+tool_example()
 
-path_rds <- tool_example("rds")
-path_rds
-dir(path_rds)
-rds_list(path_rds)
+dir(tool_example("rdata"))
+rdata_list(tool_example("rdata"))
 
-path_csv <- tool_example("csv")
-path_csv
-dir(path_csv)
-csv_list(path_csv)
+dir(tool_example("rds"))
+rds_list(tool_example("rds"))
 
-path_tsv <- tool_example("tsv")
-path_tsv
-dir(path_tsv)
-tsv_list(path_tsv)
+dir(tool_example("csv"))
+csv_list(tool_example("csv"))
+
+dir(tool_example("tsv"))
+tsv_list(tool_example("tsv"))
 
 # Weird: Tab separated columns in a file with .csv extension
-path_weird <- tool_example("weird")
-dir(path_weird)
+dir(tool_example("weird"))
+
 # Extension is .csv, but this is not what you want
-csv_list(path_weird)
+csv_list(tool_example("weird"))
+
 # Use this instead
-delim_list(path_weird, delim = "\\t")
-  
+delim_list(tool_example("weird"), delim = "\\t")
+
 }
 \seealso{
 Other general functions to import data: \code{\link{read_with}}

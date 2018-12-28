@@ -30,11 +30,15 @@ read_fgeo <- function(col_types) {
 #' @return A dataframe (or tibble).
 #'
 #' @examples
-#' \dontrun{
-#' # Needs internet connection.
-#' read_vft("http://bit.ly/fgeo-data-luquillo-vft-random")
-#' read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
-#' }
+#' library(fgeo.x)
+#' 
+#' x_example()
+#' 
+#' file_vft <- x_example("vft_4quad.csv")
+#' read_vft(file_vft)
+#' 
+#' file_taxa <- x_example("taxa.csv")
+#' read_taxa(file_taxa)
 #' 
 #' @family functions to read text files delivered by ForestgGEO's database
 #' @family functions to import a single file of ForestGEO data

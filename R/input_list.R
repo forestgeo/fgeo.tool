@@ -7,41 +7,45 @@
 #'   from a directory (provided they all are of the suitable format).
 #'  
 #' @examples
-#' path_rds <- tool_example("rds")
-#' path_rds
-#' dir(path_rds)
+#' rds_file <- tool_example("rds")
+#' dir(rds_file)
 #' 
 #' rds_list <- read_with(readr::read_rds)
-#' rds_list(path_rds)
+#' rds_list(rds_file)
 #' 
 #' # Same
-#' read_with(readr::read_rds)(path_rds)
+#' read_with(readr::read_rds)(rds_file)
 #' 
 #' # Read specific files by matching file names via `regexp`
-#' dir(path_rds)
-#' read_with(readr::read_rds, regexp = "6")(path_rds)
-#' read_with(readr::read_rds, regexp = "5[.]rds")(path_rds)
-#' read_with(readr::read_rds, regexp = "tree.*[.]rds")(path_rds)
+#' dir(rds_file)
+#' read_with(readr::read_rds, regexp = "6")(rds_file)
+#' read_with(readr::read_rds, regexp = "5[.]rds")(rds_file)
+#' read_with(readr::read_rds, regexp = "tree.*[.]rds")(rds_file)
 #' 
 #' # Read excel files --------------------------------------------------------
+#' excel_file <- tool_example("xl")
+#' dir(excel_file)
 #' \dontrun{
-#' if (!requireNamespace("readxl"))
-#'   stop("Please install readxl with `install.packges('readxl')`")
-#' path_xl <- tool_example("xl")
-#' dir(path_xl)
-#' read_with(readxl::read_excel)(path_xl)
+#' readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)
+#' if (readxl_is_installed) {
+#'   library(readxl)
+#'   
+#'   read_with(readxl::read_excel)(excel_file)
+#' }
 #' }
 #' 
 #' # Read mixed files --------------------------------------------------------
+#' mixed_files <- tool_example("mixed_files")
+#' dir(mixed_files)
 #' \dontrun{
-#' if (!requireNamespace("rio"))
-#'   stop("Please install rio with `install.packges('rio')`")
-#' if (!requireNamespace("readxl"))
-#'   stop("Please install readxl with `install.packges('readxl')`")
-#'
-#' path_mixed_files <- tool_example("mixed_files")
-#' dir(path_mixed_files)
-#' read_with(rio::import)(path_mixed_files)
+#' readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)
+#' rio_is_installed <- requireNamespace("rio", quietly = TRUE)
+#' if (rio_is_installed && readxl_is_installed) {
+#'   library(rio)
+#'   library(readxl)
+#'   
+#'   read_with(rio::import)(mixed_files)
+#' }
 #' }
 #' @family general functions to import data
 #' @export
@@ -82,34 +86,29 @@ read_with <- function(.f, regexp = NULL) {
 #' @return A list of dataframes.
 #' 
 #' @examples 
-#' path_rdata <- tool_example("rdata")
-#' path_rdata
-#' dir(path_rdata)
-#' rdata_list(path_rdata)
+#' tool_example()
 #' 
-#' path_rds <- tool_example("rds")
-#' path_rds
-#' dir(path_rds)
-#' rds_list(path_rds)
+#' dir(tool_example("rdata"))
+#' rdata_list(tool_example("rdata"))
 #' 
-#' path_csv <- tool_example("csv")
-#' path_csv
-#' dir(path_csv)
-#' csv_list(path_csv)
+#' dir(tool_example("rds"))
+#' rds_list(tool_example("rds"))
 #' 
-#' path_tsv <- tool_example("tsv")
-#' path_tsv
-#' dir(path_tsv)
-#' tsv_list(path_tsv)
+#' dir(tool_example("csv"))
+#' csv_list(tool_example("csv"))
+#' 
+#' dir(tool_example("tsv"))
+#' tsv_list(tool_example("tsv"))
 #' 
 #' # Weird: Tab separated columns in a file with .csv extension
-#' path_weird <- tool_example("weird")
-#' dir(path_weird)
+#' dir(tool_example("weird"))
+#' 
 #' # Extension is .csv, but this is not what you want
-#' csv_list(path_weird)
+#' csv_list(tool_example("weird"))
+#' 
 #' # Use this instead
-#' delim_list(path_weird, delim = "\t")
-#'   
+#' delim_list(tool_example("weird"), delim = "\t")
+#' 
 #' @family general functions to import data
 #' @name dir_list
 NULL

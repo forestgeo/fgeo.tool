@@ -160,31 +160,43 @@ or <code>x</code> and <code>y</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Dataframe input</span>
-<span class='no'>elev_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>elevation</a></span>$<span class='no'>col</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev_df</span>)</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;  $ x   : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ y   : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  364 364 363 363 363 ...</div><div class='input'>
-<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_df</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes 'fgeo_elevation', 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  364 364 363 363 363 ...</div><div class='input'>
-<span class='co'># List input</span>
-<span class='no'>elev_list</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>elev_df</span>, <span class='kw'>other</span> <span class='kw'>=</span> <span class='st'>"stuff"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev_list</span>)</div><div class='output co'>#&gt; List of 2
-#&gt;  $ col  :Classes 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;   ..$ x   : int [1:6565] 0 0 0 0 0 0 0 0 0 0 ...
-#&gt;   ..$ y   : int [1:6565] 0 5 10 15 20 25 30 35 40 45 ...
-#&gt;   ..$ elev: num [1:6565] 364 364 363 363 363 ...
-#&gt;  $ other: chr "stuff"</div><div class='input'>
-<span class='no'>elev</span> <span class='kw'>&lt;-</span> <span class='fu'>fgeo_elevation</span>(<span class='no'>elev_list</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>elev</span>)</div><div class='output co'>#&gt; Classes 'fgeo_elevation', 'tbl_df', 'tbl' and 'data.frame':	6565 obs. of  3 variables:
-#&gt;  $ gx  : int  0 0 0 0 0 0 0 0 0 0 ...
-#&gt;  $ gy  : int  0 5 10 15 20 25 30 35 40 45 ...
-#&gt;  $ elev: num  364 364 363 363 363 ...</div><div class='input'>  
-</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Input: Elevation dataframe</span>
+<span class='no'>elevation_df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>elevation</a></span>$<span class='no'>col</span>
+<span class='fu'>fgeo_elevation</span>(<span class='no'>elevation_df</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6,565 x 3</span><span>
+#&gt;       gx    gy  elev
+#&gt;  </span><span style='color: #555555;'>*</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     0     0  364.
+#&gt; </span><span style='color: #555555;'> 2</span><span>     0     5  364.
+#&gt; </span><span style='color: #555555;'> 3</span><span>     0    10  363.
+#&gt; </span><span style='color: #555555;'> 4</span><span>     0    15  363.
+#&gt; </span><span style='color: #555555;'> 5</span><span>     0    20  363 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     0    25  363.
+#&gt; </span><span style='color: #555555;'> 7</span><span>     0    30  363.
+#&gt; </span><span style='color: #555555;'> 8</span><span>     0    35  363.
+#&gt; </span><span style='color: #555555;'> 9</span><span>     0    40  363.
+#&gt; </span><span style='color: #555555;'>10</span><span>     0    45  364.
+#&gt; </span><span style='color: #555555;'># ... with 6,555 more rows</span><span></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>elevation_df</span>)</div><div class='output co'>#&gt; [1] "tbl_df"     "tbl"        "data.frame"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='fu'>fgeo_elevation</span>(<span class='no'>elevation_df</span>))</div><div class='output co'>#&gt; [1] "fgeo_elevation" "tbl_df"         "tbl"            "data.frame"    </div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>elevation_df</span>)</div><div class='output co'>#&gt; [1] "x"    "y"    "elev"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='fu'>fgeo_elevation</span>(<span class='no'>elevation_df</span>))</div><div class='output co'>#&gt; [1] "gx"   "gy"   "elev"</div><div class='input'>
+<span class='co'># Input: Elevation list</span>
+<span class='no'>elevation_ls</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>elevation</a></span>
+<span class='fu'>fgeo_elevation</span>(<span class='no'>elevation_ls</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6,565 x 3</span><span>
+#&gt;       gx    gy  elev
+#&gt;  </span><span style='color: #555555;'>*</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>     0     0  364.
+#&gt; </span><span style='color: #555555;'> 2</span><span>     0     5  364.
+#&gt; </span><span style='color: #555555;'> 3</span><span>     0    10  363.
+#&gt; </span><span style='color: #555555;'> 4</span><span>     0    15  363.
+#&gt; </span><span style='color: #555555;'> 5</span><span>     0    20  363 
+#&gt; </span><span style='color: #555555;'> 6</span><span>     0    25  363.
+#&gt; </span><span style='color: #555555;'> 7</span><span>     0    30  363.
+#&gt; </span><span style='color: #555555;'> 8</span><span>     0    35  363.
+#&gt; </span><span style='color: #555555;'> 9</span><span>     0    40  363.
+#&gt; </span><span style='color: #555555;'>10</span><span>     0    45  364.
+#&gt; </span><span style='color: #555555;'># ... with 6,555 more rows</span><span></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>elevation_ls</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='fu'>fgeo_elevation</span>(<span class='no'>elevation_ls</span>))</div><div class='output co'>#&gt; [1] "fgeo_elevation" "tbl_df"         "tbl"            "data.frame"    </div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='no'>elevation_ls</span>)</div><div class='output co'>#&gt; [1] "col"  "mat"  "xdim" "ydim"</div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/names'>names</a></span>(<span class='fu'>fgeo_elevation</span>(<span class='no'>elevation_ls</span>))</div><div class='output co'>#&gt; [1] "gx"   "gy"   "elev"</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
