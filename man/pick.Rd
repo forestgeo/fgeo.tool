@@ -29,17 +29,16 @@ class(censuses)
 
 censuses
 
+pick(censuses, dbh == 1, key = "c1")
+
+# Same because `key` defaults to the first element of the list
 pick(censuses, dbh == 1)
 
-pick(censuses, dbh >= 2)
+# Different `key`
+pick(censuses, dbh == 1, key = "c2")
 
-pick(censuses, dbh >= 2, dbh < 9)
-
-# `key` defaults to the first element of the list
-pick(censuses, dbh <= 8)
-
-# Different key
-pick(censuses, dbh <= 8 , key = "c2")
+# With multiple conditions passed via `...`
+pick(censuses, dbh >= 1, dbh < 2)
 
 # `pick()` is a common step after reading multiple censuses into a list
 rdata_files <- tool_example("rdata")
