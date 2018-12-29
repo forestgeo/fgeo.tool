@@ -98,18 +98,22 @@ var_cond_x <- function(variable, cond) {
 
     pick_rows <- function(.data_, value, na.rm) {
       rows <- do.call(cond, list(.data_[[tolower(variable)]], value))
-      if (na.rm) exclude_na(.data_, rows) else include_na(.data_, rows)
+      if (na.rm) {
+        exclude_na(.data_, rows) 
+      } else {
+        include_na(.data_, rows)
+      }
     }
 
     result <- pick_rows(set_names(.data, tolower), value, na.rm)
     set_names(result, names(.data))
   }
 }
-include_na <- function(.data, rows) {
-  .data[rows | is.na(rows), , drop = FALSE]
-}
 exclude_na <- function(.data, rows) {
   .data[rows & !is.na(rows), , drop = FALSE]
+}
+include_na <- function(.data, rows) {
+  .data[rows |  is.na(rows), , drop = FALSE]
 }
 
 #' @rdname pick_drop
