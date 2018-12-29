@@ -7,8 +7,8 @@
 #' default matters since the difference between missing trees and dead trees is
 #' important -- and you may want to include missing trees in your analysis.
 #'
-#' @param dfm A ForestGEO-like dataframe (stem, tree, or ViewFullTable).
-#' @param x An atomic vector; a single value against to compare each value of
+#' @param .data A ForestGEO-like dataframe (stem, tree, or ViewFullTable).
+#' @param value An atomic vector; a single value against to compare each value of
 #'   the variable encoded in the function name.
 #' @param na.rm Set to `TRUE` if you want to remove missing values from the
 #'   variable encoded in the function name.
@@ -89,26 +89,25 @@
 #' @name pick_drop
 NULL
 
-var_cond_x <- function(var, cond) {
-  force(var)
+var_cond_x <- function(variable, cond) {
+  force(variable)
   force(cond)
-  function(dfm, x, na.rm = FALSE) {
-    stopifnot(is.data.frame(dfm))
-    stopifnot(!missing(x), is.logical(na.rm), length(x) == 1)
+  function(.data, value, na.rm = FALSE) {
+    stopifnot(is.data.frame(.data))
+    stopifnot(!missing(value), is.logical(na.rm), length(value) == 1)
 
-    old <- names(dfm)
-    names(dfm) <- tolower(names(dfm))
+    old <- names(.data)
+    names(.data) <- tolower(names(.data))
 
-    .var <- dfm[[tolower(var)]]
-    rows <- do.call(cond, list(.var, x))
+    rows <- do.call(cond, list(.data[[tolower(variable)]], value))
     if (na.rm) {
-      dfm <- dfm[rows & !is.na(rows), , drop = FALSE]
+      .data <- .data[rows & !is.na(rows), , drop = FALSE]
     } else {
-      dfm <- dfm[rows | is.na(rows), , drop = FALSE]
+      .data <- .data[rows | is.na(rows), , drop = FALSE]
     }
 
-    names(dfm) <- old
-    dfm
+    names(.data) <- old
+    .data
   }
 }
 
