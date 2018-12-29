@@ -10,22 +10,41 @@
 #' 
 #'
 #' @examples
-#' censuses_lst <- as_censuses(list(
-#'   c1 = tibble(dbh = 1:2),
-#'   c2 = tibble(dbh = 8:9)
-#' ))
-#' censuses_lst
-#' class(censuses_lst)
+#' censuses <- as_censuses(
+#'   list(
+#'     c1 = tibble(dbh = 1:2),
+#'     c2 = tibble(dbh = 8:9)
+#'   )
+#' )
+#' class(censuses)
 #' 
-#' pick(censuses_lst, dbh == 1)
-#' pick(censuses_lst, dbh >= 2)
-#' pick(censuses_lst, dbh <= 8 , key = "c2")
+#' censuses
 #' 
-#' path <- tool_example("rdata")
-#' dir(path)
-#' censuses <- as_censuses(rdata_list(path))
-#' pick(censuses, dbh > 30)
-#'
+#' pick(censuses, dbh == 1)
+#' 
+#' pick(censuses, dbh >= 2)
+#' 
+#' pick(censuses, dbh >= 2, dbh < 9)
+#' 
+#' # `key` defaults to the first element of the list
+#' pick(censuses, dbh <= 8)
+#' 
+#' # Different key
+#' pick(censuses, dbh <= 8 , key = "c2")
+#' 
+#' # `pick()` is a common step after reading multiple censuses into a list
+#' rdata_files <- tool_example("rdata")
+#' dir(rdata_files)
+#' 
+#' censuses <- as_censuses(rdata_list(rdata_files))
+#' pick(censuses, dbh >= 100)
+#' 
+#' # Same as a pipeline
+#' rdata_files %>% 
+#'   rdata_list() %>% 
+#'   as_censuses() %>% 
+#'   pick(dbh >= 100)
+#' 
 #' @family functions to pick or drop rows of a ForestGEO dataframe
 #' @export
 pick <- function(.data, ..., key = NULL) {
