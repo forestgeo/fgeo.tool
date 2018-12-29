@@ -148,11 +148,14 @@ censuses.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>censuses_lst</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_censuses.html'>as_censuses</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
-  <span class='kw'>c1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>),
-  <span class='kw'>c2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>8</span>:<span class='fl'>9</span>)
-))
-<span class='no'>censuses_lst</span></div><div class='output co'>#&gt; $c1
+    <pre class="examples"><div class='input'><span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_censuses.html'>as_censuses</a></span>(
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(
+    <span class='kw'>c1</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>),
+    <span class='kw'>c2</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fl'>8</span>:<span class='fl'>9</span>)
+  )
+)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>censuses</span>)</div><div class='output co'>#&gt; [1] "censuses_lst" "list"        </div><div class='input'>
+<span class='no'>censuses</span></div><div class='output co'>#&gt; $c1
 #&gt; <span style='color: #555555;'># A tibble: 2 x 1</span><span>
 #&gt;     dbh
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
@@ -165,30 +168,8 @@ censuses.</p></td>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     8
 #&gt; </span><span style='color: #555555;'>2</span><span>     9
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/class'>class</a></span>(<span class='no'>censuses_lst</span>)</div><div class='output co'>#&gt; [1] "censuses_lst" "list"        </div><div class='input'>
-<span class='fu'>pick</span>(<span class='no'>censuses_lst</span>, <span class='no'>dbh</span> <span class='kw'>==</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; $c1
-#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
-#&gt;     dbh
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     1
-#&gt; 
-#&gt; $c2
-#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
-#&gt;     dbh
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     8
-#&gt; </div><div class='input'><span class='fu'>pick</span>(<span class='no'>censuses_lst</span>, <span class='no'>dbh</span> <span class='kw'>&gt;=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; $c1
-#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
-#&gt;     dbh
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     2
-#&gt; 
-#&gt; $c2
-#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
-#&gt;     dbh
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>     9
-#&gt; </div><div class='input'><span class='fu'>pick</span>(<span class='no'>censuses_lst</span>, <span class='no'>dbh</span> <span class='kw'>&lt;=</span> <span class='fl'>8</span> , <span class='kw'>key</span> <span class='kw'>=</span> <span class='st'>"c2"</span>)</div><div class='output co'>#&gt; $c1
+#&gt; </div><div class='input'>
+<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>==</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; $c1
 #&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
 #&gt;     dbh
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
@@ -200,25 +181,95 @@ censuses.</p></td>
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     8
 #&gt; </div><div class='input'>
-<span class='no'>path</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list.files'>dir</a></span>(<span class='no'>path</span>)</div><div class='output co'>#&gt; [1] "tree5.RData" "tree6.RData"</div><div class='input'><span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_censuses.html'>as_censuses</a></span>(<span class='fu'><a href='dir_list.html'>rdata_list</a></span>(<span class='no'>path</span>))
-<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt; $tree5
-#&gt; </span><span style='color: #555555;'># A tibble: 3 x 19</span><span>
+<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; $c1
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     2
+#&gt; 
+#&gt; $c2
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     9
+#&gt; </div><div class='input'>
+<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;=</span> <span class='fl'>2</span>, <span class='no'>dbh</span> <span class='kw'>&lt;</span> <span class='fl'>9</span>)</div><div class='output co'>#&gt; $c1
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     2
+#&gt; 
+#&gt; $c2
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     9
+#&gt; </div><div class='input'>
+<span class='co'># `key` defaults to the first element of the list</span>
+<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&lt;=</span> <span class='fl'>8</span>)</div><div class='output co'>#&gt; $c1
+#&gt; </span><span style='color: #555555;'># A tibble: 2 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1
+#&gt; </span><span style='color: #555555;'>2</span><span>     2
+#&gt; 
+#&gt; $c2
+#&gt; </span><span style='color: #555555;'># A tibble: 2 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     8
+#&gt; </span><span style='color: #555555;'>2</span><span>     9
+#&gt; </div><div class='input'>
+<span class='co'># Different key</span>
+<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&lt;=</span> <span class='fl'>8</span> , <span class='kw'>key</span> <span class='kw'>=</span> <span class='st'>"c2"</span>)</div><div class='output co'>#&gt; $c1
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1
+#&gt; 
+#&gt; $c2
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
+#&gt;     dbh
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     8
+#&gt; </div><div class='input'>
+<span class='co'># `pick()` is a common step after reading multiple censuses into a list</span>
+<span class='no'>rdata_files</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list.files'>dir</a></span>(<span class='no'>rdata_files</span>)</div><div class='output co'>#&gt; [1] "tree5.RData" "tree6.RData"</div><div class='input'>
+<span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='as_censuses.html'>as_censuses</a></span>(<span class='fu'><a href='dir_list.html'>rdata_list</a></span>(<span class='no'>rdata_files</span>))
+<span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; $tree5
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 19</span><span>
 #&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>    104    143 10009 10009   DACE~ 113      10.3  245.    </span><span style='text-decoration: underline;'>439</span><span>947        5 193  
-#&gt; </span><span style='color: #555555;'>2</span><span>    119    158 1001~ 100104  MYRS~ 1021    183.   410.    </span><span style='text-decoration: underline;'>466</span><span>597        5  40.4
-#&gt; </span><span style='color: #555555;'>3</span><span>    180    225 1001~ 100174  CASA~ 921     165.   410.    </span><span style='text-decoration: underline;'>466</span><span>623        5  45  
+#&gt; </span><span style='color: #555555;'>1</span><span>    104    143 10009 10009   DACE~ 113      10.3  245.    </span><span style='text-decoration: underline;'>439</span><span>947        5   193
 #&gt; </span><span style='color: #555555;'># ... with 8 more variables: pom </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, hom </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, ExactDate </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>,
 #&gt; #   DFstatus </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, codes </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nostems </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, date </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; 
 #&gt; $tree6
-#&gt; </span><span style='color: #555555;'># A tibble: 3 x 19</span><span>
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 19</span><span>
 #&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span>    104    143 10009 10009   DACE~ 113      10.3  245.    </span><span style='text-decoration: underline;'>582</span><span>850        6 195  
-#&gt; </span><span style='color: #555555;'>2</span><span>    119    158 1001~ 100104  MYRS~ 1021    183.   410.    </span><span style='text-decoration: underline;'>578</span><span>696        6  44.9
-#&gt; </span><span style='color: #555555;'>3</span><span>    180    225 1001~ 100174  CASA~ 921     165.   410.    </span><span style='text-decoration: underline;'>617</span><span>049        6  46.1
+#&gt; </span><span style='color: #555555;'>1</span><span>    104    143 10009 10009   DACE~ 113      10.3  245.    </span><span style='text-decoration: underline;'>582</span><span>850        6   195
+#&gt; </span><span style='color: #555555;'># ... with 8 more variables: pom </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, hom </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, ExactDate </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>,
+#&gt; #   DFstatus </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, codes </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nostems </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, date </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </div><div class='input'>
+<span class='co'># Same as a pipeline</span>
+<span class='no'>rdata_files</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='dir_list.html'>rdata_list</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='as_censuses.html'>as_censuses</a></span>() <span class='kw'>%&gt;%</span>
+  <span class='fu'>pick</span>(<span class='no'>dbh</span> <span class='kw'>&gt;=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; $tree5
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 19</span><span>
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>    104    143 10009 10009   DACE~ 113      10.3  245.    </span><span style='text-decoration: underline;'>439</span><span>947        5   193
+#&gt; </span><span style='color: #555555;'># ... with 8 more variables: pom </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, hom </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, ExactDate </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>,
+#&gt; #   DFstatus </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, codes </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nostems </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, date </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; 
+#&gt; $tree6
+#&gt; </span><span style='color: #555555;'># A tibble: 1 x 19</span><span>
+#&gt;   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID   dbh
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>    104    143 10009 10009   DACE~ 113      10.3  245.    </span><span style='text-decoration: underline;'>582</span><span>850        6   195
 #&gt; </span><span style='color: #555555;'># ... with 8 more variables: pom </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, hom </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, ExactDate </span><span style='color: #555555;font-style: italic;'>&lt;date&gt;</span><span style='color: #555555;'>,
 #&gt; #   DFstatus </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, codes </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, nostems </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, status </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, date </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </div><div class='input'>
