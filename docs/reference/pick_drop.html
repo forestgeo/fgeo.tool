@@ -32,12 +32,12 @@
 
 <meta property="og:title" content="Pick and drop rows of a ForestGEO ViewFullTable or census table. — pick_drop" />
 
-<meta property="og:description" content="These functions provide an expressive and convenient way to filter
-ForestGEO's data. They let you remove missing values (with na.rm = TRUE)
-but conservatively default to keeping NAs. This behavior is similar to base
-subsetting and unlike dplyr::filter(); this conservative default matters
-since the difference between missing trees and dead trees is important --
-and you may want to include missing trees in your analysis." />
+<meta property="og:description" content="These functions provide an expressive and convenient way to pick specific
+rows from ForestGEO datasets. They let you remove missing values (with
+na.rm = TRUE) but conservatively default to keeping NAs. This behavior is
+similar to base subsetting and unlike dplyr::filter(); this conservative
+default matters since the difference between missing trees and dead trees is
+important -- and you may want to include missing trees in your analysis." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,12 +120,12 @@ and you may want to include missing trees in your analysis." />
 
     <div class="ref-description">
     
-    <p>These functions provide an expressive and convenient way to filter
-ForestGEO's data. They let you remove missing values (with <code>na.rm = TRUE</code>)
-but conservatively default to keeping NAs. This behavior is similar to base
-subsetting and unlike <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>; this conservative default matters
-since the difference between missing trees and dead trees is important --
-and you may want to include missing trees in your analysis.</p>
+    <p>These functions provide an expressive and convenient way to pick specific
+rows from ForestGEO datasets. They let you remove missing values (with
+<code>na.rm = TRUE</code>) but conservatively default to keeping NAs. This behavior is
+similar to base subsetting and unlike <code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>; this conservative
+default matters since the difference between missing trees and dead trees is
+important -- and you may want to include missing trees in your analysis.</p>
     
     </div>
 
@@ -146,7 +146,7 @@ and you may want to include missing trees in your analysis.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>dfm</th>
-      <td><p>Dataframe; A ForestGEO stem- or tree-table.</p></td>
+      <td><p>A ForestGEO-like dataframe (stem, tree, or ViewFullTable).</p></td>
     </tr>
     <tr>
       <th>x</th>
@@ -178,82 +178,151 @@ variable encoded in the function name.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>cns</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(
-  <span class='kw'>dbh</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>50</span>, <span class='fl'>100</span>, <span class='fl'>150</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>),
-  <span class='kw'>status</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='st'>"A"</span>, <span class='fl'>4</span>), <span class='st'>"M"</span>, <span class='st'>"D"</span>, <span class='fl'>NA</span>)
-  <span class='co'># stringsAsFactors = FALSE</span>
-)
-<span class='no'>cns</span></div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 3 100      A
-#&gt; 4 150      A
-#&gt; 5  NA      M
-#&gt; 6  NA      D
-#&gt; 7  NA   &lt;NA&gt;</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>dbh</span>, ~<span class='no'>status</span>,
+     <span class='fl'>0</span>,     <span class='st'>"A"</span>,
+    <span class='fl'>50</span>,     <span class='st'>"A"</span>,
+   <span class='fl'>100</span>,     <span class='st'>"A"</span>,
+   <span class='fl'>150</span>,     <span class='st'>"A"</span>,
+    <span class='fl'>NA</span>,     <span class='st'>"M"</span>,
+    <span class='fl'>NA</span>,     <span class='st'>"D"</span>,
+    <span class='fl'>NA</span>,      <span class='fl'>NA</span>
+  )
+
 <span class='co'># &lt;=</span>
-<span class='fu'>pick_dbh_max</span>(<span class='no'>cns</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 3 100      A
-#&gt; 5  NA      M
-#&gt; 6  NA      D
-#&gt; 7  NA   &lt;NA&gt;</div><div class='input'><span class='fu'>pick_dbh_max</span>(<span class='no'>cns</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 3 100      A</div><div class='input'><span class='co'># &gt;=</span>
-<span class='fu'>pick_dbh_min</span>(<span class='no'>cns</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 3 100      A
-#&gt; 4 150      A
-#&gt; 5  NA      M
-#&gt; 6  NA      D
-#&gt; 7  NA   &lt;NA&gt;</div><div class='input'><span class='fu'>pick_dbh_min</span>(<span class='no'>cns</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 3 100      A
-#&gt; 4 150      A</div><div class='input'><span class='co'># &lt;</span>
-<span class='fu'>pick_dbh_under</span>(<span class='no'>cns</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 5  NA      M
-#&gt; 6  NA      D
-#&gt; 7  NA   &lt;NA&gt;</div><div class='input'><span class='fu'>pick_dbh_under</span>(<span class='no'>cns</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A</div><div class='input'><span class='co'># &gt;</span>
-<span class='fu'>pick_dbh_over</span>(<span class='no'>cns</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 4 150      A
-#&gt; 5  NA      M
-#&gt; 6  NA      D
-#&gt; 7  NA   &lt;NA&gt;</div><div class='input'><span class='fu'>pick_dbh_over</span>(<span class='no'>cns</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 4 150      A</div><div class='input'><span class='co'># Same, but `subset()` does not let you keep NAs.</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/subset'>subset</a></span>(<span class='no'>cns</span>, <span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 4 150      A</div><div class='input'>
+<span class='fu'>pick_dbh_max</span>(<span class='no'>census</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 A     
+#&gt; </span><span style='color: #555555;'>4</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     
+#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> D     
+#&gt; </span><span style='color: #555555;'>6</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'><span class='fu'>pick_dbh_max</span>(<span class='no'>census</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 A     </div><div class='input'>
+<span class='co'># &gt;=</span>
+<span class='fu'>pick_dbh_min</span>(<span class='no'>census</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>   100 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>   150 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     
+#&gt; </span><span style='color: #555555;'>4</span><span>    </span><span style='color: #BB0000;'>NA</span><span> D     
+#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'><span class='fu'>pick_dbh_min</span>(<span class='no'>census</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>   100 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>   150 A     </div><div class='input'>
+<span class='co'># &lt;</span>
+<span class='fu'>pick_dbh_under</span>(<span class='no'>census</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     
+#&gt; </span><span style='color: #555555;'>4</span><span>    </span><span style='color: #BB0000;'>NA</span><span> D     
+#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'><span class='fu'>pick_dbh_under</span>(<span class='no'>census</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     </div><div class='input'>
+<span class='co'># &gt;</span>
+<span class='fu'>pick_dbh_over</span>(<span class='no'>census</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>   150 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     
+#&gt; </span><span style='color: #555555;'>3</span><span>    </span><span style='color: #BB0000;'>NA</span><span> D     
+#&gt; </span><span style='color: #555555;'>4</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'><span class='fu'>pick_dbh_over</span>(<span class='no'>census</span>, <span class='fl'>100</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>   150 A     </div><div class='input'><span class='co'># Same, but `subset()` does not let you keep NAs.</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/subset'>subset</a></span>(<span class='no'>census</span>, <span class='no'>dbh</span> <span class='kw'>&gt;</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>   150 A     </div><div class='input'>
 <span class='co'># ==</span>
-<span class='fu'>pick_status</span>(<span class='no'>cns</span>, <span class='st'>"A"</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 3 100      A
-#&gt; 4 150      A
-#&gt; 7  NA   &lt;NA&gt;</div><div class='input'><span class='fu'>pick_status</span>(<span class='no'>cns</span>, <span class='st'>"A"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 3 100      A
-#&gt; 4 150      A</div><div class='input'><span class='co'># !=</span>
-<span class='fu'>drop_status</span>(<span class='no'>cns</span>, <span class='st'>"D"</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 3 100      A
-#&gt; 4 150      A
-#&gt; 5  NA      M
-#&gt; 7  NA   &lt;NA&gt;</div><div class='input'><span class='fu'>drop_status</span>(<span class='no'>cns</span>, <span class='st'>"D"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 1   0      A
-#&gt; 2  50      A
-#&gt; 3 100      A
-#&gt; 4 150      A
-#&gt; 5  NA      M</div><div class='input'>
+<span class='fu'>pick_status</span>(<span class='no'>census</span>, <span class='st'>"A"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 A     
+#&gt; </span><span style='color: #555555;'>4</span><span>   150 A     
+#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'><span class='fu'>pick_status</span>(<span class='no'>census</span>, <span class='st'>"A"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 A     
+#&gt; </span><span style='color: #555555;'>4</span><span>   150 A     </div><div class='input'>
+<span class='co'># !=</span>
+<span class='fu'>drop_status</span>(<span class='no'>census</span>, <span class='st'>"D"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 A     
+#&gt; </span><span style='color: #555555;'>4</span><span>   150 A     
+#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     
+#&gt; </span><span style='color: #555555;'>6</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>    </div><div class='input'><span class='fu'>drop_status</span>(<span class='no'>census</span>, <span class='st'>"D"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 5 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 A     
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 A     
+#&gt; </span><span style='color: #555555;'>4</span><span>   150 A     
+#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     </div><div class='input'>
 <span class='co'># Compose</span>
-<span class='fu'>pick_dbh_over</span>(<span class='fu'>drop_status</span>(<span class='no'>cns</span>, <span class='st'>"D"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>), <span class='fl'>100</span>)</div><div class='output co'>#&gt;   dbh status
-#&gt; 4 150      A
-#&gt; 5  NA      M</div><div class='input'>
-</div></pre>
+<span class='fu'>pick_dbh_over</span>(
+  <span class='fu'>drop_status</span>(<span class='no'>census</span>, <span class='st'>"D"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+  <span class='fl'>100</span>
+)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>   150 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     </div><div class='input'>
+<span class='co'># More readable as a pipiline</span>
+<span class='no'>census</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>drop_status</span>(<span class='st'>"D"</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>pick_dbh_over</span>(<span class='fl'>100</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 2 x 2</span><span>
+#&gt;     dbh status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>   150 A     
+#&gt; </span><span style='color: #555555;'>2</span><span>    </span><span style='color: #BB0000;'>NA</span><span> M     </div><div class='input'>
+<span class='co'># Also works with ViewFullTables</span>
+<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+  ~<span class='no'>DBH</span>,   ~<span class='no'>Status</span>,
+     <span class='fl'>0</span>,   <span class='st'>"alive"</span>,
+    <span class='fl'>50</span>,   <span class='st'>"alive"</span>,
+   <span class='fl'>100</span>,   <span class='st'>"alive"</span>,
+   <span class='fl'>150</span>,   <span class='st'>"alive"</span>,
+    <span class='fl'>NA</span>, <span class='st'>"missing"</span>,
+    <span class='fl'>NA</span>,    <span class='st'>"dead"</span>,
+    <span class='fl'>NA</span>,        <span class='fl'>NA</span>
+)
+
+<span class='fu'>pick_dbh_max</span>(<span class='no'>vft</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 6 x 2</span><span>
+#&gt;     DBH Status 
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 alive  
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 alive  
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 alive  
+#&gt; </span><span style='color: #555555;'>4</span><span>    </span><span style='color: #BB0000;'>NA</span><span> missing
+#&gt; </span><span style='color: #555555;'>5</span><span>    </span><span style='color: #BB0000;'>NA</span><span> dead   
+#&gt; </span><span style='color: #555555;'>6</span><span>    </span><span style='color: #BB0000;'>NA</span><span> </span><span style='color: #BB0000;'>NA</span><span>     </div><div class='input'>
+<span class='fu'>pick_status</span>(<span class='no'>vft</span>, <span class='st'>"alive"</span>,  <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 2</span><span>
+#&gt;     DBH Status
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #555555;'>1</span><span>     0 alive 
+#&gt; </span><span style='color: #555555;'>2</span><span>    50 alive 
+#&gt; </span><span style='color: #555555;'>3</span><span>   100 alive 
+#&gt; </span><span style='color: #555555;'>4</span><span>   150 alive </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
