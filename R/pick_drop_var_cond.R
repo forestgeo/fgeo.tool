@@ -96,19 +96,20 @@ var_cond_x <- function(variable, cond) {
     stopifnot(is.data.frame(.data))
     stopifnot(!missing(value), is.logical(na.rm), length(value) == 1)
 
-    old <- names(.data)
-    names(.data) <- tolower(names(.data))
-
-    rows <- do.call(cond, list(.data[[tolower(variable)]], value))
-    if (na.rm) {
-      result <- .data[rows & !is.na(rows), , drop = FALSE]
-    } else {
-      result <- .data[rows | is.na(rows), , drop = FALSE]
+    pick_rows <- function(.data_, value, na.rm) {
+      rows <- do.call(cond, list(.data_[[tolower(variable)]], value))
+      if (na.rm) exclude_na(.data_, rows) else include_na(.data_, rows)
     }
 
-    names(result) <- old
-    result
+    result <- pick_rows(set_names(.data, tolower), value, na.rm)
+    set_names(result, names(.data))
   }
+}
+include_na <- function(.data, rows) {
+  .data[rows | is.na(rows), , drop = FALSE]
+}
+exclude_na <- function(.data, rows) {
+  .data[rows & !is.na(rows), , drop = FALSE]
 }
 
 #' @rdname pick_drop
