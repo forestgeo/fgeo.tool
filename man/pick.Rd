@@ -51,22 +51,6 @@ rdata_files \%>\%
   rdata_list() \%>\%
   pick(dbh >= 100)
 
-# Bad input
-try(
-  pick(list(
-    tibble(x = 1),
-    tibble(x = 1:2)
-  ))
-)
-
-# Bad input
-try(
-  pick(list(
-    tibble(x = 1),
-    tibble(y = 1:2)
-  ))
-)
-
 }
 \seealso{
 Other general functions to pick or drop rows of a dataframe: \code{\link{drop_if_na}}

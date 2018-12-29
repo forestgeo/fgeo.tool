@@ -51,8 +51,8 @@ add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
 
 }
 \seealso{
-Other functions to add columns to dataframes: \code{\link{add_id}},
-  \code{\link{add_status_tree}}, \code{\link{add_var}}
+Other functions to add columns to dataframes: \code{\link{add_status_tree}},
+  \code{\link{add_var}}
 
 Other functions for ForestGEO data: \code{\link{add_status_tree}},
   \code{\link{add_var}}

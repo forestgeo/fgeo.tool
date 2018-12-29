@@ -40,8 +40,8 @@ add_status_tree(stem)
 
 }
 \seealso{
-Other functions to add columns to dataframes: \code{\link{add_id}},
-  \code{\link{add_subquad}}, \code{\link{add_var}}
+Other functions to add columns to dataframes: \code{\link{add_subquad}},
+  \code{\link{add_var}}
 
 Other functions for ForestGEO data: \code{\link{add_subquad}},
   \code{\link{add_var}}

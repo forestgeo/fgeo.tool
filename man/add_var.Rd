@@ -75,8 +75,8 @@ add_col_row2(x)
 
 }
 \seealso{
-Other functions to add columns to dataframes: \code{\link{add_id}},
-  \code{\link{add_status_tree}}, \code{\link{add_subquad}}
+Other functions to add columns to dataframes: \code{\link{add_status_tree}},
+  \code{\link{add_subquad}}
 
 Other functions for ForestGEO data: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}
