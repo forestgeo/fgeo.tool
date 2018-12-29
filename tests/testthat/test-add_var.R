@@ -59,6 +59,8 @@ test_that("returns equal to ctfs analog", {
   )
 })
 
+
+
 context("add_quad")
 
 test_that("returns equal to ctfs analog", {
@@ -66,10 +68,24 @@ test_that("returns equal to ctfs analog", {
   
   expect_equal(
     add_quad(x, gridsize, plotdim, start = 0)[["quad"]],
-    ctfs::gxgy.to.quad(x$gx, x$gy, gridsize, plotdim, start = "zero")
+    c("0000", "0201", "4924", NA) 
+  )
+  expect_equal(
+    ctfs::gxgy.to.quad(x$gx, x$gy, gridsize, plotdim, start = "zero"),
+    c("0000", "0201", "4924", "NANA") 
   )
   
   expect_warning(add_quad(x), NA)
+})
+
+test_that("is sensitive to `start`", {
+  expect_equal(add_quad(x, gridsize, plotdim, start = 0)$quad[[1]], "0000")
+  expect_equal(add_quad(x, gridsize, plotdim, start = NULL)$quad[[1]], "0101")
+  expect_equal(add_quad(x, gridsize, plotdim)$quad[[1]], "0101")
+})
+
+test_that("edge quadrats are `NA` not 'NA'", {
+  expect_true(is.na(dplyr::last(add_quad(x)$quad)))
 })
 
 
@@ -138,7 +154,7 @@ test_that("outputs equal to ctfs::gxgy.to.quad()", {
   skip_if_not_installed("ctfs")
   skip_on_travis()
 
-  now <- add_quad(x, start = 1, width = 2)$quad
+  now <- add_quad(x, start = NULL, width = 2)$quad
   ctfs <- ctfs::gxgy.to.quad(x$gx, x$gy, start = "one", digits = 2)
   expect_equal(now, ctfs)
 

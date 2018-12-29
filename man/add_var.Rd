@@ -21,7 +21,7 @@ add_col_row(x, gridsize = 20, plotdim = NULL)
 
 add_hectindex(x, gridsize = 20, plotdim = NULL)
 
-add_quad(x, gridsize = 20, plotdim = NULL, start = 1, width = 2)
+add_quad(x, gridsize = 20, plotdim = NULL, start = NULL, width = 2)
 
 add_col_row2(x)
 }
@@ -33,7 +33,8 @@ add_col_row2(x)
 \item{plotdim}{The global dimensions of the census plot (i.e. the
 maximum possible values of \code{gx} and \code{gy}).}
 
-\item{start}{\code{1} or \code{0}, indicating how to label the first plot-column.}
+\item{start}{Defaults to label the first quadrat as "0101". Use \code{0} to
+instead label it as "0000".}
 
 \item{width}{Number; width to pad the labels of plot-columns and -rows.}
 }

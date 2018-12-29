@@ -8,7 +8,8 @@
 #'
 #' @template x_fgeo
 #' @inheritParams from_var_to_var
-#' @param start `1` or `0`, indicating how to label the first plot-column.
+#' @param start Defaults to label the first quadrat as "0101". Use `0` to
+#'   instead label it as "0000".
 #' @param width Number; width to pad the labels of plot-columns and -rows.
 #'
 #' @return A modified version of the dataframe `x` with the additional
@@ -140,23 +141,44 @@ add_hectindex <- function(x, gridsize = 20, plotdim = NULL) {
 
 #' @rdname add_var
 #' @export
-add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
-  stopifnot(start %in% c(0, 1))
-
+add_quad <- function(x, 
+                     gridsize = 20, 
+                     plotdim = NULL, 
+                     start = NULL, 
+                     width = 2) {
+  abort_bad_start(start)
+  
   w_rowcol <- add_var(x, "colrow", gridsize = gridsize, plotdim = plotdim)
-  if (start == 0) {
+  if (identical(start, 0)) {
     w_rowcol$col <- as.numeric(w_rowcol$col) - 1
     w_rowcol$row <- as.numeric(w_rowcol$row) - 1
   }
+  
   w_rowcol <- dplyr::mutate(
     w_rowcol,
     col = pad_dbl(col, width = width, pad = 0),
     row = pad_dbl(row, width = width, pad = 0),
-    quad = paste0(col, row),
+    quad = paste_colrow(col, row),
     row = NULL,
     col = NULL
   )
   w_rowcol
+}
+
+paste_colrow <- function(col, row) {
+  paste_each <- function(col, row) {
+    if (is.na(col) || is.na(row)) return(NA)
+    paste0(col, row)
+  }
+  purrr::map2_chr(col, row, paste_each)
+}
+
+
+
+abort_bad_start <- function(start) {
+  if (!is.null(start) && !identical(start, 0)) {
+    abort("`start` must be `NULL` or `0000`")
+  }
 }
 
 #' @rdname add_var
