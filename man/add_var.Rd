@@ -49,28 +49,42 @@ work with ViewFull-tables and census-tables (tree and stem).
 These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
 }
 \examples{
-x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
+x <- tribble(
+    ~gx,    ~gy,
+      0,      0,
+     50,     25,
+  999.9, 499.95,
+   1000,    500
+)
+
 add_lxly(x)
+
 add_qxqy(x)
+
 add_index(x)
+
 add_hectindex(x)
+
 add_quad(x)
+
 add_quad(x, start = 0)
 
 # `width` gives the nuber of digits to pad the label of plot-rows and
 # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with
 # an extra trhree zeros, resulting in a total of 6 zeros.
 add_quad(x, start = 0, width = 3)
+
 add_col_row(x)
 
 # Column and row from QuadratName
-x <- tibble::tribble(
+x <- tribble(
   ~QuadratName,
-  "0001",
-  "0011",
-  "0101",
-  "1001"
+        "0001",
+        "0011",
+        "0101",
+        "1001"
 )
+
 add_col_row2(x)
 
 }
