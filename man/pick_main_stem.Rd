@@ -65,7 +65,6 @@ pick_main_stemid(census)
 
 }
 \seealso{
-Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}},
-  \code{\link{pick}}
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}}
 }
 \concept{functions to pick or drop rows of a ForestGEO dataframe}

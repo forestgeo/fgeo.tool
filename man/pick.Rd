@@ -2,30 +2,29 @@
 % Please edit documentation in R/pick.R
 \name{pick}
 \alias{pick}
-\title{Pick rows from ForestGEO censuses in a list.}
+\title{Pick rows from a list of dataframes (e.g. a list of ForestGEO censuses).}
 \usage{
 pick(.data, ..., key = NULL)
 }
 \arguments{
-\item{.data}{A ForestGEO dataset of class 'censuses_lst' (a list).}
+\item{.data}{A list of dataframes with the same names and the same number of
+rows and columns.}
 
 \item{...}{Other arguments passed to methods.}
 
-\item{key}{Key dataframe to pick rows from and recycle in all other
-censuses.}
+\item{key}{Dataframe used to check the conditions passed via \code{...}.}
 }
 \description{
-This function allows you to pick rows from a key census (dataframe) in a list
-and pick the exact same rows in all other non-key censuses.
+This function allows you to pick rows from a \code{key} dataframe in a list
+and pick the same row indices in all other non-key censuses. The conditions
+to pick rows are checked against the \code{key} dataframe only. All dataframes
+must have the same structure.
 }
 \examples{
-censuses <- as_censuses(
-  list(
-    c1 = tibble(dbh = 1:2),
-    c2 = tibble(dbh = 8:9)
-  )
+censuses <- list(
+  c1 = tibble(dbh = 1:2),
+  c2 = tibble(dbh = 8:9)
 )
-class(censuses)
 
 censuses
 
@@ -40,22 +39,36 @@ pick(censuses, dbh == 1, key = "c2")
 # With multiple conditions passed via `...`
 pick(censuses, dbh >= 1, dbh < 2)
 
-# `pick()` is a common step after reading multiple censuses into a list
+# `pick()` is useful after reading multiple censuses into a list
 rdata_files <- tool_example("rdata")
 dir(rdata_files)
 
-censuses <- as_censuses(rdata_list(rdata_files))
+censuses <- rdata_list(rdata_files)
 pick(censuses, dbh >= 100)
 
-# Same as a pipeline
-rdata_files \%>\% 
-  rdata_list() \%>\% 
-  as_censuses() \%>\% 
+# Same in a pipeline
+rdata_files \%>\%
+  rdata_list() \%>\%
   pick(dbh >= 100)
+
+# Bad input
+try(
+  pick(list(
+    tibble(x = 1),
+    tibble(x = 1:2)
+  ))
+)
+
+# Bad input
+try(
+  pick(list(
+    tibble(x = 1),
+    tibble(y = 1:2)
+  ))
+)
 
 }
 \seealso{
-Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}},
-  \code{\link{pick_main_stem}}
+Other general functions to pick or drop rows of a dataframe: \code{\link{drop_if_na}}
 }
-\concept{functions to pick or drop rows of a ForestGEO dataframe}
+\concept{general functions to pick or drop rows of a dataframe}

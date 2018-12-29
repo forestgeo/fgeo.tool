@@ -1,22 +1,20 @@
-#' Pick rows from ForestGEO censuses in a list.
+#' Pick rows from a list of dataframes (e.g. a list of ForestGEO censuses).
 #' 
-#' This function allows you to pick rows from a key census (dataframe) in a list
-#' and pick the exact same rows in all other non-key censuses.
+#' This function allows you to pick rows from a `key` dataframe in a list
+#' and pick the same row indices in all other non-key censuses. The conditions
+#' to pick rows are checked against the `key` dataframe only. All dataframes 
+#' must have the same structure.
 #'
-#' @param .data A ForestGEO dataset of class 'censuses_lst' (a list).
-#' @param key Key dataframe to pick rows from and recycle in all other
-#'   censuses.
+#' @param .data A list of dataframes with the same names and the same number of
+#'   rows and columns.
+#' @param key Dataframe used to check the conditions passed via `...`.
 #' @param ... Other arguments passed to methods.
-#' 
 #'
 #' @examples
-#' censuses <- as_censuses(
-#'   list(
-#'     c1 = tibble(dbh = 1:2),
-#'     c2 = tibble(dbh = 8:9)
-#'   )
+#' censuses <- list(
+#'   c1 = tibble(dbh = 1:2),
+#'   c2 = tibble(dbh = 8:9)
 #' )
-#' class(censuses)
 #' 
 #' censuses
 #' 
@@ -31,25 +29,39 @@
 #' # With multiple conditions passed via `...`
 #' pick(censuses, dbh >= 1, dbh < 2)
 #' 
-#' # `pick()` is a common step after reading multiple censuses into a list
+#' # `pick()` is useful after reading multiple censuses into a list
 #' rdata_files <- tool_example("rdata")
 #' dir(rdata_files)
 #' 
-#' censuses <- as_censuses(rdata_list(rdata_files))
+#' censuses <- rdata_list(rdata_files)
 #' pick(censuses, dbh >= 100)
 #' 
-#' # Same as a pipeline
-#' rdata_files %>% 
-#'   rdata_list() %>% 
-#'   as_censuses() %>% 
+#' # Same in a pipeline
+#' rdata_files %>%
+#'   rdata_list() %>%
 #'   pick(dbh >= 100)
+#'
+#' # Bad input
+#' try(
+#'   pick(list(
+#'     tibble(x = 1),
+#'     tibble(x = 1:2)
+#'   ))
+#' )
 #' 
-#' @family functions to pick or drop rows of a ForestGEO dataframe
+#' # Bad input
+#' try(
+#'   pick(list(
+#'     tibble(x = 1),
+#'     tibble(y = 1:2)
+#'   ))
+#' )
+#' 
+#' @family general functions to pick or drop rows of a dataframe
 #' @export
 pick <- function(.data, ..., key = NULL) {
   .rowid <- pick_key_rows(.data = .data, ..., key = key)
-  out <- pick_all_rows(.data, .rowid)
-  as_censuses(out)
+  pick_all_rows(.data, .rowid)
 }
 
 pick_key_rows <- function(.data, ..., key) {
@@ -65,7 +77,7 @@ pull_key_df.default <- function(.data, ...) {
   abort_bad_class(.data)
 }
 
-pull_key_df.censuses_lst <- function(.data, key) {
+pull_key_df.list <- function(.data, key) {
   
   if (!is.null(key)) {
     stopifnot(length(key) == 1)
@@ -88,6 +100,30 @@ pick_all_rows <- function(.data, ...) {
   UseMethod("pick_all_rows")
 }
 
-pick_all_rows.censuses_lst <- function(.data, .rowid) {
+pick_all_rows.list <- function(.data, .rowid) {
+  abort_bad_dim(.data)  
+  abort_bad_names(.data)  
   purrr::map(.data, ~.x[.rowid, ])
+}
+
+abort_bad_dim <- function(.data) {
+  if (!same_dim(.data, 1) || !same_dim(.data, 2)) {
+    abort("All dataframes must have the same number of rows and columns.")
+  }
+}
+
+same_dim <- function(x, .dim) {
+  result <- unique(purrr::map_int(x, ~dim(.x)[[.dim]]))
+  identical(length(result), 1L)
+}
+
+abort_bad_names <- function(.data) {
+  if (!same_names(.data)) {
+    abort("All dataframes must have the same names.")
+  }
+}
+
+same_names <- function(x) {
+  result <- purrr::reduce(purrr::map(x, names), setdiff)
+  identical(result, character(0))
 }
