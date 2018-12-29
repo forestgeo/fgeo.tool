@@ -5,6 +5,35 @@ dfm_ls <- list(
   c2 = tibble::tibble(dbh = 8:9)
 )
 
+test_that("errs if dataframes differ in dimensions", {
+  expect_error(
+    pick(list(
+      c1 = tibble(x = 1),
+      c2 = tibble(x = 1:2)
+    )),
+    "All dataframes must have the same number of rows and columns"
+  )
+  
+  expect_error(
+    pick(list(
+      c1 = tibble(x = 1),
+      c2 = tibble(x = 1, y = 1)
+    )),
+    "All dataframes must have the same number of rows and columns"
+  )
+})
+
+# test_that("errs if dataframes differ in names", {
+#   expect_error(
+#     pick(list(
+#       c1 = tibble(x = 1),
+#       c2 = tibble(y = 1)
+#     )),
+#     "All dataframes must have the same names"
+#   )
+# })
+
+
 test_that("with a list of dataframes returns the expected structure", {
   expect_is(pick(dfm_ls), "list")
   expect_equivalent(pick(dfm_ls), dfm_ls)

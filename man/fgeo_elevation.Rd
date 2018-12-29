@@ -55,8 +55,5 @@ names(elevation_ls)
 names(fgeo_elevation(elevation_ls))
 
 }
-\seealso{
-Other functions to construct fgeo classes: \code{\link{as_censuses}}
-}
 \concept{functions to construct fgeo classes}
 \concept{habitat functions}

@@ -83,5 +83,20 @@ pick_all_rows <- function(.data, ...) {
 }
 
 pick_all_rows.list <- function(.data, .rowid) {
+  if (!same_dim(.data, 1) || !same_dim(.data, 2)) {
+    abort("All dataframes must have the same number of rows and columns")
+  }
+  
   purrr::map(.data, ~.x[.rowid, ])
+}
+
+abort_bad_dim <- function(.data, .dim) {
+  if (!same_dim(.data, 1) || !same_dim(.data, 2)) {
+    abort("All dataframes must have the same number of rows and columns")
+  }
+}
+
+same_dim <- function(x, .dim) {
+  result <- unique(purrr::map_int(x, ~dim(.x)[[.dim]]))
+  identical(length(result), 1L)
 }
