@@ -25,6 +25,8 @@ drop_if_na(dfm, "a")
 }
 \seealso{
 \code{tidyr::drop_na()}.
+
+Other general functions to pick or drop rows of a dataframe: \code{\link{pick}}
 }
 \concept{general functions to pick or drop rows of a dataframe}
 \keyword{internal}

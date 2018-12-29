@@ -55,6 +55,7 @@ reference:
 
   - title: Pick/drop rows with matching conditions 
     contents:
+    - has_concept("general functions to pick or drop rows of a dataframe")
     - has_concept("functions to pick or drop rows of a ForestGEO dataframe")
 
   - title: Add new columns to a dataframe

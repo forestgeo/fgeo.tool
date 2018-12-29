@@ -120,8 +120,7 @@ Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}, \code{\link{add_var}},
   \code{\link{guess_plotdim}}
 
-Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_main_stem}},
-  \code{\link{pick}}
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_main_stem}}
 }
 \concept{functions for fgeo census}
 \concept{functions for fgeo census and vft}
