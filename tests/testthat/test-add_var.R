@@ -1,4 +1,52 @@
-library(dplyr)
+context("add_var")
+
+x <- tribble(
+    ~gx,    ~gy,
+      0,      0,
+     50,     25,
+  999.9, 499.95,
+   1000,    500
+)
+
+gridsize <- 20
+plotdim <- c(1000, 500)
+
+
+
+context("add_lxly")
+
+test_that("outputs equivalent to ctfs analog", {
+  expect_equivalent(
+    add_lxly(x, gridsize, plotdim)[c("lx", "ly")],
+    gxgy_to_lxly(x$gx, x$gy, gridsize, plotdim)
+  )
+})
+
+
+
+context("add_qxqy")
+
+test_that("outputs equivalent to ctfs analog", {
+  expect_equivalent(
+    add_qxqy(x, gridsize, plotdim)[c("QX", "QY")],
+    gxgy_to_qxqy(x$gx, x$gy, gridsize, plotdim)
+  )
+})
+
+
+
+context("add_hectindex")
+
+test_that("returns equal to ctfs analog", {
+  skip_if_not_installed("ctfs")
+
+  expect_equal(
+    suppressWarnings(add_hectindex(x))[["hectindex"]],
+    ctfs::gxgy.to.hectindex(x$gx, x$gy, plotdim)
+  )
+})
+
+
 
 context("add_var")
 
@@ -53,6 +101,8 @@ test_that("informs what's going on", {
     add_var(x, var = "lxly")
   )
 })
+
+
 
 context("add_quad")
 

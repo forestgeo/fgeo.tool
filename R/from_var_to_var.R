@@ -162,17 +162,14 @@ gxgy_to_hectindex <- function(gx, gy, plotdim) {
   }
 
   if (at_or_beyond_edge(gx, gy, plotdim)) {
-    warning(
-      "Some values of `gx` and/or `gy` lay at or beyond plot limits\n",
-      call. = FALSE
-    )
-  } else {
-    ha.rowno <- floor(gy / 100)
-    ha.colno <- floor(gx / 100)
-    max.ha.row <- plotdim[2] / 100
-
-    ha.colno * max.ha.row + ha.rowno + 1
+    warn("Some values of `gx` and/or `gy` lay at or beyond plot limits\n")
   }
+  
+  ha.rowno <- floor(gy / 100)
+  ha.colno <- floor(gx / 100)
+  max.ha.row <- plotdim[2] / 100
+
+  ha.colno * max.ha.row + ha.rowno + 1
 }
 
 at_or_beyond_edge <- function(gx, gy, plotdim) {
