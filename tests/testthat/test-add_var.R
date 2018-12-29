@@ -35,6 +35,19 @@ test_that("outputs equivalent to ctfs analog", {
 
 
 
+context("add_index")
+
+test_that("returns equal to ctfs analog", {
+  skip_if_not_installed("ctfs")
+
+  expect_equal(
+    suppressWarnings(add_index(x, plotdim = plotdim))[["index"]],
+    ctfs::gxgy.to.index(x$gx, x$gy, gridsize, plotdim)
+  )
+})
+
+
+
 context("add_hectindex")
 
 test_that("returns equal to ctfs analog", {
@@ -44,6 +57,19 @@ test_that("returns equal to ctfs analog", {
     suppressWarnings(add_hectindex(x))[["hectindex"]],
     ctfs::gxgy.to.hectindex(x$gx, x$gy, plotdim)
   )
+})
+
+context("add_quad")
+
+test_that("returns equal to ctfs analog", {
+  skip_if_not_installed("ctfs")
+  
+  expect_equal(
+    add_quad(x, gridsize, plotdim, start = 0)[["quad"]],
+    ctfs::gxgy.to.quad(x$gx, x$gy, gridsize, plotdim, start = "zero")
+  )
+  
+  expect_warning(add_quad(x), NA)
 })
 
 

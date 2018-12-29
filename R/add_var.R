@@ -65,7 +65,8 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   .x <- sanitize_xy(.x)
   
   check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
-
+  
+  # TODO: Refactor
   if (is.null(plotdim)) {
     plotdim <- plotdim
     plotdim <- guess_plotdim(.x)
