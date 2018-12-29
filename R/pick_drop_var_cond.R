@@ -101,13 +101,13 @@ var_cond_x <- function(variable, cond) {
 
     rows <- do.call(cond, list(.data[[tolower(variable)]], value))
     if (na.rm) {
-      .data <- .data[rows & !is.na(rows), , drop = FALSE]
+      result <- .data[rows & !is.na(rows), , drop = FALSE]
     } else {
-      .data <- .data[rows | is.na(rows), , drop = FALSE]
+      result <- .data[rows | is.na(rows), , drop = FALSE]
     }
 
-    names(.data) <- old
-    .data
+    names(result) <- old
+    result
   }
 }
 
