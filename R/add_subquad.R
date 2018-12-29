@@ -6,8 +6,8 @@
 #'   common value is 20.
 #' @param x_sq,y_sq Size in meters of a subquadrat's side. For ForestGEO-CTFS
 #'   sites, a common value is 5.
-#' @param subquad_offset A number; either `-1` or `1`, to rest or add one unit
-#'   to the number of column of each subquadrat.
+#' @param subquad_offset Either `-1` or `1`, to rest or add one unit to the
+#'   digit of each subquadrat that represents the column number.
 #'
 #'   ```R
 #'   First column is 0    First column is 1

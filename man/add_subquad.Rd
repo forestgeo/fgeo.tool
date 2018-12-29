@@ -17,8 +17,8 @@ common value is 20.}
 \item{x_sq, y_sq}{Size in meters of a subquadrat's side. For ForestGEO-CTFS
 sites, a common value is 5.}
 
-\item{subquad_offset}{A number; either \code{-1} or \code{1}, to rest or add one unit
-to the number of column of each subquadrat.\preformatted{First column is 0    First column is 1
+\item{subquad_offset}{Either \code{-1} or \code{1}, to rest or add one unit to the
+digit of each subquadrat that represents the column number.\preformatted{First column is 0    First column is 1
 -----------------    -----------------
    04 14 24 34          14 24 34 44
    03 13 23 33          13 23 33 43
