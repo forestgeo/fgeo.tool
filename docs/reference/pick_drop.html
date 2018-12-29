@@ -129,27 +129,27 @@ important -- and you may want to include missing trees in your analysis.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>pick_dbh_min</span>(<span class='no'>dfm</span>, <span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>pick_dbh_min</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_dbh_max</span>(<span class='no'>dfm</span>, <span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_dbh_max</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_dbh_under</span>(<span class='no'>dfm</span>, <span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_dbh_under</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_dbh_over</span>(<span class='no'>dfm</span>, <span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_dbh_over</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_status</span>(<span class='no'>dfm</span>, <span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_status</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>drop_status</span>(<span class='no'>dfm</span>, <span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>drop_status</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>dfm</th>
+      <th>.data</th>
       <td><p>A ForestGEO-like dataframe (stem, tree, or ViewFullTable).</p></td>
     </tr>
     <tr>
-      <th>x</th>
+      <th>value</th>
       <td><p>An atomic vector; a single value against to compare each value of
 the variable encoded in the function name.</p></td>
     </tr>
@@ -172,9 +172,9 @@ variable encoded in the function name.</p></td>
   <code><a href='add_var.html'>add_var</a></code>, <code><a href='guess_plotdim.html'>guess_plotdim</a></code></p>
 <p>Other functions for fgeo vft: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
   <code><a href='add_subquad.html'>add_subquad</a></code>, <code><a href='add_var.html'>add_var</a></code>,
-  <code><a href='guess_plotdim.html'>guess_plotdim</a></code>, <code><a href='pick_plotname.html'>pick_plotname</a></code></p>
+  <code><a href='guess_plotdim.html'>guess_plotdim</a></code></p>
 <p>Other functions to pick or drop rows of a ForestGEO dataframe: <code><a href='pick_main_stem.html'>pick_main_stem</a></code>,
-  <code><a href='pick_plotname.html'>pick_plotname</a></code>, <code><a href='pick.html'>pick</a></code></p></div>
+  <code><a href='pick.html'>pick</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

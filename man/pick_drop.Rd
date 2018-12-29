@@ -10,22 +10,22 @@
 \alias{drop_status}
 \title{Pick and drop rows of a ForestGEO ViewFullTable or census table.}
 \usage{
-pick_dbh_min(dfm, x, na.rm = FALSE)
+pick_dbh_min(.data, value, na.rm = FALSE)
 
-pick_dbh_max(dfm, x, na.rm = FALSE)
+pick_dbh_max(.data, value, na.rm = FALSE)
 
-pick_dbh_under(dfm, x, na.rm = FALSE)
+pick_dbh_under(.data, value, na.rm = FALSE)
 
-pick_dbh_over(dfm, x, na.rm = FALSE)
+pick_dbh_over(.data, value, na.rm = FALSE)
 
-pick_status(dfm, x, na.rm = FALSE)
+pick_status(.data, value, na.rm = FALSE)
 
-drop_status(dfm, x, na.rm = FALSE)
+drop_status(.data, value, na.rm = FALSE)
 }
 \arguments{
-\item{dfm}{A ForestGEO-like dataframe (stem, tree, or ViewFullTable).}
+\item{.data}{A ForestGEO-like dataframe (stem, tree, or ViewFullTable).}
 
-\item{x}{An atomic vector; a single value against to compare each value of
+\item{value}{An atomic vector; a single value against to compare each value of
 the variable encoded in the function name.}
 
 \item{na.rm}{Set to \code{TRUE} if you want to remove missing values from the
@@ -118,10 +118,10 @@ Other functions for fgeo census: \code{\link{add_status_tree}},
 
 Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}, \code{\link{add_var}},
-  \code{\link{guess_plotdim}}, \code{\link{pick_plotname}}
+  \code{\link{guess_plotdim}}
 
 Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_main_stem}},
-  \code{\link{pick_plotname}}, \code{\link{pick}}
+  \code{\link{pick}}
 }
 \concept{functions for fgeo census}
 \concept{functions for fgeo census and vft}
