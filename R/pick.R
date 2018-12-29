@@ -2,9 +2,11 @@
 #' 
 #' This function allows you to pick rows from a `key` dataframe in a list
 #' and pick the same row indices in all other non-key censuses. The conditions
-#' to pick rows are checked against the `key` dataframe only.
+#' to pick rows are checked against the `key` dataframe only. All dataframes 
+#' must have the same structure.
 #'
-#' @param .data A list of dataframes.
+#' @param .data A list of dataframes with the same names and the same number of
+#'   rows and columns.
 #' @param key Dataframe used to check the conditions passed via `...`.
 #' @param ... Other arguments passed to methods.
 #'
@@ -38,6 +40,22 @@
 #' rdata_files %>%
 #'   rdata_list() %>%
 #'   pick(dbh >= 100)
+#'
+#' # Bad input
+#' try(
+#'   pick(list(
+#'     tibble(x = 1),
+#'     tibble(x = 1:2)
+#'   ))
+#' )
+#' 
+#' # Bad input
+#' try(
+#'   pick(list(
+#'     tibble(x = 1),
+#'     tibble(y = 1:2)
+#'   ))
+#' )
 #' 
 #' @family general functions to pick or drop rows of a dataframe
 #' @export
@@ -83,20 +101,29 @@ pick_all_rows <- function(.data, ...) {
 }
 
 pick_all_rows.list <- function(.data, .rowid) {
-  if (!same_dim(.data, 1) || !same_dim(.data, 2)) {
-    abort("All dataframes must have the same number of rows and columns")
-  }
-  
+  abort_bad_dim(.data)  
+  abort_bad_names(.data)  
   purrr::map(.data, ~.x[.rowid, ])
 }
 
-abort_bad_dim <- function(.data, .dim) {
+abort_bad_dim <- function(.data) {
   if (!same_dim(.data, 1) || !same_dim(.data, 2)) {
-    abort("All dataframes must have the same number of rows and columns")
+    abort("All dataframes must have the same number of rows and columns.")
   }
 }
 
 same_dim <- function(x, .dim) {
   result <- unique(purrr::map_int(x, ~dim(.x)[[.dim]]))
   identical(length(result), 1L)
+}
+
+abort_bad_names <- function(.data) {
+  if (!same_names(.data)) {
+    abort("All dataframes must have the same names.")
+  }
+}
+
+same_names <- function(x) {
+  result <- purrr::reduce(purrr::map(x, names), setdiff)
+  identical(result, character(0))
 }

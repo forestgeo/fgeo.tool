@@ -7,7 +7,8 @@
 pick(.data, ..., key = NULL)
 }
 \arguments{
-\item{.data}{A list of dataframes.}
+\item{.data}{A list of dataframes with the same names and the same number of
+rows and columns.}
 
 \item{...}{Other arguments passed to methods.}
 
@@ -16,7 +17,8 @@ pick(.data, ..., key = NULL)
 \description{
 This function allows you to pick rows from a \code{key} dataframe in a list
 and pick the same row indices in all other non-key censuses. The conditions
-to pick rows are checked against the \code{key} dataframe only.
+to pick rows are checked against the \code{key} dataframe only. All dataframes
+must have the same structure.
 }
 \examples{
 censuses <- list(
@@ -48,6 +50,22 @@ pick(censuses, dbh >= 100)
 rdata_files \%>\%
   rdata_list() \%>\%
   pick(dbh >= 100)
+
+# Bad input
+try(
+  pick(list(
+    tibble(x = 1),
+    tibble(x = 1:2)
+  ))
+)
+
+# Bad input
+try(
+  pick(list(
+    tibble(x = 1),
+    tibble(y = 1:2)
+  ))
+)
 
 }
 \seealso{

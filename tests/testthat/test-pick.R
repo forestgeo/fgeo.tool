@@ -23,15 +23,15 @@ test_that("errs if dataframes differ in dimensions", {
   )
 })
 
-# test_that("errs if dataframes differ in names", {
-#   expect_error(
-#     pick(list(
-#       c1 = tibble(x = 1),
-#       c2 = tibble(y = 1)
-#     )),
-#     "All dataframes must have the same names"
-#   )
-# })
+test_that("errs if dataframes differ in names", {
+  expect_error(
+    pick(list(
+      c1 = tibble(x = 1),
+      c2 = tibble(y = 1)
+    )),
+    "All dataframes must have the same names"
+  )
+})
 
 
 test_that("with a list of dataframes returns the expected structure", {
