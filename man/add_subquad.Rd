@@ -59,7 +59,7 @@ Other functions for ForestGEO data: \code{\link{add_status_tree}},
 
 Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{add_var}}, \code{\link{guess_plotdim}},
-  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
+  \code{\link{pick_drop}}
 }
 \author{
 Anudeep Singh and Mauro Lepore.

@@ -86,7 +86,7 @@ Other functions for fgeo census: \code{\link{add_status_tree}},
 
 Other functions for fgeo vft: \code{\link{add_status_tree}},
   \code{\link{add_subquad}}, \code{\link{guess_plotdim}},
-  \code{\link{pick_drop}}, \code{\link{pick_plotname}}
+  \code{\link{pick_drop}}
 }
 \concept{functions for ForestGEO data}
 \concept{functions for fgeo census}
