@@ -8,7 +8,6 @@
 \alias{add_col_row}
 \alias{add_hectindex}
 \alias{add_quad}
-\alias{add_col_row2}
 \title{Add columns \code{lx/ly}; \code{QX/QY}; \code{index}; \code{col/row}; and \code{hectindex}, \code{quad}.}
 \usage{
 add_lxly(x, gridsize = 20, plotdim = NULL)
@@ -22,8 +21,6 @@ add_col_row(x, gridsize = 20, plotdim = NULL)
 add_hectindex(x, gridsize = 20, plotdim = NULL)
 
 add_quad(x, gridsize = 20, plotdim = NULL, start = NULL, width = 2)
-
-add_col_row2(x)
 }
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
@@ -90,29 +87,37 @@ x <- tribble(
         "1001"
 )
 
-add_col_row2(x)
-
-# Separate `QuadratName` at any positon with argumet `sep` of `tidyr::separate()`
+# Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`
+# The argument `sep` lets you separate `QuadratName` at any positon
 \dontrun{
 tidyr_is_installed <- requireNamespace("tidyr", quietly = TRUE)
-if (tidyr_is_installed) {
+stringr_is_installed <- requireNamespace("stringr", quietly = TRUE)
+
+if (tidyr_is_installed && stringr_is_installed) {
   library(tidyr)
+  library(stringr)
   
-  x <- tribble(
-    ~QuadratName,
-         "00001",
-         "00011",
-         "00101",
-         "01001"
-  )
+  vft <- tibble(QuadratName = c("0001", "0011"))
+  vft
   
   separate(
-    x, 
-    QuadratName, into = c("col", "row"), 
-    sep = 3, 
+    vft,
+    QuadratName, into = c("col", "row"),
+    sep = 2
+  )
+  
+  census <- select(fgeo.x::tree5, quadrat)
+  census
+  
+  census$quadrat <- str_pad(census$quadrat, width = 4, pad = 0)
+  
+  separate(
+    census,
+    quadrat, into = c("col", "row"),
+    sep = 2,
     remove = FALSE
   )
-} 
+}
 }
 
 }
