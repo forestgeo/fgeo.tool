@@ -135,18 +135,19 @@ test_that("returns equal to ctfs analog", {
 context("add_col_row2")
 
 test_that("outputs the same as add_col_row", {
-   ctfs <- ctfs::gxgy.to.rowcol(x$gx, x$gy)
-   col_row <- tibble(
-     QuadratName = paste_colrow(
-       pad_dbl(ctfs$col, width = 2, pad = 0),
-       pad_dbl(ctfs$row, width = 2, pad = 0)
-     )
+  skip_if_not_installed("ctfs")
+  
+  ctfs <- ctfs::gxgy.to.rowcol(x$gx, x$gy)
+  col_row <- tibble(
+   QuadratName = paste_colrow(
+     pad_dbl(ctfs$col, width = 2, pad = 0),
+     pad_dbl(ctfs$row, width = 2, pad = 0)
    )
-   expect_equivalent(
-     purrr::modify(add_col_row2(col_row)[c("row", "col")], as.numeric),
-     ctfs
-   )
-   
+  )
+  expect_equivalent(
+   purrr::modify(add_col_row2(col_row)[c("row", "col")], as.numeric),
+   ctfs
+  )
 })
 
 
@@ -163,7 +164,6 @@ test_that("outputs the extected data structure", {
   )
  expect_named(add_col_row2(x), c("QuadratName", "col", "row"))
  expect_is(add_col_row2(x), "tbl")
-  
 })
 
 test_that("aborts with wrong inputs", {
