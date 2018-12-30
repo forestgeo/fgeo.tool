@@ -90,12 +90,48 @@ test_that("edge quadrats are `NA` not 'NA'", {
 
 
 
+context("add_col_row")
+
+test_that("returns equal to ctfs analog", {
+  skip_if_not_installed("ctfs")
+  
+  expect_equivalent(
+    purrr::modify(add_col_row(x)[c("row", "col")], as.numeric),
+    ctfs::gxgy.to.rowcol(x$gx, x$gy)
+  )
+})
+
+
+
+context("add_col_row2")
+
+test_that("outputs the same as add_col_row", {
+   ctfs <- ctfs::gxgy.to.rowcol(x$gx, x$gy)
+   col_row <- tibble(
+     QuadratName = paste_colrow(
+       pad_dbl(ctfs$col, width = 2, pad = 0),
+       pad_dbl(ctfs$row, width = 2, pad = 0)
+     )
+   )
+   expect_equivalent(
+     purrr::modify(add_col_row2(col_row)[c("row", "col")], as.numeric),
+     ctfs
+   )
+   
+   expect_is(add_col_row2(col_row), "tbl")
+   expect_named(add_col_row2(col_row), c("QuadratName", "col", "row"))
+})
+
+
+
+
+
+
 context("add_var")
 
-test_that("with ViewFullTable, it outputs the original names plus lx/ly", {
+test_that("with ViewFullTable, it outputs the original names plus new vars", {
   x <- fgeo.x::vft_4quad
 
-  expect_named(add_var(x, "lxly"), c(names(x), c("lx", "ly")))
   # Other top level functions
   expect_named(add_lxly(x), c(names(x), c("lx", "ly")))
   expect_named(add_col_row(x), c(names(x), c("col", "row")))
@@ -174,10 +210,10 @@ context("add_col_row2")
 
 x <- tibble::tribble(
   ~QuadratName,
-  "0001",
-  "0011",
-  "0101",
-  "1001"
+        "0001",
+        "0011",
+        "0101",
+        "1001"
 )
 
 test_that("adds expected names", {

@@ -1,3 +1,7 @@
+lower <- function(x) {
+  set_names(x, tolower)
+}
+
 pad_dbl <- function(string, width, pad) {
   fmt <- paste0("%", pad, width, ".f")
   readr::parse_character(

@@ -184,19 +184,19 @@ abort_bad_start <- function(start) {
 #' @rdname add_var
 #' @export
 add_col_row2 <- function(x) {
-  x <- add_var_from_quadratname(x, "^(..)..$", "col")
-  x <- add_var_from_quadratname(x, "^..(..)$", "row")
-  x
-}
-
-add_var_from_quadratname <- function(x, pattern, new_var) {
   if (!is.data.frame(x)) {
     abort("`x` must be a data.frame")
   }
-  .x <- check_crucial_names(set_names(x, tolower), "quadratname")
-  new_col <- set_names(data.frame(.x$quadratname), new_var)
-  cbind(x, new_col)
+  check_crucial_names(lower(x), "quadratname")
+  
+  dplyr::bind_cols(
+    x, 
+    col = gsub("^(..)..$", "\\1", lower(x)$quadratname), 
+    row = gsub("^..(..)$", "\\1", lower(x)$quadratname)
+  )
 }
+
+
 
 #' Rename px/py to gx/gy if x lacks gx/gy but has px/py.
 #' 
