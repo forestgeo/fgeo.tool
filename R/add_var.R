@@ -8,37 +8,79 @@
 #'
 #' @template x_fgeo
 #' @inheritParams from_var_to_var
-#' @param start `1` or `0`, indicating how to label the first plot-column.
+#' @param start Defaults to label the first quadrat as "0101". Use `0` to
+#'   instead label it as "0000".
 #' @param width Number; width to pad the labels of plot-columns and -rows.
 #'
 #' @return A modified version of the dataframe `x` with the additional
 #'   variable(s) `var`.
 #'
 #' @examples
-#' x <- tibble::tibble(gx = c(0, 50, 999.9, 1000), gy = gx/2)
+#' x <- tribble(
+#'     ~gx,    ~gy,
+#'       0,      0,
+#'      50,     25,
+#'   999.9, 499.95,
+#'    1000,    500
+#' )
+#' 
+#' # `gridsize` has a common default; `plotdim` is guessed from the data
 #' add_lxly(x)
-#' add_qxqy(x)
-#' add_index(x)
-#' add_hectindex(x)
-#' add_quad(x)
-#' add_quad(x, start = 0)
-#'
+#' 
+#' gridsize <- 20
+#' plotdim <- c(1000, 500)
+#' 
+#' add_qxqy(x, gridsize, plotdim)
+#' 
+#' add_index(x, gridsize, plotdim)
+#' 
+#' add_hectindex(x, gridsize, plotdim)
+#' 
+#' add_quad(x, gridsize, plotdim)
+#' 
+#' add_quad(x, gridsize, plotdim, start = 0)
+#' 
 #' # `width` gives the nuber of digits to pad the label of plot-rows and
 #' # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with
 #' # an extra trhree zeros, resulting in a total of 6 zeros.
-#' add_quad(x, start = 0, width = 3)
-#' add_col_row(x)
+#' add_quad(x, gridsize, plotdim, start = 0, width = 3)
+#' 
+#' add_col_row(x, gridsize, plotdim)
 #' 
 #' # Column and row from QuadratName
-#' x <- tibble::tribble(
+#' x <- tribble(
 #'   ~QuadratName,
-#'   "0001",
-#'   "0011",
-#'   "0101",
-#'   "1001"
+#'         "0001",
+#'         "0011",
+#'         "0101",
+#'         "1001"
 #' )
+#' 
 #' add_col_row2(x)
-#'
+#' 
+#' # Separate `QuadratName` at any positon with argumet `sep` of `tidyr::separate()`
+#' \dontrun{
+#' tidyr_is_installed <- requireNamespace("tidyr", quietly = TRUE)
+#' if (tidyr_is_installed) {
+#'   library(tidyr)
+#'   
+#'   x <- tribble(
+#'     ~QuadratName,
+#'          "00001",
+#'          "00011",
+#'          "00101",
+#'          "01001"
+#'   )
+#'   
+#'   separate(
+#'     x, 
+#'     QuadratName, into = c("col", "row"), 
+#'     sep = 3, 
+#'     remove = FALSE
+#'   )
+#' } 
+#' }
+#' 
 #' @family functions to add columns to dataframes
 #' @family functions for ForestGEO data
 #' @family functions for fgeo census
@@ -47,13 +89,11 @@
 NULL
 
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
-  .x <- set_names(x, tolower)
-  .x <- sanitize_xy(.x)
+  .x <- sanitize_xy(low(x))
   
   check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
-
+  
   if (is.null(plotdim)) {
-    plotdim <- plotdim
     plotdim <- guess_plotdim(.x)
     message("* If guess is wrong, provide the correct argument `plotdim`")
   }
@@ -125,41 +165,62 @@ add_hectindex <- function(x, gridsize = 20, plotdim = NULL) {
 
 #' @rdname add_var
 #' @export
-add_quad <- function(x, gridsize = 20, plotdim = NULL, start = 1, width = 2) {
-  stopifnot(start %in% c(0, 1))
-
+add_quad <- function(x, 
+                     gridsize = 20, 
+                     plotdim = NULL, 
+                     start = NULL, 
+                     width = 2) {
+  abort_bad_start(start)
+  
   w_rowcol <- add_var(x, "colrow", gridsize = gridsize, plotdim = plotdim)
-  if (start == 0) {
+  if (identical(start, 0)) {
     w_rowcol$col <- as.numeric(w_rowcol$col) - 1
     w_rowcol$row <- as.numeric(w_rowcol$row) - 1
   }
+  
   w_rowcol <- dplyr::mutate(
     w_rowcol,
     col = pad_dbl(col, width = width, pad = 0),
     row = pad_dbl(row, width = width, pad = 0),
-    quad = paste0(col, row),
+    quad = paste_colrow(col, row),
     row = NULL,
     col = NULL
   )
   w_rowcol
 }
 
+paste_colrow <- function(col, row) {
+  paste_each <- function(col, row) {
+    if (is.na(col) || is.na(row)) return(NA)
+    paste0(col, row)
+  }
+  purrr::map2_chr(col, row, paste_each)
+}
+
+
+
+abort_bad_start <- function(start) {
+  if (!is.null(start) && !identical(start, 0)) {
+    abort("`start` must be `NULL` or `0000`")
+  }
+}
+
 #' @rdname add_var
 #' @export
 add_col_row2 <- function(x) {
-  x <- add_var_from_quadratname(x, "^(..)..$", "col")
-  x <- add_var_from_quadratname(x, "^..(..)$", "row")
-  x
-}
-
-add_var_from_quadratname <- function(x, pattern, new_var) {
   if (!is.data.frame(x)) {
     abort("`x` must be a data.frame")
   }
-  .x <- check_crucial_names(set_names(x, tolower), "quadratname")
-  new_col <- set_names(data.frame(.x$quadratname), new_var)
-  cbind(x, new_col)
+  check_crucial_names(low(x), "quadratname")
+  
+  dplyr::bind_cols(
+    x, 
+    col = gsub("^(..)..$", "\\1", low(x)$quadratname), 
+    row = gsub("^..(..)$", "\\1", low(x)$quadratname)
+  )
 }
+
+
 
 #' Rename px/py to gx/gy if x lacks gx/gy but has px/py.
 #' 

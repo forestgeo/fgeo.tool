@@ -22,17 +22,17 @@ Add column \code{status_tree} based on the status of all stems of each tree.
 \examples{
 stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,
-  1,       1,       1,     "A",
-  1,       1,       2,     "D",
-  # -- -- -- -- -- -- -- -- -- 
-  1,       2,       3,     "D",
-  1,       2,       4,     "D",
-  # == == == == == == == == ==
-  2,       1,       1,     "A",
-  2,       1,       2,     "G",
-  # -- -- -- -- -- -- -- -- -- 
-  2,       2,       3,     "D",
-  2,       2,       4,     "G"
+          1,       1,       1,     "A",
+          1,       1,       2,     "D",
+          # -- -- -- -- -- -- -- -- -- 
+          1,       2,       3,     "D",
+          1,       2,       4,     "D",
+          # == == == == == == == == ==
+          2,       1,       1,     "A",
+          2,       1,       2,     "G",
+          # -- -- -- -- -- -- -- -- -- 
+          2,       2,       3,     "D",
+          2,       2,       4,     "G"
 )
 
 # Determine the status of each tree based on the status of its stems
@@ -40,8 +40,8 @@ add_status_tree(stem)
 
 }
 \seealso{
-Other functions to add columns to dataframes: \code{\link{add_id}},
-  \code{\link{add_subquad}}, \code{\link{add_var}}
+Other functions to add columns to dataframes: \code{\link{add_subquad}},
+  \code{\link{add_var}}
 
 Other functions for ForestGEO data: \code{\link{add_subquad}},
   \code{\link{add_var}}

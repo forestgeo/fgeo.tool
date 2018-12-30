@@ -41,22 +41,6 @@
 #'   rdata_list() %>%
 #'   pick(dbh >= 100)
 #'
-#' # Bad input
-#' try(
-#'   pick(list(
-#'     tibble(x = 1),
-#'     tibble(x = 1:2)
-#'   ))
-#' )
-#' 
-#' # Bad input
-#' try(
-#'   pick(list(
-#'     tibble(x = 1),
-#'     tibble(y = 1:2)
-#'   ))
-#' )
-#' 
 #' @family general functions to pick or drop rows of a dataframe
 #' @export
 pick <- function(.data, ..., key = NULL) {

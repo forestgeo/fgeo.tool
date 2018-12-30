@@ -1,6 +1,13 @@
+low <- function(x) {
+  set_names(x, tolower)
+}
+
 pad_dbl <- function(string, width, pad) {
   fmt <- paste0("%", pad, width, ".f")
-  sprintf(fmt, as.double(string))
+  readr::parse_character(
+    sprintf(fmt, as.double(string))
+  )
+  
 }
 
 commas <- function(...) {
