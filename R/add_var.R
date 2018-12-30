@@ -62,8 +62,7 @@
 NULL
 
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
-  .x <- set_names(x, tolower)
-  .x <- sanitize_xy(.x)
+  .x <- sanitize_xy(low(x))
   
   check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
   

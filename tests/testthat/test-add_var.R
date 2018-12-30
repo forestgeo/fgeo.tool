@@ -22,6 +22,12 @@ test_that("outputs equivalent to ctfs analog", {
   )
 })
 
+test_that("works with `px`, `py`", {
+  expect_equal(
+    add_lxly(tibble(px = 1, py = 1), gridsize, plotdim)[c("lx", "ly")],
+    add_lxly(tibble(gx = 1, gy = 1), gridsize, plotdim)[c("lx", "ly")]
+  )
+})
 
 
 context("add_qxqy")
@@ -84,6 +90,12 @@ test_that("is sensitive to `start`", {
   expect_equal(add_quad(x, gridsize, plotdim, start = 0)$quad[[1]], "0000")
   expect_equal(add_quad(x, gridsize, plotdim, start = NULL)$quad[[1]], "0101")
   expect_equal(add_quad(x, gridsize, plotdim)$quad[[1]], "0101")
+})
+
+test_that("aborts bad start", {
+  expect_error(add_quad(x, gridsize, plotdim, start = "bad"),
+    "must be `NULL` or `0000`"
+  )
 })
 
 test_that("edge quadrats are `NA` not 'NA'", {
