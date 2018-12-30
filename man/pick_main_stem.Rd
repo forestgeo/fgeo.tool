@@ -18,14 +18,22 @@ plotname.
 }
 \description{
 \itemize{
-\item \code{pick_main_stem()}picks the main stem of each tree in each census. It
+\item \code{\link[=pick_main_stem]{pick_main_stem()}} picks a unique row for each \code{treeID} per census.
+\item \code{\link[=pick_main_stemid]{pick_main_stemid()}} picks a unique row for each \code{stemID} per census. It is
+only useful when a single stem was measure twice in the same census (usually
+to correct for the effect of large buttresses).
+}
+}
+\details{
+\itemize{
+\item \code{\link[=pick_main_stem]{pick_main_stem()}} picks the main stem of each tree in each census. It
 collapses data of multi-stem trees by picking a single stem per \code{treeid} per
 \code{censusid}: within this group, it picks the stem at the top of a list sorted
 first by descending order of \code{hom} and then by descending order of \code{dbh} --
 this corrects the effect of buttresses and picks the main stem. It ignores
 groups of grouped data and rejects data with multiple plots (to work with
 data with multiple \code{plotnames} you may use \code{split()} or \code{dplyr::nest()}).
-\item \code{pick_main_stemid()} does one step less than `pick_main_stem(). It only
+\item \code{\link[=pick_main_stemid]{pick_main_stemid()}} does one step less than \code{\link[=pick_main_stem]{pick_main_stem()}}. It only
 picks the main stemid(s) of each tree in each census and keeps all
 stems per treeid. This is useful when calculating the total basal area of a
 tree, because you need to sum the basal area of each individual stem as well as

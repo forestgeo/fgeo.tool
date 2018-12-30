@@ -33,19 +33,10 @@
 <meta property="og:title" content="Pick the main stem or main stemid(s) of each tree in each census. — pick_main_stem" />
 
 <meta property="og:description" content="
-pick_main_stem()picks the main stem of each tree in each census. It
-collapses data of multi-stem trees by picking a single stem per treeid per
-censusid: within this group, it picks the stem at the top of a list sorted
-first by descending order of hom and then by descending order of dbh --
-this corrects the effect of buttresses and picks the main stem. It ignores
-groups of grouped data and rejects data with multiple plots (to work with
-data with multiple plotnames you may use split() or dplyr::nest()).
-pick_main_stemid() does one step less than `pick_main_stem(). It only
-picks the main stemid(s) of each tree in each census and keeps all
-stems per treeid. This is useful when calculating the total basal area of a
-tree, because you need to sum the basal area of each individual stem as well as
-sum only one of the potentially multiple measurements of each buttressed
-stem per census.
+pick_main_stem() picks a unique row for each treeID per census.
+pick_main_stemid() picks a unique row for each stemID per census. It is
+only useful when a single stem was measure twice in the same census (usually
+to correct for the effect of large buttresses).
 " />
 <meta name="twitter:card" content="summary" />
 
@@ -130,19 +121,10 @@ stem per census.
     <div class="ref-description">
     
     <ul>
-<li><p><code>pick_main_stem()</code>picks the main stem of each tree in each census. It
-collapses data of multi-stem trees by picking a single stem per <code>treeid</code> per
-<code>censusid</code>: within this group, it picks the stem at the top of a list sorted
-first by descending order of <code>hom</code> and then by descending order of <code>dbh</code> --
-this corrects the effect of buttresses and picks the main stem. It ignores
-groups of grouped data and rejects data with multiple plots (to work with
-data with multiple <code>plotnames</code> you may use <code><a href='https://www.rdocumentation.org/packages/base/topics/split'>split()</a></code> or <code>dplyr::nest()</code>).</p></li>
-<li><p><code>pick_main_stemid()</code> does one step less than `pick_main_stem(). It only
-picks the main stemid(s) of each tree in each census and keeps all
-stems per treeid. This is useful when calculating the total basal area of a
-tree, because you need to sum the basal area of each individual stem as well as
-sum only one of the potentially multiple measurements of each buttressed
-stem per census.</p></li>
+<li><p><code>pick_main_stem()</code> picks a unique row for each <code>treeID</code> per census.</p></li>
+<li><p><code>pick_main_stemid()</code> picks a unique row for each <code>stemID</code> per census. It is
+only useful when a single stem was measure twice in the same census (usually
+to correct for the effect of large buttresses).</p></li>
 </ul>
     
     </div>
@@ -164,6 +146,24 @@ stem per census.</p></li>
 
     <p>A dataframe with one row per per treeid per censusid and a single
 plotname.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <ul>
+<li><p><code>pick_main_stem()</code> picks the main stem of each tree in each census. It
+collapses data of multi-stem trees by picking a single stem per <code>treeid</code> per
+<code>censusid</code>: within this group, it picks the stem at the top of a list sorted
+first by descending order of <code>hom</code> and then by descending order of <code>dbh</code> --
+this corrects the effect of buttresses and picks the main stem. It ignores
+groups of grouped data and rejects data with multiple plots (to work with
+data with multiple <code>plotnames</code> you may use <code><a href='https://www.rdocumentation.org/packages/base/topics/split'>split()</a></code> or <code>dplyr::nest()</code>).</p></li>
+<li><p><code>pick_main_stemid()</code> does one step less than <code>pick_main_stem()</code>. It only
+picks the main stemid(s) of each tree in each census and keeps all
+stems per treeid. This is useful when calculating the total basal area of a
+tree, because you need to sum the basal area of each individual stem as well as
+sum only one of the potentially multiple measurements of each buttressed
+stem per census.</p></li>
+</ul>
     
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>
 
@@ -214,6 +214,8 @@ million rows made up entirely of main stems took about ten seconds to run.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
 
       <li><a href="#warning">Warning</a></li>
 
