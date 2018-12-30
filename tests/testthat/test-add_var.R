@@ -15,6 +15,27 @@ plotdim <- c(1000, 500)
 
 context("add_lxly")
 
+test_that("works with `px`, `py`", {
+  expect_equal(
+    add_lxly(tibble(px = 1, py = 1), gridsize, plotdim)[c("lx", "ly")],
+    add_lxly(tibble(gx = 1, gy = 1), gridsize, plotdim)[c("lx", "ly")]
+  )
+})
+
+test_that("informs plotdim if not explicitely given", {
+  expect_silent(add_lxly(tibble(gx = 1, gy = 1), gridsize, plotdim))
+  expect_message(
+    add_lxly(tibble(gx = 1, gy = 1), gridsize), 
+    "Guessing: plotdim"
+  )
+  expect_message(
+    add_lxly(tibble(gx = 1, gy = 1), gridsize), 
+    "If.*wrong.*provide.*plotdim"
+  )
+})
+
+
+
 test_that("outputs equivalent to ctfs analog", {
   expect_equivalent(
     add_lxly(x, gridsize, plotdim)[c("lx", "ly")],
@@ -22,12 +43,6 @@ test_that("outputs equivalent to ctfs analog", {
   )
 })
 
-test_that("works with `px`, `py`", {
-  expect_equal(
-    add_lxly(tibble(px = 1, py = 1), gridsize, plotdim)[c("lx", "ly")],
-    add_lxly(tibble(gx = 1, gy = 1), gridsize, plotdim)[c("lx", "ly")]
-  )
-})
 
 
 context("add_qxqy")

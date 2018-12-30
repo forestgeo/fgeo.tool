@@ -24,24 +24,28 @@
 #'    1000,    500
 #' )
 #' 
+#' # `gridsize` has a common default; `plotdim` is guessed from the data
 #' add_lxly(x)
 #' 
-#' add_qxqy(x)
+#' gridsize <- 20
+#' plotdim <- c(1000, 500)
 #' 
-#' add_index(x)
+#' add_qxqy(x, gridsize, plotdim)
 #' 
-#' add_hectindex(x)
+#' add_index(x, gridsize, plotdim)
 #' 
-#' add_quad(x)
+#' add_hectindex(x, gridsize, plotdim)
 #' 
-#' add_quad(x, start = 0)
+#' add_quad(x, gridsize, plotdim)
+#' 
+#' add_quad(x, gridsize, plotdim, start = 0)
 #' 
 #' # `width` gives the nuber of digits to pad the label of plot-rows and
 #' # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with
 #' # an extra trhree zeros, resulting in a total of 6 zeros.
-#' add_quad(x, start = 0, width = 3)
+#' add_quad(x, gridsize, plotdim, start = 0, width = 3)
 #' 
-#' add_col_row(x)
+#' add_col_row(x, gridsize, plotdim)
 #' 
 #' # Column and row from QuadratName
 #' x <- tribble(
@@ -53,7 +57,30 @@
 #' )
 #' 
 #' add_col_row2(x)
-#'
+#' 
+#' # Separate `QuadratName` at any positon with argumet `sep` of `tidyr::separate()`
+#' \dontrun{
+#' tidyr_is_installed <- requireNamespace("tidyr", quietly = TRUE)
+#' if (tidyr_is_installed) {
+#'   library(tidyr)
+#'   
+#'   x <- tribble(
+#'     ~QuadratName,
+#'          "00001",
+#'          "00011",
+#'          "00101",
+#'          "01001"
+#'   )
+#'   
+#'   separate(
+#'     x, 
+#'     QuadratName, into = c("col", "row"), 
+#'     sep = 3, 
+#'     remove = FALSE
+#'   )
+#' } 
+#' }
+#' 
 #' @family functions to add columns to dataframes
 #' @family functions for ForestGEO data
 #' @family functions for fgeo census
@@ -66,9 +93,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   
   check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
   
-  # TODO: Refactor
   if (is.null(plotdim)) {
-    plotdim <- plotdim
     plotdim <- guess_plotdim(.x)
     message("* If guess is wrong, provide the correct argument `plotdim`")
   }
