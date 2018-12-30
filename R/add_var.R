@@ -56,29 +56,37 @@
 #'         "1001"
 #' )
 #' 
-#' add_col_row2(x)
-#' 
-#' # Separate `QuadratName` at any positon with argumet `sep` of `tidyr::separate()`
+#' # Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`
+#' # The argument `sep` lets you separate `QuadratName` at any positon
 #' \dontrun{
 #' tidyr_is_installed <- requireNamespace("tidyr", quietly = TRUE)
-#' if (tidyr_is_installed) {
+#' stringr_is_installed <- requireNamespace("stringr", quietly = TRUE)
+#' 
+#' if (tidyr_is_installed && stringr_is_installed) {
 #'   library(tidyr)
+#'   library(stringr)
 #'   
-#'   x <- tribble(
-#'     ~QuadratName,
-#'          "00001",
-#'          "00011",
-#'          "00101",
-#'          "01001"
-#'   )
+#'   vft <- tibble(QuadratName = c("0001", "0011"))
+#'   vft
 #'   
 #'   separate(
-#'     x, 
-#'     QuadratName, into = c("col", "row"), 
-#'     sep = 3, 
+#'     vft,
+#'     QuadratName, into = c("col", "row"),
+#'     sep = 2
+#'   )
+#'   
+#'   census <- select(fgeo.x::tree5, quadrat)
+#'   census
+#'   
+#'   census$quadrat <- str_pad(census$quadrat, width = 4, pad = 0)
+#'   
+#'   separate(
+#'     census,
+#'     quadrat, into = c("col", "row"),
+#'     sep = 2,
 #'     remove = FALSE
 #'   )
-#' } 
+#' }
 #' }
 #' 
 #' @family functions to add columns to dataframes
@@ -203,21 +211,6 @@ abort_bad_start <- function(start) {
   if (!is.null(start) && !identical(start, 0)) {
     abort("`start` must be `NULL` or `0000`")
   }
-}
-
-#' @rdname add_var
-#' @export
-add_col_row2 <- function(x) {
-  if (!is.data.frame(x)) {
-    abort("`x` must be a data.frame")
-  }
-  check_crucial_names(low(x), "quadratname")
-  
-  dplyr::bind_cols(
-    x, 
-    col = gsub("^(..)..$", "\\1", low(x)$quadratname), 
-    row = gsub("^..(..)$", "\\1", low(x)$quadratname)
-  )
 }
 
 
