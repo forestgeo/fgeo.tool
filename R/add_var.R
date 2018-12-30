@@ -187,12 +187,12 @@ add_col_row2 <- function(x) {
   if (!is.data.frame(x)) {
     abort("`x` must be a data.frame")
   }
-  check_crucial_names(lower(x), "quadratname")
+  check_crucial_names(low(x), "quadratname")
   
   dplyr::bind_cols(
     x, 
-    col = gsub("^(..)..$", "\\1", lower(x)$quadratname), 
-    row = gsub("^..(..)$", "\\1", lower(x)$quadratname)
+    col = gsub("^(..)..$", "\\1", low(x)$quadratname), 
+    row = gsub("^..(..)$", "\\1", low(x)$quadratname)
   )
 }
 

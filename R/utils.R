@@ -1,4 +1,4 @@
-lower <- function(x) {
+low <- function(x) {
   set_names(x, tolower)
 }
 
