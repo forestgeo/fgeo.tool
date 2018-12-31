@@ -26,7 +26,7 @@ If you have multiple files in a directory, you may want to combine them all into
 Suppose you have these files in a directory:
 
 ```{r}
-files <- tool_example("files")
+files <- fgeo.x::path_example("files")
 dir(files)
 ```
 

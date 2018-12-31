@@ -45,28 +45,30 @@ input_output, i.e. file-extension_list. If none of these functions do what
 you want, create your own with \code{\link[=read_with]{read_with()}}.
 }
 \examples{
-tool_example()
+library(fgeo.x)
 
-dir(tool_example("rdata"))
-rdata_list(tool_example("rdata"))
+path_example()
 
-dir(tool_example("rds"))
-rds_list(tool_example("rds"))
+dir(path_example("rdata"))
+rdata_list(path_example("rdata"))
 
-dir(tool_example("csv"))
-csv_list(tool_example("csv"))
+dir(path_example("rds"))
+rds_list(path_example("rds"))
 
-dir(tool_example("tsv"))
-tsv_list(tool_example("tsv"))
+dir(path_example("csv"))
+csv_list(path_example("csv"))
+
+dir(path_example("tsv"))
+tsv_list(path_example("tsv"))
 
 # Weird: Tab separated columns in a file with .csv extension
-dir(tool_example("weird"))
+dir(path_example("weird"))
 
 # Extension is .csv, but this is not what you want
-csv_list(tool_example("weird"))
+csv_list(path_example("weird"))
 
 # Use this instead
-delim_list(tool_example("weird"), delim = "\\t")
+delim_list(path_example("weird"), delim = "\\t")
 
 }
 \seealso{

@@ -58,7 +58,7 @@ combo
 
 ```{r}
 # Read data of tree positions
-where_dir <- tool_example("first_census/position.csv")
+where_dir <- fgeo.x::path_example("first_census/position.csv")
 where <- read_csv(where_dir)
 
 # Compare
