@@ -51,10 +51,10 @@ library(fgeo.x)
 library(readr)
 
 str(type_vft())
-read_csv(path_example("view/vft_4quad.csv"), col_types = type_vft())
+read_csv(example_path("view/vft_4quad.csv"), col_types = type_vft())
 
 str(type_taxa())
-read_csv(path_example("view/taxa.csv"), col_types = type_taxa())
+read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
 
 }
 \seealso{

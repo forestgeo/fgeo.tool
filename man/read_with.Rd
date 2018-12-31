@@ -21,7 +21,7 @@ Import multiple files into a list using any given reading function.
 \examples{
 library(fgeo.x)
 
-rds_file <- path_example("rds")
+rds_file <- example_path("rds")
 dir(rds_file)
 
 rds_list <- read_with(readr::read_rds)
@@ -37,7 +37,7 @@ read_with(readr::read_rds, regexp = "5[.]rds")(rds_file)
 read_with(readr::read_rds, regexp = "tree.*[.]rds")(rds_file)
 
 # Read excel files --------------------------------------------------------
-excel_file <- path_example("xl")
+excel_file <- example_path("xl")
 dir(excel_file)
 \dontrun{
 readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)
@@ -49,7 +49,7 @@ if (readxl_is_installed) {
 }
 
 # Read mixed files --------------------------------------------------------
-mixed_files <- path_example("mixed_files")
+mixed_files <- example_path("mixed_files")
 dir(mixed_files)
 \dontrun{
 readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)

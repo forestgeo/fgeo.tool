@@ -30,7 +30,7 @@
 #' pick(censuses, dbh >= 1, dbh < 2)
 #' 
 #' # `pick()` is useful after reading multiple censuses into a list
-#' rdata_files <- fgeo.x::path_example("rdata")
+#' rdata_files <- fgeo.x::example_path("rdata")
 #' dir(rdata_files)
 #' 
 #' censuses <- rdata_list(rdata_files)

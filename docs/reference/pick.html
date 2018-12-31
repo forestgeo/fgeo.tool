@@ -218,7 +218,7 @@ rows and columns.</p></td>
 #&gt; </span><span style='color: #555555;'>1</span><span>     8
 #&gt; </div><div class='input'>
 <span class='co'># `pick()` is useful after reading multiple censuses into a list</span>
-<span class='no'>rdata_files</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='tool_example.html'>tool_example</a></span>(<span class='st'>"rdata"</span>)
+<span class='no'>rdata_files</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/example_path'>example_path</a></span>(<span class='st'>"rdata"</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list.files'>dir</a></span>(<span class='no'>rdata_files</span>)</div><div class='output co'>#&gt; [1] "tree5.RData" "tree6.RData"</div><div class='input'>
 <span class='no'>censuses</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dir_list.html'>rdata_list</a></span>(<span class='no'>rdata_files</span>)
 <span class='fu'>pick</span>(<span class='no'>censuses</span>, <span class='no'>dbh</span> <span class='kw'>&gt;=</span> <span class='fl'>100</span>)</div><div class='output co'>#&gt; $tree5

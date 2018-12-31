@@ -47,28 +47,28 @@ you want, create your own with \code{\link[=read_with]{read_with()}}.
 \examples{
 library(fgeo.x)
 
-path_example()
+example_path()
 
-dir(path_example("rdata"))
-rdata_list(path_example("rdata"))
+dir(example_path("rdata"))
+rdata_list(example_path("rdata"))
 
-dir(path_example("rds"))
-rds_list(path_example("rds"))
+dir(example_path("rds"))
+rds_list(example_path("rds"))
 
-dir(path_example("csv"))
-csv_list(path_example("csv"))
+dir(example_path("csv"))
+csv_list(example_path("csv"))
 
-dir(path_example("tsv"))
-tsv_list(path_example("tsv"))
+dir(example_path("tsv"))
+tsv_list(example_path("tsv"))
 
 # Weird: Tab separated columns in a file with .csv extension
-dir(path_example("weird"))
+dir(example_path("weird"))
 
 # Extension is .csv, but this is not what you want
-csv_list(path_example("weird"))
+csv_list(example_path("weird"))
 
 # Use this instead
-delim_list(path_example("weird"), delim = "\\t")
+delim_list(example_path("weird"), delim = "\\t")
 
 }
 \seealso{

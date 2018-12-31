@@ -41,7 +41,7 @@ library(fgeo.tool)
 Read multiple censuses from a directory into a list of dataframes.
 
 ``` r
-dir_multi_rdata <- fgeo.x::path_example("rdata")
+dir_multi_rdata <- fgeo.x::example_path("rdata")
 dir(dir_multi_rdata)
 #> [1] "tree5.RData" "tree6.RData"
 

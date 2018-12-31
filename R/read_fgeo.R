@@ -32,12 +32,12 @@ read_fgeo <- function(col_types) {
 #' @examples
 #' library(fgeo.x)
 #' 
-#' path_example()
+#' example_path()
 #' 
-#' file_vft <- path_example("view/vft_4quad.csv")
+#' file_vft <- example_path("view/vft_4quad.csv")
 #' read_vft(file_vft)
 #' 
-#' file_taxa <- path_example("view/taxa.csv")
+#' file_taxa <- example_path("view/taxa.csv")
 #' read_taxa(file_taxa)
 #' 
 #' @family functions to read text files delivered by ForestgGEO's database
@@ -95,10 +95,10 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' library(readr)
 #' 
 #' str(type_vft())
-#' read_csv(path_example("view/vft_4quad.csv"), col_types = type_vft())
+#' read_csv(example_path("view/vft_4quad.csv"), col_types = type_vft())
 #' 
 #' str(type_taxa())
-#' read_csv(path_example("view/taxa.csv"), col_types = type_taxa())
+#' read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
 #' 
 #' @family functions to operate on column types
 #' @family functions to read text files delivered by ForestgGEO's database
