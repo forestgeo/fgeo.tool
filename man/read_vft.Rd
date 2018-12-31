@@ -51,12 +51,12 @@ automatically detects \code{delim} (issue 65).
 \examples{
 library(fgeo.x)
 
-x_example()
+example_path()
 
-file_vft <- x_example("vft_4quad.csv")
+file_vft <- example_path("view/vft_4quad.csv")
 read_vft(file_vft)
 
-file_taxa <- x_example("taxa.csv")
+file_taxa <- example_path("view/taxa.csv")
 read_taxa(file_taxa)
 
 }

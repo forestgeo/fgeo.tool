@@ -7,7 +7,9 @@
 #'   from a directory (provided they all are of the suitable format).
 #'  
 #' @examples
-#' rds_file <- tool_example("rds")
+#' library(fgeo.x)
+#' 
+#' rds_file <- example_path("rds")
 #' dir(rds_file)
 #' 
 #' rds_list <- read_with(readr::read_rds)
@@ -23,7 +25,7 @@
 #' read_with(readr::read_rds, regexp = "tree.*[.]rds")(rds_file)
 #' 
 #' # Read excel files --------------------------------------------------------
-#' excel_file <- tool_example("xl")
+#' excel_file <- example_path("xl")
 #' dir(excel_file)
 #' \dontrun{
 #' readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)
@@ -35,7 +37,7 @@
 #' }
 #' 
 #' # Read mixed files --------------------------------------------------------
-#' mixed_files <- tool_example("mixed_files")
+#' mixed_files <- example_path("mixed_files")
 #' dir(mixed_files)
 #' \dontrun{
 #' readxl_is_installed <- requireNamespace("readxl", quietly = TRUE)
@@ -85,29 +87,31 @@ read_with <- function(.f, regexp = NULL) {
 #' 
 #' @return A list of dataframes.
 #' 
-#' @examples 
-#' tool_example()
+#' @examples
+#' library(fgeo.x)
 #' 
-#' dir(tool_example("rdata"))
-#' rdata_list(tool_example("rdata"))
+#' example_path()
 #' 
-#' dir(tool_example("rds"))
-#' rds_list(tool_example("rds"))
+#' dir(example_path("rdata"))
+#' rdata_list(example_path("rdata"))
 #' 
-#' dir(tool_example("csv"))
-#' csv_list(tool_example("csv"))
+#' dir(example_path("rds"))
+#' rds_list(example_path("rds"))
 #' 
-#' dir(tool_example("tsv"))
-#' tsv_list(tool_example("tsv"))
+#' dir(example_path("csv"))
+#' csv_list(example_path("csv"))
+#' 
+#' dir(example_path("tsv"))
+#' tsv_list(example_path("tsv"))
 #' 
 #' # Weird: Tab separated columns in a file with .csv extension
-#' dir(tool_example("weird"))
+#' dir(example_path("weird"))
 #' 
 #' # Extension is .csv, but this is not what you want
-#' csv_list(tool_example("weird"))
+#' csv_list(example_path("weird"))
 #' 
 #' # Use this instead
-#' delim_list(tool_example("weird"), delim = "\t")
+#' delim_list(example_path("weird"), delim = "\t")
 #' 
 #' @family general functions to import data
 #' @name dir_list

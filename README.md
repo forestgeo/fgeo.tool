@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Functions for general purposes
+# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Manipulate ForestGEO data
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build
@@ -11,8 +11,8 @@ status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https:
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 
-The goal of **fgeo.tool** is to provide functions for general purposes.
-Many of its functions are used in multiple other **fgeo** packages.
+**fgeo.tool** provides functions to manipulate
+[ForestGEO](http://www.forestgeo.si.edu/) data.
 
 ## Installation
 
@@ -41,7 +41,7 @@ library(fgeo.tool)
 Read multiple censuses from a directory into a list of dataframes.
 
 ``` r
-dir_multi_rdata <- tool_example("rdata")
+dir_multi_rdata <- fgeo.x::example_path("rdata")
 dir(dir_multi_rdata)
 #> [1] "tree5.RData" "tree6.RData"
 

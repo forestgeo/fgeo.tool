@@ -43,7 +43,7 @@ library(fgeo.tool)
 Read multiple censuses from a directory into a list of dataframes.
 
 ```{r}
-dir_multi_rdata <- tool_example("rdata")
+dir_multi_rdata <- fgeo.x::example_path("rdata")
 dir(dir_multi_rdata)
 
 census56_list <- rdata_list(dir_multi_rdata)
