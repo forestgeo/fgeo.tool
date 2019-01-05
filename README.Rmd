@@ -46,7 +46,9 @@ Read multiple censuses from a directory into a list of dataframes.
 dir_multi_rdata <- fgeo.x::example_path("rdata")
 dir(dir_multi_rdata)
 
-census56_list <- rdata_list(dir_multi_rdata)
+paths <- fs::dir_ls(dir_multi_rdata)
+census56_list <- purrr::map(paths, ~ get(load(.x)))
+
 census56_list
 ```
 

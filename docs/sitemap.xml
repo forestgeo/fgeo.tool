@@ -16,9 +16,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/check_crucial_names.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/dir_list.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_if_na.html</loc>
   </url>
   <url>
@@ -68,9 +65,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/read_vft.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/read_with.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/recode_subquad.html</loc>

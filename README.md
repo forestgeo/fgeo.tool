@@ -45,9 +45,11 @@ dir_multi_rdata <- fgeo.x::example_path("rdata")
 dir(dir_multi_rdata)
 #> [1] "tree5.RData" "tree6.RData"
 
-census56_list <- rdata_list(dir_multi_rdata)
+paths <- fs::dir_ls(dir_multi_rdata)
+census56_list <- purrr::map(paths, ~ get(load(.x)))
+
 census56_list
-#> $tree5
+#> $`C:/Users/LeporeM/Documents/R/R-3.5.2/library/fgeo.x/extdata/rdata/tree5.RData`
 #> # A tibble: 3 x 19
 #>   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
 #>    <int>  <int> <chr> <chr>   <chr> <chr>   <dbl> <dbl>     <int>    <int>
@@ -58,7 +60,7 @@ census56_list
 #> #   ExactDate <date>, DFstatus <chr>, codes <chr>, nostems <dbl>,
 #> #   status <chr>, date <dbl>
 #> 
-#> $tree6
+#> $`C:/Users/LeporeM/Documents/R/R-3.5.2/library/fgeo.x/extdata/rdata/tree6.RData`
 #> # A tibble: 3 x 19
 #>   treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID
 #>    <int>  <int> <chr> <chr>   <chr> <chr>   <dbl> <dbl>     <int>    <int>
