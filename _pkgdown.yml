@@ -39,11 +39,6 @@ reference:
     contents:
     - has_concept("functions to import ForestGEO data")
     
-  - title: Export a list as multiple files in a directory
-    desc: Notice that function names have the format input_output
-    contents:
-    - has_concept("general functions to export data")
-
   - title: Edit data in place
     contents:
     - has_concept("functions to edit ForestGEO data in place")
