@@ -16,9 +16,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/check_crucial_names.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/dir_list.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/drop_if_na.html</loc>
   </url>
   <url>
@@ -49,12 +46,6 @@
     <loc>https://forestgeo.github.io/fgeo.tool//reference/is_multiple.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/list_csv.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/list_df.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/nms_try_rename.html</loc>
   </url>
   <url>
@@ -68,9 +59,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/read_vft.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.tool//reference/read_with.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.tool//reference/recode_subquad.html</loc>
