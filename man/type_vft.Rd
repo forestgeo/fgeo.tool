@@ -55,7 +55,6 @@ read_csv(example_path("view/vft_4quad.csv"), col_types = type_vft())
 
 str(type_taxa())
 read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
-
 }
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[=read_vft]{read_vft()}}.

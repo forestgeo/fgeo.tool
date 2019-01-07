@@ -12,14 +12,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Manipulate ForestGEO data
+# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Functions for general purposes
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)  
 
-__fgeo.tool__ provides functions to manipulate [ForestGEO](http://www.forestgeo.si.edu/) data.
+The goal of __fgeo.tool__ is to provide functions for general purposes.
+Many of its functions are used in multiple other __fgeo__ packages.
 
 ## Installation
 
@@ -38,47 +39,56 @@ For details on how to install packages from GitHub, see [this article](https://g
 
 ```{r}
 library(fgeo.tool)
+# Helps access data for examples
+library(fgeo.x)
 ```
 
-Read multiple censuses from a directory into a list of dataframes.
+`example_path()` allows you to access datasets stored in your R libraries.
 
 ```{r}
-dir_multi_rdata <- fgeo.x::example_path("rdata")
-dir(dir_multi_rdata)
+example_path()
 
-paths <- fs::dir_ls(dir_multi_rdata)
-census56_list <- purrr::map(paths, ~ get(load(.x)))
-
-census56_list
+(vft_file <- example_path("view/vft_4quad.csv"))
 ```
 
-Collapse all censuses into a single dataframe.
+`read_vft()` and `read_taxa()` import a ViewFullTable and ViewTaxonomy from .tsv or .csv files.
 
 ```{r}
-census56_df <- list_df(census56_list)
-census56_df
+read_vft(vft_file)
 ```
 
-Summarize by groups.
+`pick_dbh_under()`, `drop_status()` and friends pick and drop rows from a ForestGEO ViewFullTable or census table.
 
 ```{r}
-by_census <- group_by(census56_df, CensusID)
-summarize(by_census, n = n_distinct(treeID))
+data("tree5")
 
-# Same
-census56_df %>% 
-  group_by(CensusID) %>% 
-  summarize(n = n_distinct(treeID))
+tree5 %>% 
+  pick_dbh_under(100)
 ```
 
-Pick rows and reorganize columns.
+`pick_main_stem()` and `pick_main_stemid()` pick the main stem or main stemid(s) of each tree in each census.
 
 ```{r}
-census56_df %>% 
-  pick_dbh_over(250) %>% 
-  pick_status("A") %>%
-  add_status_tree() %>% 
-  select(dbh, contains("status"), everything())
+stem <- download_data("luquillo_stem6_random")
+
+dim(stem)
+dim(pick_main_stem(stem))
+```
+
+`add_status_tree()` adds the column status_tree based on the status of all stems of each tree.
+
+```{r}
+stem %>% 
+  select(CensusID, treeID, stemID, status) %>% 
+  add_status_tree()
+```
+
+`add_index()` and friends add columns to a ForestGEO-like dataframe.
+
+```{r}
+stem %>% 
+  select(gx, gy) %>% 
+  add_index()
 ```
 
 [Get started with __fgeo__](https://forestgeo.github.io/fgeo/articles/fgeo.html)
@@ -88,5 +98,3 @@ census56_df %>%
 * [Getting help](SUPPORT.md).
 * [Contributing](CONTRIBUTING.md).
 * [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
-
-
