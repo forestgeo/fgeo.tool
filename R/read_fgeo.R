@@ -2,7 +2,12 @@ read_fgeo <- function(col_types) {
   function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
     delim <- delim %||% guess_comma_or_tab(file, names(col_types))
     
-    fgeo <- switch(
+    # TODO: Replace by a call to tryCatch or with_handlers()
+    suppressWarnings(
+      {
+        
+    
+    dfm <- switch(
       delim,
       "," = readr::read_csv(
         file = file, col_types = readr::cols(.default = "c"), na = na, ...
@@ -12,8 +17,15 @@ read_fgeo <- function(col_types) {
       ),
       abort("Unknown `delim`.")
     )
-
-    readr::type_convert(fgeo, col_types = col_types)
+    
+      }
+    )
+    
+    
+    
+    # `dfm` may have more columns than needed (if `file` has rownames)
+    result <- dfm[names(col_types)]
+    readr::type_convert(result, col_types = col_types)
   }
 }
 

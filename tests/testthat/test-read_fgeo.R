@@ -22,7 +22,10 @@ test_that("read_vft guesses tab or comma separated file", {
 test_that("read_vft guesses tab or comma separated file", {
   comma <- tempfile()
   readr::write_csv(fgeo.x::vft_4quad, comma)
-  expect_silent(read_vft(comma))
+  expect_silent(
+    vft <- read_vft(comma)
+  )
+  expect_named(vft, names(type_vft()))
   
   tab <- tempfile()
   readr::write_tsv(fgeo.x::vft_4quad, tab)
@@ -39,7 +42,7 @@ test_that("read_taxa can read an online file", {
   expect_silent(
     taxa <- read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
   )
-  expect_equal(names(taxa), names(type_taxa()))
+  expect_named(taxa, names(type_taxa()))
 })
 
 test_that("read_taxa() guesses tab or comma separated file", {
