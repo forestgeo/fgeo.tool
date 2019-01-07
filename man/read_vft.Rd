@@ -58,7 +58,6 @@ read_vft(file_vft)
 
 file_taxa <- example_path("view/taxa.csv")
 read_taxa(file_taxa)
-
 }
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[=type_vft]{type_vft()}}, \code{\link[=type_taxa]{type_taxa()}}.

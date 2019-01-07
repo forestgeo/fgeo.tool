@@ -117,7 +117,7 @@ work by groups defined with dplyr::group_by()." />
     <div class="ref-description">
     
     <p>These functions extend <code><a href='flag_if.html'>flag_if()</a></code>] and <code>detect_if()</code> to
-work by groups defined with <code><a href='https://www.rdocumentation.org/packages/dplyr/topics/group_by'>dplyr::group_by()</a></code>.</p>
+work by groups defined with <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>.</p>
     
     </div>
 
@@ -173,7 +173,7 @@ work by groups defined with <code><a href='https://www.rdocumentation.org/packag
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tibble'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>treeID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
 <span class='fu'>detect_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>flag_if_group</span>(<span class='no'>tree</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: treeID: Flagged values were detected.</span></div><div class='input'>
-<span class='no'>by_censusid</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/dplyr/topics/group_by'>group_by</a></span>(<span class='no'>tree</span>, <span class='no'>CensusID</span>)
+<span class='no'>by_censusid</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>tree</span>, <span class='no'>CensusID</span>)
 <span class='fu'>detect_if_group</span>(<span class='no'>by_censusid</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>flag_if_group</span>(<span class='no'>by_censusid</span>, <span class='st'>"treeID"</span>, <span class='no'>is_multiple</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

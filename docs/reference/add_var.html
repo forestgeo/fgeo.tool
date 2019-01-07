@@ -281,7 +281,7 @@ variable(s) <code>var</code>.</p>
     <span class='kw'>sep</span> <span class='kw'>=</span> <span class='fl'>2</span>
   )
 
-  <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/dplyr/topics/select'>select</a></span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>tree5</a></span>, <span class='no'>quadrat</span>)
+  <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>tree5</a></span>, <span class='no'>quadrat</span>)
   <span class='no'>census</span>
 
   <span class='no'>census</span>$<span class='no'>quadrat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_pad.html'>str_pad</a></span>(<span class='no'>census</span>$<span class='no'>quadrat</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>pad</span> <span class='kw'>=</span> <span class='fl'>0</span>)
