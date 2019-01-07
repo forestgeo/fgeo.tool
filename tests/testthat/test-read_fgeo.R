@@ -1,51 +1,52 @@
-context("read_fgeo")
+context("read_vft")
 
-test_that("read_fgeo() reads data correctly", {
-  url_vft <- "http://bit.ly/fgeo-data-luquillo-vft-random"
-  tryCatch(
-    vft <- read_vft(url_vft),
-    error = function(e) {
-      skip("Are you connected to internet?")
-    }
-  )
+test_that("read_vft outputs a tibble from data written with write.csv", {
+  base <- tempfile()
+  write.csv(fgeo.x::vft_4quad, base)
   
   expect_equal(names(vft), names(type_vft()))
 
-  url_taxa <- "http://bit.ly/fgeo-data-luquillo-taxa"
-  expect_silent(taxa <- read_taxa(url_taxa))
-  expect_equal(names(taxa), names(type_taxa()))
   
-  taxa_readr <- readr::read_delim(url_taxa, "\t")
-  expect_equal(names(taxa), names(taxa_readr))
+  # expect_silent(
+  #   vft <- read_vft(base)
+  # )
+  # expect_is("vft", "tbl")
 })
 
-
-
-test_that("type_fgeo() outputs a list", {
-  expect_type(type_vft(), "list")
-  expect_length(type_vft(), 32)
-  expect_type(type_taxa(), "list")
-  expect_length(type_taxa(), 21)
+test_that("read_vft can read data written with readr::write_csv", {
+  readr <- tempfile()
+  readr::write_csv(fgeo.x::vft_4quad, readr)
+  
+  expect_silent(
+    vft <- read_vft(readr)
+  )
+  expect_equal(names(vft), names(type_vft()))
 })
 
-
-
-test_that("guess_comma_or_tab() guesses tab or comma separated file", {
-  expect_equal(guess_comma_or_tab("a,b\n1,1", nms = c("a", "b")), ",")
-  expect_equal(guess_comma_or_tab("a\tb\n1\t1", nms = c("a", "b")), "\t")
-  
+test_that("read_vft guesses tab or comma separated file", {
   comma <- tempfile()
   readr::write_csv(fgeo.x::vft_4quad, comma)
-  expect_equal(guess_comma_or_tab(comma, nms = names(type_vft())), ",")
-  expect_silent(guess_comma_or_tab(comma, nms = names(type_vft())))
+  expect_silent(read_vft(comma))
   
   tab <- tempfile()
   readr::write_tsv(fgeo.x::vft_4quad, tab)
-  expect_equal(guess_comma_or_tab(tab, nms = names(type_vft())), "\t")
-  
   expect_silent(read_vft(tab))
-  expect_silent(read_vft(comma))
+})
+
+
+
+context("read_taxa")
+
+test_that("read_taxa can read an online file", {
+  skip_if(!pingr::is_online(), "Not online.")
   
+  expect_silent(
+    taxa <- read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
+  )
+  expect_equal(names(taxa), names(type_taxa()))
+})
+
+test_that("read_taxa() guesses tab or comma separated file", {
   taxa_tab <- tempfile()
   readr::write_tsv(fgeo.x::taxa, taxa_tab)
   expect_silent(read_taxa(taxa_tab))
@@ -55,3 +56,20 @@ test_that("guess_comma_or_tab() guesses tab or comma separated file", {
   expect_silent(read_taxa(taxa_comma))
 })
 
+
+
+context("type_fgeo")
+
+test_that("type_fgeo() outputs a list", {
+  expect_type(type_vft(), "list")
+  expect_length(type_vft(), 32)
+})
+
+
+
+context("type_fgeo")
+
+test_that("type_fgeo() outputs a list", {
+  expect_type(type_taxa(), "list")
+  expect_length(type_taxa(), 21)
+})
