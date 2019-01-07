@@ -22,17 +22,8 @@ read_delim_ <- function(delim, file, col_types, na, ...) {
     "\t" = readr::read_tsv(
       file = file, col_types = readr::cols(.default = "c"), na = na, ...
     ),
-    abort("Unknown `delim`.")
+    abort("Unexpected `delim`.")
   )
-}
-
-throw_unknown_warnings <- function(x, ignore_this_warning) {
-  unignore_this_warning <- x$warnings[!grepl(ignore_this_warning, x$warnings)]
-  if (!identical(unignore_this_warning, character(0))) {
-    warn(paste0(unignore_this_warning, collapse = "\n"))
-  }
-  
-  invisible(x)
 }
 
 #' Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.
