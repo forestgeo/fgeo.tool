@@ -3,9 +3,9 @@ context("read_vft")
 test_that("read_vft fails gracefully if data has missing columns", {
   comma <- tempfile()
   write.csv(fgeo.x::vft_4quad[-1], comma)
-  
+
   expect_error(
-    read_vft(comma), 
+    read_vft(comma),
     "Can't find.*DBHID"
   )
 })
@@ -13,7 +13,7 @@ test_that("read_vft fails gracefully if data has missing columns", {
 test_that("read_vft guesses tab or comma separated file", {
   comma <- tempfile()
   write.csv(fgeo.x::vft_4quad, comma)
-  
+
   expect_silent(
     vft <- read_vft(comma)
   )
@@ -27,7 +27,7 @@ test_that("read_vft guesses tab or comma separated file", {
     vft <- read_vft(comma)
   )
   expect_named(vft, names(type_vft()))
-  
+
   tab <- tempfile()
   readr::write_tsv(fgeo.x::vft_4quad, tab)
   expect_silent(read_vft(tab))
@@ -39,7 +39,7 @@ context("read_taxa")
 
 test_that("read_taxa can read an online file", {
   skip_if(!pingr::is_online(), "Not online.")
-  
+
   expect_silent(
     taxa <- read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")
   )
@@ -50,7 +50,7 @@ test_that("read_taxa() guesses tab or comma separated file", {
   taxa_tab <- tempfile()
   readr::write_tsv(fgeo.x::taxa, taxa_tab)
   expect_silent(read_taxa(taxa_tab))
-  
+
   taxa_comma <- tempfile()
   readr::write_csv(fgeo.x::taxa, taxa_comma)
   expect_silent(read_taxa(taxa_comma))
