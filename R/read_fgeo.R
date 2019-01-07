@@ -2,31 +2,26 @@ read_fgeo <- function(col_types) {
   function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
     delim <- delim %||% guess_comma_or_tab(file, names(col_types))
     
-    # TODO: Replace by a call to tryCatch or with_handlers()
-    suppressWarnings(
-      {
-        
-    
-    dfm <- switch(
-      delim,
-      "," = readr::read_csv(
-        file = file, col_types = readr::cols(.default = "c"), na = na, ...
-      ),
-      "\t" = readr::read_tsv(
-        file = file, col_types = readr::cols(.default = "c"), na = na, ...
-      ),
-      abort("Unknown `delim`.")
+    dfm <- suppressWarnings(
+      read_delim(delim, file = file, col_types = col_types, na = na, ...)
     )
-    
-      }
-    )
-    
-    
-    
     # `dfm` may have more columns than needed (if `file` has rownames)
     result <- dfm[names(col_types)]
     readr::type_convert(result, col_types = col_types)
   }
+}
+
+read_delim <- function(delim, file, col_types, na, ...) {
+  dfm <- switch(
+    delim,
+    "," = readr::read_csv(
+      file = file, col_types = readr::cols(.default = "c"), na = na, ...
+    ),
+    "\t" = readr::read_tsv(
+      file = file, col_types = readr::cols(.default = "c"), na = na, ...
+    ),
+    abort("Unknown `delim`.")
+  )
 }
 
 #' Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.
