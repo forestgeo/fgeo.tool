@@ -1,5 +1,15 @@
 context("read_vft")
 
+test_that("read_vft fails gracefully if data has missing columns", {
+  comma <- tempfile()
+  write.csv(fgeo.x::vft_4quad[-1], comma)
+  
+  expect_error(
+    read_vft(comma), 
+    "Can't find.*DBHID"
+  )
+})
+
 test_that("read_vft guesses tab or comma separated file", {
   comma <- tempfile()
   write.csv(fgeo.x::vft_4quad, comma)
