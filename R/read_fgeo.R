@@ -1,10 +1,18 @@
 read_fgeo <- function(col_types) {
   function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
     delim <- delim %||% guess_comma_or_tab(file, names(col_types))
-    fgeo <- readr::read_delim(
-      file = file, delim = delim, col_types = readr::cols(.default = "c"), 
-      na = na, ...
+    
+    fgeo <- switch(
+      delim,
+      "," = readr::read_csv(
+        file = file, col_types = readr::cols(.default = "c"), na = na, ...
+      ),
+      "\t" = readr::read_tsv(
+        file = file, col_types = readr::cols(.default = "c"), na = na, ...
+      ),
+      abort("Unknown `delim`.")
     )
+
     readr::type_convert(fgeo, col_types = col_types)
   }
 }
@@ -172,7 +180,9 @@ type_taxa <- function() {
 
 guess_comma_or_tab <- function(file, nms) {
   comma <- suppressWarnings(suppressMessages(readr::read_csv(file, n_max = 0)))
-  if (identical(names(comma), nms)) return(",")
-    
+  if (all(nms %in% names(comma))) {
+    return(",")
+  }
+  
   "\t"
 }

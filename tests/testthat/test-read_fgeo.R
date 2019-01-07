@@ -1,27 +1,23 @@
 context("read_vft")
 
-test_that("read_vft outputs a tibble from data written with write.csv", {
-  base <- tempfile()
-  write.csv(fgeo.x::vft_4quad, base)
-  
-  expect_equal(names(vft), names(type_vft()))
-
-  
-  # expect_silent(
-  #   vft <- read_vft(base)
-  # )
-  # expect_is("vft", "tbl")
-})
-
-test_that("read_vft can read data written with readr::write_csv", {
-  readr <- tempfile()
-  readr::write_csv(fgeo.x::vft_4quad, readr)
-  
+test_that("read_vft guesses tab or comma separated file", {
+  comma <- tempfile()
+  write.csv(fgeo.x::vft_4quad, comma)
   expect_silent(
-    vft <- read_vft(readr)
+    vft <- read_vft(comma)
   )
-  expect_equal(names(vft), names(type_vft()))
+  expect_is(vft, "tbl")
 })
+
+# test_that("read_vft can read data written with readr::write_csv", {
+#   readr <- tempfile()
+#   readr::write_csv(fgeo.x::vft_4quad, readr)
+#   
+#   expect_silent(
+#     vft <- read_vft(readr)
+#   )
+#   expect_equal(names(vft), names(type_vft()))
+# })
 
 test_that("read_vft guesses tab or comma separated file", {
   comma <- tempfile()
