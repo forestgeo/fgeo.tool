@@ -2,11 +2,19 @@ read_fgeo <- function(col_types) {
   function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
     delim <- delim %||% guess_comma_or_tab(file, names(col_types))
     
-    dfm <- suppressWarnings(
-      read_delim(delim, file = file, col_types = col_types, na = na, ...)
+    
+    lst <- purrr::quietly(read_delim)(
+      delim, file = file, col_types = col_types, na = na, ...
     )
+    
+    ignore_this_warning <- "Missing column names filled in: 'X1'"
+    throw_unknown_warnings(lst, ignore_this_warning)
+    
     # `dfm` may have more columns than needed (if `file` has rownames)
-    result <- dfm[names(col_types)]
+    extract_known_columns <- function(lst, col_types) {
+      lst$result[names(col_types)]
+    }
+    result <- extract_known_columns(lst, col_types)
     readr::type_convert(result, col_types = col_types)
   }
 }
@@ -22,6 +30,15 @@ read_delim <- function(delim, file, col_types, na, ...) {
     ),
     abort("Unknown `delim`.")
   )
+}
+
+throw_unknown_warnings <- function(x, ignore_this_warning) {
+  unignore_this_warning <- x$warnings[!grepl(ignore_this_warning, x$warnings)]
+  if (!identical(unignore_this_warning, character(0))) {
+    warn(paste0(unignore_this_warning, collapse = "\n"))
+  }
+  
+  invisible(x)
 }
 
 #' Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.
