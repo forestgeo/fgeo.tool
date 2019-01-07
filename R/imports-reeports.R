@@ -1,6 +1,7 @@
 #' @importFrom glue glue glue_collapse
-#' @importFrom utils head tail
+#' @importFrom purrr quietly
 #' @importFrom rlang set_names is_named abort warn inform has_name %||%
+#' @importFrom utils head tail
 NULL
 #' @export
 rlang::`%||%`

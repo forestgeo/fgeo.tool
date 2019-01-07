@@ -2,24 +2,18 @@ read_fgeo <- function(col_types) {
   function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
     delim <- delim %||% guess_comma_or_tab(file, names(col_types))
     
-    
-    lst <- purrr::quietly(read_delim)(
+    lst <- quietly(read_delim_)(
       delim, file = file, col_types = col_types, na = na, ...
     )
-    
     ignore_this_warning <- "Missing column names filled in: 'X1'"
     throw_unknown_warnings(lst, ignore_this_warning)
     
-    # `dfm` may have more columns than needed (if `file` has rownames)
-    extract_known_columns <- function(lst, col_types) {
-      lst$result[names(col_types)]
-    }
     result <- extract_known_columns(lst, col_types)
     readr::type_convert(result, col_types = col_types)
   }
 }
 
-read_delim <- function(delim, file, col_types, na, ...) {
+read_delim_ <- function(delim, file, col_types, na, ...) {
   dfm <- switch(
     delim,
     "," = readr::read_csv(
@@ -39,6 +33,11 @@ throw_unknown_warnings <- function(x, ignore_this_warning) {
   }
   
   invisible(x)
+}
+
+extract_known_columns <- function(lst, col_types) {
+  # if `file` has rownames, the `result` has more columns than needed
+  lst$result[names(col_types)]
 }
 
 #' Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.
