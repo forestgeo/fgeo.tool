@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Help to read ForestGEO data safely, with consistent column type. — type_vft • fgeo.tool</title>
+<title>Help to read ForestGEO data safely, with consistent columns type. — type_vft • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,14 +30,14 @@
 
 
 
-<meta property="og:title" content="Help to read ForestGEO data safely, with consistent column type. — type_vft" />
+<meta property="og:title" content="Help to read ForestGEO data safely, with consistent columns type. — type_vft" />
 
 <meta property="og:description" content="A common cause of problems is feeding functions with data which columns are
 not all of the expected type. The problem often begins when reading data from
 a text file with functions such as utils::read.csv(),
 utils::read.delim(), and friends -- which commonly guess wrongly the column
 type that you more likely expect. These common offenders are strongly
-discouraged; instead consider using readr::read_csv(), readr::read_csv(),
+discouraged; instead consider using readr::read_csv(), readr::read_tsv(),
 and friends, which guess column types correctly much more often than their
 analogs from the utils package.
 The functions type_vft(), type_taxa(), and friends help you to read data
@@ -122,7 +122,7 @@ type_taxa(): Type specification for ViewFullTaxonomy.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Help to read ForestGEO data safely, with consistent column type.</h1>
+    <h1>Help to read ForestGEO data safely, with consistent columns type.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/read_fgeo.R'><code>R/read_fgeo.R</code></a></small>
     <div class="hidden name"><code>type_vft.Rd</code></div>
     </div>
@@ -134,7 +134,7 @@ not all of the expected type. The problem often begins when reading data from
 a text file with functions such as <code><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>utils::read.csv()</a></code>,
 <code><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>utils::read.delim()</a></code>, and friends -- which commonly guess wrongly the column
 type that you more likely expect. These common offenders are strongly
-discouraged; instead consider using <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code>, <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code>,
+discouraged; instead consider using <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code>, <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_tsv()</a></code>,
 and friends, which guess column types correctly much more often than their
 analogs from the <strong>utils</strong> package.</p>
 <p>The functions <code>type_vft()</code>, <code>type_taxa()</code>, and friends help you to read data
@@ -172,7 +172,7 @@ known datasets. These functions output the specification for the argument
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_delim()</a></code>, <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_csv()</a></code>, <code><a href='read_vft.html'>read_vft()</a></code>.</p>
+    <div class='dont-index'><p><code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_delim()</a></code>.</p>
 <p>Other functions to operate on column types: <code><a href='type_ensure.html'>type_ensure</a></code></p>
 <p>Other functions to read text files delivered by ForestgGEO's database: <code><a href='read_vft.html'>read_vft</a></code></p></div>
     

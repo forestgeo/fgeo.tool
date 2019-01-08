@@ -3,7 +3,7 @@
 \name{type_vft}
 \alias{type_vft}
 \alias{type_taxa}
-\title{Help to read ForestGEO data safely, with consistent column type.}
+\title{Help to read ForestGEO data safely, with consistent columns type.}
 \usage{
 type_vft()
 
@@ -18,7 +18,7 @@ not all of the expected type. The problem often begins when reading data from
 a text file with functions such as \code{\link[utils:read.csv]{utils::read.csv()}},
 \code{\link[utils:read.delim]{utils::read.delim()}}, and friends -- which commonly guess wrongly the column
 type that you more likely expect. These common offenders are strongly
-discouraged; instead consider using \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[readr:read_csv]{readr::read_csv()}},
+discouraged; instead consider using \code{readr::read_csv()}, \code{readr::read_tsv()},
 and friends, which guess column types correctly much more often than their
 analogs from the \strong{utils} package.
 
@@ -57,7 +57,7 @@ str(type_taxa())
 read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
 }
 \seealso{
-\code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[readr:read_csv]{readr::read_csv()}}, \code{\link[=read_vft]{read_vft()}}.
+\code{\link[readr:read_delim]{readr::read_delim()}}.
 
 Other functions to operate on column types: \code{\link{type_ensure}}
 
