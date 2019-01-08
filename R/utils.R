@@ -7,7 +7,6 @@ pad_dbl <- function(string, width, pad) {
   readr::parse_character(
     sprintf(fmt, as.double(string))
   )
-  
 }
 
 commas <- function(...) {

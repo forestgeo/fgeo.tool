@@ -8,6 +8,7 @@
 \alias{add_col_row}
 \alias{add_hectindex}
 \alias{add_quad}
+\alias{add_gxgy}
 \title{Add columns \code{lx/ly}; \code{QX/QY}; \code{index}; \code{col/row}; and \code{hectindex}, \code{quad}.}
 \usage{
 add_lxly(x, gridsize = 20, plotdim = NULL)
@@ -21,6 +22,8 @@ add_col_row(x, gridsize = 20, plotdim = NULL)
 add_hectindex(x, gridsize = 20, plotdim = NULL)
 
 add_quad(x, gridsize = 20, plotdim = NULL, start = NULL, width = 2)
+
+add_gxgy(x, gridsize = 20, start = 0)
 }
 \arguments{
 \item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
@@ -78,7 +81,8 @@ add_quad(x, gridsize, plotdim, start = 0, width = 3)
 
 add_col_row(x, gridsize, plotdim)
 
-# Column and row from QuadratName
+
+# From `quadrat` or `QuadratName` --------------------------------------
 x <- tribble(
   ~QuadratName,
         "0001",
@@ -86,6 +90,16 @@ x <- tribble(
         "0101",
         "1001"
 )
+
+# Output `gx` and `gy` ---------------
+
+add_gxgy(x)
+
+# Warning: The data may already have `gx` and `gx` columns
+gxgy <- add_gxgy(fgeo.x::tree5)
+select(gxgy, matches("gx|gy"))
+
+# Output `col` and `row` -------------
 
 # Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`
 # The argument `sep` lets you separate `QuadratName` at any positon

@@ -1,4 +1,73 @@
-context("add_var")
+# Input quadratname or quadrat --------------------------------------------
+
+context("add_gxgy")
+
+set.seed(1)
+
+test_that("add_gxgy handles 0-row input", {
+  tree <- fgeo.x::tree5[0, ]
+  expect_equal(nrow(add_gxgy(tree)), 0)
+  expect_equal(ncol(add_gxgy(tree)), ncol(tree) + 2)
+})
+
+test_that("add_gxgy handles factors", {
+  tree1 <- fgeo.x::tree5[1, ]
+  tree1$quadrat <- as.factor(100)
+  
+  tree2 <- fgeo.x::tree5[1, ]
+  tree2$quadrat <- 100L
+  
+  expect_equal(
+    add_gxgy(tree1)$gx1,
+    add_gxgy(tree2)$gx1
+  )
+})
+
+test_that("add_gxgy handles NA", {
+  tree <- fgeo.x::tree5[1, ]
+  tree$quadrat <- NA
+  expect_true(is.na(add_gxgy(tree)$gx1))
+})
+
+test_that("add_gxgy with a viewfulltable outputs a data.frame", {
+  vft <- dplyr::sample_n(fgeo.x::vft_4quad, 10)
+  expect_is(add_gxgy(vft), "data.frame")
+})
+
+test_that("add_gxgy with a viewfulltable outputs the expected names", {
+  vft <- dplyr::sample_n(fgeo.x::vft_4quad, 10)
+  out <- add_gxgy(vft)
+  
+  expect_true(
+    all(c("QuadratName", "gx", "gy") %in% names(out))
+  )
+})
+
+test_that("add_gxgy handles potentially duplicated names and avoids them", {
+  skip_if_not_installed("ctfs")
+  
+  tree <- dplyr::sample_n(fgeo.x::tree5, 10)
+  out <- add_gxgy(tree)
+  expect_true(all(c("quadrat", "gx1", "gy1") %in% names(out)))
+  
+  expect_equivalent(
+    add_gxgy(tree)[["gx1"]], ctfs::quad.to.gxgy(tree$quadrat)$gx
+  )
+  expect_equivalent(
+    add_gxgy(tree)[["gy1"]], ctfs::quad.to.gxgy(tree$quadrat)$gy
+  )
+})
+
+test_that("add_gxgy with viewfulltable outputs equal to ctfs::quad.to.gxgy()", {
+  skip_if_not_installed("ctfs")
+
+  vft <- dplyr::sample_n(fgeo.x::vft_4quad, 10)
+  expect_equal(
+    add_gxgy(vft)[c("gx", "gy")], ctfs::quad.to.gxgy(vft$QuadratName)
+  )
+})
+
+# Input gxgy --------------------------------------------------------------
 
 x <- tribble(
     ~gx,    ~gy,
