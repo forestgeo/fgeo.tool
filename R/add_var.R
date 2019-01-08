@@ -119,39 +119,40 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
     message("* If guess is wrong, provide the correct argument `plotdim`")
   }
 
-  if (var == "lxly") {
-    newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
-    .x <- tibble::add_column(.x, lx = newcol$lx, ly = newcol$ly)
-    return(restore_add_var(.x, x))
-  }
+  result <- switch(
+    var,
+    lxly = {
+      newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
+      .x <- tibble::add_column(.x, lx = newcol$lx, ly = newcol$ly)
+       restore_add_var(.x, x)
+    },
+    qxqy = {
+      newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
+      .x <- tibble::add_column(.x, QX = newcol$QX, QY = newcol$QY)
+      restore_add_var(.x, x)
+    },
+    index = {
+      newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
+      .x <- tibble::add_column(.x, index = newcol)
+      restore_add_var(.x, x)
+    },
+    colrow = {
+      newcol <- gxgy_to_var(.x, var = "rowcol", gridsize, plotdim)
+      .x <- tibble::add_column(
+        .x,
+        col = pad_dbl(newcol$col, width = 2, pad = 0),
+        row = pad_dbl(newcol$row, width = 2, pad = 0)
+      )
+      restore_add_var(.x, x)
+    },
+    hectindex = {
+      newcol <- gxgy_to_var(.x, var, gridsize = NULL, plotdim)
+      .x <- tibble::add_column(.x, hectindex = newcol)
+      restore_add_var(.x, x)
+    }
+  )
 
-  if (var == "qxqy") {
-    newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
-    .x <- tibble::add_column(.x, QX = newcol$QX, QY = newcol$QY)
-    return(restore_add_var(.x, x))
-  }
-
-  if (var == "index") {
-    newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
-    .x <- tibble::add_column(.x, index = newcol)
-    return(restore_add_var(.x, x))
-  }
-
-  if (var == "colrow") {
-    newcol <- gxgy_to_var(.x, var = "rowcol", gridsize, plotdim)
-    .x <- tibble::add_column(
-      .x, 
-      col = pad_dbl(newcol$col, width = 2, pad = 0), 
-      row = pad_dbl(newcol$row, width = 2, pad = 0)
-    )
-    return(restore_add_var(.x, x))
-  }
-
-  if (var == "hectindex") {
-    newcol <- gxgy_to_var(.x, var, gridsize = NULL, plotdim)
-    .x <- tibble::add_column(.x, hectindex = newcol)
-    return(restore_add_var(.x, x))
-  }
+  result
 }
 
 #' @rdname add_var

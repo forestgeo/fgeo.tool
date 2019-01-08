@@ -45,7 +45,6 @@ rename_matches <- function(x, y) {
 extract_insensitive <- function(x, y) {
   x <- as.character(x)
   y <- as.character(y)
-  # stopifnot(is.character(x), is.character(y))
 
   # Is the element of x in y?
   pull_replacement <- function(x, y) {
