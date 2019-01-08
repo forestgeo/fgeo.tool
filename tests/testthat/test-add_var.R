@@ -13,10 +13,10 @@ test_that("add_gxgy handles 0-row input", {
 test_that("add_gxgy handles factors", {
   tree1 <- fgeo.x::tree5[1, ]
   tree1$quadrat <- as.factor(100)
-  
+
   tree2 <- fgeo.x::tree5[1, ]
   tree2$quadrat <- 100L
-  
+
   expect_equal(
     add_gxgy(tree1)$gx1,
     add_gxgy(tree2)$gx1
@@ -37,7 +37,7 @@ test_that("add_gxgy with a viewfulltable outputs a data.frame", {
 test_that("add_gxgy with a viewfulltable outputs the expected names", {
   vft <- dplyr::sample_n(fgeo.x::vft_4quad, 10)
   out <- add_gxgy(vft)
-  
+
   expect_true(
     all(c("QuadratName", "gx", "gy") %in% names(out))
   )
@@ -45,11 +45,11 @@ test_that("add_gxgy with a viewfulltable outputs the expected names", {
 
 test_that("add_gxgy handles potentially duplicated names and avoids them", {
   skip_if_not_installed("ctfs")
-  
+
   tree <- dplyr::sample_n(fgeo.x::tree5, 10)
   out <- add_gxgy(tree)
   expect_true(all(c("quadrat", "gx1", "gy1") %in% names(out)))
-  
+
   expect_equivalent(
     add_gxgy(tree)[["gx1"]], ctfs::quad.to.gxgy(tree$quadrat)$gx
   )
@@ -70,11 +70,11 @@ test_that("add_gxgy with viewfulltable outputs equal to ctfs::quad.to.gxgy()", {
 # Input gxgy --------------------------------------------------------------
 
 x <- tribble(
-    ~gx,    ~gy,
-      0,      0,
-     50,     25,
+  ~gx, ~gy,
+  0, 0,
+  50, 25,
   999.9, 499.95,
-   1000,    500
+  1000, 500
 )
 
 gridsize <- 20
@@ -94,11 +94,11 @@ test_that("works with `px`, `py`", {
 test_that("informs plotdim if not explicitely given", {
   expect_silent(add_lxly(tibble(gx = 1, gy = 1), gridsize, plotdim))
   expect_message(
-    add_lxly(tibble(gx = 1, gy = 1), gridsize), 
+    add_lxly(tibble(gx = 1, gy = 1), gridsize),
     "Guessing: plotdim"
   )
   expect_message(
-    add_lxly(tibble(gx = 1, gy = 1), gridsize), 
+    add_lxly(tibble(gx = 1, gy = 1), gridsize),
     "If.*wrong.*provide.*plotdim"
   )
 })
@@ -155,14 +155,14 @@ context("add_quad")
 
 test_that("returns equal to ctfs analog", {
   skip_if_not_installed("ctfs")
-  
+
   expect_equal(
     add_quad(x, gridsize, plotdim, start = 0)[["quad"]],
-    c("0000", "0201", "4924", NA) 
+    c("0000", "0201", "4924", NA)
   )
   expect_equal(
     ctfs::gxgy.to.quad(x$gx, x$gy, gridsize, plotdim, start = "zero"),
-    c("0000", "0201", "4924", "NANA") 
+    c("0000", "0201", "4924", "NANA")
   )
 })
 
@@ -177,7 +177,8 @@ test_that("is sensitive to `start`", {
 })
 
 test_that("aborts bad start", {
-  expect_error(add_quad(x, gridsize, plotdim, start = "bad"),
+  expect_error(
+    add_quad(x, gridsize, plotdim, start = "bad"),
     "must be `NULL` or `0000`"
   )
 })
@@ -192,7 +193,7 @@ context("add_col_row")
 
 test_that("returns equal to ctfs analog", {
   skip_if_not_installed("ctfs")
-  
+
   expect_equivalent(
     purrr::modify(add_col_row(x)[c("row", "col")], as.numeric),
     ctfs::gxgy.to.rowcol(x$gx, x$gy)
