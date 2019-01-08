@@ -24,9 +24,6 @@ Install the development version of **fgeo.tool**:
 Or [install all **fgeo** packages in one
 step](https://forestgeo.github.io/fgeo/index.html#installation).
 
-For details on how to install packages from GitHub, see [this
-article](https://goo.gl/dQKEeg).
-
 ## Example
 
 ``` r
