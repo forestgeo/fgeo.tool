@@ -68,7 +68,7 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 
 
 
-#' Help to read ForestGEO data safely, with consistent column type.
+#' Help to read ForestGEO data safely, with consistent columns type.
 #'
 #' @description
 #' A common cause of problems is feeding functions with data which columns are
@@ -76,7 +76,7 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' a text file with functions such as [utils::read.csv()],
 #' [utils::read.delim()], and friends -- which commonly guess wrongly the column
 #' type that you more likely expect. These common offenders are strongly
-#' discouraged; instead consider using [readr::read_csv()], [readr::read_csv()],
+#' discouraged; instead consider using `readr::read_csv()`, `readr::read_tsv()`,
 #' and friends, which guess column types correctly much more often than their
 #' analogs from the __utils__ package.
 #'
@@ -101,8 +101,7 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' * ? = guess,
 #' * or _/- to skip the column.'.
 #'
-#' @seealso [readr::read_delim()], [readr::read_csv()], [read_vft()].
-#'
+#' @seealso [readr::read_delim()].
 #'
 #' @return A list.
 #'
