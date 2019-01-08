@@ -47,7 +47,8 @@
 #' 
 #' add_col_row(x, gridsize, plotdim)
 #' 
-#' # Column and row from QuadratName
+#' 
+#' # From `quadrat` or `QuadratName` --------------------------------------
 #' x <- tribble(
 #'   ~QuadratName,
 #'         "0001",
@@ -55,6 +56,16 @@
 #'         "0101",
 #'         "1001"
 #' )
+#' 
+#' # Output `gx` and `gy` ---------------
+#' 
+#' add_gxgy(x)
+#' 
+#' # Warning: The data may already have `gx` and `gx` columns
+#' gxgy <- add_gxgy(fgeo.x::tree5)
+#' select(gxgy, matches("gx|gy"))
+#' 
+#' # Output `col` and `row` -------------
 #' 
 #' # Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`
 #' # The argument `sep` lets you separate `QuadratName` at any positon
@@ -95,6 +106,8 @@
 #' @family functions for fgeo vft
 #' @name add_var
 NULL
+
+# Input gxgy --------------------------------------------------------------
 
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   .x <- sanitize_xy(low(x))
@@ -280,4 +293,25 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
   if (!is.null(plotdim)) stopifnot(length(plotdim) == 2)
   
   invisible(x)
+}
+
+# Input quadratname or quadrat --------------------------------------------
+
+#' @rdname add_var
+#' @export
+add_gxgy <- function(x, gridsize = 20, start = 0) {
+  gxgy <- quad_to_gxgy(x[[nm_quad(x)]], gridsize = gridsize, start = start)
+  # cbind accepts duplicaed names. dplyr::bind_cols doesn't
+  dplyr::bind_cols(x, gxgy)
+}
+
+nm_quad <- function(x) {
+  grep("^quadrat$|^quadratname$", names(x), value = TRUE, ignore.case = TRUE)
+}
+
+quad_to_gxgy <- function(x, gridsize = 20, start = 0) {
+  x = as.numeric(as.character(x))
+  rowno = x %% 100 - start
+  colno = floor(x / 100) - start
+  data.frame(gx = colno * gridsize, gy = rowno * gridsize)
 }

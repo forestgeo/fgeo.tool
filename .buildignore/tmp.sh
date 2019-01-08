@@ -4,7 +4,7 @@ git reset --hard upstream/master
 
 git remote prune origin
 
-message="Refactor"
+message="New add_gxgy()"
 
 git add .
 git commit -m "$message"

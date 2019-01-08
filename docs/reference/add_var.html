@@ -131,7 +131,9 @@ work with ViewFull-tables and census-tables (tree and stem).</p>
 
 <span class='fu'>add_hectindex</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)</pre>
+<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+
+<span class='fu'>add_gxgy</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -254,7 +256,8 @@ variable(s) <code>var</code>.</p>
 #&gt; </span><span style='color: #555555;'>2</span><span>   50    25  03    02   
 #&gt; </span><span style='color: #555555;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 50    25   
 #&gt; </span><span style='color: #555555;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
-<span class='co'># Column and row from QuadratName</span>
+
+<span class='co'># From `quadrat` or `QuadratName` --------------------------------------</span>
 <span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
   ~<span class='no'>QuadratName</span>,
         <span class='st'>"0001"</span>,
@@ -263,8 +266,36 @@ variable(s) <code>var</code>.</p>
         <span class='st'>"1001"</span>
 )
 
-<span class='co'># Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`</span>
-<span class='co'># The argument `sep` lets you separate `QuadratName` at any positon</span></div></span><span class='co'># NOT RUN {</span>
+<span class='co'># Output `gx` and `gy` ---------------</span>
+
+<span class='fu'>add_gxgy</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 4 x 3</span><span>
+#&gt;   QuadratName    gx    gy
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 0001            0    20
+#&gt; </span><span style='color: #555555;'>2</span><span> 0011            0   220
+#&gt; </span><span style='color: #555555;'>3</span><span> 0101           20    20
+#&gt; </span><span style='color: #555555;'>4</span><span> 1001          200    20</div><div class='input'>
+<span class='co'># Warning: The data may already have `gx` and `gx` columns</span>
+<span class='no'>gxgy</span> <span class='kw'>&lt;-</span> <span class='fu'>add_gxgy</span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>tree5</a></span>)
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>gxgy</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers'>matches</a></span>(<span class='st'>"gx|gy"</span>))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 30 x 4</span><span>
+#&gt;       gx    gy   gx1   gy1
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> 139.  425.    140   440
+#&gt; </span><span style='color: #555555;'> 2</span><span>  94.8 424.    100   440
+#&gt; </span><span style='color: #555555;'> 3</span><span>  61.3 496.     80   500
+#&gt; </span><span style='color: #555555;'> 4</span><span> 100.  328.    120   340
+#&gt; </span><span style='color: #555555;'> 5</span><span>  53.8  73.8    60    80
+#&gt; </span><span style='color: #555555;'> 6</span><span> 203.  110.    220   120
+#&gt; </span><span style='color: #555555;'> 7</span><span> 172.   14.7   180    20
+#&gt; </span><span style='color: #555555;'> 8</span><span> 184.  194.    200   200
+#&gt; </span><span style='color: #555555;'> 9</span><span> 191.  132.    200   140
+#&gt; </span><span style='color: #555555;'>10</span><span> 274.  279.    280   280
+#&gt; </span><span style='color: #555555;'># ... with 20 more rows</span><span></div><div class='input'>
+# Output `col` and `row` -------------
+
+# Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`
+# The argument `sep` lets you separate `QuadratName` at any positon
+</div></span><span class='co'># NOT RUN {</span>
 <span class='no'>tidyr_is_installed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"tidyr"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 <span class='no'>stringr_is_installed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/ns-load'>requireNamespace</a></span>(<span class='st'>"stringr"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
