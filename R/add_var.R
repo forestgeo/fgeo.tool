@@ -1,19 +1,23 @@
-#' Add columns `lx/ly`; `QX/QY`; `index`; `col/row`; and `hectindex`, `quad`.
+#' Add columns `lx/ly`, `QX/QY`, `index`, `col/row`, `hectindex`, `quad`, `gx/gy`.
 #' 
-#' These functions add columns to position trees/stems in a forest plot. They 
-#' work with ViewFull-tables and census-tables (tree and stem).
+#' These functions add columns to position trees in a forest plot. They work
+#' with ViewFull- and census tables (tree and stem). From the input table, most
+#' functions use only the `gx` and `gy` columns (or equivalent columns). The
+#' exception is the function `add_gxgy()` which inputs quadrat information. If
+#' your data lacks some important column, an error message will inform you which
+#' the missing column is.
 #'
-#' These functions mostly wrap legacy code from the [CTFS R
+#' These functions are adapted from the [CTFS R
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
 #'
 #' @template x_fgeo
 #' @inheritParams from_var_to_var
 #' @param start Defaults to label the first quadrat as "0101". Use `0` to
-#'   instead label it as "0000".
+#'   label it as "0000" instead.
 #' @param width Number; width to pad the labels of plot-columns and -rows.
 #'
-#' @return A modified version of the dataframe `x` with the additional
-#'   variable(s) `var`.
+#' @return For any given `_<var>`, a function `add_<var>()` returns a modified
+#'   version of the input dataframe, with the additional variable(s) `_<var>`.
 #'
 #' @examples
 #' x <- tribble(
@@ -301,9 +305,18 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
 #' @rdname add_var
 #' @export
 add_gxgy <- function(x, gridsize = 20, start = 0) {
+  assert_quad(x)
+  
   gxgy <- quad_to_gxgy(x[[nm_quad(x)]], gridsize = gridsize, start = start)
   # cbind accepts duplicaed names. dplyr::bind_cols doesn't
   dplyr::bind_cols(x, gxgy)
+}
+
+assert_quad <- function(x) {
+  missing_quad <- !any(c("quadrat", "quadratname") %in% names(low(x)))
+  if (missing_quad) {
+    abort("Ensure your data has colum `quadrat` or `quadratname`.")
+  }
 }
 
 nm_quad <- function(x) {

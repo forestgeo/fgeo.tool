@@ -4,6 +4,18 @@ context("add_gxgy")
 
 set.seed(1)
 
+test_that("add_gxgy w/ ViewFullTable fails gracefully if missing quadratname", {
+  vft <- fgeo.x::vft_4quad
+  vft$QuadratName <- NULL
+  expect_error(add_gxgy(vft), "Ensure.*quadrat")
+})
+
+test_that("add_gxgy w/ census table fails gracefully if missing quadrat", {
+  tree <- fgeo.x::tree5
+  tree$quadrat <- NULL
+  expect_error(add_gxgy(tree), "Ensure.*quadrat")
+})
+
 test_that("add_gxgy handles 0-row input", {
   tree <- fgeo.x::tree5[0, ]
   expect_equal(nrow(add_gxgy(tree)), 0)

@@ -68,12 +68,10 @@ str(vft[c("PlotName", "DBH")])
 vft_sane <- sanitize_vft(vft)
 str(vft_sane[c("PlotName", "DBH")])
 
-
-
-taxa <- fgeo.x::taxa
-# Bad column types
+taxa <- read.csv(fgeo.x::example_path("taxa.csv"))
+# E.g. inserting bad column types
 taxa[] <- lapply(taxa, as.character)
-# Bad representation of missing values
+# E.g. inserting bad representation of missing values
 taxa$SubspeciesID <- "NULL"
 
 # "NULL" should be replaced by `NA` and `ViewID` should be integer
@@ -82,7 +80,6 @@ str(taxa[c("SubspeciesID", "ViewID")])
 # Fix
 taxa_sane <- sanitize_taxa(taxa)
 str(taxa_sane[c("SubspeciesID", "ViewID")])
-
 }
 \seealso{
 \code{\link[=read_vft]{read_vft()}}.

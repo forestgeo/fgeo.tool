@@ -26,7 +26,8 @@ test_that("produces no warning", {
 
 context("sanitize_taxa")
 
-taxa <- dplyr::sample_n(fgeo.x::taxa, 2)
+taxa <- dplyr::sample_n(read.csv(fgeo.x::example_path("taxa.csv")), 2)
+# Creating bad data
 taxa[] <- lapply(taxa, as.character)
 taxa$SubspeciesID <- "NULL"
 

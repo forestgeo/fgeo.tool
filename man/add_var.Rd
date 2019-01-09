@@ -9,7 +9,7 @@
 \alias{add_hectindex}
 \alias{add_quad}
 \alias{add_gxgy}
-\title{Add columns \code{lx/ly}; \code{QX/QY}; \code{index}; \code{col/row}; and \code{hectindex}, \code{quad}.}
+\title{Add columns \code{lx/ly}, \code{QX/QY}, \code{index}, \code{col/row}, \code{hectindex}, \code{quad}, \code{gx/gy}.}
 \usage{
 add_lxly(x, gridsize = 20, plotdim = NULL)
 
@@ -34,20 +34,24 @@ add_gxgy(x, gridsize = 20, start = 0)
 maximum possible values of \code{gx} and \code{gy}).}
 
 \item{start}{Defaults to label the first quadrat as "0101". Use \code{0} to
-instead label it as "0000".}
+label it as "0000" instead.}
 
 \item{width}{Number; width to pad the labels of plot-columns and -rows.}
 }
 \value{
-A modified version of the dataframe \code{x} with the additional
-variable(s) \code{var}.
+For any given \code{_<var>}, a function \code{add_<var>()} returns a modified
+version of the input dataframe, with the additional variable(s) \code{_<var>}.
 }
 \description{
-These functions add columns to position trees/stems in a forest plot. They
-work with ViewFull-tables and census-tables (tree and stem).
+These functions add columns to position trees in a forest plot. They work
+with ViewFull- and census tables (tree and stem). From the input table, most
+functions use only the \code{gx} and \code{gy} columns (or equivalent columns). The
+exception is the function \code{add_gxgy()} which inputs quadrat information. If
+your data lacks some important column, an error message will inform you which
+the missing column is.
 }
 \details{
-These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
+These functions are adapted from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
 }
 \examples{
 x <- tribble(
