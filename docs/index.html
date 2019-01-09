@@ -82,7 +82,7 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#functions-for-general-purposes" class="anchor"></a><img src="https://i.imgur.com/vTLlhbp.png" align="right" height="88"> Functions for general purposes</h1></div>
 
-<p>The goal of <strong>fgeo.tool</strong> is to provide functions for general purposes. Many of its functions are used in multiple other <strong>fgeo</strong> packages.</p>
+<p><strong>fgeo.tool</strong> helps you to import and manipulate ForestGEO data. It provides functions that can expect different classes of ForestGEO data and also reexports from other packages useful tools to wrangle data in general.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -133,7 +133,7 @@ devtools::install_github("forestgeo/fgeo.tool")</a></code></pre>
 <a class="sourceLine" id="cb4-20" data-line-number="20"><span class="co">#&gt; #   Date &lt;int&gt;, ListOfTSM &lt;chr&gt;, HighHOM &lt;int&gt;, LargeStem &lt;chr&gt;,</span></a>
 <a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co">#&gt; #   Status &lt;chr&gt;</span></a></code></pre></div>
 <p><code><a href="reference/pick_drop.html">pick_dbh_under()</a></code>, <code><a href="reference/pick_drop.html">drop_status()</a></code> and friends pick and drop rows from a ForestGEO ViewFullTable or census table.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/data">data</a></span>(<span class="st">"tree5"</span>)</a>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">tree5 &lt;-<span class="st"> </span>fgeo.x<span class="op">::</span>tree5</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">tree5 <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="reference/pick_drop.html">pick_dbh_under</a></span>(<span class="dv">100</span>)</a>

@@ -11,8 +11,10 @@ status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https:
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 
-The goal of **fgeo.tool** is to provide functions for general purposes.
-Many of its functions are used in multiple other **fgeo** packages.
+**fgeo.tool** helps you to import and manipulate ForestGEO data. It
+provides functions that can expect different classes of ForestGEO data
+and also reexports from other packages useful tools to wrangle data in
+general.
 
 ## Installation
 
@@ -81,7 +83,7 @@ read_vft(vft_file)
 a ForestGEO ViewFullTable or census table.
 
 ``` r
-data("tree5")
+tree5 <- fgeo.x::tree5
 
 tree5 %>% 
   pick_dbh_under(100)
