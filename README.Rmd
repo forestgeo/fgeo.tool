@@ -19,8 +19,7 @@ knitr::opts_chunk$set(
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)  
 
-The goal of __fgeo.tool__ is to provide functions for general purposes.
-Many of its functions are used in multiple other __fgeo__ packages.
+__fgeo.tool__ helps you to import and manipulate ForestGEO data. It provides functions that can expect different classes of ForestGEO data and also reexports from other packages useful tools to wrangle data in general.
 
 ## Installation
 
@@ -58,7 +57,7 @@ read_vft(vft_file)
 `pick_dbh_under()`, `drop_status()` and friends pick and drop rows from a ForestGEO ViewFullTable or census table.
 
 ```{r}
-data("tree5")
+tree5 <- fgeo.x::tree5
 
 tree5 %>% 
   pick_dbh_under(100)
@@ -89,7 +88,7 @@ stem %>%
   add_index()
 ```
 
-[Get started with __fgeo__](https://forestgeo.github.io/fgeo/articles/fgeo.html)
+[Get started with __fgeo__](https://forestgeo.github.io/fgeo)
 
 ## Information
 
