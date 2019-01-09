@@ -7,21 +7,21 @@ sanitize_view <- function(col_types) {
 }
 
 #' Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.
-#' 
-#' These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to 
+#'
+#' These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to
 #' achieve the same effect as reading with `read_vft()` and `read_taxa()`. The
 #' most common problems that these functions fix are these:
 #' * Ensure that each column has the correct type.
-#' * Ensure that missing values are represented with `NA`s -- not with the 
+#' * Ensure that missing values are represented with `NA`s -- not with the
 #' literal string "NULL".
-#' 
+#'
 #' @inheritParams readr::type_convert
 #' @param x A dataframe; either a ForestGEO ViewFullTable (`sanitize_vft()`) or
 #'   ViewTaxonomy (`sanitize_vft()`).
 #' @inheritDotParams readr::type_convert
-#' 
+#'
 #' @seealso [read_vft()].
-#' 
+#'
 #' @section Acknowledgments:
 #' Thanks to Shameema Jafferjee Esufali for motivating this functions.
 #'
@@ -43,12 +43,10 @@ sanitize_view <- function(col_types) {
 #' vft_sane <- sanitize_vft(vft)
 #' str(vft_sane[c("PlotName", "DBH")])
 #' 
-#' 
-#' 
-#' taxa <- fgeo.x::taxa
-#' # Bad column types
+#' taxa <- read.csv(fgeo.x::example_path("taxa.csv"))
+#' # E.g. inserting bad column types
 #' taxa[] <- lapply(taxa, as.character)
-#' # Bad representation of missing values
+#' # E.g. inserting bad representation of missing values
 #' taxa$SubspeciesID <- "NULL"
 #' 
 #' # "NULL" should be replaced by `NA` and `ViewID` should be integer
@@ -57,7 +55,6 @@ sanitize_view <- function(col_types) {
 #' # Fix
 #' taxa_sane <- sanitize_taxa(taxa)
 #' str(taxa_sane[c("SubspeciesID", "ViewID")])
-#' 
 #' @family functions to edit ForestGEO data in place
 #' @export
 sanitize_vft <- sanitize_view(col_types = type_vft())

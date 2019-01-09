@@ -9,7 +9,7 @@
 \alias{add_hectindex}
 \alias{add_quad}
 \alias{add_gxgy}
-\title{Add columns \code{lx/ly}; \code{QX/QY}; \code{index}; \code{col/row}; and \code{hectindex}, \code{quad}.}
+\title{Add columns \code{lx/ly}, \code{QX/QY}, \code{index}, \code{col/row}, \code{hectindex}, \code{quad}, \code{gx/gy}.}
 \usage{
 add_lxly(x, gridsize = 20, plotdim = NULL)
 
@@ -43,11 +43,15 @@ A modified version of the dataframe \code{x} with the additional
 variable(s) \code{var}.
 }
 \description{
-These functions add columns to position trees/stems in a forest plot. They
-work with ViewFull-tables and census-tables (tree and stem).
+These functions add columns to position trees in a forest plot. They
+work with ViewFull-tables and also with census-tables (tree and stem).
+From the input table, most functions use only the \code{gx} and \code{gy} coordinates.
+The exception is the function \code{add_gxgy()} which inputs quadrat information.
+If your data lacks some important column, an error message will inform you
+what the missing column is.
 }
 \details{
-These functions mostly wrap legacy code from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
+These functions are adapted from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
 }
 \examples{
 x <- tribble(

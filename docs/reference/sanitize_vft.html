@@ -203,21 +203,13 @@ names.</p></dd>
 #&gt;  $ DBH     : num  30.8 74 22.3 NA 33.8 NA NA 16.5 NA 44.6 ...</div><div class='input'>
 
 
-<span class='no'>taxa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>taxa</a></span>
-<span class='co'># Bad column types</span>
-<span class='no'>taxa</span>[] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>taxa</span>, <span class='no'>as.character</span>)
-<span class='co'># Bad representation of missing values</span>
-<span class='no'>taxa</span>$<span class='no'>SubspeciesID</span> <span class='kw'>&lt;-</span> <span class='st'>"NULL"</span>
-
+<span class='no'>taxa</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'>taxa</span></div><div class='output co'>#&gt; <span class='error'>Error: 'taxa' is not an exported object from 'namespace:fgeo.x'</span></div><div class='input'><span class='co'># Bad column types</span>
+<span class='no'>taxa</span>[] <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/lapply'>lapply</a></span>(<span class='no'>taxa</span>, <span class='no'>as.character</span>)</div><div class='output co'>#&gt; <span class='error'>Error in lapply(taxa, as.character): object 'taxa' not found</span></div><div class='input'><span class='co'># Bad representation of missing values</span>
+<span class='no'>taxa</span>$<span class='no'>SubspeciesID</span> <span class='kw'>&lt;-</span> <span class='st'>"NULL"</span></div><div class='output co'>#&gt; <span class='error'>Error in taxa$SubspeciesID &lt;- "NULL": object 'taxa' not found</span></div><div class='input'>
 <span class='co'># "NULL" should be replaced by `NA` and `ViewID` should be integer</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>taxa</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  2 variables:
-#&gt;  $ SubspeciesID: chr  "NULL" "NULL" "NULL" "NULL" ...
-#&gt;  $ ViewID      : chr  "1" "2" "3" "4" ...</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>taxa</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; <span class='error'>Error in str(taxa[c("SubspeciesID", "ViewID")]): object 'taxa' not found</span></div><div class='input'>
 <span class='co'># Fix</span>
-<span class='no'>taxa_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_taxa</span>(<span class='no'>taxa</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>taxa_sane</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':	163 obs. of  2 variables:
-#&gt;  $ SubspeciesID: chr  NA NA NA NA ...
-#&gt;  $ ViewID      : int  1 2 3 4 5 6 7 8 9 10 ...</div><div class='input'>
+<span class='no'>taxa_sane</span> <span class='kw'>&lt;-</span> <span class='fu'>sanitize_taxa</span>(<span class='no'>taxa</span>)</div><div class='output co'>#&gt; <span class='error'>Error in rlang::is_named(x): object 'taxa' not found</span></div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>taxa_sane</span>[<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"SubspeciesID"</span>, <span class='st'>"ViewID"</span>)])</div><div class='output co'>#&gt; <span class='error'>Error in str(taxa_sane[c("SubspeciesID", "ViewID")]): object 'taxa_sane' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

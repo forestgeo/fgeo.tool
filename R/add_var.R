@@ -1,9 +1,13 @@
-#' Add columns `lx/ly`; `QX/QY`; `index`; `col/row`; and `hectindex`, `quad`.
+#' Add columns `lx/ly`, `QX/QY`, `index`, `col/row`, `hectindex`, `quad`, `gx/gy`.
 #' 
-#' These functions add columns to position trees/stems in a forest plot. They 
-#' work with ViewFull-tables and census-tables (tree and stem).
+#' These functions add columns to position trees in a forest plot. They 
+#' work with ViewFull-tables and also with census-tables (tree and stem). 
+#' From the input table, most functions use only the `gx` and `gy` coordinates.
+#' The exception is the function `add_gxgy()` which inputs quadrat information.
+#' If your data lacks some important column, an error message will inform you
+#' what the missing column is.
 #'
-#' These functions mostly wrap legacy code from the [CTFS R
+#' These functions are adapted from the [CTFS R
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
 #'
 #' @template x_fgeo

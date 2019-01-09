@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add columns <code>lx/ly</code>; <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; and <code>hectindex</code>, <code>quad</code>. — add_var • fgeo.tool</title>
+<title>Add columns <code>lx/ly</code>, <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,14 @@
 
 
 
-<meta property="og:title" content="Add columns <code>lx/ly</code>; <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; and <code>hectindex</code>, <code>quad</code>. — add_var" />
+<meta property="og:title" content="Add columns <code>lx/ly</code>, <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var" />
 
-<meta property="og:description" content="These functions add columns to position trees/stems in a forest plot. They
-work with ViewFull-tables and census-tables (tree and stem)." />
+<meta property="og:description" content="These functions add columns to position trees in a forest plot. They
+work with ViewFull-tables and also with census-tables (tree and stem).
+From the input table, most functions use only the gx and gy coordinates.
+The exception is the function add_gxgy() which inputs quadrat information.
+If your data lacks some important column, an error message will inform you
+what the missing column is." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,15 +113,19 @@ work with ViewFull-tables and census-tables (tree and stem)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add columns <code>lx/ly</code>; <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; and <code>hectindex</code>, <code>quad</code>.</h1>
+    <h1>Add columns <code>lx/ly</code>, <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/add_var.R'><code>R/add_var.R</code></a></small>
     <div class="hidden name"><code>add_var.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions add columns to position trees/stems in a forest plot. They
-work with ViewFull-tables and census-tables (tree and stem).</p>
+    <p>These functions add columns to position trees in a forest plot. They
+work with ViewFull-tables and also with census-tables (tree and stem).
+From the input table, most functions use only the <code>gx</code> and <code>gy</code> coordinates.
+The exception is the function <code>add_gxgy()</code> which inputs quadrat information.
+If your data lacks some important column, an error message will inform you
+what the missing column is.</p>
     
     </div>
 
@@ -169,7 +177,7 @@ variable(s) <code>var</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>These functions mostly wrap legacy code from the <a href='http://ctfs.si.edu/Public/CTFSRPackage/'>CTFS R Package</a>.</p>
+    <p>These functions are adapted from the <a href='http://ctfs.si.edu/Public/CTFSRPackage/'>CTFS R Package</a>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
