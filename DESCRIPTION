@@ -1,5 +1,5 @@
 Package: fgeo.tool
-Title: Manipulate ForestGEO Data
+Title: Import and Manipulate ForestGEO Data
 Version: 0.0.0.9005
 Authors@R: 
     c(person(given = "Mauro",
@@ -42,9 +42,8 @@ Suggests:
     knitr,
     spelling,
     stringr,
-    testthat
-VignetteBuilder: 
-    knitr
+    testthat,
+    roxygen2
 Remotes: 
     forestgeo/fgeo.x@*release
 Encoding: UTF-8
