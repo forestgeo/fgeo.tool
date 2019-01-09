@@ -1,11 +1,11 @@
 #' Add columns `lx/ly`, `QX/QY`, `index`, `col/row`, `hectindex`, `quad`, `gx/gy`.
 #' 
-#' These functions add columns to position trees in a forest plot. They 
-#' work with ViewFull-tables and also with census-tables (tree and stem). 
-#' From the input table, most functions use only the `gx` and `gy` coordinates.
-#' The exception is the function `add_gxgy()` which inputs quadrat information.
-#' If your data lacks some important column, an error message will inform you
-#' what the missing column is.
+#' These functions add columns to position trees in a forest plot. They work
+#' with ViewFull- and census tables (tree and stem). From the input table, most
+#' functions use only the `gx` and `gy` columns (or equivalent columns). The
+#' exception is the function `add_gxgy()` which inputs quadrat information. If
+#' your data lacks some important column, an error message will inform you which
+#' the missing column is.
 #'
 #' These functions are adapted from the [CTFS R
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
@@ -13,11 +13,11 @@
 #' @template x_fgeo
 #' @inheritParams from_var_to_var
 #' @param start Defaults to label the first quadrat as "0101". Use `0` to
-#'   instead label it as "0000".
+#'   label it as "0000" instead.
 #' @param width Number; width to pad the labels of plot-columns and -rows.
 #'
-#' @return A modified version of the dataframe `x` with the additional
-#'   variable(s) `var`.
+#' @return For any given `_<var>`, a function `add_<var>()` returns a modified
+#'   version of the input dataframe, with the additional variable(s) `_<var>`.
 #'
 #' @examples
 #' x <- tribble(

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add columns <code>lx/ly</code>, <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var • fgeo.tool</title>
+<title>Add columns <code>lx/ly</code>, <code>QX/QY</code>, <code>index</code>, <code>col/row</code>, <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,14 +30,14 @@
 
 
 
-<meta property="og:title" content="Add columns <code>lx/ly</code>, <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var" />
+<meta property="og:title" content="Add columns <code>lx/ly</code>, <code>QX/QY</code>, <code>index</code>, <code>col/row</code>, <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var" />
 
-<meta property="og:description" content="These functions add columns to position trees in a forest plot. They
-work with ViewFull-tables and also with census-tables (tree and stem).
-From the input table, most functions use only the gx and gy coordinates.
-The exception is the function add_gxgy() which inputs quadrat information.
-If your data lacks some important column, an error message will inform you
-what the missing column is." />
+<meta property="og:description" content="These functions add columns to position trees in a forest plot. They work
+with ViewFull- and census tables (tree and stem). From the input table, most
+functions use only the gx and gy columns (or equivalent columns). The
+exception is the function add_gxgy() which inputs quadrat information. If
+your data lacks some important column, an error message will inform you which
+the missing column is." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -113,19 +113,19 @@ what the missing column is." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add columns <code>lx/ly</code>, <code>QX/QY</code>; <code>index</code>; <code>col/row</code>; <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>.</h1>
+    <h1>Add columns <code>lx/ly</code>, <code>QX/QY</code>, <code>index</code>, <code>col/row</code>, <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/add_var.R'><code>R/add_var.R</code></a></small>
     <div class="hidden name"><code>add_var.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions add columns to position trees in a forest plot. They
-work with ViewFull-tables and also with census-tables (tree and stem).
-From the input table, most functions use only the <code>gx</code> and <code>gy</code> coordinates.
-The exception is the function <code>add_gxgy()</code> which inputs quadrat information.
-If your data lacks some important column, an error message will inform you
-what the missing column is.</p>
+    <p>These functions add columns to position trees in a forest plot. They work
+with ViewFull- and census tables (tree and stem). From the input table, most
+functions use only the <code>gx</code> and <code>gy</code> columns (or equivalent columns). The
+exception is the function <code>add_gxgy()</code> which inputs quadrat information. If
+your data lacks some important column, an error message will inform you which
+the missing column is.</p>
     
     </div>
 
@@ -162,7 +162,7 @@ maximum possible values of <code>gx</code> and <code>gy</code>).</p></td>
     <tr>
       <th>start</th>
       <td><p>Defaults to label the first quadrat as "0101". Use <code>0</code> to
-instead label it as "0000".</p></td>
+label it as "0000" instead.</p></td>
     </tr>
     <tr>
       <th>width</th>
@@ -172,8 +172,8 @@ instead label it as "0000".</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A modified version of the dataframe <code>x</code> with the additional
-variable(s) <code>var</code>.</p>
+    <p>For any given <code>_&lt;var&gt;</code>, a function <code>add_&lt;var&gt;()</code> returns a modified
+version of the input dataframe, with the additional variable(s) <code>_&lt;var&gt;</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 

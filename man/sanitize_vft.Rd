@@ -80,7 +80,6 @@ str(taxa[c("SubspeciesID", "ViewID")])
 # Fix
 taxa_sane <- sanitize_taxa(taxa)
 str(taxa_sane[c("SubspeciesID", "ViewID")])
-
 }
 \seealso{
 \code{\link[=read_vft]{read_vft()}}.

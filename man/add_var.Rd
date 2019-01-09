@@ -34,21 +34,21 @@ add_gxgy(x, gridsize = 20, start = 0)
 maximum possible values of \code{gx} and \code{gy}).}
 
 \item{start}{Defaults to label the first quadrat as "0101". Use \code{0} to
-instead label it as "0000".}
+label it as "0000" instead.}
 
 \item{width}{Number; width to pad the labels of plot-columns and -rows.}
 }
 \value{
-A modified version of the dataframe \code{x} with the additional
-variable(s) \code{var}.
+For any given \code{_<var>}, a function \code{add_<var>()} returns a modified
+version of the input dataframe, with the additional variable(s) \code{_<var>}.
 }
 \description{
-These functions add columns to position trees in a forest plot. They
-work with ViewFull-tables and also with census-tables (tree and stem).
-From the input table, most functions use only the \code{gx} and \code{gy} coordinates.
-The exception is the function \code{add_gxgy()} which inputs quadrat information.
-If your data lacks some important column, an error message will inform you
-what the missing column is.
+These functions add columns to position trees in a forest plot. They work
+with ViewFull- and census tables (tree and stem). From the input table, most
+functions use only the \code{gx} and \code{gy} columns (or equivalent columns). The
+exception is the function \code{add_gxgy()} which inputs quadrat information. If
+your data lacks some important column, an error message will inform you which
+the missing column is.
 }
 \details{
 These functions are adapted from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
