@@ -19,11 +19,18 @@ knitr::opts_chunk$set(
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
 [![CRAN status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)  
 
-__fgeo.tool__ helps you to import and manipulate ForestGEO data. It provides functions that can expect different classes of ForestGEO data and also reexports from other packages useful tools to wrangle data in general.
+__fgeo.tool__ helps you to import and manipulate ForestGEO data.
 
 ## Installation
 
-Install the development version of **fgeo.tool**:
+Install the latest GitHub release of **fgeo.tool** with:
+
+```
+# install.packages("devtools")
+install_github("forestgeo/fgeo.tool@*release")
+```
+
+Install the development version of **fgeo.tool** with:
 
 ```
 # install.packages("devtools")

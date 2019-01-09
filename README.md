@@ -11,10 +11,7 @@ status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https:
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 
-**fgeo.tool** helps you to import and manipulate ForestGEO data. It
-provides functions that can expect different classes of ForestGEO data
-and also reexports from other packages useful tools to wrangle data in
-general.
+**fgeo.tool** helps you to import and manipulate ForestGEO data.
 
 ## Installation
 
