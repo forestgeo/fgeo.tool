@@ -44,7 +44,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    forestgeo/fgeo.x
+    forestgeo/fgeo.x@*release
 Encoding: UTF-8
 Language: en-US
 LazyData: true
