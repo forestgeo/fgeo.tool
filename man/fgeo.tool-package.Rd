@@ -7,8 +7,8 @@
 \title{fgeo.tool: Import and Manipulate ForestGEO Data}
 \description{
 Import and manipulate ForestGEO data
-    (\url{http://www.forestgeo.si.edu/}) with functions that expect
-    different classes of ForestGEO data.
+    (<http://www.forestgeo.si.edu/>) with functions that expect different
+    classes of ForestGEO data.
 }
 \seealso{
 Useful links:
