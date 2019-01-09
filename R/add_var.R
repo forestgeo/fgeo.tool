@@ -305,9 +305,18 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
 #' @rdname add_var
 #' @export
 add_gxgy <- function(x, gridsize = 20, start = 0) {
+  assert_quad(x)
+  
   gxgy <- quad_to_gxgy(x[[nm_quad(x)]], gridsize = gridsize, start = start)
   # cbind accepts duplicaed names. dplyr::bind_cols doesn't
   dplyr::bind_cols(x, gxgy)
+}
+
+assert_quad <- function(x) {
+  missing_quad <- !any(c("quadrat", "quadratname") %in% names(low(x)))
+  if (missing_quad) {
+    abort("Ensure your data has colum `quadrat` or `quadratname`.")
+  }
 }
 
 nm_quad <- function(x) {
