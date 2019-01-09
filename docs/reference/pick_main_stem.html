@@ -68,7 +68,7 @@ to correct for the effect of large buttresses).
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9005</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -82,6 +82,9 @@ to correct for the effect of large buttresses).
 </li>
 <li>
   <a href="../reference/index.html">Reference</a>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -188,7 +191,7 @@ million rows made up entirely of main stems took about ten seconds to run.</p>
     <pre class="examples"><div class='input'><span class='co'># One `treeID` with multiple stems. </span>
 <span class='co'># `stemID == 1.1` has two measurements (due to buttresses).</span>
 <span class='co'># `stemID == 1.2` has a single measurement.</span>
-<span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/tribble'>tribble</a></span>(
+<span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
     ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,  ~<span class='no'>hom</span>, ~<span class='no'>dbh</span>, ~<span class='no'>CensusID</span>,
   <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>140</span>,   <span class='fl'>40</span>,         <span class='fl'>1</span>,  <span class='co'># main stemID (max `hom`)</span>
   <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>60</span>,         <span class='fl'>1</span>,

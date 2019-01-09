@@ -1,6 +1,6 @@
 context("add_status_tree")
 
-stem <- tibble::tribble(
+stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,
           1,       1,       1,     "A",
           1,       1,       2,     "D",
@@ -100,15 +100,6 @@ test_that("warns if the status is invalid", {
   expect_warning(add_status_tree(.df))
   expect_silent(add_status_tree(.df, "dead", "alive"))
 })
-
-
-
-
-
-
-
-
-
 
 test_that("handles names as in viewfull (vf) and census (cns) tables", {
   vf <- tibble::tribble(

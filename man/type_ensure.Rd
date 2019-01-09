@@ -21,7 +21,7 @@ of type \code{type}.
 Ensure the specific columns of a dataframe have a particular type.
 }
 \examples{
-dfm <- tibble::tibble(
+dfm <- tibble(
   w = c(NA, 1, 2),
   x = 1:3, 
   y = as.character(1:3), 

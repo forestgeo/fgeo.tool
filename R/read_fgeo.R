@@ -44,7 +44,7 @@ read_delim_ <- function(delim, file, col_types, na, ...) {
 #'
 #' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #'
-#' @return A dataframe (or tibble).
+#' @return A dataframe (or [tibble][tibble::tibble-package]).
 #'
 #' @examples
 #' library(fgeo.x)

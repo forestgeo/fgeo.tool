@@ -34,7 +34,7 @@ option to \code{character()} to indicate no missing values.}
 \item{...}{Other arguments passed to \code{\link[readr:read_delim]{readr::read_delim()}}.}
 }
 \value{
-A dataframe (or tibble).
+A dataframe (or \link[tibble:tibble-package]{tibble}).
 }
 \description{
 These functions help you read text files containing ViewFullTable and
