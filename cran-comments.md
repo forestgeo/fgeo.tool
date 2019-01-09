@@ -6,9 +6,12 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+FIXMEXXX errors | FIXMEXXX warnings | FIXMEXXX note
 
-* This is a new release.
+Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+* New submission
+* Unknown, possibly mis-spelled, fields in DESCRIPTION: 'Remotes'
+* Strong dependencies not in mainstream repositories: fgeo.x
 
 ## Downstream dependencies
 
