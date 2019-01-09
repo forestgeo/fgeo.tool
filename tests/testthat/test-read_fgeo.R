@@ -35,6 +35,7 @@ test_that("read_vft guesses tab or comma separated file", {
 context("read_taxa")
 
 test_that("read_taxa can read an online file", {
+  skip_on_cran()
   skip_if_not_installed("pingr")
   skip_if(!pingr::is_online(), "Not online.")
 
