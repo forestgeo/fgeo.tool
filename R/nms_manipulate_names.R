@@ -56,7 +56,7 @@ nms_try_rename <- function(x, want, try) {
 #' * `nms_restore()` Returns the object `x` with original (restored) names.
 #'
 #' @examples
-#' cns <- tibble::tibble(CensusID = 1, status = "A")
+#' cns <- tibble(CensusID = 1, status = "A")
 #' original <- cns
 #' original
 #'

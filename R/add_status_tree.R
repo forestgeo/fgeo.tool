@@ -1,3 +1,7 @@
+#' @importFrom tibble tribble
+#' @export
+tibble::tribble
+
 #' Add column `status_tree` based on the status of all stems of each tree.
 #'
 #' @template x_fgeo

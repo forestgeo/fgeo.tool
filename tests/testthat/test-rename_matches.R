@@ -17,10 +17,10 @@ describe("detect_insensitive()", {
     expect_equal(detect_insensitive(x, y), c(TRUE, FALSE))
   })
 
-  it("fails with really bad input and with informative messages", {
-    expect_error(detect_insensitive(1), "is not TRUE")
+  it("fails gracefully", {
+    expect_error(detect_insensitive(1, "a"), "is not TRUE")
     expect_error(extract_insensitive(1), "argument.*is missing")
-    expect_error(detect_insensitive(data.frame(1)), "is not TRUE")
+    expect_error(detect_insensitive(data.frame(1), "a"), "is not TRUE")
     expect_error(extract_insensitive(data.frame(1)), "argument.*is missing")
   })
 })

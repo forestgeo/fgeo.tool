@@ -117,7 +117,7 @@ add_subquad <- function(df,
 #' @return A modified version of the input.
 #' 
 #' @examples
-#' first_subquad_11 <- tibble::tibble(subquadrat = c("11", "12", "22"))
+#' first_subquad_11 <- tibble(subquadrat = c("11", "12", "22"))
 #' first_subquad_11
 #'
 #' first_subquad_01 <- recode_subquad(first_subquad_11, offset = -1)

@@ -101,15 +101,6 @@ test_that("warns if the status is invalid", {
   expect_silent(add_status_tree(.df, "dead", "alive"))
 })
 
-
-
-
-
-
-
-
-
-
 test_that("handles names as in viewfull (vf) and census (cns) tables", {
   vf <- tibble::tribble(
     ~CensusID, ~TreeID, ~Status,
