@@ -69,6 +69,7 @@ tidyselect::last_col
 # Handle large datasets; print more info than dataframes and nicer
 #  Document a returned tibble like so:
 # @return a [tibble][tibble::tibble-package]
+
 #' @importFrom tibble tibble tribble as_tibble
 NULL
 #' @export

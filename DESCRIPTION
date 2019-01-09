@@ -34,7 +34,7 @@ Imports:
     magrittr,
     purrr,
     readr,
-    rlang,
+    rlang (>= 0.1.2),
     tibble,
     tidyselect
 Suggests: 

@@ -1,6 +1,6 @@
 context("add_status_tree")
 
-stem <- tibble::tribble(
+stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,
           1,       1,       1,     "A",
           1,       1,       2,     "D",
