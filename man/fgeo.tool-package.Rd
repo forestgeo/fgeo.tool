@@ -6,9 +6,9 @@
 \alias{fgeo.tool-package}
 \title{fgeo.tool: Manipulate ForestGEO Data}
 \description{
-Import and manipulate ForestGEO data 
-    (\url{http://www.forestgeo.si.edu/}) with functions that expect different
-    classes of ForestGEO data.
+Import and manipulate ForestGEO data
+    (\url{http://www.forestgeo.si.edu/}) with functions that expect
+    different classes of ForestGEO data.
 }
 \seealso{
 Useful links:

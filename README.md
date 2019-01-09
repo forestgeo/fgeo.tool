@@ -172,8 +172,7 @@ stem %>%
 #> # ... with 1,310 more rows
 ```
 
-[Get started with
-**fgeo**](https://forestgeo.github.io/fgeo/articles/fgeo.html)
+[Get started with **fgeo**](https://forestgeo.github.io/fgeo)
 
 ## Information
 
