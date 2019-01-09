@@ -18,8 +18,7 @@ Authors@R:
              role = c("cph", "fnd"),
              email = "ForestGEO@si.edu"))
 Description: Import and manipulate ForestGEO data
-    (<http://www.forestgeo.si.edu/>) with functions that expect different
-    classes of ForestGEO data.
+    (<http://www.forestgeo.si.edu/>).
 License: GPL-3
 URL: https://github.com/forestgeo/fgeo.tool
 BugReports: https://github.com/forestgeo/fgeo.tool/issues

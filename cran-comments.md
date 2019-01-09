@@ -6,9 +6,29 @@
 
 ## R CMD check results
 
-FIXMEXXX errors | FIXMEXXX warnings | FIXMEXXX note
+0 errors | 0 warnings | 3 notes
+Platform:	Ubuntu Linux 16.04 LTS, R-release, GCC
+Build ID:	fgeo.tool_1.0.0.tar.gz-0f72e41e51a84fcabc6c05c80881c26d
+* New submission
+* Unknown, possibly mis-spelled, fields in DESCRIPTION: ‘Remotes’
+* Strong dependencies not in mainstream repositories: fgeo.x
 
-Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+0 errors | 3 warnings | 0 notes
+Platform:	Fedora Linux, R-devel, clang, gfortran
+Build ID:	fgeo.tool_1.0.0.tar.gz-0714fa14002648d29d3d6799b2295e7f
+* New submission
+* Unknown, possibly mis-spelled, fields in DESCRIPTION: ‘Remotes’
+* Strong dependencies not in mainstream repositories: fgeo.x
+
+0 errors | 3 warnings | 0 notes
+Platform:	Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+Build ID:	fgeo.tool_1.0.0.tar.gz-f58d4077e55b47c9a6c7cf738664c1f4
+* New submission
+* Unknown, possibly mis-spelled, fields in DESCRIPTION: ‘Remotes’
+* Strong dependencies not in mainstream repositories: fgeo.x
+
+0 errors | 3 warnings | 0 notes
+using R Under development (unstable) (2019-01-07 r75958)
 * New submission
 * Unknown, possibly mis-spelled, fields in DESCRIPTION: 'Remotes'
 * Strong dependencies not in mainstream repositories: fgeo.x
