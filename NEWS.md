@@ -1,7 +1,7 @@
-# fgeo.tool 1.0.0.9000 (development version)
+# fgeo.tool (development version)
 
 * Work in progress.
 
-# fgeo.tool 1.0.0 (GithHub release 2019-01-09)
+# fgeo.tool 1.0.0 (GithHub release)
 
 * Initial GitHub release. For CRAN submission, fgeo.x must be submitted first.
