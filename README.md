@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Functions for general purposes
+# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Import and manipulate ForestGEO data
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build
@@ -11,7 +11,8 @@ status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https:
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 
-**fgeo.tool** helps you to import and manipulate ForestGEO data.
+**fgeo.tool** helps you to import and manipulate
+[ForestGEO](http://www.forestgeo.si.edu/) data.
 
 ## Installation
 
