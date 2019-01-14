@@ -23,7 +23,7 @@ __fgeo.tool__ helps you to import and manipulate [ForestGEO](<http://www.forestg
 
 ## Installation
 
-Install the latest GitHub release of **fgeo.tool** with:
+Install the latest stable version of **fgeo.tool** with:
 
 ```
 # install.packages("devtools")
