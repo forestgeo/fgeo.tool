@@ -18,13 +18,17 @@ status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.
 
 Install the latest stable version of **fgeo.tool** with:
 
-    # install.packages("devtools")
-    devtools::install_github("forestgeo/fgeo.tool@*release")
+``` r
+# install.packages("devtools")
+devtools::install_github("forestgeo/fgeo.tool@*release")
+```
 
 Install the development version of **fgeo.tool** with:
 
-    # install.packages("devtools")
-    devtools::install_github("forestgeo/fgeo.tool")
+``` r
+# install.packages("devtools")
+devtools::install_github("forestgeo/fgeo.tool")
+```
 
 Or [install all **fgeo** packages in one
 step](https://forestgeo.github.io/fgeo/index.html#installation).
@@ -52,7 +56,7 @@ example_path()
 #>  [9] "view"          "weird"         "xl"
 
 (vft_file <- example_path("view/vft_4quad.csv"))
-#> [1] "C:/Users/LeporeM/Documents/R/R-3.5.2/library/fgeo.x/extdata/view/vft_4quad.csv"
+#> [1] "C:/Users/LeporeM/Documents/R/win-library/3.5/fgeo.x/extdata/view/vft_4quad.csv"
 ```
 
 `read_vft()` and `read_taxa()` import a ViewFullTable and ViewTaxonomy
