@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pick and drop rows of a ForestGEO ViewFullTable or census table. — pick_drop • fgeo.tool</title>
+<title>Pick and drop rows from <em>ViewFullTable</em>, <em>tree</em>, and <em>stem</em> tables. — pick_drop • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,14 +30,14 @@
 
 
 
-<meta property="og:title" content="Pick and drop rows of a ForestGEO ViewFullTable or census table. — pick_drop" />
+<meta property="og:title" content="Pick and drop rows from <em>ViewFullTable</em>, <em>tree</em>, and <em>stem</em> tables. — pick_drop" />
 
 <meta property="og:description" content="These functions provide an expressive and convenient way to pick specific
-rows from ForestGEO datasets. They let you remove missing values (with
-na.rm = TRUE) but conservatively default to keeping NAs. This behavior is
-similar to base subsetting and unlike dplyr::filter(); this conservative
-default matters since the difference between missing trees and dead trees is
-important -- and you may want to include missing trees in your analysis." />
+rows from ForestGEO datasets. They allow you to remove missing values (with
+na.rm = TRUE) but conservatively default to preserving them. This behavior
+is similar to base::subset() and unlike dplyr::filter(). This
+conservative default is important because you want want to include missing
+trees in your analysis." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,7 +116,7 @@ important -- and you may want to include missing trees in your analysis." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pick and drop rows of a ForestGEO ViewFullTable or census table.</h1>
+    <h1>Pick and drop rows from <em>ViewFullTable</em>, <em>tree</em>, and <em>stem</em> tables.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/pick_drop_var_cond.R'><code>R/pick_drop_var_cond.R</code></a></small>
     <div class="hidden name"><code>pick_drop.Rd</code></div>
     </div>
@@ -124,11 +124,11 @@ important -- and you may want to include missing trees in your analysis." />
     <div class="ref-description">
     
     <p>These functions provide an expressive and convenient way to pick specific
-rows from ForestGEO datasets. They let you remove missing values (with
-<code>na.rm = TRUE</code>) but conservatively default to keeping NAs. This behavior is
-similar to base subsetting and unlike <code><a href='https://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>; this conservative
-default matters since the difference between missing trees and dead trees is
-important -- and you may want to include missing trees in your analysis.</p>
+rows from ForestGEO datasets. They allow you to remove missing values (with
+<code>na.rm = TRUE</code>) but conservatively default to preserving them. This behavior
+is similar to <code><a href='https://www.rdocumentation.org/packages/base/topics/subset'>base::subset()</a></code> and unlike <code><a href='https://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>. This
+conservative default is important because you want want to include missing
+trees in your analysis.</p>
     
     </div>
 
@@ -149,23 +149,25 @@ important -- and you may want to include missing trees in your analysis.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.data</th>
-      <td><p>A ForestGEO-like dataframe (stem, tree, or ViewFullTable).</p></td>
+      <td><p>A ForestGEO-like dataframe: A <em>ViewFullTable</em>, <em>tree</em> or <em>stem</em>
+table.</p></td>
     </tr>
     <tr>
       <th>value</th>
       <td><p>An atomic vector; a single value against to compare each value of
-the variable encoded in the function name.</p></td>
+the variable encoded in the function's name.</p></td>
     </tr>
     <tr>
       <th>na.rm</th>
       <td><p>Set to <code>TRUE</code> if you want to remove missing values from the
-variable encoded in the function name.</p></td>
+variable encoded in the function's name.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Dataframe rows with matching conditions.</p>
+    <p>A dataframe similar to .<code>data</code> but including only the rows with
+matching conditions.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

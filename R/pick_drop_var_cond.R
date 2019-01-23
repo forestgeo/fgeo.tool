@@ -1,21 +1,22 @@
-#' Pick and drop rows of a ForestGEO ViewFullTable or census table.
+#' Pick and drop rows from _ViewFullTable_, _tree_, and _stem_ tables.
 #'
 #' These functions provide an expressive and convenient way to pick specific
-#' rows from ForestGEO datasets. They let you remove missing values (with 
-#' `na.rm = TRUE`) but conservatively default to keeping NAs. This behavior is
-#' similar to base subsetting and unlike `dplyr::filter()`; this conservative
-#' default matters since the difference between missing trees and dead trees is
-#' important -- and you may want to include missing trees in your analysis.
+#' rows from ForestGEO datasets. They allow you to remove missing values (with
+#' `na.rm = TRUE`) but conservatively default to preserving them. This behavior
+#' is similar to [base::subset()] and unlike `dplyr::filter()`. This
+#' conservative default is important because you want want to include missing
+#' trees in your analysis.
 #'
-#' @param .data A ForestGEO-like dataframe (stem, tree, or ViewFullTable).
+#' @template .data_fgeo
 #' @param value An atomic vector; a single value against to compare each value of
-#'   the variable encoded in the function name.
+#'   the variable encoded in the function's name.
 #' @param na.rm Set to `TRUE` if you want to remove missing values from the
-#'   variable encoded in the function name.
+#'   variable encoded in the function's name.
 #'
 #' @seealso `dplyr::filter()`, `Extract` (`[`).
 #'
-#' @return Dataframe rows with matching conditions.
+#' @return A dataframe similar to .`data` but including only the rows with
+#'   matching conditions.
 #'
 #' @examples
 #' census <- tribble(

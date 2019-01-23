@@ -6,19 +6,18 @@ sanitize_view <- function(col_types) {
   }
 }
 
-#' Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.
+#' Fix common problems in _ViewFullTable_ and _ViewTaxonomy_ data.
 #'
-#' These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to
-#' achieve the same effect as reading with `read_vft()` and `read_taxa()`. The
-#' most common problems that these functions fix are these:
+#' These functions fix common problems of _ViewFullTable_ and _ViewTaxonomy_
+#' data:
 #' * Ensure that each column has the correct type.
 #' * Ensure that missing values are represented with `NA`s -- not with the
 #' literal string "NULL".
 #'
 #' @inheritParams readr::type_convert
-#' @param x A dataframe; either a ForestGEO ViewFullTable (`sanitize_vft()`) or
-#'   ViewTaxonomy (`sanitize_vft()`).
-#' @inheritDotParams readr::type_convert
+#' @param x A dataframe; either a ForestGEO _ViewFullTable_ (`sanitize_vft()`)
+#'   or _ViewTaxonomy_ (`sanitize_vft()`).
+#' @param ... Arguments passed to [readr::type_convert()].
 #'
 #' @seealso [read_vft()].
 #'

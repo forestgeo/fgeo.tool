@@ -2,20 +2,20 @@
 % Please edit documentation in R/add_subquad.R
 \name{add_subquad}
 \alias{add_subquad}
-\title{Add column \code{subquadrat} based on \code{qx} and \code{qy} coordinates.}
+\title{Add column \code{subquadrat} based on \code{QX} and \code{QY} coordinates.}
 \usage{
 add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq,
   subquad_offset = NULL)
 }
 \arguments{
 \item{df}{A dataframe with quadrat coordinates \code{QX} and \code{QY} (e.g. a
-ViewFullTable).}
+\emph{ViewFullTable}).}
 
 \item{x_q, y_q}{Size in meters of a quadrat's side. For ForestGEO sites, a
 common value is 20.}
 
-\item{x_sq, y_sq}{Size in meters of a subquadrat's side. For ForestGEO-CTFS
-sites, a common value is 5.}
+\item{x_sq, y_sq}{Size in meters of a subquadrat's side. For ForestGEO sites,
+a common value is 5.}
 
 \item{subquad_offset}{Either \code{-1} or \code{1}, to rest or add one unit to the
 digit of each subquadrat that represents the column number.\preformatted{First column is 0    First column is 1
@@ -30,7 +30,7 @@ digit of each subquadrat that represents the column number.\preformatted{First c
 Returns \code{df} with the additional variable \code{subquadrat}.
 }
 \description{
-Add column \code{subquadrat} based on \code{qx} and \code{qy} coordinates.
+Add column \code{subquadrat} based on \code{QX} and \code{QY} coordinates.
 }
 \examples{
 vft <- tribble(
@@ -46,7 +46,9 @@ vft <- tribble(
   17.3,  4.1,
    1.5, 16.3
 )
+
 add_subquad(vft, 20, 20, 5, 5)
+
 add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
 
 }

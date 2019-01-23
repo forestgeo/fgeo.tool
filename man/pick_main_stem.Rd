@@ -10,29 +10,29 @@ pick_main_stem(.x)
 pick_main_stemid(.x)
 }
 \arguments{
-\item{.x}{A ForestGEO-like dataframe, census or ViewFullTable.}
+\item{.x}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+table.}
 }
 \value{
-A dataframe with one row per per treeid per censusid and a single
-plotname.
+A dataframe with a single plotname, and one row per per treeid per
+censusid.
 }
 \description{
 \itemize{
 \item \code{\link[=pick_main_stem]{pick_main_stem()}} picks a unique row for each \code{treeID} per census.
 \item \code{\link[=pick_main_stemid]{pick_main_stemid()}} picks a unique row for each \code{stemID} per census. It is
-only useful when a single stem was measure twice in the same census (usually
-to correct for the effect of large buttresses).
+only useful when a single stem was measured twice in the same census, which
+sometimes happens to correct for the effect of large buttresses.
 }
 }
 \details{
 \itemize{
 \item \code{\link[=pick_main_stem]{pick_main_stem()}} picks the main stem of each tree in each census. It
 collapses data of multi-stem trees by picking a single stem per \code{treeid} per
-\code{censusid}: within this group, it picks the stem at the top of a list sorted
-first by descending order of \code{hom} and then by descending order of \code{dbh} --
-this corrects the effect of buttresses and picks the main stem. It ignores
-groups of grouped data and rejects data with multiple plots (to work with
-data with multiple \code{plotnames} you may use \code{split()} or \code{dplyr::nest()}).
+\code{censusid}. From this group, it picks the stem at the top of a list sorted
+first by descending order of \code{hom} and then by descending order of \code{dbh}.
+This this corrects the effect of buttresses and picks the main stem. It
+ignores groups of grouped data and rejects data with multiple plots.
 \item \code{\link[=pick_main_stemid]{pick_main_stemid()}} does one step less than \code{\link[=pick_main_stem]{pick_main_stem()}}. It only
 picks the main stemid(s) of each tree in each census and keeps all
 stems per treeid. This is useful when calculating the total basal area of a
@@ -45,14 +45,17 @@ stem per census.
 
 These functions may be considerably slow. They are fastest if the data
 already has a single stem per treeid. They are slower with data containing
-multiple stems per \code{treeid} (per \code{censusid}) -- this is the main reason for
+multiple stems per \code{treeid} (per \code{censusid}), which is the main reason for
 using this function. The slowest scenario is when data also contains
-duplicated values of \code{stemid} per \code{treeid} (per \code{censusid}) -- this may
-happen if trees have buttresses -- in which case, these functions will check
+duplicated values of \code{stemid} per \code{treeid} (per \code{censusid}). This may
+happen if trees have buttresses, in which case these functions check
 every stem for potential duplicates and pick the one with the largest \code{hom}
-value. In my computer, for example, a dataset of 2 million rows with multiple
-stems and buttresses took about 3 minutes to run, whereas a dataset with 2
-million rows made up entirely of main stems took about ten seconds to run.
+value.
+
+For example, in a windows computer with 32 GB of RAM, a dataset with 2
+million rows with multiple stems and buttresses took about 3 minutes to run.
+And a dataset with 2 million rows made up entirely of main stems took about
+ten seconds to run.
 }
 
 \examples{

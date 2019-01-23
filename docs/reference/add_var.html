@@ -33,11 +33,11 @@
 <meta property="og:title" content="Add columns <code>lx/ly</code>, <code>QX/QY</code>, <code>index</code>, <code>col/row</code>, <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var" />
 
 <meta property="og:description" content="These functions add columns to position trees in a forest plot. They work
-with ViewFull- and census tables (tree and stem). From the input table, most
+with ViewFullTable, tree and stem tables. From the input table, most
 functions use only the gx and gy columns (or equivalent columns). The
 exception is the function add_gxgy() which inputs quadrat information. If
 your data lacks some important column, an error message will inform you which
-the missing column is." />
+column is missing." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -124,11 +124,11 @@ the missing column is." />
     <div class="ref-description">
     
     <p>These functions add columns to position trees in a forest plot. They work
-with ViewFull- and census tables (tree and stem). From the input table, most
+with <em>ViewFullTable</em>, <em>tree</em> and <em>stem</em> tables. From the input table, most
 functions use only the <code>gx</code> and <code>gy</code> columns (or equivalent columns). The
 exception is the function <code>add_gxgy()</code> which inputs quadrat information. If
 your data lacks some important column, an error message will inform you which
-the missing column is.</p>
+column is missing.</p>
     
     </div>
 
@@ -151,7 +151,8 @@ the missing column is.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A ForestGEO table, either a ViewFullTable or a census table.</p></td>
+      <td><p>A ForestGEO-like dataframe: A <em>ViewFullTable</em>, <em>tree</em> or <em>stem</em>
+table.</p></td>
     </tr>
     <tr>
       <th>gridsize</th>
@@ -175,8 +176,8 @@ label it as "0000" instead.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>For any given <code>_&lt;var&gt;</code>, a function <code>add_&lt;var&gt;()</code> returns a modified
-version of the input dataframe, with the additional variable(s) <code>_&lt;var&gt;</code>.</p>
+    <p>For any given <code>var</code>, a function <code>add_var()</code> returns a modified
+version of the input dataframe, with the additional variable(s) <code>var</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
