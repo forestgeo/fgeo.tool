@@ -2,6 +2,10 @@
 
 * Work in progress.
 
+# fgeo.tool 1.0.1 (GithHub release)
+
+* Review documentation.
+
 # fgeo.tool 1.0.0 (GithHub release)
 
 * Initial GitHub release. For CRAN submission, fgeo.x must be submitted first.
