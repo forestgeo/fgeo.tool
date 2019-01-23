@@ -1,19 +1,15 @@
-#' Structure elevation data.
+#' Create elevation data.
 #' 
-#' This function constructs an object of class fgeo_elevation. It standardizes
+#' This function constructs an object of class "fgeo_elevation". It standardizes
 #' the structure of elevation data to always output a dataframe with names `gx`,
-#' `gy` and `elev` -- or it dies trying.
+#' `gy` and `elev`.
 #' 
-#' @section Input:
-#' The main input can be either the elevation list that ForestGEO delivers, or
-#' the element `col` of such list -- which is a dataframe containing the
-#' elevation data. Notice that the required arguments vary according to the main
-#' input (the elevation list or the elevation dataframe). Whatever the input,
-#' the dataframe containing the elevation data must have columns `gx` and `gy`
-#' or `x` and `y`.
-#' 
-#' @param x Either a dataframe or a dataframe stored in the element `col` of a
-#'   list.
+#' @param x One of these:
+#'  * A dataframe containing elevation data, with columns `gx` and `gy` or `x`
+#'  and `y` (e.g. `fgeo.x::elevation$col`).
+#'  * A ForestGEO-like elevation list with elements
+#'  `xdim` and `ydim` giving plot dimensions, and element `col` containing a
+#'  dataframe as described in the previous item (e.g. `fgeo.x::elevation`).
 #'
 #' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
 #' 
