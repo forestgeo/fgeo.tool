@@ -129,7 +129,8 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A ForestGEO table, either a ViewFullTable or a census table.</p></td>
+      <td><p>A ForestGEO-like dataframe: A <em>ViewFullTable</em>, <em>tree</em> or <em>stem</em>
+table.</p></td>
     </tr>
     <tr>
       <th>status_a, status_d</th>
@@ -161,18 +162,19 @@ capital "S" in ViewFull tables).</p></td>
   ~<span class='no'>CensusID</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>, ~<span class='no'>status</span>,
           <span class='fl'>1</span>,       <span class='fl'>1</span>,       <span class='fl'>1</span>,     <span class='st'>"A"</span>,
           <span class='fl'>1</span>,       <span class='fl'>1</span>,       <span class='fl'>2</span>,     <span class='st'>"D"</span>,
-          <span class='co'># -- -- -- -- -- -- -- -- -- </span>
+
           <span class='fl'>1</span>,       <span class='fl'>2</span>,       <span class='fl'>3</span>,     <span class='st'>"D"</span>,
           <span class='fl'>1</span>,       <span class='fl'>2</span>,       <span class='fl'>4</span>,     <span class='st'>"D"</span>,
-          <span class='co'># == == == == == == == == ==</span>
+
+
+
           <span class='fl'>2</span>,       <span class='fl'>1</span>,       <span class='fl'>1</span>,     <span class='st'>"A"</span>,
           <span class='fl'>2</span>,       <span class='fl'>1</span>,       <span class='fl'>2</span>,     <span class='st'>"G"</span>,
-          <span class='co'># -- -- -- -- -- -- -- -- -- </span>
+
           <span class='fl'>2</span>,       <span class='fl'>2</span>,       <span class='fl'>3</span>,     <span class='st'>"D"</span>,
           <span class='fl'>2</span>,       <span class='fl'>2</span>,       <span class='fl'>4</span>,     <span class='st'>"G"</span>
 )
 
-<span class='co'># Determine the status of each tree based on the status of its stems</span>
 <span class='fu'>add_status_tree</span>(<span class='no'>stem</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 8 x 5</span><span>
 #&gt;   CensusID treeID stemID status status_tree
 #&gt;      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      

@@ -26,17 +26,18 @@ read_delim_ <- function(delim, file, col_types, na, ...) {
   )
 }
 
-#' Import ViewFullTable and ViewTaxonomy from .tsv or .csv files.
+#' Import _ViewFullTable_ or _ViewTaxonomy_ data from a .tsv or .csv file.
 #'
-#' These functions help you read text files containing ViewFullTable and
-#' ViewTaxonomy tables. They avoid common problems related to column separators,
-#' missing values, column names, and column types. Although you can customize
-#' them, in most cases you should only need to provide the argument `file`.
-#'
+#' [read_vft()] and [read_taxa()] help you to read _ViewFullTable_ and
+#' _ViewTaxonomy_ data from text files delivered by the ForestGEO database.
+#' These functions avoid common problems about column separators, missing
+#' values, column names, and column types.
+#' 
 #' @section Acknowledgments:
 #' Thanks to Shameema Jafferjee Esufali for inspiring the feature that
 #' automatically detects `delim` (issue 65).
 #'
+#' @param file A path to a file.
 #' @inheritParams readr::read_delim
 #' @param delim Single character used to separate fields within a record. The
 #'   default (`delim = NULL`) is to guess between comma or tab (`","` or `"\t"`).
@@ -44,7 +45,7 @@ read_delim_ <- function(delim, file, col_types, na, ...) {
 #'
 #' @seealso [readr::read_delim()], [type_vft()], [type_taxa()].
 #'
-#' @return A dataframe (or [tibble][tibble::tibble-package]).
+#' @return A [tibble][tibble::tibble-package].
 #'
 #' @examples
 #' library(fgeo.x)
@@ -81,12 +82,12 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' analogs from the __utils__ package.
 #'
 #' @description
-#' The functions `type_vft()`, `type_taxa()`, and friends help you to read data
-#' more safely by explicitly specifying what type to expect from each column of
-#' known datasets. These functions output the specification for the argument
-#' `col_types()` of the functions `readr::read_*()`:
-#' * `type_vft():` Type specification for ViewFullTable.
-#' * `type_taxa():` Type specification for ViewFullTaxonomy.
+#' `type_vft()` and `type_taxa()` help you to read data more safely by
+#' explicitly specifying what type to expect from each column of known datasets.
+#' These functions output the specification of column types used internally by
+#' [read_vft()] and [read_taxa()]:
+#' * `type_vft():` Type specification for _ViewFullTable_.
+#' * `type_taxa():` Type specification for _ViewFullTaxonomy_.
 #'
 #' @details
 #' Types reference (for more details see [read_delim()]):
@@ -110,10 +111,13 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' library(readr)
 #' 
 #' str(type_vft())
+#' 
 #' read_csv(example_path("view/vft_4quad.csv"), col_types = type_vft())
 #' 
 #' str(type_taxa())
+#' 
 #' read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
+#' 
 #' @family functions to operate on column types
 #' @family functions to read text files delivered by ForestgGEO's database
 #' @family functions to import/export ForestGEO data

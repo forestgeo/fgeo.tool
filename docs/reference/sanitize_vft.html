@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues. — sanitize_vft • fgeo.tool</title>
+<title>Fix common problems in <em>ViewFullTable</em> and <em>ViewTaxonomy</em> data. — sanitize_vft • fgeo.tool</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,11 +30,10 @@
 
 
 
-<meta property="og:title" content="Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues. — sanitize_vft" />
+<meta property="og:title" content="Fix common problems in <em>ViewFullTable</em> and <em>ViewTaxonomy</em> data. — sanitize_vft" />
 
-<meta property="og:description" content="These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to
-achieve the same effect as reading with read_vft() and read_taxa(). The
-most common problems that these functions fix are these:
+<meta property="og:description" content="These functions fix common problems of ViewFullTable and ViewTaxonomy
+data:
 Ensure that each column has the correct type.
 Ensure that missing values are represented with NAs -- not with the
 literal string &quot;NULL&quot;.
@@ -117,16 +116,15 @@ literal string &quot;NULL&quot;.
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.</h1>
+    <h1>Fix common problems in <em>ViewFullTable</em> and <em>ViewTaxonomy</em> data.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.tool/blob/master/R/sanitize.R'><code>R/sanitize.R</code></a></small>
     <div class="hidden name"><code>sanitize_vft.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to
-achieve the same effect as reading with <code><a href='read_vft.html'>read_vft()</a></code> and <code><a href='read_vft.html'>read_taxa()</a></code>. The
-most common problems that these functions fix are these:</p><ul>
+    <p>These functions fix common problems of <em>ViewFullTable</em> and <em>ViewTaxonomy</em>
+data:</p><ul>
 <li><p>Ensure that each column has the correct type.</p></li>
 <li><p>Ensure that missing values are represented with <code>NA</code>s -- not with the
 literal string "NULL".</p></li>
@@ -143,8 +141,8 @@ literal string "NULL".</p></li>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A dataframe; either a ForestGEO ViewFullTable (<code>sanitize_vft()</code>) or
-ViewTaxonomy (<code>sanitize_vft()</code>).</p></td>
+      <td><p>A dataframe; either a ForestGEO <em>ViewFullTable</em> (<code>sanitize_vft()</code>)
+or <em>ViewTaxonomy</em> (<code>sanitize_vft()</code>).</p></td>
     </tr>
     <tr>
       <th>na</th>
@@ -153,22 +151,7 @@ option to <code><a href='https://www.rdocumentation.org/packages/base/topics/cha
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Arguments passed on to <code><a href='https://readr.tidyverse.org/reference/type_convert.html'>readr::type_convert</a></code></p><dl class='dl-horizontal'>
-  <dt>df</dt><dd><p>A data frame.</p></dd>
-  <dt>col_types</dt><dd><p>One of <code>NULL</code>, a <code>cols()</code> specification, or
-a string. See <code>vignette("readr")</code> for more details.
-
-If <code>NULL</code>, column types will be imputed using all rows.</p></dd>
-  <dt>na</dt><dd><p>Character vector of strings to interpret as missing values. Set this
-option to <code><a href='https://www.rdocumentation.org/packages/base/topics/character'>character()</a></code> to indicate no missing values.</p></dd>
-  <dt>trim_ws</dt><dd><p>Should leading and trailing whitespace be trimmed from
-each field before parsing it?</p></dd>
-  <dt>locale</dt><dd><p>The locale controls defaults that vary from place to place.
-The default locale is US-centric (like R), but you can use
-<code>locale()</code> to create your own locale that controls things like
-the default time zone, encoding, decimal mark, big mark, and day/month
-names.</p></dd>
-</dl></td>
+      <td><p>Arguments passed to <code><a href='https://readr.tidyverse.org/reference/type_convert.html'>readr::type_convert()</a></code>.</p></td>
     </tr>
     </table>
     

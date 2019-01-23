@@ -7,7 +7,8 @@
 guess_plotdim(x, accuracy = 20)
 }
 \arguments{
-\item{x}{A dataframe; a ForestGEO dataset (census or ViewFullTable).}
+\item{x}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+table.}
 
 \item{accuracy}{A number giving the accuracy with which to round \code{gx} and
 \code{gy}.}

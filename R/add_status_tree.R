@@ -17,18 +17,19 @@ tibble::tribble
 #'   ~CensusID, ~treeID, ~stemID, ~status,
 #'           1,       1,       1,     "A",
 #'           1,       1,       2,     "D",
-#'           # -- -- -- -- -- -- -- -- -- 
+#'           
 #'           1,       2,       3,     "D",
 #'           1,       2,       4,     "D",
-#'           # == == == == == == == == ==
+#'           
+#'           
+#'           
 #'           2,       1,       1,     "A",
 #'           2,       1,       2,     "G",
-#'           # -- -- -- -- -- -- -- -- -- 
+#'           
 #'           2,       2,       3,     "D",
 #'           2,       2,       4,     "G"
 #' )
 #' 
-#' # Determine the status of each tree based on the status of its stems
 #' add_status_tree(stem)
 #' 
 #' @family functions to add columns to dataframes

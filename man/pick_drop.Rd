@@ -8,7 +8,7 @@
 \alias{pick_dbh_over}
 \alias{pick_status}
 \alias{drop_status}
-\title{Pick and drop rows of a ForestGEO ViewFullTable or census table.}
+\title{Pick and drop rows from \emph{ViewFullTable}, \emph{tree}, and \emph{stem} tables.}
 \usage{
 pick_dbh_min(.data, value, na.rm = FALSE)
 
@@ -23,24 +23,26 @@ pick_status(.data, value, na.rm = FALSE)
 drop_status(.data, value, na.rm = FALSE)
 }
 \arguments{
-\item{.data}{A ForestGEO-like dataframe (stem, tree, or ViewFullTable).}
+\item{.data}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+table.}
 
 \item{value}{An atomic vector; a single value against to compare each value of
-the variable encoded in the function name.}
+the variable encoded in the function's name.}
 
 \item{na.rm}{Set to \code{TRUE} if you want to remove missing values from the
-variable encoded in the function name.}
+variable encoded in the function's name.}
 }
 \value{
-Dataframe rows with matching conditions.
+A dataframe similar to .\code{data} but including only the rows with
+matching conditions.
 }
 \description{
 These functions provide an expressive and convenient way to pick specific
-rows from ForestGEO datasets. They let you remove missing values (with
-\code{na.rm = TRUE}) but conservatively default to keeping NAs. This behavior is
-similar to base subsetting and unlike \code{dplyr::filter()}; this conservative
-default matters since the difference between missing trees and dead trees is
-important -- and you may want to include missing trees in your analysis.
+rows from ForestGEO datasets. They allow you to remove missing values (with
+\code{na.rm = TRUE}) but conservatively default to preserving them. This behavior
+is similar to \code{\link[base:subset]{base::subset()}} and unlike \code{dplyr::filter()}. This
+conservative default is important because you want want to include missing
+trees in your analysis.
 }
 \examples{
 census <- tribble(

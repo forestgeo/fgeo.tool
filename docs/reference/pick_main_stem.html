@@ -35,8 +35,8 @@
 <meta property="og:description" content="
 pick_main_stem() picks a unique row for each treeID per census.
 pick_main_stemid() picks a unique row for each stemID per census. It is
-only useful when a single stem was measure twice in the same census (usually
-to correct for the effect of large buttresses).
+only useful when a single stem was measured twice in the same census, which
+sometimes happens to correct for the effect of large buttresses.
 " />
 <meta name="twitter:card" content="summary" />
 
@@ -126,8 +126,8 @@ to correct for the effect of large buttresses).
     <ul>
 <li><p><code>pick_main_stem()</code> picks a unique row for each <code>treeID</code> per census.</p></li>
 <li><p><code>pick_main_stemid()</code> picks a unique row for each <code>stemID</code> per census. It is
-only useful when a single stem was measure twice in the same census (usually
-to correct for the effect of large buttresses).</p></li>
+only useful when a single stem was measured twice in the same census, which
+sometimes happens to correct for the effect of large buttresses.</p></li>
 </ul>
     
     </div>
@@ -141,25 +141,25 @@ to correct for the effect of large buttresses).</p></li>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>.x</th>
-      <td><p>A ForestGEO-like dataframe, census or ViewFullTable.</p></td>
+      <td><p>A ForestGEO-like dataframe: A <em>ViewFullTable</em>, <em>tree</em> or <em>stem</em>
+table.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe with one row per per treeid per censusid and a single
-plotname.</p>
+    <p>A dataframe with a single plotname, and one row per per treeid per
+censusid.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <ul>
 <li><p><code>pick_main_stem()</code> picks the main stem of each tree in each census. It
 collapses data of multi-stem trees by picking a single stem per <code>treeid</code> per
-<code>censusid</code>: within this group, it picks the stem at the top of a list sorted
-first by descending order of <code>hom</code> and then by descending order of <code>dbh</code> --
-this corrects the effect of buttresses and picks the main stem. It ignores
-groups of grouped data and rejects data with multiple plots (to work with
-data with multiple <code>plotnames</code> you may use <code><a href='https://www.rdocumentation.org/packages/base/topics/split'>split()</a></code> or <code>dplyr::nest()</code>).</p></li>
+<code>censusid</code>. From this group, it picks the stem at the top of a list sorted
+first by descending order of <code>hom</code> and then by descending order of <code>dbh</code>.
+This this corrects the effect of buttresses and picks the main stem. It
+ignores groups of grouped data and rejects data with multiple plots.</p></li>
 <li><p><code>pick_main_stemid()</code> does one step less than <code>pick_main_stem()</code>. It only
 picks the main stemid(s) of each tree in each census and keeps all
 stems per treeid. This is useful when calculating the total basal area of a
@@ -173,14 +173,16 @@ stem per census.</p></li>
     
     <p>These functions may be considerably slow. They are fastest if the data
 already has a single stem per treeid. They are slower with data containing
-multiple stems per <code>treeid</code> (per <code>censusid</code>) -- this is the main reason for
+multiple stems per <code>treeid</code> (per <code>censusid</code>), which is the main reason for
 using this function. The slowest scenario is when data also contains
-duplicated values of <code>stemid</code> per <code>treeid</code> (per <code>censusid</code>) -- this may
-happen if trees have buttresses -- in which case, these functions will check
+duplicated values of <code>stemid</code> per <code>treeid</code> (per <code>censusid</code>). This may
+happen if trees have buttresses, in which case these functions check
 every stem for potential duplicates and pick the one with the largest <code>hom</code>
-value. In my computer, for example, a dataset of 2 million rows with multiple
-stems and buttresses took about 3 minutes to run, whereas a dataset with 2
-million rows made up entirely of main stems took about ten seconds to run.</p>
+value.</p>
+<p>For example, in a windows computer with 32 GB of RAM, a dataset with 2
+million rows with multiple stems and buttresses took about 3 minutes to run.
+And a dataset with 2 million rows made up entirely of main stems took about
+ten seconds to run.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

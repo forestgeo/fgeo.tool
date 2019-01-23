@@ -2,32 +2,28 @@
 % Please edit documentation in R/fgeo_elevation.R
 \name{fgeo_elevation}
 \alias{fgeo_elevation}
-\title{Structure elevation data.}
+\title{Create elevation data.}
 \usage{
 fgeo_elevation(x)
 }
 \arguments{
-\item{x}{Either a dataframe or a dataframe stored in the element \code{col} of a
-list.}
+\item{x}{One of these:
+\itemize{
+\item A dataframe containing elevation data, with columns \code{gx} and \code{gy} or \code{x}
+and \code{y} (e.g. \code{fgeo.x::elevation$col}).
+\item A ForestGEO-like elevation list with elements
+\code{xdim} and \code{ydim} giving plot dimensions, and element \code{col} containing a
+dataframe as described in the previous item (e.g. \code{fgeo.x::elevation}).
+}}
 }
 \value{
 A dataframe with names \code{x/gx}, \code{y/gy} and \code{elev}.
 }
 \description{
-This function constructs an object of class fgeo_elevation. It standardizes
+This function constructs an object of class "fgeo_elevation". It standardizes
 the structure of elevation data to always output a dataframe with names \code{gx},
-\code{gy} and \code{elev} -- or it dies trying.
+\code{gy} and \code{elev}.
 }
-\section{Input}{
-
-The main input can be either the elevation list that ForestGEO delivers, or
-the element \code{col} of such list -- which is a dataframe containing the
-elevation data. Notice that the required arguments vary according to the main
-input (the elevation list or the elevation dataframe). Whatever the input,
-the dataframe containing the elevation data must have columns \code{gx} and \code{gy}
-or \code{x} and \code{y}.
-}
-
 \section{Acknowledgments}{
 
 This function was inspired by David Kenfack.

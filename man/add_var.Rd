@@ -26,7 +26,8 @@ add_quad(x, gridsize = 20, plotdim = NULL, start = NULL, width = 2)
 add_gxgy(x, gridsize = 20, start = 0)
 }
 \arguments{
-\item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
+\item{x}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+table.}
 
 \item{gridsize}{The gridsize of the census plot (commonly 20 m).}
 
@@ -39,16 +40,16 @@ label it as "0000" instead.}
 \item{width}{Number; width to pad the labels of plot-columns and -rows.}
 }
 \value{
-For any given \code{_<var>}, a function \code{add_<var>()} returns a modified
-version of the input dataframe, with the additional variable(s) \code{_<var>}.
+For any given \code{var}, a function \code{add_var()} returns a modified
+version of the input dataframe, with the additional variable(s) \code{var}.
 }
 \description{
 These functions add columns to position trees in a forest plot. They work
-with ViewFull- and census tables (tree and stem). From the input table, most
+with \emph{ViewFullTable}, \emph{tree} and \emph{stem} tables. From the input table, most
 functions use only the \code{gx} and \code{gy} columns (or equivalent columns). The
 exception is the function \code{add_gxgy()} which inputs quadrat information. If
 your data lacks some important column, an error message will inform you which
-the missing column is.
+column is missing.
 }
 \details{
 These functions are adapted from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.

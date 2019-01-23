@@ -1,6 +1,6 @@
 #' Guess plot dimensions.
 #'
-#' @param x A dataframe; a ForestGEO dataset (census or ViewFullTable).
+#' @template x_fgeo
 #' @param accuracy A number giving the accuracy with which to round `gx` and
 #'   `gy`.
 #'

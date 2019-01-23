@@ -89,14 +89,14 @@ nms_restore <- function(x) {
 
 #' Restore the names of a dataframe to which a new variable has been added.
 #'
-#' This function helps to develop functions that work with both ViewFullTables
-#' and census tables. ViewFullTables and census tables share multiple names but
-#' often the case of those names is different (e.g. `Tag` and `tag`). When
-#' developing functions that work with both ViewFullTables and fgeo tables, one
+#' This function helps to develop functions that work with ForestGEO-like
+#' censuses, i.e. _ViewFullTable_, _tree_, and _stem_ tables. These tables share
+#' multiple names but often the case of those names is different (e.g. `Tag` and
+#' `tag`). When developing functions that work with ForestGEO-like censuses one
 #' solution is to lowercase all names, do whatever the function needs to do, and
-#' then restore the old names. This function helps by restoring old names, which
-#' is not straight forward when the function adds a new variable and may contain
-#' a preexisting variable with the same name of the added variable.
+#' then restore the old names. This function restores old names, which is
+#' particularly challenging when the function adds a new variable and may
+#' contain a preexisting variable with the same name of the added variable.
 #'
 #' The length of `x` must equal the number of names in old_nms, or that + 1".
 #'

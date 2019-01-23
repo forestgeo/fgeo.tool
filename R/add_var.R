@@ -1,11 +1,11 @@
 #' Add columns `lx/ly`, `QX/QY`, `index`, `col/row`, `hectindex`, `quad`, `gx/gy`.
 #' 
 #' These functions add columns to position trees in a forest plot. They work
-#' with ViewFull- and census tables (tree and stem). From the input table, most
+#' with _ViewFullTable_, _tree_ and _stem_ tables. From the input table, most
 #' functions use only the `gx` and `gy` columns (or equivalent columns). The
 #' exception is the function `add_gxgy()` which inputs quadrat information. If
 #' your data lacks some important column, an error message will inform you which
-#' the missing column is.
+#' column is missing.
 #'
 #' These functions are adapted from the [CTFS R
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
@@ -16,8 +16,8 @@
 #'   label it as "0000" instead.
 #' @param width Number; width to pad the labels of plot-columns and -rows.
 #'
-#' @return For any given `_<var>`, a function `add_<var>()` returns a modified
-#'   version of the input dataframe, with the additional variable(s) `_<var>`.
+#' @return For any given `var`, a function `add_var()` returns a modified
+#'   version of the input dataframe, with the additional variable(s) `var`.
 #'
 #' @examples
 #' x <- tribble(

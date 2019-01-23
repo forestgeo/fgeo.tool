@@ -3,44 +3,27 @@
 \name{sanitize_vft}
 \alias{sanitize_vft}
 \alias{sanitize_taxa}
-\title{Modify ViewFullTable and ViewTaxonomy to fix common data-structure issues.}
+\title{Fix common problems in \emph{ViewFullTable} and \emph{ViewTaxonomy} data.}
 \usage{
 sanitize_vft(x, na = c("", "NA", "NULL"), ...)
 
 sanitize_taxa(x, na = c("", "NA", "NULL"), ...)
 }
 \arguments{
-\item{x}{A dataframe; either a ForestGEO ViewFullTable (\code{sanitize_vft()}) or
-ViewTaxonomy (\code{sanitize_vft()}).}
+\item{x}{A dataframe; either a ForestGEO \emph{ViewFullTable} (\code{sanitize_vft()})
+or \emph{ViewTaxonomy} (\code{sanitize_vft()}).}
 
 \item{na}{Character vector of strings to interpret as missing values. Set this
 option to \code{character()} to indicate no missing values.}
 
-\item{...}{Arguments passed on to \code{readr::type_convert}
-\describe{
-  \item{df}{A data frame.}
-  \item{col_types}{One of \code{NULL}, a \code{\link[=cols]{cols()}} specification, or
-a string. See \code{vignette("readr")} for more details.
-
-If \code{NULL}, column types will be imputed using all rows.}
-  \item{na}{Character vector of strings to interpret as missing values. Set this
-option to \code{character()} to indicate no missing values.}
-  \item{trim_ws}{Should leading and trailing whitespace be trimmed from
-each field before parsing it?}
-  \item{locale}{The locale controls defaults that vary from place to place.
-The default locale is US-centric (like R), but you can use
-\code{\link[=locale]{locale()}} to create your own locale that controls things like
-the default time zone, encoding, decimal mark, big mark, and day/month
-names.}
-}}
+\item{...}{Arguments passed to \code{\link[readr:type_convert]{readr::type_convert()}}.}
 }
 \value{
 A dataframe.
 }
 \description{
-These functions sanitize dataframes from ViewFullTable and ViewTaxonomy to
-achieve the same effect as reading with \code{read_vft()} and \code{read_taxa()}. The
-most common problems that these functions fix are these:
+These functions fix common problems of \emph{ViewFullTable} and \emph{ViewTaxonomy}
+data:
 \itemize{
 \item Ensure that each column has the correct type.
 \item Ensure that missing values are represented with \code{NA}s -- not with the

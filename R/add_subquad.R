@@ -1,11 +1,11 @@
-#' Add column `subquadrat` based on `qx` and `qy` coordinates.
+#' Add column `subquadrat` based on `QX` and `QY` coordinates.
 #'
 #' @param df A dataframe with quadrat coordinates `QX` and `QY` (e.g. a
-#'   ViewFullTable).
+#'   _ViewFullTable_).
 #' @param x_q,y_q Size in meters of a quadrat's side. For ForestGEO sites, a
 #'   common value is 20.
-#' @param x_sq,y_sq Size in meters of a subquadrat's side. For ForestGEO-CTFS
-#'   sites, a common value is 5.
+#' @param x_sq,y_sq Size in meters of a subquadrat's side. For ForestGEO sites,
+#'   a common value is 5.
 #' @param subquad_offset Either `-1` or `1`, to rest or add one unit to the
 #'   digit of each subquadrat that represents the column number.
 #'
@@ -34,7 +34,9 @@
 #'   17.3,  4.1,
 #'    1.5, 16.3
 #' )
+#' 
 #' add_subquad(vft, 20, 20, 5, 5)
+#' 
 #' add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
 #' 
 #' @family functions to add columns to dataframes

@@ -22,13 +22,13 @@ discouraged; instead consider using \code{readr::read_csv()}, \code{readr::read_
 and friends, which guess column types correctly much more often than their
 analogs from the \strong{utils} package.
 
-The functions \code{type_vft()}, \code{type_taxa()}, and friends help you to read data
-more safely by explicitly specifying what type to expect from each column of
-known datasets. These functions output the specification for the argument
-\code{col_types()} of the functions \code{readr::read_*()}:
+\code{type_vft()} and \code{type_taxa()} help you to read data more safely by
+explicitly specifying what type to expect from each column of known datasets.
+These functions output the specification of column types used internally by
+\code{\link[=read_vft]{read_vft()}} and \code{\link[=read_taxa]{read_taxa()}}:
 \itemize{
-\item \code{type_vft():} Type specification for ViewFullTable.
-\item \code{type_taxa():} Type specification for ViewFullTaxonomy.
+\item \code{type_vft():} Type specification for \emph{ViewFullTable}.
+\item \code{type_taxa():} Type specification for \emph{ViewFullTaxonomy}.
 }
 }
 \details{
@@ -51,10 +51,13 @@ library(fgeo.x)
 library(readr)
 
 str(type_vft())
+
 read_csv(example_path("view/vft_4quad.csv"), col_types = type_vft())
 
 str(type_taxa())
+
 read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
+
 }
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}.

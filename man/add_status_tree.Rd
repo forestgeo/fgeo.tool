@@ -7,7 +7,8 @@
 add_status_tree(x, status_a = "A", status_d = "D")
 }
 \arguments{
-\item{x}{A ForestGEO table, either a ViewFullTable or a census table.}
+\item{x}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+table.}
 
 \item{status_a, status_d}{Sting to match alive and dead stems; it corresponds
 to the values of the variable \code{status} (in census tables) or \code{Status} (with
@@ -24,18 +25,19 @@ stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,
           1,       1,       1,     "A",
           1,       1,       2,     "D",
-          # -- -- -- -- -- -- -- -- -- 
+          
           1,       2,       3,     "D",
           1,       2,       4,     "D",
-          # == == == == == == == == ==
+          
+          
+          
           2,       1,       1,     "A",
           2,       1,       2,     "G",
-          # -- -- -- -- -- -- -- -- -- 
+          
           2,       2,       3,     "D",
           2,       2,       4,     "G"
 )
 
-# Determine the status of each tree based on the status of its stems
 add_status_tree(stem)
 
 }

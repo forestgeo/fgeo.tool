@@ -5,16 +5,15 @@
 #' 
 #' * [pick_main_stem()] picks a unique row for each `treeID` per census.
 #' * [pick_main_stemid()] picks a unique row for each `stemID` per census. It is
-#' only useful when a single stem was measure twice in the same census (usually
-#' to correct for the effect of large buttresses).
+#' only useful when a single stem was measured twice in the same census, which
+#' sometimes happens to correct for the effect of large buttresses.
 #' 
 #' * [pick_main_stem()] picks the main stem of each tree in each census. It
 #' collapses data of multi-stem trees by picking a single stem per `treeid` per
-#' `censusid`: within this group, it picks the stem at the top of a list sorted
-#' first by descending order of `hom` and then by descending order of `dbh` --
-#' this corrects the effect of buttresses and picks the main stem. It ignores
-#' groups of grouped data and rejects data with multiple plots (to work with
-#' data with multiple `plotnames` you may use `split()` or `dplyr::nest()`).
+#' `censusid`. From this group, it picks the stem at the top of a list sorted
+#' first by descending order of `hom` and then by descending order of `dbh`.
+#' This this corrects the effect of buttresses and picks the main stem. It
+#' ignores groups of grouped data and rejects data with multiple plots.
 #' * [pick_main_stemid()] does one step less than [pick_main_stem()]. It only
 #' picks the main stemid(s) of each tree in each census and keeps all
 #' stems per treeid. This is useful when calculating the total basal area of a
@@ -25,19 +24,22 @@
 #' @section Warning:
 #' These functions may be considerably slow. They are fastest if the data
 #' already has a single stem per treeid. They are slower with data containing
-#' multiple stems per `treeid` (per `censusid`) -- this is the main reason for
+#' multiple stems per `treeid` (per `censusid`), which is the main reason for
 #' using this function. The slowest scenario is when data also contains
-#' duplicated values of `stemid` per `treeid` (per `censusid`) -- this may
-#' happen if trees have buttresses -- in which case, these functions will check
+#' duplicated values of `stemid` per `treeid` (per `censusid`). This may
+#' happen if trees have buttresses, in which case these functions check
 #' every stem for potential duplicates and pick the one with the largest `hom`
-#' value. In my computer, for example, a dataset of 2 million rows with multiple
-#' stems and buttresses took about 3 minutes to run, whereas a dataset with 2
-#' million rows made up entirely of main stems took about ten seconds to run.
+#' value. 
+#' 
+#' For example, in a windows computer with 32 GB of RAM, a dataset with 2
+#' million rows with multiple stems and buttresses took about 3 minutes to run.
+#' And a dataset with 2 million rows made up entirely of main stems took about
+#' ten seconds to run.
 #'
-#' @param .x A ForestGEO-like dataframe, census or ViewFullTable.
+#' @template .x_fgeo
 #'
-#' @return A dataframe with one row per per treeid per censusid and a single 
-#'   plotname.
+#' @return A dataframe with a single plotname, and one row per per treeid per
+#'   censusid.
 #'
 #' @examples
 #' # One `treeID` with multiple stems. 
