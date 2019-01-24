@@ -6,10 +6,12 @@
 
 ## R CMD check results
 
-0 errors | 3 warnings | 0 notes
-* New submission
-* Unknown, possibly mis-spelled, fields in DESCRIPTION: 'Remotes'
-* Strong dependencies not in mainstream repositories: fgeo.x
+WARNING
+New submission
+Unknown, possibly mis-spelled, fields in DESCRIPTION:
+  ‘Remotes’
+Strong dependencies not in mainstream repositories:
+  fgeo.x
 
 ## Downstream dependencies
 
