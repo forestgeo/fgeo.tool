@@ -12,11 +12,10 @@
 #' is_multiple(c(1, 2))
 #' is_multiple(c(1, 1))
 #' is_multiple(c(1, NA))
-#'
+#' 
 #' is_duplicated(c(1, 2))
 #' is_duplicated(c(1, 1))
 #' is_duplicated(c(1, NA))
-#'
 #' @family functions for internal use in other fgeo packages
 #' @family functions to check inputs
 #' @family functions for developers

@@ -23,7 +23,6 @@ check_crucial_names(v, "x")
 
 dfm <- data.frame(x = 1)
 check_crucial_names(dfm, "x")
-
 }
 \seealso{
 Other functions to check inputs: \code{\link{flag_if_group}},

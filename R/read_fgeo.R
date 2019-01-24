@@ -32,7 +32,7 @@ read_delim_ <- function(delim, file, col_types, na, ...) {
 #' _ViewTaxonomy_ data from text files delivered by the ForestGEO database.
 #' These functions avoid common problems about column separators, missing
 #' values, column names, and column types.
-#' 
+#'
 #' @section Acknowledgments:
 #' Thanks to Shameema Jafferjee Esufali for inspiring the feature that
 #' automatically detects `delim` (issue 65).
@@ -117,7 +117,6 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' str(type_taxa())
 #' 
 #' read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
-#' 
 #' @family functions to operate on column types
 #' @family functions to read text files delivered by ForestgGEO's database
 #' @family functions to import/export ForestGEO data

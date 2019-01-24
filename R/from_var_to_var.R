@@ -22,48 +22,47 @@
 #' @author Rick Condit, Suzanne Lao.
 #' @examples
 #' gxgy_to_index(c(0, 400, 990), c(0, 200, 490), gridsize = 20)
-#'
+#' 
 #' gridsize <- 20
 #' plotdim <- c(1000, 500)
-#'
+#' 
 #' x <- gxgy_to_hectindex(1:3, 1:3, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#'
+#' 
 #' x <- gxgy_to_index(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#'
+#' 
 #' x <- gxgy_to_lxly(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#'
+#' 
 #' x <- gxgy_to_rowcol(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#'
+#' 
 #' x <- index_to_rowcol(1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#'
+#' 
 #' x <- rowcol_to_index(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#'
-#' index_to_gxgy(1:3, gridsize, plotdim)
 #' 
+#' index_to_gxgy(1:3, gridsize, plotdim)
 #' @keywords internal
 #' @name from_var_to_var
 NULL
@@ -72,7 +71,7 @@ NULL
 #' @export
 rowcol_to_index <- function(rowno, colno, gridsize, plotdim) {
   badrc <- (rowno <= 0 | colno <= 0 | rowno > plotdim[2] / gridsize |
-      colno > plotdim[1] / gridsize)
+    colno > plotdim[1] / gridsize)
   rowno <- rowno - 1
   colno <- colno - 1
   maxrow <- floor(plotdim[2] / gridsize)
@@ -88,7 +87,7 @@ rowcol_to_index <- function(rowno, colno, gridsize, plotdim) {
 #' @export
 index_to_rowcol <- function(index, gridsize, plotdim) {
   index <- index - 1
-  badindex <- (index < 0 | index >= plotdim[1] * plotdim[2] / (gridsize ^ 2))
+  badindex <- (index < 0 | index >= plotdim[1] * plotdim[2] / (gridsize^2))
   maxrow <- floor(plotdim[2] / gridsize)
   rowno <- index %% maxrow
   colno <- floor((index - rowno) / maxrow)
@@ -164,7 +163,7 @@ gxgy_to_hectindex <- function(gx, gy, plotdim) {
   if (at_or_beyond_edge(gx, gy, plotdim)) {
     warn("Some values of `gx` and/or `gy` lay at or beyond plot limits\n")
   }
-  
+
   ha.rowno <- floor(gy / 100)
   ha.colno <- floor(gx / 100)
   max.ha.row <- plotdim[2] / 100
@@ -185,7 +184,7 @@ at_or_beyond_edge <- function(gx, gy, plotdim) {
 #' @rdname from_var_to_var
 #' @export
 index_to_gxgy <- function(index, gridsize, plotdim) {
-  badindex <- (index <= 0 | index > plotdim[1] * plotdim[2] / (gridsize ^ 2))
+  badindex <- (index <= 0 | index > plotdim[1] * plotdim[2] / (gridsize^2))
   rc <- index_to_rowcol(index, gridsize, plotdim)
   gx <- gridsize * (rc$col - 1)
   gy <- gridsize * (rc$row - 1)

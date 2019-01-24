@@ -45,7 +45,7 @@ dplyr::add_count
 
 # Unleash the power of dplyr::select(). See ?tidyselect::select_helpers
 #' @importFrom tidyselect starts_with ends_with contains matches num_range
-#' @importFrom tidyselect one_of everything last_col 
+#' @importFrom tidyselect one_of everything last_col
 NULL
 #' @export
 tidyselect::starts_with

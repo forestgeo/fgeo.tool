@@ -1,9 +1,9 @@
 #' Create elevation data.
-#' 
+#'
 #' This function constructs an object of class "fgeo_elevation". It standardizes
 #' the structure of elevation data to always output a dataframe with names `gx`,
 #' `gy` and `elev`.
-#' 
+#'
 #' @param x One of these:
 #'  * A dataframe containing elevation data, with columns `gx` and `gy` or `x`
 #'  and `y` (e.g. `fgeo.x::elevation$col`).
@@ -12,7 +12,7 @@
 #'  dataframe as described in the previous item (e.g. `fgeo.x::elevation`).
 #'
 #' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
-#' 
+#'
 #' @section Acknowledgments:
 #'   This function was inspired by David Kenfack.
 #'
@@ -36,7 +36,6 @@
 #' 
 #' names(elevation_ls)
 #' names(fgeo_elevation(elevation_ls))
-#' 
 #' @family functions to construct fgeo classes
 #' @family habitat functions
 #' @export
@@ -56,9 +55,9 @@ fgeo_elevation.default <- function(x) {
 
 #' @export
 fgeo_elevation.list <- function(x) {
-  pull_elevation(x) %>% 
-    nms_try_rename(want = "gx", try = "x") %>% 
-    nms_try_rename(want = "gy", try = "y") %>% 
+  pull_elevation(x) %>%
+    nms_try_rename(want = "gx", try = "x") %>%
+    nms_try_rename(want = "gy", try = "y") %>%
     new_fgeo_elevation()
 }
 
@@ -90,7 +89,6 @@ pull_elevation.list <- function(x) {
   safe_check <- purrr::safely(check_crucial_names)
   check_result <- safe_check(x, "col")
   if (!is.null(check_result$error)) {
-    
     msg <- paste0(
       "Your list must contain the element `col` with elevation data.\n",
       "* Names of the elements of the list provided:\n",
@@ -98,7 +96,7 @@ pull_elevation.list <- function(x) {
     )
     abort(msg)
   }
-  
+
   elevation <- x[["col"]]
   elevation
 }

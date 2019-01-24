@@ -8,10 +8,9 @@
 #' @examples
 #' v <- c(x = 1)
 #' check_crucial_names(v, "x")
-#'
+#' 
 #' dfm <- data.frame(x = 1)
 #' check_crucial_names(dfm, "x")
-#' 
 #' @family functions to check inputs
 #' @family general functions to assert
 #' @family functions for developers
@@ -21,12 +20,12 @@
 check_crucial_names <- function(x, nms) {
   stopifnot(rlang::is_named(x))
   stopifnot(is.character(nms))
-  
+
   are_names_expected <- all(nms %in% names(x))
   if (are_names_expected) {
     return(invisible(x))
   }
-  
+
   stop(
     "Ensure your data set has these variables:\n", commas(nms),
     call. = FALSE

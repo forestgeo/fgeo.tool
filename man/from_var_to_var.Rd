@@ -100,7 +100,6 @@ is.data.frame(x)
 is.vector(x)
 
 index_to_gxgy(1:3, gridsize, plotdim)
-
 }
 \author{
 Rick Condit, Suzanne Lao.

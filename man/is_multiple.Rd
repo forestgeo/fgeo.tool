@@ -27,7 +27,6 @@ is_multiple(c(1, NA))
 is_duplicated(c(1, 2))
 is_duplicated(c(1, 1))
 is_duplicated(c(1, NA))
-
 }
 \seealso{
 Other functions for internal use in other fgeo packages: \code{\link{flag_if}},

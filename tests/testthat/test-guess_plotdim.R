@@ -22,7 +22,7 @@ context("test-nms_pull_matches")
 test_that("pulls the expected names", {
   skip_if_not_installed("fgeo.data")
   vft <- fgeo.data::luquillo_stem_random_tiny
-  expected <-  c("gx", "gy")
+  expected <- c("gx", "gy")
   expect_equal(nms_pull_matches(vft, c("x", "PX", "gx", "gy")), expected)
 })
 

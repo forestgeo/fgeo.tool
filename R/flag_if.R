@@ -13,29 +13,28 @@
 #' @param ... Other arguments passed to methods.
 #'
 #' @return A condition (and `.data` invisibly).
-#' 
+#'
 #' @examples
 #' # WITH VECTORS
 #' dupl <- c(1, 1)
 #' flag_if(dupl, is_duplicated)
 #' # Silent
 #' flag_if(dupl, is_multiple)
-#'
+#' 
 #' mult <- c(1, 2)
 #' flag_if(mult, is_multiple, message, "Custom")
 #' # Silent
 #' flag_if(mult, is_duplicated)
-#'
+#' 
 #' # Both silent
 #' flag_if(c(1, NA), is_multiple)
 #' flag_if(c(1, NA), is_duplicated)
-#'
+#' 
 #' # WITH DATAFRAMES
 #' .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
 #' flag_if(.df, "b", is_multiple)
 #' flag_if(.df, "a", is_multiple)
 #' flag_if(.df, "a", is_multiple, message, "Custom")
-#' 
 #' @family functions to throw conditions
 #' @family functions for internal use in other fgeo packages
 #' @keywords internal

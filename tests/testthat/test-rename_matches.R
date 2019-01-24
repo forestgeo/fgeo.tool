@@ -71,7 +71,6 @@ describe("extract_insensitive()", {
     y <- c("StemID", "treeID")
     expect_equal(extract_insensitive(x, y), c("StemID", "n"))
   })
-
 })
 
 describe("rename_matches()", {
@@ -126,4 +125,3 @@ test_that("works as expected", {
   y <- data.frame(1)
   expect_named(rename_matches(x, y), c("col1", "col2", "n"))
 })
-

@@ -68,7 +68,7 @@ column is missing." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -320,7 +320,8 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 
   <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span>(
     <span class='no'>vft</span>,
-    <span class='no'>QuadratName</span>, <span class='kw'>into</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"col"</span>, <span class='st'>"row"</span>),
+    <span class='no'>QuadratName</span>,
+    <span class='kw'>into</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"col"</span>, <span class='st'>"row"</span>),
     <span class='kw'>sep</span> <span class='kw'>=</span> <span class='fl'>2</span>
   )
 
@@ -331,7 +332,8 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 
   <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span>(
     <span class='no'>census</span>,
-    <span class='no'>quadrat</span>, <span class='kw'>into</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"col"</span>, <span class='st'>"row"</span>),
+    <span class='no'>quadrat</span>,
+    <span class='kw'>into</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"col"</span>, <span class='st'>"row"</span>),
     <span class='kw'>sep</span> <span class='kw'>=</span> <span class='fl'>2</span>,
     <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
   )

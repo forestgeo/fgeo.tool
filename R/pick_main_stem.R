@@ -2,12 +2,12 @@
 
 
 #' Pick the main stem or main stemid(s) of each tree in each census.
-#' 
+#'
 #' * [pick_main_stem()] picks a unique row for each `treeID` per census.
 #' * [pick_main_stemid()] picks a unique row for each `stemID` per census. It is
 #' only useful when a single stem was measured twice in the same census, which
 #' sometimes happens to correct for the effect of large buttresses.
-#' 
+#'
 #' * [pick_main_stem()] picks the main stem of each tree in each census. It
 #' collapses data of multi-stem trees by picking a single stem per `treeid` per
 #' `censusid`. From this group, it picks the stem at the top of a list sorted
@@ -20,7 +20,7 @@
 #' tree, because you need to sum the basal area of each individual stem as well as
 #' sum only one of the potentially multiple measurements of each buttressed
 #' stem per census.
-#' 
+#'
 #' @section Warning:
 #' These functions may be considerably slow. They are fastest if the data
 #' already has a single stem per treeid. They are slower with data containing
@@ -29,8 +29,8 @@
 #' duplicated values of `stemid` per `treeid` (per `censusid`). This may
 #' happen if trees have buttresses, in which case these functions check
 #' every stem for potential duplicates and pick the one with the largest `hom`
-#' value. 
-#' 
+#' value.
+#'
 #' For example, in a windows computer with 32 GB of RAM, a dataset with 2
 #' million rows with multiple stems and buttresses took about 3 minutes to run.
 #' And a dataset with 2 million rows made up entirely of main stems took about
@@ -107,19 +107,20 @@ pick_stemid_treeid <- function(.data, stemid = TRUE, treeid = TRUE) {
 
 pick_by_groups_by_censusid <- function(.x, ...) {
   .x <- ungroup(.x)
-  
+
   if (has_name(.x, "censusid") && detect_if(.x, "censusid", is_multiple)) {
     .x <- drop_if_na(.x, "censusid")
     .x <- group_by(.x, .data$censusid)
   }
-  
-  grouped <- group_by(.x, !!! enquos(...), add = TRUE)
-  
+
+  grouped <- group_by(.x, !!!enquos(...), add = TRUE)
+
   not_duplicated <- !any(count(grouped)$n > 1)
   if (not_duplicated) return(ungroup(grouped))
-  
+
   main_stems_at_top <- arrange(
-    grouped, desc(.data$hom), desc(.data$dbh), .by_group = TRUE
+    grouped, desc(.data$hom), desc(.data$dbh),
+    .by_group = TRUE
   )
   main_stems <- filter(main_stems_at_top, dplyr::row_number() == 1L)
   ungroup(main_stems)
