@@ -2,6 +2,10 @@
 
 * Work in progress.
 
+# fgeo.tool 1.0.2 (GithHub release)
+
+* Tidy dependencies.
+
 # fgeo.tool 1.0.1 (GithHub release)
 
 * Review documentation.
