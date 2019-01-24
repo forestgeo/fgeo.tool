@@ -47,7 +47,6 @@ test_that("ignores groups but groups can be handled via map(nest()$data)", {
   expect_true(detect_if(group_by(dfm, g), "x", is_duplicated))
   grouped <- group_by(dfm, g)
   expect_false(any(
-    map_lgl(nest(grouped)$data, ~detect_if(.x, "x", is_duplicated))
+    map_lgl(nest(grouped)$data, ~ detect_if(.x, "x", is_duplicated))
   ))
 })
-

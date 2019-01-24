@@ -6,7 +6,7 @@ test_that("utils pad_dbl() outputs equal to stringr::str_pad()", {
   width <- 5
   pad <- 0
   expect_equal(
-    pad_dbl(string, width, pad), 
+    pad_dbl(string, width, pad),
     stringr::str_pad(string, width = width, pad = pad)
   )
 })

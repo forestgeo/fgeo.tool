@@ -1,5 +1,5 @@
 #' Detect and flag based on a predicate applied to a variable by groups.
-#' 
+#'
 #' These functions extend `flag_if()`] and `detect_if()` to
 #' work by groups defined with [dplyr::group_by()].
 #'
@@ -22,22 +22,21 @@
 #' by_censusid <- group_by(tree, CensusID)
 #' detect_if_group(by_censusid, "treeID", is_multiple)
 #' flag_if_group(by_censusid, "treeID", is_multiple)
-#'
 #' @family functions to check inputs
 #' @family predicates
 #' @family functions for developers
 #' @keywords internal
 #' @export
-flag_if_group <- function(.data, 
-                          name, 
-                          predicate, 
-                          condition = warn, 
+flag_if_group <- function(.data,
+                          name,
+                          predicate,
+                          condition = warn,
                           msg = NULL) {
   stopifnot(length(condition) == 1)
 
   detected <- detect_if_group(.data, name, predicate)
   if (detected) condition(msg %||% glue("{name}: Flagged values were detected."))
-  
+
   invisible(.data)
 }
 
@@ -47,10 +46,10 @@ detect_if_group <- function(.data, name, predicate) {
   if (!dplyr::is_grouped_df(.data)) {
     return(detect_if(.data, name, predicate))
   }
-  
+
   g <- dplyr::group_vars(.data)
   lst <- split(.data, .data[g])
-  out <- purrr::map(lst, ~detect_if(.x, name, predicate))
-  
+  out <- purrr::map(lst, ~ detect_if(.x, name, predicate))
+
   any(unlist(out))
 }

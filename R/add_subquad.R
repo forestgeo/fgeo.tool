@@ -50,50 +50,50 @@ add_subquad <- function(df,
                         y_sq = x_sq,
                         subquad_offset = NULL) {
   stopifnot(is.data.frame(df))
-  
-  .df <- set_names(df, tolower) %>% 
-    check_crucial_names(c("qx", "qy")) %>% 
+
+  .df <- set_names(df, tolower) %>%
+    check_crucial_names(c("qx", "qy")) %>%
     check_subquad_dims(
-      x_q = x_q, y_q = y_q, x_sq = x_sq, y_sq = y_sq, 
+      x_q = x_q, y_q = y_q, x_sq = x_sq, y_sq = y_sq,
       subquad_offset = subquad_offset
-    ) %>% 
-    type_ensure(c("qx", "qy"), type = "numeric") %>% 
+    ) %>%
+    type_ensure(c("qx", "qy"), type = "numeric") %>%
     dplyr::filter(!is.na(.data$qx), !is.na(.data$qy))
-  
+
   # Simplify nested parentheses
   x_q_mns.1 <- x_q - 0.1
   y_q_mns.1 <- y_q - 0.1
-  
+
   # Conditions (odd means that the coordinate goes beyond normal limits)
-  is_odd_both <- .df$qx >=  x_q & .df$qy >=  y_q
-  is_odd_x <- .df$qx >=  x_q
-  is_odd_y <- .df$qy >=  y_q
+  is_odd_both <- .df$qx >= x_q & .df$qy >= y_q
+  is_odd_x <- .df$qx >= x_q
+  is_odd_y <- .df$qy >= y_q
   is_not_odd <- TRUE
-  
+
   # Cases
   .df <- mutate(.df,
     subquadrat = dplyr::case_when(
       is_odd_both ~ paste0(
         (1 + floor((x_q_mns.1 - x_q * floor(x_q_mns.1 / x_q)) / x_sq)),
-        (1 + floor((y_q_mns.1- y_q * floor(y_q_mns.1/ y_q)) / y_sq))
+        (1 + floor((y_q_mns.1 - y_q * floor(y_q_mns.1 / y_q)) / y_sq))
       ),
       is_odd_x ~ paste0(
         (1 + floor((x_q_mns.1 - x_q * floor(x_q_mns.1 / x_q)) / x_sq)),
-        (1 + floor((.df$qy - y_q * floor(.df$qy/ y_q)) / y_sq))
+        (1 + floor((.df$qy - y_q * floor(.df$qy / y_q)) / y_sq))
       ),
       is_odd_y ~ paste0(
-        (1 + floor((.df$qx - x_q * floor(.df$qx/ x_q)) / x_sq)),
-        (1 + floor((y_q_mns.1- y_q * floor(y_q_mns.1 / y_q)) / y_sq))
+        (1 + floor((.df$qx - x_q * floor(.df$qx / x_q)) / x_sq)),
+        (1 + floor((y_q_mns.1 - y_q * floor(y_q_mns.1 / y_q)) / y_sq))
       ),
       is_not_odd ~ paste0(
-        (1 + floor((.df$qx - x_q * floor(.df$qx/ x_q)) / x_sq)),
-        (1 + floor((.df$qy - y_q * floor(.df$qy/ y_q)) / y_sq))
+        (1 + floor((.df$qx - x_q * floor(.df$qx / x_q)) / x_sq)),
+        (1 + floor((.df$qy - y_q * floor(.df$qy / y_q)) / y_sq))
       )
     )
   )
-  
+
   .df <- rename_matches(.df, df)
-  
+
   if (!is.null(subquad_offset)) {
     recode_subquad(.df, offset = subquad_offset)
   } else {
@@ -117,17 +117,16 @@ add_subquad <- function(df,
 #'   ```
 #'
 #' @return A modified version of the input.
-#' 
+#'
 #' @examples
 #' first_subquad_11 <- tibble(subquadrat = c("11", "12", "22"))
 #' first_subquad_11
-#'
+#' 
 #' first_subquad_01 <- recode_subquad(first_subquad_11, offset = -1)
 #' first_subquad_01
-#'
+#' 
 #' first_subquad_11 <- recode_subquad(first_subquad_01, offset = 1)
 #' first_subquad_11
-#' 
 #' @keywords internal
 #' @export
 recode_subquad <- function(x, offset = -1) {
@@ -155,7 +154,11 @@ stop_if_invalid_subquad <- function(x, offset) {
   column1 <- c(14, 24, 34, 44, 13, 23, 33, 43, 12, 22, 32, 42, 11, 21, 31, 41)
   column0 <- c(04, 14, 24, 34, 03, 13, 23, 33, 02, 12, 22, 32, 01, 11, 21, 31)
   column0 <- pad_dbl(column0, 2, pad = 0)
-  if (offset == 1) {subquad <-  column0} else {subquad <- column1}
+  if (offset == 1) {
+    subquad <- column0
+  } else {
+    subquad <- column1
+  }
   # Check that the subquadrats in the data make sense with the offset provided
   if (!all(unique(x$subquadrat) %in% as.character(subquad))) {
     stop(
@@ -177,4 +180,3 @@ check_subquad_dims <- function(df, x_q, y_q, x_sq, y_sq, subquad_offset) {
   if (!is.null(subquad_offset)) stopifnot(is.numeric(subquad_offset))
   invisible(df)
 }
-

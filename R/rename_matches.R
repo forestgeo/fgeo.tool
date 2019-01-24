@@ -10,7 +10,6 @@
 #' ref <- data.frame(COL1 = 1, COL2 = 1)
 #' x <- data.frame(col1 = 5, col2 = 1, n = 5)
 #' rename_matches(x, ref)
-#' 
 #' @family functions for developers
 #' @family general functions to deal with names
 #' @keywords internal
@@ -33,11 +32,10 @@ rename_matches <- function(x, y) {
 #' y <- c("StemID", "treeID")
 #' detect_insensitive(x, y)
 #' extract_insensitive(x, y)
-#'
+#' 
 #' vft <- data.frame(TreeID = 1, Status = 1)
 #' extract_insensitive(tolower(names(vft)), names(vft))
 #' extract_insensitive(names(vft), tolower(names(vft)))
-#'
 #' @family functions for developers
 #' @family general functions to deal with names
 #' @keywords internal
@@ -73,4 +71,3 @@ detect_insensitive <- function(x, y) {
   matches <- lapply(anchor(x), grepl, y, ignore.case = TRUE)
   vapply(matches, any, logical(1))
 }
-

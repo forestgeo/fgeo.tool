@@ -11,8 +11,8 @@ test_that("handles normal cases", {
   expect_error(gxgy_to_hectindex(c(0, NA), c(0, 0), c(20, 20)), NA)
   expect_error(gxgy_to_hectindex(NA, 0, c(20, 20)), NA)
 
-  expect_warning(gxgy_to_hectindex(20, 0, c(20, 20)),  "at.*beyond.*limits")
-  expect_warning(gxgy_to_hectindex(0, 20, c(20, 20)),  "at.*beyond.*limits")
+  expect_warning(gxgy_to_hectindex(20, 0, c(20, 20)), "at.*beyond.*limits")
+  expect_warning(gxgy_to_hectindex(0, 20, c(20, 20)), "at.*beyond.*limits")
   expect_warning(gxgy_to_hectindex(20, 20, c(20, 20)), "at.*beyond.*limits")
 })
 

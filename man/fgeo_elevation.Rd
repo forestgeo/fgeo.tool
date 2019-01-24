@@ -49,7 +49,6 @@ class(fgeo_elevation(elevation_ls))
 
 names(elevation_ls)
 names(fgeo_elevation(elevation_ls))
-
 }
 \concept{functions to construct fgeo classes}
 \concept{habitat functions}

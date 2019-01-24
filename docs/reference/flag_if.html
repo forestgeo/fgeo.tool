@@ -65,7 +65,7 @@ evaluates it directly; if it is is a dataframe, it evaluates a given column." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.1.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2</span>
       </span>
     </div>
 
@@ -193,8 +193,7 @@ evaluates it directly; if it is is a dataframe, it evaluates a given column.</p>
 <span class='co'># WITH DATAFRAMES</span>
 <span class='no'>.df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 <span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"b"</span>, <span class='no'>is_multiple</span>)
-<span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: a: Flagged values were detected.</span></div><div class='input'><span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>, <span class='no'>message</span>, <span class='st'>"Custom"</span>)</div><div class='output co'>#&gt; <span class='message'>Custom</span></div><div class='input'>
-</div></pre>
+<span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: a: Flagged values were detected.</span></div><div class='input'><span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>, <span class='no'>message</span>, <span class='st'>"Custom"</span>)</div><div class='output co'>#&gt; <span class='message'>Custom</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

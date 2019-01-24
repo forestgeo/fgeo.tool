@@ -1,15 +1,15 @@
 #' Try to rename an object.
-#' 
-#' Given a name you want and a possible alternative, this function renames an 
+#'
+#' Given a name you want and a possible alternative, this function renames an
 #' object as you want or errs with an informative message.
 #'
 #' @param x A named object.
 #' @param want String of length 1 giving the name you want the object to have.
 #' @param try String of length 1 giving the name the object might have.
-#' 
+#'
 #' @seealso nms
-#' 
-#' @examples 
+#'
+#' @examples
 #' nms_try_rename(c(a = 1), "A", "a")
 #' nms_try_rename(data.frame(a = 1), "A", "a")
 #' 
@@ -29,7 +29,7 @@ nms_try_rename <- function(x, want, try) {
   if (length(nm) == 0) {
     abort(glue("Data must have an element named `{want}` or `{try}`"))
   }
-  
+
   names(x)[grepl(nm, names(x))] <- want
   x
 }
@@ -59,28 +59,29 @@ nms_try_rename <- function(x, want, try) {
 #' cns <- tibble(CensusID = 1, status = "A")
 #' original <- cns
 #' original
-#'
+#' 
 #' lowered <- nms_lowercase(cns)
 #' lowered
 #' attr(lowered, "names_old")
-#'
+#' 
 #' back_to_original <- nms_restore(lowered)
 #' back_to_original
-#'
 #' @family functions dealing with names
 #' @family functions for developers
 #' @noRd
 nms_lowercase <- function(x) {
   is_not_named <- is.null(attr(x, "names"))
-  if (is_not_named) {stop("`x` must be named")}
-  
+  if (is_not_named) {
+    stop("`x` must be named")
+  }
+
   attr(x, "names_old") <- names(x)
   set_names(x, tolower)
 }
 nms_restore <- function(x) {
   x_has_attr_names_old <- !is.null(attr(x, "names_old"))
   stopifnot(x_has_attr_names_old)
-  
+
   names(x) <- attr(x, "names_old")
   x
 }
@@ -122,7 +123,7 @@ nms_restore <- function(x) {
 #' mutated <- dplyr::mutate(dfm, newvar = x + 1)
 #' # Restore
 #' nms_restore_newvar(mutated, "newvar", old)
-#'
+#' 
 #' # Data contains the variable that will be added
 #' dfm <- data.frame(X = 1, Y = "a", newvar = "2")
 #' (old <- names(dfm))
@@ -132,7 +133,6 @@ nms_restore <- function(x) {
 #' mutated <- dplyr::mutate(dfm, newvar = x + 1)
 #' # Restore
 #' nms_restore_newvar(mutated, "newvar", old)
-#' 
 #' @family functions dealing with names
 #' @family functions for developers
 #' @noRd
@@ -144,35 +144,35 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
       call. = FALSE
     )
   }
-  
+
   if (any(grepl(new_var, old_nms))) {
     return(set_names(x, old_nms))
   }
-  
+
   set_names(x, c(old_nms, new_var))
 }
 
 
 
 #' Functions to detect and extract names.
-#' 
+#'
 #' These functions are handy to work with fgeo's data structures because the
 #' same variable may be named differently in different data sets. For example,
 #' the variable status is called `Status` or `status` in viewfull or census
 #' (tree and stem) tables.
-#' 
+#'
 #' nms_has_any(): Checks if an object has any of the provided names.
 #' * Returns a logical value.
-#' nms_detect(): Checks if an object has the provided names. 
+#' nms_detect(): Checks if an object has the provided names.
 #' * Returns a logical vector.
-#' nms_extract_all(): Finds the names that match the provided names. 
+#' nms_extract_all(): Finds the names that match the provided names.
 #' * Returns a character vector.
 #' nms_extract1(): Finds the first name that matches the provided names.
 #' * Returns a character string.
 #'
 #' @param x A named object.
 #' @param ... Strings; each of the names that need to be checked.
-#' 
+#'
 #' @examples
 #' v <- c(a = 1, b = 1)
 #' nms_has_any(v, "a", "B")
@@ -193,7 +193,6 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' 
 #' stem <- fgeo.x::stem6
 #' nms_extract_all(stem, "gx", "gy", "PX", "PY")
-#' 
 #' @family functions for developers
 #' @family functions dealing with names
 #' @noRd
@@ -201,7 +200,7 @@ nms_has_any <- function(x, ...) {
   any(nms_detect(x, ...))
 }
 nms_detect <- function(x, ...) {
-  purrr::map_lgl(list(...), ~has_name(x, .))
+  purrr::map_lgl(list(...), ~ has_name(x, .))
 }
 nms_extract_all <- function(x, ...) {
   is_detected <- nms_detect(x, ...)
@@ -223,23 +222,22 @@ nms_extract1 <- function(x, ...) {
 #'
 #' @param x A named object.
 #' @param nm A string to match names exactly but regardless of case.
-#' 
+#'
 #' @return A string of the name that was found in `names(x)`.
-#' 
+#'
 #' @examples
 #' v <- c(a = 1, B = 1)
 #' nms_extract_anycase(v, "b")
 #' 
 #' dfm <- data.frame(a = 1, B = 1)
 #' nms_extract_anycase(dfm, "b")
-#' 
 #' @family functions for developers
 #' @family functions dealing with names
 #' @noRd
 nms_extract_anycase <- function(x, nm) {
   has_nms <- !is.null(attr(x, "names"))
   stopifnot(has_nms, is.character(nm))
-  names(x)[which(nm  ==  tolower(names(x)))]
+  names(x)[which(nm == tolower(names(x)))]
 }
 
 
@@ -283,7 +281,6 @@ nms_extract_anycase <- function(x, nm) {
 #' # Makes more sense when operating on named objects
 #' messy_list <- list(`Hi yOu` = 1)
 #' nms_tidy(messy_list)
-#' 
 #' @family functions dealing with names
 #' @family functions for developers
 #' @noRd
@@ -293,7 +290,7 @@ nms_tidy <- function(x) {
     names(x) <- gsub(" ", "_", tolower(names(x)))
     return(x)
   }
-  
+
   gsub(" ", "_", tolower(x))
 }
 
@@ -305,21 +302,20 @@ nms_tidy <- function(x) {
 #' @param table2 A dataframe.
 #'
 #' @return An number indicating how many names are different only in their case.
-#' 
-#' @examples 
+#'
+#' @examples
 #' vft <- yosemite::ViewFullTable_yosemite
 #' stem <- yosemite::yosemite_s1_lao
 #' tree <- yosemite::yosemite_f1_lao
 #' nms_minus_lower_nms(stem, vft)
 #' nms_minus_lower_nms(vft, stem)
 #' nms_minus_lower_nms(stem, tree)
-#' 
 #' @family functions dealing with names
 #' @family functions for developers
 #' @noRd
 nms_minus_lower_nms <- function(table1, table2) {
   stopifnot(is.data.frame(table1), is.data.frame(table2))
-  
+
   nms_list <- purrr::map(list(table1, table2), names)
   diff_nms <- purrr::reduce(nms_list, setdiff)
   nms_list_lowered <- purrr::map(nms_list, tolower)

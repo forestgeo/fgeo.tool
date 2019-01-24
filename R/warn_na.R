@@ -6,12 +6,11 @@
 #'
 #' @examples
 #' warn_na(c(x = 1, y = NA))
-#' 
 #' @family functions to throw conditions
 #' @noRd
 warn_na <- function(x) {
   stopifnot(
-    is.data.frame(x) || is.vector(x), 
+    is.data.frame(x) || is.vector(x),
     !is.null(names(x)), rlang::is_named(x)
   )
 
@@ -20,6 +19,6 @@ warn_na <- function(x) {
   if (any(has_na)) {
     warning("Detected missing values in: ", commas(names(x)[has_na]))
   }
-  
+
   invisible(x)
 }

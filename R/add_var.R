@@ -1,5 +1,5 @@
 #' Add columns `lx/ly`, `QX/QY`, `index`, `col/row`, `hectindex`, `quad`, `gx/gy`.
-#' 
+#'
 #' These functions add columns to position trees in a forest plot. They work
 #' with _ViewFullTable_, _tree_ and _stem_ tables. From the input table, most
 #' functions use only the `gx` and `gy` columns (or equivalent columns). The
@@ -80,24 +80,26 @@
 #' if (tidyr_is_installed && stringr_is_installed) {
 #'   library(tidyr)
 #'   library(stringr)
-#'   
+#' 
 #'   vft <- tibble(QuadratName = c("0001", "0011"))
 #'   vft
-#'   
+#' 
 #'   separate(
 #'     vft,
-#'     QuadratName, into = c("col", "row"),
+#'     QuadratName,
+#'     into = c("col", "row"),
 #'     sep = 2
 #'   )
-#'   
+#' 
 #'   census <- select(fgeo.x::tree5, quadrat)
 #'   census
-#'   
+#' 
 #'   census$quadrat <- str_pad(census$quadrat, width = 4, pad = 0)
-#'   
+#' 
 #'   separate(
 #'     census,
-#'     quadrat, into = c("col", "row"),
+#'     quadrat,
+#'     into = c("col", "row"),
 #'     sep = 2,
 #'     remove = FALSE
 #'   )
@@ -115,9 +117,9 @@ NULL
 
 add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
   .x <- sanitize_xy(low(x))
-  
+
   check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
-  
+
   if (is.null(plotdim)) {
     plotdim <- guess_plotdim(.x)
     message("* If guess is wrong, provide the correct argument `plotdim`")
@@ -128,7 +130,7 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
     lxly = {
       newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
       .x <- tibble::add_column(.x, lx = newcol$lx, ly = newcol$ly)
-       restore_add_var(.x, x)
+      restore_add_var(.x, x)
     },
     qxqy = {
       newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
@@ -191,19 +193,19 @@ add_hectindex <- function(x, gridsize = 20, plotdim = NULL) {
 
 #' @rdname add_var
 #' @export
-add_quad <- function(x, 
-                     gridsize = 20, 
-                     plotdim = NULL, 
-                     start = NULL, 
+add_quad <- function(x,
+                     gridsize = 20,
+                     plotdim = NULL,
+                     start = NULL,
                      width = 2) {
   abort_bad_start(start)
-  
+
   w_rowcol <- add_var(x, "colrow", gridsize = gridsize, plotdim = plotdim)
   if (identical(start, 0)) {
     w_rowcol$col <- as.numeric(w_rowcol$col) - 1
     w_rowcol$row <- as.numeric(w_rowcol$row) - 1
   }
-  
+
   w_rowcol <- dplyr::mutate(
     w_rowcol,
     col = pad_dbl(col, width = width, pad = 0),
@@ -234,7 +236,7 @@ abort_bad_start <- function(start) {
 
 
 #' Rename px/py to gx/gy if x lacks gx/gy but has px/py.
-#' 
+#'
 #' @param x fgeo dataframe.
 #' @noRd
 sanitize_xy <- function(x) {
@@ -251,7 +253,7 @@ gxgy_to_var <- function(.x, var, gridsize, plotdim) {
     # `gridsize` is unused
     return(.f(.x$gx, .x$gy, plotdim = plotdim))
   }
-  
+
   .f(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
 }
 
@@ -260,7 +262,7 @@ gxgy_to_var <- function(.x, var, gridsize, plotdim) {
 #' @param .x A dataframe; a modified version of `x` where px/py is renamed to
 #'   gx/gy.
 #' @param x A dataframe.
-#' 
+#'
 #' @noRd
 restore_add_var <- function(.x, x) {
   .x <- restore_pxpy_if_necessary(.x, set_names(x, tolower))
@@ -296,7 +298,7 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
   stopifnot(is.numeric(gridsize))
   if (!is.null(plotdim)) stopifnot(is.numeric(plotdim))
   if (!is.null(plotdim)) stopifnot(length(plotdim) == 2)
-  
+
   invisible(x)
 }
 
@@ -306,7 +308,7 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
 #' @export
 add_gxgy <- function(x, gridsize = 20, start = 0) {
   assert_quad(x)
-  
+
   gxgy <- quad_to_gxgy(x[[nm_quad(x)]], gridsize = gridsize, start = start)
   # cbind accepts duplicaed names. dplyr::bind_cols doesn't
   dplyr::bind_cols(x, gxgy)
@@ -324,8 +326,8 @@ nm_quad <- function(x) {
 }
 
 quad_to_gxgy <- function(x, gridsize = 20, start = 0) {
-  x = as.numeric(as.character(x))
-  rowno = x %% 100 - start
-  colno = floor(x / 100) - start
+  x <- as.numeric(as.character(x))
+  rowno <- x %% 100 - start
+  colno <- floor(x / 100) - start
   data.frame(gx = colno * gridsize, gy = rowno * gridsize)
 }

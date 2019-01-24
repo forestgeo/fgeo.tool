@@ -47,7 +47,7 @@ test_that("read_taxa can read an online file", {
 
 test_that("read_taxa() guesses tab or comma separated file", {
   taxa_tab <- tempfile()
-  
+
   taxa <- read.csv(fgeo.x::example_path("taxa.csv"))
   readr::write_tsv(taxa, taxa_tab)
   expect_silent(read_taxa(taxa_tab))

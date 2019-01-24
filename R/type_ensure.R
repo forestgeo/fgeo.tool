@@ -1,9 +1,9 @@
 #' Ensure the specific columns of a dataframe have a particular type.
-#' 
+#'
 #' @param df A dataframe.
 #' @param ensure_nms Character vector giving names of `df` to ensure `type`
 #' @param type A string giving the type to ensure in columns `ensure_nms`
-#' 
+#'
 #' @seealso [purrr::modify_at()].
 #'
 #' @return A modified version of `df`, with columns (specified in `ensure_nms`)
@@ -12,14 +12,13 @@
 #' @examples
 #' dfm <- tibble(
 #'   w = c(NA, 1, 2),
-#'   x = 1:3, 
-#'   y = as.character(1:3), 
+#'   x = 1:3,
+#'   y = as.character(1:3),
 #'   z = letters[1:3]
 #' )
 #' dfm
 #' type_ensure(dfm, c("w", "x", "y"), "numeric")
 #' type_ensure(dfm, c("w", "x", "y", "z"), "character")
-#' 
 #' @family functions to operate on column types
 #' @family functions for developers
 #' @keywords internal
@@ -45,4 +44,3 @@ warn_if_changing_type <- function(ensure, is_to_fix, type) {
     warn(msg)
   }
 }
-

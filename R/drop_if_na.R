@@ -13,7 +13,6 @@
 #' dfm <- data.frame(a = 1, b = NA)
 #' drop_if_na(dfm, "b")
 #' drop_if_na(dfm, "a")
-#' 
 #' @family general functions to pick or drop rows of a dataframe
 #' @keywords internal
 #' @export

@@ -23,14 +23,13 @@ Ensure the specific columns of a dataframe have a particular type.
 \examples{
 dfm <- tibble(
   w = c(NA, 1, 2),
-  x = 1:3, 
-  y = as.character(1:3), 
+  x = 1:3,
+  y = as.character(1:3),
   z = letters[1:3]
 )
 dfm
 type_ensure(dfm, c("w", "x", "y"), "numeric")
 type_ensure(dfm, c("w", "x", "y", "z"), "character")
-
 }
 \seealso{
 \code{\link[purrr:modify_at]{purrr::modify_at()}}.

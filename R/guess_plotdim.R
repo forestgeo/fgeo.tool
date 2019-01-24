@@ -12,7 +12,6 @@
 #'   gy = c(0, 300, 481)
 #' )
 #' guess_plotdim(x)
-#'
 #' @family functions for fgeo census and vft
 #' @family functions for fgeo census
 #' @family functions for fgeo vft
@@ -34,7 +33,8 @@ guess_plotdim <- function(x, accuracy = 20) {
   }
 
   guess <- vapply(
-    x[ , c("gx", "gy")], guess_max, double(1), accuracy = accuracy
+    x[, c("gx", "gy")], guess_max, double(1),
+    accuracy = accuracy
   )
 
   message("Guessing: plotdim = c(", commas(guess), ")")
@@ -54,7 +54,6 @@ guess_plotdim <- function(x, accuracy = 20) {
 #' nms_pull_matches(luquillo_stem_random_tiny, c("x", "PX", "gx"))
 #' nms_pull_matches(luquillo_vft_4quad, c("x", "PX", "gx"))
 #' nms_pull_matches(luquillo_vft_4quad, c("PY", "PX", "gx", "gy"))
-#'
 #' @family general functions to deal with names
 #' @family functions for developers
 #' @keywords internal
@@ -75,7 +74,6 @@ nms_pull_matches <- function(x, .match) {
 #'
 #' @examples
 #' guess_max(1:19, 20)
-#' 
 #' @family general functions to find or approximate
 #' @keywords internal
 #' @noRd
@@ -83,4 +81,3 @@ guess_max <- function(x, accuracy) {
   max_x <- max(x, na.rm = TRUE)
   round_any(max_x, f = ceiling, accuracy = accuracy)
 }
-

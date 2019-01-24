@@ -115,24 +115,26 @@ stringr_is_installed <- requireNamespace("stringr", quietly = TRUE)
 if (tidyr_is_installed && stringr_is_installed) {
   library(tidyr)
   library(stringr)
-  
+
   vft <- tibble(QuadratName = c("0001", "0011"))
   vft
-  
+
   separate(
     vft,
-    QuadratName, into = c("col", "row"),
+    QuadratName,
+    into = c("col", "row"),
     sep = 2
   )
-  
+
   census <- select(fgeo.x::tree5, quadrat)
   census
-  
+
   census$quadrat <- str_pad(census$quadrat, width = 4, pad = 0)
-  
+
   separate(
     census,
-    quadrat, into = c("col", "row"),
+    quadrat,
+    into = c("col", "row"),
     sep = 2,
     remove = FALSE
   )

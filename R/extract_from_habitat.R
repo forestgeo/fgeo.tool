@@ -11,7 +11,6 @@
 #' habitat <- fgeo.x::habitat
 #' extract_plotdim(habitat)
 #' extract_gridsize(habitat)
-#' 
 #' @keywords internal
 #' @name extract_from_habitat
 NULL
@@ -21,7 +20,7 @@ NULL
 extract_gridsize <- function(habitats) {
   stopifnot(is.data.frame(habitats))
   habitats <- tryCatch(
-    check_crucial_names(habitats, c("x", "y")), 
+    check_crucial_names(habitats, c("x", "y")),
     error = function(e) rename_to_xy(habitats)
   )
   warn_na(habitats)
@@ -37,10 +36,10 @@ extract_gridsize <- function(habitats) {
 #' @export
 extract_plotdim <- function(habitats) {
   habitats <- tryCatch(
-    check_crucial_names(habitats, c("x", "y")), 
+    check_crucial_names(habitats, c("x", "y")),
     error = function(e) rename_to_xy(habitats)
   )
-  
+
   gridsize <- extract_gridsize(habitats)
   plotdim <- unlist(
     lapply(habitats[c("x", "y")], function(.x) {
