@@ -2,10 +2,13 @@
 
 * Work in progress.
 
-* First argument of most visible functions are now named to follow tidyverse principles (http://bit.ly/2TfDcfX)
+# fgeo.tool 1.0.4 (GithHub release)
 
-# fgeo.tool 1.0.3 (GithHub release)
+* First argument of most visible functions are now named to follow tidyverse principles (<http://bit.ly/2TfDcfX>)
 
+# fgeo.tool 1.0.3 (GitHub and drat release)
+
+* Release on CRAN-like repository served at <https://forestgeo.github.io/drat/>.
 * Use released versions recursively via @*release.
 
 # fgeo.tool 1.0.2 (GithHub release)
