@@ -4,11 +4,11 @@
 \alias{add_subquad}
 \title{Add column \code{subquadrat} based on \code{QX} and \code{QY} coordinates.}
 \usage{
-add_subquad(df, x_q, y_q = x_q, x_sq, y_sq = x_sq,
+add_subquad(data, x_q, y_q = x_q, x_sq, y_sq = x_sq,
   subquad_offset = NULL)
 }
 \arguments{
-\item{df}{A dataframe with quadrat coordinates \code{QX} and \code{QY} (e.g. a
+\item{data}{A dataframe with quadrat coordinates \code{QX} and \code{QY} (e.g. a
 \emph{ViewFullTable}).}
 
 \item{x_q, y_q}{Size in meters of a quadrat's side. For ForestGEO sites, a
@@ -27,7 +27,7 @@ digit of each subquadrat that represents the column number.\preformatted{First c
 }}
 }
 \value{
-Returns \code{df} with the additional variable \code{subquadrat}.
+Returns \code{data} with the additional variable \code{subquadrat}.
 }
 \description{
 Add column \code{subquadrat} based on \code{QX} and \code{QY} coordinates.

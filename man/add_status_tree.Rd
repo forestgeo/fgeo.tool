@@ -4,10 +4,10 @@
 \alias{add_status_tree}
 \title{Add column \code{status_tree} based on the status of all stems of each tree.}
 \usage{
-add_status_tree(x, status_a = "A", status_d = "D")
+add_status_tree(data, status_a = "A", status_d = "D")
 }
 \arguments{
-\item{x}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+\item{data}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
 table.}
 
 \item{status_a, status_d}{Sting to match alive and dead stems; it corresponds
