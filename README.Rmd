@@ -26,8 +26,8 @@ __fgeo.tool__ helps you to import and manipulate [ForestGEO](<http://www.forestg
 Install the latest stable version of **fgeo.tool** with:
 
 ```R
-# install.packages("devtools")
-devtools::install_github("forestgeo/fgeo.tool@*release")
+these_repos <- c(getOption("repos"), "https://forestgeo.github.io/drat")
+install.packages("fgeo.tool", repos = these_repos)
 ```
 
 Install the development version of **fgeo.tool** with:
