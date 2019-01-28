@@ -4,7 +4,7 @@
 
 # fgeo.tool 1.0.4 (GithHub release)
 
-* First argument of most visible functions are now named to follow tidyverse principles (<http://bit.ly/2TfDcfX>)
+* First argument of most visible functions are now named following tidyverse principles (<http://bit.ly/2TfDcfX>)
 
 # fgeo.tool 1.0.3 (GitHub and drat release)
 
