@@ -1,6 +1,3 @@
-
-
-
 #' Pick the main stem or main stemid(s) of each tree in each census.
 #'
 #' * [pick_main_stem()] picks a unique row for each `treeID` per census.
@@ -15,11 +12,11 @@
 #' This this corrects the effect of buttresses and picks the main stem. It
 #' ignores groups of grouped data and rejects data with multiple plots.
 #' * [pick_main_stemid()] does one step less than [pick_main_stem()]. It only
-#' picks the main stemid(s) of each tree in each census and keeps all
-#' stems per treeid. This is useful when calculating the total basal area of a
-#' tree, because you need to sum the basal area of each individual stem as well as
-#' sum only one of the potentially multiple measurements of each buttressed
-#' stem per census.
+#' picks the main stemid(s) of each tree in each census and keeps all stems per
+#' treeid. This is useful when calculating the total basal area of a tree,
+#' because you need to sum the basal area of each individual stem as well as sum
+#' only one of the potentially multiple measurements of each buttressed stem per
+#' census.
 #'
 #' @section Warning:
 #' These functions may be considerably slow. They are fastest if the data
@@ -36,7 +33,7 @@
 #' And a dataset with 2 million rows made up entirely of main stems took about
 #' ten seconds to run.
 #'
-#' @template .x_fgeo
+#' @template data_fgeo
 #'
 #' @return A dataframe with a single plotname, and one row per per treeid per
 #'   censusid.
@@ -63,27 +60,28 @@
 NULL
 
 pick_main_f <- function(stemid = TRUE, treeid = TRUE) {
-  function(.x) {
-    stopifnot(is.data.frame(.x))
+  function(data) {
+    stopifnot(is.data.frame(data))
     
     # Store original row order to restore it at the end
-    .x <- tibble::rowid_to_column(.x)
+    data <- tibble::rowid_to_column(data)
     # Lowercase names and groups to work with both census and ViewFullTable
-    .data <- rlang::set_names(.x, tolower)
-    # The net effect is to ignore groups: Store them now and restore them on exit.
-    .data <- groups_lower(.data)
+    data_ <- rlang::set_names(data, tolower)
+    # The net effect is to ignore groups: Store them now and restore them on
+    # exit.
+    data_ <- groups_lower(data_)
     
-    stopifnot_single_plotname(.data)
-    check_crucial_names(.data, c( "treeid", "stemid", "hom", "dbh"))
+    stopifnot_single_plotname(data_)
+    check_crucial_names(data_, c( "treeid", "stemid", "hom", "dbh"))
     
-    .data <- pick_stemid_treeid(.data, stemid = stemid, treeid = treeid)
+    data_ <- pick_stemid_treeid(data_, stemid = stemid, treeid = treeid)
     
     # Restore rows order
-    .data <- select(arrange(.data, .data$rowid), -.data$rowid)
+    data_ <- select(arrange(data_, .data$rowid), -.data$rowid)
     # Restore original names
-    out <- rename_matches(.data , .x)
+    out <- rename_matches(data_ , data)
     # Restore original groups
-    groups_restore(out, .x)
+    groups_restore(out, data)
   }
 }
 
@@ -95,25 +93,25 @@ pick_main_stem <- pick_main_f(stemid = TRUE, treeid = TRUE)
 #' @export
 pick_main_stemid <- pick_main_f(stemid = TRUE, treeid = FALSE)
 
-pick_stemid_treeid <- function(.data, stemid = TRUE, treeid = TRUE) {
+pick_stemid_treeid <- function(data, stemid = TRUE, treeid = TRUE) {
   if (stemid) {
-    .data <- pick_by_groups_by_censusid(.data, .data$treeid, .data$stemid)
+    data <- pick_by_groups_by_censusid(data, .data$treeid, .data$stemid)
   }
   if (treeid) {
-    .data <- pick_by_groups_by_censusid(.data, .data$treeid)
+    data <- pick_by_groups_by_censusid(data, .data$treeid)
   }
-  .data
+  data
 }
 
-pick_by_groups_by_censusid <- function(.x, ...) {
-  .x <- ungroup(.x)
+pick_by_groups_by_censusid <- function(.data, ...) {
+  .data <- ungroup(.data)
 
-  if (has_name(.x, "censusid") && detect_if(.x, "censusid", is_multiple)) {
-    .x <- drop_if_na(.x, "censusid")
-    .x <- group_by(.x, .data$censusid)
+  if (has_name(.data, "censusid") && detect_if(.data, "censusid", is_multiple)) {
+    .data <- drop_if_na(.data, "censusid")
+    .data <- group_by(.data, .data$censusid)
   }
 
-  grouped <- group_by(.x, !!!enquos(...), add = TRUE)
+  grouped <- group_by(.data, !!!enquos(...), add = TRUE)
 
   not_duplicated <- !any(count(grouped)$n > 1)
   if (not_duplicated) return(ungroup(grouped))

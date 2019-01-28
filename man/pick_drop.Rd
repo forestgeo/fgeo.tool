@@ -10,24 +10,24 @@
 \alias{drop_status}
 \title{Pick and drop rows from \emph{ViewFullTable}, \emph{tree}, and \emph{stem} tables.}
 \usage{
-pick_dbh_min(.data, value, na.rm = FALSE)
+pick_dbh_min(data, value, na.rm = FALSE)
 
-pick_dbh_max(.data, value, na.rm = FALSE)
+pick_dbh_max(data, value, na.rm = FALSE)
 
-pick_dbh_under(.data, value, na.rm = FALSE)
+pick_dbh_under(data, value, na.rm = FALSE)
 
-pick_dbh_over(.data, value, na.rm = FALSE)
+pick_dbh_over(data, value, na.rm = FALSE)
 
-pick_status(.data, value, na.rm = FALSE)
+pick_status(data, value, na.rm = FALSE)
 
-drop_status(.data, value, na.rm = FALSE)
+drop_status(data, value, na.rm = FALSE)
 }
 \arguments{
-\item{.data}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+\item{data}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
 table.}
 
-\item{value}{An atomic vector; a single value against to compare each value of
-the variable encoded in the function's name.}
+\item{value}{An atomic vector; a single value against to compare each value
+of the variable encoded in the function's name.}
 
 \item{na.rm}{Set to \code{TRUE} if you want to remove missing values from the
 variable encoded in the function's name.}

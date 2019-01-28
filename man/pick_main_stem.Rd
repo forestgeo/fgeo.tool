@@ -5,12 +5,12 @@
 \alias{pick_main_stemid}
 \title{Pick the main stem or main stemid(s) of each tree in each census.}
 \usage{
-pick_main_stem(.x)
+pick_main_stem(data)
 
-pick_main_stemid(.x)
+pick_main_stemid(data)
 }
 \arguments{
-\item{.x}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+\item{data}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
 table.}
 }
 \value{
@@ -34,11 +34,11 @@ first by descending order of \code{hom} and then by descending order of \code{db
 This this corrects the effect of buttresses and picks the main stem. It
 ignores groups of grouped data and rejects data with multiple plots.
 \item \code{\link[=pick_main_stemid]{pick_main_stemid()}} does one step less than \code{\link[=pick_main_stem]{pick_main_stem()}}. It only
-picks the main stemid(s) of each tree in each census and keeps all
-stems per treeid. This is useful when calculating the total basal area of a
-tree, because you need to sum the basal area of each individual stem as well as
-sum only one of the potentially multiple measurements of each buttressed
-stem per census.
+picks the main stemid(s) of each tree in each census and keeps all stems per
+treeid. This is useful when calculating the total basal area of a tree,
+because you need to sum the basal area of each individual stem as well as sum
+only one of the potentially multiple measurements of each buttressed stem per
+census.
 }
 }
 \section{Warning}{
