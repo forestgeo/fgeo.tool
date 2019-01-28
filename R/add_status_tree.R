@@ -4,7 +4,7 @@ tibble::tribble
 
 #' Add column `status_tree` based on the status of all stems of each tree.
 #'
-#' @template x_fgeo
+#' @template data_fgeo
 #' @param status_a,status_d Sting to match alive and dead stems; it corresponds
 #'   to the values of the variable `status` (in census tables) or `Status` (with
 #'   capital "S" in ViewFull tables).
@@ -37,31 +37,31 @@ tibble::tribble
 #' @family functions for fgeo census
 #' @family functions for fgeo vft
 #' @export
-add_status_tree <- function(x, status_a = "A", status_d = "D") {
-  set_names(x, tolower) %>% 
+add_status_tree <- function(data, status_a = "A", status_d = "D") {
+  set_names(data, tolower) %>% 
     check_add_status_tree(status_a = status_a, status_d = status_d) %>% 
     group_by(.data$censusid, .data$treeid) %>% 
     mutate(
       status_tree = ifelse(all(.data$status == status_d), status_d, status_a)
     ) %>% 
     ungroup() %>% 
-    rename_matches(x)
+    rename_matches(data)
 }
 
-check_add_status_tree <- function(x, status_d, status_a) {
-  stopifnot(is.data.frame(x))
-  check_crucial_names(x, c("treeid", "status", "censusid"))
-  check_valid_status(x, .status = c(status_d, status_a), "status")
-  if ("plotid" %in% names(x)) {
+check_add_status_tree <- function(data, status_d, status_a) {
+  stopifnot(is.data.frame(data))
+  check_crucial_names(data, c("treeid", "status", "censusid"))
+  check_valid_status(data, .status = c(status_d, status_a), "status")
+  if ("plotid" %in% names(data)) {
     msg <-  "\n  * Filter your data to keep a single plot and try again"
-    flag_if(x, "plotid", is_multiple, abort, msg = msg)
+    flag_if(data, "plotid", is_multiple, abort, msg = msg)
   }
-  invisible(x)
+  invisible(data)
 }
 
-check_valid_status <- function(x, .status, status_var) {
-  .status_var <- x[[status_var]]
-  check_crucial_names(x, status_var)
+check_valid_status <- function(data, .status, status_var) {
+  .status_var <- data[[status_var]]
+  check_crucial_names(data, status_var)
   valid_status <- unique(.status_var)
   invalid_status <- setdiff(.status, valid_status)
   if (length(invalid_status) != 0) {

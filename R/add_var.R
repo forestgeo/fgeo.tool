@@ -10,7 +10,7 @@
 #' These functions are adapted from the [CTFS R
 #' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
 #'
-#' @template x_fgeo
+#' @template data_fgeo
 #' @inheritParams from_var_to_var
 #' @param start Defaults to label the first quadrat as "0101". Use `0` to
 #'   label it as "0000" instead.
@@ -115,46 +115,46 @@ NULL
 
 # Input gxgy --------------------------------------------------------------
 
-add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
-  .x <- sanitize_xy(low(x))
+add_var <- function(data, var, gridsize = 20, plotdim = NULL) {
+  data_ <- sanitize_xy(low(data))
 
-  check_add_var(x = .x, var = var, gridsize = gridsize, plotdim = plotdim)
+  check_add_var(data_, var = var, gridsize = gridsize, plotdim = plotdim)
 
   if (is.null(plotdim)) {
-    plotdim <- guess_plotdim(.x)
+    plotdim <- guess_plotdim(data_)
     message("* If guess is wrong, provide the correct argument `plotdim`")
   }
 
   result <- switch(
     var,
     lxly = {
-      newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
-      .x <- tibble::add_column(.x, lx = newcol$lx, ly = newcol$ly)
-      restore_add_var(.x, x)
+      newcol <- gxgy_to_var(data_, var, gridsize, plotdim)
+      data_ <- tibble::add_column(data_, lx = newcol$lx, ly = newcol$ly)
+      restore_add_var(data_, data)
     },
     qxqy = {
-      newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
-      .x <- tibble::add_column(.x, QX = newcol$QX, QY = newcol$QY)
-      restore_add_var(.x, x)
+      newcol <- gxgy_to_var(data_, var, gridsize, plotdim)
+      data_ <- tibble::add_column(data_, QX = newcol$QX, QY = newcol$QY)
+      restore_add_var(data_, data)
     },
     index = {
-      newcol <- gxgy_to_var(.x, var, gridsize, plotdim)
-      .x <- tibble::add_column(.x, index = newcol)
-      restore_add_var(.x, x)
+      newcol <- gxgy_to_var(data_, var, gridsize, plotdim)
+      data_ <- tibble::add_column(data_, index = newcol)
+      restore_add_var(data_, data)
     },
     colrow = {
-      newcol <- gxgy_to_var(.x, var = "rowcol", gridsize, plotdim)
-      .x <- tibble::add_column(
-        .x,
+      newcol <- gxgy_to_var(data_, var = "rowcol", gridsize, plotdim)
+      data_ <- tibble::add_column(
+        data_,
         col = pad_dbl(newcol$col, width = 2, pad = 0),
         row = pad_dbl(newcol$row, width = 2, pad = 0)
       )
-      restore_add_var(.x, x)
+      restore_add_var(data_, data)
     },
     hectindex = {
-      newcol <- gxgy_to_var(.x, var, gridsize = NULL, plotdim)
-      .x <- tibble::add_column(.x, hectindex = newcol)
-      restore_add_var(.x, x)
+      newcol <- gxgy_to_var(data_, var, gridsize = NULL, plotdim)
+      data_ <- tibble::add_column(data_, hectindex = newcol)
+      restore_add_var(data_, data)
     }
   )
 
@@ -163,58 +163,58 @@ add_var <- function(x, var, gridsize = 20, plotdim = NULL) {
 
 #' @rdname add_var
 #' @export
-add_lxly <- function(x, gridsize = 20, plotdim = NULL) {
-  add_var(x, var = "lxly", gridsize = gridsize, plotdim = plotdim)
+add_lxly <- function(data, gridsize = 20, plotdim = NULL) {
+  add_var(data, var = "lxly", gridsize = gridsize, plotdim = plotdim)
 }
 
 #' @rdname add_var
 #' @export
-add_qxqy <- function(x, gridsize = 20, plotdim = NULL) {
-  add_var(x, var = "qxqy", gridsize = gridsize, plotdim = plotdim)
+add_qxqy <- function(data, gridsize = 20, plotdim = NULL) {
+  add_var(data, var = "qxqy", gridsize = gridsize, plotdim = plotdim)
 }
 
 #' @rdname add_var
 #' @export
-add_index <- function(x, gridsize = 20, plotdim = NULL) {
-  add_var(x, var = "index", gridsize = gridsize, plotdim = plotdim)
+add_index <- function(data, gridsize = 20, plotdim = NULL) {
+  add_var(data, var = "index", gridsize = gridsize, plotdim = plotdim)
 }
 
 #' @rdname add_var
 #' @export
-add_col_row <- function(x, gridsize = 20, plotdim = NULL) {
-  add_var(x, var = "colrow", gridsize = gridsize, plotdim = plotdim)
+add_col_row <- function(data, gridsize = 20, plotdim = NULL) {
+  add_var(data, var = "colrow", gridsize = gridsize, plotdim = plotdim)
 }
 
 #' @rdname add_var
 #' @export
-add_hectindex <- function(x, gridsize = 20, plotdim = NULL) {
-  add_var(x, var = "hectindex", plotdim = plotdim)
+add_hectindex <- function(data, gridsize = 20, plotdim = NULL) {
+  add_var(data, var = "hectindex", plotdim = plotdim)
 }
 
 #' @rdname add_var
 #' @export
-add_quad <- function(x,
+add_quad <- function(data,
                      gridsize = 20,
                      plotdim = NULL,
                      start = NULL,
                      width = 2) {
   abort_bad_start(start)
 
-  w_rowcol <- add_var(x, "colrow", gridsize = gridsize, plotdim = plotdim)
+  data_ <- add_var(data, "colrow", gridsize = gridsize, plotdim = plotdim)
   if (identical(start, 0)) {
-    w_rowcol$col <- as.numeric(w_rowcol$col) - 1
-    w_rowcol$row <- as.numeric(w_rowcol$row) - 1
+    data_$col <- as.numeric(data_$col) - 1
+    data_$row <- as.numeric(data_$row) - 1
   }
 
-  w_rowcol <- dplyr::mutate(
-    w_rowcol,
+  data_ <- dplyr::mutate(
+    data_,
     col = pad_dbl(col, width = width, pad = 0),
     row = pad_dbl(row, width = width, pad = 0),
     quad = paste_colrow(col, row),
     row = NULL,
     col = NULL
   )
-  w_rowcol
+  data_
 }
 
 paste_colrow <- function(col, row) {
@@ -239,58 +239,58 @@ abort_bad_start <- function(start) {
 #'
 #' @param x fgeo dataframe.
 #' @noRd
-sanitize_xy <- function(x) {
-  if (rename_pxpy(x)) {
-    x <- nms_try_rename(x, "gx", "px")
-    x <- nms_try_rename(x, "gy", "py")
+sanitize_xy <- function(data) {
+  if (rename_pxpy(data)) {
+    data <- nms_try_rename(data, "gx", "px")
+    data <- nms_try_rename(data, "gy", "py")
   }
-  x
+  data
 }
 
-gxgy_to_var <- function(.x, var, gridsize, plotdim) {
+gxgy_to_var <- function(data, var, gridsize, plotdim) {
   .f <- utils::getFromNamespace(paste0("gxgy_to_", var), "fgeo.tool")
   if (identical(var, "hectindex")) {
     # `gridsize` is unused
-    return(.f(.x$gx, .x$gy, plotdim = plotdim))
+    return(.f(data$gx, data$gy, plotdim = plotdim))
   }
 
-  .f(.x$gx, .x$gy, gridsize = gridsize, plotdim = plotdim)
+  .f(data$gx, data$gy, gridsize = gridsize, plotdim = plotdim)
 }
 
 #' Restore column names.
 #'
-#' @param .x A dataframe; a modified version of `x` where px/py is renamed to
+#' @param data_ A dataframe; a modified version of `x` where px/py is renamed to
 #'   gx/gy.
 #' @param x A dataframe.
 #'
 #' @noRd
-restore_add_var <- function(.x, x) {
-  .x <- restore_pxpy_if_necessary(.x, set_names(x, tolower))
-  rename_matches(.x, x)
+restore_add_var <- function(data_, data) {
+  data_ <- restore_pxpy_if_necessary(data_, set_names(data, tolower))
+  rename_matches(data_, data)
 }
 
-rename_pxpy <- function(x) {
-  missing_names_gxgy <- !nms_has_any(x, "gx", "gy")
-  has_names_pxpy <- nms_has_any(x, "px", "py")
+rename_pxpy <- function(data) {
+  missing_names_gxgy <- !nms_has_any(data, "gx", "gy")
+  has_names_pxpy <- nms_has_any(data, "px", "py")
   missing_names_gxgy && has_names_pxpy
 }
 
-restore_pxpy_if_necessary <- function(.x, x) {
-  if (rename_pxpy(x)) {
-    .x <- dplyr::rename(.x, px = .data$gx, py = .data$gy)
+restore_pxpy_if_necessary <- function(data_, data) {
+  if (rename_pxpy(data)) {
+    data_ <- dplyr::rename(data_, px = .data$gx, py = .data$gy)
   }
-  .x
+  data_
 }
 
-check_add_var <- function(x, var, from, gridsize, plotdim) {
-  stopifnot(is.data.frame(x))
-  check_crucial_names(x, c("gx", "gy"))
-  no_gx_is_na <- !any(is.na(x$gx))
+check_add_var <- function(data, var, from, gridsize, plotdim) {
+  stopifnot(is.data.frame(data))
+  check_crucial_names(data, c("gx", "gy"))
+  no_gx_is_na <- !any(is.na(data$gx))
   stopifnot(no_gx_is_na)
-  no_gy_is_na <- !any(is.na(x$gy))
+  no_gy_is_na <- !any(is.na(data$gy))
   stopifnot(no_gy_is_na)
-  stopifnot(all(x$gx >= 0))
-  stopifnot(all(x$gy >= 0))
+  stopifnot(all(data$gx >= 0))
+  stopifnot(all(data$gy >= 0))
 
   stopifnot(!missing(var))
   stopifnot(var %in% c("lxly", "qxqy", "colrow", "index", "hectindex"))
@@ -299,35 +299,35 @@ check_add_var <- function(x, var, from, gridsize, plotdim) {
   if (!is.null(plotdim)) stopifnot(is.numeric(plotdim))
   if (!is.null(plotdim)) stopifnot(length(plotdim) == 2)
 
-  invisible(x)
+  invisible(data)
 }
 
 # Input quadratname or quadrat --------------------------------------------
 
 #' @rdname add_var
 #' @export
-add_gxgy <- function(x, gridsize = 20, start = 0) {
-  assert_quad(x)
+add_gxgy <- function(data, gridsize = 20, start = 0) {
+  assert_quad(data)
 
-  gxgy <- quad_to_gxgy(x[[nm_quad(x)]], gridsize = gridsize, start = start)
+  gxgy <- quad_to_gxgy(data[[nm_quad(data)]], gridsize = gridsize, start = start)
   # cbind accepts duplicaed names. dplyr::bind_cols doesn't
-  dplyr::bind_cols(x, gxgy)
+  dplyr::bind_cols(data, gxgy)
 }
 
-assert_quad <- function(x) {
-  missing_quad <- !any(c("quadrat", "quadratname") %in% names(low(x)))
+assert_quad <- function(data) {
+  missing_quad <- !any(c("quadrat", "quadratname") %in% names(low(data)))
   if (missing_quad) {
     abort("Ensure your data has colum `quadrat` or `quadratname`.")
   }
 }
 
-nm_quad <- function(x) {
-  grep("^quadrat$|^quadratname$", names(x), value = TRUE, ignore.case = TRUE)
+nm_quad <- function(data) {
+  grep("^quadrat$|^quadratname$", names(data), value = TRUE, ignore.case = TRUE)
 }
 
-quad_to_gxgy <- function(x, gridsize = 20, start = 0) {
-  x <- as.numeric(as.character(x))
-  rowno <- x %% 100 - start
-  colno <- floor(x / 100) - start
+quad_to_gxgy <- function(data, gridsize = 20, start = 0) {
+  data <- as.numeric(as.character(data))
+  rowno <- data %% 100 - start
+  colno <- floor(data / 100) - start
   data.frame(gx = colno * gridsize, gy = rowno * gridsize)
 }

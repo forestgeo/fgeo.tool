@@ -5,12 +5,13 @@
 \alias{sanitize_taxa}
 \title{Fix common problems in \emph{ViewFullTable} and \emph{ViewTaxonomy} data.}
 \usage{
-sanitize_vft(x, na = c("", "NA", "NULL"), ...)
+sanitize_vft(.data, na = c("", "NA", "NULL"), ...)
 
-sanitize_taxa(x, na = c("", "NA", "NULL"), ...)
+sanitize_taxa(.data, na = c("", "NA", "NULL"), ...)
 }
 \arguments{
-\item{x}{A dataframe; either a ForestGEO \emph{ViewFullTable} (\code{sanitize_vft()})
+\item{.data}{A dataframe; either a ForestGEO \emph{ViewFullTable}
+(\code{sanitize_vft()}).
 or \emph{ViewTaxonomy} (\code{sanitize_vft()}).}
 
 \item{na}{Character vector of strings to interpret as missing values. Set this

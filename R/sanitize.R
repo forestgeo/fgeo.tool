@@ -1,8 +1,8 @@
 sanitize_view <- function(col_types) {
-  function(x, na = c("", "NA", "NULL"), ...) {
-    check_crucial_names(x, names(col_types))
-    x <- purrr::modify(x, as.character)
-    readr::type_convert(x, col_types = col_types, na = na, ...)
+  function(.data, na = c("", "NA", "NULL"), ...) {
+    check_crucial_names(.data, names(col_types))
+    .data <- purrr::modify(.data, as.character)
+    readr::type_convert(.data, col_types = col_types, na = na, ...)
   }
 }
 
@@ -15,7 +15,8 @@ sanitize_view <- function(col_types) {
 #' literal string "NULL".
 #'
 #' @inheritParams readr::type_convert
-#' @param x A dataframe; either a ForestGEO _ViewFullTable_ (`sanitize_vft()`)
+#' @param .data A dataframe; either a ForestGEO _ViewFullTable_
+#'   (`sanitize_vft()`).
 #'   or _ViewTaxonomy_ (`sanitize_vft()`).
 #' @param ... Arguments passed to [readr::type_convert()].
 #'

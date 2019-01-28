@@ -7,9 +7,9 @@
 #' conservative default is important because you want want to include missing
 #' trees in your analysis.
 #'
-#' @template .data_fgeo
-#' @param value An atomic vector; a single value against to compare each value of
-#'   the variable encoded in the function's name.
+#' @template data_fgeo
+#' @param value An atomic vector; a single value against to compare each value
+#'   of the variable encoded in the function's name.
 #' @param na.rm Set to `TRUE` if you want to remove missing values from the
 #'   variable encoded in the function's name.
 #'
@@ -93,21 +93,21 @@ NULL
 var_cond_x <- function(variable, cond) {
   force(variable)
   force(cond)
-  function(.data, value, na.rm = FALSE) {
-    stopifnot(is.data.frame(.data))
+  function(data, value, na.rm = FALSE) {
+    stopifnot(is.data.frame(data))
     stopifnot(!missing(value), is.logical(na.rm), length(value) == 1)
 
-    pick_rows <- function(.data_, value, na.rm) {
-      rows <- do.call(cond, list(.data_[[tolower(variable)]], value))
+    pick_rows <- function(data_, value, na.rm) {
+      rows <- do.call(cond, list(data_[[tolower(variable)]], value))
       if (na.rm) {
-        exclude_na(.data_, rows)
+        exclude_na(data_, rows)
       } else {
-        include_na(.data_, rows)
+        include_na(data_, rows)
       }
     }
 
-    result <- pick_rows(set_names(.data, tolower), value, na.rm)
-    set_names(result, names(.data))
+    result <- pick_rows(set_names(data, tolower), value, na.rm)
+    set_names(result, names(data))
   }
 }
 exclude_na <- function(.data, rows) {
