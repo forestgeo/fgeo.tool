@@ -4,10 +4,10 @@
 \alias{fgeo_elevation}
 \title{Create elevation data.}
 \usage{
-fgeo_elevation(x)
+fgeo_elevation(elev)
 }
 \arguments{
-\item{x}{One of these:
+\item{elev}{One of these:
 \itemize{
 \item A dataframe containing elevation data, with columns \code{gx}, \code{gy}, and
 \code{elev}, or \code{x}, \code{y}, and \code{elev} (e.g. \code{fgeo.x::elevation$col}).

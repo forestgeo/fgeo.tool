@@ -2,6 +2,8 @@
 
 * Work in progress.
 
+* First argument of most visible functions are now named to follow tidyverse principles (http://bit.ly/2TfDcfX)
+
 # fgeo.tool 1.0.3 (GithHub release)
 
 * Use released versions recursively via @*release.
