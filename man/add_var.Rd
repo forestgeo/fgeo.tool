@@ -11,22 +11,23 @@
 \alias{add_gxgy}
 \title{Add columns \code{lx/ly}, \code{QX/QY}, \code{index}, \code{col/row}, \code{hectindex}, \code{quad}, \code{gx/gy}.}
 \usage{
-add_lxly(x, gridsize = 20, plotdim = NULL)
+add_lxly(data, gridsize = 20, plotdim = NULL)
 
-add_qxqy(x, gridsize = 20, plotdim = NULL)
+add_qxqy(data, gridsize = 20, plotdim = NULL)
 
-add_index(x, gridsize = 20, plotdim = NULL)
+add_index(data, gridsize = 20, plotdim = NULL)
 
-add_col_row(x, gridsize = 20, plotdim = NULL)
+add_col_row(data, gridsize = 20, plotdim = NULL)
 
-add_hectindex(x, gridsize = 20, plotdim = NULL)
+add_hectindex(data, gridsize = 20, plotdim = NULL)
 
-add_quad(x, gridsize = 20, plotdim = NULL, start = NULL, width = 2)
+add_quad(data, gridsize = 20, plotdim = NULL, start = NULL,
+  width = 2)
 
-add_gxgy(x, gridsize = 20, start = 0)
+add_gxgy(data, gridsize = 20, start = 0)
 }
 \arguments{
-\item{x}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
+\item{data}{A ForestGEO-like dataframe: A \emph{ViewFullTable}, \emph{tree} or \emph{stem}
 table.}
 
 \item{gridsize}{The gridsize of the census plot (commonly 20 m).}
