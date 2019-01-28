@@ -4,12 +4,12 @@
 #' the structure of elevation data to always output a dataframe with names `gx`,
 #' `gy` and `elev`.
 #'
-#' @param x One of these:
-#'  * A dataframe containing elevation data, with columns `gx` and `gy` or `x`
-#'  and `y` (e.g. `fgeo.x::elevation$col`).
-#'  * A ForestGEO-like elevation list with elements
-#'  `xdim` and `ydim` giving plot dimensions, and element `col` containing a
-#'  dataframe as described in the previous item (e.g. `fgeo.x::elevation`).
+#' @param elev One of these:
+#'  * A dataframe containing elevation data, with columns `gx`, `gy`, and
+#'  `elev`, or `x`, `y`, and `elev` (e.g. `fgeo.x::elevation$col`).
+#'  * A ForestGEO-like elevation list with elements `xdim` and `ydim` giving
+#'  plot dimensions, and element `col` containing a dataframe as described in
+#'  the previous item (e.g. `fgeo.x::elevation`).
 #'
 #' @return A dataframe with names `x/gx`, `y/gy` and `elev`.
 #'
@@ -39,23 +39,23 @@
 #' @family functions to construct fgeo classes
 #' @family habitat functions
 #' @export
-fgeo_elevation <- function(x) {
+fgeo_elevation <- function(elev) {
   UseMethod("fgeo_elevation")
 }
 
 #' @export
-fgeo_elevation.fgeo_elevation <- function(x) {
-  x
+fgeo_elevation.fgeo_elevation <- function(elev) {
+  elev
 }
 
 #' @export
-fgeo_elevation.default <- function(x) {
-  abort(glue("Can't deal with data of class {class(x)}"))
+fgeo_elevation.default <- function(elev) {
+  abort(glue("Can't deal with data of class {class(elev)}"))
 }
 
 #' @export
-fgeo_elevation.list <- function(x) {
-  pull_elevation(x) %>%
+fgeo_elevation.list <- function(elev) {
+  pull_elevation(elev) %>%
     nms_try_rename(want = "gx", try = "x") %>%
     nms_try_rename(want = "gy", try = "y") %>%
     new_fgeo_elevation()
@@ -64,39 +64,39 @@ fgeo_elevation.list <- function(x) {
 #' @export
 fgeo_elevation.data.frame <- fgeo_elevation.list
 
-new_fgeo_elevation <- function(x) {
-  stopifnot(is.data.frame(x))
-  structure(x, class = c("fgeo_elevation", class(x)))
+new_fgeo_elevation <- function(elev) {
+  stopifnot(is.data.frame(elev))
+  structure(elev, class = c("fgeo_elevation", class(elev)))
 }
 
-pull_elevation <- function(x) {
+pull_elevation <- function(elev) {
   UseMethod("pull_elevation")
 }
 
-pull_elevation.data.frame <- function(x) {
-  check_crucial_names(x, "elev")
-  x
+pull_elevation.data.frame <- function(elev) {
+  check_crucial_names(elev, "elev")
+  elev
 }
 
-pull_elevation.default <- function(x) {
+pull_elevation.default <- function(elev) {
   msg <- paste0(
-    "`elevation` must be data.frame or list but its class is: ", class(x)
+    "`elevation` must be data.frame or list but its class is: ", class(elev)
   )
   abort(msg)
 }
 
-pull_elevation.list <- function(x) {
+pull_elevation.list <- function(elev) {
   safe_check <- purrr::safely(check_crucial_names)
-  check_result <- safe_check(x, "col")
+  check_result <- safe_check(elev, "col")
   if (!is.null(check_result$error)) {
     msg <- paste0(
       "Your list must contain the element `col` with elevation data.\n",
       "* Names of the elements of the list provided:\n",
-      commas(names(x))
+      commas(names(elev))
     )
     abort(msg)
   }
 
-  elevation <- x[["col"]]
+  elevation <- elev[["col"]]
   elevation
 }

@@ -9,11 +9,11 @@ fgeo_elevation(x)
 \arguments{
 \item{x}{One of these:
 \itemize{
-\item A dataframe containing elevation data, with columns \code{gx} and \code{gy} or \code{x}
-and \code{y} (e.g. \code{fgeo.x::elevation$col}).
-\item A ForestGEO-like elevation list with elements
-\code{xdim} and \code{ydim} giving plot dimensions, and element \code{col} containing a
-dataframe as described in the previous item (e.g. \code{fgeo.x::elevation}).
+\item A dataframe containing elevation data, with columns \code{gx}, \code{gy}, and
+\code{elev}, or \code{x}, \code{y}, and \code{elev} (e.g. \code{fgeo.x::elevation$col}).
+\item A ForestGEO-like elevation list with elements \code{xdim} and \code{ydim} giving
+plot dimensions, and element \code{col} containing a dataframe as described in
+the previous item (e.g. \code{fgeo.x::elevation}).
 }}
 }
 \value{
