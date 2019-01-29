@@ -7,8 +7,6 @@
 ## R CMD check results
 
 'fgeo.tool' version '1.1.0.9000'
-1 WARNING
-
 WARNING
 New submission
 Version contains large components (1.1.0.9000)
