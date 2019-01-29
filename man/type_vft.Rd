@@ -47,6 +47,7 @@ Types reference (for more details see \code{\link[=read_delim]{read_delim()}}):
 }
 }
 \examples{
+assert_is_installed("fgeo.x")
 library(fgeo.x)
 library(readr)
 

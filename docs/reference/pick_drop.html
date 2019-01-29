@@ -68,7 +68,7 @@ trees in your analysis." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -132,30 +132,30 @@ trees in your analysis.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>pick_dbh_min</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+    <pre class="usage"><span class='fu'>pick_dbh_min</span>(<span class='no'>data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_dbh_max</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_dbh_max</span>(<span class='no'>data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_dbh_under</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_dbh_under</span>(<span class='no'>data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_dbh_over</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_dbh_over</span>(<span class='no'>data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>pick_status</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>pick_status</span>(<span class='no'>data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>drop_status</span>(<span class='no'>.data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+<span class='fu'>drop_status</span>(<span class='no'>data</span>, <span class='no'>value</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.data</th>
+      <th>data</th>
       <td><p>A ForestGEO-like dataframe: A <em>ViewFullTable</em>, <em>tree</em> or <em>stem</em>
 table.</p></td>
     </tr>
     <tr>
       <th>value</th>
-      <td><p>An atomic vector; a single value against to compare each value of
-the variable encoded in the function's name.</p></td>
+      <td><p>An atomic vector; a single value against to compare each value
+of the variable encoded in the function's name.</p></td>
     </tr>
     <tr>
       <th>na.rm</th>

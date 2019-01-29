@@ -17,6 +17,8 @@
 #'   This function was inspired by David Kenfack.
 #'
 #' @examples
+#' assert_is_installed("fgeo.x")
+#' 
 #' # Input: Elevation dataframe
 #' elevation_df <- fgeo.x::elevation$col
 #' fgeo_elevation(elevation_df)

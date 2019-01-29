@@ -8,6 +8,7 @@
 #' * [extract_gridsize()]: `gridsize` (scalar).
 #'
 #' @examples
+#' assert_is_installed("fgeo.x")
 #' habitat <- fgeo.x::habitat
 #' extract_plotdim(habitat)
 #' extract_gridsize(habitat)

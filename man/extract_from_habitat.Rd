@@ -24,6 +24,7 @@ quadrat.}
 Extract plot dimensions from habitat data.
 }
 \examples{
+assert_is_installed("fgeo.x")
 habitat <- fgeo.x::habitat
 extract_plotdim(habitat)
 extract_gridsize(habitat)
