@@ -2,9 +2,11 @@
 
 * Work in progress.
 
-# fgeo.tool 1.1.0 (GithHub release)
+# fgeo.tool 1.1.0 (GithHub and drat release)
 
-* First argument of most visible functions are now named following tidyverse principles (<http://bit.ly/2TfDcfX>)
+* Import fgeo packages via `Additional_repositories` served at <https://forestgeo.github.io/drat/>
+
+* First argument of most visible functions now follow tidyverse principles (<http://bit.ly/2TfDcfX>).
 
 # fgeo.tool 1.0.3 (GitHub and drat release)
 
