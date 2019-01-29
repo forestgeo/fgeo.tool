@@ -2,7 +2,7 @@
 
 * Work in progress.
 
-# fgeo.tool 1.1.0 (GithHub release)
+# fgeo.tool 1.1.0 (GithHub and drat release)
 
 * Import fgeo packages via `Additional_repositories` served at <https://forestgeo.github.io/drat/>
 
