@@ -6,13 +6,20 @@
 
 ## R CMD check results
 
+'fgeo.tool' version '1.1.0.9000'
+1 WARNING
+
 WARNING
 New submission
-Unknown, possibly mis-spelled, fields in DESCRIPTION:
-  ‘Remotes’
+Version contains large components (1.1.0.9000)
 Strong dependencies not in mainstream repositories:
   fgeo.x
+Availability using Additional_repositories specification:
+  fgeo.x   yes   https://forestgeo.github.io/drat/
 
 ## Downstream dependencies
 
-There are currently no downstream dependencies for this package.
+I checked 3 reverse dependencies (0 from CRAN + 3 from <https://forestgeo.github.io/drat/>; summary at <https://github.com/forestgeo/fgeo.tool/tree/master/revdep>):
+
+ * I saw 0 new problems
+ * I failed to check 0 packages
