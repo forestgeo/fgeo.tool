@@ -36,6 +36,7 @@ automatically detects \code{delim} (issue 65).
 }
 
 \examples{
+assert_is_installed("fgeo.x")
 library(fgeo.x)
 
 example_path()

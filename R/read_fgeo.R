@@ -48,6 +48,7 @@ read_delim_ <- function(delim, file, col_types, na, ...) {
 #' @return A [tibble][tibble::tibble-package].
 #'
 #' @examples
+#' assert_is_installed("fgeo.x")
 #' library(fgeo.x)
 #' 
 #' example_path()
@@ -107,6 +108,7 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' @return A list.
 #'
 #' @examples
+#' assert_is_installed("fgeo.x")
 #' library(fgeo.x)
 #' library(readr)
 #' 

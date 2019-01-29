@@ -28,6 +28,8 @@ sanitize_view <- function(col_types) {
 #' @return A dataframe.
 #'
 #' @examples
+#' assert_is_installed("fgeo.x")
+#' 
 #' vft <- fgeo.x::vft_4quad
 #' 
 #' # Introduce problems to show how to fix them

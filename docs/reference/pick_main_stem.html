@@ -68,7 +68,7 @@ sometimes happens to correct for the effect of large buttresses.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -132,15 +132,15 @@ sometimes happens to correct for the effect of large buttresses.</p></li>
     
     </div>
 
-    <pre class="usage"><span class='fu'>pick_main_stem</span>(<span class='no'>.x</span>)
+    <pre class="usage"><span class='fu'>pick_main_stem</span>(<span class='no'>data</span>)
 
-<span class='fu'>pick_main_stemid</span>(<span class='no'>.x</span>)</pre>
+<span class='fu'>pick_main_stemid</span>(<span class='no'>data</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>.x</th>
+      <th>data</th>
       <td><p>A ForestGEO-like dataframe: A <em>ViewFullTable</em>, <em>tree</em> or <em>stem</em>
 table.</p></td>
     </tr>
@@ -161,11 +161,11 @@ first by descending order of <code>hom</code> and then by descending order of <c
 This this corrects the effect of buttresses and picks the main stem. It
 ignores groups of grouped data and rejects data with multiple plots.</p></li>
 <li><p><code>pick_main_stemid()</code> does one step less than <code>pick_main_stem()</code>. It only
-picks the main stemid(s) of each tree in each census and keeps all
-stems per treeid. This is useful when calculating the total basal area of a
-tree, because you need to sum the basal area of each individual stem as well as
-sum only one of the potentially multiple measurements of each buttressed
-stem per census.</p></li>
+picks the main stemid(s) of each tree in each census and keeps all stems per
+treeid. This is useful when calculating the total basal area of a tree,
+because you need to sum the basal area of each individual stem as well as sum
+only one of the potentially multiple measurements of each buttressed stem per
+census.</p></li>
 </ul>
     
     <h2 class="hasAnchor" id="warning"><a class="anchor" href="#warning"></a>Warning</h2>

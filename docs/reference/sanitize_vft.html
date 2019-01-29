@@ -68,7 +68,7 @@ literal string &quot;NULL&quot;.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -132,16 +132,17 @@ literal string "NULL".</p></li>
     
     </div>
 
-    <pre class="usage"><span class='fu'>sanitize_vft</span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>sanitize_vft</span>(<span class='no'>.data</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
 
-<span class='fu'>sanitize_taxa</span>(<span class='no'>x</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
+<span class='fu'>sanitize_taxa</span>(<span class='no'>.data</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A dataframe; either a ForestGEO <em>ViewFullTable</em> (<code>sanitize_vft()</code>)
+      <th>.data</th>
+      <td><p>A dataframe; either a ForestGEO <em>ViewFullTable</em>
+(<code>sanitize_vft()</code>).
 or <em>ViewTaxonomy</em> (<code>sanitize_vft()</code>).</p></td>
     </tr>
     <tr>
@@ -170,7 +171,9 @@ option to <code><a href='https://www.rdocumentation.org/packages/base/topics/cha
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>vft_4quad</a></span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
+
+<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>vft_4quad</a></span>
 
 <span class='co'># Introduce problems to show how to fix them</span>
 <span class='co'># Bad column types</span>

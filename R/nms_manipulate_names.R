@@ -187,6 +187,7 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' nms_extract1(v, "a", "a", "b")
 #' 
 #' # Usage with ForestGEO data
+#' assert_is_installed("fgeo.x")
 #' 
 #' vft <- fgeo.x::vft_4quad
 #' nms_extract_all(vft, "gx", "gy", "PX", "PY")

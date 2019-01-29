@@ -68,7 +68,7 @@ column is missing." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -132,25 +132,26 @@ column is missing.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_lxly</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>add_lxly</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_qxqy</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_qxqy</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_index</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_index</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_col_row</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_col_row</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_hectindex</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_hectindex</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>add_quad</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 
-<span class='fu'>add_gxgy</span>(<span class='no'>x</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+<span class='fu'>add_gxgy</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
+      <th>data</th>
       <td><p>A ForestGEO-like dataframe: A <em>ViewFullTable</em>, <em>tree</em> or <em>stem</em>
 table.</p></td>
     </tr>
@@ -287,6 +288,7 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 #&gt; </span><span style='color: #555555;'>2</span><span> 0011            0   220
 #&gt; </span><span style='color: #555555;'>3</span><span> 0101           20    20
 #&gt; </span><span style='color: #555555;'>4</span><span> 1001          200    20</div><div class='input'>
+<span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
 <span class='co'># Warning: The data may already have `gx` and `gx` columns</span>
 <span class='no'>gxgy</span> <span class='kw'>&lt;-</span> <span class='fu'>add_gxgy</span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/fgeo.x/topics/datasets'>tree5</a></span>)
 <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>gxgy</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/tidyselect/topics/select_helpers'>matches</a></span>(<span class='st'>"gx|gy"</span>))</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 30 x 4</span><span>

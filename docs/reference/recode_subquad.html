@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">fgeo.tool</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.2.0</span>
       </span>
     </div>
 
@@ -122,15 +122,11 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>recode_subquad</span>(<span class='no'>x</span>, <span class='kw'>offset</span> <span class='kw'>=</span> -<span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>recode_subquad</span>(<span class='no'>data</span>, <span class='kw'>offset</span> <span class='kw'>=</span> -<span class='fl'>1</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A dataframe with the variable <code>subquadrat</code>.</p></td>
-    </tr>
     <tr>
       <th>offset</th>
       <td><p>A number; either -1 or 1, to rest or add one unit to the number
@@ -141,6 +137,10 @@ of column of each subquadrat.</p><pre>First column is 0    First column is 1
    02 12 22 32          12 22 32 42
    01 11 21 31          11 21 31 41
 </pre></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>A dataframe with the variable <code>subquadrat</code>.</p></td>
     </tr>
     </table>
     

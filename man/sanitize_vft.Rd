@@ -37,6 +37,8 @@ Thanks to Shameema Jafferjee Esufali for motivating this functions.
 }
 
 \examples{
+assert_is_installed("fgeo.x")
+
 vft <- fgeo.x::vft_4quad
 
 # Introduce problems to show how to fix them
