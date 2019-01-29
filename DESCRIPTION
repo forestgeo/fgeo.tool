@@ -1,6 +1,6 @@
 Package: fgeo.tool
 Title: Import and Manipulate ForestGEO Data
-Version: 1.1.0.9000
+Version: 1.2.0
 Authors@R: 
     c(person(given = "Mauro",
              family = "Lepore",
@@ -26,7 +26,6 @@ Depends:
     R (>= 3.3)
 Imports: 
     dplyr,
-    fgeo.x,
     glue,
     magrittr,
     purrr,
@@ -36,6 +35,7 @@ Imports:
     tidyselect
 Suggests: 
     covr,
+    fgeo.x,
     knitr,
     pingr,
     roxygen2,
