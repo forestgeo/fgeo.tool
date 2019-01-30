@@ -6,8 +6,15 @@
 
 ## R CMD check results
 
-'fgeo.tool' version '1.2.0'
-OK
+1.2.0.9000
+
+NOTE
+New submission
+Version contains large components (1.2.0.9000)
+Suggests or Enhances not in mainstream repositories:
+  fgeo.x
+Availability using Additional_repositories specification:
+  fgeo.x   yes   https://forestgeo.github.io/drat/
 
 ## Downstream dependencies
 

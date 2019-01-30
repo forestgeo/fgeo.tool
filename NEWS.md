@@ -2,6 +2,8 @@
 
 * Work in progress.
 
+* Reset and rerun revdepcheck.
+
 # fgeo.tool 1.2.0 (GithHub and drat release)
 
 * New assert_is_installed allows suggesting (not importing) fgeo.x, which is
@@ -28,4 +30,4 @@
 
 # fgeo.tool 1.0.0 (GithHub release)
 
-* Initial GitHub release. For CRAN submission, fgeo.x must be submitted first.
+* Initial release.
