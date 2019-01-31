@@ -1,7 +1,7 @@
 # fgeo.tool (development version)
 
 * Work in progress.
-
+* Use tidy versions.
 * Reset and rerun revdepcheck.
 
 # fgeo.tool 1.2.0 (GithHub and drat release)
