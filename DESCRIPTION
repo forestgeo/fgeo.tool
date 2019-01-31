@@ -1,6 +1,6 @@
 Package: fgeo.tool
 Title: Import and Manipulate ForestGEO Data
-Version: 1.2.0.9000
+Version: 1.2.1
 Authors@R: 
     c(person(given = "Mauro",
              family = "Lepore",
@@ -25,24 +25,24 @@ BugReports: https://github.com/forestgeo/fgeo.tool/issues
 Depends: 
     R (>= 3.3)
 Imports: 
-    dplyr,
-    glue,
-    magrittr,
-    purrr,
-    readr,
-    rlang,
-    tibble,
-    tidyselect
+    dplyr (>= 0.7.8),
+    glue (>= 1.3.0),
+    magrittr (>= 1.5),
+    purrr (>= 0.3.0),
+    readr (>= 1.3.1),
+    rlang (>= 0.3.1),
+    tibble (>= 2.0.1),
+    tidyselect (>= 0.2.5)
 Suggests: 
-    covr,
-    fgeo.x,
-    knitr,
-    pingr,
-    roxygen2,
-    spelling,
-    stringr,
-    testthat,
-    tidyr
+    covr (>= 3.2.1),
+    fgeo.x (>= 1.1.0),
+    knitr (>= 1.21),
+    pingr (>= 1.1.2),
+    roxygen2 (>= 6.1.1),
+    spelling (>= 2.0),
+    stringr (>= 1.3.1),
+    testthat (>= 2.0.1),
+    tidyr (>= 0.8.2)
 Additional_repositories: https://forestgeo.github.io/drat/
 Encoding: UTF-8
 Language: en-US

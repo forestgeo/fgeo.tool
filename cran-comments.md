@@ -6,11 +6,10 @@
 
 ## R CMD check results
 
-1.2.0.9000
+1.2.1
 
 NOTE
 New submission
-Version contains large components (1.2.0.9000)
 Suggests or Enhances not in mainstream repositories:
   fgeo.x
 Availability using Additional_repositories specification:
