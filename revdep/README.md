@@ -10,13 +10,13 @@
 |collate  |English_United States.1252   |
 |ctype    |English_United States.1252   |
 |tz       |America/New_York             |
-|date     |2019-01-30                   |
+|date     |2019-02-01                   |
 
 # Dependencies
 
 |package    |old      |new        |<U+0394>  |
 |:----------|:--------|:----------|:--|
-|fgeo.tool  |1.2.0    |1.2.0.9000 |*  |
+|fgeo.tool  |1.2.1    |1.2.1.9000 |*  |
 |assertthat |0.2.0    |0.2.0      |   |
 |BH         |1.69.0-1 |1.69.0-1   |   |
 |bindr      |0.1.1    |0.1.1      |   |
@@ -43,11 +43,12 @@
 
 # Revdeps
 
-## All (3)
+## All (4)
 
 |package                                 |version |error |warning |note |
 |:---------------------------------------|:-------|:-----|:-------|:----|
-|[fgeo](problems.md#fgeo)                |1.0.1   |1     |1       |1    |
-|[fgeo.analyze](problems.md#fgeoanalyze) |1.1.1   |1     |1       |     |
-|[fgeo.plot](problems.md#fgeoplot)       |1.1.0   |1     |1       |     |
+|[fgeo](problems.md#fgeo)                |1.1.1   |1     |1       |1    |
+|[fgeo.analyze](problems.md#fgeoanalyze) |1.1.2   |1     |1       |     |
+|[fgeo.krig](problems.md#fgeokrig)       |1.0.0   |1     |1       |     |
+|[fgeo.plot](problems.md#fgeoplot)       |1.1.1   |1     |1       |     |
 

@@ -4,6 +4,7 @@
 
 # fgeo.tool 1.2.1 (GithHub and drat release)
 
+* Meet CRAN standards.
 * Use tidy versions.
 
 # fgeo.tool 1.2.0 (GithHub and drat release)
