@@ -6,13 +6,17 @@
 
 ## R CMD check results
 
-1.2.1
+R Under development (unstable) (2019-01-31 r76038)
+
+Status: 1 NOTE
+* This note is safe to ignore, except ... FIXME.
 
 NOTE
-New submission
-Suggests or Enhances not in mainstream repositories:
+* New submission
+* Version contains large components (1.2.1.9000) ... FIXME
+* Suggests or Enhances not in mainstream repositories:
   fgeo.x
-Availability using Additional_repositories specification:
+* Availability using Additional_repositories specification:
   fgeo.x   yes   https://forestgeo.github.io/drat/
 
 ## Downstream dependencies
