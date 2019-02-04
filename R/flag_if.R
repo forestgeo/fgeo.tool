@@ -77,7 +77,7 @@ extract_column <- function(.data, name) {
 }
 
 stopifnot_has_name <- function(.data, name) {
-  if (!utils::hasName(.data, name)) {
+  if (!rlang::has_name(.data, name)) {
     stop(name, " is an invalid name", call. = FALSE)
   }
 }
