@@ -10,7 +10,7 @@
 |collate  |English_United States.1252   |
 |ctype    |English_United States.1252   |
 |tz       |America/New_York             |
-|date     |2019-02-01                   |
+|date     |2019-02-05                   |
 
 # Dependencies
 
@@ -48,7 +48,7 @@
 |package                                 |version |error |warning |note |
 |:---------------------------------------|:-------|:-----|:-------|:----|
 |[fgeo](problems.md#fgeo)                |1.1.1   |1     |1       |1    |
-|[fgeo.analyze](problems.md#fgeoanalyze) |1.1.2   |1     |1       |     |
+|[fgeo.analyze](problems.md#fgeoanalyze) |1.1.3   |1     |1       |     |
 |[fgeo.krig](problems.md#fgeokrig)       |1.0.0   |1     |1       |     |
-|[fgeo.plot](problems.md#fgeoplot)       |1.1.1   |1     |1       |     |
+|[fgeo.plot](problems.md#fgeoplot)       |1.1.2   |1     |1       |     |
 
