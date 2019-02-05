@@ -2,6 +2,11 @@
 
 * Work in progress.
 
+# fgeo.tool 1.2.1.9000 (GithHub and drat release)
+
+* __fgeo.tool__ now requires R >= 3.2
+* `hasName()` is no longer used to avoid '"Error: 'hasName' is not an exported object from 'namespace:utils'".
+
 # fgeo.tool 1.2.1 (GithHub and drat release)
 
 * Meet CRAN standards.
