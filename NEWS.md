@@ -2,7 +2,7 @@
 
 * Work in progress.
 
-# fgeo.tool 1.2.2 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases) and [drat](https://forestgeo.github.io/drat/))
+# fgeo.tool 1.2.1.900 (pre-release)
 
 * __fgeo.tool__ now requires R >= 3.2
 * `hasName()` is no longer used to avoid '"Error: 'hasName' is not an exported object from 'namespace:utils'".

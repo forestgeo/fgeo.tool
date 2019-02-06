@@ -10,9 +10,9 @@ forestgeo
 ForestGEO
 ForestgGEO's
 funder
-GithHub
 github
 gridsize
+hasName
 http
 https
 io
@@ -23,6 +23,7 @@ ly
 Metaprogramming
 nms
 plotname
+pre
 quadrat
 quadrat's
 quosure
