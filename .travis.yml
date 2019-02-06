@@ -18,4 +18,12 @@ matrix:
   - r: oldrel
   - r: 3.3
   - r: 3.2
+  allow_failures:
+  - os: osx
+  - r: 3.2
 
+r_packages: fgeo.x
+
+repos:
+  CRAN: https://cloud.r-project.org
+  forestgeo: https://forestgeo.github.io/drat/
