@@ -4,6 +4,8 @@ git reset --hard upstream/master
 
 git remote prune origin
 
+git branch -D pre-release
+
 message="New add_gxgy()"
 
 git add .
