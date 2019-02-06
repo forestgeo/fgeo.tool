@@ -4,7 +4,7 @@ git reset --hard upstream/master
 
 git remote prune origin
 
-git branch -D pre-release
+git branch -D release
 
 message="New add_gxgy()"
 
