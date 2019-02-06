@@ -21,3 +21,4 @@ matrix:
 
   allow_failures:
   - os: osx
+  - r: 3.2
