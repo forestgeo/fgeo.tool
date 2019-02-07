@@ -6,7 +6,6 @@ cache: packages
 
 matrix:
   include:
-  - os: osx
   - r: devel
   - r: release
     after_success: Rscript -e 'covr::coveralls()'
@@ -17,8 +16,4 @@ matrix:
       skip_cleanup: true
   - r: oldrel
   - r: 3.3
-  - r: 3.2
-
-  allow_failures:
-  - os: osx
   - r: 3.2
