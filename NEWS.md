@@ -2,6 +2,10 @@
 
 * Work in progress.
 
+# fgeo.tool 1.2.2.9000 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
+
+* Maintenance release.
+
 # fgeo.tool 1.2.2 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases) and [drat](https://forestgeo.github.io/drat/))
 
 * __fgeo.tool__ now requires R >= 3.2
