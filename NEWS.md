@@ -1,8 +1,9 @@
+
 # fgeo.tool (development version)
 
 * Work in progress.
 
-# fgeo.tool 1.2.2.9000 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
+# fgeo.tool 1.2.3 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
 
 * Maintenance release.
 
