@@ -3,6 +3,8 @@
 
 # <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Import and manipulate ForestGEO data
 
+<!-- badges: start -->
+
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![Travis build
 status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
@@ -10,6 +12,7 @@ status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://tr
 status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
+<!-- badges: end -->
 
 **fgeo.tool** helps you to import and manipulate
 [ForestGEO](http://www.forestgeo.si.edu/) data.
@@ -56,7 +59,7 @@ example_path()
 #>  [9] "view"          "weird"         "xl"
 
 (vft_file <- example_path("view/vft_4quad.csv"))
-#> [1] "C:/Users/LeporeM/Documents/R/win-library/3.5/fgeo.x/extdata/view/vft_4quad.csv"
+#> [1] "C:/Users/LeporeM/Documents/R/win-library/3.6/fgeo.x/extdata/view/vft_4quad.csv"
 ```
 
 `read_vft()` and `read_taxa()` import a ViewFullTable and ViewTaxonomy
