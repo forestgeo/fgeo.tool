@@ -1,3 +1,11 @@
+## Re-submission
+
+This is a re-submission. In this version I have:
+
+* Added a missing author, Anudeep Singh.
+* Added more details about the package functionality in the Description text.
+* Incremented the version number to reduce confusion.
+
 ## Test environments
 
 * local: windows 10 x64 (R 3.6.0)

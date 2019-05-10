@@ -6,8 +6,11 @@
 \alias{fgeo.tool-package}
 \title{fgeo.tool: Import and Manipulate ForestGEO Data}
 \description{
-Import and manipulate ForestGEO data
-    (<http://www.forestgeo.si.edu/>).
+To help you access, transform, analyze, and
+    visualize ForestGEO data, we developed a collection of R packages
+    (<https://forestgeo.github.io/fgeo/>). This package, in particular,
+    helps you to easily import, filter, and modify ForestGEO data. To
+    learn more about ForestGEO visit <http://www.forestgeo.si.edu/>.
 }
 \seealso{
 Useful links:
@@ -22,8 +25,9 @@ Useful links:
 
 Authors:
 \itemize{
-  \item  Richard  Condit \email{richardcondit@gmail.com}
+  \item Richard Condit \email{richardcondit@gmail.com}
   \item Suzanne Lao \email{laoz@si.edu}
+  \item Anudeep Singh \email{anudeep7@gmail.com}
 }
 
 Other contributors:

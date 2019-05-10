@@ -2,7 +2,7 @@
 
 * Work in progress.
 
-# fgeo.tool 1.2.3 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
+# fgeo.tool 1.2.4 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
 
 * First CRAN release.
 * Maintenance release.

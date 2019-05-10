@@ -1,13 +1,13 @@
 Package: fgeo.tool
 Title: Import and Manipulate ForestGEO Data
-Version: 1.2.3
+Version: 1.2.4
 Authors@R: 
     c(person(given = "Mauro",
              family = "Lepore",
              role = c("aut", "ctr", "cre"),
              email = "leporem@si.edu",
              comment = c(ORCID = "0000-0002-1986-7988")),
-      person(given = " Richard ",
+      person(given = "Richard",
              family = "Condit",
              role = "aut",
              email = "richardcondit@gmail.com"),
@@ -15,11 +15,18 @@ Authors@R:
              family = "Lao",
              role = "aut",
              email = "laoz@si.edu"),
+      person(given = "Anudeep",
+             family = "Singh",
+             role = "aut",
+             email = "anudeep7@gmail.com"),
       person(given = "CTFS-ForestGEO",
              role = c("cph", "fnd"),
              email = "ForestGEO@si.edu"))
-Description: Import and manipulate ForestGEO data
-    (<http://www.forestgeo.si.edu/>).
+Description: To help you access, transform, analyze, and
+    visualize ForestGEO data, we developed a collection of R packages
+    (<https://forestgeo.github.io/fgeo/>). This package, in particular,
+    helps you to easily import, filter, and modify ForestGEO data. To
+    learn more about ForestGEO visit <http://www.forestgeo.si.edu/>.
 License: GPL-3
 URL: https://github.com/forestgeo/fgeo.tool
 BugReports: https://github.com/forestgeo/fgeo.tool/issues
