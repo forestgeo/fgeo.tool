@@ -2,45 +2,6 @@
 
 * Work in progress.
 
-# fgeo.tool 1.2.4 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
+# fgeo.tool 1.2.4
 
 * First CRAN release.
-* Maintenance release.
-
-# fgeo.tool 1.2.2 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases) and [drat](https://forestgeo.github.io/drat/))
-
-* __fgeo.tool__ now requires R >= 3.2
-* `hasName()` is no longer used to avoid '"Error: 'hasName' is not an exported object from 'namespace:utils'".
-
-# fgeo.tool 1.2.1 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
-
-* Meet CRAN standards.
-* Use tidy versions.
-
-# fgeo.tool 1.2.0 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
-
-* New assert_is_installed allows suggesting (not importing) fgeo.x, which is
-  used only in examples.
-
-# fgeo.tool 1.1.0 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
-
-* Import fgeo packages via `Additional_repositories` served at <https://forestgeo.github.io/drat/>
-
-* First argument of most visible functions now follow tidyverse principles (<http://bit.ly/2TfDcfX>).
-
-# fgeo.tool 1.0.3 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
-
-* Release on CRAN-like repository served at <https://forestgeo.github.io/drat/>.
-* Use released versions recursively via @*release.
-
-# fgeo.tool 1.0.2 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
-
-* Tidy dependencies.
-
-# fgeo.tool 1.0.1 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
-
-* Review documentation.
-
-# fgeo.tool 1.0.0 ([GitHub](https://github.com/forestgeo/fgeo.tool/releases))
-
-* Initial release.
