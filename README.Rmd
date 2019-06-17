@@ -100,6 +100,6 @@ stem %>%
 
 ## Information
 
-* [Getting help](SUPPORT.md).
-* [Contributing](CONTRIBUTING.md).
-* [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+* [Getting help](https://forestgeo.github.io/fgeo.tool/SUPPORT.html).
+* [Contributing](https://forestgeo.github.io/fgeo.tool/CONTRIBUTING.html).
+* [Contributor Code of Conduct](https://forestgeo.github.io/fgeo.tool/CODE_OF_CONDUCT.html).
