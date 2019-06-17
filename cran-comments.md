@@ -1,11 +1,3 @@
-## Re-submission
-
-This is a re-submission. In this version I have:
-
-* Added a missing author, Anudeep Singh.
-* Added more details about the package functionality in the Description text.
-* Incremented the version number to reduce confusion.
-
 ## Test environments
 
 * local: windows 10 x64 (R 3.6.0)
@@ -17,7 +9,20 @@ This is a re-submission. In this version I have:
 
 0 errors | 0 warnings | 1 notes
 
-* New submission
+New maintainer:
+  Mauro Lepore <maurolepore@gmail.com>  
+Old maintainer(s):
+  Mauro Lepore <leporem@si.edu>
+
+* I have changed my email address. I'll soon do this in all "fgeo" packages.
+
+
+
+FIXME: Version contains large components (1.2.4.9000)
+
+
+
+
 
 ## Downstream dependencies
 
