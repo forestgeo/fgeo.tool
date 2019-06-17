@@ -9,22 +9,16 @@
 
 0 errors | 0 warnings | 1 notes
 
-New maintainer:
+New maintainer:  
   Mauro Lepore <maurolepore@gmail.com>  
-Old maintainer(s):
-  Mauro Lepore <leporem@si.edu>
+Old maintainer(s):  
+  Mauro Lepore <leporem@si.edu>  
 
-* I have changed my email address. I'll soon do this in all "fgeo" packages.
-
-
-
-FIXME: Version contains large components (1.2.4.9000)
-
-
-
-
+* I have changed my email address. I'll soon do this for all "fgeo" packages.
 
 ## Downstream dependencies
 
-There are currently no downstream dependencies for this package.
+We checked 3 reverse dependencies from CRAN, comparing R CMD check results across CRAN and dev versions of this package:
 
+* We saw 0 new problems.
+* We failed to check 0 packages.
