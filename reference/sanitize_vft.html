@@ -8,10 +8,12 @@
 
 <title>Fix common problems in <em>ViewFullTable</em> and <em>ViewTaxonomy</em> data. — sanitize_vft • fgeo.tool</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -30,8 +32,8 @@
 
 
 
-<meta property="og:title" content="Fix common problems in <em>ViewFullTable</em> and <em>ViewTaxonomy</em> data. — sanitize_vft" />
 
+<meta property="og:title" content="Fix common problems in <em>ViewFullTable</em> and <em>ViewTaxonomy</em> data. — sanitize_vft" />
 <meta property="og:description" content="These functions fix common problems of ViewFullTable and ViewTaxonomy
 data:
 Ensure that each column has the correct type.
@@ -39,6 +41,7 @@ Ensure that missing values are represented with NAs -- not with the
 literal string &quot;NULL&quot;.
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -87,7 +90,6 @@ literal string &quot;NULL&quot;.
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/maurolepore">
@@ -122,20 +124,18 @@ literal string &quot;NULL&quot;.
     </div>
 
     <div class="ref-description">
-    
     <p>These functions fix common problems of <em>ViewFullTable</em> and <em>ViewTaxonomy</em>
 data:</p><ul>
 <li><p>Ensure that each column has the correct type.</p></li>
 <li><p>Ensure that missing values are represented with <code>NA</code>s -- not with the
 literal string "NULL".</p></li>
 </ul>
-    
     </div>
 
     <pre class="usage"><span class='fu'>sanitize_vft</span>(<span class='no'>.data</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
 
 <span class='fu'>sanitize_taxa</span>(<span class='no'>.data</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -155,20 +155,17 @@ option to <code><a href='https://www.rdocumentation.org/packages/base/topics/cha
       <td><p>Arguments passed to <code><a href='https://readr.tidyverse.org/reference/type_convert.html'>readr::type_convert()</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A dataframe.</p>
-    
     <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
 
     
     <p>Thanks to Shameema Jafferjee Esufali for motivating this functions.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='read_vft.html'>read_vft()</a></code>.</p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
@@ -210,13 +207,9 @@ option to <code><a href='https://www.rdocumentation.org/packages/base/topics/cha
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#acknowledgments">Acknowledgments</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

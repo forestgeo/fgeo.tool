@@ -8,10 +8,12 @@
 
 <title>Help to read ForestGEO data safely, with consistent columns type. — type_vft • fgeo.tool</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -30,8 +32,8 @@
 
 
 
-<meta property="og:title" content="Help to read ForestGEO data safely, with consistent columns type. — type_vft" />
 
+<meta property="og:title" content="Help to read ForestGEO data safely, with consistent columns type. — type_vft" />
 <meta property="og:description" content="A common cause of problems is feeding functions with data which columns are
 not all of the expected type. The problem often begins when reading data from
 a text file with functions such as utils::read.csv(),
@@ -48,6 +50,7 @@ type_vft(): Type specification for ViewFullTable.
 type_taxa(): Type specification for ViewFullTaxonomy.
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -96,7 +99,6 @@ type_taxa(): Type specification for ViewFullTaxonomy.
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/maurolepore">
@@ -131,7 +133,6 @@ type_taxa(): Type specification for ViewFullTaxonomy.
     </div>
 
     <div class="ref-description">
-    
     <p>A common cause of problems is feeding functions with data which columns are
 not all of the expected type. The problem often begins when reading data from
 a text file with functions such as <code><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>utils::read.csv()</a></code>,
@@ -147,17 +148,16 @@ These functions output the specification of column types used internally by
 <li><p><code>type_vft():</code> Type specification for <em>ViewFullTable</em>.</p></li>
 <li><p><code>type_taxa():</code> Type specification for <em>ViewFullTaxonomy</em>.</p></li>
 </ul>
-    
     </div>
 
     <pre class="usage"><span class='fu'>type_vft</span>()
 
 <span class='fu'>type_taxa</span>()</pre>
-        
+
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A list.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Types reference (for more details see <code><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_delim()</a></code>):</p><ul>
@@ -172,13 +172,11 @@ These functions output the specification of column types used internally by
 <li><p>? = guess,</p></li>
 <li><p>or _/- to skip the column.'.</p></li>
 </ul>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='https://readr.tidyverse.org/reference/read_delim.html'>readr::read_delim()</a></code>.</p>
 <p>Other functions to operate on column types: <code><a href='type_ensure.html'>type_ensure</a></code></p>
 <p>Other functions to read text files delivered by ForestgGEO's database: <code><a href='read_vft.html'>read_vft</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
@@ -280,13 +278,9 @@ These functions output the specification of column types used internally by
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

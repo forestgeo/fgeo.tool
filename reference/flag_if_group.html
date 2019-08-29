@@ -8,10 +8,12 @@
 
 <title>Detect and flag based on a predicate applied to a variable by groups. — flag_if_group • fgeo.tool</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -30,11 +32,12 @@
 
 
 
-<meta property="og:title" content="Detect and flag based on a predicate applied to a variable by groups. — flag_if_group" />
 
+<meta property="og:title" content="Detect and flag based on a predicate applied to a variable by groups. — flag_if_group" />
 <meta property="og:description" content="These functions extend flag_if()] and detect_if() to
 work by groups defined with dplyr::group_by()." />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -83,7 +86,6 @@ work by groups defined with dplyr::group_by()." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/maurolepore">
@@ -118,16 +120,14 @@ work by groups defined with dplyr::group_by()." />
     </div>
 
     <div class="ref-description">
-    
     <p>These functions extend <code><a href='flag_if.html'>flag_if()</a></code>] and <code>detect_if()</code> to
 work by groups defined with <code><a href='https://dplyr.tidyverse.org/reference/group_by.html'>dplyr::group_by()</a></code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>flag_if_group</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warn</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>detect_if_group</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -153,7 +153,7 @@ work by groups defined with <code><a href='https://dplyr.tidyverse.org/reference
       <td><p>String to customize the returned message.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     
@@ -162,7 +162,6 @@ work by groups defined with <code><a href='https://dplyr.tidyverse.org/reference
 <li><p><code>detect_if_group()</code>: Logical of length 1.</p></li>
 </ul>
 
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other functions to check inputs: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
@@ -171,7 +170,6 @@ work by groups defined with <code><a href='https://dplyr.tidyverse.org/reference
   <code><a href='extract_insensitive.html'>extract_insensitive</a></code>,
   <code><a href='is_multiple.html'>is_multiple</a></code>, <code><a href='nms_try_rename.html'>nms_try_rename</a></code>,
   <code><a href='rename_matches.html'>rename_matches</a></code>, <code><a href='type_ensure.html'>type_ensure</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>), <span class='kw'>treeID</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
@@ -183,11 +181,8 @@ work by groups defined with <code><a href='https://dplyr.tidyverse.org/reference
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
