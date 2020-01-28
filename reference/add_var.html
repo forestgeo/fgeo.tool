@@ -292,7 +292,7 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 <span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
 <span class='co'># Warning: The data may already have `gx` and `gx` columns</span>
 <span class='no'>gxgy</span> <span class='kw'>&lt;-</span> <span class='fu'>add_gxgy</span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>tree5</a></span>)
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>gxgy</span>, <span class='fu'><a href='https://rdrr.io/pkg/tidyselect/man/select_helpers.html'>matches</a></span>(<span class='st'>"gx|gy"</span>))</div><div class='output co'>#&gt; # A tibble: 30 x 4
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>gxgy</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>matches</a></span>(<span class='st'>"gx|gy"</span>))</div><div class='output co'>#&gt; # A tibble: 30 x 4
 #&gt;       gx    gy   gx1   gy1
 #&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
 #&gt;  1 139.  425.    140   440
