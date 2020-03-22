@@ -309,10 +309,15 @@ check_add_var <- function(data, var, from, gridsize, plotdim) {
 #' @export
 add_gxgy <- function(data, gridsize = 20, start = 0) {
   assert_quad(data)
-
+ 
   gxgy <- quad_to_gxgy(data[[nm_quad(data)]], gridsize = gridsize, start = start)
-  # cbind accepts duplicaed names. dplyr::bind_cols doesn't
-  dplyr::bind_cols(data, gxgy)
+  out <- cbind(data, gxgy)
+  # Repair names like dplyr::bind_cols for dplyr < 1.0.0
+  nms <- make.unique(names(out))
+  nms <- sub("gx.1", "gx1", nms)
+  nms <- sub("gy.1", "gy1", nms)
+  
+  rlang::set_names(out, nms)
 }
 
 assert_quad <- function(data) {
