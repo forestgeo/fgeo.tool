@@ -21,8 +21,7 @@ add_col_row(data, gridsize = 20, plotdim = NULL)
 
 add_hectindex(data, gridsize = 20, plotdim = NULL)
 
-add_quad(data, gridsize = 20, plotdim = NULL, start = NULL,
-  width = 2)
+add_quad(data, gridsize = 20, plotdim = NULL, start = NULL, width = 2)
 
 add_gxgy(data, gridsize = 20, start = 0)
 }
@@ -145,18 +144,24 @@ if (tidyr_is_installed && stringr_is_installed) {
 
 }
 \seealso{
-Other functions to add columns to dataframes: \code{\link{add_status_tree}},
-  \code{\link{add_subquad}}
+Other functions to add columns to dataframes: 
+\code{\link{add_status_tree}()},
+\code{\link{add_subquad}()}
 
-Other functions for ForestGEO data: \code{\link{add_status_tree}},
-  \code{\link{add_subquad}}
+Other functions for ForestGEO data: 
+\code{\link{add_status_tree}()},
+\code{\link{add_subquad}()}
 
-Other functions for fgeo census: \code{\link{add_status_tree}},
-  \code{\link{guess_plotdim}}, \code{\link{pick_drop}}
+Other functions for fgeo census: 
+\code{\link{add_status_tree}()},
+\code{\link{guess_plotdim}()},
+\code{\link{pick_drop}}
 
-Other functions for fgeo vft: \code{\link{add_status_tree}},
-  \code{\link{add_subquad}}, \code{\link{guess_plotdim}},
-  \code{\link{pick_drop}}
+Other functions for fgeo vft: 
+\code{\link{add_status_tree}()},
+\code{\link{add_subquad}()},
+\code{\link{guess_plotdim}()},
+\code{\link{pick_drop}}
 }
 \concept{functions for ForestGEO data}
 \concept{functions for fgeo census}

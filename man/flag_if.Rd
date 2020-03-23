@@ -8,11 +8,9 @@
 \usage{
 flag_if(.data, ...)
 
-\method{flag_if}{default}(.data, predicate, condition = warning,
-  msg = NULL, ...)
+\method{flag_if}{default}(.data, predicate, condition = warning, msg = NULL, ...)
 
-\method{flag_if}{data.frame}(.data, name, predicate, condition = warning,
-  msg = NULL, ...)
+\method{flag_if}{data.frame}(.data, name, predicate, condition = warning, msg = NULL, ...)
 }
 \arguments{
 \item{.data}{Vector.}
@@ -59,8 +57,9 @@ flag_if(.df, "a", is_multiple)
 flag_if(.df, "a", is_multiple, message, "Custom")
 }
 \seealso{
-Other functions for internal use in other fgeo packages: \code{\link{guess_plotdim}},
-  \code{\link{is_multiple}}
+Other functions for internal use in other fgeo packages: 
+\code{\link{guess_plotdim}()},
+\code{\link{is_multiple}()}
 }
 \concept{functions for internal use in other fgeo packages}
 \concept{functions to throw conditions}

@@ -16,7 +16,7 @@ found.}
 \item{y}{A string to use as a reference to match \code{x}.}
 }
 \value{
-\code{detect_*} and \code{extract_*} return a logical vector and a string.
+\verb{detect_*} and \verb{extract_*} return a logical vector and a string.
 }
 \description{
 Detect and extract matching strings -- ignoring case.
@@ -34,12 +34,16 @@ extract_insensitive(tolower(names(vft)), names(vft))
 extract_insensitive(names(vft), tolower(names(vft)))
 }
 \seealso{
-Other functions for developers: \code{\link{check_crucial_names}},
-  \code{\link{flag_if_group}}, \code{\link{is_multiple}},
-  \code{\link{nms_try_rename}},
-  \code{\link{rename_matches}}, \code{\link{type_ensure}}
+Other functions for developers: 
+\code{\link{check_crucial_names}()},
+\code{\link{flag_if_group}()},
+\code{\link{is_multiple}()},
+\code{\link{nms_try_rename}()},
+\code{\link{rename_matches}()},
+\code{\link{type_ensure}()}
 
-Other general functions to deal with names: \code{\link{rename_matches}}
+Other general functions to deal with names: 
+\code{\link{rename_matches}()}
 }
 \concept{functions for developers}
 \concept{general functions to deal with names}
