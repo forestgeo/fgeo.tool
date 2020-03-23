@@ -133,12 +133,10 @@ evaluates it directly; if it is is a dataframe, it evaluates a given column.</p>
     <pre class="usage"><span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for default</span>
-<span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>,
-  <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for data.frame</span>
-<span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>,
-  <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,8 +173,9 @@ evaluates it directly; if it is is a dataframe, it evaluates a given column.</p>
     <p>A condition (and <code>.data</code> invisibly).</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions for internal use in other fgeo packages: <code><a href='guess_plotdim.html'>guess_plotdim</a></code>,
-  <code><a href='is_multiple.html'>is_multiple</a></code></p></div>
+    <div class='dont-index'><p>Other functions for internal use in other fgeo packages: 
+<code><a href='guess_plotdim.html'>guess_plotdim</a>()</code>,
+<code><a href='is_multiple.html'>is_multiple</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># WITH VECTORS</span>

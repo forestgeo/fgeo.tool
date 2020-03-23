@@ -146,8 +146,7 @@ column is missing.</p>
 
 <span class='fu'>add_hectindex</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>add_quad</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>add_quad</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)
 
 <span class='fu'>add_gxgy</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
 
@@ -188,15 +187,21 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
     <p>These functions are adapted from the <a href='http://ctfs.si.edu/Public/CTFSRPackage/'>CTFS R Package</a>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to add columns to dataframes: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_subquad.html'>add_subquad</a></code></p>
-<p>Other functions for ForestGEO data: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_subquad.html'>add_subquad</a></code></p>
-<p>Other functions for fgeo census: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='guess_plotdim.html'>guess_plotdim</a></code>, <code><a href='pick_drop.html'>pick_drop</a></code></p>
-<p>Other functions for fgeo vft: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_subquad.html'>add_subquad</a></code>, <code><a href='guess_plotdim.html'>guess_plotdim</a></code>,
-  <code><a href='pick_drop.html'>pick_drop</a></code></p></div>
+    <div class='dont-index'><p>Other functions to add columns to dataframes: 
+<code><a href='add_status_tree.html'>add_status_tree</a>()</code>,
+<code><a href='add_subquad.html'>add_subquad</a>()</code></p>
+<p>Other functions for ForestGEO data: 
+<code><a href='add_status_tree.html'>add_status_tree</a>()</code>,
+<code><a href='add_subquad.html'>add_subquad</a>()</code></p>
+<p>Other functions for fgeo census: 
+<code><a href='add_status_tree.html'>add_status_tree</a>()</code>,
+<code><a href='guess_plotdim.html'>guess_plotdim</a>()</code>,
+<code><a href='pick_drop.html'>pick_drop</a></code></p>
+<p>Other functions for fgeo vft: 
+<code><a href='add_status_tree.html'>add_status_tree</a>()</code>,
+<code><a href='add_subquad.html'>add_subquad</a>()</code>,
+<code><a href='guess_plotdim.html'>guess_plotdim</a>()</code>,
+<code><a href='pick_drop.html'>pick_drop</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
@@ -282,30 +287,45 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 
 <span class='co'># Output `gx` and `gy` ---------------</span>
 
-<span class='fu'>add_gxgy</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
-#&gt;   QuadratName    gx    gy
-#&gt;   &lt;chr&gt;       &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1 0001            0    20
-#&gt; 2 0011            0   220
-#&gt; 3 0101           20    20
-#&gt; 4 1001          200    20</div><div class='input'>
+<span class='fu'>add_gxgy</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   QuadratName  gx  gy
+#&gt; 1        0001   0  20
+#&gt; 2        0011   0 220
+#&gt; 3        0101  20  20
+#&gt; 4        1001 200  20</div><div class='input'>
 <span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
 <span class='co'># Warning: The data may already have `gx` and `gx` columns</span>
 <span class='no'>gxgy</span> <span class='kw'>&lt;-</span> <span class='fu'>add_gxgy</span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>tree5</a></span>)
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>gxgy</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>matches</a></span>(<span class='st'>"gx|gy"</span>))</div><div class='output co'>#&gt; # A tibble: 30 x 4
-#&gt;       gx    gy   gx1   gy1
-#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 139.  425.    140   440
-#&gt;  2  94.8 424.    100   440
-#&gt;  3  61.3 496.     80   500
-#&gt;  4 100.  328.    120   340
-#&gt;  5  53.8  73.8    60    80
-#&gt;  6 203.  110.    220   120
-#&gt;  7 172.   14.7   180    20
-#&gt;  8 184.  194.    200   200
-#&gt;  9 191.  132.    200   140
-#&gt; 10 274.  279.    280   280
-#&gt; # … with 20 more rows</div><div class='input'>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>gxgy</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>matches</a></span>(<span class='st'>"gx|gy"</span>))</div><div class='output co'>#&gt;        gx     gy gx1 gy1
+#&gt; 1  138.68 425.26 140 440
+#&gt; 2   94.76 424.41 100 440
+#&gt; 3   61.31 495.73  80 500
+#&gt; 4  100.27 328.01 120 340
+#&gt; 5   53.84  73.81  60  80
+#&gt; 6  202.64 109.86 220 120
+#&gt; 7  172.45  14.73 180  20
+#&gt; 8  183.50 194.22 200 200
+#&gt; 9  191.04 131.80 200 140
+#&gt; 10 273.93 278.68 280 280
+#&gt; 11 216.39 261.34 220 280
+#&gt; 12   8.83 189.63  20 200
+#&gt; 13 267.28 370.88 280 380
+#&gt; 14 137.64 355.95 140 360
+#&gt; 15 120.05 216.51 140 220
+#&gt; 16 165.95 410.29 180 420
+#&gt; 17  56.67 267.22  60 280
+#&gt; 18 315.77 230.64 320 240
+#&gt; 19  79.74  22.76  80  40
+#&gt; 20 278.00  40.62 280  60
+#&gt; 21 113.97 182.33 120 200
+#&gt; 22  23.96 496.57  40 500
+#&gt; 23 145.93 217.68 160 220
+#&gt; 24  84.17 285.45 100 300
+#&gt; 25 246.90 354.20 260 360
+#&gt; 26 279.02 209.98 280 220
+#&gt; 27 152.55 425.55 160 440
+#&gt; 28  89.78 407.99 100 420
+#&gt; 29 112.79 426.00 120 440
+#&gt; 30  47.00 479.81  60 480</div><div class='input'>
 <span class='co'># Output `col` and `row` -------------</span>
 
 <span class='co'># Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`</span>

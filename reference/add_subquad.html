@@ -126,8 +126,7 @@
     <p>Add column <code>subquadrat</code> based on <code>QX</code> and <code>QY</code> coordinates.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_subquad</span>(<span class='no'>data</span>, <span class='no'>x_q</span>, <span class='kw'>y_q</span> <span class='kw'>=</span> <span class='no'>x_q</span>, <span class='no'>x_sq</span>, <span class='kw'>y_sq</span> <span class='kw'>=</span> <span class='no'>x_sq</span>,
-  <span class='kw'>subquad_offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>add_subquad</span>(<span class='no'>data</span>, <span class='no'>x_q</span>, <span class='kw'>y_q</span> <span class='kw'>=</span> <span class='no'>x_q</span>, <span class='no'>x_sq</span>, <span class='kw'>y_sq</span> <span class='kw'>=</span> <span class='no'>x_sq</span>, <span class='kw'>subquad_offset</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,13 +149,13 @@ a common value is 5.</p></td>
     <tr>
       <th>subquad_offset</th>
       <td><p>Either <code>-1</code> or <code>1</code>, to rest or add one unit to the
-digit of each subquadrat that represents the column number.</p><pre>First column is 0    First column is 1
+digit of each subquadrat that represents the column number.<div class="R"></p><pre>First column is 0    First column is 1
 -----------------    -----------------
    04 14 24 34          14 24 34 44
    03 13 23 33          13 23 33 43
    02 12 22 32          12 22 32 42
    01 11 21 31          11 21 31 41
-</pre></td>
+</pre><p></div></p></td>
     </tr>
     </table>
 
@@ -165,13 +164,17 @@ digit of each subquadrat that represents the column number.</p><pre>First column
     <p>Returns <code>data</code> with the additional variable <code>subquadrat</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to add columns to dataframes: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_var.html'>add_var</a></code></p>
-<p>Other functions for ForestGEO data: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_var.html'>add_var</a></code></p>
-<p>Other functions for fgeo vft: <code><a href='add_status_tree.html'>add_status_tree</a></code>,
-  <code><a href='add_var.html'>add_var</a></code>, <code><a href='guess_plotdim.html'>guess_plotdim</a></code>,
-  <code><a href='pick_drop.html'>pick_drop</a></code></p></div>
+    <div class='dont-index'><p>Other functions to add columns to dataframes: 
+<code><a href='add_status_tree.html'>add_status_tree</a>()</code>,
+<code><a href='add_var.html'>add_var</a>()</code></p>
+<p>Other functions for ForestGEO data: 
+<code><a href='add_status_tree.html'>add_status_tree</a>()</code>,
+<code><a href='add_var.html'>add_var</a>()</code></p>
+<p>Other functions for fgeo vft: 
+<code><a href='add_status_tree.html'>add_status_tree</a>()</code>,
+<code><a href='add_var.html'>add_var</a>()</code>,
+<code><a href='guess_plotdim.html'>guess_plotdim</a>()</code>,
+<code><a href='pick_drop.html'>pick_drop</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
