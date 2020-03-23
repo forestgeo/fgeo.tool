@@ -13,7 +13,7 @@ read_taxa(file, delim = NULL, na = c("", "NA", "NULL"), ...)
 \item{file}{A path to a file.}
 
 \item{delim}{Single character used to separate fields within a record. The
-default (\code{delim = NULL}) is to guess between comma or tab (\code{","} or \code{"\\t"}).}
+default (\code{delim = NULL}) is to guess between comma or tab (\code{","} or \code{"\t"}).}
 
 \item{na}{Character vector of strings to interpret as missing values. Set this
 option to \code{character()} to indicate no missing values.}
@@ -50,8 +50,7 @@ read_taxa(file_taxa)
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}, \code{\link[=type_vft]{type_vft()}}, \code{\link[=type_taxa]{type_taxa()}}.
 
-Other functions to read text files delivered by ForestgGEO's database: 
-\code{\link{type_vft}()}
+Other functions to read text files delivered by ForestgGEO's database: \code{\link{type_vft}}
 }
 \concept{functions to import ForestGEO data}
 \concept{functions to import a single file of ForestGEO data}

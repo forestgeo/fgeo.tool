@@ -24,16 +24,12 @@ x <- data.frame(col1 = 5, col2 = 1, n = 5)
 rename_matches(x, ref)
 }
 \seealso{
-Other functions for developers: 
-\code{\link{check_crucial_names}()},
-\code{\link{extract_insensitive}()},
-\code{\link{flag_if_group}()},
-\code{\link{is_multiple}()},
-\code{\link{nms_try_rename}()},
-\code{\link{type_ensure}()}
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{extract_insensitive}},
+  \code{\link{flag_if_group}}, \code{\link{is_multiple}},
+  \code{\link{nms_try_rename}}, \code{\link{type_ensure}}
 
-Other general functions to deal with names: 
-\code{\link{extract_insensitive}()}
+Other general functions to deal with names: \code{\link{extract_insensitive}}
 }
 \concept{functions for developers}
 \concept{general functions to deal with names}
