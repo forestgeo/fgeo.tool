@@ -6,8 +6,6 @@
 <!-- badges: start -->
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![Travis build
-status](https://travis-ci.org/forestgeo/fgeo.tool.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.tool)
 [![Coverage
 status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
 [![CRAN
@@ -67,25 +65,24 @@ from .tsv or .csv files.
 ``` r
 read_vft(vft_file)
 #> # A tibble: 500 x 32
-#>     DBHID PlotName PlotID Family Genus SpeciesName Mnemonic Subspecies
-#>     <int> <chr>     <int> <chr>  <chr> <chr>       <chr>    <chr>     
-#>  1 385164 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   <NA>      
-#>  2 385261 luquillo      1 Urtic… Cecr… schreberia… CECSCH   <NA>      
-#>  3 384600 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   <NA>      
-#>  4 608789 luquillo      1 Rubia… Psyc… berteroana  PSYBER   <NA>      
-#>  5 388579 luquillo      1 Areca… Pres… acuminata   PREMON   <NA>      
-#>  6 384626 luquillo      1 Arali… Sche… morototoni  SCHMOR   <NA>      
-#>  7 410958 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   <NA>      
-#>  8 385102 luquillo      1 Piper… Piper glabrescens PIPGLA   <NA>      
-#>  9 353163 luquillo      1 Areca… Pres… acuminata   PREMON   <NA>      
-#> 10 481018 luquillo      1 Salic… Case… arborea     CASARB   <NA>      
-#> # … with 490 more rows, and 24 more variables: SpeciesID <int>,
-#> #   SubspeciesID <chr>, QuadratName <chr>, QuadratID <int>, PX <dbl>,
-#> #   PY <dbl>, QX <dbl>, QY <dbl>, TreeID <int>, Tag <chr>, StemID <int>,
-#> #   StemNumber <int>, StemTag <int>, PrimaryStem <chr>, CensusID <int>,
-#> #   PlotCensusNumber <int>, DBH <dbl>, HOM <dbl>, ExactDate <date>,
-#> #   Date <int>, ListOfTSM <chr>, HighHOM <int>, LargeStem <chr>,
-#> #   Status <chr>
+#>     DBHID PlotName PlotID Family Genus SpeciesName Mnemonic Subspecies SpeciesID
+#>     <int> <chr>     <int> <chr>  <chr> <chr>       <chr>    <chr>          <int>
+#>  1 385164 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   <NA>             185
+#>  2 385261 luquillo      1 Urtic… Cecr… schreberia… CECSCH   <NA>              74
+#>  3 384600 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   <NA>             185
+#>  4 608789 luquillo      1 Rubia… Psyc… berteroana  PSYBER   <NA>             184
+#>  5 388579 luquillo      1 Areca… Pres… acuminata   PREMON   <NA>             182
+#>  6 384626 luquillo      1 Arali… Sche… morototoni  SCHMOR   <NA>             196
+#>  7 410958 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   <NA>             185
+#>  8 385102 luquillo      1 Piper… Piper glabrescens PIPGLA   <NA>             174
+#>  9 353163 luquillo      1 Areca… Pres… acuminata   PREMON   <NA>             182
+#> 10 481018 luquillo      1 Salic… Case… arborea     CASARB   <NA>              70
+#> # … with 490 more rows, and 23 more variables: SubspeciesID <chr>,
+#> #   QuadratName <chr>, QuadratID <int>, PX <dbl>, PY <dbl>, QX <dbl>, QY <dbl>,
+#> #   TreeID <int>, Tag <chr>, StemID <int>, StemNumber <int>, StemTag <int>,
+#> #   PrimaryStem <chr>, CensusID <int>, PlotCensusNumber <int>, DBH <dbl>,
+#> #   HOM <dbl>, ExactDate <date>, Date <int>, ListOfTSM <chr>, HighHOM <int>,
+#> #   LargeStem <chr>, Status <chr>
 ```
 
 `pick_dbh_under()`, `drop_status()` and friends pick and drop rows from
@@ -117,9 +114,8 @@ tree5 %>%
 #> 16 126087     NA 1773… <NA>    CASA… 521      89.8 408.         NA       NA
 #> 17 126803     NA 1785… <NA>    PSYB… 622     113.  426          NA       NA
 #> 18 126934     NA 1787… <NA>    MICR… 324      47   480.         NA       NA
-#> # … with 9 more variables: dbh <dbl>, pom <chr>, hom <dbl>,
-#> #   ExactDate <date>, DFstatus <chr>, codes <chr>, nostems <dbl>,
-#> #   status <chr>, date <dbl>
+#> # … with 9 more variables: dbh <dbl>, pom <chr>, hom <dbl>, ExactDate <date>,
+#> #   DFstatus <chr>, codes <chr>, nostems <dbl>, status <chr>, date <dbl>
 ```
 
 `pick_main_stem()` and `pick_main_stemid()` pick the main stem or main
@@ -131,6 +127,10 @@ stem <- download_data("luquillo_stem6_random")
 dim(stem)
 #> [1] 1320   19
 dim(pick_main_stem(stem))
+#> Warning: The `add` argument of `group_by()` is deprecated as of dplyr 1.0.0.
+#> Please use the `.add` argument instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_warnings()` to see where this warning was generated.
 #> [1] 1000   19
 ```
 
@@ -185,8 +185,7 @@ stem %>%
 
 ## Information
 
-  - [Getting
-    help](https://forestgeo.github.io/fgeo.tool/SUPPORT.html).
+  - [Getting help](https://forestgeo.github.io/fgeo.tool/SUPPORT.html).
   - [Contributing](https://forestgeo.github.io/fgeo.tool/CONTRIBUTING.html).
   - [Contributor Code of
     Conduct](https://forestgeo.github.io/fgeo.tool/CODE_OF_CONDUCT.html).
