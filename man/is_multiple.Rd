@@ -17,7 +17,7 @@ Logical.
 }
 \description{
 \code{is_multiple()} and \code{is_duplicated()} return \code{TRUE} if they detect,
-respectively, multiple different values of a variable (e.g. c(1, 2)\verb{), or duplicated values of a variable (e.g. c(1, 1)}).
+respectively, multiple different values of a variable (e.g. c(1, 2)\code{), or duplicated values of a variable (e.g. c(1, 1)}).
 }
 \examples{
 is_multiple(c(1, 2))
@@ -29,21 +29,17 @@ is_duplicated(c(1, 1))
 is_duplicated(c(1, NA))
 }
 \seealso{
-Other functions for internal use in other fgeo packages: 
-\code{\link{flag_if}()},
-\code{\link{guess_plotdim}()}
+Other functions for internal use in other fgeo packages: \code{\link{flag_if}},
+  \code{\link{guess_plotdim}}
 
-Other functions to check inputs: 
-\code{\link{check_crucial_names}()},
-\code{\link{flag_if_group}()}
+Other functions to check inputs: \code{\link{check_crucial_names}},
+  \code{\link{flag_if_group}}
 
-Other functions for developers: 
-\code{\link{check_crucial_names}()},
-\code{\link{extract_insensitive}()},
-\code{\link{flag_if_group}()},
-\code{\link{nms_try_rename}()},
-\code{\link{rename_matches}()},
-\code{\link{type_ensure}()}
+Other functions for developers: \code{\link{check_crucial_names}},
+  \code{\link{extract_insensitive}},
+  \code{\link{flag_if_group}},
+  \code{\link{nms_try_rename}},
+  \code{\link{rename_matches}}, \code{\link{type_ensure}}
 }
 \concept{functions for developers}
 \concept{functions for internal use in other fgeo packages}

@@ -27,8 +27,8 @@ explicitly specifying what type to expect from each column of known datasets.
 These functions output the specification of column types used internally by
 \code{\link[=read_vft]{read_vft()}} and \code{\link[=read_taxa]{read_taxa()}}:
 \itemize{
-\item \verb{type_vft():} Type specification for \emph{ViewFullTable}.
-\item \verb{type_taxa():} Type specification for \emph{ViewFullTaxonomy}.
+\item \code{type_vft():} Type specification for \emph{ViewFullTable}.
+\item \code{type_taxa():} Type specification for \emph{ViewFullTaxonomy}.
 }
 }
 \details{
@@ -62,11 +62,9 @@ read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
 \seealso{
 \code{\link[readr:read_delim]{readr::read_delim()}}.
 
-Other functions to operate on column types: 
-\code{\link{type_ensure}()}
+Other functions to operate on column types: \code{\link{type_ensure}}
 
-Other functions to read text files delivered by ForestgGEO's database: 
-\code{\link{read_vft}()}
+Other functions to read text files delivered by ForestgGEO's database: \code{\link{read_vft}}
 }
 \concept{functions to import/export ForestGEO data}
 \concept{functions to operate on column types}
