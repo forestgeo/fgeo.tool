@@ -4,8 +4,7 @@
 \alias{add_subquad}
 \title{Add column \code{subquadrat} based on \code{QX} and \code{QY} coordinates.}
 \usage{
-add_subquad(data, x_q, y_q = x_q, x_sq, y_sq = x_sq,
-  subquad_offset = NULL)
+add_subquad(data, x_q, y_q = x_q, x_sq, y_sq = x_sq, subquad_offset = NULL)
 }
 \arguments{
 \item{data}{A dataframe with quadrat coordinates \code{QX} and \code{QY} (e.g. a
@@ -18,13 +17,13 @@ common value is 20.}
 a common value is 5.}
 
 \item{subquad_offset}{Either \code{-1} or \code{1}, to rest or add one unit to the
-digit of each subquadrat that represents the column number.\preformatted{First column is 0    First column is 1
+digit of each subquadrat that represents the column number.\if{html}{\out{<div class="R">}}\preformatted{First column is 0    First column is 1
 -----------------    -----------------
    04 14 24 34          14 24 34 44
    03 13 23 33          13 23 33 43
    02 12 22 32          12 22 32 42
    01 11 21 31          11 21 31 41
-}}
+}\if{html}{\out{</div>}}}
 }
 \value{
 Returns \code{data} with the additional variable \code{subquadrat}.
@@ -53,15 +52,19 @@ add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
 
 }
 \seealso{
-Other functions to add columns to dataframes: \code{\link{add_status_tree}},
-  \code{\link{add_var}}
+Other functions to add columns to dataframes: 
+\code{\link{add_status_tree}()},
+\code{\link{add_var}()}
 
-Other functions for ForestGEO data: \code{\link{add_status_tree}},
-  \code{\link{add_var}}
+Other functions for ForestGEO data: 
+\code{\link{add_status_tree}()},
+\code{\link{add_var}()}
 
-Other functions for fgeo vft: \code{\link{add_status_tree}},
-  \code{\link{add_var}}, \code{\link{guess_plotdim}},
-  \code{\link{pick_drop}}
+Other functions for fgeo vft: 
+\code{\link{add_status_tree}()},
+\code{\link{add_var}()},
+\code{\link{guess_plotdim}()},
+\code{\link{pick_drop}}
 }
 \author{
 Anudeep Singh and Mauro Lepore.

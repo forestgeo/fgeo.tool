@@ -32,10 +32,13 @@ nms_try_rename(c(a = 1, 1), "A", "a")
 \seealso{
 nms
 
-Other functions for developers: \code{\link{check_crucial_names}},
-  \code{\link{extract_insensitive}},
-  \code{\link{flag_if_group}}, \code{\link{is_multiple}},
-  \code{\link{rename_matches}}, \code{\link{type_ensure}}
+Other functions for developers: 
+\code{\link{check_crucial_names}()},
+\code{\link{extract_insensitive}()},
+\code{\link{flag_if_group}()},
+\code{\link{is_multiple}()},
+\code{\link{rename_matches}()},
+\code{\link{type_ensure}()}
 }
 \concept{functions dealing with names}
 \concept{functions for developers}

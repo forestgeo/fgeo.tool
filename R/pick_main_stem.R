@@ -111,7 +111,7 @@ pick_by_groups_by_censusid <- function(.data, ...) {
     .data <- group_by(.data, .data$censusid)
   }
 
-  grouped <- group_by(.data, !!!enquos(...), add = TRUE)
+  grouped <- group_by(.data, !!!enquos(...), .add = TRUE)
 
   not_duplicated <- !any(count(grouped)$n > 1)
   if (not_duplicated) return(ungroup(grouped))
