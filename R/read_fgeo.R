@@ -2,10 +2,10 @@ read_fgeo <- function(col_types) {
   function(file, delim = NULL, na = c("", "NA", "NULL"), ...) {
     delim <- delim %||% guess_comma_or_tab(file, names(col_types))
 
-    # Most common warning is too noisy and distracts more than helps
-    dfm <- suppressWarnings(
+    # Most common warnings and messages are too noisy and distracts more than helps
+    dfm <- suppressMessages(suppressWarnings(
       read_delim_(delim, file = file, col_types = col_types, na = na, ...)
-    )
+    ))
 
     # if `file` has rownames, the `result` has more columns than needed
     result <- dfm[names(col_types)]
