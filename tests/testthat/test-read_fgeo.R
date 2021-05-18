@@ -7,14 +7,13 @@ test_that("read_vft fails gracefully if data has missing columns", {
   expect_error(read_vft(comma), "DBHID")
 })
 
-test_that("read_vft guesses tab or comma separated file", {
-  comma <- tempfile()
-  write.csv(fgeo.x::vft_4quad, comma)
-
-  expect_silent(
-    vft <- read_vft(comma)
-  )
-  expect_is(vft, "tbl")
+test_that("read_vft guesses tab or comma separated file, silently", {
+  file <- tempfile()
+  data <- fgeo.x::vft_4quad
+  write.csv(data, file)
+  
+  expect_silent(out <- read_vft(file))
+  expect_equal(out, data)
 })
 
 test_that("read_vft guesses tab or comma separated file", {

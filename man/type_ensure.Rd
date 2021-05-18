@@ -32,7 +32,7 @@ type_ensure(dfm, c("w", "x", "y"), "numeric")
 type_ensure(dfm, c("w", "x", "y", "z"), "character")
 }
 \seealso{
-\code{\link[purrr:modify_at]{purrr::modify_at()}}.
+\code{\link[purrr:modify]{purrr::modify_at()}}.
 
 Other functions to operate on column types: 
 \code{\link{type_vft}()}
