@@ -15,8 +15,8 @@ A list.
 \description{
 A common cause of problems is feeding functions with data which columns are
 not all of the expected type. The problem often begins when reading data from
-a text file with functions such as \code{\link[utils:read.csv]{utils::read.csv()}},
-\code{\link[utils:read.delim]{utils::read.delim()}}, and friends -- which commonly guess wrongly the column
+a text file with functions such as \code{\link[utils:read.table]{utils::read.csv()}},
+\code{\link[utils:read.table]{utils::read.delim()}}, and friends -- which commonly guess wrongly the column
 type that you more likely expect. These common offenders are strongly
 discouraged; instead consider using \code{readr::read_csv()}, \code{readr::read_tsv()},
 and friends, which guess column types correctly much more often than their

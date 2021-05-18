@@ -16,7 +16,7 @@ detect_if_group(.data, name, predicate)
 
 \item{predicate}{A predicate function, e.g. \code{\link[=is_multiple]{is_multiple()}}.}
 
-\item{condition}{A condition function, e.g. \code{\link[rlang:inform]{rlang::inform()}} or
+\item{condition}{A condition function, e.g. \code{\link[rlang:abort]{rlang::inform()}} or
 \code{\link[base:stop]{base::stop()}}.}
 
 \item{msg}{String to customize the returned message.}
