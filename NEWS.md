@@ -5,7 +5,7 @@
 
 # fgeo.tool 1.2.6
 
-* Work in progress.
+* Maintenance release.
 
 # fgeo.tool 1.2.5
 
