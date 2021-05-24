@@ -6,27 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Import <em>ViewFullTable</em> or <em>ViewTaxonomy</em> data from a .tsv or .csv file. — read_vft • fgeo.tool</title>
+<title>Import ViewFullTable or ViewTaxonomy data from a .tsv or .csv file. — read_vft • fgeo.tool</title>
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -35,12 +39,11 @@
 
 
 
-<meta property="og:title" content="Import <em>ViewFullTable</em> or <em>ViewTaxonomy</em> data from a .tsv or .csv file. — read_vft" />
+<meta property="og:title" content="Import ViewFullTable or ViewTaxonomy data from a .tsv or .csv file. — read_vft" />
 <meta property="og:description" content="read_vft() and read_taxa() help you to read ViewFullTable and
 ViewTaxonomy data from text files delivered by the ForestGEO database.
 These functions avoid common problems about column separators, missing
 values, column names, and column types." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ values, column names, and column types." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,7 +83,7 @@ values, column names, and column types." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -94,13 +97,13 @@ values, column names, and column types." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/maurolepore">
-    <span class="fa fa-gavel"></span>
+    <span class="fas fa-gavel"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/forestgeo/fgeo.tool">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -132,9 +135,9 @@ These functions avoid common problems about column separators, missing
 values, column names, and column types.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_vft</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>read_vft</span><span class='op'>(</span><span class='va'>file</span>, delim <span class='op'>=</span> <span class='cn'>NULL</span>, na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>read_taxa</span>(<span class='no'>file</span>, <span class='kw'>delim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>na</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span>), <span class='no'>...</span>)</pre>
+<span class='fu'>read_taxa</span><span class='op'>(</span><span class='va'>file</span>, delim <span class='op'>=</span> <span class='cn'>NULL</span>, na <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>""</span>, <span class='st'>"NA"</span>, <span class='st'>"NULL"</span><span class='op'>)</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,61 +178,58 @@ automatically detects <code>delim</code> (issue 65).</p>
 <code><a href='type_vft.html'>type_vft</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>fgeo.x</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span><span class='op'>(</span><span class='st'>"fgeo.x"</span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/forestgeo/fgeo.x'>fgeo.x</a></span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/pkg/fgeo.x/man/example_path.html'>example_path</a></span>()</div><div class='output co'>#&gt;  [1] "csv"           "mixed_files"   "rdata"         "rdata_one"    
+<span class='fu'><a href='https://rdrr.io/pkg/fgeo.x/man/example_path.html'>example_path</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;  [1] "csv"           "mixed_files"   "rdata"         "rdata_one"    
 #&gt;  [5] "rds"           "taxa.csv"      "tsv"           "vft_4quad.csv"
 #&gt;  [9] "view"          "weird"         "xl"           </div><div class='input'>
-<span class='no'>file_vft</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/fgeo.x/man/example_path.html'>example_path</a></span>(<span class='st'>"view/vft_4quad.csv"</span>)
-<span class='fu'>read_vft</span>(<span class='no'>file_vft</span>)</div><div class='output co'>#&gt; # A tibble: 500 x 32
+<span class='va'>file_vft</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/fgeo.x/man/example_path.html'>example_path</a></span><span class='op'>(</span><span class='st'>"view/vft_4quad.csv"</span><span class='op'>)</span>
+<span class='fu'>read_vft</span><span class='op'>(</span><span class='va'>file_vft</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 500 x 32</span><span>
 #&gt;     DBHID PlotName PlotID Family Genus SpeciesName Mnemonic Subspecies SpeciesID
-#&gt;     &lt;int&gt; &lt;chr&gt;     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;          &lt;int&gt;
-#&gt;  1 385164 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   &lt;NA&gt;             185
-#&gt;  2 385261 luquillo      1 Urtic… Cecr… schreberia… CECSCH   &lt;NA&gt;              74
-#&gt;  3 384600 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   &lt;NA&gt;             185
-#&gt;  4 608789 luquillo      1 Rubia… Psyc… berteroana  PSYBER   &lt;NA&gt;             184
-#&gt;  5 388579 luquillo      1 Areca… Pres… acuminata   PREMON   &lt;NA&gt;             182
-#&gt;  6 384626 luquillo      1 Arali… Sche… morototoni  SCHMOR   &lt;NA&gt;             196
-#&gt;  7 410958 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   &lt;NA&gt;             185
-#&gt;  8 385102 luquillo      1 Piper… Piper glabrescens PIPGLA   &lt;NA&gt;             174
-#&gt;  9 353163 luquillo      1 Areca… Pres… acuminata   PREMON   &lt;NA&gt;             182
-#&gt; 10 481018 luquillo      1 Salic… Case… arborea     CASARB   &lt;NA&gt;              70
-#&gt; # … with 490 more rows, and 23 more variables: SubspeciesID &lt;chr&gt;,
-#&gt; #   QuadratName &lt;chr&gt;, QuadratID &lt;int&gt;, PX &lt;dbl&gt;, PY &lt;dbl&gt;, QX &lt;dbl&gt;, QY &lt;dbl&gt;,
-#&gt; #   TreeID &lt;int&gt;, Tag &lt;chr&gt;, StemID &lt;int&gt;, StemNumber &lt;int&gt;, StemTag &lt;int&gt;,
-#&gt; #   PrimaryStem &lt;chr&gt;, CensusID &lt;int&gt;, PlotCensusNumber &lt;int&gt;, DBH &lt;dbl&gt;,
-#&gt; #   HOM &lt;dbl&gt;, ExactDate &lt;date&gt;, Date &lt;int&gt;, ListOfTSM &lt;chr&gt;, HighHOM &lt;int&gt;,
-#&gt; #   LargeStem &lt;chr&gt;, Status &lt;chr&gt;</div><div class='input'>
-<span class='no'>file_taxa</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/fgeo.x/man/example_path.html'>example_path</a></span>(<span class='st'>"view/taxa.csv"</span>)
-<span class='fu'>read_taxa</span>(<span class='no'>file_taxa</span>)</div><div class='output co'>#&gt; # A tibble: 163 x 21
-#&gt;    ViewID SpeciesID SubspeciesID Family Mnemonic Genus SpeciesName Rank 
-#&gt;     &lt;int&gt;     &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;
-#&gt;  1      1        56 &lt;NA&gt;         Fabac… AESAME   Aesc… americana   &lt;NA&gt; 
-#&gt;  2      2        57 &lt;NA&gt;         Eupho… ALCFLO   Alch… floribunda  &lt;NA&gt; 
-#&gt;  3      3        58 &lt;NA&gt;         Eupho… ALCLAT   Alch… latifolia   &lt;NA&gt; 
-#&gt;  4      4        59 &lt;NA&gt;         Fabac… ANDINE   Andi… inermis     &lt;NA&gt; 
-#&gt;  5      5        60 &lt;NA&gt;         Rubia… ANTOBT   Sten… obtusifoli… &lt;NA&gt; 
-#&gt;  6      6        61 &lt;NA&gt;         Myrsi… ARDGLA   Ardi… glauciflora &lt;NA&gt; 
-#&gt;  7      7        62 &lt;NA&gt;         Morac… ARTALT   Arto… altilis     &lt;NA&gt; 
-#&gt;  8      8        63 &lt;NA&gt;         Laura… BEIPEN   Beil… pendula     &lt;NA&gt; 
-#&gt;  9      9        64 &lt;NA&gt;         Solan… BRUPOR   Brun… portoricen… &lt;NA&gt; 
-#&gt; 10     10        65 &lt;NA&gt;         Combr… BUCTET   Buch… tetraphylla &lt;NA&gt; 
-#&gt; # … with 153 more rows, and 13 more variables: Subspecies &lt;chr&gt;,
-#&gt; #   Authority &lt;chr&gt;, IDLevel &lt;chr&gt;, subspMnemonic &lt;chr&gt;, subspAuthority &lt;chr&gt;,
-#&gt; #   FieldFamily &lt;chr&gt;, Lifeform &lt;chr&gt;, Description &lt;chr&gt;, wsg &lt;dbl&gt;,
-#&gt; #   wsglevel &lt;chr&gt;, ListOfOldNames &lt;chr&gt;, Specimens &lt;chr&gt;, Reference &lt;chr&gt;</div></pre>
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>          </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> </span><span style='text-decoration: underline;'>385</span><span>164 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   </span><span style='color: #BB0000;'>NA</span><span>               185
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> </span><span style='text-decoration: underline;'>385</span><span>261 luquillo      1 Urtic… Cecr… schreberia… CECSCH   </span><span style='color: #BB0000;'>NA</span><span>                74
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='text-decoration: underline;'>384</span><span>600 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   </span><span style='color: #BB0000;'>NA</span><span>               185
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> </span><span style='text-decoration: underline;'>608</span><span>789 luquillo      1 Rubia… Psyc… berteroana  PSYBER   </span><span style='color: #BB0000;'>NA</span><span>               184
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> </span><span style='text-decoration: underline;'>388</span><span>579 luquillo      1 Areca… Pres… acuminata   PREMON   </span><span style='color: #BB0000;'>NA</span><span>               182
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='text-decoration: underline;'>384</span><span>626 luquillo      1 Arali… Sche… morototoni  SCHMOR   </span><span style='color: #BB0000;'>NA</span><span>               196
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='text-decoration: underline;'>410</span><span>958 luquillo      1 Rubia… Psyc… brachiata   PSYBRA   </span><span style='color: #BB0000;'>NA</span><span>               185
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='text-decoration: underline;'>385</span><span>102 luquillo      1 Piper… Piper glabrescens PIPGLA   </span><span style='color: #BB0000;'>NA</span><span>               174
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='text-decoration: underline;'>353</span><span>163 luquillo      1 Areca… Pres… acuminata   PREMON   </span><span style='color: #BB0000;'>NA</span><span>               182
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='text-decoration: underline;'>481</span><span>018 luquillo      1 Salic… Case… arborea     CASARB   </span><span style='color: #BB0000;'>NA</span><span>                70
+#&gt; </span><span style='color: #949494;'># … with 490 more rows, and 23 more variables: SubspeciesID &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   QuadratName &lt;chr&gt;, QuadratID &lt;int&gt;, PX &lt;dbl&gt;, PY &lt;dbl&gt;, QX &lt;dbl&gt;, QY &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   TreeID &lt;int&gt;, Tag &lt;chr&gt;, StemID &lt;int&gt;, StemNumber &lt;int&gt;, StemTag &lt;int&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   PrimaryStem &lt;chr&gt;, CensusID &lt;int&gt;, PlotCensusNumber &lt;int&gt;, DBH &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   HOM &lt;dbl&gt;, ExactDate &lt;date&gt;, Date &lt;int&gt;, ListOfTSM &lt;chr&gt;, HighHOM &lt;int&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   LargeStem &lt;chr&gt;, Status &lt;chr&gt;</span><span></div><div class='input'>
+<span class='va'>file_taxa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/fgeo.x/man/example_path.html'>example_path</a></span><span class='op'>(</span><span class='st'>"view/taxa.csv"</span><span class='op'>)</span>
+<span class='fu'>read_taxa</span><span class='op'>(</span><span class='va'>file_taxa</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 163 x 21</span><span>
+#&gt;    ViewID SpeciesID SubspeciesID Family       Mnemonic Genus   SpeciesName Rank 
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      1        56 </span><span style='color: #BB0000;'>NA</span><span>           Fabaceae     AESAME   Aeschy… americana   </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2        57 </span><span style='color: #BB0000;'>NA</span><span>           Euphorbiace… ALCFLO   Alchor… floribunda  </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>      3        58 </span><span style='color: #BB0000;'>NA</span><span>           Euphorbiace… ALCLAT   Alchor… latifolia   </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>      4        59 </span><span style='color: #BB0000;'>NA</span><span>           Fabaceae-pa… ANDINE   Andira  inermis     </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>      5        60 </span><span style='color: #BB0000;'>NA</span><span>           Rubiaceae    ANTOBT   Stenos… obtusifoli… </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>      6        61 </span><span style='color: #BB0000;'>NA</span><span>           Myrsinaceae  ARDGLA   Ardisia glauciflora </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>      7        62 </span><span style='color: #BB0000;'>NA</span><span>           Moraceae     ARTALT   Artoca… altilis     </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      8        63 </span><span style='color: #BB0000;'>NA</span><span>           Lauraceae    BEIPEN   Beilsc… pendula     </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      9        64 </span><span style='color: #BB0000;'>NA</span><span>           Solanaceae   BRUPOR   Brunfe… portoricen… </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     10        65 </span><span style='color: #BB0000;'>NA</span><span>           Combretaceae BUCTET   Buchen… tetraphylla </span><span style='color: #BB0000;'>NA</span><span>   
+#&gt; </span><span style='color: #949494;'># … with 153 more rows, and 13 more variables: Subspecies &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   Authority &lt;chr&gt;, IDLevel &lt;chr&gt;, subspMnemonic &lt;chr&gt;, subspAuthority &lt;chr&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   FieldFamily &lt;chr&gt;, Lifeform &lt;chr&gt;, Description &lt;chr&gt;, wsg &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   wsglevel &lt;chr&gt;, ListOfOldNames &lt;chr&gt;, Specimens &lt;chr&gt;, Reference &lt;chr&gt;</span><span></div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#acknowledgments">Acknowledgments</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -240,7 +240,7 @@ automatically detects <code>delim</code> (issue 65).</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

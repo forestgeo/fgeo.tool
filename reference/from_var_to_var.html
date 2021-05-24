@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,7 +48,6 @@ If the argument plotdim is missing from functions gxgy_fun(), its value
 will be guessed and notified.
 
 " />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -62,7 +65,7 @@ will be guessed and notified.
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -84,7 +87,7 @@ will be guessed and notified.
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -98,13 +101,13 @@ will be guessed and notified.
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/maurolepore">
-    <span class="fa fa-gavel"></span>
+    <span class="fas fa-gavel"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/forestgeo/fgeo.tool">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -140,21 +143,21 @@ will be guessed and notified.</p></li>
 
     </div>
 
-    <pre class="usage"><span class='fu'>rowcol_to_index</span>(<span class='no'>rowno</span>, <span class='no'>colno</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
+    <pre class="usage"><span class='fu'>rowcol_to_index</span><span class='op'>(</span><span class='va'>rowno</span>, <span class='va'>colno</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
 
-<span class='fu'>index_to_rowcol</span>(<span class='no'>index</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
+<span class='fu'>index_to_rowcol</span><span class='op'>(</span><span class='va'>index</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
 
-<span class='fu'>gxgy_to_index</span>(<span class='no'>gx</span>, <span class='no'>gy</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
+<span class='fu'>gxgy_to_index</span><span class='op'>(</span><span class='va'>gx</span>, <span class='va'>gy</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
 
-<span class='fu'>gxgy_to_lxly</span>(<span class='no'>gx</span>, <span class='no'>gy</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
+<span class='fu'>gxgy_to_lxly</span><span class='op'>(</span><span class='va'>gx</span>, <span class='va'>gy</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
 
-<span class='fu'>gxgy_to_qxqy</span>(<span class='no'>gx</span>, <span class='no'>gy</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
+<span class='fu'>gxgy_to_qxqy</span><span class='op'>(</span><span class='va'>gx</span>, <span class='va'>gy</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
 
-<span class='fu'>gxgy_to_rowcol</span>(<span class='no'>gx</span>, <span class='no'>gy</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
+<span class='fu'>gxgy_to_rowcol</span><span class='op'>(</span><span class='va'>gx</span>, <span class='va'>gy</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
 
-<span class='fu'>gxgy_to_hectindex</span>(<span class='no'>gx</span>, <span class='no'>gy</span>, <span class='no'>plotdim</span>)
+<span class='fu'>gxgy_to_hectindex</span><span class='op'>(</span><span class='va'>gx</span>, <span class='va'>gy</span>, <span class='va'>plotdim</span><span class='op'>)</span>
 
-<span class='fu'>index_to_gxgy</span>(<span class='no'>index</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)</pre>
+<span class='fu'>index_to_gxgy</span><span class='op'>(</span><span class='va'>index</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -189,49 +192,71 @@ maximum possible values of <code>gx</code> and <code>gy</code>).</p></td>
 
     <p><code>gxgy_to_qxqy()</code> didn't exist in the original CTFS R Package. Added for
 consistency.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Rick Condit, Suzanne Lao.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>gxgy_to_index</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>400</span>, <span class='fl'>990</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>200</span>, <span class='fl'>490</span>), <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; [1]    1  511 1250</div><div class='input'>
-<span class='no'>gridsize</span> <span class='kw'>&lt;-</span> <span class='fl'>20</span>
-<span class='no'>plotdim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1000</span>, <span class='fl'>500</span>)
+    <pre class="examples"><div class='input'><span class='fu'>gxgy_to_index</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>400</span>, <span class='fl'>990</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>200</span>, <span class='fl'>490</span><span class='op'>)</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; [1]    1  511 1250</div><div class='input'>
+<span class='va'>gridsize</span> <span class='op'>&lt;-</span> <span class='fl'>20</span>
+<span class='va'>plotdim</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='fl'>500</span><span class='op'>)</span>
 
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>gxgy_to_hectindex</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>plotdim</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt; [1] 1 1 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "double"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>gxgy_to_index</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt; [1] 1 1 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "double"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>gxgy_to_lxly</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt;   lx ly
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>gxgy_to_hectindex</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; [1] 1 1 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "double"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>gxgy_to_index</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; [1] 1 1 1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "double"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>gxgy_to_lxly</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt;   lx ly
 #&gt; 1  1  1
 #&gt; 2  2  2
-#&gt; 3  3  3</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>gxgy_to_rowcol</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt;   row col
+#&gt; 3  3  3</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>gxgy_to_rowcol</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt;   row col
 #&gt; 1   1   1
 #&gt; 2   1   1
-#&gt; 3   1   1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>index_to_rowcol</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt;   row col
+#&gt; 3   1   1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>index_to_rowcol</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt;   row col
 #&gt; 1   1   1
 #&gt; 2   2   1
-#&gt; 3   3   1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>rowcol_to_index</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)
-<span class='no'>x</span></div><div class='output co'>#&gt; [1]  1 27 53</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] "double"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='fu'>index_to_gxgy</span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)</div><div class='output co'>#&gt;   gx gy
+#&gt; 3   3   1</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'>rowcol_to_index</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+<span class='va'>x</span>
+</div><div class='output co'>#&gt; [1]  1 27 53</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/typeof.html'>typeof</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] "double"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/as.data.frame.html'>is.data.frame</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/vector.html'>is.vector</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'>index_to_gxgy</span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   gx gy
 #&gt; 1  0  0
 #&gt; 2  0 20
 #&gt; 3  0 40</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Rick Condit, Suzanne Lao.</p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -242,7 +267,7 @@ consistency.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -44,7 +48,6 @@ only useful when a single stem was measured twice in the same census, which
 sometimes happens to correct for the effect of large buttresses.
 
 " />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -62,7 +65,7 @@ sometimes happens to correct for the effect of large buttresses.
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -84,7 +87,7 @@ sometimes happens to correct for the effect of large buttresses.
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -98,13 +101,13 @@ sometimes happens to correct for the effect of large buttresses.
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/maurolepore">
-    <span class="fa fa-gavel"></span>
+    <span class="fas fa-gavel"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/forestgeo/fgeo.tool">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -140,9 +143,9 @@ sometimes happens to correct for the effect of large buttresses.</p></li>
 
     </div>
 
-    <pre class="usage"><span class='fu'>pick_main_stem</span>(<span class='no'>data</span>)
+    <pre class="usage"><span class='fu'>pick_main_stem</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
 
-<span class='fu'>pick_main_stemid</span>(<span class='no'>data</span>)</pre>
+<span class='fu'>pick_main_stemid</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,37 +204,33 @@ ten seconds to run.</p>
     <pre class="examples"><div class='input'><span class='co'># One `treeID` with multiple stems. </span>
 <span class='co'># `stemID == 1.1` has two measurements (due to buttresses).</span>
 <span class='co'># `stemID == 1.2` has a single measurement.</span>
-<span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
-    ~<span class='no'>sp</span>, ~<span class='no'>treeID</span>, ~<span class='no'>stemID</span>,  ~<span class='no'>hom</span>, ~<span class='no'>dbh</span>, ~<span class='no'>CensusID</span>,
+<span class='va'>census</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span><span class='op'>(</span>
+    <span class='op'>~</span><span class='va'>sp</span>, <span class='op'>~</span><span class='va'>treeID</span>, <span class='op'>~</span><span class='va'>stemID</span>,  <span class='op'>~</span><span class='va'>hom</span>, <span class='op'>~</span><span class='va'>dbh</span>, <span class='op'>~</span><span class='va'>CensusID</span>,
   <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>140</span>,   <span class='fl'>40</span>,         <span class='fl'>1</span>,  <span class='co'># main stemID (max `hom`)</span>
-  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>60</span>,         <span class='fl'>1</span>,
+  <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.1"</span>,   <span class='fl'>130</span>,   <span class='fl'>60</span>,         <span class='fl'>1</span>,  
   <span class='st'>"sp1"</span>,     <span class='st'>"1"</span>,   <span class='st'>"1.2"</span>,   <span class='fl'>130</span>,   <span class='fl'>55</span>,         <span class='fl'>1</span>   <span class='co'># main stemID (only one)</span>
-)
+<span class='op'>)</span>
 
 <span class='co'># Picks a unique row per unique `treeID`</span>
-<span class='fu'>pick_main_stem</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
+<span class='fu'>pick_main_stem</span><span class='op'>(</span><span class='va'>census</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: The `add` argument of `group_by()` is deprecated as of dplyr 1.0.0.</span>
+#&gt; <span class='warning'>Please use the `.add` argument instead.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 6</span><span>
 #&gt;   sp    treeID stemID   hom   dbh CensusID
-#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1 sp1   1      1.1      140    40        1</div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sp1   1      1.1      140    40        1</div><div class='input'>
 <span class='co'># Picks a unique row per unique `stemID`</span>
-<span class='fu'>pick_main_stemid</span>(<span class='no'>census</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 6
+<span class='fu'>pick_main_stemid</span><span class='op'>(</span><span class='va'>census</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 6</span><span>
 #&gt;   sp    treeID stemID   hom   dbh CensusID
-#&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1 sp1   1      1.1      140    40        1
-#&gt; 2 sp1   1      1.2      130    55        1</div><div class='input'>
-</div></pre>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> sp1   1      1.1      140    40        1
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> sp1   1      1.2      130    55        1</div><div class='input'>
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#warning">Warning</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -242,7 +241,7 @@ ten seconds to run.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

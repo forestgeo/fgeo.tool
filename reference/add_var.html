@@ -6,27 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add columns <code>lx/ly</code>, <code>QX/QY</code>, <code>index</code>, <code>col/row</code>, <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var • fgeo.tool</title>
+<title>Add columns lx/ly, QX/QY, index, col/row, hectindex, quad, gx/gy. — add_var • fgeo.tool</title>
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/united/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -35,14 +39,13 @@
 
 
 
-<meta property="og:title" content="Add columns <code>lx/ly</code>, <code>QX/QY</code>, <code>index</code>, <code>col/row</code>, <code>hectindex</code>, <code>quad</code>, <code>gx/gy</code>. — add_var" />
+<meta property="og:title" content="Add columns lx/ly, QX/QY, index, col/row, hectindex, quad, gx/gy. — add_var" />
 <meta property="og:description" content="These functions add columns to position trees in a forest plot. They work
 with ViewFullTable, tree and stem tables. From the input table, most
 functions use only the gx and gy columns (or equivalent columns). The
 exception is the function add_gxgy() which inputs quadrat information. If
 your data lacks some important column, an error message will inform you which
 column is missing." />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -60,7 +63,7 @@ column is missing." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -82,7 +85,7 @@ column is missing." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -96,13 +99,13 @@ column is missing." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/maurolepore">
-    <span class="fa fa-gavel"></span>
+    <span class="fas fa-gavel"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/forestgeo/fgeo.tool">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -136,19 +139,19 @@ your data lacks some important column, an error message will inform you which
 column is missing.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_lxly</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>add_lxly</span><span class='op'>(</span><span class='va'>data</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span>, plotdim <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>add_qxqy</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_qxqy</span><span class='op'>(</span><span class='va'>data</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span>, plotdim <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>add_index</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_index</span><span class='op'>(</span><span class='va'>data</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span>, plotdim <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>add_col_row</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_col_row</span><span class='op'>(</span><span class='va'>data</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span>, plotdim <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>add_hectindex</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>add_hectindex</span><span class='op'>(</span><span class='va'>data</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span>, plotdim <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span>
 
-<span class='fu'>add_quad</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>plotdim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>2</span>)
+<span class='fu'>add_quad</span><span class='op'>(</span><span class='va'>data</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span>, plotdim <span class='op'>=</span> <span class='cn'>NULL</span>, start <span class='op'>=</span> <span class='cn'>NULL</span>, width <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
 
-<span class='fu'>add_gxgy</span>(<span class='no'>data</span>, <span class='kw'>gridsize</span> <span class='kw'>=</span> <span class='fl'>20</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+<span class='fu'>add_gxgy</span><span class='op'>(</span><span class='va'>data</span>, gridsize <span class='op'>=</span> <span class='fl'>20</span>, start <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -204,98 +207,108 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 <code><a href='pick_drop.html'>pick_drop</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
-    ~<span class='no'>gx</span>,    ~<span class='no'>gy</span>,
+    <pre class="examples"><div class='input'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span><span class='op'>(</span>
+    <span class='op'>~</span><span class='va'>gx</span>,    <span class='op'>~</span><span class='va'>gy</span>,
       <span class='fl'>0</span>,      <span class='fl'>0</span>,
      <span class='fl'>50</span>,     <span class='fl'>25</span>,
   <span class='fl'>999.9</span>, <span class='fl'>499.95</span>,
    <span class='fl'>1000</span>,    <span class='fl'>500</span>
-)
+<span class='op'>)</span>
 
 <span class='co'># `gridsize` has a common default; `plotdim` is guessed from the data</span>
-<span class='fu'>add_lxly</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; # A tibble: 4 x 4
+<span class='fu'>add_lxly</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;      gx    gy    lx    ly
-#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    0     0    0     0  
-#&gt; 2   50    25   10     5  
-#&gt; 3  999.  500.  19.9  19.9
-#&gt; 4 1000   500   NA    NA  </div><div class='input'>
-<span class='no'>gridsize</span> <span class='kw'>&lt;-</span> <span class='fl'>20</span>
-<span class='no'>plotdim</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1000</span>, <span class='fl'>500</span>)
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0    0     0  
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25   10     5  
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.  19.9  19.9
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500   </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>  </div><div class='input'>
+<span class='va'>gridsize</span> <span class='op'>&lt;-</span> <span class='fl'>20</span>
+<span class='va'>plotdim</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='fl'>500</span><span class='op'>)</span>
 
-<span class='fu'>add_qxqy</span>(<span class='no'>x</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 4
+<span class='fu'>add_qxqy</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;      gx    gy    QX    QY
-#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    0     0    0     0  
-#&gt; 2   50    25   10     5  
-#&gt; 3  999.  500.  19.9  19.9
-#&gt; 4 1000   500   NA    NA  </div><div class='input'>
-<span class='fu'>add_index</span>(<span class='no'>x</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0    0     0  
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25   10     5  
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.  19.9  19.9
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500   </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>  </div><div class='input'>
+<span class='fu'>add_index</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
 #&gt;      gx    gy index
-#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1    0     0      1
-#&gt; 2   50    25     52
-#&gt; 3  999.  500.  1250
-#&gt; 4 1000   500     NA</div><div class='input'>
-<span class='fu'>add_hectindex</span>(<span class='no'>x</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Some values of `gx` and/or `gy` lay at or beyond plot limits</span></div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0      1
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25     52
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.  </span><span style='text-decoration: underline;'>1</span><span>250
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500     </span><span style='color: #BB0000;'>NA</span><span></div><div class='input'>
+<span class='fu'>add_hectindex</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Some values of `gx` and/or `gy` lay at or beyond plot limits</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
 #&gt;      gx    gy hectindex
-#&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1    0     0          1
-#&gt; 2   50    25          1
-#&gt; 3  999.  500.        50
-#&gt; 4 1000   500         56</div><div class='input'>
-<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0          1
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25          1
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.        50
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500         56</div><div class='input'>
+<span class='fu'>add_quad</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
 #&gt;      gx    gy quad 
-#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
-#&gt; 1    0     0  0101 
-#&gt; 2   50    25  0302 
-#&gt; 3  999.  500. 5025 
-#&gt; 4 1000   500  &lt;NA&gt; </div><div class='input'>
-<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  0101 
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  0302 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 5025 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
+<span class='fu'>add_quad</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span>, start <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
 #&gt;      gx    gy quad 
-#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
-#&gt; 1    0     0  0000 
-#&gt; 2   50    25  0201 
-#&gt; 3  999.  500. 4924 
-#&gt; 4 1000   500  &lt;NA&gt; </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  0000 
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  0201 
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 4924 
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
 <span class='co'># `width` gives the nuber of digits to pad the label of plot-rows and</span>
 <span class='co'># plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with</span>
 <span class='co'># an extra trhree zeros, resulting in a total of 6 zeros.</span>
-<span class='fu'>add_quad</span>(<span class='no'>x</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>, <span class='kw'>start</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+<span class='fu'>add_quad</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span>, start <span class='op'>=</span> <span class='fl'>0</span>, width <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
 #&gt;      gx    gy quad  
-#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
-#&gt; 1    0     0  000000
-#&gt; 2   50    25  002001
-#&gt; 3  999.  500. 049024
-#&gt; 4 1000   500  &lt;NA&gt;  </div><div class='input'>
-<span class='fu'>add_col_row</span>(<span class='no'>x</span>, <span class='no'>gridsize</span>, <span class='no'>plotdim</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 4
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  000000
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  002001
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 049024
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  0NA0NA</div><div class='input'>
+<span class='fu'>add_col_row</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
 #&gt;      gx    gy col   row  
-#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
-#&gt; 1    0     0  01    01   
-#&gt; 2   50    25  03    02   
-#&gt; 3  999.  500. 50    25   
-#&gt; 4 1000   500  &lt;NA&gt;  &lt;NA&gt; </div><div class='input'>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  01    01   
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  03    02   
+#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 50    25   
+#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
 
 <span class='co'># From `quadrat` or `QuadratName` --------------------------------------</span>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span>(
-  ~<span class='no'>QuadratName</span>,
+<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span><span class='op'>(</span>
+  <span class='op'>~</span><span class='va'>QuadratName</span>,
         <span class='st'>"0001"</span>,
         <span class='st'>"0011"</span>,
         <span class='st'>"0101"</span>,
         <span class='st'>"1001"</span>
-)
+<span class='op'>)</span>
 
 <span class='co'># Output `gx` and `gy` ---------------</span>
 
-<span class='fu'>add_gxgy</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   QuadratName  gx  gy
+<span class='fu'>add_gxgy</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;   QuadratName  gx  gy
 #&gt; 1        0001   0  20
 #&gt; 2        0011   0 220
 #&gt; 3        0101  20  20
-#&gt; 4        1001 200  20</div><div class='input'>
-<span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span>(<span class='st'>"fgeo.x"</span>)
+#&gt; 4        1001 200  20</div><div class='input'> 
+<span class='fu'><a href='assert_is_installed.html'>assert_is_installed</a></span><span class='op'>(</span><span class='st'>"fgeo.x"</span><span class='op'>)</span>
 <span class='co'># Warning: The data may already have `gx` and `gx` columns</span>
-<span class='no'>gxgy</span> <span class='kw'>&lt;-</span> <span class='fu'>add_gxgy</span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>tree5</a></span>)
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>gxgy</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/select_helpers.html'>matches</a></span>(<span class='st'>"gx|gy"</span>))</div><div class='output co'>#&gt;        gx     gy gx1 gy1
+<span class='va'>gxgy</span> <span class='op'>&lt;-</span> <span class='fu'>add_gxgy</span><span class='op'>(</span><span class='fu'>fgeo.x</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>tree5</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>gxgy</span>, <span class='fu'><a href='https://tidyselect.r-lib.org/reference/starts_with.html'>matches</a></span><span class='op'>(</span><span class='st'>"gx|gy"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;        gx     gy gx1 gy1
 #&gt; 1  138.68 425.26 140 440
 #&gt; 2   94.76 424.41 100 440
 #&gt; 3   61.31 495.73  80 500
@@ -330,49 +343,45 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 
 <span class='co'># Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`</span>
 <span class='co'># The argument `sep` lets you separate `QuadratName` at any positon</span>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='no'>tidyr_is_installed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"tidyr"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-<span class='no'>stringr_is_installed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"stringr"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='va'>tidyr_is_installed</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"tidyr"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<span class='va'>stringr_is_installed</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"stringr"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
-<span class='kw'>if</span> (<span class='no'>tidyr_is_installed</span> <span class='kw'>&amp;&amp;</span> <span class='no'>stringr_is_installed</span>) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>tidyr</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>stringr</span>)
+<span class='kw'>if</span> <span class='op'>(</span><span class='va'>tidyr_is_installed</span> <span class='op'>&amp;&amp;</span> <span class='va'>stringr_is_installed</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://stringr.tidyverse.org'>stringr</a></span><span class='op'>)</span>
 
-  <span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(<span class='kw'>QuadratName</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"0001"</span>, <span class='st'>"0011"</span>))
-  <span class='no'>vft</span>
+  <span class='va'>vft</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>QuadratName <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"0001"</span>, <span class='st'>"0011"</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>vft</span>
 
-  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span>(
-    <span class='no'>vft</span>,
-    <span class='no'>QuadratName</span>,
-    <span class='kw'>into</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"col"</span>, <span class='st'>"row"</span>),
-    <span class='kw'>sep</span> <span class='kw'>=</span> <span class='fl'>2</span>
-  )
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span>
+    <span class='va'>vft</span>,
+    <span class='va'>QuadratName</span>,
+    into <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"col"</span>, <span class='st'>"row"</span><span class='op'>)</span>,
+    sep <span class='op'>=</span> <span class='fl'>2</span>
+  <span class='op'>)</span>
 
-  <span class='no'>census</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='kw pkg'>fgeo.x</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>tree5</a></span>, <span class='no'>quadrat</span>)
-  <span class='no'>census</span>
+  <span class='va'>census</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'>fgeo.x</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>tree5</a></span>, <span class='va'>quadrat</span><span class='op'>)</span>
+  <span class='va'>census</span>
 
-  <span class='no'>census</span>$<span class='no'>quadrat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_pad.html'>str_pad</a></span>(<span class='no'>census</span>$<span class='no'>quadrat</span>, <span class='kw'>width</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>pad</span> <span class='kw'>=</span> <span class='fl'>0</span>)
+  <span class='va'>census</span><span class='op'>$</span><span class='va'>quadrat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_pad.html'>str_pad</a></span><span class='op'>(</span><span class='va'>census</span><span class='op'>$</span><span class='va'>quadrat</span>, width <span class='op'>=</span> <span class='fl'>4</span>, pad <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
 
-  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span>(
-    <span class='no'>census</span>,
-    <span class='no'>quadrat</span>,
-    <span class='kw'>into</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"col"</span>, <span class='st'>"row"</span>),
-    <span class='kw'>sep</span> <span class='kw'>=</span> <span class='fl'>2</span>,
-    <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-  )
-}
-}</div></pre>
+  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/separate.html'>separate</a></span><span class='op'>(</span>
+    <span class='va'>census</span>,
+    <span class='va'>quadrat</span>,
+    into <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"col"</span>, <span class='st'>"row"</span><span class='op'>)</span>,
+    sep <span class='op'>=</span> <span class='fl'>2</span>,
+    remove <span class='op'>=</span> <span class='cn'>FALSE</span>
+  <span class='op'>)</span>
+<span class='op'>}</span>
+<span class='op'>}</span>
+
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -383,7 +392,7 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
