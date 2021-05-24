@@ -105,11 +105,6 @@
 <a href="#example" class="anchor"></a>Example</h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://forestgeo.github.io/fgeo.tool">fgeo.tool</a></span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; Attaching package: 'fgeo.tool'</span>
-<span class="co">#&gt; The following object is masked from 'package:stats':</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;     filter</span>
 <span class="co"># Helps access data for examples</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/forestgeo/fgeo.x">fgeo.x</a></span><span class="op">)</span></code></pre></div>
 <p><code><a href="https://rdrr.io/pkg/fgeo.x/man/example_path.html">example_path()</a></code> allows you to access datasets stored in your R libraries.</p>
@@ -120,7 +115,7 @@
 <span class="co">#&gt;  [9] "view"          "weird"         "xl"</span>
 
 <span class="op">(</span><span class="va">vft_file</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/fgeo.x/man/example_path.html">example_path</a></span><span class="op">(</span><span class="st">"view/vft_4quad.csv"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] "/home/mauro/R/x86_64-pc-linux-gnu-library/3.6/fgeo.x/extdata/view/vft_4quad.csv"</span></code></pre></div>
+<span class="co">#&gt; [1] "/home/mauro/R/x86_64-pc-linux-gnu-library/4.1/fgeo.x/extdata/view/vft_4quad.csv"</span></code></pre></div>
 <p><code><a href="reference/read_vft.html">read_vft()</a></code> and <code><a href="reference/read_vft.html">read_taxa()</a></code> import a ViewFullTable and ViewTaxonomy from .tsv or .csv files.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/read_vft.html">read_vft</a></span><span class="op">(</span><span class="va">vft_file</span><span class="op">)</span>
@@ -150,26 +145,26 @@
 <span class="va">tree5</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="reference/pick_drop.html">pick_dbh_under</a></span><span class="op">(</span><span class="fl">100</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 18 x 19</span>
-<span class="co">#&gt;    treeID stemID tag   StemTag sp    quadrat    gx    gy MeasureID CensusID</span>
-<span class="co">#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;</span>
-<span class="co">#&gt;  1   7624 160987 1089… 175325  TRIP… 722     139.  425.     486675        5</span>
-<span class="co">#&gt;  2  19930 117849 1234… 165576  CASA… 425      61.3 496.     471979        5</span>
-<span class="co">#&gt;  3  31702  39793 22889 22889   SLOB… 304      53.8  73.8    447307        5</span>
-<span class="co">#&gt;  4  35355  44026 27538 27538   SLOB… 1106    203.  110.     449169        5</span>
-<span class="co">#&gt;  5  39705  48888 33371 33370   CASS… 1010    184.  194.     451067        5</span>
-<span class="co">#&gt;  6  57380 155867 66962 171649  SLOB… 1414    274.  279.     459427        5</span>
-<span class="co">#&gt;  7  95656 129113 1315… 131519  OCOL… 402      79.7  22.8    474157        5</span>
-<span class="co">#&gt;  8  96051 129565 1323… 132348  HIRR… 1403    278    40.6    474523        5</span>
-<span class="co">#&gt;  9  96963 130553 1347… 134707  TETB… 610     114.  182.     475236        5</span>
-<span class="co">#&gt; 10 115310 150789 1652… 165286  MANB… 225      24.0 497.     483175        5</span>
-<span class="co">#&gt; 11 121424 158579 1707… 170701  CASS… 811     146.  218.     484785        5</span>
-<span class="co">#&gt; 12 121689 158871 1712… 171277  INGL… 515      84.2 285.     485077        5</span>
-<span class="co">#&gt; 13 121953 159139 1718… 171809  PSYB… 1318    247.  354.     485345        5</span>
-<span class="co">#&gt; 14 124522 162698 1742… 174224  CASS… 1411    279.  210.     488386        5</span>
-<span class="co">#&gt; 15 125038 163236 1753… 175335  CASS… 822     153.  426.     488924        5</span>
-<span class="co">#&gt; 16 126087     NA 1773… &lt;NA&gt;    CASA… 521      89.8 408.         NA       NA</span>
-<span class="co">#&gt; 17 126803     NA 1785… &lt;NA&gt;    PSYB… 622     113.  426          NA       NA</span>
-<span class="co">#&gt; 18 126934     NA 1787… &lt;NA&gt;    MICR… 324      47   480.         NA       NA</span>
+<span class="co">#&gt;    treeID stemID tag    StemTag sp     quadrat    gx    gy MeasureID CensusID</span>
+<span class="co">#&gt;     &lt;int&gt;  &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;    &lt;int&gt;</span>
+<span class="co">#&gt;  1   7624 160987 108958 175325  TRIPAL 722     139.  425.     486675        5</span>
+<span class="co">#&gt;  2  19930 117849 123493 165576  CASARB 425      61.3 496.     471979        5</span>
+<span class="co">#&gt;  3  31702  39793 22889  22889   SLOBER 304      53.8  73.8    447307        5</span>
+<span class="co">#&gt;  4  35355  44026 27538  27538   SLOBER 1106    203.  110.     449169        5</span>
+<span class="co">#&gt;  5  39705  48888 33371  33370   CASSYL 1010    184.  194.     451067        5</span>
+<span class="co">#&gt;  6  57380 155867 66962  171649  SLOBER 1414    274.  279.     459427        5</span>
+<span class="co">#&gt;  7  95656 129113 131519 131519  OCOLEU 402      79.7  22.8    474157        5</span>
+<span class="co">#&gt;  8  96051 129565 132348 132348  HIRRUG 1403    278    40.6    474523        5</span>
+<span class="co">#&gt;  9  96963 130553 134707 134707  TETBAL 610     114.  182.     475236        5</span>
+<span class="co">#&gt; 10 115310 150789 165286 165286  MANBID 225      24.0 497.     483175        5</span>
+<span class="co">#&gt; 11 121424 158579 170701 170701  CASSYL 811     146.  218.     484785        5</span>
+<span class="co">#&gt; 12 121689 158871 171277 171277  INGLAU 515      84.2 285.     485077        5</span>
+<span class="co">#&gt; 13 121953 159139 171809 171809  PSYBRA 1318    247.  354.     485345        5</span>
+<span class="co">#&gt; 14 124522 162698 174224 174224  CASSYL 1411    279.  210.     488386        5</span>
+<span class="co">#&gt; 15 125038 163236 175335 175335  CASSYL 822     153.  426.     488924        5</span>
+<span class="co">#&gt; 16 126087     NA 177394 &lt;NA&gt;    CASARB 521      89.8 408.         NA       NA</span>
+<span class="co">#&gt; 17 126803     NA 178513 &lt;NA&gt;    PSYBER 622     113.  426          NA       NA</span>
+<span class="co">#&gt; 18 126934     NA 178763 &lt;NA&gt;    MICRAC 324      47   480.         NA       NA</span>
 <span class="co">#&gt; # … with 9 more variables: dbh &lt;dbl&gt;, pom &lt;chr&gt;, hom &lt;dbl&gt;, ExactDate &lt;date&gt;,</span>
 <span class="co">#&gt; #   DFstatus &lt;chr&gt;, codes &lt;chr&gt;, nostems &lt;dbl&gt;, status &lt;chr&gt;, date &lt;dbl&gt;</span></code></pre></div>
 <p><code><a href="reference/pick_main_stem.html">pick_main_stem()</a></code> and <code><a href="reference/pick_main_stem.html">pick_main_stemid()</a></code> pick the main stem or main stemid(s) of each tree in each census.</p>
@@ -181,8 +176,6 @@
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="fu"><a href="reference/pick_main_stem.html">pick_main_stem</a></span><span class="op">(</span><span class="va">stem</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Warning: The `add` argument of `group_by()` is deprecated as of dplyr 1.0.0.</span>
 <span class="co">#&gt; Please use the `.add` argument instead.</span>
-<span class="co">#&gt; This warning is displayed once every 8 hours.</span>
-<span class="co">#&gt; Call `lifecycle::last_warnings()` to see where this warning was generated.</span>
 <span class="co">#&gt; [1] 1000   19</span></code></pre></div>
 <p><code><a href="reference/add_status_tree.html">add_status_tree()</a></code> adds the column status_tree based on the status of all stems of each tree.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -288,6 +281,7 @@
 <li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="lifecycle"></a></li>
 <li><a href="https://coveralls.io/r/forestgeo/fgeo.tool?branch=master"><img src="https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg" alt="Coverage status"></a></li>
 <li><a href="https://cran.r-project.org/package=fgeo.tool"><img src="https://www.r-pkg.org/badges/version/fgeo.tool" alt="CRAN status"></a></li>
+<li><a href="https://github.com/forestgeo/fgeo.tool/actions"><img src="https://github.com/forestgeo/fgeo.tool/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
 </ul>
 </div>
 </div>
