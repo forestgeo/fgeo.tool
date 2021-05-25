@@ -4,13 +4,13 @@
 \name{fgeo.tool-package}
 \alias{fgeo.tool}
 \alias{fgeo.tool-package}
-\title{fgeo.tool: Import and Manipulate ForestGEO Data}
+\title{fgeo.tool: Import and Manipulate 'ForestGEO' Data}
 \description{
 To help you access, transform, analyze, and visualize
-    ForestGEO data, we developed a collection of R packages
+    'ForestGEO' data, we developed a collection of R packages
     (<https://forestgeo.github.io/fgeo/>). This package, in particular,
-    helps you to easily import, filter, and modify ForestGEO data. To
-    learn more about ForestGEO visit <https://forestgeo.si.edu/>.
+    helps you to easily import, filter, and modify 'ForestGEO' data. To
+    learn more about 'ForestGEO' visit <https://forestgeo.si.edu/>.
 }
 \seealso{
 Useful links:
