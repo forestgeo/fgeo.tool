@@ -53,8 +53,8 @@ jobs:
 
       - name: Install pak and query dependencies
         run: |
-          install.packages("remotes")
-          saveRDS(remotes::install_deps(".", dependencies = TRUE), ".github/r-depends.rds")
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
 
       - name: Restore R package cache
