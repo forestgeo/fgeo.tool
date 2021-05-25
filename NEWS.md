@@ -1,3 +1,5 @@
+# fgeo.tool (development version)
+
 # fgeo.tool 1.2.7
 
 * `read_vft()` and `read_taxa()` no longer throw needless messages (@jimhester
