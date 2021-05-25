@@ -165,20 +165,20 @@ the previous item (e.g. <code><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.h
 <span class='co'># Input: Elevation dataframe</span>
 <span class='va'>elevation_df</span> <span class='op'>&lt;-</span> <span class='fu'>fgeo.x</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>elevation</a></span><span class='op'>$</span><span class='va'>col</span>
 <span class='fu'>fgeo_elevation</span><span class='op'>(</span><span class='va'>elevation_df</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,565 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,565 x 3</span>
 #&gt;       gx    gy  elev
-#&gt;  </span><span style='color: #BCBCBC;'>*</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     0     0  364.
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     0     5  364.
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     0    10  363.
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     0    15  363.
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     0    20  363 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     0    25  363.
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     0    30  363.
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     0    35  363.
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     0    40  363.
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     0    45  364.
-#&gt; </span><span style='color: #949494;'># … with 6,555 more rows</span><span></div><div class='input'>
+#&gt;  <span style='color: #BCBCBC;'>*</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     0     0  364.
+#&gt; <span style='color: #BCBCBC;'> 2</span>     0     5  364.
+#&gt; <span style='color: #BCBCBC;'> 3</span>     0    10  363.
+#&gt; <span style='color: #BCBCBC;'> 4</span>     0    15  363.
+#&gt; <span style='color: #BCBCBC;'> 5</span>     0    20  363 
+#&gt; <span style='color: #BCBCBC;'> 6</span>     0    25  363.
+#&gt; <span style='color: #BCBCBC;'> 7</span>     0    30  363.
+#&gt; <span style='color: #BCBCBC;'> 8</span>     0    35  363.
+#&gt; <span style='color: #BCBCBC;'> 9</span>     0    40  363.
+#&gt; <span style='color: #BCBCBC;'>10</span>     0    45  364.
+#&gt; <span style='color: #949494;'># … with 6,555 more rows</span></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>elevation_df</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "tbl_df"     "tbl"        "data.frame"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='fu'>fgeo_elevation</span><span class='op'>(</span><span class='va'>elevation_df</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "fgeo_elevation" "tbl_df"         "tbl"            "data.frame"    </div><div class='input'>
@@ -188,26 +188,26 @@ the previous item (e.g. <code><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.h
 <span class='co'># Input: Elevation list</span>
 <span class='va'>elevation_ls</span> <span class='op'>&lt;-</span> <span class='fu'>fgeo.x</span><span class='fu'>::</span><span class='va'><a href='https://rdrr.io/pkg/fgeo.x/man/datasets.html'>elevation</a></span>
 <span class='fu'>fgeo_elevation</span><span class='op'>(</span><span class='va'>elevation_ls</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6,565 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,565 x 3</span>
 #&gt;       gx    gy  elev
-#&gt;  </span><span style='color: #BCBCBC;'>*</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     0     0  364.
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     0     5  364.
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     0    10  363.
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     0    15  363.
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     0    20  363 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     0    25  363.
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     0    30  363.
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     0    35  363.
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     0    40  363.
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     0    45  364.
-#&gt; </span><span style='color: #949494;'># … with 6,555 more rows</span><span></div><div class='input'>
+#&gt;  <span style='color: #BCBCBC;'>*</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     0     0  364.
+#&gt; <span style='color: #BCBCBC;'> 2</span>     0     5  364.
+#&gt; <span style='color: #BCBCBC;'> 3</span>     0    10  363.
+#&gt; <span style='color: #BCBCBC;'> 4</span>     0    15  363.
+#&gt; <span style='color: #BCBCBC;'> 5</span>     0    20  363 
+#&gt; <span style='color: #BCBCBC;'> 6</span>     0    25  363.
+#&gt; <span style='color: #BCBCBC;'> 7</span>     0    30  363.
+#&gt; <span style='color: #BCBCBC;'> 8</span>     0    35  363.
+#&gt; <span style='color: #BCBCBC;'> 9</span>     0    40  363.
+#&gt; <span style='color: #BCBCBC;'>10</span>     0    45  364.
+#&gt; <span style='color: #949494;'># … with 6,555 more rows</span></div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>elevation_ls</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "list"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='fu'>fgeo_elevation</span><span class='op'>(</span><span class='va'>elevation_ls</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "fgeo_elevation" "tbl_df"         "tbl"            "data.frame"    </div><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>elevation_ls</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; [1] "col"  "mat"  "xdim" "ydim"</div><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='fu'>fgeo_elevation</span><span class='op'>(</span><span class='va'>elevation_ls</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "gx"   "gy"   "elev"</div></span></pre>
+</div><div class='output co'>#&gt; [1] "gx"   "gy"   "elev"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

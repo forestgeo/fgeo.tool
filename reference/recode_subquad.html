@@ -158,28 +158,28 @@ of column of each subquadrat.<div class="R"></p><pre>First column is 0    First 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>first_subquad_11</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>subquadrat <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"11"</span>, <span class='st'>"12"</span>, <span class='st'>"22"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='va'>first_subquad_11</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 1</span>
 #&gt;   subquadrat
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 11        
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 12        
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 22        </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
+#&gt; <span style='color: #BCBCBC;'>1</span> 11        
+#&gt; <span style='color: #BCBCBC;'>2</span> 12        
+#&gt; <span style='color: #BCBCBC;'>3</span> 22        </div><div class='input'>
 <span class='va'>first_subquad_01</span> <span class='op'>&lt;-</span> <span class='fu'>recode_subquad</span><span class='op'>(</span><span class='va'>first_subquad_11</span>, offset <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span><span class='op'>)</span>
 <span class='va'>first_subquad_01</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 1</span>
 #&gt;   subquadrat
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 01        
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 02        
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 12        </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
+#&gt; <span style='color: #BCBCBC;'>1</span> 01        
+#&gt; <span style='color: #BCBCBC;'>2</span> 02        
+#&gt; <span style='color: #BCBCBC;'>3</span> 12        </div><div class='input'>
 <span class='va'>first_subquad_11</span> <span class='op'>&lt;-</span> <span class='fu'>recode_subquad</span><span class='op'>(</span><span class='va'>first_subquad_01</span>, offset <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
 <span class='va'>first_subquad_11</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 1</span>
 #&gt;   subquadrat
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span> 11        
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span> 12        
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> 22        </div></span></pre>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     
+#&gt; <span style='color: #BCBCBC;'>1</span> 11        
+#&gt; <span style='color: #BCBCBC;'>2</span> 12        
+#&gt; <span style='color: #BCBCBC;'>3</span> 22        </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -217,75 +217,75 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 
 <span class='co'># `gridsize` has a common default; `plotdim` is guessed from the data</span>
 <span class='fu'>add_lxly</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 4</span><span>
+</div><div class='output co'>#&gt; <span class='message'>Guessing: plotdim = c(1000, 500)</span></div><div class='output co'>#&gt; <span class='message'>* If guess is wrong, provide the correct argument `plotdim`</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 4</span>
 #&gt;      gx    gy    lx    ly
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0    0     0  
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25   10     5  
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.  19.9  19.9
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500   </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>  </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0    0     0  
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25   10     5  
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500.  19.9  19.9
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500   <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>  </div><div class='input'>
 <span class='va'>gridsize</span> <span class='op'>&lt;-</span> <span class='fl'>20</span>
 <span class='va'>plotdim</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1000</span>, <span class='fl'>500</span><span class='op'>)</span>
 
 <span class='fu'>add_qxqy</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 4</span>
 #&gt;      gx    gy    QX    QY
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0    0     0  
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25   10     5  
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.  19.9  19.9
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500   </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>  </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0    0     0  
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25   10     5  
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500.  19.9  19.9
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500   <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>  </div><div class='input'>
 <span class='fu'>add_index</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 3</span>
 #&gt;      gx    gy index
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0      1
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25     52
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.  </span><span style='text-decoration: underline;'>1</span><span>250
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500     </span><span style='color: #BB0000;'>NA</span><span></div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0      1
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25     52
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500.  <span style='text-decoration: underline;'>1</span>250
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500     <span style='color: #BB0000;'>NA</span></div><div class='input'>
 <span class='fu'>add_hectindex</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Some values of `gx` and/or `gy` lay at or beyond plot limits</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: Some values of `gx` and/or `gy` lay at or beyond plot limits</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 3</span>
 #&gt;      gx    gy hectindex
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0          1
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25          1
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500.        50
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500         56</div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0          1
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25          1
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500.        50
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500         56</div><div class='input'>
 <span class='fu'>add_quad</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 3</span>
 #&gt;      gx    gy quad 
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  0101 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  0302 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 5025 
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0  0101 
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25  0302 
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500. 5025 
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500  <span style='color: #BB0000;'>NA</span>   </div><div class='input'>
 <span class='fu'>add_quad</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span>, start <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 3</span>
 #&gt;      gx    gy quad 
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  0000 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  0201 
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 4924 
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0  0000 
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25  0201 
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500. 4924 
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500  <span style='color: #BB0000;'>NA</span>   </div><div class='input'>
 <span class='co'># `width` gives the nuber of digits to pad the label of plot-rows and</span>
 <span class='co'># plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with</span>
 <span class='co'># an extra trhree zeros, resulting in a total of 6 zeros.</span>
 <span class='fu'>add_quad</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span>, start <span class='op'>=</span> <span class='fl'>0</span>, width <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 3</span>
 #&gt;      gx    gy quad  
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  000000
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  002001
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 049024
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  0NA0NA</div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> 
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0  000000
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25  002001
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500. 049024
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500  0NA0NA</div><div class='input'>
 <span class='fu'>add_col_row</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>gridsize</span>, <span class='va'>plotdim</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 4 x 4</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4 x 4</span>
 #&gt;      gx    gy col   row  
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>    0     0  01    01   
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>   50    25  03    02   
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span> </span><span style='text-decoration: underline;'>1</span><span>000.  500. 50    25   
-#&gt; </span><span style='color: #BCBCBC;'>4</span><span> </span><span style='text-decoration: underline;'>1</span><span>000   500  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   </div><div class='input'>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>    0     0  01    01   
+#&gt; <span style='color: #BCBCBC;'>2</span>   50    25  03    02   
+#&gt; <span style='color: #BCBCBC;'>3</span> <span style='text-decoration: underline;'>1</span>000.  500. 50    25   
+#&gt; <span style='color: #BCBCBC;'>4</span> <span style='text-decoration: underline;'>1</span>000   500  <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>   </div><div class='input'>
 
 <span class='co'># From `quadrat` or `QuadratName` --------------------------------------</span>
 <span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tribble.html'>tribble</a></span><span class='op'>(</span>
@@ -376,7 +376,7 @@ version of the input dataframe, with the additional variable(s) <code>var</code>
 <span class='op'>}</span>
 <span class='op'>}</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
