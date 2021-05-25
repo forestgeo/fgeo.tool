@@ -35,8 +35,7 @@ context("read_taxa")
 
 test_that("read_taxa can read an online file", {
   skip_on_cran()
-  skip_if_not_installed("pingr")
-  skip_if(!pingr::is_online(), "Not online.")
+  skip_if_offline()
 
   expect_silent(
     taxa <- read_taxa("http://bit.ly/fgeo-data-luquillo-taxa")

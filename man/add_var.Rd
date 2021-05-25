@@ -52,7 +52,7 @@ your data lacks some important column, an error message will inform you which
 column is missing.
 }
 \details{
-These functions are adapted from the \href{http://ctfs.si.edu/Public/CTFSRPackage/}{CTFS R Package}.
+These functions are adapted from the \href{https://forestgeo.si.edu/explore-data/r-package-0}{CTFS R Package}.
 }
 \examples{
 x <- tribble(

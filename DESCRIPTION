@@ -22,13 +22,14 @@ Authors@R:
       person(given = "CTFS-ForestGEO",
              role = c("cph", "fnd"),
              email = "ForestGEO@si.edu"))
-Description: To help you access, transform, analyze, and
-    visualize ForestGEO data, we developed a collection of R packages
+Description: To help you access, transform, analyze, and visualize
+    ForestGEO data, we developed a collection of R packages
     (<https://forestgeo.github.io/fgeo/>). This package, in particular,
     helps you to easily import, filter, and modify ForestGEO data. To
-    learn more about ForestGEO visit <http://www.forestgeo.si.edu/>.
+    learn more about ForestGEO visit <https://forestgeo.si.edu/>.
 License: GPL-3
-URL: https://forestgeo.github.io/fgeo.tool, https://github.com/forestgeo/fgeo.tool
+URL: https://forestgeo.github.io/fgeo.tool/,
+    https://github.com/forestgeo/fgeo.tool
 BugReports: https://github.com/forestgeo/fgeo.tool/issues
 Depends: 
     R (>= 3.2)
@@ -45,7 +46,6 @@ Suggests:
     covr (>= 3.2.1),
     fgeo.x (>= 1.1.3),
     knitr (>= 1.22),
-    pingr (>= 1.1.2),
     roxygen2 (>= 6.1.1),
     spelling (>= 2.1),
     stringr (>= 1.4.0),

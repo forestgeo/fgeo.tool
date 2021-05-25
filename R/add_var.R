@@ -8,7 +8,7 @@
 #' column is missing.
 #'
 #' These functions are adapted from the [CTFS R
-#' Package](http://ctfs.si.edu/Public/CTFSRPackage/).
+#' Package](https://forestgeo.si.edu/explore-data/r-package-0).
 #'
 #' @template data_fgeo
 #' @inheritParams from_var_to_var
