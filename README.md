@@ -5,16 +5,16 @@
 
 <!-- badges: start -->
 
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![Coverage
-status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.tool?branch=master)
+status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/github/forestgeo/fgeo.tool)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 [![R-CMD-check](https://github.com/forestgeo/fgeo.tool/workflows/R-CMD-check/badge.svg)](https://github.com/forestgeo/fgeo.tool/actions)
 <!-- badges: end -->
 
 **fgeo.tool** helps you to import and manipulate
-[ForestGEO](http://www.forestgeo.si.edu/) data.
+[ForestGEO](https://forestgeo.si.edu/) data.
 
 ## Installation
 
@@ -32,12 +32,17 @@ devtools::install_github("forestgeo/fgeo.tool")
 ```
 
 Or [install all **fgeo** packages in one
-step](https://forestgeo.github.io/fgeo/index.html#installation).
+step](https://forestgeo.github.io/fgeo//index.html#installation).
 
 ## Example
 
 ``` r
 library(fgeo.tool)
+#> 
+#> Attaching package: 'fgeo.tool'
+#> The following object is masked from 'package:stats':
+#> 
+#>     filter
 # Helps access data for examples
 library(fgeo.x)
 ```
@@ -175,7 +180,7 @@ stem %>%
 #> # … with 1,310 more rows
 ```
 
-[Get started with **fgeo**](https://forestgeo.github.io/fgeo)
+[Get started with **fgeo**](https://forestgeo.github.io/fgeo/)
 
 ## Information
 
