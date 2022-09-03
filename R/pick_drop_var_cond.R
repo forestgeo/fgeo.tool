@@ -19,6 +19,7 @@
 #'   matching conditions.
 #'
 #' @examples
+#' # styler: off
 #' census <- tribble(
 #'   ~dbh, ~status,
 #'      0,     "A",
@@ -29,6 +30,7 @@
 #'     NA,     "D",
 #'     NA,      NA
 #'   )
+#' # styler: on
 #' 
 #' # <=
 #' pick_dbh_max(census, 100)
@@ -68,6 +70,7 @@
 #'   pick_dbh_over(100)
 #'  
 #' # Also works with ViewFullTables
+#' # styler: off
 #' vft <- tribble(
 #'   ~DBH,   ~Status,
 #'      0,   "alive",
@@ -78,6 +81,7 @@
 #'     NA,    "dead",
 #'     NA,        NA
 #' )
+#' # styler: on
 #' 
 #' pick_dbh_max(vft, 100)
 #' 

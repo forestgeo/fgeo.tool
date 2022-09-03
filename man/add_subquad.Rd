@@ -34,6 +34,7 @@ Returns \code{data} with the additional variable \code{subquadrat}.
 Add column \code{subquadrat} based on \code{QX} and \code{QY} coordinates.
 }
 \examples{
+# styler: off
 vft <- tribble(
    ~QX,  ~QY,
   17.9,    0,
@@ -47,6 +48,7 @@ vft <- tribble(
   17.3,  4.1,
    1.5, 16.3
 )
+# styler: on
 
 add_subquad(vft, 20, 20, 5, 5)
 

@@ -80,7 +80,7 @@ test_that("add_gxgy with viewfulltable outputs equal to ctfs::quad.to.gxgy()", {
 })
 
 # Input gxgy --------------------------------------------------------------
-
+# styler: off
 x <- tribble(
   ~gx, ~gy,
   0, 0,
@@ -88,7 +88,7 @@ x <- tribble(
   999.9, 499.95,
   1000, 500
 )
-
+# styler: on
 gridsize <- 20
 plotdim <- c(1000, 500)
 

@@ -62,12 +62,14 @@ ten seconds to run.
 # One `treeID` with multiple stems. 
 # `stemID == 1.1` has two measurements (due to buttresses).
 # `stemID == 1.2` has a single measurement.
+# styler: off
 census <- tribble(
     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
   "sp1",     "1",   "1.1",   140,   40,         1,  # main stemID (max `hom`)
   "sp1",     "1",   "1.1",   130,   60,         1,  
   "sp1",     "1",   "1.2",   130,   55,         1   # main stemID (only one)
 )
+#' # styler: on
 
 # Picks a unique row per unique `treeID`
 pick_main_stem(census)

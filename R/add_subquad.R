@@ -21,6 +21,7 @@
 #' @author Anudeep Singh and Mauro Lepore.
 #'
 #' @examples
+#' # styler: off
 #' vft <- tribble(
 #'    ~QX,  ~QY,
 #'   17.9,    0,
@@ -34,6 +35,7 @@
 #'   17.3,  4.1,
 #'    1.5, 16.3
 #' )
+#' # styler: on
 #' 
 #' add_subquad(vft, 20, 20, 5, 5)
 #' 

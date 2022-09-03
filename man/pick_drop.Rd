@@ -45,6 +45,7 @@ conservative default is important because you want want to include missing
 trees in your analysis.
 }
 \examples{
+# styler: off
 census <- tribble(
   ~dbh, ~status,
      0,     "A",
@@ -55,6 +56,7 @@ census <- tribble(
     NA,     "D",
     NA,      NA
   )
+# styler: on
 
 # <=
 pick_dbh_max(census, 100)
@@ -94,6 +96,7 @@ census \%>\%
   pick_dbh_over(100)
  
 # Also works with ViewFullTables
+# styler: off
 vft <- tribble(
   ~DBH,   ~Status,
      0,   "alive",
@@ -104,6 +107,7 @@ vft <- tribble(
     NA,    "dead",
     NA,        NA
 )
+# styler: on
 
 pick_dbh_max(vft, 100)
 

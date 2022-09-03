@@ -1,5 +1,5 @@
 context("add_status_tree")
-
+# styler: off
 stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,
           1,       1,       1,     "A",
@@ -14,7 +14,7 @@ stem <- tribble(
           2,       2,       3,     "D",
           2,       2,       4,     "G"
 )
-
+# styler: on
 test_that("outputs with expected names", {
   out <- add_status_tree(stem)
   expect_named(out, c("CensusID", "treeID", "stemID", "status", "status_tree"))
@@ -52,6 +52,7 @@ test_that("the tree status is dead only if one stem is dead", {
 })
 
 test_that("works even if data already contains the variable `status_tree`", {
+  # styler: off
   .df <- tribble(
     ~CensusID, ~TreeID,  ~Status,
             1,    1,   "A",
@@ -64,10 +65,12 @@ test_that("works even if data already contains the variable `status_tree`", {
             2,    2,   "A",
             2,    2,    "D"
   )
+  # styler: on
   expect_silent(add_status_tree(add_status_tree(.df)))
 })
 
 test_that("outputs the correct variable `status_tree`", {
+  # styler: off
   .df <- tribble(
     ~CensusID, ~TreeID,  ~Status,
             1,    1,   "A",
@@ -80,11 +83,13 @@ test_that("outputs the correct variable `status_tree`", {
             2,    2,   "A",
             2,    2,    "D"
   )
+  # styler: on
   exp <- c("A", "A", "D", "D", "A", "A", "A", "A")
   expect_identical(add_status_tree(.df)$status_tree, exp)
 })
 
 test_that("warns if the status is invalid", {
+  # styler: off
   .df <- tribble(
     ~CensusID, ~TreeID,  ~Status,
     1,    1,     "alive",
@@ -97,32 +102,39 @@ test_that("warns if the status is invalid", {
     2,    2,     "alive",
     2,    2,     "dead"
   )
+  # styler: on
   expect_warning(add_status_tree(.df))
   expect_silent(add_status_tree(.df, "dead", "alive"))
 })
 
 test_that("handles names as in viewfull (vf) and census (cns) tables", {
+  # styler: off
   vf <- tibble::tribble(
     ~CensusID, ~TreeID, ~Status,
                 1,    2,  "A",
                 2,    2,  "D"
   )
+  # styler: on
   expect_silent(add_status_tree(vf))
 
+  # styler: off
   cns <- tibble::tribble(
     ~CensusID, ~TreeID, ~status,
                 1,    2,  "A",
                 2,    2,  "D"
   )
+  # styler: on
   expect_silent(add_status_tree(cns))
 })
 
 test_that("names of data are equal in input and output, except status_tree", {
+  # styler: off
   cns <- tibble::tribble(
     ~CensusID, ~TreeID, ~status,
                 1,    2,  "A",
                 2,    2,  "D"
   )
+  # styler: on
   nms_in <- names(cns)
   nms_out <- names(add_status_tree(cns))
   expect_identical(nms_in, nms_out[1:3])

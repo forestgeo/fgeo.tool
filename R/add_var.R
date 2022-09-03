@@ -20,6 +20,7 @@
 #'   version of the input dataframe, with the additional variable(s) `var`.
 #'
 #' @examples
+#' # styler: off
 #' x <- tribble(
 #'     ~gx,    ~gy,
 #'       0,      0,
@@ -27,6 +28,7 @@
 #'   999.9, 499.95,
 #'    1000,    500
 #' )
+#' # styler: on
 #' 
 #' # `gridsize` has a common default; `plotdim` is guessed from the data
 #' add_lxly(x)
@@ -53,6 +55,7 @@
 #' 
 #' 
 #' # From `quadrat` or `QuadratName` --------------------------------------
+#' # styler: off
 #' x <- tribble(
 #'   ~QuadratName,
 #'         "0001",
@@ -60,6 +63,7 @@
 #'         "0101",
 #'         "1001"
 #' )
+#' # styler: on
 #' 
 #' # Output `gx` and `gy` ---------------
 #' 
