@@ -1,6 +1,6 @@
 Package: fgeo.tool
 Title: Import and Manipulate 'ForestGEO' Data
-Version: 1.2.8
+Version: 1.2.8.9000
 Authors@R: c(
     person("Mauro", "Lepore", , "maurolepore@gmail.com", role = c("aut", "ctr", "cre"),
            comment = c(ORCID = "0000-0002-1986-7988")),
