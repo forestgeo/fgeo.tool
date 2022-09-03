@@ -71,7 +71,7 @@ NULL
 #' @export
 tibble::tibble
 #' @export
-tribble
+tibble::tribble
 #' @export
 tibble::as_tibble
 

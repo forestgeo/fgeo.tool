@@ -71,7 +71,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     expect_equal(pick_main_stem(census)$hom, 2)
 
     # styler: off
-    census <- tribble(
+    census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    1,
       "sp1",     "1",   "1.2",     1,    2,
@@ -80,7 +80,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     expect_equal(pick_main_stem(census)$hom, 2)
 
     # styler: off
-    census <- tribble(
+    census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    2,
       "sp1",     "1",   "1.2",     1,    2,
@@ -89,7 +89,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     expect_equal(pick_main_stem(census)$hom, 2)
 
     # styler: off
-    census <- tribble(
+    census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
       "sp1",     "1",   "1.1",     2,    2,
       "sp1",     "1",   "1.2",     1,    1,
@@ -100,7 +100,7 @@ describe("pick_main_stem with multiple stems including buttress", {
 })
 
 # styler: off
-cns <- tribble(
+cns <- tibble::tribble(
   ~hom, ~dbh,   ~sp, ~treeID, ~stemID,
     10,   10, "sp1",     "1",   "1.1",
     20,  100, "sp1",     "1",   "1.2",  # main stem
@@ -138,7 +138,7 @@ describe("pick_main_stem()", {
 
   it("automatically groups by CensusID", {
     # styler: off
-    cns <- tribble(
+    cns <- tibble::tribble(
       ~hom, ~dbh,   ~sp, ~treeID, ~stemID,
       10,   10, "sp1",     "1",   "1.1",
       10,  111, "sp1",     "1",   "1.2",
@@ -162,7 +162,7 @@ describe("pick_main_stem()", {
 
   it("drops missing values of censusid if there are multiple unique censusid", {
     # styler: off
-    cns <- tribble(
+    cns <- tibble::tribble(
       ~hom, ~dbh,   ~sp, ~treeID, ~stemID,
       10,   10, "sp1",     "1",   "1.1",
       10,  111, "sp1",     "1",   "1.2",
@@ -187,7 +187,7 @@ describe("pick_main_stem()", {
 
   it("rejects data with multiple values of `plotname`", {
     # styler: off
-    cns <- tribble(
+    cns <- tibble::tribble(
       ~hom, ~dbh,   ~sp, ~treeID, ~stemID,
       10,   10, "sp1",     "1",   "1.1",
       10,  111, "sp1",     "1",   "1.2",
@@ -206,7 +206,7 @@ describe("pick_main_stem()", {
 
 test_that("pick_main_stemid() leaves no duplicated stemid", {
   # styler: off
-  cns <- tribble(
+  cns <- tibble::tribble(
     ~hom, ~dbh,   ~sp, ~treeID, ~stemID,
        1,    1, "sp1",     "1",   "1.1",
        2,    1, "sp1",     "1",   "1.1",  # Main stemid because hom is highest

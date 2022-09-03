@@ -1,6 +1,6 @@
 #' @importFrom tibble tribble
 #' @export
-tribble
+tibble::tribble
 
 #' Add column `status_tree` based on the status of all stems of each tree.
 #'
