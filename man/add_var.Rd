@@ -103,7 +103,7 @@ x <- tribble(
 # Output `gx` and `gy` ---------------
 
 add_gxgy(x)
- 
+
 assert_is_installed("fgeo.x")
 # Warning: The data may already have `gx` and `gx` columns
 gxgy <- add_gxgy(fgeo.x::tree5)

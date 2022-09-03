@@ -86,7 +86,7 @@ drop_status(census, "D", na.rm = TRUE)
 
 # Compose
 pick_dbh_over(
-  drop_status(census, "D", na.rm = TRUE), 
+  drop_status(census, "D", na.rm = TRUE),
   100
 )
 
@@ -94,7 +94,7 @@ pick_dbh_over(
 census \%>\%
   drop_status("D", na.rm = TRUE) \%>\%
   pick_dbh_over(100)
- 
+
 # Also works with ViewFullTables
 # styler: off
 vft <- tribble(
@@ -111,7 +111,7 @@ vft <- tribble(
 
 pick_dbh_max(vft, 100)
 
-pick_status(vft, "alive",  na.rm = TRUE)
+pick_status(vft, "alive", na.rm = TRUE)
 
 }
 \seealso{

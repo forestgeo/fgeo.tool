@@ -1,17 +1,18 @@
 context("add_subquad")
 
 test_that("passes with non-numeric input", {
+  # styler: off
   vft <- tibble::tribble(
      ~QX,  ~QY,
     NULL,    0,
     17.9,    0
   ) %>%
     purrr::map_df(as.character)
-
+  # styler: on
   expect_warning(
     add_subquad(vft, x_q = 20, x_sq = 5)
   )
-
+  # styler: off
   vft <- tibble::tribble(
      ~QX,  ~QY,
     17.9,    0,
@@ -19,23 +20,24 @@ test_that("passes with non-numeric input", {
      6.1, 17.3
   ) %>%
     purrr::map_df(as.character)
-
+  # styler: on
   expect_warning(add_subquad(vft, x_q = 20, x_sq = 5))
 })
-
+# styler: off
 vft <- tibble::tribble(
-  ~QX,  ~QY,
+   ~QX,  ~QY,
   17.9,    0,
-  4.1,   15,
-  6.1, 17.3,
-  3.8,  5.9,
-  4.5, 12.4,
-  4.9,  9.3,
-  9.8,  3.2,
+   4.1,   15,
+   6.1, 17.3,
+   3.8,  5.9,
+   4.5, 12.4,
+   4.9,  9.3,
+   9.8,  3.2,
   18.6,  1.1,
   17.3,  4.1,
-  1.5, 16.3
+   1.5, 16.3,
 )
+# styler: on
 
 test_that("outputs a dataframe with new expected variable", {
   with_sq <- vft %>% add_subquad(x_q = 20, x_sq = 5)
