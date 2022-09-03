@@ -109,7 +109,7 @@ test_that("warns if the status is invalid", {
 
 test_that("handles names as in viewfull (vf) and census (cns) tables", {
   # styler: off
-  vf <- tibble::tribble(
+  vf <- tribble(
     ~CensusID, ~TreeID, ~Status,
                 1,    2,  "A",
                 2,    2,  "D"
@@ -118,7 +118,7 @@ test_that("handles names as in viewfull (vf) and census (cns) tables", {
   expect_silent(add_status_tree(vf))
 
   # styler: off
-  cns <- tibble::tribble(
+  cns <- tribble(
     ~CensusID, ~TreeID, ~status,
                 1,    2,  "A",
                 2,    2,  "D"
@@ -129,7 +129,7 @@ test_that("handles names as in viewfull (vf) and census (cns) tables", {
 
 test_that("names of data are equal in input and output, except status_tree", {
   # styler: off
-  cns <- tibble::tribble(
+  cns <- tribble(
     ~CensusID, ~TreeID, ~status,
                 1,    2,  "A",
                 2,    2,  "D"

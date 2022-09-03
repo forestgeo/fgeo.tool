@@ -2,7 +2,7 @@ context("add_subquad")
 
 test_that("passes with non-numeric input", {
   # styler: off
-  vft <- tibble::tribble(
+  vft <- tribble(
      ~QX,  ~QY,
     NULL,    0,
     17.9,    0
@@ -13,7 +13,7 @@ test_that("passes with non-numeric input", {
     add_subquad(vft, x_q = 20, x_sq = 5)
   )
   # styler: off
-  vft <- tibble::tribble(
+  vft <- tribble(
      ~QX,  ~QY,
     17.9,    0,
      4.1,   15,
@@ -24,7 +24,7 @@ test_that("passes with non-numeric input", {
   expect_warning(add_subquad(vft, x_q = 20, x_sq = 5))
 })
 # styler: off
-vft <- tibble::tribble(
+vft <- tribble(
    ~QX,  ~QY,
   17.9,    0,
    4.1,   15,
