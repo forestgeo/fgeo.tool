@@ -16,7 +16,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     # styler: on
     out <- pick_main_stem(census)
     expect_identical(out$rowindex, sort(out$rowindex))
-    
+
     # styler: off
     census <- tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~rowindex,
@@ -41,7 +41,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     out <- pick_main_stem(census)
     expect_identical(out$rowindex, sort(out$rowindex))
   })
-  
+
   it("chooses the stem of largest hom regardless of dbh", {
     # styler: off
     census <- tribble(
@@ -51,7 +51,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     )
     # styler: on
     expect_equal(pick_main_stem(census)$hom, 2)
-    
+
     # styler: off
     census <- tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
@@ -60,7 +60,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     )
     # styler: on
     expect_equal(pick_main_stem(census)$hom, 2)
-    
+
     # styler: off
     census <- tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
@@ -69,7 +69,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     )
     # styler: on
     expect_equal(pick_main_stem(census)$hom, 2)
-    
+
     # styler: off
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
@@ -78,7 +78,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     )
     # styler: on
     expect_equal(pick_main_stem(census)$hom, 2)
-    
+
     # styler: off
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
@@ -87,7 +87,7 @@ describe("pick_main_stem with multiple stems including buttress", {
     )
     # styler: on
     expect_equal(pick_main_stem(census)$hom, 2)
-    
+
     # styler: off
     census <- tibble::tribble(
         ~sp, ~treeID, ~stemID,  ~hom, ~dbh,
@@ -105,7 +105,7 @@ cns <- tibble::tribble(
     10,   10, "sp1",     "1",   "1.1",
     20,  100, "sp1",     "1",   "1.2",  # main stem
     10,  111, "sp1",     "1",   "1.2",
-  
+
     10,   22, "sp2",     "2",   "2.1",
     22,   88, "sp2",     "2",   "2.2",
     22,   99, "sp2",     "2",   "2.2",  # main stem
@@ -118,24 +118,24 @@ describe("pick_main_stem()", {
     out <- pick_main_stem(cns)
     expect_named(out, c("hom", "dbh", "sp", "treeID", "stemID"))
   })
-  
+
   it("picks first by hom then by dbh", {
     collapsed <- pick_main_stem(cns)
     expect_equal(collapsed$hom, c(20, 22))
     expect_equal(collapsed$dbh, c(100, 99))
   })
-  
+
   it("outputs the same groups as input", {
     # Ungrouped
     collapsed <- pick_main_stem(cns)
     expect_equal(group_vars(collapsed), group_vars(cns))
-    
+
     # Grouped
     bysp <- group_by(cns, sp)
     collapsed <- pick_main_stem(bysp)
     expect_equal(group_vars(collapsed), group_vars(bysp))
   })
-  
+
   it("automatically groups by CensusID", {
     # styler: off
     cns <- tibble::tribble(
@@ -147,7 +147,7 @@ describe("pick_main_stem()", {
       10,   NA, "sp2",     "2",   "2.3"
     )
     # styler: on
-    
+
     cns$CensusID <- c(1, 2, 1, 2, 2)
     .cns <- arrange(cns, CensusID, treeID, stemID, dbh)
     out <- pick_main_stem(.cns)
@@ -159,7 +159,7 @@ describe("pick_main_stem()", {
     # Ouput largest stem per tree per census
     expect_equal(out$stemID, as.character(c(1.1, 2.1, 1.2, 2.2)))
   })
-  
+
   it("drops missing values of censusid if there are multiple unique censusid", {
     # styler: off
     cns <- tibble::tribble(
@@ -174,17 +174,17 @@ describe("pick_main_stem()", {
     # Doesn't drop missing censusid if they are unambiguous (only one censusid)
     cns$CensusID <- c(1, 1, 1, 1, NA)
     expect_silent(out <- pick_main_stem(cns))
-    
+
     # Drops missing censusid if they are unambiguous (multiple censusid)
     cns$CensusID <- c(1, 1, 2, 2, NA)
     expect_warning(
       out <- pick_main_stem(cns),
       "Dropping.*rows with missing.*values"
     )
-    
+
     expect_false(any(is.na(out$CensusID)))
   })
-  
+
   it("rejects data with multiple values of `plotname`", {
     # styler: off
     cns <- tibble::tribble(
