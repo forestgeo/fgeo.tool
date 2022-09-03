@@ -12,7 +12,7 @@ status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https:
 status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 [![R-CMD-check](https://github.com/forestgeo/fgeo.tool/workflows/R-CMD-check/badge.svg)](https://github.com/forestgeo/fgeo.tool/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/forestgeo/fgeo.tool/branch/master/graph/badge.svg)](https://app.codecov.io/gh/forestgeo/fgeo.tool?branch=master)
+coverage](https://codecov.io/gh/forestgeo/fgeo.tool/branch/main/graph/badge.svg)](https://app.codecov.io/gh/forestgeo/fgeo.tool?branch=main)
 [![R-CMD-check](https://github.com/forestgeo/fgeo.tool/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/forestgeo/fgeo.tool/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -135,6 +135,10 @@ stem <- download_data("luquillo_stem6_random")
 dim(stem)
 #> [1] 1320   19
 dim(pick_main_stem(stem))
+#> Warning: The `add` argument of `group_by()` is deprecated as of dplyr 1.0.0.
+#> Please use the `.add` argument instead.
+#> This warning is displayed once every 8 hours.
+#> Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 #> [1] 1000   19
 ```
 
