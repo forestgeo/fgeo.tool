@@ -19,6 +19,8 @@ knitr::opts_chunk$set(
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.tool/badge.svg)](https://coveralls.io/github/forestgeo/fgeo.tool)
 [![CRAN status](https://www.r-pkg.org/badges/version/fgeo.tool)](https://cran.r-project.org/package=fgeo.tool)
 [![R-CMD-check](https://github.com/forestgeo/fgeo.tool/workflows/R-CMD-check/badge.svg)](https://github.com/forestgeo/fgeo.tool/actions)
+[![Codecov test coverage](https://codecov.io/gh/forestgeo/fgeo.tool/branch/master/graph/badge.svg)](https://app.codecov.io/gh/forestgeo/fgeo.tool?branch=master)
+[![R-CMD-check](https://github.com/forestgeo/fgeo.tool/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/forestgeo/fgeo.tool/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 __fgeo.tool__ helps you to import and manipulate [ForestGEO](<https://forestgeo.si.edu/>) data.
