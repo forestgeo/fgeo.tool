@@ -67,6 +67,7 @@ describe("pick_main_stem with multiple stems including buttress", {
       "sp1",     "1",   "1.1",     2,    1,
       "sp1",     "1",   "1.1",     1,    2,
     )
+    # styler: on
     expect_equal(pick_main_stem(census)$hom, 2)
     
     # styler: off
