@@ -35,7 +35,9 @@ context("nms_restore")
 test_that("reverses the effect of nms_lowercase()", {
   cns <- tibble::tibble(CensusID = 1, status = "A")
   original <- cns %>% names()
-  forth_and_back <- cns %>% nms_lowercase() %>% nms_restore()
+  forth_and_back <- cns %>%
+    nms_lowercase() %>%
+    nms_restore()
   expect_identical(original, names(forth_and_back))
 })
 

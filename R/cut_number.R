@@ -30,16 +30,13 @@ breaks <- function(x, equal, nbins = NULL, binwidth = NULL) {
   if (equal == "width") {
     if (!is.null(binwidth)) {
       fullseq(rng, binwidth)
-    }
-    else {
+    } else {
       seq(rng[1], rng[2], length.out = nbins + 1)
     }
-  }
-  else {
+  } else {
     if (!is.null(binwidth)) {
       probs <- seq(0, 1, by = binwidth)
-    }
-    else {
+    } else {
       probs <- seq(0, 1, length.out = nbins + 1)
     }
     stats::quantile(x, probs, na.rm = TRUE)
@@ -61,8 +58,7 @@ fullseq <- function(range, size, ..., pad = FALSE) {
   )
   if (pad) {
     c(min(x) - size, x, max(x) + size)
-  }
-  else {
+  } else {
     x
   }
 }

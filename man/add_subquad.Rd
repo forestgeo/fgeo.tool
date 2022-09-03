@@ -17,7 +17,9 @@ common value is 20.}
 a common value is 5.}
 
 \item{subquad_offset}{Either \code{-1} or \code{1}, to rest or add one unit to the
-digit of each subquadrat that represents the column number.\if{html}{\out{<div class="R">}}\preformatted{First column is 0    First column is 1
+digit of each subquadrat that represents the column number.
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{First column is 0    First column is 1
 -----------------    -----------------
    04 14 24 34          14 24 34 44
    03 13 23 33          13 23 33 43
@@ -32,6 +34,7 @@ Returns \code{data} with the additional variable \code{subquadrat}.
 Add column \code{subquadrat} based on \code{QX} and \code{QY} coordinates.
 }
 \examples{
+# styler: off
 vft <- tribble(
    ~QX,  ~QY,
   17.9,    0,
@@ -45,6 +48,7 @@ vft <- tribble(
   17.3,  4.1,
    1.5, 16.3
 )
+# styler: on
 
 add_subquad(vft, 20, 20, 5, 5)
 

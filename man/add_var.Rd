@@ -55,6 +55,7 @@ column is missing.
 These functions are adapted from the \href{https://forestgeo.si.edu/explore-data/r-package-0}{CTFS R Package}.
 }
 \examples{
+# styler: off
 x <- tribble(
     ~gx,    ~gy,
       0,      0,
@@ -62,6 +63,7 @@ x <- tribble(
   999.9, 499.95,
    1000,    500
 )
+# styler: on
 
 # `gridsize` has a common default; `plotdim` is guessed from the data
 add_lxly(x)
@@ -88,6 +90,7 @@ add_col_row(x, gridsize, plotdim)
 
 
 # From `quadrat` or `QuadratName` --------------------------------------
+# styler: off
 x <- tribble(
   ~QuadratName,
         "0001",
@@ -95,11 +98,12 @@ x <- tribble(
         "0101",
         "1001"
 )
+# styler: on
 
 # Output `gx` and `gy` ---------------
 
 add_gxgy(x)
- 
+
 assert_is_installed("fgeo.x")
 # Warning: The data may already have `gx` and `gx` columns
 gxgy <- add_gxgy(fgeo.x::tree5)

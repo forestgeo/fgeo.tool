@@ -39,19 +39,21 @@
 #'   censusid.
 #'
 #' @examples
-#' # One `treeID` with multiple stems. 
+#' # One `treeID` with multiple stems.
 #' # `stemID == 1.1` has two measurements (due to buttresses).
 #' # `stemID == 1.2` has a single measurement.
+#' # styler: off
 #' census <- tribble(
 #'     ~sp, ~treeID, ~stemID,  ~hom, ~dbh, ~CensusID,
 #'   "sp1",     "1",   "1.1",   140,   40,         1,  # main stemID (max `hom`)
-#'   "sp1",     "1",   "1.1",   130,   60,         1,  
+#'   "sp1",     "1",   "1.1",   130,   60,         1,
 #'   "sp1",     "1",   "1.2",   130,   55,         1   # main stemID (only one)
 #' )
-#' 
+#' #' # styler: on
+#'
 #' # Picks a unique row per unique `treeID`
 #' pick_main_stem(census)
-#' 
+#'
 #' # Picks a unique row per unique `stemID`
 #' pick_main_stemid(census)
 #'
@@ -62,7 +64,7 @@ NULL
 pick_main_f <- function(stemid = TRUE, treeid = TRUE) {
   function(data) {
     stopifnot(is.data.frame(data))
-    
+
     # Store original row order to restore it at the end
     data <- tibble::rowid_to_column(data)
     # Lowercase names and groups to work with both census and ViewFullTable
@@ -70,16 +72,16 @@ pick_main_f <- function(stemid = TRUE, treeid = TRUE) {
     # The net effect is to ignore groups: Store them now and restore them on
     # exit.
     data_ <- groups_lower(data_)
-    
+
     stopifnot_single_plotname(data_)
-    check_crucial_names(data_, c( "treeid", "stemid", "hom", "dbh"))
-    
+    check_crucial_names(data_, c("treeid", "stemid", "hom", "dbh"))
+
     data_ <- pick_stemid_treeid(data_, stemid = stemid, treeid = treeid)
-    
+
     # Restore rows order
     data_ <- select(arrange(data_, .data$rowid), -.data$rowid)
     # Restore original names
-    out <- rename_matches(data_ , data)
+    out <- rename_matches(data_, data)
     # Restore original groups
     groups_restore(out, data)
   }
@@ -111,10 +113,12 @@ pick_by_groups_by_censusid <- function(.data, ...) {
     .data <- group_by(.data, .data$censusid)
   }
 
-  grouped <- group_by(.data, !!!enquos(...), add = TRUE)
+  grouped <- group_by(.data, !!!enquos(...), .add = TRUE)
 
   not_duplicated <- !any(count(grouped)$n > 1)
-  if (not_duplicated) return(ungroup(grouped))
+  if (not_duplicated) {
+    return(ungroup(grouped))
+  }
 
   main_stems_at_top <- arrange(
     grouped, desc(.data$hom), desc(.data$dbh),

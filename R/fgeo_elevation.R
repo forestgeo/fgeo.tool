@@ -18,24 +18,24 @@
 #'
 #' @examples
 #' assert_is_installed("fgeo.x")
-#' 
+#'
 #' # Input: Elevation dataframe
 #' elevation_df <- fgeo.x::elevation$col
 #' fgeo_elevation(elevation_df)
-#' 
+#'
 #' class(elevation_df)
 #' class(fgeo_elevation(elevation_df))
-#' 
+#'
 #' names(elevation_df)
 #' names(fgeo_elevation(elevation_df))
-#' 
+#'
 #' # Input: Elevation list
 #' elevation_ls <- fgeo.x::elevation
 #' fgeo_elevation(elevation_ls)
-#' 
+#'
 #' class(elevation_ls)
 #' class(fgeo_elevation(elevation_ls))
-#' 
+#'
 #' names(elevation_ls)
 #' names(fgeo_elevation(elevation_ls))
 #' @family functions to construct fgeo classes

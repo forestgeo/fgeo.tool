@@ -29,31 +29,31 @@ sanitize_view <- function(col_types) {
 #'
 #' @examples
 #' assert_is_installed("fgeo.x")
-#' 
+#'
 #' vft <- fgeo.x::vft_4quad
-#' 
+#'
 #' # Introduce problems to show how to fix them
 #' # Bad column types
 #' vft[] <- lapply(vft, as.character)
 #' # Bad representation of missing values
 #' vft$PlotName <- "NULL"
-#' 
+#'
 #' # "NULL" should be replaced by `NA` and `DBH` should be numeric
 #' str(vft[c("PlotName", "DBH")])
-#' 
+#'
 #' # Fix
 #' vft_sane <- sanitize_vft(vft)
 #' str(vft_sane[c("PlotName", "DBH")])
-#' 
+#'
 #' taxa <- read.csv(fgeo.x::example_path("taxa.csv"))
 #' # E.g. inserting bad column types
 #' taxa[] <- lapply(taxa, as.character)
 #' # E.g. inserting bad representation of missing values
 #' taxa$SubspeciesID <- "NULL"
-#' 
+#'
 #' # "NULL" should be replaced by `NA` and `ViewID` should be integer
 #' str(taxa[c("SubspeciesID", "ViewID")])
-#' 
+#'
 #' # Fix
 #' taxa_sane <- sanitize_taxa(taxa)
 #' str(taxa_sane[c("SubspeciesID", "ViewID")])

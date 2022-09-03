@@ -20,6 +20,7 @@
 #'   version of the input dataframe, with the additional variable(s) `var`.
 #'
 #' @examples
+#' # styler: off
 #' x <- tribble(
 #'     ~gx,    ~gy,
 #'       0,      0,
@@ -27,32 +28,34 @@
 #'   999.9, 499.95,
 #'    1000,    500
 #' )
-#' 
+#' # styler: on
+#'
 #' # `gridsize` has a common default; `plotdim` is guessed from the data
 #' add_lxly(x)
-#' 
+#'
 #' gridsize <- 20
 #' plotdim <- c(1000, 500)
-#' 
+#'
 #' add_qxqy(x, gridsize, plotdim)
-#' 
+#'
 #' add_index(x, gridsize, plotdim)
-#' 
+#'
 #' add_hectindex(x, gridsize, plotdim)
-#' 
+#'
 #' add_quad(x, gridsize, plotdim)
-#' 
+#'
 #' add_quad(x, gridsize, plotdim, start = 0)
-#' 
+#'
 #' # `width` gives the nuber of digits to pad the label of plot-rows and
 #' # plot-columns, e.g. 3 pads plot-rows with three zeros and plot-columns with
 #' # an extra trhree zeros, resulting in a total of 6 zeros.
 #' add_quad(x, gridsize, plotdim, start = 0, width = 3)
-#' 
+#'
 #' add_col_row(x, gridsize, plotdim)
-#' 
-#' 
+#'
+#'
 #' # From `quadrat` or `QuadratName` --------------------------------------
+#' # styler: off
 #' x <- tribble(
 #'   ~QuadratName,
 #'         "0001",
@@ -60,43 +63,44 @@
 #'         "0101",
 #'         "1001"
 #' )
-#' 
+#' # styler: on
+#'
 #' # Output `gx` and `gy` ---------------
-#' 
+#'
 #' add_gxgy(x)
-#'  
+#'
 #' assert_is_installed("fgeo.x")
 #' # Warning: The data may already have `gx` and `gx` columns
 #' gxgy <- add_gxgy(fgeo.x::tree5)
 #' select(gxgy, matches("gx|gy"))
-#' 
+#'
 #' # Output `col` and `row` -------------
-#' 
+#'
 #' # Create columns `col` and `row` from `QuadratName` with `tidyr::separate()`
 #' # The argument `sep` lets you separate `QuadratName` at any positon
 #' \dontrun{
 #' tidyr_is_installed <- requireNamespace("tidyr", quietly = TRUE)
 #' stringr_is_installed <- requireNamespace("stringr", quietly = TRUE)
-#' 
+#'
 #' if (tidyr_is_installed && stringr_is_installed) {
 #'   library(tidyr)
 #'   library(stringr)
-#' 
+#'
 #'   vft <- tibble(QuadratName = c("0001", "0011"))
 #'   vft
-#' 
+#'
 #'   separate(
 #'     vft,
 #'     QuadratName,
 #'     into = c("col", "row"),
 #'     sep = 2
 #'   )
-#' 
+#'
 #'   census <- select(fgeo.x::tree5, quadrat)
 #'   census
-#' 
+#'
 #'   census$quadrat <- str_pad(census$quadrat, width = 4, pad = 0)
-#' 
+#'
 #'   separate(
 #'     census,
 #'     quadrat,
@@ -106,7 +110,7 @@
 #'   )
 #' }
 #' }
-#' 
+#'
 #' @family functions to add columns to dataframes
 #' @family functions for ForestGEO data
 #' @family functions for fgeo census
@@ -126,8 +130,7 @@ add_var <- function(data, var, gridsize = 20, plotdim = NULL) {
     message("* If guess is wrong, provide the correct argument `plotdim`")
   }
 
-  result <- switch(
-    var,
+  result <- switch(var,
     lxly = {
       newcol <- gxgy_to_var(data_, var, gridsize, plotdim)
       data_ <- tibble::add_column(data_, lx = newcol$lx, ly = newcol$ly)
@@ -220,7 +223,9 @@ add_quad <- function(data,
 
 paste_colrow <- function(col, row) {
   paste_each <- function(col, row) {
-    if (is.na(col) || is.na(row)) return(NA)
+    if (is.na(col) || is.na(row)) {
+      return(NA)
+    }
     paste0(col, row)
   }
   purrr::map2_chr(col, row, paste_each)
@@ -309,14 +314,14 @@ check_add_var <- function(data, var, from, gridsize, plotdim) {
 #' @export
 add_gxgy <- function(data, gridsize = 20, start = 0) {
   assert_quad(data)
- 
+
   gxgy <- quad_to_gxgy(data[[nm_quad(data)]], gridsize = gridsize, start = start)
   out <- cbind(data, gxgy)
   # Repair names like dplyr::bind_cols for dplyr < 1.0.0
   nms <- make.unique(names(out))
   nms <- sub("gx.1", "gx1", nms)
   nms <- sub("gy.1", "gy1", nms)
-  
+
   rlang::set_names(out, nms)
 }
 

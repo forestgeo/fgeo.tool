@@ -22,46 +22,46 @@
 #' @author Rick Condit, Suzanne Lao.
 #' @examples
 #' gxgy_to_index(c(0, 400, 990), c(0, 200, 490), gridsize = 20)
-#' 
+#'
 #' gridsize <- 20
 #' plotdim <- c(1000, 500)
-#' 
+#'
 #' x <- gxgy_to_hectindex(1:3, 1:3, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#' 
+#'
 #' x <- gxgy_to_index(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#' 
+#'
 #' x <- gxgy_to_lxly(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#' 
+#'
 #' x <- gxgy_to_rowcol(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#' 
+#'
 #' x <- index_to_rowcol(1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#' 
+#'
 #' x <- rowcol_to_index(1:3, 1:3, gridsize, plotdim)
 #' x
 #' typeof(x)
 #' is.data.frame(x)
 #' is.vector(x)
-#' 
+#'
 #' index_to_gxgy(1:3, gridsize, plotdim)
 #' @keywords internal
 #' @name from_var_to_var

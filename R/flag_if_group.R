@@ -18,7 +18,7 @@
 #' tree <- tibble(CensusID = c(1, 2), treeID = c(1, 2))
 #' detect_if_group(tree, "treeID", is_multiple)
 #' flag_if_group(tree, "treeID", is_multiple)
-#' 
+#'
 #' by_censusid <- group_by(tree, CensusID)
 #' detect_if_group(by_censusid, "treeID", is_multiple)
 #' flag_if_group(by_censusid, "treeID", is_multiple)

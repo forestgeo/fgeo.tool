@@ -12,7 +12,7 @@
 #' is_multiple(c(1, 2))
 #' is_multiple(c(1, 1))
 #' is_multiple(c(1, NA))
-#' 
+#'
 #' is_duplicated(c(1, 2))
 #' is_duplicated(c(1, 1))
 #' is_duplicated(c(1, NA))

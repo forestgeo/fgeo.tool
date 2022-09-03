@@ -11,7 +11,7 @@ test_that("read_vft guesses tab or comma separated file, silently", {
   file <- tempfile()
   data <- fgeo.x::vft_4quad
   write.csv(data, file)
-  
+
   expect_silent(out <- read_vft(file))
   expect_equal(out, data)
 })

@@ -14,8 +14,7 @@ read_fgeo <- function(col_types) {
 }
 
 read_delim_ <- function(delim, file, col_types, na, ...) {
-  dfm <- switch(
-    delim,
+  dfm <- switch(delim,
     "," = readr::read_csv(
       file = file, col_types = readr::cols(.default = "c"), na = na, ...
     ),
@@ -50,12 +49,12 @@ read_delim_ <- function(delim, file, col_types, na, ...) {
 #' @examples
 #' assert_is_installed("fgeo.x")
 #' library(fgeo.x)
-#' 
+#'
 #' example_path()
-#' 
+#'
 #' file_vft <- example_path("view/vft_4quad.csv")
 #' read_vft(file_vft)
-#' 
+#'
 #' file_taxa <- example_path("view/taxa.csv")
 #' read_taxa(file_taxa)
 #' @family functions to read text files delivered by ForestgGEO's database
@@ -111,13 +110,13 @@ read_taxa <- read_fgeo(col_types = type_taxa())
 #' assert_is_installed("fgeo.x")
 #' library(fgeo.x)
 #' library(readr)
-#' 
+#'
 #' str(type_vft())
-#' 
+#'
 #' read_csv(example_path("view/vft_4quad.csv"), col_types = type_vft())
-#' 
+#'
 #' str(type_taxa())
-#' 
+#'
 #' read_csv(example_path("view/taxa.csv"), col_types = type_taxa())
 #' @family functions to operate on column types
 #' @family functions to read text files delivered by ForestgGEO's database

@@ -8,7 +8,7 @@
 #' @examples
 #' v <- c(x = 1)
 #' check_crucial_names(v, "x")
-#' 
+#'
 #' dfm <- data.frame(x = 1)
 #' check_crucial_names(dfm, "x")
 #' @family functions to check inputs
