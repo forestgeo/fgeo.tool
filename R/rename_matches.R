@@ -32,7 +32,7 @@ rename_matches <- function(x, y) {
 #' y <- c("StemID", "treeID")
 #' detect_insensitive(x, y)
 #' extract_insensitive(x, y)
-#' 
+#'
 #' vft <- data.frame(TreeID = 1, Status = 1)
 #' extract_insensitive(tolower(names(vft)), names(vft))
 #' extract_insensitive(names(vft), tolower(names(vft)))

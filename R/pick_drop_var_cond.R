@@ -31,44 +31,44 @@
 #'     NA,      NA
 #'   )
 #' # styler: on
-#' 
+#'
 #' # <=
 #' pick_dbh_max(census, 100)
 #' pick_dbh_max(census, 100, na.rm = TRUE)
-#' 
+#'
 #' # >=
 #' pick_dbh_min(census, 100)
 #' pick_dbh_min(census, 100, na.rm = TRUE)
-#' 
+#'
 #' # <
 #' pick_dbh_under(census, 100)
 #' pick_dbh_under(census, 100, na.rm = TRUE)
-#' 
+#'
 #' # >
 #' pick_dbh_over(census, 100)
 #' pick_dbh_over(census, 100, na.rm = TRUE)
 #' # Same, but `subset()` does not let you keep NAs.
 #' subset(census, dbh > 100)
-#' 
+#'
 #' # ==
 #' pick_status(census, "A")
 #' pick_status(census, "A", na.rm = TRUE)
-#' 
+#'
 #' # !=
 #' drop_status(census, "D")
 #' drop_status(census, "D", na.rm = TRUE)
-#' 
+#'
 #' # Compose
 #' pick_dbh_over(
-#'   drop_status(census, "D", na.rm = TRUE), 
+#'   drop_status(census, "D", na.rm = TRUE),
 #'   100
 #' )
-#' 
+#'
 #' # More readable as a pipiline
 #' census %>%
 #'   drop_status("D", na.rm = TRUE) %>%
 #'   pick_dbh_over(100)
-#'  
+#'
 #' # Also works with ViewFullTables
 #' # styler: off
 #' vft <- tribble(
@@ -82,11 +82,11 @@
 #'     NA,        NA
 #' )
 #' # styler: on
-#' 
+#'
 #' pick_dbh_max(vft, 100)
-#' 
-#' pick_status(vft, "alive",  na.rm = TRUE)
-#' 
+#'
+#' pick_status(vft, "alive", na.rm = TRUE)
+#'
 #' @family functions for fgeo census and vft
 #' @family functions for fgeo census
 #' @family functions for fgeo vft

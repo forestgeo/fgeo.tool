@@ -12,14 +12,14 @@
 #' @examples
 #' nms_try_rename(c(a = 1), "A", "a")
 #' nms_try_rename(data.frame(a = 1), "A", "a")
-#' 
+#'
 #' # Passes
 #' nms_try_rename(c(a = 1, 1), "A", "a")
 #' \dontrun{
 #' # Errs
 #' # nms_try_rename(1, "A", "A")
 #' }
-#' 
+#'
 #' @family functions dealing with names
 #' @family functions for developers
 #' @keywords internal
@@ -59,11 +59,11 @@ nms_try_rename <- function(x, want, try) {
 #' cns <- tibble(CensusID = 1, status = "A")
 #' original <- cns
 #' original
-#' 
+#'
 #' lowered <- nms_lowercase(cns)
 #' lowered
 #' attr(lowered, "names_old")
-#' 
+#'
 #' back_to_original <- nms_restore(lowered)
 #' back_to_original
 #' @family functions dealing with names
@@ -123,7 +123,7 @@ nms_restore <- function(x) {
 #' mutated <- dplyr::mutate(dfm, newvar = x + 1)
 #' # Restore
 #' nms_restore_newvar(mutated, "newvar", old)
-#' 
+#'
 #' # Data contains the variable that will be added
 #' dfm <- data.frame(X = 1, Y = "a", newvar = "2")
 #' (old <- names(dfm))
@@ -178,20 +178,20 @@ nms_restore_newvar <- function(x, new_var, old_nms) {
 #' nms_has_any(v, "a", "B")
 #' nms_has_any(v, "A", "B")
 #' nms_has_any(v, "A", "b")
-#' 
+#'
 #' nms_detect(v, "a", "B", "b")
-#' 
+#'
 #' nms_extract_all(v, "a", "B")
 #' nms_extract_all(v, "a", "a", "b")
-#' 
+#'
 #' nms_extract1(v, "a", "a", "b")
-#' 
+#'
 #' # Usage with ForestGEO data
 #' assert_is_installed("fgeo.x")
-#' 
+#'
 #' vft <- fgeo.x::vft_4quad
 #' nms_extract_all(vft, "gx", "gy", "PX", "PY")
-#' 
+#'
 #' stem <- fgeo.x::stem6
 #' nms_extract_all(stem, "gx", "gy", "PX", "PY")
 #' @family functions for developers
@@ -229,7 +229,7 @@ nms_extract1 <- function(x, ...) {
 #' @examples
 #' v <- c(a = 1, B = 1)
 #' nms_extract_anycase(v, "b")
-#' 
+#'
 #' dfm <- data.frame(a = 1, B = 1)
 #' nms_extract_anycase(dfm, "b")
 #' @family functions for developers
@@ -256,27 +256,27 @@ nms_extract_anycase <- function(x, nm) {
 #'
 #' @examples
 #' messy <- "Hi yOu"
-#' 
+#'
 #' # With unnamed strings, both functions do the same
 #' unnamed_string <- messy
 #' names(messy)
 #' nms_tidy(messy)
 #' # Same
 #' to_tidy_names(messy)
-#' 
+#'
 #' # WHY TWO FUNCTIONS?
-#' 
+#'
 #' messy_named_string <- c(`Messy Name` = messy)
 #' # Targets names
 #' nms_tidy(messy_named_string)
 #' # Targets strings -- not its names
 #' to_tidy_names(messy_named_string)
-#' 
+#'
 #' # Same output, but here `to_tidy_names()` better communicates intention.
 #' dfm <- data.frame(1)
 #' setNames(dfm, nms_tidy(messy))
 #' setNames(dfm, to_tidy_names(messy))
-#' 
+#'
 #' # Makes more sense when operating on strings
 #' setNames(list(1), to_tidy_names(messy))
 #' # Makes more sense when operating on named objects

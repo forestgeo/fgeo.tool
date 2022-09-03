@@ -9,11 +9,11 @@
 #' dfm <- data.frame(CensusID = c(1, 2, NA))
 #' detect_if(dfm, "censusid", is_multiple)
 #' detect_if(dfm, "censusid", is_duplicated)
-#' 
+#'
 #' dfm <- data.frame(CensusID = c(1, 1))
 #' detect_if(dfm, "censusid", is_duplicated)
 #' detect_if(dfm, "censusid", is_multiple)
-#' 
+#'
 #' dfm <- data.frame(CensusID = c(1, 1, 2))
 #' detect_if(dfm, "censusid", is_duplicated)
 #' detect_if(dfm, "censusid", is_multiple)

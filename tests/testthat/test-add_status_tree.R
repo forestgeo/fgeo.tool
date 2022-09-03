@@ -4,13 +4,13 @@ stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,
           1,       1,       1,     "A",
           1,       1,       2,     "D",
-          
+
           1,       2,       3,     "D",
           1,       2,       4,     "D",
           # ++++++++++++++++++++++++++
           2,       1,       1,     "A",
           2,       1,       2,     "G",
-          
+
           2,       2,       3,     "D",
           2,       2,       4,     "G"
 )
@@ -23,7 +23,7 @@ test_that("outputs with expected names", {
 test_that("determines the correct status of a stem", {
   .stem <- add_status_tree(stem)
   expect_equal(.stem$status_tree, c("A", "A", "D", "D", "A", "A", "A", "A"))
-  
+
   .stem1 <- add_status_tree(filter(stem, CensusID == 1))
   expect_equal(.stem1$status_tree, c("A", "A", "D", "D"))
 })

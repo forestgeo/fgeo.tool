@@ -36,11 +36,11 @@
 #'    1.5, 16.3
 #' )
 #' # styler: on
-#' 
+#'
 #' add_subquad(vft, 20, 20, 5, 5)
-#' 
+#'
 #' add_subquad(vft, 20, 20, 5, 5, subquad_offset = -1)
-#' 
+#'
 #' @family functions to add columns to dataframes
 #' @family functions for ForestGEO data
 #' @family functions for fgeo vft
@@ -123,10 +123,10 @@ add_subquad <- function(data,
 #' @examples
 #' first_subquad_11 <- tibble(subquadrat = c("11", "12", "22"))
 #' first_subquad_11
-#' 
+#'
 #' first_subquad_01 <- recode_subquad(first_subquad_11, offset = -1)
 #' first_subquad_01
-#' 
+#'
 #' first_subquad_11 <- recode_subquad(first_subquad_01, offset = 1)
 #' first_subquad_11
 #' @keywords internal
