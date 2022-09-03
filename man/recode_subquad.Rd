@@ -8,7 +8,9 @@ recode_subquad(data, offset = -1)
 }
 \arguments{
 \item{offset}{A number; either -1 or 1, to rest or add one unit to the number
-of column of each subquadrat.\if{html}{\out{<div class="R">}}\preformatted{First column is 0    First column is 1
+of column of each subquadrat.
+
+\if{html}{\out{<div class="sourceCode R">}}\preformatted{First column is 0    First column is 1
 -----------------    -----------------
    04 14 24 34          14 24 34 44
    03 13 23 33          13 23 33 43
