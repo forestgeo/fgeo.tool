@@ -21,8 +21,6 @@ The input data set with the additional variable \code{status_tree}.
 Add column \code{status_tree} based on the status of all stems of each tree.
 }
 \examples{
-library(tibble)
-
 # styler: off
 stem <- tribble(
   ~CensusID, ~treeID, ~stemID, ~status,

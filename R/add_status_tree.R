@@ -13,8 +13,6 @@ tibble::tribble
 #' @return The input data set with the additional variable `status_tree`.
 #'
 #' @examples
-#' library(tibble)
-#' 
 #' # styler: off
 #' stem <- tribble(
 #'   ~CensusID, ~treeID, ~stemID, ~status,
