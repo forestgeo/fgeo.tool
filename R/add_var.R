@@ -283,7 +283,7 @@ rename_pxpy <- function(data) {
 
 restore_pxpy_if_necessary <- function(data_, data) {
   if (rename_pxpy(data)) {
-    data_ <- dplyr::rename(data_, px = .data$gx, py = .data$gy)
+    data_ <- dplyr::rename(data_, px = "gx", py = "gy")
   }
   data_
 }

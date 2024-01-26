@@ -79,7 +79,7 @@ pick_main_f <- function(stemid = TRUE, treeid = TRUE) {
     data_ <- pick_stemid_treeid(data_, stemid = stemid, treeid = treeid)
 
     # Restore rows order
-    data_ <- select(arrange(data_, .data$rowid), -.data$rowid)
+    data_ <- select(arrange(data_, .data$rowid), -"rowid")
     # Restore original names
     out <- rename_matches(data_, data)
     # Restore original groups
