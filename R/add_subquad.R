@@ -105,7 +105,7 @@ add_subquad <- function(data,
 
 #' Recode subquadrat.
 #'
-#' @param x A dataframe with the variable `subquadrat`.
+#' @param data A dataframe with the variable `subquadrat`.
 #' @param offset A number; either -1 or 1, to rest or add one unit to the number
 #'   of column of each subquadrat.
 #'

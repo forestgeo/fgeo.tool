@@ -7,6 +7,8 @@
 recode_subquad(data, offset = -1)
 }
 \arguments{
+\item{data}{A dataframe with the variable \code{subquadrat}.}
+
 \item{offset}{A number; either -1 or 1, to rest or add one unit to the number
 of column of each subquadrat.
 
@@ -17,8 +19,6 @@ of column of each subquadrat.
    02 12 22 32          12 22 32 42
    01 11 21 31          11 21 31 41
 }\if{html}{\out{</div>}}}
-
-\item{x}{A dataframe with the variable \code{subquadrat}.}
 }
 \value{
 A modified version of the input.
