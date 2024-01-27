@@ -75,11 +75,13 @@ pull_elevation <- function(elev) {
   UseMethod("pull_elevation")
 }
 
+#' @export
 pull_elevation.data.frame <- function(elev) {
   check_crucial_names(elev, "elev")
   elev
 }
 
+#' @export
 pull_elevation.default <- function(elev) {
   msg <- paste0(
     "`elevation` must be data.frame or list but its class is: ", class(elev)
@@ -87,6 +89,7 @@ pull_elevation.default <- function(elev) {
   abort(msg)
 }
 
+#' @export
 pull_elevation.list <- function(elev) {
   safe_check <- purrr::safely(check_crucial_names)
   check_result <- safe_check(elev, "col")
